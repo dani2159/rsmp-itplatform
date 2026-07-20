@@ -1,0 +1,346 @@
+/* --------------------------------------------------------------------------
+   Sistem komponen badge dan alert
+   Badge dan alert memakai token per status, termasuk warna border dan teks.
+   -------------------------------------------------------------------------- */
+
+.badge {
+  @apply inline-flex items-center justify-center gap-2 w-fit max-w-full whitespace-nowrap border border-[color:var(--badge-border)] rounded-full bg-[color:var(--badge-bg)] text-[color:var(--badge-color)] text-body-sm leading-none font-semibold p-[7px_11px];
+
+  --badge-bg: var(--surface);
+  --badge-color: var(--slate-dark);
+  --badge-border: var(--slate-tint-60);
+  --badge-dot: var(--slate);
+}
+
+.badge .dot,
+.badge-dot {
+  @apply w-[7px] h-[7px] rounded-full bg-[color:var(--badge-dot)] flex-none;
+}
+
+.badge-xs {
+  @apply min-h-[22px] p-[4px_8px] gap-[5px] text-body-xs;
+}
+
+.badge-xs .dot,
+.badge-xs .badge-dot {
+  @apply w-1.5 h-1.5;
+}
+
+.badge-sm {
+  @apply min-h-[24px] p-[5px_9px] gap-1.5 text-body-sm;
+}
+
+.badge-md {
+  @apply min-h-[28px] p-[7px_11px] text-body-sm;
+}
+
+.badge-lg {
+  @apply min-h-8.5 p-[9px_13px] gap-[9px] text-body-md;
+}
+
+.badge-primary,
+.badge.primary {
+  --badge-bg: var(--primary-blue-light);
+  --badge-color: var(--primary-blue);
+  --badge-border: var(--primary-blue-tint-80);
+  --badge-dot: var(--primary-blue);
+}
+
+.badge-success,
+.badge.success {
+  --badge-bg: var(--success-light);
+  --badge-color: var(--success-dark);
+  --badge-border: var(--primary-green-tint-80);
+  --badge-dot: var(--primary-green);
+}
+
+.badge-warning,
+.badge.warning {
+  --badge-bg: var(--warning-light);
+  --badge-color: var(--warning-dark);
+  --badge-border: var(--warning-border-soft);
+  --badge-dot: var(--warning);
+}
+
+.badge-danger,
+.badge.danger {
+  --badge-bg: var(--danger-light);
+  --badge-color: var(--danger-dark);
+  --badge-border: var(--danger-border-soft);
+  --badge-dot: var(--danger);
+}
+
+.badge-info,
+.badge.info {
+  --badge-bg: var(--info-light);
+  --badge-color: var(--info-dark);
+  --badge-border: var(--info);
+  --badge-dot: var(--info-dark);
+}
+
+.badge-teal,
+.badge.teal {
+  --badge-bg: var(--teal-light);
+  --badge-color: var(--accent-teal-shade-30);
+  --badge-border: var(--accent-teal-tint-60);
+  --badge-dot: var(--accent-teal);
+}
+
+.badge-indigo,
+.badge.indigo {
+  --badge-bg: var(--indigo-light);
+  --badge-color: var(--indigo-shade-30);
+  --badge-border: var(--indigo-tint-60);
+  --badge-dot: var(--indigo);
+}
+
+.badge-navy,
+.badge.navy {
+  --badge-bg: var(--navy-tint-80);
+  --badge-color: var(--text-primary);
+  --badge-border: var(--navy-tint-60);
+  --badge-dot: var(--navy);
+}
+
+.badge-slate,
+.badge.inactive,
+.badge.slate {
+  --badge-bg: var(--slate-tint-80);
+  --badge-color: var(--slate-shade-30);
+  --badge-border: var(--slate-tint-60);
+  --badge-dot: var(--slate);
+}
+
+.badge-outline {
+  @apply bg-[color:var(--surface)] border-[color:var(--badge-dot)] text-[color:var(--badge-color)];
+}
+
+.badge-solid {
+  @apply bg-[color:var(--badge-dot)] border-[color:var(--badge-dot)] text-[color:var(--white)];
+}
+
+.badge-solid.badge-warning,
+.badge-solid.badge.warning,
+.badge-warning.badge-solid,
+.badge.warning.badge-solid {
+  @apply text-[color:var(--text-primary)];
+}
+
+.alert {
+  @apply flex items-center gap-3 border border-[color:var(--alert-border)] rounded-[var(--radius-input-md)] bg-[color:var(--alert-bg)] text-[color:var(--alert-color)] p-4;
+
+  --alert-bg: var(--primary-tint);
+  --alert-color: var(--text-primary);
+  --alert-title-color: var(--primary-blue);
+  --alert-border: var(--primary-blue-tint-80);
+  --alert-icon-bg: var(--primary-blue-light);
+  --alert-icon-color: var(--primary-blue);
+  --alert-solid-bg: var(--primary-blue);
+}
+
+.alert-icon {
+  @apply inline-grid place-items-center w-8 h-8 flex-none rounded-full border border-[color:var(--alert-border)] bg-[color:var(--alert-icon-bg)] text-[color:var(--alert-icon-color)] font-bold leading-none;
+}
+
+.alert-body {
+  @apply min-w-0 grid gap-1;
+}
+
+
+.alert:has(p) {
+  @apply items-start;
+}
+
+.alert-title,
+.alert strong {
+  @apply block m-0 text-[color:var(--alert-title-color)] text-body-md leading-5 font-bold;
+}
+
+.alert p,
+.alert-text {
+  @apply m-0 text-[color:var(--alert-color)] text-body-sm leading-5;
+}
+
+.alert-sm {
+  @apply p-3 gap-2.5 rounded-[var(--radius-input-sm)];
+}
+
+.alert-sm .alert-icon {
+  @apply w-7 h-7 text-body-sm;
+}
+
+.alert-sm .alert-title,
+.alert-sm strong {
+  @apply text-body-sm leading-4.5;
+}
+
+.alert-sm p,
+.alert-sm .alert-text {
+  @apply text-body-sm leading-4.5;
+}
+
+.alert-md {
+  @apply p-4 rounded-[var(--radius-input-md)];
+}
+
+.alert-lg {
+  @apply p-5 gap-3.5 rounded-[var(--radius-input-lg)];
+}
+
+.alert-lg .alert-icon {
+  @apply w-10 h-10 text-body-lg;
+}
+
+.alert-lg .alert-title,
+.alert-lg strong {
+  @apply text-body-lg leading-6;
+}
+
+.alert-lg p,
+.alert-lg .alert-text {
+  @apply text-body-md leading-5.5;
+}
+
+.alert-primary,
+.alert.primary {
+  --alert-bg: var(--primary-tint);
+  --alert-color: var(--primary-blue-shade-30);
+  --alert-title-color: var(--primary-blue);
+  --alert-border: var(--primary-blue-tint-80);
+  --alert-icon-bg: var(--primary-blue-light);
+  --alert-icon-color: var(--primary-blue);
+  --alert-solid-bg: var(--primary-blue);
+}
+
+.alert-success,
+.alert.success {
+  --alert-bg: var(--success-light);
+  --alert-color: var(--primary-green-shade-30);
+  --alert-title-color: var(--success-dark);
+  --alert-border: var(--primary-green-tint-80);
+  --alert-icon-bg: var(--primary-green-tint-80);
+  --alert-icon-color: var(--success-dark);
+  --alert-solid-bg: var(--primary-green);
+}
+
+.alert-warning,
+.alert.warning {
+  --alert-bg: var(--warning-light);
+  --alert-color: var(--warning-shade-45);
+  --alert-title-color: var(--warning-dark);
+  --alert-border: var(--warning-border-soft);
+  --alert-icon-bg: var(--warning-icon-soft);
+  --alert-icon-color: var(--warning-dark);
+  --alert-solid-bg: var(--warning);
+}
+
+.alert-danger,
+.alert.danger {
+  --alert-bg: var(--danger-light);
+  --alert-color: var(--danger-shade-45);
+  --alert-title-color: var(--danger-dark);
+  --alert-border: var(--danger-border-soft);
+  --alert-icon-bg: var(--danger-icon-soft);
+  --alert-icon-color: var(--danger-dark);
+  --alert-solid-bg: var(--danger);
+}
+
+.alert-info,
+.alert.info {
+  --alert-bg: var(--info-light);
+  --alert-color: var(--ui-info-text-dark);
+  --alert-title-color: var(--info-dark);
+  --alert-border: var(--info);
+  --alert-icon-bg: var(--info-light);
+  --alert-icon-color: var(--info-dark);
+  --alert-solid-bg: var(--info-dark);
+}
+
+.alert-teal,
+.alert.teal {
+  --alert-bg: var(--teal-light);
+  --alert-color: var(--accent-teal-shade-45);
+  --alert-title-color: var(--accent-teal-shade-30);
+  --alert-border: var(--accent-teal-tint-60);
+  --alert-icon-bg: var(--accent-teal-tint-80);
+  --alert-icon-color: var(--accent-teal-shade-30);
+  --alert-solid-bg: var(--accent-teal);
+}
+
+.alert-indigo,
+.alert.indigo {
+  --alert-bg: var(--indigo-light);
+  --alert-color: var(--indigo-shade-45);
+  --alert-title-color: var(--indigo-shade-30);
+  --alert-border: var(--indigo-tint-60);
+  --alert-icon-bg: var(--indigo-tint-80);
+  --alert-icon-color: var(--indigo-shade-30);
+  --alert-solid-bg: var(--indigo);
+}
+
+.alert-navy,
+.alert.navy {
+  --alert-bg: var(--ui-surface-card-muted);
+  --alert-color: var(--text-primary);
+  --alert-title-color: var(--text-primary);
+  --alert-border: var(--navy-tint-60);
+  --alert-icon-bg: var(--navy-tint-80);
+  --alert-icon-color: var(--text-primary);
+  --alert-solid-bg: var(--navy);
+}
+
+.alert-outline {
+  @apply bg-[color:var(--surface)] border-[color:var(--alert-border)];
+}
+
+.alert-solid {
+  @apply bg-[color:var(--alert-solid-bg)] border-[color:var(--alert-solid-bg)] text-[color:var(--white)];
+}
+
+.alert-solid .alert-icon {
+  @apply bg-[color:rgba(255,255,255,0.18)] border-[color:rgba(255,255,255,0.42)] text-[color:var(--white)];
+}
+
+.alert-solid .alert-title,
+.alert-solid strong,
+.alert-solid p,
+.alert-solid .alert-text {
+  @apply text-[color:var(--white)];
+}
+
+.alert-warning.alert-solid,
+.alert.warning.alert-solid {
+  @apply text-[color:var(--text-primary)];
+}
+
+.alert-warning.alert-solid .alert-icon,
+.alert.warning.alert-solid .alert-icon {
+  @apply bg-[color:rgba(255,255,255,0.32)] border-[color:rgba(15,31,61,0.22)] text-[color:var(--text-primary)];
+}
+
+.alert-warning.alert-solid .alert-title,
+.alert.warning.alert-solid .alert-title,
+.alert-warning.alert-solid strong,
+.alert.warning.alert-solid strong,
+.alert-warning.alert-solid p,
+.alert.warning.alert-solid p,
+.alert-warning.alert-solid .alert-text,
+.alert.warning.alert-solid .alert-text {
+  @apply text-[color:var(--text-primary)];
+}
+
+.component-row {
+  @apply flex flex-wrap items-center gap-2.5;
+}
+
+.component-stack {
+  @apply grid gap-3;
+}
+
+.component-note {
+  @apply m-0 text-[color:var(--slate)] text-body-sm leading-5;
+}
+
+.code-chip {
+  @apply inline-flex items-center w-fit border border-[color:var(--primary-blue-tint-80)] rounded-lg bg-[color:var(--primary-tint)] text-[color:var(--primary-blue-shade-30)] text-mono-sm leading-4.5 p-[3px_7px];
+}

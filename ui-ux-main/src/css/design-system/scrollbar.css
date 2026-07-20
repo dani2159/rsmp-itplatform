@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Scrollbar global
+   ========================================================================== */
+
+html {
+  scrollbar-color: var(--ui-scrollbar-thumb) var(--ui-transparent-dark);
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+  @apply w-3.5;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-[color:var(--ui-transparent-dark)];
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-[color:var(--ui-scrollbar-thumb)] rounded-[20px] border-[3px] border-[color:var(--ui-transparent-dark)];
+}

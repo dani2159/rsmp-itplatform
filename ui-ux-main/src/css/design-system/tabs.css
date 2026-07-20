@@ -1,0 +1,120 @@
+/* Tabs
+   Dipakai untuk memisahkan konten yang setara dalam satu halaman. */
+.tabs {
+  @apply w-full;
+}
+
+.tabs-list {
+  @apply flex w-fit max-w-full items-center gap-1.5 overflow-x-auto border-b border-b-[color:var(--border-soft)];
+}
+
+.tab {
+  @apply min-h-10 inline-flex items-center justify-center gap-2 px-3.5 py-0 rounded-[var(--radius-button-md)] border border-transparent bg-transparent text-body-md font-semibold text-[color:var(--slate)] whitespace-nowrap cursor-pointer transition;
+}
+
+.tab:hover {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}
+
+.tab:focus-visible {
+  @apply outline-none;
+  box-shadow: var(--ring);
+}
+
+.tab.is-active,
+.tab[aria-selected="true"] {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)] border-[color:var(--primary-blue)];
+}
+
+.tab.is-disabled,
+.tab:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.tab-badge {
+  @apply inline-flex h-5 min-w-[20px] items-center justify-center rounded-full px-1.5 bg-[color:var(--white)] text-body-xs font-bold text-[color:var(--primary-blue)];
+}
+
+.tab-panel {
+  @apply pt-4.5;
+}
+
+.tabs-line .tabs-list {
+  @apply gap-0;
+}
+
+.tabs-line .tab {
+  @apply rounded-none border-0 border-b-[2px] border-b-transparent bg-transparent text-[color:var(--slate)] px-4;
+}
+
+.tabs-line .tab.is-active,
+.tabs-line .tab[aria-selected="true"] {
+  @apply bg-transparent text-[color:var(--primary-blue)] border-b-[color:var(--primary-blue)];
+}
+
+.tabs-pill .tabs-list {
+  @apply gap-2 border-0 rounded-[var(--radius-input-xl)] bg-[color:var(--ui-surface-canvas)] p-1.5;
+}
+
+.tabs-pill .tab {
+  @apply rounded-[var(--radius-input-lg)];
+}
+
+.tabs-segmented .tabs-list {
+  @apply gap-0 rounded-[var(--radius-input-xl)] border border-[color:var(--border-soft)] bg-[color:var(--white)] p-1;
+}
+
+.tabs-segmented .tab {
+  @apply rounded-[var(--radius-input-md)] border-0;
+}
+
+.tabs-card .tabs-list {
+  @apply gap-2.5 border-0;
+}
+
+.tabs-card .tab {
+  @apply min-h-[76px] flex-col items-start rounded-[10px] border-[color:var(--border-soft)] bg-[color:var(--white)] px-4 text-left shadow-[var(--shadow-sm)];
+}
+
+.tabs-card .tab small {
+  @apply text-body-sm font-medium text-[color:var(--slate)];
+}
+
+.tabs-card .tab.is-active,
+.tabs-card .tab[aria-selected="true"] {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] border-[color:var(--primary-blue)];
+}
+
+.tabs-vertical {
+  @apply grid grid-cols-[220px_minmax(0,1fr)] gap-4.5 items-start;
+}
+
+.tabs-vertical .tabs-list {
+  @apply flex-col items-stretch border-0 overflow-visible;
+}
+
+.tabs-vertical .tab {
+  @apply justify-start;
+}
+
+@media (max-width: 768px) {
+  .tabs-vertical {
+    @apply grid-cols-1;
+  }
+
+  .tabs-vertical .tabs-list {
+    @apply flex-row overflow-x-auto;
+  }
+}
+
+.tab-panel[hidden] {
+  @apply hidden;
+}
+
+.tab-panel strong {
+  @apply block text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.tab-panel p {
+  @apply mt-1.5;
+}

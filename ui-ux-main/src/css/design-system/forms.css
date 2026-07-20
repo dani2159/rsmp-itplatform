@@ -1,0 +1,451 @@
+/* ==========================================================================
+   06. Fondasi layout form dan input
+   Gunakan ulang `.field`, `.input`, `.input-wrap`, `.with-left`, `.with-right`.
+   Jangan override `.input` di CSS halaman.
+   ========================================================================== */
+
+.form-grid {
+  @apply grid grid-cols-2 gap-4.5;
+}
+
+.form-grid.three {
+  @apply grid-cols-3;
+}
+
+.form-grid.four {
+  @apply grid-cols-4;
+}
+
+.field {
+  @apply flex flex-col gap-2 min-w-0;
+}
+
+.field.inline {
+  @apply flex-row items-center gap-2.5;
+}
+
+.label-line {
+  @apply flex items-center justify-between gap-3;
+}
+
+label,
+.label {
+  @apply text-body-md leading-[var(--form-label-leading)] font-[var(--form-label-weight)] text-[color:var(--text-secondary)] tracking-[var(--form-label-tracking)];
+}
+
+.required {
+  @apply text-[color:var(--danger)] ml-0.5;
+}
+
+.optional {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-[var(--leading-body-sm)] font-[var(--form-label-weight)];
+}
+
+.helper {
+  @apply text-[color:var(--ui-text-muted-soft)] text-body-sm leading-[1.45];
+}
+
+.helper.success {
+  @apply text-[color:var(--success-dark)];
+}
+
+.helper.warning {
+  @apply text-[color:var(--ui-warning-icon)];
+}
+
+.helper.error {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.input,
+select,
+textarea {
+  @apply w-full border border-[color:var(--border)] bg-[color:var(--field)] text-[color:var(--text-primary)] font-sans rounded-[var(--radius-input-md)] py-0 px-3.5 min-h-11 text-body-md font-normal outline-none shadow-[0_1px_0_rgba(15,31,61,0.02)];
+  transition: border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.input::placeholder,
+textarea::placeholder {
+  @apply text-[color:var(--ui-icon-gray)];
+}
+
+.input:hover,
+select:hover,
+textarea:hover {
+  @apply border-[color:var(--ui-border-control-hover)];
+}
+
+.input:focus,
+select:focus,
+textarea:focus {
+  @apply border-[color:var(--primary-blue)] shadow-[var(--ring)];
+}
+
+textarea {
+  @apply pt-3 pb-3 resize-y min-h-[112px] leading-normal;
+}
+
+.input.is-xs {
+  @apply min-h-8 rounded-[var(--radius-input-xs)] py-0 px-2.5 text-body-sm;
+}
+
+.input.is-md {
+  @apply min-h-11 rounded-[var(--radius-input-md)] py-0 px-3.5 text-body-md;
+}
+
+.input.is-lg {
+  @apply min-h-13 rounded-[var(--radius-input-lg)] py-0 px-4 text-body-lg;
+}
+
+.input.is-xl {
+  @apply min-h-15 rounded-[var(--radius-input-xl)] py-0 px-4.5 text-body-lg;
+}
+
+.input.mono,
+.mono-field {
+  @apply font-mono tracking-[-0.02em];
+}
+
+.prefix,
+.suffix,
+.field-icon {
+  @apply absolute top-1/2 text-[color:var(--ui-icon-soft)] text-body-md font-bold pointer-events-none;
+  transform: translateY(-50%);
+}
+
+.prefix {
+  @apply left-3.5;
+}
+
+.suffix {
+  @apply right-3.5;
+}
+
+.field-action {
+  @apply absolute top-1/2 right-3 inline-flex items-center justify-center w-7 h-7 rounded-full text-[color:var(--ui-icon-soft)] bg-transparent border-0 cursor-pointer;
+  transform: translateY(-50%);
+}
+
+.field-action:hover,
+.field-action:focus-visible {
+  @apply text-[color:var(--primary-blue)] bg-[color:var(--primary-light)] outline-none;
+}
+
+.field-action[hidden] {
+  @apply hidden;
+}
+
+.field-icon .lucide,
+.field-icon i,
+.prefix .lucide,
+.prefix i,
+.suffix .lucide,
+.suffix i {
+  @apply w-4.5 h-4.5 inline-flex items-center justify-center text-body-lg;
+}
+
+.upload-icon .lucide {
+  @apply w-6 h-6;
+}
+
+.chip .lucide {
+  @apply w-[13px] h-[13px];
+}
+
+/* ==========================================================================
+   07. Dropdown, kalender, dan timepicker
+   Struktur dropdown memakai `.ds-dropdown`, `.dropdown-panel`, `.dropdown-option`.
+   ========================================================================== */
+
+.calendar-widget {
+  @apply p-3.5;
+}
+
+.calendar-head {
+  @apply flex items-center justify-between gap-3 mb-3;
+}
+
+.calendar-title {
+  @apply font-bold text-[color:var(--text-primary)];
+}
+
+.calendar-nav {
+  @apply flex gap-1.5;
+}
+
+.calendar-grid {
+  @apply grid grid-cols-[repeat(7,1fr)] gap-1.5;
+}
+
+.calendar-day,
+.calendar-date {
+  @apply min-h-8.5 flex items-center justify-center rounded-[var(--radius-input-sm)] text-body-sm font-normal;
+}
+
+.calendar-day {
+  @apply text-[color:var(--ui-text-placeholder)] uppercase text-body-xs tracking-[0.06em];
+}
+
+.calendar-date {
+  @apply text-[color:var(--text-primary)] bg-[color:var(--page)] border border-transparent;
+}
+
+.calendar-date.muted-date {
+  @apply text-[color:var(--ui-border-dashed)];
+}
+
+.calendar-date:hover {
+  @apply border-[color:var(--ui-primary-border-soft)] bg-[color:var(--primary-tint)];
+}
+
+.calendar-date.selected {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+.calendar-date.range {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.calendar-actions {
+  @apply flex justify-between gap-2 pt-3 mt-3 border-t border-t-[color:var(--border-soft)];
+}
+
+.timepicker {
+  @apply grid grid-cols-[1fr_1fr] gap-0 max-h-[254px];
+}
+
+.time-col {
+  @apply p-2 overflow-hidden;
+}
+
+.time-col + .time-col {
+  @apply border-l border-l-[color:var(--border-soft)];
+}
+
+.time-col-title {
+  @apply text-body-sm font-bold uppercase tracking-[0.08em] text-[color:var(--ui-text-placeholder)] pt-1 px-1.5 pb-2;
+}
+
+.time-option {
+  @apply h-8.5 flex items-center justify-center rounded-[var(--radius-input-sm)] text-mono-md font-normal text-[color:var(--text-primary)];
+}
+
+.time-option:hover,
+.time-option.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.time-option.selected {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+/* --------------------------------------------------------------------------
+   07A. Form states
+   Gunakan wrapper `.state-error`, `.state-warning`, `.state-success`, atau
+   modifier `.input.error/.warning/.success` untuk validasi field.
+   -------------------------------------------------------------------------- */
+
+.state-error .input,
+.state-error select,
+.state-error textarea,
+.input.error {
+  @apply border-[color:var(--danger)] bg-[color:var(--ui-danger-surface)];
+}
+
+.state-error .input:focus,
+.input.error:focus {
+  @apply shadow-[var(--danger-ring)];
+}
+
+.state-warning .input,
+.state-warning select,
+.state-warning textarea,
+.input.warning {
+  @apply border-[color:var(--warning)] bg-[color:var(--ui-warning-surface-pale)];
+}
+
+.state-warning .input:focus,
+.input.warning:focus {
+  @apply shadow-[var(--warning-ring)];
+}
+
+.state-success .input,
+.state-success select,
+.state-success textarea,
+.input.success {
+  @apply border-[color:var(--primary-green)] bg-[color:var(--ui-success-surface-white)];
+}
+
+.state-success .input:focus,
+.input.success:focus {
+  @apply shadow-[var(--success-ring)];
+}
+
+.input[disabled],
+select[disabled],
+textarea[disabled],
+.disabled .input {
+  @apply bg-[color:var(--ui-surface-muted)] border-[color:var(--ui-form-border-soft)] text-[color:var(--ui-icon-gray)] cursor-not-allowed;
+}
+
+.input[readonly],
+.readonly .input {
+  @apply bg-[color:var(--light-gray-tint-40)] border-solid text-[color:var(--text-primary)];
+}
+
+/* --------------------------------------------------------------------------
+   07B. Field add-ons and selection controls
+   Unit pill, chip, checkbox, radio, switch, dan segmented control.
+   -------------------------------------------------------------------------- */
+
+.field-row {
+  @apply flex gap-2.5 items-center;
+}
+
+.unit-pill {
+  @apply min-h-11 h-11 p-[0_13px] inline-flex items-center rounded-[var(--radius-input-md)] bg-[color:var(--field-muted)] border border-[color:var(--border-soft)] text-[color:var(--text-primary)] text-body-md font-bold;
+}
+
+.chip-row {
+  @apply flex flex-wrap gap-2;
+}
+
+.chip {
+  @apply inline-flex items-center gap-[7px] h-8 py-0 px-2.5 rounded-full bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] border border-[color:var(--ui-primary-border-soft)] text-body-sm font-bold;
+}
+
+.chip.gray {
+  @apply bg-[color:var(--light-gray-tint-40)] text-[color:var(--text-primary)] border-[color:var(--border-soft)];
+}
+
+.chip.green {
+  @apply bg-[color:var(--success-light)] text-[color:var(--success-dark)] border-[color:var(--ui-success-border-soft)];
+}
+
+.chip.red {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger-dark)] border-[color:var(--danger-border-soft)];
+}
+
+.chip.indigo {
+  @apply bg-[color:var(--indigo-light)] text-[color:var(--indigo)] border-[color:var(--ui-purple-border)];
+}
+
+.control-row {
+  @apply flex flex-wrap gap-3.5 items-center;
+}
+
+.check,
+.radio {
+  @apply inline-flex items-center gap-2.5 font-[var(--form-label-weight)] text-[color:var(--text-secondary)] text-body-md leading-[var(--form-label-leading)];
+}
+
+.check input,
+.radio input {
+  @apply w-4.5 h-4.5;
+
+  accent-color: var(--primary-blue);
+}
+
+.switch {
+  @apply relative inline-flex items-center gap-2.5 text-body-md leading-[var(--form-label-leading)] font-[var(--form-label-weight)] text-[color:var(--text-secondary)] cursor-pointer select-none;
+}
+
+button.switch {
+  @apply appearance-none border-0 bg-transparent p-0 text-left;
+  font: inherit;
+}
+
+.switch input[type="checkbox"] {
+  @apply absolute w-px h-px m-0 p-0 border-0 opacity-0 pointer-events-none overflow-hidden whitespace-nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.switch-track {
+  @apply w-11 h-[26px] rounded-full bg-[color:var(--slate-light)] relative inline-block flex-none;
+  transition: 0.15s;
+}
+
+.switch-track::after {
+  @apply w-5 h-5 absolute top-[3px] left-[3px] rounded-full bg-[color:var(--white)] shadow-[0_1px_2px_rgba(15,31,61,0.18)];
+
+  content: "";
+  transition: 0.15s;
+}
+
+.switch.on .switch-track {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.switch.on .switch-track::after {
+  transform: translateX(18px);
+}
+
+.switch:has(input[type="checkbox"]:focus-visible) .switch-track,
+.switch:focus-visible .switch-track {
+  @apply shadow-[var(--ring)];
+}
+
+.switch:has(input[type="checkbox"]:disabled),
+.switch[aria-disabled="true"] {
+  @apply cursor-not-allowed opacity-[0.56];
+}
+
+.field.is-error .switch-track,
+.switch[aria-invalid="true"] .switch-track {
+  @apply shadow-[var(--danger-ring)];
+}
+
+.segmented {
+  @apply inline-flex bg-[color:var(--light-gray)] border border-[color:var(--border-soft)] rounded-xl p-1 gap-1;
+}
+
+.segmented span {
+  @apply py-2 px-3 rounded-[9px] text-body-md font-bold text-[color:var(--slate)];
+}
+
+.segmented span.active {
+  @apply bg-[color:var(--white)] text-[color:var(--primary-blue)] border border-[color:var(--ui-primary-border-soft)] shadow-[var(--shadow-sm)];
+}
+
+select {
+  @apply appearance-none pr-[42px];
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: calc(100% - 14px) 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+}
+
+.badge.warning {
+  @apply text-[color:var(--warning-shade-30)] bg-[color:var(--warning-light)];
+}
+
+.badge.danger {
+  @apply text-[color:var(--danger-dark)] bg-[color:var(--danger-light)];
+}
+
+
+/* Upload file dropzone reusable untuk form dan modal klinis. */
+.upload {
+  @apply block rounded-[18px] border-[1.5px] border-dashed border-[color:var(--ui-border-dashed)] bg-[color:var(--ui-surface-canvas)] p-6 text-center;
+}
+
+.upload-icon {
+  @apply mx-auto mt-0 mb-2.5 flex h-11 w-11 items-center justify-center rounded-[14px] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] font-bold;
+}
+
+.upload strong {
+  @apply block text-body-md font-extrabold text-[color:var(--text-primary)];
+}
+
+.upload p {
+  @apply mt-1.5 mb-4 text-body-sm font-semibold leading-5 text-[color:var(--text-secondary)];
+}
+
+.upload .btn {
+  @apply mx-auto;
+}
+

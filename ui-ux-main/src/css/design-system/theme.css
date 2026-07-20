@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Theme Tailwind CSS v4
+   Token utama untuk utility, font, warna, radius, dan shadow.
+   ========================================================================== */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-display-2xl: 72px;
+  --text-display-2xl--line-height: 90px;
+  --text-display-2xl--letter-spacing: -0.02em;
+  --text-display-2xl--font-weight: 700;
+  --text-display-xl: 60px;
+  --text-display-xl--line-height: 72px;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-xl--font-weight: 700;
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 60px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+  --text-display-md: 36px;
+  --text-display-md--line-height: 44px;
+  --text-display-md--letter-spacing: -0.02em;
+  --text-display-md--font-weight: 700;
+  --text-h1: 32px;
+  --text-h1--line-height: 40px;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h1--font-weight: 700;
+  --text-h2: 24px;
+  --text-h2--line-height: 32px;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 700;
+  --text-h3: 20px;
+  --text-h3--line-height: 28px;
+  --text-h3--font-weight: 700;
+  --text-h4: 16px;
+  --text-h4--line-height: 24px;
+  --text-h4--font-weight: 700;
+  --text-body-xl: 18px;
+  --text-body-xl--line-height: 28px;
+  --text-body-xl--letter-spacing: 0;
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 26px;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 22px;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 18px;
+  --text-body-xs: 10px;
+  --text-body-xs--line-height: 14px;
+  --text-body-xs--letter-spacing: 0.02em;
+  --text-mono-md: 14px;
+  --text-mono-md--line-height: 22px;
+  --text-mono-md--letter-spacing: -0.035em;
+  --text-mono-sm: 12px;
+  --text-mono-sm--line-height: 18px;
+  --text-mono-sm--letter-spacing: -0.035em;
+
+  --color-primary-blue: #1E4FD7;
+  --color-primary-green: #00B894;
+  --color-accent-teal: #00D1B2;
+  --color-indigo: #6C5CE7;
+  --color-navy: #0F1F3D;
+  --color-slate: #6B7280;
+  --color-light-gray: #F3F6FA;
+  --color-primary: #1E4FD7;
+  --color-primary-dark: #1740B0;
+  --color-primary-active: #153796;
+  --color-primary-light: #EEF2FF;
+  --color-primary-tint: #F6F8FF;
+  --color-success: #00B894;
+  --color-success-dark: #008168;
+  --color-success-light: #E6FAF6;
+  --color-teal: #00D1B2;
+  --color-teal-light: #E0FBF8;
+  --color-yellow-tint-80: #FDECCC;
+  --color-yellow-tint-60: #FBD999;
+  --color-yellow-tint-40: #F8C566;
+  --color-yellow: #F59E0B;
+  --color-yellow-shade-15: #D08509;
+  --color-yellow-shade-30: #AC6F08;
+  --color-yellow-shade-45: #875806;
+  --color-red-tint-80: #FCDDDD;
+  --color-red-tint-60: #F9B4B4;
+  --color-red-tint-40: #F58F8F;
+  --color-red: #EF4444;
+  --color-red-shade-15: #CB3A3A;
+  --color-red-shade-30: #A73030;
+  --color-red-shade-45: #832626;
+  --color-warning: #F59E0B;
+  --color-warning-dark: #AC6F08;
+  --color-warning-light: #FFFBEB;
+  --color-warning-border: #FDECCC;
+  --color-danger: #EF4444;
+  --color-danger-dark: #A73030;
+  --color-danger-active: #832626;
+  --color-danger-light: #FFF5F5;
+  --color-danger-border: #FCDDDD;
+  --color-info: #38BDF8;
+  --color-info-dark: #0284C7;
+  --color-info-light: #E0F2FE;
+  --color-surface: #FFFFFF;
+  --color-page: #F3F6FA;
+  --color-border: #D1D5DB;
+  --color-border-soft: #E5E7EB;
+  --color-slate-dark: #374151;
+  --color-slate-light: #D1D5DB;
+  --color-navy-light: #1E3A5F;
+
+  --radius-card: 12px;
+  --radius-input-xs: 4px;
+  --radius-input-sm: 6px;
+  --radius-input-md: 7px;
+  --radius-input-lg: 8px;
+  --radius-input-xl: 10px;
+  --radius-button-xs: 4px;
+  --radius-button-sm: 6px;
+  --radius-button-md: 7px;
+  --radius-button-lg: 8px;
+  --radius-button-xl: 10px;
+  --radius-dropdown-xs: 4px;
+  --radius-dropdown-sm: 6px;
+  --radius-dropdown-md: 7px;
+  --radius-dropdown-lg: 8px;
+  --radius-dropdown-xl: 10px;
+  --radius-dropdown-panel: 7px;
+  --radius-dropdown-item: 7px;
+
+  --shadow-ds: 0 10px 28px rgba(15, 31, 61, 0.06);
+  --shadow-ds-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-ds-md: 0 8px 20px rgba(15, 31, 61, 0.07);
+  --shadow-ds-lg: 0 20px 50px rgba(15, 31, 61, 0.1);
+}

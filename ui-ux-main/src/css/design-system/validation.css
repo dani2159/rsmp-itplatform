@@ -1,0 +1,44 @@
+/* --------------------------------------------------------------------------
+   07B. Feedback validasi form
+   Reusable error state untuk semua form aplikasi dan halaman turunan.
+   -------------------------------------------------------------------------- */
+
+.field.is-error .input,
+.field.is-error select,
+.field.is-error textarea,
+.field.is-error .dropdown-trigger,
+.field.is-error .employee-file-upload,
+.input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  @apply border-[color:var(--danger)] bg-[color:var(--ui-danger-surface)];
+}
+
+.field.is-error .input:focus,
+.field.is-error select:focus,
+.field.is-error textarea:focus,
+.input[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+  @apply shadow-[var(--danger-ring)];
+}
+
+.field.is-error .dropdown-trigger {
+  @apply shadow-[var(--danger-ring)];
+}
+
+.field-error[hidden] {
+  @apply hidden;
+}
+
+.field-error:not([hidden]) {
+  @apply block mt-1.5;
+}
+
+.form-error-summary {
+  @apply flex items-start gap-2.5 py-3 px-3.5 border border-[color:var(--danger-border-soft)] rounded-[var(--radius-input-md)] bg-[color:var(--danger-light)] text-[color:var(--danger-dark)] text-body-sm font-semibold leading-5;
+}
+
+.form-error-summary[hidden] {
+  @apply hidden;
+}

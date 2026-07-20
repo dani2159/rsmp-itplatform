@@ -1,0 +1,307 @@
+/* Info user sidebar menggantikan pencarian menu */
+
+.sidebar-user-info {
+  @apply min-h-12 flex items-center gap-2.5 m-[0_2px_16px] p-2 border border-[color:var(--sidebar-border)] rounded-[14px] bg-[color:color-mix(in_srgb,var(--white)_14%,transparent)] text-[color:var(--sidebar-text)] cursor-pointer;
+  padding: 8px;
+  background: color-mix(in srgb, var(--white) 14%, transparent);
+  color: var(--sidebar-text);
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.sidebar-user-info:hover,
+.sidebar-user-info:focus-visible {
+  @apply bg-[color:var(--sidebar-hover-bg)] border-[color:var(--sidebar-hover-border)] shadow-[inset_0_0_0_1px_var(--sidebar-hover-border)] outline-none;
+}
+
+.sidebar-user-avatar {
+  @apply w-8 h-8 min-w-8 flex-[0_0_32px] rounded-full object-cover block border border-[color:color-mix(in_srgb,var(--white)_64%,transparent)] bg-[color:var(--white)];
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--white) 64%, transparent);
+  background: var(--white);
+}
+
+.sidebar-user-avatar.sidebar-user-initials {
+  @apply inline-grid place-items-center text-body-sm leading-none font-bold text-[color:var(--primary-blue)];
+  object-fit: initial;
+}
+
+.sidebar-user-avatar.sidebar-user-image {
+  @apply inline-flex items-center justify-center overflow-hidden p-0.5 bg-[color:var(--white)];
+}
+
+.sidebar-user-avatar.sidebar-user-image img {
+  @apply block w-full h-full;
+  object-fit: contain;
+  border-radius: inherit;
+}
+
+.sidebar-user-meta {
+  @apply min-w-0 flex-auto flex flex-col gap-0.5;
+}
+
+.sidebar-user-name,
+.sidebar-user-role {
+  @apply block whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user-name {
+  @apply text-[color:var(--sidebar-text)] text-body-md leading-[1.2] font-bold;
+}
+
+.sidebar-user-role {
+  @apply text-[color:var(--sidebar-text-muted)] text-body-sm leading-[1.25] font-semibold;
+}
+
+.app-sidebar.compact .sidebar-user-info {
+  @apply justify-center w-10 min-h-10 p-1 m-[0_0_18px];
+}
+
+.app-sidebar.compact .sidebar-user-meta {
+  @apply hidden;
+}
+
+/* Koreksi icon hover top navigation
+   Keep top-level menu icons white on hover/open states over the gradient menubar.
+   Active menu keeps the design-system primary blue inside the white pill. */
+
+.topnav-menubar .topnav-link:hover i,
+.topnav-menubar .topnav-link:hover::after,
+.topnav-menubar .topnav-dropdown:hover > .topnav-link i,
+.topnav-menubar .topnav-dropdown:hover > .topnav-link::after,
+.topnav-menubar .topnav-dropdown:focus-within > .topnav-link i,
+.topnav-menubar .topnav-dropdown:focus-within > .topnav-link::after,
+.topnav-menubar .topnav-dropdown[open] > .topnav-link i,
+.topnav-menubar .topnav-dropdown[open] > .topnav-link::after {
+  @apply text-[color:var(--white)];
+}
+
+.topnav-menubar .topnav-link.active::after,
+.topnav-menubar .topnav-link.active:hover i,
+.topnav-menubar .topnav-link.active:hover::after,
+.topnav-menubar .topnav-dropdown:hover > .topnav-link.active i,
+.topnav-menubar .topnav-dropdown:hover > .topnav-link.active::after,
+.topnav-menubar .topnav-dropdown:focus-within > .topnav-link.active i,
+.topnav-menubar .topnav-dropdown:focus-within > .topnav-link.active::after,
+.topnav-menubar .topnav-dropdown[open] > .topnav-link.active i,
+.topnav-menubar .topnav-dropdown[open] > .topnav-link.active::after {
+  @apply text-[color:var(--primary-blue)];
+}
+
+/* Fallback sidebar collapsed
+   Menjaga konten sidebar tetap compact meskipun halaman hanya toggle class layout. */
+
+.layout-preview.is-sidebar-collapsed .app-sidebar {
+  @apply w-16 items-center p-[12px_10px];
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-head {
+  @apply justify-center p-[6px_0_14px];
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .brand-lockup {
+  @apply justify-center;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .brand-logo-full {
+  @apply hidden;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .brand-logo-icon {
+  @apply block w-8 max-w-[32px] h-8 object-contain;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-user-info {
+  @apply justify-center w-10 min-h-10 p-1 m-[0_0_18px];
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-user-meta,
+.layout-preview.is-sidebar-collapsed .app-sidebar .brand-text,
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-search input,
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-search .field-icon,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-label,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-count,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-chevron,
+.layout-preview.is-sidebar-collapsed .app-sidebar .user-meta,
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-head .icon-btn {
+  @apply hidden;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-section {
+  @apply w-full items-center;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-separator {
+  @apply w-10;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-item,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-summary {
+  @apply w-10 h-10 min-h-10 items-center justify-center p-0 leading-none gap-0;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-icon {
+  @apply m-0 w-full h-full grid place-items-center leading-none;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-icon .lucide,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-icon i {
+  @apply w-full h-full grid place-items-center leading-none m-0;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-icon i::before {
+  @apply block leading-none;
+}
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-icon .fa-gauge-high::before {
+  transform: translateY(1px);
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-item.active::before,
+.layout-preview.is-sidebar-collapsed .app-sidebar .nav-summary.active::before {
+  @apply hidden;
+}
+
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group[open] .subnav {
+  @apply hidden;
+}
+
+/* Reset mode submenu sidebar
+   Normal expanded sidebar keeps the original click-to-open inline submenu. */
+
+.app-sidebar:not(.compact) details.nav-group.is-flyout-open {
+  @apply static;
+}
+
+.app-sidebar:not(.compact) details.nav-group.is-flyout-open > .subnav {
+  @apply static flex opacity-100 pointer-events-auto;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Collapsed sidebar flyout submenu
+   Saat sidebar collapse, submenu muncul sebagai flying dropdown ke kanan saat
+   hover/focus tanpa meng-expand sidebar.
+   -------------------------------------------------------------------------- */
+
+.layout-preview.is-sidebar-collapsed,
+.layout-preview:has(.app-sidebar.compact) {
+  @apply overflow-visible;
+}
+
+.app-sidebar.compact,
+.layout-preview.is-sidebar-collapsed .app-sidebar {
+  @apply overflow-visible z-[30];
+}
+
+.app-sidebar.compact .sidebar-section,
+.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-section {
+  @apply overflow-visible;
+}
+
+.app-sidebar.compact details.nav-group,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group {
+  @apply relative w-10 overflow-visible;
+}
+
+.app-sidebar.compact details.nav-group > .nav-summary,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .nav-summary {
+  @apply relative z-[2];
+}
+
+.app-sidebar.compact details.nav-group > .nav-summary[data-tooltip]::before,
+.app-sidebar.compact details.nav-group > .nav-summary[data-tooltip]::after,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .nav-summary[data-tooltip]::before,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .nav-summary[data-tooltip]::after {
+  @apply hidden;
+}
+
+.app-sidebar.compact details.nav-group::after,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group::after {
+  @apply absolute left-full top-[-8px] w-4 h-[calc(100%_+_16px)] hidden;
+
+  content: "";
+}
+
+.app-sidebar.compact details.nav-group.is-flyout-open::after,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group.is-flyout-open::after {
+  @apply block;
+}
+
+.app-sidebar.compact details.nav-group > .subnav,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav {
+  @apply absolute left-[calc(100%_+_12px)] top-0 z-[80] w-max min-w-[232px] max-w-[292px] max-h-[min(520px,calc(100vh_-_32px))] overflow-y-auto hidden flex-col gap-1 m-0 p-2.5 border border-[color:var(--border-soft)] rounded-2xl bg-[color:var(--surface)] shadow-[0_24px_64px_rgba(15,31,61,0.22)] opacity-0 pointer-events-none;
+  transform: translate3d(4px, var(--sidebar-flyout-shift, 0px), 0);
+  transition: opacity 0.16s ease,
+    transform 0.16s ease;
+}
+
+.app-sidebar.compact details.nav-group > .subnav::before,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav::before {
+  @apply block p-[8px_10px_9px] text-[color:var(--text-secondary)] text-body-sm leading-[1.2] font-extrabold tracking-[0.08em] uppercase border-b border-b-[color:var(--border-soft)] m-[0_0_4px];
+
+  content: attr(data-flyout-title);
+}
+
+.app-sidebar.compact details.nav-group > .subnav::after,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav::after {
+  @apply absolute left-[-7px] top-3.5 w-3.5 h-3.5 border-l border-l-[color:var(--border-soft)] border-b border-b-[color:var(--border-soft)] bg-[color:var(--surface)];
+
+  content: "";
+  transform: rotate(45deg);
+}
+
+.app-sidebar.compact details.nav-group.is-flyout-open > .subnav,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group.is-flyout-open > .subnav {
+  @apply fixed z-[340] flex opacity-100 pointer-events-auto;
+  left: var(--sidebar-flyout-left, 88px);
+  top: var(--sidebar-flyout-top, 16px);
+  transform: none;
+}
+
+/* Fallback hover collapsed sidebar
+   Flyout tetap muncul ketika sidebar compact hanya di-hover, tanpa harus klik menu. */
+@media (min-width: 981px) {
+  .dashboard-layout.layout-preview.is-sidebar-collapsed,
+  .dashboard-layout.layout-preview:has(.app-sidebar.compact),
+  .dashboard-layout.layout-preview.is-sidebar-collapsed .app-sidebar,
+  .dashboard-layout.layout-preview .app-sidebar.compact,
+  .dashboard-layout.layout-preview.is-sidebar-collapsed .app-sidebar .sidebar-section,
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-section {
+    overflow: visible;
+  }
+
+  .app-sidebar.compact details.nav-group:hover::after,
+  .app-sidebar.compact details.nav-group:focus-within::after,
+  .layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group:hover::after,
+  .layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group:focus-within::after {
+    @apply block;
+  }
+
+  .app-sidebar.compact details.nav-group:hover > .subnav,
+  .app-sidebar.compact details.nav-group:focus-within > .subnav,
+  .layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group:hover > .subnav,
+  .layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group:focus-within > .subnav {
+    @apply flex opacity-100 pointer-events-auto;
+    transform: translate3d(0, var(--sidebar-flyout-shift, 0px), 0);
+  }
+}
+
+.app-sidebar.compact details.nav-group > .subnav .nav-subitem,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav .nav-subitem {
+  @apply min-h-[38px] w-full justify-start py-0 px-3 rounded-[10px] text-[color:var(--text-primary)] bg-transparent shadow-none text-body-md font-semibold whitespace-nowrap;
+}
+
+.app-sidebar.compact details.nav-group > .subnav .nav-subitem:hover,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav .nav-subitem:hover {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] shadow-none;
+}
+
+.app-sidebar.compact details.nav-group > .subnav .nav-subitem.active,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav .nav-subitem.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] shadow-none;
+}
+
+.app-sidebar.compact details.nav-group > .subnav .nav-subitem.active::before,
+.layout-preview.is-sidebar-collapsed .app-sidebar details.nav-group > .subnav .nav-subitem.active::before {
+  @apply left-0 top-[11px] bottom-[11px] w-[3px] h-auto rounded-full bg-[color:var(--primary-blue)];
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>01 App Structure · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="docs-page guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link active" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="docs-main">
+  <section class="docs-hero">
+    <span class="badge badge-primary badge-md">01</span>
+    <h1 class="text-h1">App Structure</h1>
+    <p class="text-body-lg muted">Daftar screen, struktur menu per role, dan pola breadcrumb untuk halaman SIMRS.</p>
+  </section>
+
+  <section class="mt-12 component-stack">
+    <div class="card component-stack">
+      <div class="card-header"><div><h2 class="card-title">Auth</h2><p class="card-text">Login dan keamanan akses.</p></div><span class="badge badge-navy badge-sm">G01–G03</span></div>
+      <div class="table-scroll">
+        <table class="data-table compact">
+          <thead><tr><th>Route</th><th>Screen</th><th>Catatan</th></tr></thead>
+          <tbody>
+            <tr><td><code>/login</code></td><td>Login</td><td>Email + password.</td></tr>
+            <tr><td><code>/login/2fa</code></td><td>Verifikasi 2FA</td><td>Setelah login berhasil jika 2FA aktif.</td></tr>
+            <tr><td><code>/password/expired</code></td><td>Ganti Password Wajib</td><td>Redirect otomatis jika password expired.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12 component-stack">
+    <h2 class="text-h2">Module Inventory</h2>
+    <div class="card-grid two-cols">
+      <article class="card card-primary component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-gauge-high"></i></span><div><h3 class="card-title">Dashboard</h3><p class="card-text"><code>/dashboard</code></p></div></div><p class="card-text">Widget KPI real-time, grafik kunjungan harian, dan aktivitas terkini.</p></article>
+      <article class="card card-indigo component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-user-gear"></i></span><div><h3 class="card-title">Admin</h3><p class="card-text"><code>/admin</code> · M38</p></div></div><p class="card-text">Users, roles, units, employees, rooms, insurance, tariffs, konfigurasi RS, dan printer.</p></article>
+      <article class="card card-teal component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-user-plus"></i></span><div><h3 class="card-title">Pendaftaran</h3><p class="card-text"><code>/registration</code> · M04</p></div></div><p class="card-text">Dashboard loket, pasien baru, profil pasien, buat kunjungan, antrean loket, dan display TV antrean.</p></article>
+      <article class="card card-info component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-notes-medical"></i></span><div><h3 class="card-title">Rekam Medis</h3><p class="card-text"><code>/emr</code> · M16</p></div></div><p class="card-text">Cari RM, profil RM terpadu, timeline kunjungan, alergi, penjamin, dokumen, dan detail episode.</p></article>
+      <article class="card card-success component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-stethoscope"></i></span><div><h3 class="card-title">Rawat Jalan</h3><p class="card-text"><code>/outpatient</code> · M06</p></div></div><p class="card-text">Dashboard poli, antrean poli, pemeriksaan, TTV, SOAP/CPPT, ICD-10, order, resep, surat, resume.</p></article>
+      <article class="card card-warning component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-prescription-bottle-medical"></i></span><div><h3 class="card-title">Farmasi</h3><p class="card-text"><code>/pharmacy</code> · M19a</p></div></div><p class="card-text">Antrian resep masuk, validasi resep, dispensing, dan cetak etiket.</p></article>
+      <article class="card card-danger component-stack"><div class="card-header"><span class="card-tone-icon"><i class="fa-solid fa-cash-register"></i></span><div><h3 class="card-title">Kasir</h3><p class="card-text"><code>/billing</code> · M23</p></div></div><p class="card-text">Daftar pasien siap bayar, detail billing, receipt, void, dan laporan shift/harian.</p></article>
+    </div>
+  </section>
+
+  <section class="mt-12 component-stack">
+    <h2 class="text-h2">Sidebar Menu per Role</h2>
+    <div class="table-scroll card">
+      <table class="data-table compact">
+        <thead><tr><th>Role</th><th>Urutan menu</th></tr></thead>
+        <tbody>
+          <tr><td>Admin Sistem</td><td>Dashboard | Admin (all)</td></tr>
+          <tr><td>Petugas Pendaftaran</td><td>Dashboard | Pendaftaran | Antrean Display</td></tr>
+          <tr><td>Dokter</td><td>Dashboard | Rawat Jalan | Rekam Medis</td></tr>
+          <tr><td>Perawat</td><td>Dashboard | Rawat Jalan | Rekam Medis</td></tr>
+          <tr><td>Apoteker / Asisten</td><td>Dashboard | Farmasi | Rekam Medis (read-only)</td></tr>
+          <tr><td>Kasir</td><td>Dashboard | Kasir | Laporan Kasir</td></tr>
+          <tr><td>Kepala Kasir</td><td>Dashboard | Kasir | Laporan | Void Billing</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="mt-12 component-stack">
+    <h2 class="text-h2">Breadcrumb Pattern</h2>
+    <div class="card component-stack">
+      <p class="text-body-md muted">Format: <strong>[Nama Modul]</strong> / <strong>[Sub-section]</strong> / <strong>[Item Spesifik]</strong></p>
+      <div class="component-stack">
+        <div class="breadcrumb-demo">Admin / Karyawan / Tambah Karyawan</div>
+        <div class="breadcrumb-demo">Pendaftaran / Ahmad Fauzi (RM0001) / Buat Kunjungan</div>
+        <div class="breadcrumb-demo">Rawat Jalan / Poli Umum / Ahmad Fauzi — Pemeriksaan</div>
+        <div class="breadcrumb-demo">Kasir / Billing / Ahmad Fauzi (KJG-2026-001)</div>
+      </div>
+    </div>
+  </section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>CSS utama dimulai dari src/css/input.css. File ini mengatur import Tailwind, daftar source, design system, dan style khusus halaman.</p>
+</div>
+<span class="badge badge-sm">input.css + routing</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/input.css */
+@import &quot;tailwindcss&quot;;
+
+@source &quot;../pages/**/*.html&quot;;
+@source &quot;../js/**/*.js&quot;;
+
+@import &quot;./design-system/theme.css&quot;;
+@import &quot;./design-system/tokens.css&quot;;
+@import &quot;./design-system/typography.css&quot;;
+@import &quot;./design-system/forms.css&quot;;
+@import &quot;./design-system/tables.css&quot;;
+@import &quot;./design-system/dropdowns.css&quot;;
+@import &quot;./design-system/sidebar.css&quot;;
+@import &quot;./design-system/navbar.css&quot;;
+@import &quot;./design-system/buttons.css&quot;;
+@import &quot;./design-system/badges.css&quot;;
+@import &quot;./design-system/cards.css&quot;;
+@import &quot;./design-system/modals.css&quot;;
+@import &quot;./pages/guide-pages.css&quot;;
+@import &quot;./pages/dashboard.css&quot;;
+@import &quot;./pages/login.css&quot;;</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>const guideRoutes = [
+  { file: &#x27;src/pages/guide/00-overview.html&#x27;, label: &#x27;Overview&#x27; },
+  { file: &#x27;src/pages/guide/02-color-brand.html&#x27;, label: &#x27;Warna &amp; Brand&#x27; },
+  { file: &#x27;src/pages/guide/04-buttons.html&#x27;, label: &#x27;Buttons&#x27; },
+  { file: &#x27;src/pages/guide/05-inputs-forms.html&#x27;, label: &#x27;Inputs &amp; Forms&#x27; },
+]
+
+function GuideSideMenu({ currentFile }) {
+  return (
+    &lt;aside className=&quot;guide-side-menu&quot; aria-label=&quot;Menu guide design system&quot;&gt;
+      &lt;div className=&quot;guide-side-menu-card&quot;&gt;
+        &lt;p className=&quot;guide-side-menu-kicker&quot;&gt;Design System&lt;/p&gt;
+        &lt;strong className=&quot;guide-side-menu-title&quot;&gt;SIMRS Guide&lt;/strong&gt;
+        &lt;nav className=&quot;guide-side-menu-list&quot;&gt;
+          {guideRoutes.map((item) =&gt; (
+            &lt;a
+              key={item.file}
+              href={item.file.split(&#x27;/&#x27;).pop()}
+              className={`guide-side-menu-link ${currentFile === item.file ? &#x27;active&#x27; : &#x27;&#x27;}`}
+            &gt;
+              {item.label}
+            &lt;/a&gt;
+          ))}
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/aside&gt;
+  )
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Jaga urutan import di input.css karena beberapa selector masih bergantung pada cascade.</div>
+</section>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

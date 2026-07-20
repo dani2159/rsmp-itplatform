@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil RM Pasien · SIMRS ZAIDAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="dashboard-app">
+  <div class="layout-preview dashboard-layout" id="dashboardLayout">
+    <aside class="app-sidebar" id="dashboardSidebar" aria-label="Sidebar dashboard SIMRS">
+      <div class="sidebar-head">
+        <a class="brand-lockup" href="../dashboard/30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img class="brand-logo-full" alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+          <img class="brand-logo-icon" alt="SIMRS ZAIDAN icon" src="../../assets/images/logo-simrs-icon.svg"/>
+        </a>
+      </div>
+
+      <div class="sidebar-user-info" data-tooltip="Petugas Loket · Pendaftaran Rawat Jalan" role="button" tabindex="0">
+        <span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+        <span class="sidebar-user-meta">
+          <span class="sidebar-user-name">Petugas Loket</span>
+          <span class="sidebar-user-role">Pendaftaran</span>
+        </span>
+      </div>
+
+      <nav class="sidebar-section" aria-label="Menu utama SIMRS">
+        <a class="nav-item" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+          <span class="nav-icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Admin">
+            <span class="nav-icon"><i class="fa-solid fa-user-gear" aria-hidden="true"></i></span>
+            <span class="nav-label">Admin</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../admin/50-users.html" data-route="/admin/users">Daftar Pengguna</a>
+            <a class="nav-subitem" href="../admin/51-role-permission.html" data-route="/admin/roles">Peran &amp; Hak Akses</a>
+            <a class="nav-subitem" href="../master/40-unit.html" data-route="/admin/units">Unit / Poli</a>
+            <a class="nav-subitem" href="../master/41-karyawan.html" data-route="/admin/employees">Karyawan</a>
+            <a class="nav-subitem" href="../master/42-jadwal-dokter.html" data-route="/admin/doctor-schedules">Jadwal Dokter</a>
+            <a class="nav-subitem" href="../master/43-kamar.html" data-route="/admin/rooms">Kamar</a>
+            <a class="nav-subitem" href="../master/44-penjamin.html" data-route="/admin/insurance">Penjamin</a>
+            <a class="nav-subitem" href="../master/45-tarif.html" data-route="/admin/tariffs">Tarif</a>
+            <a class="nav-subitem" href="../admin/53-konfigurasi-sistem.html" data-route="/admin/hospital-config">Profil Rumah Sakit</a>
+            <a class="nav-subitem" href="../admin/52-printer.html" data-route="/admin/printer-config">Master Printer</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Pendaftaran">
+            <span class="nav-icon"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></span>
+            <span class="nav-label">Pendaftaran</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../dashboard/32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+            <a class="nav-subitem" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new">Pasien Baru</a>
+            <a class="nav-subitem" href="#" data-route="/registration/visits/new">Buat Kunjungan</a>
+            <a class="nav-subitem" href="#" data-route="/registration/queue">Monitor Antrean</a>
+            <a class="nav-subitem" href="../dashboard/33-monitor-display-loket.html" data-route="/registration/display">Display TV Antrean</a>
+          </div>
+        </details>
+
+        <details class="nav-group" open>
+          <summary class="nav-summary active" data-tooltip="Rekam Medis">
+            <span class="nav-icon"><i class="fa-solid fa-notes-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Rekam Medis</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem active" href="70-rekam-medis.html" data-route="/emr/search">Cari RM Pasien</a>
+            <a class="nav-subitem" href="71-profil-rm-pasien.html" data-route="/emr/patients/:id">Profil RM Terpadu</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rawat Jalan">
+            <span class="nav-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></span>
+            <span class="nav-label">Rawat Jalan</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/outpatient">Dashboard Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/queue">Antrean Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/visits/:id">Pemeriksaan</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Farmasi">
+            <span class="nav-icon"><i class="fa-solid fa-prescription-bottle-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Farmasi</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/pharmacy">Antrian Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/prescriptions/:id">Validasi Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/dispensing/:id">Penyerahan Obat</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/labels/:id">Cetak Etiket</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Kasir">
+            <span class="nav-icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></span>
+            <span class="nav-label">Kasir</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/billing">Pasien Siap Bayar</a>
+            <a class="nav-subitem" href="#" data-route="/billing/:visitId/receipt">Kwitansi</a>
+            <a class="nav-subitem" href="#" data-route="/billing/void">Pembatalan Penagihan</a>
+            <a class="nav-subitem" href="#" data-route="/billing/report">Laporan Kasir</a>
+          </div>
+        </details>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+    </aside>
+
+    <div class="app-main">
+      <header class="app-header">
+        <button class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button" aria-label="Tutup sidebar" aria-expanded="true" aria-controls="dashboardSidebar">
+          <i class="fa-solid fa-bars topbar-line-icon" aria-hidden="true"></i>
+        </button>
+        <a class="mobile-header-brand" href="../dashboard/30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN">
+        </a>
+
+        <div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+          <span class="field-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass topbar-line-icon" aria-hidden="true"></i></span>
+          <input class="input with-left with-right" id="globalSearchInput" type="search" placeholder="Cari pasien, nomor RM, NIK..." aria-label="Cari pasien, nomor RM, NIK" />
+          <span class="kbd-hint" aria-hidden="true">⌘ K</span>
+        </div>
+
+        <div class="topbar-spacer" aria-hidden="true"></div>
+
+        <div class="header-actions" aria-label="Aksi header">
+<button class="icon-btn topbar-icon" type="button" aria-label="Buka notifikasi"><i class="fa-regular fa-bell" aria-hidden="true"></i><span class="notification-dot">3</span></button>
+          <details class="ds-dropdown" data-component="topbar-dropdown">
+            <summary class="profile-menu" aria-label="Buka menu profil petugas loket">
+              <span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+              <span class="profile-copy"><span class="profile-name">Petugas Loket</span><span class="profile-role">Loket 1</span></span>
+              <i class="fa-solid fa-chevron-down topbar-line-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="dropdown-panel compact" style="right:0; left:auto; width:240px;" role="menu" aria-label="Menu profil">
+              <div class="dropdown-group-label">Akun</div>
+              <button class="dropdown-option selected" type="button" role="menuitem"><span class="option-meta">Siti Nurhaliza<small>Petugas Loket 1</small></span></button>
+              <a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+
+      <main aria-label="Halaman profil rekam medis pasien" class="dashboard-content admin-users-content">
+        <nav aria-label="Breadcrumb" class="admin-breadcrumb text-body-sm">
+          <a href="../dashboard/30-dashboard.html"><i aria-hidden="true" class="fa-solid fa-house"></i>Dashboard</a>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <a href="#">Rekam Medis</a>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <span>Profil RM Pasien</span>
+        </nav>
+
+        <section class="admin-page-head">
+          <div>
+            <h1 class="text-h2 page-title">Profil RM Pasien</h1>
+            <p class="admin-page-subtitle">Daftar pasien yang memiliki rekam medis.</p>
+          </div>
+          <div class="admin-page-actions">
+            <a class="btn btn-primary btn-lg" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new"><i aria-hidden="true" class="fa-solid fa-plus"></i>Pasien Baru</a>
+          </div>
+        </section>
+
+        <section aria-label="Filter pencarian rekam medis" class="card component-stack">
+          <div class="card-body">
+            <div class="toolbar admin-user-toolbar rm-filter-toolbar">
+              <div class="toolbar-left admin-toolbar-left rm-search-type-group">
+                <div class="field m-0">
+                  <label>Pilih Pencarian</label>
+                  <div class="control-row rm-search-radio-row" role="radiogroup" aria-label="Pilih jenis pencarian rekam medis">
+                    <label class="radio"><input checked name="rmSearchType" type="radio" value="name"/>Nama</label>
+                    <label class="radio"><input name="rmSearchType" type="radio" value="rm"/>No. RM</label>
+                    <label class="radio"><input name="rmSearchType" type="radio" value="nik"/>NIK</label>
+                  </div>
+                </div>
+              </div>
+              <div class="toolbar-left admin-toolbar-left rm-keyword-group">
+                <div class="field m-0 w-full">
+                  <label for="rmPatientSearch">Kata Kunci</label>
+                  <div class="input-wrap search-field admin-search-field w-full">
+                    <span aria-hidden="true" class="field-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input aria-label="Masukkan kata kunci pencarian pasien" class="input with-left" data-rm-search id="rmPatientSearch" placeholder="Masukkan minimal 3 karakter" type="search"/>
+                  </div>
+                </div>
+              </div>
+              <div class="toolbar-right admin-filter-group rm-filter-group">
+                <div class="field m-0 rm-gender-field">
+                  <label>Filter Tambahan</label>
+                  <details aria-label="Filter jenis kelamin" class="ds-dropdown ds-select admin-filter-select" data-component="guide-select" data-rm-gender-filter>
+                    <summary class="dropdown-trigger"><span data-select-text>Semua Jenis Kelamin</span></summary>
+                    <div class="dropdown-panel compact" role="listbox" aria-label="Filter jenis kelamin">
+                      <button aria-selected="true" class="dropdown-option selected active" data-select-value="all" role="option" type="button">Semua Jenis Kelamin</button>
+                      <button aria-selected="false" class="dropdown-option" data-select-value="Laki-laki" role="option" type="button">Laki-laki</button>
+                      <button aria-selected="false" class="dropdown-option" data-select-value="Perempuan" role="option" type="button">Perempuan</button>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <button aria-label="Reset filter" class="btn btn-outline btn-icon btn-lg table-reset-filter-btn rm-reset-filter-btn" data-rm-reset-filter data-tooltip="Reset filter" title="Reset filter" type="button"><i aria-hidden="true" class="fa-solid fa-rotate-left"></i></button>
+            </div>
+
+            <div class="rm-search-history" data-rm-search-history-section>
+              <div class="rm-search-history-head">
+                <div>
+                  <h3><i aria-hidden="true" class="fa-solid fa-clock-rotate-left"></i>Riwayat Pencarian Pasien</h3>
+                  <p>Klik tag untuk mengisi ulang pencarian. Riwayat dapat dihapus satu per satu atau sekaligus.</p>
+                </div>
+                <button class="btn btn-ghost btn-sm rm-clear-history-btn" data-rm-clear-history type="button">Hapus semua</button>
+              </div>
+              <div class="rm-history-tags" data-rm-history-tags aria-label="Riwayat pencarian pasien"></div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="rmPatientTableTitle" class="card admin-users-table-card component-stack">
+          <div class="card-header admin-card-head">
+            <div>
+              <h2 class="card-title" id="rmPatientTableTitle">Total 128 pasien</h2>
+              <p class="card-subtitle">Gunakan pencarian untuk menemukan pasien lama berdasarkan nama, No. RM, atau NIK.</p>
+            </div>
+            <button class="btn btn-outline btn-lg" data-rm-export type="button"><i aria-hidden="true" class="fa-solid fa-download"></i>Export Excel</button>
+          </div>
+          <div class="card-body">
+            <div class="table-scroll admin-table-scroll">
+              <table aria-label="Tabel profil rekam medis pasien" class="data-table admin-users-table" data-table-empty="true" data-table-empty-title="Pasien tidak ditemukan" data-table-empty-description="Tidak ada pasien yang cocok dengan kata kunci atau filter yang dipilih." data-table-empty-action-label="Daftar Pasien Baru" data-table-empty-action-href="../registration/60-pendaftaran-pasien-baru.html" data-table-empty-action-icon="fa-solid fa-plus">
+                <thead>
+                  <tr>
+                    <th scope="col">No. RM</th>
+                    <th scope="col">Nama Pasien</th>
+                    <th scope="col">TTL</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">Terakhir Berobat</th>
+                    <th class="text-center rm-visit-col" scope="col">Kunjungan</th>
+                    <th class="text-right rm-action-col" scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-rm-row data-rm="RM00012345" data-name="BUDI SANTOSO" data-nik="32760101800001" data-gender="Laki-laki" data-bpjs-scenario="success">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012345</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-male" aria-hidden="true"><span class="avatar-initials">BS</span></span>
+                        <div><strong>BUDI SANTOSO</strong><small>NIK 327601••••••0001</small></div>
+                      </div>
+                    </td>
+                    <td>Jakarta, 01/01/1980</td>
+                    <td><span class="badge badge-primary badge-sm"><i class="fa-solid fa-mars" aria-hidden="true"></i>Laki-laki</span></td>
+                    <td>32760101800001</td>
+                    <td><strong>20 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Jantung</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan BUDI SANTOSO" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012345" data-patient-name="BUDI SANTOSO" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi BUDI SANTOSO" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil BUDI SANTOSO" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan BUDI SANTOSO" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012346" data-name="SITI AISYAH" data-nik="3276011506900002" data-gender="Perempuan" data-bpjs-scenario="failed">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012346</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-female" aria-hidden="true"><span class="avatar-initials">SA</span></span>
+                        <div><strong>SITI AISYAH</strong><small>NIK 327601••••••0002</small></div>
+                      </div>
+                    </td>
+                    <td>Bandung, 15/06/1990</td>
+                    <td><span class="badge badge-danger badge-sm"><i class="fa-solid fa-venus" aria-hidden="true"></i>Perempuan</span></td>
+                    <td>3276011506900002</td>
+                    <td><strong>18 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Penyakit Dalam</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan SITI AISYAH" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012346" data-patient-name="SITI AISYAH" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi SITI AISYAH" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil SITI AISYAH" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan SITI AISYAH" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012347" data-name="AHMAD FAUZI" data-nik="3276011003750003" data-gender="Laki-laki" data-bpjs-scenario="success">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012347</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-male" aria-hidden="true"><span class="avatar-initials">AF</span></span>
+                        <div><strong>AHMAD FAUZI</strong><small>NIK 327601••••••0003</small></div>
+                      </div>
+                    </td>
+                    <td>Semarang, 10/03/1975</td>
+                    <td><span class="badge badge-primary badge-sm"><i class="fa-solid fa-mars" aria-hidden="true"></i>Laki-laki</span></td>
+                    <td>3276011003750003</td>
+                    <td><strong>17 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Ortopedi</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan AHMAD FAUZI" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012347" data-patient-name="AHMAD FAUZI" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi AHMAD FAUZI" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil AHMAD FAUZI" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan AHMAD FAUZI" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012348" data-name="DEWI LESTARI" data-nik="3276012002850004" data-gender="Perempuan" data-bpjs-scenario="failed">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012348</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-female" aria-hidden="true"><span class="avatar-initials">DL</span></span>
+                        <div><strong>DEWI LESTARI</strong><small>NIK 327601••••••0004</small></div>
+                      </div>
+                    </td>
+                    <td>Surabaya, 20/02/1985</td>
+                    <td><span class="badge badge-danger badge-sm"><i class="fa-solid fa-venus" aria-hidden="true"></i>Perempuan</span></td>
+                    <td>3276012002850004</td>
+                    <td><strong>16 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Kandungan</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan DEWI LESTARI" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012348" data-patient-name="DEWI LESTARI" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi DEWI LESTARI" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil DEWI LESTARI" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan DEWI LESTARI" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012349" data-name="FAJAR RAMADHAN" data-nik="3276010511920005" data-gender="Laki-laki" data-bpjs-scenario="success">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012349</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-male" aria-hidden="true"><span class="avatar-initials">FR</span></span>
+                        <div><strong>FAJAR RAMADHAN</strong><small>NIK 327601••••••0005</small></div>
+                      </div>
+                    </td>
+                    <td>Makassar, 05/11/1992</td>
+                    <td><span class="badge badge-primary badge-sm"><i class="fa-solid fa-mars" aria-hidden="true"></i>Laki-laki</span></td>
+                    <td>3276010511920005</td>
+                    <td><strong>15 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli THT</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan FAJAR RAMADHAN" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012349" data-patient-name="FAJAR RAMADHAN" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi FAJAR RAMADHAN" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil FAJAR RAMADHAN" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan FAJAR RAMADHAN" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012350" data-name="LINA HANDAYANI" data-nik="3276011207880006" data-gender="Perempuan" data-bpjs-scenario="failed">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012350</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-female" aria-hidden="true"><span class="avatar-initials">LH</span></span>
+                        <div><strong>LINA HANDAYANI</strong><small>NIK 327601••••••0006</small></div>
+                      </div>
+                    </td>
+                    <td>Yogyakarta, 12/07/1988</td>
+                    <td><span class="badge badge-danger badge-sm"><i class="fa-solid fa-venus" aria-hidden="true"></i>Perempuan</span></td>
+                    <td>3276011207880006</td>
+                    <td><strong>13 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Mata</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan LINA HANDAYANI" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012350" data-patient-name="LINA HANDAYANI" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi LINA HANDAYANI" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil LINA HANDAYANI" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan LINA HANDAYANI" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012351" data-name="AGUS SETIAWAN" data-nik="3276013008700007" data-gender="Laki-laki" data-bpjs-scenario="success">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012351</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-male" aria-hidden="true"><span class="avatar-initials">AS</span></span>
+                        <div><strong>AGUS SETIAWAN</strong><small>NIK 327601••••••0007</small></div>
+                      </div>
+                    </td>
+                    <td>Palembang, 30/08/1970</td>
+                    <td><span class="badge badge-primary badge-sm"><i class="fa-solid fa-mars" aria-hidden="true"></i>Laki-laki</span></td>
+                    <td>3276013008700007</td>
+                    <td><strong>12 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">IGD</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan AGUS SETIAWAN" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012351" data-patient-name="AGUS SETIAWAN" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi AGUS SETIAWAN" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil AGUS SETIAWAN" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan AGUS SETIAWAN" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+<tr data-rm-row data-rm="RM00012352" data-name="RINA MARLINA" data-nik="3276012209950008" data-gender="Perempuan" data-bpjs-scenario="failed">
+                    <td><a class="font-bold text-[color:var(--primary-blue)]" href="71-profil-rm-pasien.html">RM00012352</a></td>
+                    <td>
+                      <div class="admin-user-cell">
+                        <span class="avatar avatar-patient-female" aria-hidden="true"><span class="avatar-initials">RM</span></span>
+                        <div><strong>RINA MARLINA</strong><small>NIK 327601••••••0008</small></div>
+                      </div>
+                    </td>
+                    <td>Bali, 22/09/1995</td>
+                    <td><span class="badge badge-danger badge-sm"><i class="fa-solid fa-venus" aria-hidden="true"></i>Perempuan</span></td>
+                    <td>3276012209950008</td>
+                    <td><strong>10 Mei 2024</strong><small class="block text-[color:var(--primary-blue)]">Poli Kulit & Kelamin</small></td>
+                    <td class="text-center rm-visit-cell">
+                      <button aria-label="Tambah Kunjungan RINA MARLINA" class="btn btn-primary btn-xs rm-visit-action" data-rm-add-visit data-route="/registration/visits/new" data-patient-rm="RM00012352" data-patient-name="RINA MARLINA" data-tooltip="Tambah Kunjungan" title="Tambah Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i><span>Tambah Kunjungan</span></button>
+                    </td>
+                    <td class="text-right">
+                      <div class="action-group admin-action-group">
+                        <div aria-label="Aksi RINA MARLINA" class="row-inline-actions" role="group">
+                          <a aria-label="Lihat Profil RINA MARLINA" class="row-icon-action is-info" data-tooltip="Lihat Profil" title="Lihat Profil" href="71-profil-rm-pasien.html"><i aria-hidden="true" class="fa-regular fa-eye"></i></a>
+                          <button aria-label="Riwayat Kunjungan RINA MARLINA" class="row-icon-action is-success" data-tooltip="Riwayat Kunjungan" title="Riwayat Kunjungan" type="button"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer admin-table-footer">
+              <div data-table-summary>Menampilkan <span data-rm-visible-count>8</span> dari <span data-total-count>128</span> pasien</div>
+              <nav aria-label="Pagination tabel rekam medis" class="pagination">
+                <details class="ds-dropdown per-page" data-component="dropdown-select">
+                  <summary aria-label="Jumlah pasien per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+                  <div aria-label="Jumlah pasien per halaman" class="dropdown-panel" role="listbox">
+                    <button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+                    <button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+                    <button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+                  </div>
+                </details>
+                <div class="pagination-pages">
+                  <button aria-label="Halaman sebelumnya" class="page-button" type="button"><svg class="lucide" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button>
+                  <button aria-current="page" class="page-button active" type="button">1</button>
+                  <button class="page-button" type="button">2</button>
+                  <button class="page-button" type="button">3</button>
+                  <span class="page-ellipsis">...</span>
+                  <button class="page-button" type="button">13</button>
+                  <button aria-label="Halaman berikutnya" class="page-button" type="button"><svg class="lucide" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div aria-hidden="true" class="modal-backdrop" data-modal-backdrop hidden></div>
+
+<section aria-labelledby="visitModalTitle" aria-modal="true" class="modal" hidden id="visitModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitModalTitle">Buat Kunjungan</h2>
+          <p class="modal-subtitle">Lengkapi data kunjungan pasien existing sebelum verifikasi penjamin.</p>
+        </div>
+        <button aria-label="Tutup modal buat kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="layout-sidebar-grid">
+            <aside class="layout-stack is-md self-stretch pr-6 border-r border-r-[color:var(--border-soft)]">
+              <div class="layout-stack is-xs">
+                <h3 class="card-title">Informasi Pasien</h3>
+                <p class="modal-subtitle">Ringkasan data pasien existing untuk kunjungan.</p>
+              </div>
+              <div class="field-row">
+                <span class="avatar avatar-xl avatar-patient-male" data-gender-avatar aria-hidden="true"><span class="avatar-initials" data-avatar-initials>BS</span></span>
+                <div>
+                  <strong class="text-body-lg" data-summary="name">-</strong>
+                  <p class="modal-subtitle" data-summary="rm">-</p>
+                  <p class="modal-subtitle"><span data-summary="gender">-</span>, Pasien Lama</p>
+                  <p class="modal-subtitle" data-summary="birth">-</p>
+                </div>
+              </div>
+              <div class="layout-stack is-lg">
+                <div class="layout-stack is-xs">
+                  <span class="text-body-md font-bold text-[color:var(--text-primary)]">Kontak</span>
+                  <span class="text-body-md font-semibold text-[color:var(--text-secondary)]" data-summary="phone">-</span>
+                </div>
+                <div class="layout-stack is-xs">
+                  <span class="text-body-md font-bold text-[color:var(--text-primary)]">NIK</span>
+                  <span class="text-body-md font-semibold text-[color:var(--text-secondary)]" data-summary="nik">-</span>
+                </div>
+              </div>
+            </aside>
+            <div class="modal-form-grid">
+              <div class="field span-2">
+                <label for="visitDate">Tanggal Kunjungan <span class="required">*</span></label>
+                <details class="ds-dropdown ds-datepicker guide-picker-dropdown" data-component="guide-datepicker" data-date-min="2024-01-01" data-date-max="today+365d">
+                  <summary class="dropdown-trigger is-md" aria-label="Pilih tanggal kunjungan">
+                    <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>Hari ini</span></span>
+                  </summary>
+                  <div class="dropdown-panel compact datepicker-panel" role="dialog">
+                    <div class="calendar-widget"></div>
+                    <div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-datepicker-today>Hari ini</button><button class="btn btn-primary btn-sm" type="button" data-guide-close>Pilih Tanggal</button></div>
+                  </div>
+                  <input id="visitDate" type="hidden" data-picker-value value="2026-07-03" required>
+                </details>
+              </div>
+              <div class="field">
+                <label for="visitUnit">Unit / Poli <span class="required">*</span></label>
+                <input id="visitUnit" type="hidden" value="Poli Jantung" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitUnit">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>Poli Jantung</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Poli Jantung" type="button">Poli Jantung</button><button class="dropdown-option" data-select-value="Poli Umum" type="button">Poli Umum</button><button class="dropdown-option" data-select-value="Poli Penyakit Dalam" type="button">Poli Penyakit Dalam</button></div>
+                </details>
+              </div>
+              <div class="field">
+                <label for="visitDoctor">Dokter <span class="required">*</span></label>
+                <input id="visitDoctor" type="hidden" value="dr. Andi Pratama, Sp.JP" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitDoctor">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>dr. Andi Pratama, Sp.JP</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="dr. Andi Pratama, Sp.JP" type="button">dr. Andi Pratama, Sp.JP</button><button class="dropdown-option" data-select-value="dr. Ahmad Fauzi" type="button">dr. Ahmad Fauzi</button><button class="dropdown-option" data-select-value="dr. Rina Marlina" type="button">dr. Rina Marlina</button></div>
+                </details>
+                <small class="helper">Dokter ditampilkan sesuai jadwal aktif tanggal tersebut.</small>
+              </div>
+              <div class="field span-2">
+                <label>Jenis Kunjungan <span class="required">*</span></label>
+                <div class="control-row">
+                  <label class="radio"><input type="radio" name="visitTypeRadio" value="Kunjungan Baru"> Kunjungan Baru</label>
+                  <label class="radio"><input type="radio" name="visitTypeRadio" value="Kunjungan Lama" checked> Kunjungan Lama</label>
+                </div>
+                <input id="visitType" type="hidden" value="Kunjungan Lama" required>
+              </div>
+              <div class="field span-2">
+                <label for="visitGuarantor">Penjamin <span class="required">*</span></label>
+                <input id="visitGuarantor" type="hidden" value="BPJS Kesehatan" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitGuarantor">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>BPJS Kesehatan</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="BPJS Kesehatan" type="button">BPJS Kesehatan</button><button class="dropdown-option" data-select-value="Umum" type="button">Umum</button><button class="dropdown-option" data-select-value="Asuransi Swasta" type="button">Asuransi Swasta</button></div>
+                </details>
+              </div>
+              <div class="field span-2">
+                <label for="bpjsCardNumber">No. Kartu BPJS <span class="required">*</span></label>
+                <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-start">
+                  <div>
+                    <div class="input-wrap"><input class="input mono with-right" id="bpjsCardNumber" inputmode="numeric" value="000123456789" placeholder="Masukkan nomor kartu BPJS" required><span class="field-icon right" aria-hidden="true"><i class="fa-regular fa-id-card"></i></span></div>
+                    <small class="helper">Pastikan nomor kartu sesuai data peserta.</small>
+                    <div class="mt-2" data-bpjs-verified-state hidden>
+                      <span class="badge badge-success badge-sm"><i class="fa-solid fa-check" aria-hidden="true"></i><span data-bpjs-status-text>BPJS Aktif</span></span>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-lg" data-verify-bpjs type="button">Verifikasi BPJS <i class="fa-regular fa-id-card" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="field span-2">
+                <label for="visitComplaint">Keluhan Awal</label>
+                <textarea id="visitComplaint" maxlength="255" placeholder="Masukkan keluhan utama pasien"></textarea>
+              </div>
+              <div class="field span-2">
+                <label>Prioritas</label>
+                <div class="control-row">
+                  <label class="check"><input type="checkbox"> Lansia (&gt; 60 th)</label>
+                  <label class="check"><input type="checkbox"> Hamil</label>
+                  <label class="check"><input type="checkbox"> Disabilitas</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-save-visit type="button" disabled>Simpan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="bpjsLoadingModalTitle" aria-modal="true" class="modal" hidden id="bpjsLoadingModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-body bpjs-loading-body">
+        <section class="modal-section bpjs-loading-state">
+          <div class="bpjs-loading-visual" aria-hidden="true">
+            <span class="bpjs-card-icon"><i class="fa-regular fa-id-card"></i></span>
+            <span class="bpjs-shield-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          </div>
+          <span class="bpjs-spinner" aria-hidden="true"></span>
+          <h3 class="modal-title" id="bpjsLoadingModalTitle">Verifikasi BPJS Sedang Berlangsung</h3>
+          <p class="modal-subtitle">Mohon tunggu, sistem sedang memeriksa data kepesertaan...</p>
+          <div class="bpjs-loading-bar" aria-hidden="true"><span></span></div>
+          <div class="bpjs-check-card">
+            <strong>Informasi yang sedang dicek:</strong>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Status kepesertaan</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Hak kelas perawatan</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Fasilitas Kesehatan Tingkat Pertama (FKTP)</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Status rujukan (jika diperlukan)</span></li>
+            </ul>
+          </div>
+          <div class="alert alert-info alert-sm bpjs-process-alert">
+            <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <div class="alert-body"><p>Proses akan otomatis dilanjutkan...</p></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="bpjsSuccessModalTitle" aria-modal="true" class="modal" hidden id="bpjsSuccessModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="bpjsSuccessModalTitle">Verifikasi BPJS Berhasil</h2>
+          <p class="modal-subtitle">Data peserta aktif dan kunjungan dapat disimpan.</p>
+        </div>
+        <button aria-label="Tutup hasil verifikasi BPJS" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success alert-sm">
+          <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-check"></i></span>
+          <div class="alert-body"><strong class="alert-title">Peserta Aktif</strong><p>Verifikasi berhasil. SEP akan dibuat otomatis saat kunjungan disimpan.</p></div>
+        </div>
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>Nama Peserta</dt><dd data-summary="name">-</dd></div>
+            <div><dt>No. Kartu</dt><dd>000123456789</dd></div>
+            <div><dt>Tanggal Lahir</dt><dd data-summary="birth">-</dd></div>
+            <div><dt>Faskes Tingkat 1</dt><dd>Klinik Sehat Sentosa</dd></div>
+            <div><dt>Kelas Rawat</dt><dd>Kelas 1</dd></div>
+            <div><dt>Status Peserta</dt><dd>Aktif</dd></div>
+            <div><dt>Jenis Kepesertaan</dt><dd>PBI (APBN)</dd></div>
+            <div><dt>Masa Berlaku</dt><dd>01/05/2024 - 31/05/2024</dd></div>
+          </dl>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-form type="button">Kembali</button>
+        <button class="btn btn-primary btn-lg" data-continue-verified-visit type="button">Lanjutkan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="bpjsFallbackModalTitle" aria-modal="true" class="modal" hidden id="bpjsFallbackModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="bpjsFallbackModalTitle">Verifikasi BPJS Gagal</h2>
+          <p class="modal-subtitle">Lengkapi data manual bila data BPJS tidak ditemukan atau koneksi bermasalah.</p>
+        </div>
+        <button aria-label="Tutup hasil verifikasi BPJS gagal" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger alert-sm">
+          <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <div class="alert-body"><strong class="alert-title">Verifikasi Gagal</strong><p>Data tidak ditemukan atau tidak valid. Periksa kembali nomor kartu atau input manual.</p></div>
+        </div>
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <div class="field span-2">
+              <label for="bpjsFallbackReason">Alasan</label>
+              <input id="bpjsFallbackReason" type="hidden" value="Peserta tidak ditemukan">
+              <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="bpjsFallbackReason">
+                <summary class="dropdown-trigger is-md"><span data-select-text>Peserta tidak ditemukan</span></summary>
+                <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Peserta tidak ditemukan" type="button">Peserta tidak ditemukan</button><button class="dropdown-option" data-select-value="Koneksi BPJS timeout" type="button">Koneksi BPJS timeout</button><button class="dropdown-option" data-select-value="Nomor kartu tidak valid" type="button">Nomor kartu tidak valid</button></div>
+              </details>
+            </div>
+            <div class="field span-2">
+              <label for="manualSepNumber">No. SEP (Input Manual)</label>
+              <input class="input" id="manualSepNumber" placeholder="Masukkan No. SEP bila ada">
+            </div>
+            <div class="field span-2">
+              <label for="manualBpjsNote">Catatan</label>
+              <textarea id="manualBpjsNote" placeholder="Tambahkan catatan opsional"></textarea>
+            </div>
+          </div>
+          <div class="alert alert-warning alert-sm">
+            <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <div class="alert-body"><strong class="alert-title">Mode Manual</strong><p>Data manual akan dicatat pada audit trail.</p></div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-form type="button">Kembali</button>
+        <button class="btn btn-primary btn-lg" data-continue-manual-visit type="button">Lanjutkan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="visitDetailModalTitle" aria-modal="true" class="modal" hidden id="visitDetailModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitDetailModalTitle">Kunjungan Berhasil Dibuat</h2>
+          <p class="modal-subtitle">Detail kunjungan, nomor antrean, dan preview tiket pasien.</p>
+        </div>
+        <button aria-label="Tutup detail kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="grid grid-cols-[minmax(0,1fr)_minmax(260px,340px)] gap-6 items-start max-[900px]:grid-cols-1">
+            <div class="layout-stack is-md">
+              <div class="modal-section-head">
+                <span class="modal-section-icon bg-[color:var(--success-light)] text-[color:var(--success)]"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Data Kunjungan Tersimpan</h3>
+                  <p class="modal-subtitle">Pasien berhasil masuk ke antrean loket/poli.</p>
+                </div>
+              </div>
+              <dl class="modal-info-list">
+                <div><dt>No. Kunjungan</dt><dd>KJN24050000123</dd></div>
+                <div><dt>No. RM</dt><dd data-summary="rm">-</dd></div>
+                <div><dt>No. Antrean</dt><dd><span class="badge badge-primary">A-012</span></dd></div>
+                <div><dt>Tanggal Kunjungan</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                <div><dt>Status SEP</dt><dd data-visit-result="sepStatus">Otomatis (Berhasil)</dd></div>
+                <div><dt>No. SEP</dt><dd data-visit-result="sepNumber">1018R0120524020001</dd></div>
+              </dl>
+              <div class="alert alert-success alert-sm">
+                <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-check"></i></span>
+                <div class="alert-body"><strong class="alert-title">Kunjungan Siap Dilayani</strong><p>Pasien sudah masuk antrean dengan nomor A-012. Tiket antrean dapat langsung dicetak atau diatur ulang melalui setup cetak.</p></div>
+              </div>
+            </div>
+            <div class="layout-stack is-sm">
+              <div class="modal-section-head">
+                <span class="modal-section-icon"><i class="fa-solid fa-ticket" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Preview Tiket Antrean</h3>
+                  <p class="modal-subtitle">Tampilan tiket yang akan diberikan ke pasien.</p>
+                </div>
+              </div>
+              <div class="card p-5 bg-white text-center border border-[color:var(--border)] shadow-none">
+                <div class="layout-stack is-xs items-center">
+                  <i class="fa-regular fa-hospital text-h2 text-[color:var(--primary-green)]" aria-hidden="true"></i>
+                  <strong class="text-body-sm text-[color:var(--text-primary)]">RUMAH SAKIT SEHAT SENTOSA</strong>
+                  <span class="text-body-xs text-[color:var(--text-secondary)]">Jl. Sehat No. 1, Jakarta</span>
+                </div>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-sm font-bold text-[color:var(--text-secondary)]">NO. ANTREAN</p>
+                <strong class="block text-[44px] leading-none font-bold text-[color:var(--text-primary)] tracking-[0.08em]">A-012</strong>
+                <i class="fa-solid fa-qrcode text-[58px] my-3 text-[color:var(--text-primary)]" aria-hidden="true"></i>
+                <dl class="modal-info-list text-left">
+                  <div><dt>Nama</dt><dd data-summary="name">-</dd></div>
+                  <div><dt>No. RM</dt><dd data-summary="rm">-</dd></div>
+                  <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                  <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                  <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                  <div><dt>Tanggal / Jam</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                </dl>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-xs text-[color:var(--text-secondary)]">Terima kasih atas kepercayaan Anda<br>Semoga lekas sembuh</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions justify-between">
+        <div class="flex flex-wrap items-center gap-3">
+          <button class="btn btn-outline btn-lg" data-open-ticket-print type="button"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Setup Cetak Antrian</button>
+          <button class="btn btn-primary btn-lg" data-print-ticket-success type="button"><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Antrian</button>
+        </div>
+        <a class="btn btn-outline btn-lg" href="../dashboard/32-dashboard-loket.html">Lihat Antrean</a>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="ticketPrintModalTitle" aria-modal="true" class="modal" hidden id="ticketPrintModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="ticketPrintModalTitle">Cetak Tiket Antrean</h2>
+          <p class="modal-subtitle">Preview tiket dan pengaturan cetak antrean pasien.</p>
+        </div>
+        <button aria-label="Tutup cetak tiket" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="grid grid-cols-[minmax(0,1fr)_minmax(260px,320px)] gap-6 items-start max-[900px]:grid-cols-1">
+            <div class="layout-stack is-sm">
+              <div class="modal-section-head">
+                <span class="modal-section-icon"><i class="fa-solid fa-ticket" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Preview Tiket (58mm)</h3>
+                  <p class="modal-subtitle">Tiket antrean yang akan diberikan ke pasien.</p>
+                </div>
+              </div>
+              <div class="card p-5 bg-white max-w-[360px] mx-auto text-center border border-[color:var(--border)] shadow-none">
+                <div class="layout-stack is-xs items-center">
+                  <i class="fa-regular fa-hospital text-h2 text-[color:var(--primary-green)]" aria-hidden="true"></i>
+                  <strong class="text-body-sm text-[color:var(--text-primary)]">RUMAH SAKIT SEHAT SENTOSA</strong>
+                  <span class="text-body-xs text-[color:var(--text-secondary)]">Jl. Sehat No. 1, Jakarta</span>
+                </div>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-sm font-bold text-[color:var(--text-secondary)]">NO. ANTREAN</p>
+                <strong class="block text-[44px] leading-none font-bold text-[color:var(--text-primary)] tracking-[0.08em]">A-012</strong>
+                <i class="fa-solid fa-qrcode text-[58px] my-3 text-[color:var(--text-primary)]" aria-hidden="true"></i>
+                <dl class="modal-info-list text-left">
+                  <div><dt>Nama</dt><dd data-summary="name">-</dd></div>
+                  <div><dt>No. RM</dt><dd data-summary="rm">-</dd></div>
+                  <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                  <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                  <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                  <div><dt>Tanggal / Jam</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                </dl>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-xs text-[color:var(--text-secondary)]">Terima kasih atas kepercayaan Anda<br>Semoga lekas sembuh</p>
+              </div>
+            </div>
+            <div class="layout-stack is-lg">
+              <div class="field">
+                <label for="ticketPrinter">Printer</label>
+                <input id="ticketPrinter" type="hidden" value="Thermal 58mm - Front Desk">
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="ticketPrinter">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>Thermal 58mm - Front Desk</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Thermal 58mm - Front Desk" type="button">Thermal 58mm - Front Desk</button><button class="dropdown-option" data-select-value="Thermal 58mm - Loket 2" type="button">Thermal 58mm - Loket 2</button><button class="dropdown-option" data-select-value="Cetak PDF" type="button">Cetak PDF</button></div>
+                </details>
+              </div>
+              <div class="field">
+                <label>Jumlah Cetak</label>
+                <div class="segmented-control w-fit">
+                  <button class="segmented-item" type="button" aria-label="Kurangi jumlah cetak">−</button>
+                  <span class="segmented-item active min-w-12 justify-center">1</span>
+                  <button class="segmented-item" type="button" aria-label="Tambah jumlah cetak">+</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>Auto Print (cetak otomatis)</label>
+                <label class="switch on" for="ticketAutoPrint">
+                  <input id="ticketAutoPrint" type="checkbox" checked>
+                  <span class="switch-track" aria-hidden="true"></span>
+                  <span data-switch-state data-on-text="Aktif" data-off-text="Nonaktif">Aktif</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-detail type="button">Kembali</button>
+        <a class="btn btn-outline btn-lg" href="../dashboard/32-dashboard-loket.html">Lanjut Tanpa Cetak</a>
+        <button class="btn btn-primary btn-lg" data-print-ticket type="button"><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Antrian</button>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="ticketPrintSuccessModalTitle" aria-modal="true" class="modal" hidden id="ticketPrintSuccessModal" role="dialog">
+    <div class="modal-card is-sm">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="ticketPrintSuccessModalTitle">Cetak Antrian Berhasil</h2>
+          <p class="modal-subtitle">Tiket antrean berhasil dikirim ke printer.</p>
+        </div>
+        <button aria-label="Tutup cetak berhasil" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section text-center items-center">
+          <span class="modal-section-icon mx-auto bg-[color:var(--success-light)] text-[color:var(--success)]"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+          <div class="layout-stack is-xs items-center">
+            <h3 class="modal-title">Tiket Antrian Berhasil Dicetak</h3>
+            <p class="modal-subtitle">No. antrean <strong>A-012</strong> sudah tercetak dan dapat diberikan ke pasien.</p>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions justify-center">
+        <button class="btn btn-primary btn-lg" data-close-modal type="button">Selesai</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="../../js/table-search.js"></script>
+  <script src="../../js/date-picker-controls.js"></script>
+  <script src="../../js/guide-dropdowns.js"></script>
+  <script src="../../js/switch-controls.js"></script>
+  <script src="../../js/toast-messages.js"></script>
+  <script src="../../js/sidebar-flyout.js"></script>
+  <script src="../../js/responsive-navigation.js"></script>
+  <script src="../../js/bottom-tabs.js"></script>
+  <script src="../../js/inline-table-actions.js"></script>
+  <script>
+    (() => {
+      const searchInput = document.querySelector('[data-rm-search]');
+      const rows = Array.from(document.querySelectorAll('[data-rm-row]'));
+      const totalNode = document.querySelector('[data-rm-visible-count]');
+      const radios = Array.from(document.querySelectorAll('input[name="rmSearchType"]'));
+      const genderDropdown = document.querySelector('[data-rm-gender-filter]');
+      const resetButton = document.querySelector('[data-rm-reset-filter]');
+      const historyTags = document.querySelector('[data-rm-history-tags]');
+      const clearHistoryButton = document.querySelector('[data-rm-clear-history]');
+      const backdrop = document.querySelector('[data-modal-backdrop]');
+      const modals = Array.from(document.querySelectorAll('.modal'));
+      let bpjsTimer = null;
+      let activeVisitPatient = null;
+      let activeBpjsScenario = 'failed';
+      let visitResultMode = 'verified';
+      let bpjsVerificationState = null;
+      let searchHistory = [
+        { type: 'name', query: 'BUDI SANTOSO' },
+        { type: 'rm', query: 'RM00012346' },
+        { type: 'nik', query: '3276011003750003' },
+        { type: 'name', query: 'DEWI LESTARI' }
+      ];
+
+      function normalize(value) {
+        return String(value || '')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function selectedSearchType() {
+        return radios.find((radio) => radio.checked)?.value || 'name';
+      }
+
+      function selectedGender() {
+        return genderDropdown?.dataset.value || 'Semua Jenis Kelamin';
+      }
+
+      function searchTypeLabel(type) {
+        return ({ name: 'Nama', rm: 'No. RM', nik: 'NIK' })[type] || 'Nama';
+      }
+
+      function setSearchType(type) {
+        const radio = document.querySelector(`input[name="rmSearchType"][value="${type}"]`);
+        if (radio) radio.checked = true;
+      }
+
+      function setDropdownToDefault() {
+        const option = genderDropdown?.querySelector('[data-select-value="all"]');
+        if (option) option.click();
+      }
+
+      function createHistoryChip(entry) {
+        const chip = document.createElement('div');
+        chip.className = 'rm-history-chip';
+        chip.setAttribute('role', 'button');
+        chip.setAttribute('tabindex', '0');
+        chip.dataset.rmHistoryChip = 'true';
+        chip.dataset.historyType = entry.type;
+        chip.dataset.historyQuery = entry.query;
+        chip.setAttribute('aria-label', `${searchTypeLabel(entry.type)} ${entry.query}`);
+
+        const meta = document.createElement('span');
+        meta.className = 'rm-history-chip-type';
+        meta.innerHTML = '<i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i>';
+        meta.append(document.createTextNode(searchTypeLabel(entry.type)));
+
+        const label = document.createElement('strong');
+        label.textContent = entry.query;
+
+        const remove = document.createElement('button');
+        remove.className = 'rm-history-remove';
+        remove.type = 'button';
+        remove.dataset.rmRemoveHistory = 'true';
+        remove.setAttribute('aria-label', `Hapus riwayat ${entry.query}`);
+        remove.innerHTML = '<i aria-hidden="true" class="fa-solid fa-xmark"></i>';
+
+        chip.append(meta, label, remove);
+        return chip;
+      }
+
+      function renderHistory() {
+        if (!historyTags) return;
+        historyTags.innerHTML = '';
+
+        if (!searchHistory.length) {
+          const empty = document.createElement('div');
+          empty.className = 'rm-history-empty';
+          empty.innerHTML = '<i aria-hidden="true" class="fa-regular fa-folder-open"></i>Belum ada riwayat pencarian pasien.';
+          historyTags.append(empty);
+          if (clearHistoryButton) clearHistoryButton.disabled = true;
+          return;
+        }
+
+        searchHistory.forEach((entry) => historyTags.append(createHistoryChip(entry)));
+        if (clearHistoryButton) clearHistoryButton.disabled = false;
+      }
+
+      function addSearchHistory(rawQuery) {
+        const query = String(rawQuery || '').replace(/\s+/g, ' ').trim();
+        if (query.length < 3) return;
+
+        const type = selectedSearchType();
+        searchHistory = searchHistory.filter((entry) => !(entry.type === type && normalize(entry.query) === normalize(query)));
+        searchHistory.unshift({ type, query });
+        searchHistory = searchHistory.slice(0, 8);
+        renderHistory();
+      }
+
+      function removeSearchHistory(type, query) {
+        searchHistory = searchHistory.filter((entry) => !(entry.type === type && entry.query === query));
+        renderHistory();
+      }
+
+      function applyHistoryEntry(type, query) {
+        setSearchType(type);
+        if (searchInput) searchInput.value = query;
+        applyFilter();
+        searchInput?.focus();
+      }
+
+      function applyFilter() {
+        const rawQuery = searchInput?.value || '';
+        const query = normalize(rawQuery);
+        const type = selectedSearchType();
+        const gender = selectedGender();
+        let visible = 0;
+
+        rows.forEach((row) => {
+          const targetValue = normalize(row.dataset[type] || '');
+          const rowGender = row.dataset.gender || '';
+          const searchMatch = query.length < 3 || targetValue.includes(query);
+          const genderMatch = !gender || gender === 'Semua Jenis Kelamin' || gender === 'all' || rowGender === gender;
+          const shouldShow = searchMatch && genderMatch;
+          row.hidden = !shouldShow;
+          row.dataset.tableFilterHidden = shouldShow ? 'false' : 'true';
+          if (shouldShow) visible += 1;
+        });
+
+        if (totalNode) totalNode.textContent = String(visible);
+        window.updateTableEmptyState?.(document.querySelector('[data-table-empty="true"]'), visible);
+      }
+
+      function openModal(id) {
+        const modal = document.getElementById(id);
+        if (!modal || !backdrop) return;
+        modals.forEach((item) => {
+          if (item !== modal) item.hidden = true;
+        });
+        backdrop.hidden = false;
+        backdrop.setAttribute('aria-hidden', 'false');
+        modal.hidden = false;
+        document.body.classList.add('is-modal-open');
+      }
+
+      function closeModals() {
+        if (bpjsTimer) {
+          window.clearTimeout(bpjsTimer);
+          bpjsTimer = null;
+        }
+        modals.forEach((modal) => { modal.hidden = true; });
+        if (backdrop) {
+          backdrop.hidden = true;
+          backdrop.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('is-modal-open');
+      }
+
+      function setVisitType(value) {
+        const target = document.getElementById('visitType');
+        if (target) target.value = value;
+        document.querySelectorAll('input[name="visitTypeRadio"]').forEach((radio) => {
+          radio.checked = radio.value === value;
+        });
+      }
+
+      function setBpjsVerificationState(mode = null) {
+        bpjsVerificationState = mode;
+        const isVerified = mode === 'verified';
+        const isManual = mode === 'manual';
+        document.querySelectorAll('[data-save-visit]').forEach((button) => {
+          button.disabled = !mode;
+          button.classList.toggle('is-disabled', !mode);
+        });
+        document.querySelectorAll('[data-bpjs-verified-state]').forEach((state) => {
+          state.hidden = !mode;
+          const badge = state.querySelector('.badge');
+          if (badge) {
+            badge.classList.toggle('badge-success', isVerified);
+            badge.classList.toggle('badge-warning', isManual);
+          }
+          const icon = state.querySelector('i');
+          if (icon) icon.className = `fa-solid ${isVerified ? 'fa-check' : 'fa-triangle-exclamation'}`;
+          const text = state.querySelector('[data-bpjs-status-text]');
+          if (text) text.textContent = isVerified ? 'BPJS Aktif' : 'Verifikasi gagal, data manual siap digunakan';
+        });
+      }
+
+      function getPatientFromButton(button) {
+        const row = button.closest('[data-rm-row]');
+        const ttl = row?.cells?.[2]?.textContent?.replace(/\s+/g, ' ')?.trim() || '-';
+        const birth = ttl.includes(',') ? ttl.split(',').slice(1).join(',').trim() : ttl;
+        return {
+          rm: button.dataset.patientRm || row?.dataset.rm || '-',
+          name: button.dataset.patientName || row?.dataset.name || '-',
+          nik: row?.dataset.nik || '-',
+          gender: row?.dataset.gender || '-',
+          birth: birth || '-',
+          phone: row?.dataset.phone || '-'
+        };
+      }
+
+      function getPatientInitials(name = '') {
+        const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+        if (!parts.length) return '-';
+        if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+        return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+      }
+
+      function updateSummary() {
+        const patient = activeVisitPatient || { rm: '-', name: '-', nik: '-', gender: '-', birth: '-', phone: '-' };
+        document.querySelectorAll('[data-summary="nik"]').forEach((item) => item.textContent = patient.nik);
+        document.querySelectorAll('[data-summary="rm"]').forEach((item) => item.textContent = patient.rm);
+        document.querySelectorAll('[data-summary="name"]').forEach((item) => item.textContent = patient.name);
+        document.querySelectorAll('[data-summary="gender"]').forEach((item) => item.textContent = patient.gender);
+        document.querySelectorAll('[data-summary="birth"]').forEach((item) => item.textContent = patient.birth);
+        document.querySelectorAll('[data-summary="phone"]').forEach((item) => item.textContent = patient.phone);
+        const isFemale = /perempuan/i.test(patient.gender);
+        document.querySelectorAll('[data-gender-avatar]').forEach((avatar) => {
+          avatar.className = `avatar avatar-xl ${isFemale ? 'avatar-patient-female' : 'avatar-patient-male'}`;
+        });
+        document.querySelectorAll('[data-avatar-initials]').forEach((item) => {
+          item.textContent = getPatientInitials(patient.name);
+        });
+        document.querySelectorAll('[data-gender-icon]').forEach((icon) => {
+          icon.className = `fa-solid ${isFemale ? 'fa-venus' : 'fa-mars'}`;
+        });
+      }
+
+      function getSelectedVisitDateLabel() {
+        const value = document.getElementById('visitDate')?.value || '';
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+          const [year, month, day] = value.split('-');
+          return `${day}/${month}/${year} 09:15`;
+        }
+        const text = document.querySelector('#visitDate')?.closest('[data-component="guide-datepicker"]')?.querySelector('[data-picker-text]')?.textContent?.trim();
+        return text ? `${text} 09:15` : '03/07/2026 09:15';
+      }
+
+      function updateVisitResult(mode = 'verified') {
+        updateSummary();
+        const unit = document.getElementById('visitUnit')?.value || 'Poli Jantung';
+        const doctor = document.getElementById('visitDoctor')?.value || 'dr. Andi Pratama, Sp.JP';
+        const guarantor = document.getElementById('visitGuarantor')?.value || 'BPJS Kesehatan';
+        const sepNumber = mode === 'manual' ? (document.getElementById('manualSepNumber')?.value || '-') : '1018R0120524020001';
+        const sepStatus = mode === 'manual' ? 'Manual (Verifikasi Gagal)' : 'Otomatis (Berhasil)';
+        const values = {
+          date: getSelectedVisitDateLabel(),
+          unit,
+          doctor,
+          guarantor,
+          sepStatus,
+          sepNumber,
+        };
+        Object.entries(values).forEach(([key, value]) => {
+          document.querySelectorAll(`[data-visit-result="${key}"]`).forEach((item) => {
+            item.textContent = value;
+          });
+        });
+      }
+
+      function openVisitDetail(mode = 'verified') {
+        visitResultMode = mode;
+        updateVisitResult(mode);
+        openModal('visitDetailModal');
+      }
+
+      function updateBpjsScenarioHelper() {
+        document.querySelectorAll('[data-verify-bpjs]').forEach((button) => {
+          button.innerHTML = 'Verifikasi BPJS <i class="fa-regular fa-id-card" aria-hidden="true"></i>';
+        });
+      }
+
+      function openVisitModalForPatient(button) {
+        activeVisitPatient = getPatientFromButton(button);
+        activeBpjsScenario = button.closest('[data-rm-row]')?.dataset.bpjsScenario === 'failed' ? 'failed' : 'success';
+        setVisitType('Kunjungan Lama');
+        setBpjsVerificationState(null);
+        updateSummary();
+        updateBpjsScenarioHelper();
+        openModal('visitModal');
+      }
+
+      function startBpjsVerification() {
+        updateSummary();
+        setBpjsVerificationState(null);
+        updateBpjsScenarioHelper();
+        openModal('bpjsLoadingModal');
+        if (bpjsTimer) window.clearTimeout(bpjsTimer);
+        bpjsTimer = window.setTimeout(() => {
+          bpjsTimer = null;
+          openModal(activeBpjsScenario === 'success' ? 'bpjsSuccessModal' : 'bpjsFallbackModal');
+        }, 900);
+      }
+
+      searchInput?.addEventListener('input', applyFilter);
+      searchInput?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') addSearchHistory(searchInput.value);
+      });
+      searchInput?.addEventListener('change', () => addSearchHistory(searchInput.value));
+      radios.forEach((radio) => radio.addEventListener('change', applyFilter));
+      genderDropdown?.querySelectorAll('.dropdown-option').forEach((option) => {
+        option.addEventListener('click', () => window.setTimeout(applyFilter, 0));
+      });
+      resetButton?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        setSearchType('name');
+        setDropdownToDefault();
+        applyFilter();
+      });
+      historyTags?.addEventListener('click', (event) => {
+        const chip = event.target.closest('[data-rm-history-chip]');
+        if (!chip) return;
+
+        if (event.target.closest('[data-rm-remove-history]')) {
+          event.stopPropagation();
+          removeSearchHistory(chip.dataset.historyType, chip.dataset.historyQuery);
+          return;
+        }
+
+        applyHistoryEntry(chip.dataset.historyType, chip.dataset.historyQuery);
+      });
+      historyTags?.addEventListener('keydown', (event) => {
+        const chip = event.target.closest('[data-rm-history-chip]');
+        if (!chip || (event.key !== 'Enter' && event.key !== ' ')) return;
+        event.preventDefault();
+        applyHistoryEntry(chip.dataset.historyType, chip.dataset.historyQuery);
+      });
+      clearHistoryButton?.addEventListener('click', () => {
+        searchHistory = [];
+        renderHistory();
+      });
+
+      document.querySelectorAll('[data-rm-add-visit]').forEach((button) => {
+        button.addEventListener('click', () => openVisitModalForPatient(button));
+      });
+
+      document.querySelectorAll('details[data-component="guide-select"][data-sync-control]').forEach((dropdown) => {
+        dropdown.querySelectorAll('.dropdown-option').forEach((option) => {
+          option.addEventListener('click', () => {
+            const target = document.getElementById(dropdown.dataset.syncControl);
+            const value = option.dataset.selectValue || option.textContent.trim();
+            if (target) {
+              target.value = value;
+              target.dispatchEvent(new Event('input', { bubbles: true }));
+              target.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+          });
+        });
+      });
+
+      document.querySelectorAll('input[name="visitTypeRadio"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          const target = document.getElementById('visitType');
+          if (target && radio.checked) target.value = radio.value;
+        });
+      });
+      document.querySelector('[data-verify-bpjs]')?.addEventListener('click', startBpjsVerification);
+      document.querySelectorAll('[data-return-visit-form]').forEach((button) => button.addEventListener('click', () => {
+        if (bpjsTimer) window.clearTimeout(bpjsTimer);
+        bpjsTimer = null;
+        openModal('visitModal');
+      }));
+      document.querySelector('[data-continue-verified-visit]')?.addEventListener('click', () => {
+        setBpjsVerificationState('verified');
+        openModal('visitModal');
+      });
+      document.querySelector('[data-continue-manual-visit]')?.addEventListener('click', () => {
+        setBpjsVerificationState('manual');
+        openModal('visitModal');
+      });
+      document.querySelector('[data-save-visit]')?.addEventListener('click', () => {
+        if (!bpjsVerificationState) return;
+        openVisitDetail(bpjsVerificationState === 'manual' ? 'manual' : 'verified');
+      });
+      document.querySelector('[data-open-ticket-print]')?.addEventListener('click', () => {
+        updateVisitResult(visitResultMode);
+        openModal('ticketPrintModal');
+      });
+      document.querySelector('[data-return-visit-detail]')?.addEventListener('click', () => {
+        openModal('visitDetailModal');
+      });
+      document.querySelectorAll('[data-print-ticket], [data-print-ticket-success]').forEach((button) => {
+        button.addEventListener('click', () => openModal('ticketPrintSuccessModal'));
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((button) => button.addEventListener('click', closeModals));
+      backdrop?.addEventListener('click', closeModals);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModals();
+      });
+
+      document.querySelector('[data-rm-export]')?.addEventListener('click', () => {
+        window.showToast?.({ type: 'success', title: 'Export Excel diproses', message: 'Data profil RM pasien siap diunduh.' });
+      });
+
+      renderHistory();
+      applyFilter();
+    })();
+  </script>
+</body>
+</html>

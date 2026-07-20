@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Normalisasi teks tabel
+   Hanya untuk komponen table aplikasi. Tabel dokumentasi guide dipindah ke
+   assets/guide-pages.css agar tidak mempengaruhi halaman operasional.
+   ========================================================================== */
+
+.data-table th .sort,
+.data-table td strong,
+.data-table td small,
+.data-table td p,
+.data-table td a,
+.data-table td > span:not(.badge) {
+  @apply text-[color:var(--text-primary)];
+}
+
+.data-table thead th,
+table.data-table thead th {
+  @apply text-[color:var(--text-primary)] text-body-sm;
+}

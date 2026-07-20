@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard · SIMRS ZAIDAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="dashboard-app">
+  <div class="layout-preview dashboard-layout" id="dashboardLayout">
+    <aside class="app-sidebar" id="dashboardSidebar" aria-label="Sidebar dashboard SIMRS">
+      <div class="sidebar-head">
+        <a class="brand-lockup" href="30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+<img class="brand-logo-full" alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+<img class="brand-logo-icon" alt="SIMRS ZAIDAN icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+      </div>
+
+      <div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+        <span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+        <span class="sidebar-user-meta">
+          <span class="sidebar-user-name">Superadmin</span>
+          <span class="sidebar-user-role">Super Admin</span>
+        </span>
+      </div>
+
+      <nav class="sidebar-section" aria-label="Menu utama SIMRS">
+        <a class="nav-item active" data-tooltip="Dashboard" href="30-dashboard.html">
+          <span class="nav-icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Admin">
+            <span class="nav-icon"><i class="fa-solid fa-user-gear" aria-hidden="true"></i></span>
+            <span class="nav-label">Admin</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../admin/50-users.html" data-route="/admin/users">Daftar User</a>
+            <a class="nav-subitem" href="../admin/51-role-permission.html" data-route="/admin/roles">Role &amp; Permission</a>
+            <a class="nav-subitem" href="../master/40-unit.html" data-route="/admin/units">Unit / Poli</a>
+            <a class="nav-subitem" href="../master/41-karyawan.html" data-route="/admin/employees">Karyawan</a>
+            <a class="nav-subitem" href="../master/42-jadwal-dokter.html" data-route="/admin/doctor-schedules">Jadwal Dokter</a>
+            <a class="nav-subitem" href="../master/43-kamar.html" data-route="/admin/rooms">Kamar</a>
+            <a class="nav-subitem" href="../master/44-penjamin.html" data-route="/admin/insurance">Penjamin</a>
+            <a class="nav-subitem" href="../master/45-tarif.html" data-route="/admin/tariffs">Tarif</a>
+            <a class="nav-subitem" href="#" data-route="/admin/hospital-config">Konfigurasi RS</a>
+            <a class="nav-subitem" href="#" data-route="/admin/printer-config">Printer</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Pendaftaran">
+            <span class="nav-icon"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></span>
+            <span class="nav-label">Pendaftaran</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+            <a class="nav-subitem" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new">Pasien Baru</a>
+            <a class="nav-subitem" href="#" data-route="/registration/visits/new">Buat Kunjungan</a>
+            <a class="nav-subitem" href="#" data-route="/registration/queue">Monitor Antrean</a>
+            <a class="nav-subitem" href="33-monitor-display-loket.html" data-route="/registration/display">Display TV Antrean</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rekam Medis">
+            <span class="nav-icon"><i class="fa-solid fa-notes-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Rekam Medis</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../emr/70-rekam-medis.html" data-route="/emr/search">Cari RM Pasien</a>
+            <a class="nav-subitem" href="../emr/70-rekam-medis.html" data-route="/emr/patients/:id">Profil RM Terpadu</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rawat Jalan">
+            <span class="nav-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></span>
+            <span class="nav-label">Rawat Jalan</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/outpatient">Dashboard Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/queue">Antrean Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/visits/:id">Pemeriksaan</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Farmasi">
+            <span class="nav-icon"><i class="fa-solid fa-prescription-bottle-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Farmasi</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/pharmacy">Antrian Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/prescriptions/:id">Validasi Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/dispensing/:id">Dispensing</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/labels/:id">Cetak Etiket</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Kasir">
+            <span class="nav-icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></span>
+            <span class="nav-label">Kasir</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/billing">Pasien Siap Bayar</a>
+            <a class="nav-subitem" href="#" data-route="/billing/:visitId/receipt">Kwitansi</a>
+            <a class="nav-subitem" href="#" data-route="/billing/void">Void Billing</a>
+            <a class="nav-subitem" href="#" data-route="/billing/report">Laporan Kasir</a>
+          </div>
+        </details>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+</aside>
+
+    <div class="app-main">
+      <header class="app-header">
+        <button class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button" aria-label="Tutup sidebar" aria-expanded="true" aria-controls="dashboardSidebar">
+          <i class="fa-solid fa-bars topbar-line-icon" aria-hidden="true"></i>
+        </button>
+<a class="mobile-header-brand" href="30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+  <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN">
+</a>
+
+        <div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+          <span class="field-icon" aria-hidden="true">
+            <i class="fa-solid fa-magnifying-glass topbar-line-icon" aria-hidden="true"></i>
+          </span>
+          <input class="input with-left with-right" id="globalSearchInput" type="search" placeholder="Cari pasien, jadwal, dokter..." aria-label="Cari pasien, jadwal, dokter" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="globalSearchSuggestions" />
+          <span class="kbd-hint" aria-hidden="true">⌘ K</span>
+          <div class="doctor-autocomplete-panel" id="globalSearchSuggestions" role="listbox" aria-label="Saran pencarian">
+            <div class="dropdown-group-label" data-suggestion-group="recent">Terbaru</div>
+            <button class="dropdown-option active" type="button" role="option" data-search-suggestion data-suggestion-group="recent" data-search-value="Ayu Lestari · RM-10234" data-search-text="ayu lestari rm-10234 pasien rawat inap melati 203 recent">
+              <span class="option-meta"><strong>Ayu Lestari · RM-10234</strong><small>Pasien rawat inap · Ruang Melati 203</small></span>
+              <span class="option-right">Pasien</span>
+            </button>
+
+            <div class="dropdown-group-label" data-suggestion-group="suggestion">Saran</div>
+            <button class="dropdown-option" type="button" role="option" data-search-suggestion data-suggestion-group="suggestion" data-search-value="Dr. Bima Pratama" data-search-text="dr bima pratama dokter penyakit dalam jadwal praktik poli">
+              <span class="option-meta"><strong>Dr. Bima Pratama</strong><small>Dokter Penyakit Dalam · Jadwal praktik hari ini</small></span>
+              <span class="option-right">Dokter</span>
+            </button>
+            <button class="dropdown-option" type="button" role="option" data-search-suggestion data-suggestion-group="suggestion" data-search-value="Jadwal Praktik" data-search-text="jadwal praktik dokter poli kalender shift appointment">
+              <span class="option-meta"><strong>Jadwal Praktik</strong><small>Kelola jadwal dokter dan poli</small></span>
+              <span class="option-right">Menu</span>
+            </button>
+            <button class="dropdown-option" type="button" role="option" data-search-suggestion data-suggestion-group="suggestion" data-search-value="Ruang Melati 203" data-search-text="ruang melati 203 kamar tersedia bed rawat inap">
+              <span class="option-meta"><strong>Ruang Melati 203</strong><small>Kamar tersedia · Rawat inap</small></span>
+              <span class="option-right">Kamar</span>
+            </button>
+
+            <div class="autocomplete-empty" hidden>Tidak ada hasil yang cocok</div>
+            <div class="dropdown-footer"><span>Gunakan ↑ ↓ untuk navigasi</span><span>Enter untuk pilih</span></div>
+          </div>
+        </div>
+
+        <div class="topbar-spacer" aria-hidden="true"></div>
+
+        <div class="header-actions" aria-label="Aksi header">
+          
+          
+          
+          <details class="ds-dropdown" data-component="topbar-dropdown">
+            <summary class="icon-btn topbar-icon" aria-label="Buka menu notifikasi">
+              <i class="fa-regular fa-bell" aria-hidden="true"></i>
+              <span class="notification-dot">4</span>
+            </summary>
+            <div class="dropdown-panel compact" style="right:0; left:auto; width:320px;" role="menu" aria-label="Menu notifikasi">
+              <div class="dropdown-group-label">Notifikasi</div>
+              <button class="dropdown-option active" type="button" role="menuitem"><span class="option-meta">Daftar tunggu meningkat<small>8 pasien butuh follow-up</small></span><span class="option-right"><span class="badge badge-warning badge-xs">Tinggi</span></span></button>
+              <button class="dropdown-option" type="button" role="menuitem"><span class="option-meta">Kamar tersedia<small>Ruang Melati 203 kosong</small></span><span class="option-right">Baru</span></button>
+              <button class="dropdown-option" type="button" role="menuitem"><span class="option-meta">Approval tertunda<small>2 permintaan perubahan jadwal</small></span></button>
+              <div class="dropdown-footer"><span>Tandai semua dibaca</span><span>Lihat semua</span></div>
+            </div>
+          </details>
+
+          <details class="ds-dropdown" data-component="topbar-dropdown">
+            <summary class="profile-menu" aria-label="Buka menu profil superadmin">
+              <span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+              <span class="profile-copy"><span class="profile-name">Superadmin</span><span class="profile-role">Super Admin</span></span>
+              <i class="fa-solid fa-chevron-down topbar-line-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="dropdown-panel compact" style="right:0; left:auto; width:240px;" role="menu" aria-label="Menu profil">
+              <div class="dropdown-group-label">Akun</div>
+              <button class="dropdown-option selected" type="button" role="menuitem"><span class="option-meta">Superadmin<small>Super Admin</small></span></button>
+              <button class="dropdown-option" type="button" role="menuitem"><span class="option-meta">Pengaturan<small>Role dan akses</small></span></button>
+              <a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="dashboard-content" aria-label="Konten dashboard operasional rumah sakit">
+          <div class="dashboard-hero-head">
+            <div>
+              <h1 class="text-h2 page-title" id="dashboardGreeting">Selamat Pagi, Dr. Ahmad <span class="dashboard-greeting-icon" aria-hidden="true"><i class="fa-solid fa-hand-holding-heart"></i></span></h1>
+              <p class="text-body-lg muted">Status Operasional Rumah Sakit Hari Ini</p>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Ringkasan metrik utama">
+            <article class="metric-card card is-blue">
+              <span class="metric-icon is-blue" aria-hidden="true">
+                <i class="fa-solid fa-users"></i>
+              </span>
+              <strong class="metric-value text-body-lg font-bold">2.786</strong>
+              <span class="metric-label text-body-md muted">Total Kunjungan</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 44 L18 28 L34 34 L52 18 L70 22 L88 10 L106 16 L124 8 L136 12 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 44 L18 28 L34 34 L52 18 L70 22 L88 10 L106 16 L124 8 L136 12"></path>
+                  <circle class="spark-dot" cx="124" cy="8" r="3"></circle>
+                </svg>
+              </span>
+              <span class="metric-trend is-positive text-body-sm font-medium">
+                <i class="fa-solid fa-chart-line"></i>
+                12.5% dari kemarin
+              </span>
+            </article>
+
+            <article class="metric-card card is-green">
+              <span class="metric-icon is-green" aria-hidden="true">
+                <i class="fa-solid fa-money-bill-wave"></i>
+              </span>
+              <strong class="metric-value text-body-lg font-bold">Rp 554.700.000</strong>
+              <span class="metric-label text-body-md muted">Pendapatan Hari Ini</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 40 L18 38 L34 30 L52 34 L70 24 L88 28 L106 18 L124 12 L136 14 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 40 L18 38 L34 30 L52 34 L70 24 L88 28 L106 18 L124 12 L136 14"></path>
+                  <circle class="spark-dot" cx="124" cy="12" r="3"></circle>
+                </svg>
+              </span>
+              <span class="metric-trend is-positive text-body-sm font-medium">
+                <i class="fa-solid fa-chart-line"></i>
+                8.3% dari kemarin
+              </span>
+            </article>
+
+            <article class="metric-card card is-indigo">
+              <span class="metric-icon is-indigo" aria-hidden="true">
+                <i class="fa-solid fa-bed"></i>
+              </span>
+              <strong class="metric-value text-body-lg font-bold">82%</strong>
+              <span class="metric-label text-body-md muted">BOR (Bed Occupancy)</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 32 L18 24 L34 20 L52 22 L70 18 L88 14 L106 16 L124 12 L136 10 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 32 L18 24 L34 20 L52 22 L70 18 L88 14 L106 16 L124 12 L136 10"></path>
+                  <circle class="spark-dot" cx="124" cy="12" r="3"></circle>
+                </svg>
+              </span>
+              <span class="metric-trend is-positive text-body-sm font-medium">
+                <i class="fa-solid fa-chart-line"></i>
+                5% dari kemarin
+              </span>
+            </article>
+
+            <article class="metric-card card is-warning">
+              <span class="metric-icon is-warning" aria-hidden="true">
+                <i class="fa-solid fa-list-check"></i>
+              </span>
+              <strong class="metric-value text-body-lg font-bold">158</strong>
+              <span class="metric-label text-body-md muted">Antrian Aktif</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 36 L18 30 L34 26 L52 18 L70 28 L88 24 L106 16 L124 22 L136 20 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 36 L18 30 L34 26 L52 18 L70 28 L88 24 L106 16 L124 22 L136 20"></path>
+                  <circle class="spark-dot" cx="124" cy="22" r="3"></circle>
+                </svg>
+              </span>
+              <a class="metric-link btn btn-ghost btn-sm" href="#queueStats">Lihat Detail</a>
+            </article>
+
+            <article class="metric-card card is-danger">
+              <span class="metric-icon is-danger" aria-hidden="true">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </span>
+              <strong class="metric-value text-body-lg font-bold">7</strong>
+              <span class="metric-label text-body-md muted">Peringatan Kritis</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 18 L18 16 L34 20 L52 24 L70 28 L88 22 L106 18 L124 14 L136 12 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 18 L18 16 L34 20 L52 24 L70 28 L88 22 L106 18 L124 14 L136 12"></path>
+                  <circle class="spark-dot" cx="124" cy="14" r="3"></circle>
+                </svg>
+              </span>
+              <a class="metric-link btn btn-ghost btn-sm" href="#importantNotifications">Lihat Detail</a>
+            </article>
+          </div>
+
+          <section class="dashboard-shortcuts-section" aria-label="Pilih menu aksi cepat SIMRS">
+            <div class="dashboard-widget-head shortcut-head">
+              <div class="dashboard-title-stack">
+                <div class="dashboard-title-inline">
+                  <h2 class="text-h4">Pilih Menu Aksi Cepat</h2>
+                  <span class="info-dot" tabindex="0" aria-label="Menu aksi cepat yang sering digunakan" data-tooltip="Pilih menu aksi cepat untuk membuka fitur prioritas tanpa mencari di sidebar.">i</span>
+                </div>
+              </div>
+              <span class="badge badge-primary badge-sm"><span class="badge-dot"></span>7 Aksi Cepat</span>
+            </div>
+
+            <div class="shortcut-grid">
+              <a class="shortcut-card card is-blue" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new" aria-label="Buka menu pendaftaran pasien baru">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Pendaftaran Pasien</strong>
+                </span>
+              </a>
+
+              <a class="shortcut-card card is-warning" href="#queueStats" aria-label="Buka statistik dan monitor antrean poli">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-list-check"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Antrean Poli</strong>
+                </span>
+              </a>
+
+              <a class="shortcut-card card is-info" href="#" data-route="/laboratory/results" aria-label="Buka menu hasil laboratorium">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-vial-circle-check"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Laboratorium</strong>
+                </span>
+              </a>
+
+
+              <a class="shortcut-card card is-teal" href="../emr/70-rekam-medis.html" data-route="/emr/search" aria-label="Buka pencarian rekam medis pasien">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-notes-medical"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Cari Rekam Medis</strong>
+                </span>
+              </a>
+
+              <a class="shortcut-card card is-green" href="#" data-route="/pharmacy" aria-label="Buka menu farmasi dan antrian resep">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Farmasi</strong>
+                </span>
+              </a>
+
+              <a class="shortcut-card card is-blue" href="#" data-route="/billing" aria-label="Buka menu billing dan kasir">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-cash-register"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">Kasir / Billing</strong>
+                </span>
+              </a>
+
+              <a class="shortcut-card card is-danger" href="#" data-route="/emergency/triage" aria-label="Buka menu IGD triage prioritas">
+                <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-truck-medical"></i></span>
+                <span class="shortcut-copy">
+                  <strong class="text-body-md font-bold">IGD Triage</strong>
+                </span>
+              </a>
+            </div>
+          </section>
+
+
+          <section class="integration-status-section" aria-label="Status integrasi eksternal SIMRS">
+            <article class="integration-panel card">
+              <div class="dashboard-widget-head integration-head">
+                <div class="dashboard-title-inline">
+                  <h2 class="text-h4">Status Integrasi</h2>
+                  <span class="info-dot" tabindex="0" aria-label="Informasi status integrasi" data-tooltip="Memantau koneksi integrasi eksternal seperti SatuSehat, BPJS, payment, dan antrean agar gangguan cepat terlihat.">i</span>
+                </div>
+                <span class="badge badge-success badge-sm">2 Sistem OK</span>
+              </div>
+
+              <div class="integration-status-grid">
+                <article class="integration-card is-satusehat" aria-label="Status integrasi SatuSehat terhubung">
+                  <span class="integration-mark is-satusehat" aria-hidden="true">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                  </span>
+                  <div class="integration-copy">
+                    <div class="integration-title-row">
+                      <h3 class="text-body-lg font-bold">SatuSehat</h3>
+                      <span class="integration-status"><span class="legend-dot is-green"></span>Terhubung</span>
+                    </div>
+                    <div class="integration-sync">
+                      <span class="text-body-sm muted">Terakhir sinkronisasi</span>
+                      <strong class="text-body-sm">26 Mei 2024, 10:15 WIB</strong>
+                    </div>
+                  </div>
+                  <span class="badge badge-success badge-sm">OK</span>
+                </article>
+
+                <article class="integration-card is-vclaim" aria-label="Status integrasi BPJS VClaim terhubung">
+                  <span class="integration-mark is-vclaim" aria-hidden="true">
+                    <i class="fa-solid fa-shield-heart"></i>
+                  </span>
+                  <div class="integration-copy">
+                    <div class="integration-title-row">
+                      <h3 class="text-body-lg font-bold">BPJS VClaim</h3>
+                      <span class="integration-status"><span class="legend-dot is-green"></span>Terhubung</span>
+                    </div>
+                    <div class="integration-sync">
+                      <span class="text-body-sm muted">Terakhir sinkronisasi</span>
+                      <strong class="text-body-sm">26 Mei 2024, 10:18 WIB</strong>
+                    </div>
+                  </div>
+                  <span class="badge badge-success badge-sm">OK</span>
+                </article>
+              </div>
+            </article>
+          </section>
+
+        <section class="dashboard-workspace" aria-label="Ringkasan operasional detail">
+          <article class="dashboard-widget card queue-widget" id="queueStats">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Statistik Antrian</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi statistik antrian" data-tooltip="Ringkasan antrean poli hari ini, termasuk filter unit, status panggilan, dan kepadatan layanan.">i</span>
+              </div>
+            </div>
+
+            <div class="filter-grid" aria-label="Filter antrian">
+              <div class="field">
+                <label for="queuePoliFilter">Poli</label>
+                <details class="ds-dropdown ds-select" data-component="custom-select" data-select-name="queuePoliFilter">
+                  <summary class="dropdown-trigger is-sm" id="queuePoliFilter" aria-label="Filter poli antrian"><span data-select-text>Semua</span></summary>
+                  <div class="dropdown-panel compact" role="listbox" aria-labelledby="queuePoliFilter">
+                  <button class="dropdown-option selected active" type="button" role="option" data-select-option data-value="Semua" aria-selected="true">Semua</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="Poli Umum" aria-selected="false">Poli Umum</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="Poli Anak" aria-selected="false">Poli Anak</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="Poli Penyakit Dalam" aria-selected="false">Poli Penyakit Dalam</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="Poli Kandungan" aria-selected="false">Poli Kandungan</button>
+                  </div>
+                </details>
+              </div>
+              <div class="field">
+                <label for="queueDoctorFilter">Dokter</label>
+                <details class="ds-dropdown ds-select" data-component="custom-select" data-select-name="queueDoctorFilter">
+                  <summary class="dropdown-trigger is-sm" id="queueDoctorFilter" aria-label="Filter dokter antrian"><span data-select-text>Semua</span></summary>
+                  <div class="dropdown-panel compact" role="listbox" aria-labelledby="queueDoctorFilter">
+                  <button class="dropdown-option selected active" type="button" role="option" data-select-option data-value="Semua" aria-selected="true">Semua</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="dr. Ahmad Pratama, Sp.PD" aria-selected="false">dr. Ahmad Pratama, Sp.PD</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="dr. Rina Marlina, Sp.OG" aria-selected="false">dr. Rina Marlina, Sp.OG</button>
+                  <button class="dropdown-option" type="button" role="option" data-select-option data-value="dr. Dimas Prasetyo, Sp.P" aria-selected="false">dr. Dimas Prasetyo, Sp.P</button>
+                  </div>
+                </details>
+              </div>
+              <div class="field">
+                <label for="queueDateFilter">Tanggal</label>
+                <details class="ds-dropdown ds-datepicker" data-component="datepicker" data-datepicker-name="queueDateFilter">
+                  <summary class="dropdown-trigger is-sm" id="queueDateFilterTrigger" aria-label="Filter tanggal antrian"><span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-datepicker-text>20 Mei 2025</span></span></summary>
+                  <div class="dropdown-panel compact datepicker-panel" role="dialog" aria-labelledby="queueDateFilterTrigger">
+                    <div class="calendar-widget">
+                  <div class="calendar-head"><button class="icon-btn" type="button" aria-label="Bulan sebelumnya">‹</button><div class="calendar-title">Mei 2025</div><button class="icon-btn" type="button" aria-label="Bulan berikutnya">›</button></div>
+                  <div class="calendar-grid">
+                    <div class="calendar-day">Sen</div><div class="calendar-day">Sel</div><div class="calendar-day">Rab</div><div class="calendar-day">Kam</div><div class="calendar-day">Jum</div><div class="calendar-day">Sab</div><div class="calendar-day">Min</div>
+                    <button class="calendar-date muted-date" type="button" data-datepicker-day data-value="2025-04-28" data-label="28 April 2025">28</button>
+                    <button class="calendar-date muted-date" type="button" data-datepicker-day data-value="2025-04-29" data-label="29 April 2025">29</button>
+                    <button class="calendar-date muted-date" type="button" data-datepicker-day data-value="2025-04-30" data-label="30 April 2025">30</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-01" data-label="1 Mei 2025">1</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-02" data-label="2 Mei 2025">2</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-03" data-label="3 Mei 2025">3</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-04" data-label="4 Mei 2025">4</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-05" data-label="5 Mei 2025">5</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-06" data-label="6 Mei 2025">6</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-07" data-label="7 Mei 2025">7</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-08" data-label="8 Mei 2025">8</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-09" data-label="9 Mei 2025">9</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-10" data-label="10 Mei 2025">10</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-11" data-label="11 Mei 2025">11</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-12" data-label="12 Mei 2025">12</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-13" data-label="13 Mei 2025">13</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-14" data-label="14 Mei 2025">14</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-15" data-label="15 Mei 2025">15</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-16" data-label="16 Mei 2025">16</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-17" data-label="17 Mei 2025">17</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-18" data-label="18 Mei 2025">18</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-19" data-label="19 Mei 2025">19</button>
+                    <button class="calendar-date selected" type="button" data-datepicker-day data-value="2025-05-20" data-label="20 Mei 2025">20</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-21" data-label="21 Mei 2025">21</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-22" data-label="22 Mei 2025">22</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-23" data-label="23 Mei 2025">23</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-24" data-label="24 Mei 2025">24</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-25" data-label="25 Mei 2025">25</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-26" data-label="26 Mei 2025">26</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-27" data-label="27 Mei 2025">27</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-28" data-label="28 Mei 2025">28</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-29" data-label="29 Mei 2025">29</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-30" data-label="30 Mei 2025">30</button>
+                    <button class="calendar-date" type="button" data-datepicker-day data-value="2025-05-31" data-label="31 Mei 2025">31</button>
+                    <button class="calendar-date muted-date" type="button" data-datepicker-day data-value="2025-06-01" data-label="1 Juni 2025">1</button>
+                  </div>
+                  <div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-datepicker-today>Hari ini</button><button class="btn btn-sm" type="button" data-datepicker-apply>Pilih Tanggal</button></div>
+                </div>
+                  </div>
+                  <input type="hidden" id="queueDateFilter" name="queueDateFilter" value="2025-05-20" data-datepicker-value />
+                </details>
+              </div>
+            </div>
+
+            <div class="queue-status-grid" aria-label="Status antrian">
+              <article class="queue-stat is-blue">
+                <span class="text-body-md font-semibold">Menunggu</span>
+                <strong class="text-body-lg font-bold">158</strong>
+                <i class="fa-regular fa-clock"></i>
+              </article>
+              <article class="queue-stat is-green">
+                <span class="text-body-md font-semibold">Dipanggil</span>
+                <strong class="text-body-lg font-bold">49</strong>
+                <i class="fa-solid fa-phone-volume"></i>
+              </article>
+              <article class="queue-stat is-indigo">
+                <span class="text-body-md font-semibold">Dilayani</span>
+                <strong class="text-body-lg font-bold">79</strong>
+                <i class="fa-solid fa-stethoscope"></i>
+              </article>
+              <article class="queue-stat is-teal">
+                <span class="text-body-md font-semibold">Selesai</span>
+                <strong class="text-body-lg font-bold">324</strong>
+                <i class="fa-solid fa-circle-check"></i>
+              </article>
+              <article class="queue-stat is-danger">
+                <span class="text-body-md font-semibold">Batal</span>
+                <strong class="text-body-lg font-bold">12</strong>
+                <i class="fa-solid fa-circle-xmark"></i>
+              </article>
+            </div>
+            <div class="chart-card" aria-label="Grafik tren antrian harian">
+              <svg class="line-chart js-line-chart" id="queueTrendChart" viewBox="0 0 720 260" role="img" aria-label="Grafik antrian dari jam 00 sampai 24" data-chart="queue-trend">
+                <g class="chart-grid" data-chart-grid></g>
+                <g class="chart-y-labels text-body-xs" data-chart-y-labels></g>
+                <g class="chart-crosshair-layer" data-chart-crosshair></g>
+                <g class="chart-series-layer" data-chart-series></g>
+                <g class="chart-point-layer" data-chart-points></g>
+                <g class="chart-hit-layer" data-chart-hit></g>
+                <g class="chart-x-labels text-body-xs" data-chart-x-labels></g>
+              </svg>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Detail Antrian
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="dashboard-widget card bed-widget">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Ketersediaan Bed</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi ketersediaan bed" data-tooltip="Menampilkan kapasitas bed, bed terisi, bed kosong, maintenance, dan indikator BOR rumah sakit.">i</span>
+              </div>
+            </div>
+
+            <div class="bed-summary">
+              <div class="donut-chart" tabindex="0" aria-label="BOR 82 persen" data-chart-tooltip-title="Ketersediaan Bed" data-chart-tooltip-lines="Total Bed: 410;Bed Terisi: 328;Bed Kosong: 72;Bed Maintenance: 10;BOR: 82%" data-chart-tooltip-colors="bar-blue;bar-green;bar-info;bar-warning;bar-indigo"><span class="text-body-lg font-bold">82%</span><small class="text-body-sm">BOR</small></div>
+              <div class="bed-legend">
+                <div><span class="legend-dot is-muted"></span><span class="text-body-md muted">Total Bed</span><strong class="text-body-md">410</strong></div>
+                <div><span class="legend-dot is-blue"></span><span class="text-body-md muted">Bed Terisi</span><strong class="text-body-md">328</strong></div>
+                <div><span class="legend-dot is-green"></span><span class="text-body-md muted">Bed Kosong</span><strong class="text-body-md">72</strong></div>
+                <div><span class="legend-dot is-warning"></span><span class="text-body-md muted">Bed Maintenance</span><strong class="text-body-md">10</strong></div>
+              </div>
+            </div>
+
+            <article class="card card-warning component-stack dashboard-status-alert" role="alert">
+              <div class="card-header">
+                <div class="card-title-row">
+                  <span class="card-tone-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                  <h3 class="card-title">Status BOR</h3>
+                </div>
+                <span class="badge badge-warning badge-xs">Tinggi</span>
+              </div>
+              <p class="card-text">BOR 82% mendekati kapasitas penuh. Pantau ruang prioritas dan estimasi pasien pulang.</p>
+            </article>
+
+            <div class="bed-mini-grid">
+              <article class="mini-stat"><span class="text-body-sm muted">Siap Pakai</span><strong class="text-body-lg font-bold">72</strong><small class="text-body-sm muted">bed tersedia</small></article>
+              <article class="mini-stat"><span class="text-body-sm muted">Pulang</span><strong class="text-body-lg font-bold">18</strong><small class="text-body-sm muted">estimasi hari ini</small></article>
+              <article class="mini-stat"><span class="text-body-sm muted">Menunggu</span><strong class="text-body-lg font-bold">9</strong><small class="text-body-sm muted">butuh kamar</small></article>
+            </div>
+
+            <div class="widget-meta-row">
+              <span class="text-body-sm muted font-semibold">Update terakhir</span>
+              <strong class="text-body-sm">02:42 WIB</strong>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Detail Bed
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="dashboard-widget card notification-widget" id="importantNotifications">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Notifikasi Penting</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi notifikasi penting" data-tooltip="Daftar alert operasional prioritas seperti hasil lab kritis, klaim bermasalah, stok menipis, dan eskalasi layanan.">i</span>
+              </div>
+            </div>
+
+            <div class="notification-list" aria-label="Daftar notifikasi penting">
+              <article class="notification-item">
+                <span class="notification-icon is-danger" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                <span class="notification-copy"><strong class="text-body-md font-bold">Critical Lab Result</strong><small class="text-body-md muted">Pasien: Budi Santoso</small></span>
+                <span class="notification-time text-body-lg muted">08:25</span><span class="notification-status-dot is-danger"></span>
+              </article>
+
+              <article class="notification-item">
+                <span class="notification-icon is-warning" aria-hidden="true"><i class="fa-solid fa-bed"></i></span>
+                <span class="notification-copy"><strong class="text-body-md font-bold">Bed Penuh - ICU</strong><small class="text-body-md muted">Tingkat okupansi 100%</small></span>
+                <span class="notification-time text-body-lg muted">08:20</span><span class="notification-status-dot is-danger"></span>
+              </article>
+
+              <article class="notification-item">
+                <span class="notification-icon is-warning-soft" aria-hidden="true"><i class="fa-solid fa-pills"></i></span>
+                <span class="notification-copy"><strong class="text-body-md font-bold">Obat Hampir Habis</strong><small class="text-body-md muted">Paracetamol 500mg</small></span>
+                <span class="notification-time text-body-lg muted">08:15</span><span class="notification-status-dot is-warning"></span>
+              </article>
+
+              <article class="notification-item">
+                <span class="notification-icon is-blue" aria-hidden="true"><i class="fa-solid fa-file-lines"></i></span>
+                <span class="notification-copy"><strong class="text-body-md font-bold">Dokumen Belum Lengkap</strong><small class="text-body-md muted">3 dokumen perlu dilengkapi</small></span>
+                <span class="notification-time text-body-lg muted">07:50</span><span class="notification-status-dot is-blue"></span>
+              </article>
+
+              <article class="notification-item">
+                <span class="notification-icon is-indigo" aria-hidden="true"><i class="fa-solid fa-clipboard-check"></i></span>
+                <span class="notification-copy"><strong class="text-body-md font-bold">Approval Menunggu</strong><small class="text-body-md muted">5 approval menunggu</small></span>
+                <span class="notification-time text-body-lg muted">07:45</span><span class="notification-status-dot is-indigo"></span>
+              </article>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Semua Notifikasi
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </section>
+
+        <section class="dashboard-secondary-grid" aria-label="Aktivitas dan grafik kunjungan">
+          <article class="dashboard-widget card activity-widget">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Aktivitas Dokter</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi aktivitas dokter" data-tooltip="Ringkasan aktivitas dokter terbaru seperti visit, resep, instruksi perawatan, dan tindakan medis.">i</span>
+              </div>
+            </div>
+
+            <div class="activity-list" aria-label="Daftar aktivitas operasional terbaru">
+              <article class="activity-item">
+                <span class="notification-icon is-blue" aria-hidden="true">
+                  <i class="fa-solid fa-stethoscope"></i>
+                </span>
+                <span class="activity-copy">
+                  <strong class="text-body-md font-bold">Dr. Budi Santoso</strong>
+                  <small class="text-body-md muted">Menyelesaikan SOAP - Pasien: ...</small>
+                </span>
+                <span class="activity-time text-body-lg muted">08:21</span>
+                <span class="notification-status-dot is-green" aria-label="Selesai"></span>
+              </article>
+
+              <article class="activity-item">
+                <span class="notification-icon is-teal" aria-hidden="true">
+                  <i class="fa-solid fa-user-nurse"></i>
+                </span>
+                <span class="activity-copy">
+                  <strong class="text-body-md font-bold">Ns. Anna Fitri</strong>
+                  <small class="text-body-md muted">Update Vital Sign - Pasien: Sit...</small>
+                </span>
+                <span class="activity-time text-body-lg muted">08:24</span>
+                <span class="notification-status-dot is-green" aria-label="Selesai"></span>
+              </article>
+
+              <article class="activity-item">
+                <span class="notification-icon is-danger-soft" aria-hidden="true">
+                  <i class="fa-solid fa-pills"></i>
+                </span>
+                <span class="activity-copy">
+                  <strong class="text-body-md font-bold">Farmasi</strong>
+                  <small class="text-body-md muted">Dispensing Obat - Resep: R/2...</small>
+                </span>
+                <span class="activity-time text-body-lg muted">08:25</span>
+                <span class="notification-status-dot is-green" aria-label="Selesai"></span>
+              </article>
+
+              <article class="activity-item">
+                <span class="notification-icon is-blue" aria-hidden="true">
+                  <i class="fa-solid fa-wallet"></i>
+                </span>
+                <span class="activity-copy">
+                  <strong class="text-body-md font-bold">Kasir</strong>
+                  <small class="text-body-md muted">Invoice Dibayar - INV/2025/0...</small>
+                </span>
+                <span class="activity-time text-body-lg muted">08:27</span>
+                <span class="notification-status-dot is-green" aria-label="Selesai"></span>
+              </article>
+
+              <article class="activity-item">
+                <span class="notification-icon is-indigo" aria-hidden="true">
+                  <i class="fa-solid fa-database"></i>
+                </span>
+                <span class="activity-copy">
+                  <strong class="text-body-md font-bold">Admin Sistem</strong>
+                  <small class="text-body-md muted">Backup Database Berhasil</small>
+                </span>
+                <span class="activity-time text-body-lg muted">08:28</span>
+                <span class="notification-status-dot is-green" aria-label="Selesai"></span>
+              </article>
+            </div>
+          </article>
+
+          <article class="dashboard-widget card visit-widget">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Status Kunjungan Hari Ini</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi status kunjungan" data-tooltip="Distribusi kunjungan pasien hari ini berdasarkan total kunjungan, selesai, dalam proses, dan batal.">i</span>
+              </div>
+            </div>
+
+            <div class="visit-stat-grid" aria-label="Statistik kunjungan hari ini">
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">2,540</strong><small class="text-body-md muted">Total Kunjungan</small></span>
+              </article>
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-wheelchair"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">450</strong><small class="text-body-md muted">Rawat Jalan</small></span>
+                <i class="fa-solid fa-chevron-right visit-arrow"></i>
+              </article>
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-bed"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">120</strong><small class="text-body-md muted">Rawat Inap</small></span>
+                <i class="fa-solid fa-chevron-right visit-arrow"></i>
+              </article>
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-truck-medical"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">35</strong><small class="text-body-md muted">IGD</small></span>
+                <i class="fa-solid fa-chevron-right visit-arrow"></i>
+              </article>
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-user-plus"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">240</strong><small class="text-body-md muted">Pasien Baru</small></span>
+                <i class="fa-solid fa-chevron-right visit-arrow"></i>
+              </article>
+              <article class="visit-stat-card">
+                <span class="nav-icon" aria-hidden="true"><i class="fa-solid fa-user-check"></i></span>
+                <span class="visit-card-copy"><strong class="text-body-lg font-bold">2,300</strong><small class="text-body-md muted">Pasien Lama</small></span>
+              </article>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Detail Kunjungan
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <article class="dashboard-widget card graph-widget">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Grafik Kunjungan</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi grafik kunjungan" data-tooltip="Tren jumlah kunjungan pasien berdasarkan rentang hari, minggu, bulan, atau tahun untuk memantau traffic layanan.">i</span>
+              </div>
+            </div>
+
+            <div class="tab-pills" role="tablist" aria-label="Rentang waktu grafik kunjungan">
+              <button class="btn btn-primary btn-sm active" type="button" role="tab" aria-selected="true" data-visit-range="day">Hari</button>
+              <button class="btn btn-ghost btn-sm" type="button" role="tab" aria-selected="false" data-visit-range="week">Minggu</button>
+              <button class="btn btn-ghost btn-sm" type="button" role="tab" aria-selected="false" data-visit-range="month">Bulan</button>
+              <button class="btn btn-ghost btn-sm" type="button" role="tab" aria-selected="false" data-visit-range="year">Tahun</button>
+            </div>
+
+            <div class="chart-legend-row">
+              <span class="text-body-md muted"><i class="legend-dot is-blue"></i> Rawat Jalan</span>
+              <span class="text-body-md muted"><i class="legend-dot is-green"></i> Rawat Inap</span>
+            </div>
+            <div class="chart-card is-compact" aria-label="Grafik kunjungan rawat jalan dan rawat inap">
+              <svg class="line-chart visit-line-chart js-line-chart" id="visitTrendChart" viewBox="0 0 660 260" role="img" aria-label="Grafik kunjungan" data-chart="visit-trend">
+                <g class="chart-grid" data-chart-grid></g>
+                <g class="chart-y-labels text-body-xs" data-chart-y-labels></g>
+                <g class="chart-crosshair-layer" data-chart-crosshair></g>
+                <g class="chart-series-layer" data-chart-series></g>
+                <g class="chart-point-layer" data-chart-points></g>
+                <g class="chart-hit-layer" data-chart-hit></g>
+                <g class="chart-x-labels text-body-xs" data-chart-x-labels></g>
+              </svg>
+            </div>
+
+            <div class="dashboard-action-row dashboard-card-actions">
+              <button class="btn btn-outline btn-sm" type="button">
+                <i class="fa-solid fa-download"></i>
+                PNG
+              </button>
+              <button class="btn btn-outline btn-sm" type="button">
+                <i class="fa-solid fa-download"></i>
+                PDF
+              </button>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Detail Grafik
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </section>
+
+        <section class="dashboard-revenue-row" aria-label="Ringkasan pendapatan hari ini">
+          <article class="dashboard-widget card revenue-widget">
+            <div class="dashboard-widget-head">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Pendapatan Hari Ini</h2>
+                <span class="info-dot" tabindex="0" aria-label="Informasi pendapatan hari ini" data-tooltip="Ringkasan pendapatan harian dan breakdown rawat jalan, rawat inap, farmasi, laboratorium, serta radiologi.">i</span>
+              </div>
+            </div>
+
+            <div class="revenue-layout">
+              <div class="revenue-summary">
+                <span class="text-body-md muted">Total Pendapatan</span>
+                <strong class="text-body-lg font-bold">Rp 592.100.000</strong>
+                <span class="metric-trend is-positive text-body-sm font-medium">
+                  <i class="fa-solid fa-chart-line"></i>
+                  8.3% dari kemarin
+                </span>
+
+                <div class="revenue-legend" aria-label="Rincian sumber pendapatan">
+                  <div><span class="legend-dot is-blue"></span><span class="text-body-md muted">BPJS</span><strong class="text-body-md">Rp 250.000.000</strong><em class="text-body-md muted">(51.5%)</em></div>
+                  <div><span class="legend-dot is-green"></span><span class="text-body-md muted">Tunai</span><strong class="text-body-md">Rp 120.000.000</strong><em class="text-body-md muted">(24.7%)</em></div>
+                  <div><span class="legend-dot is-indigo"></span><span class="text-body-md muted">Asuransi</span><strong class="text-body-md">Rp 70.000.000</strong><em class="text-body-md muted">(14.4%)</em></div>
+                  <div><span class="legend-dot is-warning"></span><span class="text-body-md muted">Perusahaan</span><strong class="text-body-md">Rp 45.000.000</strong><em class="text-body-md muted">(9.4%)</em></div>
+                </div>
+              </div>
+              <div class="revenue-chart-wrap" aria-label="Grafik pendapatan per jam dalam juta rupiah">
+                <svg class="bar-chart js-bar-chart" id="revenueChart" viewBox="0 0 900 330" role="img" aria-label="Grafik pendapatan dari jam 00 sampai 24" data-chart="revenue-stack">
+                  <g class="chart-grid" data-chart-grid></g>
+                  <g class="chart-y-labels text-body-xs" data-chart-y-labels></g>
+                  <g class="stacked-bars" data-chart-bars></g>
+                  <g class="chart-hit-layer" data-chart-hit></g>
+                  <g class="chart-x-labels text-body-xs" data-chart-x-labels></g>
+                </svg>
+              </div>
+            </div>
+
+            <a class="dashboard-footer-link btn btn-ghost btn-sm" href="#">
+              Lihat Detail Billing
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    const dashboardLayout = document.getElementById('dashboardLayout');
+    const dashboardSidebar = document.getElementById('dashboardSidebar');
+    const dashboardSidebarButton = document.getElementById('dashboardSidebarButton');
+
+    function setSidebarCollapsed(isCollapsed) {
+      if (!dashboardLayout || !dashboardSidebar || !dashboardSidebarButton) return;
+      dashboardLayout.classList.toggle('is-sidebar-collapsed', isCollapsed);
+      dashboardSidebar.classList.toggle('compact', isCollapsed);
+      dashboardSidebarButton.setAttribute('aria-expanded', String(!isCollapsed));
+      dashboardSidebarButton.setAttribute('aria-label', isCollapsed ? 'Buka sidebar' : 'Tutup sidebar');
+    }
+
+    if (dashboardSidebarButton) {
+      dashboardSidebarButton.addEventListener('click', () => {
+        const isCollapsed = dashboardSidebar.classList.contains('compact');
+        setSidebarCollapsed(!isCollapsed);
+      });
+    }
+
+    const topbarDropdowns = Array.from(document.querySelectorAll('[data-component="topbar-dropdown"]'));
+
+    function closeTopbarDropdowns(activeDropdown = null) {
+      topbarDropdowns.forEach((dropdown) => {
+        if (dropdown !== activeDropdown) dropdown.removeAttribute('open');
+      });
+    }
+
+    topbarDropdowns.forEach((dropdown) => {
+      dropdown.addEventListener('toggle', () => {
+        if (dropdown.open) closeTopbarDropdowns(dropdown);
+      });
+
+      dropdown.querySelectorAll('.dropdown-option').forEach((option) => {
+        option.addEventListener('click', () => dropdown.removeAttribute('open'));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="topbar-dropdown"]')) closeTopbarDropdowns();
+    });
+
+
+    const customSelects = Array.from(document.querySelectorAll('[data-component="custom-select"]'));
+
+    function closeCustomSelects(activeSelect = null) {
+      customSelects.forEach((select) => {
+        if (select !== activeSelect) select.removeAttribute('open');
+      });
+    }
+
+    customSelects.forEach((select) => {
+      const triggerText = select.querySelector('[data-select-text]');
+      const options = Array.from(select.querySelectorAll('[data-select-option]'));
+
+      select.addEventListener('toggle', () => {
+        if (select.open) closeCustomSelects(select);
+      });
+
+      options.forEach((option) => {
+        option.addEventListener('click', () => {
+          const value = option.dataset.value || option.textContent.trim();
+          if (triggerText) triggerText.textContent = value;
+          options.forEach((item) => {
+            const active = item === option;
+            item.classList.toggle('selected', active);
+            item.classList.toggle('active', active);
+            item.setAttribute('aria-selected', String(active));
+          });
+          select.removeAttribute('open');
+        });
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="custom-select"]')) closeCustomSelects();
+    });
+
+
+    const datepickers = Array.from(document.querySelectorAll('[data-component="datepicker"]'));
+
+    function closeDatepickers(activePicker = null) {
+      datepickers.forEach((picker) => {
+        if (picker !== activePicker) picker.removeAttribute('open');
+      });
+    }
+
+    datepickers.forEach((picker) => {
+      const triggerText = picker.querySelector('[data-datepicker-text]');
+      const hiddenInput = picker.querySelector('[data-datepicker-value]');
+      const days = Array.from(picker.querySelectorAll('[data-datepicker-day]'));
+      const applyButton = picker.querySelector('[data-datepicker-apply]');
+
+      picker.addEventListener('toggle', () => {
+        if (picker.open) closeDatepickers(picker);
+      });
+
+      days.forEach((day) => {
+        day.addEventListener('click', () => {
+          const label = day.dataset.label || day.textContent.trim();
+          const value = day.dataset.value || '';
+          if (triggerText) triggerText.textContent = label;
+          if (hiddenInput) hiddenInput.value = value;
+          days.forEach((item) => item.classList.toggle('selected', item === day));
+        });
+      });
+
+      if (applyButton) {
+        applyButton.addEventListener('click', () => picker.removeAttribute('open'));
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="datepicker"]')) closeDatepickers();
+    });
+
+    const headerSearches = Array.from(document.querySelectorAll('[data-component="header-search-autocomplete"]'));
+
+    function closeHeaderSearches(activeSearch = null) {
+      headerSearches.forEach((search) => {
+        if (search === activeSearch) return;
+        const input = search.querySelector('input');
+        search.classList.remove('is-open');
+        if (input) input.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    headerSearches.forEach((search) => {
+      const input = search.querySelector('input');
+      const options = Array.from(search.querySelectorAll('[data-search-suggestion]'));
+      const groups = Array.from(search.querySelectorAll('[data-suggestion-group]:not([data-search-suggestion])'));
+      const emptyState = search.querySelector('.autocomplete-empty');
+      if (!input || !options.length) return;
+
+      function openSearch() {
+        closeTopbarDropdowns();
+        closeHeaderSearches(search);
+        search.classList.add('is-open');
+        input.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeSearch() {
+        search.classList.remove('is-open');
+        input.setAttribute('aria-expanded', 'false');
+      }
+
+      function visibleOptions() {
+        return options.filter((option) => !option.hidden);
+      }
+
+      function setActiveOption(nextOption) {
+        options.forEach((option) => option.classList.toggle('active', option === nextOption));
+      }
+
+      function filterOptions() {
+        const query = input.value.trim().toLowerCase();
+
+        options.forEach((option) => {
+          const searchText = option.dataset.searchText || option.textContent.toLowerCase();
+          option.hidden = query ? !searchText.includes(query) : false;
+        });
+
+        groups.forEach((group) => {
+          const groupName = group.dataset.suggestionGroup;
+          group.hidden = !options.some((option) => option.dataset.suggestionGroup === groupName && !option.hidden);
+        });
+
+        const visible = visibleOptions();
+        if (emptyState) emptyState.hidden = visible.length > 0;
+        setActiveOption(visible[0] || null);
+      }
+
+      function selectOption(option) {
+        if (!option || option.hidden) return;
+        input.value = option.dataset.searchValue || option.textContent.trim();
+        closeSearch();
+        input.focus();
+      }
+
+      input.addEventListener('focus', () => {
+        filterOptions();
+        openSearch();
+      });
+
+      input.addEventListener('input', () => {
+        filterOptions();
+        openSearch();
+      });
+
+      input.addEventListener('keydown', (event) => {
+        const visible = visibleOptions();
+        const activeIndex = visible.findIndex((option) => option.classList.contains('active'));
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          openSearch();
+          setActiveOption(visible[(activeIndex + 1) % visible.length] || visible[0]);
+        }
+
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          openSearch();
+          setActiveOption(visible[(activeIndex - 1 + visible.length) % visible.length] || visible[visible.length - 1]);
+        }
+
+        if (event.key === 'Enter' && search.classList.contains('is-open')) {
+          const activeOption = visible.find((option) => option.classList.contains('active'));
+          if (activeOption) {
+            event.preventDefault();
+            selectOption(activeOption);
+          }
+        }
+
+        if (event.key === 'Escape') closeSearch();
+      });
+
+      options.forEach((option) => {
+        option.addEventListener('mousedown', (event) => event.preventDefault());
+        option.addEventListener('click', () => selectOption(option));
+      });
+
+      filterOptions();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="header-search-autocomplete"]')) closeHeaderSearches();
+    });
+
+
+    const chartTooltip = document.createElement('div');
+    chartTooltip.className = 'chart-tooltip text-body-sm';
+    chartTooltip.hidden = true;
+    document.body.appendChild(chartTooltip);
+
+    function formatChartNumber(value) {
+      return new Intl.NumberFormat('id-ID').format(value);
+    }
+
+    function formatChartCurrencyMillion(value) {
+      return `Rp ${formatChartNumber(value)} juta`;
+    }
+
+    function moveChartTooltip(event) {
+      const offset = 14;
+      const tooltipRect = chartTooltip.getBoundingClientRect();
+      const nextX = Math.min(event.clientX + offset, window.innerWidth - tooltipRect.width - offset);
+      const nextY = Math.max(offset, event.clientY - tooltipRect.height - offset);
+      chartTooltip.style.left = `${nextX}px`;
+      chartTooltip.style.top = `${nextY}px`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function getTooltipColorClass(series) {
+      return series.tooltipClass || series.legendClass || series.className || series.pointClassName || 'bar-blue';
+    }
+
+    function renderTooltipLine(line) {
+      if (typeof line === 'string') {
+        return `<span class="chart-tooltip-line">${escapeHtml(line)}</span>`;
+      }
+
+      const colorClass = line.colorClass ? ` ${escapeHtml(line.colorClass)}` : '';
+      const totalClass = line.isTotal ? ' is-total' : '';
+      const dot = line.showDot === false
+        ? '<i class="chart-tooltip-dot is-empty" aria-hidden="true"></i>'
+        : `<i class="chart-tooltip-dot${colorClass}" aria-hidden="true"></i>`;
+
+      return `<span class="chart-tooltip-row${totalClass}">${dot}<span class="chart-tooltip-label">${escapeHtml(line.label || '')}</span><span class="chart-tooltip-value">${escapeHtml(line.value || '')}</span></span>`;
+    }
+
+    function showChartTooltip(event, title, lines) {
+      chartTooltip.innerHTML = `<strong>${escapeHtml(title)}</strong>${lines.map(renderTooltipLine).join('')}`;
+      chartTooltip.hidden = false;
+      moveChartTooltip(event);
+    }
+
+    function hideChartTooltip() {
+      chartTooltip.hidden = true;
+    }
+
+    function setSvgContent(layer, content = '') {
+      if (layer) layer.innerHTML = content;
+    }
+
+    function svgNode(name, attrs = {}) {
+      const node = document.createElementNS('http://www.w3.org/2000/svg', name);
+      Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+      return node;
+    }
+
+    function renderGrid(svg, plot, ticks) {
+      const grid = svg.querySelector('[data-chart-grid]');
+      setSvgContent(grid);
+      ticks.forEach((tick) => {
+        const y = plot.bottom - ((tick - plot.min) / (plot.max - plot.min)) * (plot.bottom - plot.top);
+        grid.appendChild(svgNode('line', { x1: plot.left, y1: y, x2: plot.right, y2: y }));
+      });
+    }
+
+    function renderYAxis(svg, plot, ticks, formatter = formatChartNumber, unitLabel = '') {
+      const labels = svg.querySelector('[data-chart-y-labels]');
+      setSvgContent(labels);
+      ticks.forEach((tick) => {
+        const y = plot.bottom - ((tick - plot.min) / (plot.max - plot.min)) * (plot.bottom - plot.top) + 4;
+        const text = svgNode('text', { x: plot.left - 18, y, 'text-anchor': 'end' });
+        text.textContent = formatter(tick);
+        labels.appendChild(text);
+      });
+      if (unitLabel) {
+        const unit = svgNode('text', { x: plot.left - 18, y: plot.top - 12, 'text-anchor': 'end' });
+        unit.textContent = unitLabel;
+        labels.appendChild(unit);
+      }
+    }
+
+    function renderXAxis(svg, plot, labels, labelEvery = 1) {
+      const labelLayer = svg.querySelector('[data-chart-x-labels]');
+      setSvgContent(labelLayer);
+      labels.forEach((label, index) => {
+        if (index % labelEvery !== 0) return;
+        const x = labels.length === 1 ? plot.left : plot.left + (index / (labels.length - 1)) * (plot.right - plot.left);
+        const text = svgNode('text', { x, y: plot.bottom + 26, 'text-anchor': 'middle' });
+        text.textContent = label;
+        labelLayer.appendChild(text);
+      });
+    }
+
+    function yScale(value, plot) {
+      return plot.bottom - ((value - plot.min) / (plot.max - plot.min)) * (plot.bottom - plot.top);
+    }
+
+    function renderLineChart(config) {
+      const svg = document.getElementById(config.id);
+      if (!svg) return;
+      const plot = config.plot;
+      renderGrid(svg, plot, config.ticks);
+      renderYAxis(svg, plot, config.ticks, config.yFormatter || formatChartNumber, config.unitLabel || '');
+      renderXAxis(svg, plot, config.labels, config.labelEvery || 1);
+
+      const seriesLayer = svg.querySelector('[data-chart-series]');
+      const pointLayer = svg.querySelector('[data-chart-points]');
+      const hitLayer = svg.querySelector('[data-chart-hit]');
+      const crosshairLayer = svg.querySelector('[data-chart-crosshair]');
+      setSvgContent(seriesLayer);
+      setSvgContent(pointLayer);
+      setSvgContent(hitLayer);
+      setSvgContent(crosshairLayer);
+
+      const crosshair = svgNode('line', {
+        class: 'chart-crosshair',
+        x1: plot.left,
+        y1: plot.top,
+        x2: plot.left,
+        y2: plot.bottom,
+      });
+      crosshairLayer.appendChild(crosshair);
+
+      const getX = (index) => config.labels.length === 1
+        ? plot.left
+        : plot.left + (index / (config.labels.length - 1)) * (plot.right - plot.left);
+
+      const pointGroups = [];
+      config.series.forEach((series) => {
+        const points = series.values.map((value, index) => `${getX(index)},${yScale(value, plot)}`).join(' ');
+        seriesLayer.appendChild(svgNode('polyline', { class: `chart-line ${series.className || ''}`.trim(), points }));
+
+        const group = svgNode('g', { class: `chart-points ${series.pointClassName || ''}`.trim() });
+        series.values.forEach((value, index) => {
+          group.appendChild(svgNode('circle', {
+            class: 'chart-point',
+            cx: getX(index),
+            cy: yScale(value, plot),
+            r: 5,
+            tabindex: 0,
+            'aria-label': `${series.label} ${config.labels[index]} ${formatChartNumber(value)}`,
+          }));
+        });
+        pointLayer.appendChild(group);
+        pointGroups.push(group);
+      });
+
+      config.labels.forEach((label, index) => {
+        const x = getX(index);
+        const hit = svgNode('rect', {
+          class: 'chart-hit-area',
+          x: x - Math.max(18, (plot.right - plot.left) / config.labels.length / 2),
+          y: plot.top,
+          width: Math.max(36, (plot.right - plot.left) / config.labels.length),
+          height: plot.bottom - plot.top,
+          tabindex: 0,
+          'aria-label': `${config.title} ${label}`,
+        });
+
+        const lines = () => config.series.map((series) => ({
+          label: series.label,
+          value: series.format ? series.format(series.values[index]) : formatChartNumber(series.values[index]),
+          colorClass: getTooltipColorClass(series),
+        }));
+        const activate = (event) => {
+          crosshair.setAttribute('x1', x);
+          crosshair.setAttribute('x2', x);
+          crosshair.classList.add('is-active');
+          pointGroups.forEach((group) => {
+            Array.from(group.children).forEach((point, pointIndex) => point.classList.toggle('is-active', pointIndex === index));
+          });
+          showChartTooltip(event, label, lines());
+        };
+        const deactivate = () => {
+          crosshair.classList.remove('is-active');
+          pointGroups.forEach((group) => Array.from(group.children).forEach((point) => point.classList.remove('is-active')));
+          hideChartTooltip();
+        };
+
+        hit.addEventListener('mouseenter', activate);
+        hit.addEventListener('mousemove', moveChartTooltip);
+        hit.addEventListener('mouseleave', deactivate);
+        hit.addEventListener('focus', (event) => activate(event));
+        hit.addEventListener('blur', deactivate);
+        hitLayer.appendChild(hit);
+      });
+    }
+
+    function renderStackedBarChart(config) {
+      const svg = document.getElementById(config.id);
+      if (!svg) return;
+      const plot = config.plot;
+      renderGrid(svg, plot, config.ticks);
+      renderYAxis(svg, plot, config.ticks, config.yFormatter || formatChartNumber, config.unitLabel || '');
+      renderXAxis(svg, plot, config.labels, config.labelEvery || 1);
+
+      const barsLayer = svg.querySelector('[data-chart-bars]');
+      const hitLayer = svg.querySelector('[data-chart-hit]');
+      setSvgContent(barsLayer);
+      setSvgContent(hitLayer);
+
+      const step = (plot.right - plot.left) / config.labels.length;
+      const barWidth = Math.min(config.barWidth || 28, step * 0.34);
+
+      config.labels.forEach((label, index) => {
+        const centerX = plot.left + step * index + step / 2;
+        let stackTopValue = 0;
+        const bars = [];
+
+        config.series.forEach((series) => {
+          const value = series.values[index];
+          const yTop = yScale(stackTopValue + value, plot);
+          const yBottom = yScale(stackTopValue, plot);
+          const bar = svgNode('rect', {
+            class: series.className,
+            x: centerX - barWidth / 2,
+            y: yTop,
+            width: barWidth,
+            height: Math.max(0, yBottom - yTop),
+            rx: 2,
+          });
+          barsLayer.appendChild(bar);
+          bars.push(bar);
+          stackTopValue += value;
+        });
+
+        const hit = svgNode('rect', {
+          class: 'chart-hit-area',
+          x: centerX - step / 2,
+          y: plot.top,
+          width: step,
+          height: plot.bottom - plot.top,
+          tabindex: 0,
+          'aria-label': `${config.title} ${label}`,
+        });
+        const lines = () => {
+          const detail = config.series.map((series) => ({
+            label: series.label,
+            value: series.format ? series.format(series.values[index]) : formatChartNumber(series.values[index]),
+            colorClass: getTooltipColorClass(series),
+          }));
+          detail.push({
+            label: 'Total',
+            value: config.totalFormat ? config.totalFormat(stackTopValue) : formatChartNumber(stackTopValue),
+            showDot: false,
+            isTotal: true,
+          });
+          return detail;
+        };
+        const activate = (event) => {
+          Array.from(barsLayer.children).forEach((bar) => bar.classList.add('is-muted'));
+          bars.forEach((bar) => {
+            bar.classList.remove('is-muted');
+            bar.classList.add('is-active');
+          });
+          showChartTooltip(event, label, lines());
+        };
+        const deactivate = () => {
+          Array.from(barsLayer.children).forEach((bar) => bar.classList.remove('is-muted', 'is-active'));
+          hideChartTooltip();
+        };
+        hit.addEventListener('mouseenter', activate);
+        hit.addEventListener('mousemove', moveChartTooltip);
+        hit.addEventListener('mouseleave', deactivate);
+        hit.addEventListener('focus', (event) => activate(event));
+        hit.addEventListener('blur', deactivate);
+        hitLayer.appendChild(hit);
+      });
+    }
+
+    const queueChartConfig = {
+      id: 'queueTrendChart',
+      title: 'Statistik Antrian',
+      plot: { left: 55, right: 690, top: 32, bottom: 232, min: 0, max: 200 },
+      ticks: [200, 150, 100, 50, 0],
+      labels: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00', '24:00'],
+      labelEvery: 1,
+      series: [{ label: 'Antrian', values: [38, 50, 45, 68, 79, 98, 134, 171, 160, 187, 149, 121, 116] }],
+    };
+
+    const visitRanges = {
+      day: {
+        id: 'visitTrendChart',
+        title: 'Grafik Kunjungan Harian',
+        plot: { left: 75, right: 630, top: 32, bottom: 232, min: 0, max: 1000 },
+        ticks: [1000, 750, 500, 250, 0],
+        labels: ['14 Mei', '15 Mei', '16 Mei', '17 Mei', '18 Mei', '19 Mei', '20 Mei'],
+        series: [
+          { label: 'Rawat Jalan', values: [610, 750, 560, 680, 590, 790, 650] },
+          { label: 'Rawat Inap', values: [210, 280, 190, 310, 240, 330, 220], className: 'is-green', pointClassName: 'is-green' },
+        ],
+      },
+      week: {
+        id: 'visitTrendChart',
+        title: 'Grafik Kunjungan Mingguan',
+        plot: { left: 75, right: 630, top: 32, bottom: 232, min: 0, max: 7000 },
+        ticks: [7000, 5250, 3500, 1750, 0],
+        labels: ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'],
+        series: [
+          { label: 'Rawat Jalan', values: [4260, 4680, 4410, 4920] },
+          { label: 'Rawat Inap', values: [1420, 1530, 1380, 1660], className: 'is-green', pointClassName: 'is-green' },
+        ],
+      },
+      month: {
+        id: 'visitTrendChart',
+        title: 'Grafik Kunjungan Bulanan',
+        plot: { left: 75, right: 630, top: 32, bottom: 232, min: 0, max: 30000 },
+        ticks: [30000, 22500, 15000, 7500, 0],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+        series: [
+          { label: 'Rawat Jalan', values: [18200, 19600, 21100, 20500, 22400, 21900] },
+          { label: 'Rawat Inap', values: [5120, 5480, 5900, 5730, 6240, 6080], className: 'is-green', pointClassName: 'is-green' },
+        ],
+      },
+      year: {
+        id: 'visitTrendChart',
+        title: 'Grafik Kunjungan Tahunan',
+        plot: { left: 75, right: 630, top: 32, bottom: 232, min: 0, max: 360000 },
+        ticks: [360000, 270000, 180000, 90000, 0],
+        labels: ['2021', '2022', '2023', '2024', '2025'],
+        series: [
+          { label: 'Rawat Jalan', values: [212000, 238000, 256000, 274000, 292000] },
+          { label: 'Rawat Inap', values: [62600, 68400, 73100, 78900, 84200], className: 'is-green', pointClassName: 'is-green' },
+        ],
+      },
+    };
+
+    const revenueChartConfig = {
+      id: 'revenueChart',
+      title: 'Pendapatan Hari Ini',
+      plot: { left: 70, right: 870, top: 42, bottom: 294, min: 0, max: 600 },
+      ticks: [600, 450, 300, 150, 0],
+      unitLabel: '(Juta)',
+      labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+      yFormatter: formatChartNumber,
+      totalFormat: formatChartCurrencyMillion,
+      series: [
+        { label: 'BPJS', values: [120, 150, 190, 230, 240, 250, 270], className: 'bar-blue', format: formatChartCurrencyMillion },
+        { label: 'Tunai', values: [60, 75, 95, 115, 105, 110, 130], className: 'bar-green', format: formatChartCurrencyMillion },
+        { label: 'Asuransi', values: [42, 50, 62, 70, 80, 90, 92], className: 'bar-indigo', format: formatChartCurrencyMillion },
+        { label: 'Perusahaan', values: [34, 36, 42, 52, 48, 50, 55], className: 'bar-warning', format: formatChartCurrencyMillion },
+      ],
+    };
+
+    renderLineChart(queueChartConfig);
+    renderLineChart(visitRanges.day);
+    renderStackedBarChart(revenueChartConfig);
+
+    document.querySelectorAll('[data-visit-range]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const range = button.dataset.visitRange;
+        document.querySelectorAll('[data-visit-range]').forEach((tab) => {
+          const active = tab === button;
+          tab.classList.toggle('btn-primary', active);
+          tab.classList.toggle('btn-ghost', !active);
+          tab.classList.toggle('active', active);
+          tab.setAttribute('aria-selected', String(active));
+        });
+        renderLineChart(visitRanges[range] || visitRanges.day);
+      });
+    });
+
+    document.querySelectorAll('[data-chart-tooltip-title]').forEach((item) => {
+      const title = item.dataset.chartTooltipTitle || '';
+      const rawLines = (item.dataset.chartTooltipLines || '').split(';').filter(Boolean);
+      const colors = (item.dataset.chartTooltipColors || '').split(';').filter(Boolean);
+      const lines = rawLines.map((line, index) => {
+        const separatorIndex = line.indexOf(':');
+        if (separatorIndex === -1) {
+          return {
+            label: line,
+            value: '',
+            colorClass: colors[index] || '',
+            showDot: Boolean(colors[index]),
+          };
+        }
+
+        return {
+          label: line.slice(0, separatorIndex).trim(),
+          value: line.slice(separatorIndex + 1).trim(),
+          colorClass: colors[index] || '',
+          showDot: Boolean(colors[index]),
+        };
+      });
+      const activate = (event) => showChartTooltip(event, title, lines);
+      item.addEventListener('mouseenter', activate);
+      item.addEventListener('mousemove', moveChartTooltip);
+      item.addEventListener('mouseleave', hideChartTooltip);
+      item.addEventListener('focus', activate);
+      item.addEventListener('blur', hideChartTooltip);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const isSearchShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
+      if (isSearchShortcut) {
+        const searchInput = document.getElementById('globalSearchInput');
+        if (searchInput) {
+          event.preventDefault();
+          searchInput.focus();
+        }
+      }
+
+      if (event.key === 'Escape') {
+        closeTopbarDropdowns();
+        closeHeaderSearches();
+      }
+    });
+  </script>
+  <script src="../../js/sidebar-flyout.js"></script>
+<script src="../../js/date-picker-controls.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+<script src="../../js/bottom-tabs.js"></script>
+</body>
+</html>

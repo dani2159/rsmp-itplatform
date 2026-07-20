@@ -1,0 +1,319 @@
+/* --------------------------------------------------------------------------
+   08A. Komponen dropdown inti
+   Pakai untuk action menu, filter menu, dan dropdown icon di topbar.
+   -------------------------------------------------------------------------- */
+
+.ds-dropdown {
+  @apply relative flex-none;
+}
+
+.ds-dropdown summary {
+  @apply list-none;
+}
+
+.ds-dropdown summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.dropdown-trigger {
+  @apply w-full min-h-11 border border-[color:var(--slate-light)] bg-[color:var(--field)] text-[color:var(--text-primary)] rounded-[var(--radius-dropdown-md)] py-0 px-3.5 inline-flex items-center justify-between gap-3 font-sans text-body-md font-normal leading-none cursor-pointer outline-none shadow-[0_1px_0_rgba(15,31,61,0.02)] select-none;
+  transition: border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.dropdown-trigger::after {
+  @apply w-2 h-2 border-r-[2px] border-r-[color:var(--slate)] border-b-[2px] border-b-[color:var(--slate)] flex-none;
+
+  content: "";
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.dropdown-trigger:hover {
+  @apply border-[color:var(--ui-border-control-hover)];
+}
+
+.ds-dropdown[open] .dropdown-trigger {
+  @apply border-[color:var(--primary-blue)] shadow-[var(--ring)];
+}
+
+.ds-dropdown[open] .dropdown-trigger::after {
+  @apply border-[color:var(--primary-blue)];
+
+  transform: rotate(225deg) translate(-2px, -1px);
+}
+
+/* Ukuran trigger dropdown dan datepicker
+   Ukuran custom dropdown mengikuti token ukuran `.input` agar sejajar di form. */
+
+.dropdown-trigger.is-xs,
+.ds-dropdown.is-xs > .dropdown-trigger {
+  @apply min-h-8 rounded-[var(--radius-dropdown-xs)] py-0 px-2.5 text-body-sm;
+}
+
+.dropdown-trigger.is-sm,
+.ds-dropdown.is-sm > .dropdown-trigger {
+  @apply min-h-9 rounded-[var(--radius-dropdown-sm)] py-0 px-3 text-body-md;
+}
+
+.dropdown-trigger.is-md,
+.ds-dropdown.is-md > .dropdown-trigger {
+  @apply min-h-11 rounded-[var(--radius-dropdown-md)] py-0 px-3.5 text-body-md;
+}
+
+.dropdown-trigger.is-lg,
+.ds-dropdown.is-lg > .dropdown-trigger {
+  @apply min-h-13 rounded-[var(--radius-dropdown-lg)] py-0 px-4 text-body-lg;
+}
+
+.dropdown-trigger.is-xl,
+.ds-dropdown.is-xl > .dropdown-trigger {
+  @apply min-h-15 rounded-[var(--radius-dropdown-xl)] py-0 px-4.5 text-body-lg;
+}
+
+.dropdown-panel {
+  @apply absolute z-[30] top-[calc(100%_+_8px)] left-0 min-w-full border border-[color:var(--ui-primary-border-soft)] rounded-[var(--radius-dropdown-panel)] bg-[color:var(--white)] shadow-[0_18px_44px_rgba(15,31,61,0.13)] overflow-hidden;
+}
+
+.toolbar-right .dropdown-panel {
+  @apply right-0 left-auto;
+}
+
+.pagination .dropdown-panel {
+  @apply top-auto bottom-[calc(100%_+_8px)];
+}
+
+.dropdown-option {
+  @apply w-full min-h-11 border-0 border-t border-t-transparent bg-[color:var(--white)] text-[color:var(--text-primary)] py-3 px-3.5 flex items-center gap-3 text-left font-sans text-body-md font-normal leading-[1.2] cursor-pointer whitespace-nowrap;
+}
+
+.dropdown-option + .dropdown-option {
+  @apply border-t-[color:var(--ui-surface-muted)];
+}
+
+.dropdown-option:hover,
+.dropdown-option.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.dropdown-option.selected {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)] font-normal;
+}
+
+/* Dropdown select custom
+   Mengganti native select agar option bisa mengikuti style dropdown top navbar. */
+
+.ds-select {
+  @apply w-full min-w-0;
+}
+
+.ds-select .dropdown-trigger {
+  @apply bg-[color:var(--white)];
+}
+
+.ds-select .dropdown-trigger.is-xs {
+  @apply min-h-8 rounded-[var(--radius-dropdown-xs)] py-0 px-2.5 text-body-sm;
+}
+
+.ds-select .dropdown-trigger.is-sm {
+  @apply min-h-9 rounded-[var(--radius-dropdown-sm)] py-0 px-3 text-body-md;
+}
+
+.ds-select .dropdown-trigger.is-md {
+  @apply min-h-11 rounded-[var(--radius-dropdown-md)] py-0 px-3.5 text-body-md;
+}
+
+.ds-select .dropdown-trigger.is-lg {
+  @apply min-h-13 rounded-[var(--radius-dropdown-lg)] py-0 px-4 text-body-lg;
+}
+
+.ds-select .dropdown-trigger.is-xl {
+  @apply min-h-15 rounded-[var(--radius-dropdown-xl)] py-0 px-4.5 text-body-lg;
+}
+
+.ds-select .dropdown-panel {
+  @apply min-w-full max-h-[240px] overflow-y-auto bg-[color:var(--white)];
+}
+
+.ds-select .dropdown-option {
+  @apply min-h-10 bg-[color:var(--white)] py-2.5 px-3;
+}
+
+.ds-select .dropdown-option:hover,
+.ds-select .dropdown-option.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.ds-select .dropdown-option.selected {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}
+
+.ds-select .dropdown-option.selected::after {
+  @apply font-bold ml-auto text-body-sm;
+
+  content: "";
+  font-family: "Font Awesome 6 Free";
+}
+
+/* Pelindung overflow teks trigger dropdown
+   Menjaga semua value dropdown/date picker tetap 1 baris. */
+
+.dropdown-trigger {
+  @apply min-w-0 overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.dropdown-trigger > span,
+.dropdown-trigger [data-select-text],
+.dropdown-trigger [data-datepicker-text] {
+  @apply min-w-0 overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.dropdown-trigger [data-select-text],
+.dropdown-trigger [data-datepicker-text] {
+  @apply block flex-auto;
+}
+
+.datepicker-trigger-content {
+  @apply flex-auto overflow-hidden whitespace-nowrap;
+}
+
+.ds-select .dropdown-option {
+  @apply overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dropdown datepicker custom
+   Menggunakan visual calendar-widget yang sama seperti contoh di input guide. */
+
+.ds-datepicker {
+  @apply w-full min-w-0;
+}
+
+.ds-datepicker .dropdown-trigger {
+  @apply bg-[color:var(--white)];
+}
+
+.ds-datepicker .dropdown-trigger.is-xs {
+  @apply min-h-8 rounded-[var(--radius-dropdown-xs)] py-0 px-2.5 text-body-sm;
+}
+
+.ds-datepicker .dropdown-trigger.is-sm {
+  @apply min-h-9 rounded-[var(--radius-dropdown-sm)] py-0 px-3 text-body-md;
+}
+
+.ds-datepicker .dropdown-trigger.is-md {
+  @apply min-h-11 rounded-[var(--radius-dropdown-md)] py-0 px-3.5 text-body-md;
+}
+
+.ds-datepicker .dropdown-trigger.is-lg {
+  @apply min-h-13 rounded-[var(--radius-dropdown-lg)] py-0 px-4 text-body-lg;
+}
+
+.ds-datepicker .dropdown-trigger.is-xl {
+  @apply min-h-15 rounded-[var(--radius-dropdown-xl)] py-0 px-4.5 text-body-lg;
+}
+
+.datepicker-trigger-content {
+  @apply inline-flex items-center min-w-0 gap-2;
+}
+
+.datepicker-trigger-icon {
+  @apply w-4 h-4 inline-flex items-center justify-center text-[color:var(--ui-icon-soft)] flex-none;
+}
+
+.datepicker-trigger-icon i {
+  @apply text-body-md;
+}
+
+.dropdown-trigger.is-xs .datepicker-trigger-content,
+.ds-dropdown.is-xs > .dropdown-trigger .datepicker-trigger-content {
+  @apply gap-1.5;
+}
+
+.dropdown-trigger.is-xs .datepicker-trigger-icon,
+.ds-dropdown.is-xs > .dropdown-trigger .datepicker-trigger-icon {
+  @apply w-3.5 h-3.5;
+}
+
+.dropdown-trigger.is-xs .datepicker-trigger-icon i,
+.ds-dropdown.is-xs > .dropdown-trigger .datepicker-trigger-icon i {
+  @apply text-body-sm;
+}
+
+.dropdown-trigger.is-lg .datepicker-trigger-icon,
+.dropdown-trigger.is-xl .datepicker-trigger-icon,
+.ds-dropdown.is-lg > .dropdown-trigger .datepicker-trigger-icon,
+.ds-dropdown.is-xl > .dropdown-trigger .datepicker-trigger-icon {
+  @apply w-4.5 h-4.5;
+}
+
+.dropdown-trigger.is-lg .datepicker-trigger-icon i,
+.dropdown-trigger.is-xl .datepicker-trigger-icon i,
+.ds-dropdown.is-lg > .dropdown-trigger .datepicker-trigger-icon i,
+.ds-dropdown.is-xl > .dropdown-trigger .datepicker-trigger-icon i {
+  @apply text-body-lg;
+}
+
+.ds-datepicker .datepicker-panel {
+  @apply w-[304px] min-w-[304px] max-w-[304px] overflow-hidden bg-[color:var(--white)];
+}
+
+.ds-datepicker .calendar-widget {
+  @apply p-3.5;
+}
+
+.ds-datepicker .calendar-date {
+  @apply border border-transparent cursor-pointer font-sans;
+}
+
+.ds-datepicker .calendar-date.selected {
+  @apply border-[color:var(--primary-blue)];
+}
+
+.ds-datepicker .calendar-date:focus-visible {
+  @apply outline-none shadow-[var(--ring)];
+}
+
+.page-button {
+  @apply w-11 h-11 border border-[color:var(--border)] rounded-[var(--radius-input-md)] bg-[color:var(--white)] text-[color:var(--ui-primary-icon)] inline-flex items-center justify-center cursor-pointer;
+}
+
+.page-button.active {
+  @apply bg-[color:var(--primary-blue)] border-[color:var(--primary-blue)] text-[color:var(--white)] shadow-[0_9px_18px_rgba(30,79,215,0.22)] font-bold;
+}
+
+.page-button:hover:not(.active) {
+  @apply bg-[color:var(--primary-light)] border-[color:var(--ui-primary-border-soft)] text-[color:var(--primary-blue)];
+}
+
+.page-button .lucide {
+  @apply w-4.5 h-4.5;
+}
+
+.page-button:disabled,
+.page-button[aria-disabled="true"] {
+  @apply cursor-not-allowed opacity-[0.45] shadow-none;
+}
+
+.page-button:disabled:hover,
+.page-button[aria-disabled="true"]:hover {
+  @apply bg-[color:var(--white)] border-[color:var(--border)] text-[color:var(--ui-primary-icon)];
+}
+
+.page-ellipsis {
+  @apply min-w-[24px] h-10 inline-flex items-center justify-center text-[color:var(--text-muted)] font-bold;
+}
+
+
+.dropdown-group-label {
+  @apply block m-0 pt-2.5 px-4 pb-1.5;
+}
+
+.dropdown-panel .dropdown-group-label + .dropdown-option,
+.doctor-autocomplete-panel .dropdown-group-label + .dropdown-option {
+  @apply mt-0.5;
+}

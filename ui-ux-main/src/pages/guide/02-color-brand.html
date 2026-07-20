@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>02 Warna &amp; Brand · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link active" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<section class="hero mt-12">
+<p class="eyebrow">02</p>
+<h1>Warna &amp; Brand</h1>
+<p>Daftar warna untuk brand, status, teks, background, border, dan komponen utama.</p>
+<p class="guide-note"><strong>Catatan:</strong> warna putih distandarkan sebagai <span class="mono">--white</span> dengan nilai <span class="mono">#FFFFFF</span>. Bentuk singkat <span class="mono">#FFF</span> hanya dianggap alias visual, bukan penulisan utama di CSS.</p>
+</section>
+<div class="section-title">
+<div>
+<h2>Warna Brand Resmi</h2>
+<p>Token utama untuk brand, interaksi, status, dan layout aplikasi.</p>
+</div>
+<span class="badge badge-sm">8 warna brand resmi</span>
+</div>
+<section class="layout-2 mt-12">
+<div class="card">
+<table aria-label="Warna Brand Resmi">
+<thead>
+<tr>
+<th>Token</th>
+<th>HEX</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-002"></span>primary-blue</div></td>
+<td class="hex" data-label="HEX">#1E4FD7</td>
+<td data-label="Penggunaan">Tombol utama, link aktif, sidebar highlight, CTA.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-007"></span>primary-green</div></td>
+<td class="hex" data-label="HEX">#00B894</td>
+<td data-label="Penggunaan">Status selesai, sukses, indikator positif.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-020"></span>accent-teal</div></td>
+<td class="hex" data-label="HEX">#00D1B2</td>
+<td data-label="Penggunaan">Aksen sekunder, badge aktif, highlight.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-021"></span>indigo</div></td>
+<td class="hex" data-label="HEX">#6C5CE7</td>
+<td data-label="Penggunaan">VIP, casemix, chart category, badge spesial.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-005"></span>navy</div></td>
+<td class="hex" data-label="HEX">#0F1F3D</td>
+<td data-label="Penggunaan">Background sidebar/brand gelap, bukan default body text.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-022"></span>slate</div></td>
+<td class="hex" data-label="HEX">#6B7280</td>
+<td data-label="Penggunaan">Teks sekunder, placeholder, label form.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-011"></span>light-gray</div></td>
+<td class="hex" data-label="HEX">#F3F6FA</td>
+<td data-label="Penggunaan">Background halaman/body page dan zebra table.</td>
+</tr>
+<tr>
+<td data-label="Token"><div class="token-cell"><span class="mini-swatch u-style-023"></span>white</div></td>
+<td class="hex" data-label="HEX">#FFFFFF / #FFF</td>
+<td data-label="Penggunaan">Card, modal, panel, background input, dan area konten utama.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h2 class="u-style-024">Brand Resmi — Format Card</h2>
+<div class="color-grid brand-card-grid">
+<article class="color-card">
+<div class="swatch u-style-002"></div>
+<p class="color-name">primary-blue</p>
+<p class="color-hex">#1E4FD7</p>
+<p class="color-usage">Tombol utama, link aktif, sidebar highlight, CTA.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-007"></div>
+<p class="color-name">primary-green</p>
+<p class="color-hex">#00B894</p>
+<p class="color-usage">Status selesai, sukses, indikator positif.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-020"></div>
+<p class="color-name">accent-teal</p>
+<p class="color-hex">#00D1B2</p>
+<p class="color-usage">Aksen sekunder, badge aktif, highlight.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-021"></div>
+<p class="color-name">indigo</p>
+<p class="color-hex">#6C5CE7</p>
+<p class="color-usage">VIP, casemix, chart category, badge spesial.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-005"></div>
+<p class="color-name">navy</p>
+<p class="color-hex">#0F1F3D</p>
+<p class="color-usage">Background sidebar/brand gelap, bukan default body text.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-022"></div>
+<p class="color-name">slate</p>
+<p class="color-hex">#6B7280</p>
+<p class="color-usage">Teks sekunder, placeholder, label form.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-011"></div>
+<p class="color-name">light-gray</p>
+<p class="color-hex">#F3F6FA</p>
+<p class="color-usage">Background halaman/body page dan zebra table.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-023"></div>
+<p class="color-name">white</p>
+<p class="color-hex">#FFFFFF / #FFF</p>
+<p class="color-usage">Card, modal, panel, background input, dan area konten utama.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="palette-section mt-12">
+<div class="section-title">
+<div>
+<h2>Shade &amp; Tint Warna Brand Resmi</h2>
+<p>Setiap warna brand resmi memiliki tint untuk background lembut dan shade untuk hover, pressed state, heading, atau kontras lebih kuat.</p>
+</div>
+<span class="badge badge-sm">Tint 80 · 60 · 40 · Base · Shade 15 · 30 · 45</span>
+</div>
+<div class="tone-wrapper">
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-002"></span>
+<div>
+<h3>primary-blue</h3>
+<p>#1E4FD7 · Tombol utama, link aktif, sidebar highlight, CTA.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-025"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">primary-blue-tint-80</p>
+<p class="tone-hex">#D2DCF7</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-026"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">primary-blue-tint-60</p>
+<p class="tone-hex">#A5B9EF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-027"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">primary-blue-tint-40</p>
+<p class="tone-hex">#7895E7</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-002"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">primary-blue</p>
+<p class="tone-hex">#1E4FD7</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-028"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">primary-blue-shade-15</p>
+<p class="tone-hex">#1A43B7</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-029"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">primary-blue-shade-30</p>
+<p class="tone-hex">#153796</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-030"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">primary-blue-shade-45</p>
+<p class="tone-hex">#102B76</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-007"></span>
+<div>
+<h3>primary-green</h3>
+<p>#00B894 · Status selesai, sukses, indikator positif.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-031"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">primary-green-tint-80</p>
+<p class="tone-hex">#CCF1EA</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-032"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">primary-green-tint-60</p>
+<p class="tone-hex">#99E3D4</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-033"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">primary-green-tint-40</p>
+<p class="tone-hex">#66D4BF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-007"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">primary-green</p>
+<p class="tone-hex">#00B894</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-034"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">primary-green-shade-15</p>
+<p class="tone-hex">#009C7E</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-035"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">primary-green-shade-30</p>
+<p class="tone-hex">#008168</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-036"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">primary-green-shade-45</p>
+<p class="tone-hex">#006551</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-020"></span>
+<div>
+<h3>accent-teal</h3>
+<p>#00D1B2 · Aksen sekunder, badge aktif, highlight.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-037"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">accent-teal-tint-80</p>
+<p class="tone-hex">#CCF6F0</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-038"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">accent-teal-tint-60</p>
+<p class="tone-hex">#99EDE0</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-039"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">accent-teal-tint-40</p>
+<p class="tone-hex">#66E3D1</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-020"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">accent-teal</p>
+<p class="tone-hex">#00D1B2</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-040"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">accent-teal-shade-15</p>
+<p class="tone-hex">#00B297</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-041"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">accent-teal-shade-30</p>
+<p class="tone-hex">#00927D</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-042"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">accent-teal-shade-45</p>
+<p class="tone-hex">#007362</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-021"></span>
+<div>
+<h3>indigo</h3>
+<p>#6C5CE7 · VIP, casemix, chart category, badge spesial.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-043"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">indigo-tint-80</p>
+<p class="tone-hex">#E2DEFA</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-044"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">indigo-tint-60</p>
+<p class="tone-hex">#C4BEF5</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-045"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">indigo-tint-40</p>
+<p class="tone-hex">#A79DF1</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-021"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">indigo</p>
+<p class="tone-hex">#6C5CE7</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-046"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">indigo-shade-15</p>
+<p class="tone-hex">#5C4EC4</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-047"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">indigo-shade-30</p>
+<p class="tone-hex">#4C40A2</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-048"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">indigo-shade-45</p>
+<p class="tone-hex">#3B337F</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-005"></span>
+<div>
+<h3>navy</h3>
+<p>#0F1F3D · Background sidebar/brand gelap, bukan default body text.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-049"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">navy-tint-80</p>
+<p class="tone-hex">#CFD2D8</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-050"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">navy-tint-60</p>
+<p class="tone-hex">#9FA5B1</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-051"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">navy-tint-40</p>
+<p class="tone-hex">#6F798B</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-005"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">navy</p>
+<p class="tone-hex">#0F1F3D</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-052"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">navy-shade-15</p>
+<p class="tone-hex">#0D1A34</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-053"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">navy-shade-30</p>
+<p class="tone-hex">#0A162B</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-054"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">navy-shade-45</p>
+<p class="tone-hex">#081122</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-022"></span>
+<div>
+<h3>slate</h3>
+<p>#6B7280 · Teks sekunder, placeholder, label form.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-055"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">slate-tint-80</p>
+<p class="tone-hex">#E1E3E6</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-056"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">slate-tint-60</p>
+<p class="tone-hex">#C4C7CC</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-057"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">slate-tint-40</p>
+<p class="tone-hex">#A6AAB3</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-022"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">slate</p>
+<p class="tone-hex">#6B7280</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-058"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">slate-shade-15</p>
+<p class="tone-hex">#5B616D</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-059"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">slate-shade-30</p>
+<p class="tone-hex">#4B505A</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-060"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">slate-shade-45</p>
+<p class="tone-hex">#3B3F46</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-011"></span>
+<div>
+<h3>light-gray</h3>
+<p>#F3F6FA · Background halaman/body page dan zebra table.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-061"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">light-gray-tint-80</p>
+<p class="tone-hex">#FDFDFE</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-062"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">light-gray-tint-60</p>
+<p class="tone-hex">#FAFBFD</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-063"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">light-gray-tint-40</p>
+<p class="tone-hex">#F8FAFC</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-011"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">light-gray</p>
+<p class="tone-hex">#F3F6FA</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-064"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">light-gray-shade-15</p>
+<p class="tone-hex">#CFD1D4</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-065"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">light-gray-shade-30</p>
+<p class="tone-hex">#AAACAF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-066"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">light-gray-shade-45</p>
+<p class="tone-hex">#86878A</p>
+</article>
+</div>
+</div>
+<div class="tone-row">
+<div class="tone-meta">
+<span class="tone-dot u-style-023"></span>
+<div>
+<h3>white</h3>
+<p>#FFFFFF / #FFF · Card, modal, panel, background input, dan area konten utama. Di CSS gunakan <span class="mono">var(--white)</span>.</p>
+</div>
+</div>
+<div class="tone-grid">
+<article class="tone-card">
+<div class="tone-swatch u-style-023"></div>
+<p class="tone-label">Tint 80</p>
+<p class="tone-name">white-tint-80</p>
+<p class="tone-hex">#FFFFFF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-023"></div>
+<p class="tone-label">Tint 60</p>
+<p class="tone-name">white-tint-60</p>
+<p class="tone-hex">#FFFFFF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-023"></div>
+<p class="tone-label">Tint 40</p>
+<p class="tone-name">white-tint-40</p>
+<p class="tone-hex">#FFFFFF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-023"></div>
+<p class="tone-label">Base</p>
+<p class="tone-name">white</p>
+<p class="tone-hex">#FFFFFF</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-067"></div>
+<p class="tone-label">Shade 15</p>
+<p class="tone-name">white-shade-15</p>
+<p class="tone-hex">#D9D9D9</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-068"></div>
+<p class="tone-label">Shade 30</p>
+<p class="tone-name">white-shade-30</p>
+<p class="tone-hex">#B2B2B2</p>
+</article>
+<article class="tone-card">
+<div class="tone-swatch u-style-069"></div>
+<p class="tone-label">Shade 45</p>
+<p class="tone-name">white-shade-45</p>
+<p class="tone-hex">#8C8C8C</p>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="palette-section mt-12">
+<div class="section-title">
+<div>
+<h2>Warna Turunan &amp; Semantic</h2>
+<p>Token pendukung untuk state, status, border, badge, dan background komponen.</p>
+</div>
+<span class="badge badge-sm">12 warna semantik</span>
+</div>
+<div class="color-grid">
+<article class="color-card">
+<div class="swatch u-style-003"></div>
+<p class="color-name">primary-dark</p>
+<p class="color-hex">#1740B0</p>
+<p class="color-usage">State hover tombol utama.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-004"></div>
+<p class="color-name">primary-light</p>
+<p class="color-hex">#EEF2FF</p>
+<p class="color-usage">Background informasi dan baris terpilih.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-070"></div>
+<p class="color-name">success-light</p>
+<p class="color-hex">#E6FAF6</p>
+<p class="color-usage">Background status sukses.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-071"></div>
+<p class="color-name">teal-light</p>
+<p class="color-hex">#E0FBF8</p>
+<p class="color-usage">Highlight teal lembut.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-072"></div>
+<p class="color-name">indigo-light</p>
+<p class="color-hex">#EDE9FE</p>
+<p class="color-usage">Badge VIP / state khusus.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-073"></div>
+<p class="color-name">navy-light</p>
+<p class="color-hex">#1E3A5F</p>
+<p class="color-usage">Hover sidebar dan chart biru gelap.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-074"></div>
+<p class="color-name">slate-dark</p>
+<p class="color-hex">#374151</p>
+<p class="color-usage">Teks body dan teks tabel.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-006"></div>
+<p class="color-name">slate-light</p>
+<p class="color-hex">#D1D5DB</p>
+<p class="color-usage">Border, divider, skeleton.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-008"></div>
+<p class="color-name">warning</p>
+<p class="color-hex">#F59E0B</p>
+<p class="color-usage">Peringatan, pending, dan perhatian.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-075"></div>
+<p class="color-name">warning-light</p>
+<p class="color-hex">#FFFBEB</p>
+<p class="color-usage">Background alert warning yang soft.</p>
+</article>
+<article class="color-card">
+<div class="swatch color-warning-border-soft"></div>
+<p class="color-name">warning-border-soft</p>
+<p class="color-hex">#FDECCC</p>
+<p class="color-usage">Border soft untuk badge dan alert warning.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-009"></div>
+<p class="color-name">danger</p>
+<p class="color-hex">#EF4444</p>
+<p class="color-usage">Error, hapus, dan aksi destruktif.</p>
+</article>
+<article class="color-card">
+<div class="swatch u-style-010"></div>
+<p class="color-name">danger-light</p>
+<p class="color-hex">#FFF5F5</p>
+<p class="color-usage">Background alert error yang soft.</p>
+</article>
+<article class="color-card">
+<div class="swatch color-danger-border-soft"></div>
+<p class="color-name">danger-border-soft</p>
+<p class="color-hex">#FCDDDD</p>
+<p class="color-usage">Border soft untuk badge dan alert danger.</p>
+</article>
+</div>
+</section>
+<section class="palette-section mt-12">
+<div class="section-title">
+<div>
+<h2>Skala Warna Ringkas</h2>
+<p>Skala ringkas dari token brand dan semantic untuk referensi hover, background, border, dan state.</p>
+</div>
+<span class="badge badge-sm">Light · Base · Dark</span>
+</div>
+<div class="card u-style-076">
+<div class="palette-table">
+<div class="scale-row">
+<div class="scale-meta"><h3>Primary Blue</h3><p>Brand utama dan CTA.</p></div>
+<div class="scale-grid">
+<div class="scale-card"><div class="scale-color u-style-004"></div><div class="scale-label"><strong>light</strong>#EEF2FF</div></div>
+<div class="scale-card"><div class="scale-color u-style-002"></div><div class="scale-label"><strong>base</strong>#1E4FD7</div></div>
+<div class="scale-card"><div class="scale-color u-style-003"></div><div class="scale-label"><strong>dark</strong>#1740B0</div></div>
+<div class="scale-card"><div class="scale-color u-style-073"></div><div class="scale-label"><strong>navy-light</strong>#1E3A5F</div></div>
+<div class="scale-card"><div class="scale-color u-style-005"></div><div class="scale-label"><strong>navy</strong>#0F1F3D</div></div>
+<div class="scale-card"><div class="scale-color u-style-023"></div><div class="scale-label"><strong>white</strong>#FFFFFF</div></div>
+</div>
+</div>
+<div class="scale-row">
+<div class="scale-meta"><h3>Success &amp; Teal</h3><p>Sukses, aktif, dan aksen positif.</p></div>
+<div class="scale-grid">
+<div class="scale-card"><div class="scale-color u-style-070"></div><div class="scale-label"><strong>success-light</strong>#E6FAF6</div></div>
+<div class="scale-card"><div class="scale-color u-style-007"></div><div class="scale-label"><strong>primary-green</strong>#00B894</div></div>
+<div class="scale-card"><div class="scale-color u-style-071"></div><div class="scale-label"><strong>teal-light</strong>#E0FBF8</div></div>
+<div class="scale-card"><div class="scale-color u-style-020"></div><div class="scale-label"><strong>accent-teal</strong>#00D1B2</div></div>
+<div class="scale-card"><div class="scale-color u-style-011"></div><div class="scale-label"><strong>light-gray</strong>#F3F6FA</div></div>
+<div class="scale-card"><div class="scale-color u-style-023"></div><div class="scale-label"><strong>white</strong>#FFFFFF</div></div>
+</div>
+</div>
+<div class="scale-row">
+<div class="scale-meta"><h3>Indigo &amp; Neutral</h3><p>VIP, chart, teks, border, dan surface.</p></div>
+<div class="scale-grid">
+<div class="scale-card"><div class="scale-color u-style-072"></div><div class="scale-label"><strong>indigo-light</strong>#EDE9FE</div></div>
+<div class="scale-card"><div class="scale-color u-style-021"></div><div class="scale-label"><strong>indigo</strong>#6C5CE7</div></div>
+<div class="scale-card"><div class="scale-color u-style-006"></div><div class="scale-label"><strong>slate-light</strong>#D1D5DB</div></div>
+<div class="scale-card"><div class="scale-color u-style-022"></div><div class="scale-label"><strong>slate</strong>#6B7280</div></div>
+<div class="scale-card"><div class="scale-color u-style-074"></div><div class="scale-label"><strong>slate-dark</strong>#374151</div></div>
+<div class="scale-card"><div class="scale-color u-style-005"></div><div class="scale-label"><strong>navy</strong>#0F1F3D</div></div>
+</div>
+</div>
+<div class="scale-row">
+<div class="scale-meta"><h3>State Semantik</h3><p>State warning dan danger.</p></div>
+<div class="scale-grid">
+<div class="scale-card"><div class="scale-color u-style-075"></div><div class="scale-label"><strong>warning-light</strong>#FFFBEB</div></div>
+<div class="scale-card"><div class="scale-color color-warning-border-soft"></div><div class="scale-label"><strong>warning-border-soft</strong>#FDECCC</div></div>
+<div class="scale-card"><div class="scale-color u-style-008"></div><div class="scale-label"><strong>warning</strong>#F59E0B</div></div>
+<div class="scale-card"><div class="scale-color u-style-010"></div><div class="scale-label"><strong>danger-light</strong>#FFF5F5</div></div>
+<div class="scale-card"><div class="scale-color color-danger-border-soft"></div><div class="scale-label"><strong>danger-border-soft</strong>#FCDDDD</div></div>
+<div class="scale-card"><div class="scale-color u-style-009"></div><div class="scale-label"><strong>danger</strong>#EF4444</div></div>
+<div class="scale-card"><div class="scale-color u-style-004"></div><div class="scale-label"><strong>info-light</strong>#EEF2FF</div></div>
+<div class="scale-card"><div class="scale-color u-style-002"></div><div class="scale-label"><strong>info</strong>#1E4FD7</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="palette-section mt-12">
+<div class="section-title">
+<div>
+<h2>Contoh Implementasi UI</h2>
+<p>Contoh penggunaan token pada komponen interface.</p>
+</div>
+</div>
+<div class="examples">
+<div class="example-card">
+<h3>Button</h3>
+<div class="button-row">
+<button class="btn">Primary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-outline">Outline</button>
+</div>
+</div>
+<div class="example-card">
+<h3>Alert</h3>
+<div class="alert alert-success alert-sm"><strong>Sukses:</strong> Data berhasil disimpan.</div>
+<div class="alert alert-warning alert-sm"><strong>Peringatan:</strong> Perlu dicek kembali.</div>
+<div class="alert alert-danger alert-sm"><strong>Bahaya:</strong> Terjadi kesalahan.</div>
+</div>
+<div class="example-card">
+<h3>Sidebar State</h3>
+<div class="sidebar-demo">
+<aside class="sidebar">
+<span class="nav-item active">Dashboard</span>
+<span class="nav-item">Order</span>
+<span class="nav-item">Laporan</span>
+</aside>
+<div class="demo-content">
+<span class="demo-pill">Aktif</span>
+<div class="demo-box u-style-077"></div>
+<div class="demo-box u-style-078"></div>
+<div class="demo-box u-style-079"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="palette-section mt-12">
+<div class="section-title">
+<div>
+<h2>Token Developer</h2>
+<p>Daftar token yang digunakan di CSS. Tambahkan warna baru di sini sebelum dipakai di komponen.</p>
+</div>
+</div>
+<div class="code-grid">
+<pre><code>:root {
+  --primary-blue: #1E4FD7;
+  --primary-green: #00B894;
+  --accent-teal: #00D1B2;
+  --indigo: #6C5CE7;
+  --navy: #0F1F3D;
+  --slate: #6B7280;
+  --light-gray: #F3F6FA;
+  --white: #FFFFFF;
+  --primary-dark: #1740B0;
+  --primary-light: #EEF2FF;
+  --success-light: #E6FAF6;
+  --teal-light: #E0FBF8;
+  --indigo-light: #EDE9FE;
+  --navy-light: #1E3A5F;
+  --slate-dark: #374151;
+  --slate-light: #D1D5DB;
+  --page: var(--light-gray);
+  --surface: var(--white);
+  --text-primary: var(--slate-dark);
+  --text-secondary: var(--slate);
+  --border: var(--slate-light);
+  --warning: #F59E0B;
+  --warning-light: #FFFBEB;
+  --warning-border-soft: #FDECCC;
+  --danger: #EF4444;
+  --danger-light: #FFF5F5;
+  --danger-border-soft: #FCDDDD;
+  --primary-blue-tint-80: #D2DCF7;
+  --primary-blue-tint-60: #A5B9EF;
+  --primary-blue-tint-40: #7895E7;
+  --primary-blue-shade-15: #1A43B7;
+  --primary-blue-shade-30: #153796;
+  --primary-blue-shade-45: #102B76;
+  --primary-green-tint-80: #CCF1EA;
+  --primary-green-tint-60: #99E3D4;
+  --primary-green-tint-40: #66D4BF;
+  --primary-green-shade-15: #009C7E;
+  --primary-green-shade-30: #008168;
+  --primary-green-shade-45: #006551;
+  --yellow-tint-80: #FDECCC;
+  --yellow-tint-60: #FBD999;
+  --yellow-tint-40: #F8C566;
+  --yellow-shade-15: #D08509;
+  --yellow-shade-30: #AC6F08;
+  --yellow-shade-45: #875806;
+  --red-tint-80: #FCDDDD;
+  --red-tint-60: #F9B4B4;
+  --red-tint-40: #F58F8F;
+  --red-shade-15: #CB3A3A;
+  --red-shade-30: #A73030;
+  --red-shade-45: #832626;
+  --accent-teal-tint-80: #CCF6F0;
+  --accent-teal-tint-60: #99EDE0;
+  --accent-teal-tint-40: #66E3D1;
+  --accent-teal-shade-15: #00B297;
+  --accent-teal-shade-30: #00927D;
+  --accent-teal-shade-45: #007362;
+  --indigo-tint-80: #E2DEFA;
+  --indigo-tint-60: #C4BEF5;
+  --indigo-tint-40: #A79DF1;
+  --indigo-shade-15: #5C4EC4;
+  --indigo-shade-30: #4C40A2;
+  --indigo-shade-45: #3B337F;
+  --navy-tint-80: #CFD2D8;
+  --navy-tint-60: #9FA5B1;
+  --navy-tint-40: #6F798B;
+  --navy-shade-15: #0D1A34;
+  --navy-shade-30: #0A162B;
+  --navy-shade-45: #081122;
+  --slate-tint-80: #E1E3E6;
+  --slate-tint-60: #C4C7CC;
+  --slate-tint-40: #A6AAB3;
+  --slate-shade-15: #5B616D;
+  --slate-shade-30: #4B505A;
+  --slate-shade-45: #3B3F46;
+  --light-gray-tint-80: #FDFDFE;
+  --light-gray-tint-60: #FAFBFD;
+  --light-gray-tint-40: #F8FAFC;
+  --light-gray-shade-15: #CFD1D4;
+  --light-gray-shade-30: #AAACAF;
+  --light-gray-shade-45: #86878A;
+  --white-tint-80: #FFFFFF;
+  --white-tint-60: #FFFFFF;
+  --white-tint-40: #FFFFFF;
+  --white-shade-15: #D9D9D9;
+  --white-shade-30: #B2B2B2;
+  --white-shade-45: #8C8C8C;
+}</code></pre>
+<pre><code>/* src/css/design-system/theme.css */
+@theme {
+  --color-primary-blue: #1E4FD7;
+  --color-primary-green: #00B894;
+  --color-accent-teal: #00D1B2;
+  --color-indigo: #6C5CE7;
+  --color-navy: #0F1F3D;
+  --color-slate: #6B7280;
+  --color-light-gray: #F3F6FA;
+  --color-primary: #1E4FD7;
+  --color-primary-dark: #1740B0;
+  --color-primary-light: #EEF2FF;
+  --color-success: #00B894;
+  --color-success-light: #E6FAF6;
+  --color-warning: #F59E0B;
+  --color-warning-light: #FFFBEB;
+  --color-danger: #EF4444;
+  --color-danger-light: #FFF5F5;
+  --color-surface: #FFFFFF;
+  --color-page: #F3F6FA;
+  --color-border: #D1D5DB;
+}</code></pre>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Token warna disimpan sebagai CSS variable dan theme Tailwind. Untuk halaman baru, pakai token semantik dan hindari HEX langsung di komponen.</p>
+</div>
+<span class="badge badge-sm">tokens.css + theme.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/tokens.css */
+:root {
+  --primary-blue: #1e4fd7;
+  --primary-dark: #1740b0;
+  --primary-light: #eef2ff;
+  --primary-green: #00b894;
+  --success-light: #e6faf6;
+  --warning: #f59e0b;
+  --warning-light: #fffbeb;
+  --danger: #ef4444;
+  --danger-light: #fff5f5;
+  --surface: #ffffff;
+  --page: #f3f6fa;
+  --border: #d1d5db;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+}
+
+/* src/css/design-system/theme.css */
+@theme {
+  --color-primary-blue: #1E4FD7;
+  --color-primary-green: #00B894;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+  --color-surface: #FFFFFF;
+  --color-page: #F3F6FA;
+}</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;!-- HTML statis memakai class komponen yang sudah ada --&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;Simpan&lt;/button&gt;
+&lt;span class=&quot;badge badge-success&quot;&gt;Aktif&lt;/span&gt;
+&lt;div class=&quot;card&quot;&gt;
+  &lt;h3 class=&quot;card-title&quot;&gt;Status Pasien&lt;/h3&gt;
+  &lt;p class=&quot;card-text&quot;&gt;Menggunakan token --surface dan --text-secondary.&lt;/p&gt;
+&lt;/div&gt;
+
+const statusBadgeClass = {
+  active: &#x27;badge badge-success&#x27;,
+  warning: &#x27;badge badge-warning&#x27;,
+  danger: &#x27;badge badge-danger&#x27;,
+}
+
+function StatusBadge({ status, children }) {
+  return &lt;span className={statusBadgeClass[status]}&gt;{children}&lt;/span&gt;
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Untuk Tailwind utility custom value, pakai format seperti bg-[color:var(--primary-blue)] atau text-[color:var(--text-primary)].</div>
+</section>
+<footer class="footer">
+<div>
+<strong class="u-style-080">Panduan Warna Brand</strong><br/>
+        Gunakan token ini untuk konsistensi desain dan development.
+      </div>
+<div>© 2026</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

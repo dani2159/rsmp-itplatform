@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>06 Cards · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link active" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">06</p>
+<h1>Cards</h1>
+<p class="hero-subtitle">Struktur card untuk kontainer informasi, status, heading, body, footer, link, dan action.</p>
+<div class="divider"></div>
+<nav aria-label="Daftar isi card guide" class="toc">
+<a href="#overview">Ringkasan</a>
+<a href="#basic">Basic Card</a>
+<a href="#semantic">Warna Status</a>
+<a href="#status-icon-link">Status Icon &amp; Link</a>
+<a href="#heading-link">Heading &amp; Link</a>
+<a href="#layouts">Layout Card</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="overview">
+<div class="section-head">
+<div>
+<h2>Ringkasan</h2>
+<p>Card dipakai untuk mengelompokkan data yang saling berhubungan. Default card tanpa border, memakai shadow-sm, radius 12px, dan padding 16px. Colored card dipakai hanya saat informasi punya status semantik.</p>
+</div>
+<span class="badge badge-primary badge-md">No border · shadow-sm · radius 12px</span>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Basic Card</h3>
+<p class="card-subtitle">Default surface</p>
+</div>
+</div>
+<p class="card-text">Gunakan untuk form section, tabel ringkas, filter, atau informasi yang tidak punya status kritis.</p>
+<div class="card-footer">
+<a class="card-link" href="#basic">Lihat basic card</a>
+</div>
+</div>
+<div class="card card-danger component-stack">
+<div class="card-header">
+<div>
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Status JKN: TIDAK AKTIF</h3>
+</div>
+<p class="card-subtitle">Danger status</p>
+</div>
+<span class="badge badge-danger badge-sm">Tidak aktif</span>
+</div>
+<p class="card-text">Peserta memiliki tunggakan iuran BPJS. Background mengikuti token danger; border tetap tidak dipakai.</p>
+<div class="card-footer">
+<a class="card-link card-link-danger" href="#semantic">Lihat variasi danger</a>
+</div>
+</div>
+<div class="card card-success component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Bed Tersedia</h3>
+<p class="card-subtitle">Success status</p>
+</div>
+<span class="badge badge-success badge-sm">Tersedia</span>
+</div>
+<p class="card-text">Gunakan untuk kondisi positif seperti tersimpan, tersedia, selesai, atau aktif.</p>
+<div class="card-footer">
+<a class="card-link card-link-success" href="#semantic">Lihat variasi success</a>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="basic">
+<div class="section-head">
+<div>
+<h2>Basic Card</h2>
+<p>Basic card adalah default untuk mayoritas halaman. Jangan membuat wrapper baru jika layout bisa memakai <span class="mono">.card</span>, <span class="mono">.card-header</span>, <span class="mono">.card-body</span>, dan <span class="mono">.card-footer</span>.</p>
+</div>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<h3 class="card-title">Card Sederhana</h3>
+<p class="card-text">Berisi heading dan deskripsi singkat. Cocok untuk panel ringkas.</p>
+</div>
+<div class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Card dengan Badge</h3>
+<p class="card-subtitle">Header kanan memakai badge</p>
+</div>
+<span class="badge badge-primary badge-sm">Baru</span>
+</div>
+<p class="card-text">Gunakan badge untuk status kecil, bukan untuk menggantikan judul.</p>
+</div>
+<div class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Card dengan Action</h3>
+<p class="card-subtitle">Footer action</p>
+</div>
+</div>
+<p class="card-text">Action utama card sebaiknya berada di footer supaya sejajar dengan card lain.</p>
+<div class="card-footer">
+<button class="btn btn-primary btn-sm" type="button">Buka Detail</button>
+<button class="btn btn-ghost btn-sm" type="button">Arsip</button>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="semantic">
+<div class="section-head">
+<div>
+<h2>Colored / Semantic Card</h2>
+<p>Gunakan variasi warna sesuai makna. Border card mengikuti warna status, bukan border abu-abu. Default style adalah soft agar nyaman dibaca.</p>
+</div>
+<span class="badge badge-danger badge-md">Contoh: status JKN</span>
+</div>
+<div class="grid-4">
+<div class="card card-primary component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-compass"></i></span>
+<h3 class="card-title">Primary</h3>
+</div>
+<span class="badge badge-primary badge-xs">Info</span>
+</div>
+<p class="card-text">Untuk informasi utama, shortcut, atau highlight menu.</p>
+<a class="card-link" href="#">Lihat detail</a>
+</div>
+<div class="card card-success component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-circle-check"></i></span>
+<h3 class="card-title">Success</h3>
+</div>
+<span class="badge badge-success badge-xs">Aktif</span>
+</div>
+<p class="card-text">Untuk data selesai, tersedia, valid, atau berhasil.</p>
+<a class="card-link card-link-success" href="#">Lihat detail</a>
+</div>
+<div class="card card-warning component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Warning</h3>
+</div>
+<span class="badge badge-warning badge-xs">Pending</span>
+</div>
+<p class="card-text">Untuk data menunggu, perlu verifikasi, atau risiko sedang.</p>
+<a class="card-link card-link-warning" href="#">Lihat detail</a>
+</div>
+<div class="card card-danger component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Danger</h3>
+</div>
+<span class="badge badge-danger badge-xs">Kritis</span>
+</div>
+<p class="card-text">Untuk JKN tidak aktif, tunggakan, error, atau kondisi kritis.</p>
+<a class="card-link card-link-danger" href="#">Lihat detail</a>
+</div>
+<div class="card card-info component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-circle-info"></i></span>
+<h3 class="card-title">Info</h3>
+</div>
+<span class="badge badge-info badge-xs">Update</span>
+</div>
+<p class="card-text">Untuk catatan informatif, update sistem, atau keterangan tambahan.</p>
+<a class="card-link card-link-info" href="#">Lihat detail</a>
+</div>
+<div class="card card-teal component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-vial-circle-check"></i></span>
+<h3 class="card-title">Teal</h3>
+</div>
+<span class="badge badge-teal badge-xs">Lab</span>
+</div>
+<p class="card-text">Untuk kategori klinis seperti laboratorium atau layanan penunjang.</p>
+<a class="card-link card-link-teal" href="#">Lihat detail</a>
+</div>
+<div class="card card-indigo component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-bed-pulse"></i></span>
+<h3 class="card-title">Indigo</h3>
+</div>
+<span class="badge badge-indigo badge-xs">Bed</span>
+</div>
+<p class="card-text">Untuk rawat inap, kamar, bed, atau kapasitas ruangan.</p>
+<a class="card-link card-link-indigo" href="#">Lihat detail</a>
+</div>
+<div class="card card-navy component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-building-shield"></i></span>
+<h3 class="card-title">Navy</h3>
+</div>
+<span class="badge badge-navy badge-xs">Internal</span>
+</div>
+<p class="card-text">Untuk informasi internal atau ringkasan operasional umum.</p>
+<a class="card-link card-link-navy" href="#">Lihat detail</a>
+</div>
+<div class="card card-slate component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+<h3 class="card-title">Slate</h3>
+</div>
+<span class="badge badge-slate badge-xs">Muted</span>
+</div>
+<p class="card-text">Untuk status netral, riwayat, atau informasi pendukung yang tidak urgent.</p>
+<a class="card-link card-link-navy" href="#">Lihat detail</a>
+</div>
+</div>
+</section>
+<section class="mt-12" id="status-icon-link">
+<div class="section-head">
+<div>
+<h2>Card Status dengan Icon &amp; Link Detail</h2>
+<p>Contoh ini mengikuti pola card yang sudah dipakai di halaman dashboard dan booking: icon status di kiri/atas, pesan status yang jelas, lalu link atau button <span class="mono">Lihat Detail</span> sebagai action.</p>
+</div>
+<span class="badge badge-danger badge-md"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Status penting</span>
+</div>
+<div class="grid-3">
+<article class="metric-card card">
+<span aria-hidden="true" class="metric-icon is-danger">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</span>
+<strong class="metric-value text-body-lg font-bold">7</strong>
+<span class="metric-label text-body-md muted">Peringatan Kritis</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 18 L18 16 L34 20 L52 24 L70 28 L88 22 L106 18 L124 14 L136 12 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 18 L18 16 L34 20 L52 24 L70 28 L88 22 L106 18 L124 14 L136 12"></path>
+                  <circle class="spark-dot" cx="124" cy="14" r="3"></circle>
+                </svg>
+              </span>
+<a class="metric-link btn btn-ghost btn-sm" href="#">Lihat Detail</a>
+</article>
+<article class="metric-card card">
+<span aria-hidden="true" class="metric-icon is-warning">
+<i class="fa-solid fa-list-check"></i>
+</span>
+<strong class="metric-value text-body-lg font-bold">158</strong>
+<span class="metric-label text-body-md muted">Antrian Aktif</span>
+              <span class="metric-sparkline" aria-hidden="true">
+                <svg viewBox="0 0 136 58" preserveAspectRatio="xMidYMid meet" focusable="false">
+                  <line class="spark-grid" x1="0" y1="46" x2="136" y2="46"></line>
+                  <path class="spark-area" d="M0 36 L18 30 L34 26 L52 18 L70 28 L88 24 L106 16 L124 22 L136 20 L136 58 L0 58 Z"></path>
+                  <path class="spark-line" d="M0 36 L18 30 L34 26 L52 18 L70 28 L88 24 L106 16 L124 22 L136 20"></path>
+                  <circle class="spark-dot" cx="124" cy="22" r="3"></circle>
+                </svg>
+              </span>
+<a class="metric-link btn btn-ghost btn-sm" href="#">Lihat Detail</a>
+</article>
+<section class="card card-danger component-stack" role="alert">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Status JKN: TIDAK AKTIF</h3>
+</div>
+<span class="badge badge-danger badge-sm">Tunggakan Iuran</span>
+</div>
+<p class="card-text">Peserta memiliki tunggakan iuran BPJS.</p>
+<p class="card-text">Pasien dapat tetap admision dengan status pasien.</p>
+<div class="card-footer">
+<button class="btn btn-danger-soft btn-md btn-full" type="button">
+<i aria-hidden="true" class="fa-solid fa-id-card-clip"></i>
+              Lihat Detail Kepesertaan
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+</section>
+</div>
+<div class="grid-3 u-mt-16">
+<article class="card card-danger component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Status JKN: TIDAK AKTIF</h3>
+</div>
+<span class="badge badge-danger badge-sm">Tunggakan iuran</span>
+</div>
+<p class="card-text">Gunakan untuk status kepesertaan, tunggakan, error validasi, atau informasi yang harus cepat terlihat.</p>
+<div class="card-footer">
+<a class="card-link card-link-danger" href="#">Lihat Detail</a>
+</div>
+</article>
+<article class="card card-warning component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Status BOR</h3>
+</div>
+<span class="badge badge-warning badge-sm">Tinggi</span>
+</div>
+<p class="card-text">BOR mendekati kapasitas penuh. Gunakan untuk warning operasional yang membutuhkan pengecekan.</p>
+<div class="card-footer">
+<a class="card-link card-link-warning" href="#">Lihat Detail</a>
+</div>
+</article>
+<article class="card card-info component-stack">
+<div class="card-header">
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-circle-info"></i></span>
+<h3 class="card-title">Update Sistem</h3>
+</div>
+<span class="badge badge-info badge-sm">Update</span>
+</div>
+<p class="card-text">Gunakan untuk informasi non-kritis seperti update data, jadwal sinkronisasi, atau catatan tambahan.</p>
+<div class="card-footer">
+<a class="card-link card-link-info" href="#">Lihat Detail</a>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="heading-link">
+<div class="section-head">
+<div>
+<h2>Card dengan Heading, Link, dan Footer</h2>
+<p>Heading card harus singkat. Link atau action sebaiknya berada di footer agar konsisten secara vertikal.</p>
+</div>
+</div>
+<div class="grid-3">
+<article class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Ringkasan Booking</h3>
+<p class="card-subtitle">Hari ini · 14 Juni 2026</p>
+</div>
+<span class="badge badge-primary badge-sm">24</span>
+</div>
+<div class="card-body">
+<div class="data-pair"><span>Menunggu konfirmasi</span><strong>8 Pasien</strong></div>
+<div class="data-pair"><span>Sudah check-in</span><strong>16 Pasien</strong></div>
+</div>
+<div class="card-footer">
+<a class="card-link" href="#">Lihat semua booking</a>
+</div>
+</article>
+<article class="card card-danger component-stack">
+<div class="card-header">
+<div>
+<div class="card-title-row">
+<span aria-hidden="true" class="card-tone-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+<h3 class="card-title">Status JKN: TIDAK AKTIF</h3>
+</div>
+<p class="card-subtitle">Validasi kepesertaan</p>
+</div>
+<span class="badge badge-danger badge-sm">Tunggakan iuran</span>
+</div>
+<p class="card-text">Peserta memiliki tunggakan BPJS. Pasien dapat tetap admisi dengan status pasien umum atau sesuai kebijakan rumah sakit.</p>
+<div class="card-footer">
+<button class="btn btn-danger-soft btn-md" type="button">Lihat Detail Kepesertaan</button>
+</div>
+</article>
+<article class="card card-outline card-warning component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">Perkiraan Tagihan</h3>
+<p class="card-subtitle">Estimasi awal</p>
+</div>
+<span class="badge badge-outline badge-warning badge-sm">Perlu cek</span>
+</div>
+<p class="card-text">Biaya dapat berubah mengikuti tindakan medis, obat, dan lama perawatan pasien.</p>
+<div class="card-footer">
+<a class="card-link card-link-warning" href="#">Buka simulasi biaya</a>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="layouts">
+<div class="section-head">
+<div>
+<h2>Variasi Layout Card</h2>
+<p>Gunakan variasi layout ini sebelum membuat class baru di halaman. Kombinasikan card dengan badge, button, table, atau grid yang sudah tersedia.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">KPI Card</h3>
+<p class="card-subtitle">Dengan value dan trend</p>
+</div>
+<span class="badge badge-success badge-sm">+12.5%</span>
+</div>
+<div class="card-kpi-value">2.786</div>
+<p class="card-text">Total kunjungan hari ini dibanding kemarin.</p>
+<div class="card-footer">
+<a class="card-link" href="#">Lihat detail KPI</a>
+</div>
+</div>
+<div class="card component-stack">
+<div class="card-header">
+<div>
+<h3 class="card-title">List Card</h3>
+<p class="card-subtitle">Dengan item terstruktur</p>
+</div>
+<button class="btn btn-ghost btn-sm" type="button">Lihat Semua</button>
+</div>
+<div class="card-list">
+<div class="data-pair"><span>Melati 203</span><strong>6 bed tersedia</strong></div>
+<div class="data-pair"><span>Dahlia 2A</span><strong>3 bed tersedia</strong></div>
+<div class="data-pair"><span>Anggrek 305</span><strong>1 bed tersedia</strong></div>
+</div>
+</div>
+</div>
+<div class="grid-3 u-mt-16">
+<div class="card card-compact component-stack">
+<h3 class="card-title">Compact Card</h3>
+<p class="card-text">Untuk area padat seperti filter, summary kecil, atau panel kanan.</p>
+</div>
+<div class="card card-flat component-stack">
+<h3 class="card-title">Flat Card</h3>
+<p class="card-text">Tanpa shadow, cocok di dalam layout yang sudah ramai.</p>
+</div>
+<div class="card card-elevated component-stack">
+<h3 class="card-title">Elevated Card</h3>
+<p class="card-text">Gunakan terbatas untuk card yang butuh prioritas visual.</p>
+</div>
+</div>
+</section>
+<section class="mt-12" id="usage">
+<div class="section-head">
+<div>
+<h2>Panduan Pakai</h2>
+<p>Aturan sederhana supaya card konsisten di semua halaman dashboard dan form operasional.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Pakai <span class="mono">.card</span> sebagai base component.</strong><p>Card utama, statistik, dan form wrapper tetap berangkat dari class yang sama.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Gunakan <span class="mono">.card-danger</span> hanya untuk status kritis.</strong><p>Cocok untuk JKN tertolak, tunggakan, error, atau kondisi yang perlu perhatian cepat.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Letakkan action di <span class="mono">.card-footer</span>.</strong><p>Footer menjaga jarak tombol dan link tetap konsisten di semua card.</p></div></div>
+</div>
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan buat wrapper card baru jika <span class="mono">.card</span> cukup.</strong><p>Modifier dan utility lebih aman daripada menambah pola card lain.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan memakai colored card hanya untuk dekorasi.</strong><p>Warna card harus punya fungsi status atau penekanan informasi.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan menaruh terlalu banyak action di header.</strong><p>Header cukup untuk title, subtitle, badge, atau satu aksi ringan.</p></div></div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Card memakai .card sebagai kontainer utama, dengan .card-header, .card-title, .card-text, dan .card-footer untuk struktur isi.</p>
+</div>
+<span class="badge badge-sm">cards.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/cards.css */
+.card {
+  @apply border-0 bg-[color:var(--surface)] rounded-[var(--radius-card)] p-4 shadow-[var(--shadow-sm)] min-w-0;
+}
+
+.card-header,
+.card-footer {
+  @apply flex items-start justify-between gap-3 min-w-0;
+}
+
+.card-title {
+  @apply m-0 text-[color:var(--text-primary)] text-body-lg leading-6 font-bold;
+}
+
+.card-text,
+.card p.card-text {
+  @apply m-0 text-[color:var(--text-secondary)] text-body-md leading-5.5 font-normal;
+}
+
+.card-tone-icon {
+  @apply w-8 h-8 rounded-xl inline-flex items-center justify-center flex-none bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;article class=&quot;card&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;div&gt;
+      &lt;h3 class=&quot;card-title&quot;&gt;Ringkasan Booking&lt;/h3&gt;
+      &lt;p class=&quot;card-text&quot;&gt;Bed, penjamin, dan status pasien.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;badge badge-success badge-sm&quot;&gt;Aktif&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-footer&quot;&gt;
+    &lt;a class=&quot;card-link&quot; href=&quot;#&quot;&gt;Lihat detail&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+function Card({ title, subtitle, badge, children, footer }) {
+  return (
+    &lt;article className=&quot;card&quot;&gt;
+      &lt;div className=&quot;card-header&quot;&gt;
+        &lt;div&gt;
+          &lt;h3 className=&quot;card-title&quot;&gt;{title}&lt;/h3&gt;
+          {subtitle &amp;&amp; &lt;p className=&quot;card-text&quot;&gt;{subtitle}&lt;/p&gt;}
+        &lt;/div&gt;
+        {badge}
+      &lt;/div&gt;
+      {children}
+      {footer &amp;&amp; &lt;div className=&quot;card-footer&quot;&gt;{footer}&lt;/div&gt;}
+    &lt;/article&gt;
+  )
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Untuk card halaman spesifik boleh tambah wrapper page-level, tetapi struktur card dasar tetap pakai class ini.</div>
+</section>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

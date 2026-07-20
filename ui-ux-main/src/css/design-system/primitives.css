@@ -1,0 +1,118 @@
+/* ==========================================================================
+   10. Primitive code, icon, dan aksesibilitas
+   Komponen dasar untuk code block, ikon Lucide, dan sr-only.
+   ========================================================================== */
+
+.code .comment {
+  @apply text-[color:var(--ui-slate-400)];
+}
+
+.code .key {
+  @apply text-[color:var(--ui-blue-300)];
+}
+
+.code .string {
+  @apply text-[color:var(--ui-green-200)];
+}
+
+h4 {
+  @apply mt-0 mx-0 mb-3 text-body-lg font-bold text-[color:var(--text-primary)];
+}
+
+.card.soft {
+  background: linear-gradient(180deg, var(--white) 0%, var(--ui-surface-canvas) 100%);
+}
+
+.mini-title {
+  @apply text-body-sm font-bold text-[color:var(--ui-text-placeholder)] uppercase tracking-[0.08em];
+}
+
+.card p {
+  @apply mt-2 mx-0 mb-0 text-[color:var(--slate)] text-body-md;
+}
+
+.guideline-list {
+  @apply pl-5 mt-3.5 mx-0 mb-0 text-[color:var(--text-primary)] text-body-md;
+}
+
+.guideline-list li {
+  @apply my-2 mx-0;
+}
+
+.lucide {
+  @apply w-4.5 h-4.5 flex-none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.sr-only {
+  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* ==========================================================================
+   11. Primitive UI bersama
+   Wrapper input, icon button, varian badge, dan helper kecil lintas halaman.
+   ========================================================================== */
+
+.input-wrap {
+  @apply relative min-w-0;
+}
+
+.input.is-sm {
+  @apply min-h-9 rounded-[var(--radius-input-sm)] py-0 px-3 text-body-md;
+}
+
+.input.with-left,
+select.with-left,
+textarea.with-left,
+.dropdown-trigger.with-left {
+  @apply pl-[42px];
+}
+
+.input.with-right,
+select.with-right,
+textarea.with-right,
+.dropdown-trigger.with-right {
+  @apply pr-11;
+}
+
+.field-icon {
+  @apply w-4.5 h-4.5 left-3.5 inline-flex items-center justify-center;
+}
+
+.field-icon.right {
+  @apply left-auto right-3.5;
+}
+
+.icon-btn {
+  @apply w-10 h-10 border border-[color:var(--border)] bg-[color:var(--white)] text-[color:var(--primary-blue)] rounded-[var(--radius-button-md)] inline-flex items-center justify-center cursor-pointer;
+  transition: border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.icon-btn:hover {
+  @apply border-[color:var(--ui-primary-border-soft)] bg-[color:var(--primary-light)];
+  transform: translateY(-1px);
+}
+
+.icon-btn:focus-visible {
+  @apply outline-none shadow-[var(--ring)];
+}
+
+.badge.primary {
+  @apply text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.badge.success {
+  @apply text-[color:var(--success-dark)] bg-[color:var(--success-light)];
+}
+
+.badge.inactive {
+  @apply text-[color:var(--slate)] bg-[color:var(--light-gray)];
+}

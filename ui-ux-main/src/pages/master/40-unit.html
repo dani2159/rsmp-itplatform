@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Master Data Unit / Poli · Admin SIMRS ZAIDAN</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/> <link href="../../css/style.css" rel="stylesheet"/>
+</head>
+<body class="dashboard-app admin-users-page master-unit-page">
+<div class="layout-preview dashboard-layout admin-users-layout master-unit-layout" id="dashboardLayout">
+<aside aria-label="Sidebar dashboard SIMRS" class="app-sidebar" id="dashboardSidebar">
+<div class="sidebar-head">
+<a aria-label="SIMRS ZAIDAN dashboard" class="brand-lockup" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" class="brand-logo-full" src="../../assets/images/logo-simrs.svg"/>
+<img alt="SIMRS ZAIDAN icon" class="brand-logo-icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+</div>
+<div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+<span aria-hidden="true" class="sidebar-user-avatar sidebar-user-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+<span class="sidebar-user-meta">
+<span class="sidebar-user-name">Superadmin</span>
+<span class="sidebar-user-role">Super Admin</span>
+</span>
+</div>
+<nav aria-label="Menu utama SIMRS" class="sidebar-section">
+<a class="nav-item" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-gauge-high"></i></span>
+<span class="nav-label">Dashboard</span>
+</a>
+<details class="nav-group" open="">
+<summary class="nav-summary active" data-tooltip="Admin">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-gear"></i></span>
+<span class="nav-label">Admin</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/admin/users" href="../admin/50-users.html">Daftar Pengguna</a>
+<a class="nav-subitem" data-route="/admin/roles" href="../admin/51-role-permission.html">Peran &amp; Hak Akses</a>
+<a class="nav-subitem active" data-route="/admin/units" href="40-unit.html">Unit / Poli</a>
+<a class="nav-subitem" data-route="/admin/employees" href="41-karyawan.html">Karyawan</a>
+<a class="nav-subitem" data-route="/admin/doctor-schedules" href="42-jadwal-dokter.html">Jadwal Dokter</a>
+<a class="nav-subitem" data-route="/admin/rooms" href="43-kamar.html">Kamar</a>
+<a class="nav-subitem" data-route="/admin/insurance" href="44-penjamin.html">Penjamin</a>
+<a class="nav-subitem" data-route="/admin/tariffs" href="45-tarif.html">Tarif</a>
+<a class="nav-subitem" data-route="/admin/hospital-config" href="#">Profil Rumah Sakit</a>
+<a class="nav-subitem" data-route="/admin/system-parameters" href="#">Parameter Sistem</a>
+<a class="nav-subitem" data-route="/admin/printer-config" href="../admin/52-printer.html">Master Printer</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Pendaftaran">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-plus"></i></span>
+<span class="nav-label">Pendaftaran</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/registration" href="../dashboard/32-dashboard-loket.html">Dashboard Loket</a>
+<a class="nav-subitem" data-route="/registration/patients/new" href="../registration/60-pendaftaran-pasien-baru.html">Pasien Baru</a>
+<a class="nav-subitem" data-route="/registration/visits/new" href="#">Buat Kunjungan</a>
+<a class="nav-subitem" data-route="/registration/queue" href="#">Monitor Antrean</a>
+<a class="nav-subitem" data-route="/registration/display" href="../dashboard/33-monitor-display-loket.html">Display TV Antrean</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rekam Medis">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></span>
+<span class="nav-label">Rekam Medis</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/emr/search" href="../emr/70-rekam-medis.html">Cari RM Pasien</a>
+<a class="nav-subitem" data-route="/emr/patients/:id" href="../emr/70-rekam-medis.html">Profil RM Terpadu</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rawat Jalan">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i></span>
+<span class="nav-label">Rawat Jalan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/outpatient" href="#">Dashboard Poli</a>
+<a class="nav-subitem" data-route="/outpatient/queue" href="#">Antrean Poli</a>
+<a class="nav-subitem" data-route="/outpatient/visits/:id" href="#">Pemeriksaan</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Farmasi">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i></span>
+<span class="nav-label">Farmasi</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/pharmacy" href="#">Antrian Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/prescriptions/:id" href="#">Validasi Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/dispensing/:id" href="#">Penyerahan Obat</a>
+<a class="nav-subitem" data-route="/pharmacy/labels/:id" href="#">Cetak Etiket</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Kasir">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-cash-register"></i></span>
+<span class="nav-label">Kasir</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/billing" href="#">Pasien Siap Bayar</a>
+<a class="nav-subitem" data-route="/billing/:visitId/receipt" href="#">Kwitansi</a>
+<a class="nav-subitem" data-route="/billing/void" href="#">Pembatalan Penagihan</a>
+<a class="nav-subitem" data-route="/billing/report" href="#">Laporan Kasir</a>
+</div>
+</details>
+</nav>
+<div class="sidebar-spacer"></div>
+</aside>
+<div class="app-main">
+<header class="app-header">
+<button aria-controls="dashboardSidebar" aria-expanded="true" aria-label="Tutup sidebar" class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button">
+<i aria-hidden="true" class="fa-solid fa-bars topbar-line-icon"></i>
+</button>
+<a aria-label="SIMRS ZAIDAN dashboard" class="mobile-header-brand" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+</a>
+<div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+<span aria-hidden="true" class="field-icon">
+<i aria-hidden="true" class="fa-solid fa-magnifying-glass topbar-line-icon"></i>
+</span>
+<input aria-autocomplete="list" aria-controls="globalSearchSuggestions" aria-expanded="false" aria-label="Cari pasien, tarif, penagihan" class="input with-left with-right" id="globalSearchInput" placeholder="Cari pasien, tarif, penagihan..." role="combobox" type="search"/>
+<span aria-hidden="true" class="kbd-hint">⌘ K</span>
+<div aria-label="Saran pencarian" class="doctor-autocomplete-panel" id="globalSearchSuggestions" role="listbox">
+<div class="dropdown-group-label" data-suggestion-group="recent">Terbaru</div>
+<button class="dropdown-option active" data-search-suggestion="" data-search-text="ayu lestari rm-10234 pasien rawat inap melati 203 recent" data-search-value="Ayu Lestari · RM-10234" data-suggestion-group="recent" role="option" type="button">
+<span class="option-meta"><strong>Ayu Lestari · RM-10234</strong><small>Pasien rawat inap · Ruang Melati 203</small></span>
+<span class="option-right">Pasien</span>
+</button>
+<div class="dropdown-group-label" data-suggestion-group="suggestion">Saran</div>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="dr bima pratama dokter penyakit dalam jadwal praktik poli" data-search-value="Dr. Bima Pratama" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Dr. Bima Pratama</strong><small>Dokter Penyakit Dalam · Jadwal praktik hari ini</small></span>
+<span class="option-right">Dokter</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="jadwal praktik dokter poli kalender shift appointment" data-search-value="Jadwal Praktik" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Jadwal Praktik</strong><small>Kelola jadwal dokter dan poli</small></span>
+<span class="option-right">Menu</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="ruang melati 203 kamar tersedia bed rawat inap" data-search-value="Ruang Melati 203" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Ruang Melati 203</strong><small>Kamar tersedia · Rawat inap</small></span>
+<span class="option-right">Kamar</span>
+</button>
+<div class="autocomplete-empty" hidden="">Tidak ada hasil yang cocok</div>
+<div class="dropdown-footer"><span>Gunakan ↑ ↓ untuk navigasi</span><span>Enter untuk pilih</span></div>
+</div>
+</div>
+<div aria-hidden="true" class="topbar-spacer"></div>
+<div aria-label="Aksi header" class="header-actions">
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu notifikasi" class="icon-btn topbar-icon">
+<i aria-hidden="true" class="fa-regular fa-bell"></i>
+<span class="notification-dot">4</span>
+</summary>
+<div aria-label="Menu notifikasi" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:320px;">
+<div class="dropdown-group-label">Notifikasi</div>
+<button class="dropdown-option active" role="menuitem" type="button"><span class="option-meta">Daftar tunggu meningkat<small>8 pasien butuh follow-up</small></span><span class="option-right"><span class="badge badge-warning badge-xs">Tinggi</span></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Kamar tersedia<small>Ruang Melati 203 kosong</small></span><span class="option-right">Baru</span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Approval tertunda<small>2 permintaan perubahan jadwal</small></span></button>
+<div class="dropdown-footer"><span>Tandai semua dibaca</span><span>Lihat semua</span></div>
+</div>
+</details>
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu profil superadmin" class="profile-menu">
+<span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+<span class="profile-copy"><span class="profile-name">Superadmin</span><span class="profile-role">Super Admin</span></span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down topbar-line-icon"></i>
+</summary>
+<div aria-label="Menu profil" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:240px;">
+<div class="dropdown-group-label">Akun</div>
+<button class="dropdown-option selected" role="menuitem" type="button"><span class="option-meta">Superadmin<small>Super Admin</small></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Pengaturan<small>Peran dan akses</small></span></button>
+<a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+</div>
+</details>
+</div>
+</header>
+<main aria-label="Halaman master data unit dan poli" class="dashboard-content admin-users-content master-unit-content">
+<nav aria-label="Breadcrumb" class="admin-breadcrumb text-body-sm">
+<a href="../dashboard/30-dashboard.html"><i aria-hidden="true" class="fa-solid fa-house"></i>Dashboard</a>
+<i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+<a href="#">Admin</a>
+<i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+<span>Master Data Unit / Poli</span>
+</nav>
+<section class="admin-page-head">
+<div>
+<h1 class="text-h2 page-title">Master Data Unit / Poli</h1>
+<p class="admin-page-subtitle">Kelola daftar unit atau poli yang digunakan saat pendaftaran, antrean pasien, dan pencatatan layanan.</p>
+</div>
+<div class="admin-page-actions">
+<button class="btn btn-primary btn-lg" data-open-modal="unitModal" type="button"><i aria-hidden="true" class="fa-solid fa-plus"></i>Tambah Unit</button>
+</div>
+</section>
+<section aria-label="Ringkasan unit" class="stat-grid">
+<article class="stat-card">
+<span class="stat-icon is-blue"><i aria-hidden="true" class="fa-solid fa-building-user"></i></span>
+<span class="stat-label">Total Unit</span>
+<strong class="stat-value" data-unit-stat="total">12</strong>
+<span class="stat-note">Poli, penunjang, farmasi, IGD</span>
+</article>
+<article class="stat-card">
+<span class="stat-icon is-green"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span>
+<span class="stat-label">Unit Aktif</span>
+<strong class="stat-value" data-unit-stat="registration">9</strong>
+<span class="stat-note">Siap digunakan untuk pendaftaran</span>
+</article>
+</section>
+<section aria-label="Daftar unit dan poli" class="unit-workspace-grid">
+<article class="card admin-table-card unit-table-card">
+<div class="card-header admin-card-head">
+<div>
+<h2 class="card-title">Daftar Unit / Poli</h2>
+<p class="card-subtitle">Setiap unit perlu memiliki kode yang singkat dan unik agar mudah dikenali oleh petugas.</p>
+</div>
+</div>
+<div class="toolbar admin-user-toolbar">
+<div class="toolbar-left admin-toolbar-left">
+<div aria-label="Cari unit" class="input-wrap search-field admin-search-field">
+<span aria-hidden="true" class="field-icon"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i></span>
+<input aria-label="Cari kode, nama unit, jenis, atau kode awal" class="input with-left" data-unit-search="" placeholder="Cari kode, nama unit, jenis, kode awal..." type="search"/>
+</div>
+</div>
+<div class="toolbar-right admin-filter-group">
+<details class="ds-dropdown ds-select admin-filter-select" data-component="unit-filter" data-filter-key="jenis">
+<summary aria-label="Filter jenis unit" class="dropdown-trigger"><span data-select-text="">Semua Jenis</span></summary>
+<div aria-label="Filter jenis unit" class="dropdown-panel compact" role="listbox">
+<button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Jenis</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Poli" role="option" type="button">Poli</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Penunjang" role="option" type="button">Penunjang</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Farmasi" role="option" type="button">Farmasi</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="IGD" role="option" type="button">IGD</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Administrasi" role="option" type="button">Administrasi</button>
+</div>
+</details>
+<details class="ds-dropdown ds-select admin-filter-select" data-component="unit-filter" data-filter-key="status">
+<summary aria-label="Filter status unit" class="dropdown-trigger"><span data-select-text="">Semua Status</span></summary>
+<div aria-label="Filter status unit" class="dropdown-panel compact" role="listbox">
+<button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Status</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Aktif" role="option" type="button">Aktif</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Nonaktif" role="option" type="button">Nonaktif</button>
+</div>
+</details>
+<button aria-label="Reset filter" class="btn btn-outline btn-icon btn-lg table-reset-filter-btn" data-reset-table-filter="" data-tooltip="Reset filter" title="Reset filter" type="button"><i aria-hidden="true" class="fa-solid fa-rotate-left"></i></button></div>
+</div>
+<div class="table-scroll admin-table-scroll unit-table-scroll" id="unitTableSection">
+<table aria-label="Tabel master data unit dan poli" class="data-table admin-users-table unit-table" data-table-empty="true" data-table-empty-title="Unit tidak ditemukan" data-table-empty-description="Coba ubah kata kunci pencarian, jenis unit, atau status yang dipilih." id="unitTable">
+<thead>
+<tr>
+<th scope="col"><span class="sort">Unit / Poli <i aria-hidden="true" class="fa-solid fa-sort"></i></span></th>
+<th scope="col">Jenis</th>
+<th scope="col">Kode Awal No. Reg</th>
+<th scope="col">Kapasitas Antrian</th>
+<th scope="col">Status</th>
+<th class="text-right" scope="col">Aksi</th>
+</tr>
+</thead>
+<tbody id="unitTableBody">
+<tr data-capacity="40" data-code="POLI01" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit pelayanan poli umum untuk pemeriksaan medis dasar dan konsultasi umum." data-internal-code="UNIT-POLI01" data-jenis="Poli" data-keywords="poli01 poli umum poli pu aktif fase 1 unit pelayanan poli umum untuk pemeriksaan medis dasar dan konsultasi umum." data-name="poli umum" data-note="Rawat jalan umum" data-online-quota="30" data-phase="Fase 1" data-prefix="PU" data-queue-type="FIFO (First In First Out)" data-registration-deadline="3" data-service-time="10 - 15 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PU</span><div><strong>Poli Umum</strong><small><span class="unit-code-pill">POLI01</span> Rawat jalan umum</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>PU</strong></td>
+<td><div class="unit-capacity-cell"><strong>40</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Umum" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Poli Umum" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Umum" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="28" data-code="GIGI" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit pelayanan kesehatan gigi dan mulut dengan jadwal dokter gigi." data-internal-code="UNIT-GIGI" data-jenis="Poli" data-keywords="gigi poli gigi poli rjg aktif fase 1 unit pelayanan kesehatan gigi dan mulut dengan jadwal dokter gigi." data-name="poli gigi" data-note="Jadwal dokter gigi" data-online-quota="25" data-phase="Fase 1" data-prefix="RJG" data-queue-type="FIFO (First In First Out)" data-registration-deadline="3" data-service-time="15 - 20 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PG</span><div><strong>Poli Gigi</strong><small><span class="unit-code-pill">GIGI</span> Jadwal dokter gigi</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>RJG</strong></td>
+<td><div class="unit-capacity-cell"><strong>28</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Gigi" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Poli Gigi" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Gigi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="60" data-code="IGD" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Instalasi gawat darurat untuk pasien emergency dan triage." data-internal-code="UNIT-IGD" data-jenis="IGD" data-keywords="igd instalasi gawat darurat igd er aktif fase 1 instalasi gawat darurat untuk pasien emergency dan triage." data-name="instalasi gawat darurat" data-note="Pasien emergency" data-online-quota="0" data-phase="Fase 1" data-prefix="ER" data-queue-type="Triage Based" data-registration-deadline="0" data-service-time="5 - 10 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">IG</span><div><strong>Instalasi Gawat Darurat</strong><small><span class="unit-code-pill">IGD</span> Pasien emergency</small></div></div></td>
+<td><span class="badge badge-danger badge-sm">IGD</span></td>
+<td><strong>ER</strong></td>
+<td><div class="unit-capacity-cell"><strong>60</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Instalasi Gawat Darurat" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Instalasi Gawat Darurat" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Instalasi Gawat Darurat" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="80" data-code="LAB" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit laboratorium untuk pemeriksaan penunjang dan input hasil lab." data-internal-code="UNIT-LAB" data-jenis="Penunjang" data-keywords="lab laboratorium penunjang lab aktif fase 1 unit laboratorium untuk pemeriksaan penunjang dan input hasil lab." data-name="laboratorium" data-note="Pemeriksaan penunjang lab" data-online-quota="20" data-phase="Fase 1" data-prefix="LAB" data-queue-type="Appointment Based" data-registration-deadline="2" data-service-time="15 - 25 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">LB</span><div><strong>Laboratorium</strong><small><span class="unit-code-pill">LAB</span> Pemeriksaan penunjang lab</small></div></div></td>
+<td><span class="badge badge-slate badge-sm">Penunjang</span></td>
+<td><strong>LAB</strong></td>
+<td><div class="unit-capacity-cell"><strong>80</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Laboratorium" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Laboratorium" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Laboratorium" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="36" data-code="RAD" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit radiologi untuk layanan X-Ray, USG, dan CT Scan." data-internal-code="UNIT-RAD" data-jenis="Penunjang" data-keywords="rad radiologi penunjang rad aktif fase 1 unit radiologi untuk layanan x-ray, usg, dan ct scan." data-name="radiologi" data-note="X-Ray, USG, CT Scan" data-online-quota="20" data-phase="Fase 1" data-prefix="RAD" data-queue-type="Appointment Based" data-registration-deadline="2" data-service-time="20 - 30 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">RD</span><div><strong>Radiologi</strong><small><span class="unit-code-pill">RAD</span> X-Ray, USG, CT Scan</small></div></div></td>
+<td><span class="badge badge-slate badge-sm">Penunjang</span></td>
+<td><strong>RAD</strong></td>
+<td><div class="unit-capacity-cell"><strong>36</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Radiologi" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Radiologi" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Radiologi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="120" data-code="FARM" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Farmasi rawat jalan untuk validasi dan penyerahan resep pasien." data-internal-code="UNIT-FARM" data-jenis="Farmasi" data-keywords="farm farmasi rawat jalan farmasi frm aktif fase 1 farmasi rawat jalan untuk validasi dan penyerahan resep pasien." data-name="farmasi rawat jalan" data-note="Antrian resep pasien RJ" data-online-quota="0" data-phase="Fase 1" data-prefix="FRM" data-queue-type="FIFO (First In First Out)" data-registration-deadline="0" data-service-time="10 - 15 Menit / Resep" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">FR</span><div><strong>Farmasi Rawat Jalan</strong><small><span class="unit-code-pill">FARM</span> Antrian resep pasien RJ</small></div></div></td>
+<td><span class="badge badge-success badge-sm">Farmasi</span></td>
+<td><strong>FRM</strong></td>
+<td><div class="unit-capacity-cell"><strong>120</strong><small>resep / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Farmasi Rawat Jalan" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Farmasi Rawat Jalan" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Farmasi Rawat Jalan" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="75" data-code="ADM" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit administrasi pasien untuk verifikasi berkas dan kebutuhan administratif." data-internal-code="UNIT-ADM" data-jenis="Administrasi" data-keywords="adm administrasi pasien administrasi adm aktif fase 1 unit administrasi pasien untuk verifikasi berkas dan kebutuhan administratif." data-name="administrasi pasien" data-note="Administrasi dan verifikasi berkas" data-online-quota="10" data-phase="Fase 1" data-prefix="ADM" data-queue-type="FIFO (First In First Out)" data-registration-deadline="1" data-service-time="8 - 12 Menit / Pasien" data-status="Aktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">AD</span><div><strong>Administrasi Pasien</strong><small><span class="unit-code-pill">ADM</span> Administrasi dan verifikasi berkas</small></div></div></td>
+<td><span class="badge badge-neutral badge-sm">Administrasi</span></td>
+<td><strong>ADM</strong></td>
+<td><div class="unit-capacity-cell"><strong>75</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Administrasi Pasien" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Administrasi Pasien" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Administrasi Pasien" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="24" data-code="ANAK" data-created-at="01/01/2024 09:00" data-created-by="Superadmin" data-description="Unit pelayanan poli anak yang belum dibuka untuk pendaftaran." data-internal-code="UNIT-ANAK" data-jenis="Poli" data-keywords="anak poli anak poli rja nonaktif fase 2 unit pelayanan poli anak yang belum dibuka untuk pendaftaran." data-name="poli anak" data-note="Belum dibuka untuk pendaftaran" data-online-quota="20" data-phase="Fase 2" data-prefix="RJA" data-queue-type="FIFO (First In First Out)" data-registration-deadline="3" data-service-time="15 - 20 Menit / Pasien" data-status="Nonaktif" data-updated-at="20/05/2024 10:30" data-updated-by="Superadmin">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PA</span><div><strong>Poli Anak</strong><small><span class="unit-code-pill">ANAK</span> Belum dibuka untuk pendaftaran</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>RJA</strong></td>
+<td><div class="unit-capacity-cell"><strong>24</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-danger badge-sm"><span aria-hidden="true" class="badge-dot"></span>Nonaktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Anak" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-label="Poli Anak" data-unit-detail="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-check"></i> Aktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Anak" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-footer admin-table-footer">
+<div data-table-summary="">Menampilkan <span data-visible-count="">0</span> dari <span data-total-count="">0</span> unit</div>
+<nav aria-label="Pagination tabel unit" class="pagination">
+<details class="ds-dropdown per-page" data-component="dropdown-select">
+<summary aria-label="Jumlah unit per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+<div aria-label="Jumlah unit per halaman" class="dropdown-panel" role="listbox">
+<button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+<button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+<button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+</div>
+</details>
+<div class="pagination-pages">
+<button aria-label="Halaman sebelumnya" class="page-button" type="button"><svg class="lucide" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button>
+<button aria-current="page" class="page-button active" type="button">1</button>
+<button aria-label="Halaman berikutnya" class="page-button" type="button"><svg class="lucide" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button>
+</div></nav>
+</div>
+</article>
+</section>
+</main>
+</div>
+</div>
+<div aria-hidden="true" class="modal-backdrop" data-modal-backdrop="" hidden=""></div>
+<section aria-labelledby="unitDetailTitle" aria-modal="true" class="modal" hidden="" id="unitDetailModal" role="dialog">
+<div class="modal-card is-xl unit-detail-modal-card">
+<div class="modal-head">
+<div><h2 class="modal-title" id="unitDetailTitle">Detail Unit / Poli</h2></div>
+<button aria-label="Tutup detail unit" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body unit-detail-body">
+<section class="modal-section">
+<div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-circle-info"></i></span><div><h3>Informasi Unit</h3></div></div>
+<div class="modal-info-grid">
+<dl class="modal-info-list">
+<div><dt>Kode Unit</dt><dd data-unit-detail="code">-</dd></div>
+<div><dt>Nama Unit / Poli</dt><dd data-unit-detail="name">-</dd></div>
+<div><dt>Jenis Unit</dt><dd data-unit-detail="jenis">-</dd></div>
+<div><dt>Prefix No. Registrasi</dt><dd data-unit-detail="prefix">-</dd></div>
+<div><dt>Kode Rekam Medis (Internal)</dt><dd data-unit-detail="internalCode">-</dd></div>
+<div><dt>Deskripsi</dt><dd data-unit-detail="description">-</dd></div>
+</dl>
+<dl class="modal-info-list">
+<div><dt>Status</dt><dd data-unit-detail="status">-</dd></div>
+<div><dt>Fase Aktif</dt><dd data-unit-detail="phase">-</dd></div>
+<div><dt>Kapasitas Antrian</dt><dd data-unit-detail="capacityFull">-</dd></div>
+<div><dt>Dibuat Oleh</dt><dd data-unit-detail="createdBy">Superadmin</dd></div>
+<div><dt>Dibuat Pada</dt><dd data-unit-detail="createdAt">01/01/2024 09:00</dd></div>
+<div><dt>Diubah Oleh</dt><dd data-unit-detail="updatedBy">Superadmin</dd></div>
+<div><dt>Diubah Pada</dt><dd data-unit-detail="updatedAt">20/05/2024 10:30</dd></div>
+</dl>
+</div>
+</section>
+<section class="modal-section">
+<div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-list-check"></i></span><div><h3>Pengaturan Antrian</h3></div></div>
+<div class="modal-info-grid">
+<dl class="modal-info-list">
+<div><dt>Kapasitas Antrian per Hari</dt><dd data-unit-detail="capacityDaily">-</dd></div>
+<div><dt>Tipe Antrian</dt><dd data-unit-detail="queueType">-</dd></div>
+<div><dt>Batas Pendaftaran H-</dt><dd data-unit-detail="registrationDeadline">-</dd></div>
+</dl>
+<dl class="modal-info-list">
+<div><dt>Estimasi Waktu Layanan</dt><dd data-unit-detail="serviceTime">-</dd></div>
+<div><dt>Kuota Pasien Online</dt><dd data-unit-detail="onlineQuota">-</dd></div>
+</dl>
+</div>
+</section>
+<section class="modal-section">
+<div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-code-branch"></i></span><div><h3>Fase Aktif (Kontrol Deploy)</h3><p>Unit ini akan muncul pada dropdown pendaftaran dan routing antrean hanya pada fase yang diaktifkan.</p></div></div>
+<div class="unit-phase-grid" data-unit-phase-grid="">
+<article class="unit-phase-card" data-phase-card="Fase 1"><strong>Fase 1</strong><span class="badge badge-success badge-sm">Aktif</span><small>01/01/2024 -<br/>31/12/2024</small><p>Deploy awal untuk layanan utama dan pendaftaran tahun berjalan.</p></article>
+<article class="unit-phase-card" data-phase-card="Fase 2"><strong>Fase 2</strong><span class="badge badge-neutral badge-sm">Tidak Aktif</span><small>01/01/2025 -<br/>31/12/2025</small><p>Perluasan layanan setelah konfigurasi fase pertama selesai.</p></article>
+<article class="unit-phase-card" data-phase-card="Fase 3"><strong>Fase 3</strong><span class="badge badge-neutral badge-sm">Tidak Aktif</span><small>01/01/2026 -<br/>31/12/2026</small><p>Aktivasi lanjutan untuk unit tambahan dan penyesuaian operasional.</p></article>
+<article class="unit-phase-card" data-phase-card="Fase 4"><strong>Fase 4</strong><span class="badge badge-neutral badge-sm">Tidak Aktif</span><small>01/01/2027 -<br/>31/12/2027</small><p>Kontrol deploy untuk ekspansi layanan tahun berikutnya.</p></article>
+<article class="unit-phase-card" data-phase-card="Fase 5"><strong>Fase 5</strong><span class="badge badge-neutral badge-sm">Tidak Aktif</span><small>01/01/2028 -<br/>31/12/2028</small><p>Fase akhir untuk rollout penuh seluruh modul layanan.</p></article>
+</div>
+</section>
+<section class="modal-section">
+<div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-clock-rotate-left"></i></span><div><h3>Riwayat Perubahan</h3></div></div>
+<div class="table-scroll modal-table-scroll modal-history-table-scroll">
+<table class="data-table admin-data-table modal-history-table">
+<thead><tr><th>Tanggal &amp; Waktu</th><th>Diubah Oleh</th><th>Perubahan</th><th>Keterangan</th></tr></thead>
+<tbody data-unit-detail-history="">
+<tr><td>20/05/2024 10:30</td><td>Superadmin</td><td><ul class="unit-history-list"><li>Kapasitas antrian: 30 → 40</li><li>Kuota online: 20% → 30%</li></ul></td><td>Penyesuaian kapasitas layanan</td></tr>
+<tr><td>10/04/2024 20:05</td><td>Superadmin</td><td>Aktivasi Fase 1</td><td>Unit diaktifkan pada Fase 1</td></tr>
+<tr><td>01/01/2024 09:00</td><td>Superadmin</td><td>Data unit dibuat</td><td>Data awal</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<div class="alert alert-info alert-sm"><span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-info"></i></span><div class="alert-body"><strong class="alert-title">Informasi Status Unit</strong><p>Unit dengan status Nonaktif tidak akan muncul pada dropdown pendaftaran.</p></div></div>
+</div>
+<div class="modal-actions modal-actions-split">
+<button class="btn btn-danger-soft btn-lg" data-unit-detail-toggle-status="" type="button"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i><span data-unit-detail-toggle-label="">Nonaktifkan Unit</span></button>
+<div class="modal-actions-right">
+<button class="btn btn-outline btn-lg" data-close-modal="" type="button">Tutup</button>
+<button class="btn btn-primary btn-lg" data-unit-detail-edit="" type="button"><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i>Ubah Unit</button>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="unitModalTitle" aria-modal="true" class="modal" hidden="" id="unitModal" role="dialog">
+<div class="modal-card is-lg">
+<div class="modal-head">
+<div>
+<h2 class="modal-title" id="unitModalTitle">Tambah / Ubah Unit</h2>
+<p class="modal-subtitle">Lengkapi informasi unit, pengaturan antrean, fase aktif, dan status penggunaan.</p>
+</div>
+<button aria-label="Tutup jendela unit" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<form data-validate-form="" id="unitForm" novalidate="">
+<input id="unitEditingCode" type="hidden"/>
+<section class="modal-section">
+<div class="modal-section-head">
+<span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-hospital"></i></span>
+<div><h3>Informasi Unit</h3><p>Kode unit digunakan sebagai penanda unit saat pasien didaftarkan dan diarahkan ke layanan terkait.</p></div>
+</div>
+<div class="modal-form-grid">
+<div class="field">
+<label for="unitCode">Kode Unit <span class="required">*</span></label>
+<input aria-describedby="unitCodeValidationError" class="input" data-control-label="Kode Unit" data-error-pattern="Gunakan huruf besar, angka, atau tanda hubung, maksimal 10 karakter." data-error-required="Kode Unit wajib diisi." data-validate-control="" id="unitCode" maxlength="10" pattern="[A-Z0-9-]{2,10}" placeholder="POLI01" required="" title="Gunakan huruf besar, angka, atau tanda hubung, maksimal 10 karakter" type="text"/>
+<small class="field-help">Maksimal 10 karakter, harus unik.</small>
+<small class="field-error" hidden="" id="unitCodeError">Kode unit sudah digunakan. Gunakan kode lain.</small>
+<small class="field-error" data-validation-error-for="unitCode" hidden="" id="unitCodeValidationError"></small></div>
+<div class="field"><label for="unitName">Nama Unit / Poli <span class="required">*</span></label><input aria-describedby="unitNameValidationError" class="input" data-control-label="Nama Unit / Poli" data-error-required="Nama Unit / Poli wajib diisi." data-validate-control="" id="unitName" placeholder="Poli Umum" required="" type="text"/>
+<small class="field-error" data-validation-error-for="unitName" hidden="" id="unitNameValidationError"></small></div>
+<div class="field"><label for="unitJenis">Jenis Unit <span class="required">*</span></label><select aria-describedby="unitJenisValidationError" aria-hidden="true" class="input modal-sync-native" data-control-label="Jenis Unit" data-error-required="Jenis Unit wajib dipilih." data-modal-native="" data-validate-control="" id="unitJenis" required="" tabindex="-1"><option>Poli</option><option>Penunjang</option><option>Farmasi</option><option>IGD</option><option>Administrasi</option><option>Rawat Inap</option><option>Lainnya</option></select>
+<details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="unitJenis">
+<summary aria-label="Pilih Jenis Unit" class="dropdown-trigger is-md"><span data-picker-text="">Poli</span></summary>
+<div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Poli" role="option" type="button">Poli</button><button aria-selected="false" class="dropdown-option" data-value="Penunjang" role="option" type="button">Penunjang</button><button aria-selected="false" class="dropdown-option" data-value="Farmasi" role="option" type="button">Farmasi</button><button aria-selected="false" class="dropdown-option" data-value="IGD" role="option" type="button">IGD</button><button aria-selected="false" class="dropdown-option" data-value="Administrasi" role="option" type="button">Administrasi</button><button aria-selected="false" class="dropdown-option" data-value="Rawat Inap" role="option" type="button">Rawat Inap</button><button aria-selected="false" class="dropdown-option" data-value="Lainnya" role="option" type="button">Lainnya</button></div>
+</details>
+<small class="field-error" data-validation-error-for="unitJenis" hidden="" id="unitJenisValidationError"></small></div>
+<div class="field"><label for="unitPrefix">Prefix No. Registrasi <span class="required">*</span></label><input aria-describedby="unitPrefixValidationError" class="input" data-control-label="Prefix No. Registrasi" data-error-required="Prefix No. Registrasi wajib diisi." data-validate-control="" id="unitPrefix" maxlength="6" placeholder="PU" required="" type="text"/>
+<small class="field-error" data-validation-error-for="unitPrefix" hidden="" id="unitPrefixValidationError"></small></div>
+<div class="field"><label for="unitInternalCode">Kode Rekam Medis (Internal)</label><input aria-describedby="unitInternalCodeValidationError" class="input" data-control-label="Kode Rekam Medis Internal" data-validate-control="" id="unitInternalCode" maxlength="20" placeholder="UNIT-POLI01" type="text"/>
+<small class="field-error" data-validation-error-for="unitInternalCode" hidden="" id="unitInternalCodeValidationError"></small></div>
+<div class="field span-2"><label for="unitDescription">Deskripsi</label><textarea aria-describedby="unitDescriptionValidationError" data-control-label="Deskripsi" data-validate-control="" id="unitDescription" placeholder="Unit pelayanan poli umum untuk pemeriksaan medis dasar dan konsultasi umum." rows="3"></textarea>
+<small class="field-error" data-validation-error-for="unitDescription" hidden="" id="unitDescriptionValidationError"></small></div>
+</div>
+</section>
+<section class="modal-section">
+<div class="modal-section-head">
+<span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-list-check"></i></span>
+<div><h3>Pengaturan Antrian</h3><p>Pengaturan ini dipakai untuk pendaftaran, kuota online, dan routing antrean.</p></div>
+</div>
+<div class="modal-form-grid">
+<div class="field"><label for="unitCapacity">Kapasitas Antrian per Hari <span class="required">*</span></label><input aria-describedby="unitCapacityValidationError" class="input" data-control-label="Kapasitas Antrian per Hari" data-error-number="Masukkan angka yang valid." data-error-required="Kapasitas Antrian per Hari wajib diisi." data-validate-control="" id="unitCapacity" min="0" placeholder="40" required="" type="number"/>
+<small class="field-error" data-validation-error-for="unitCapacity" hidden="" id="unitCapacityValidationError"></small></div>
+<div class="field"><label for="unitQueueType">Tipe Antrian</label><select aria-hidden="true" class="input modal-sync-native" data-control-label="Tipe Antrian" data-modal-native="" data-validate-control="" id="unitQueueType" tabindex="-1"><option>FIFO (First In First Out)</option><option>Priority Queue</option><option>Appointment Based</option><option>Triage Based</option></select>
+<details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="unitQueueType">
+<summary aria-label="Pilih Tipe Antrian" class="dropdown-trigger is-md"><span data-picker-text="">FIFO (First In First Out)</span></summary>
+<div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="FIFO (First In First Out)" role="option" type="button">FIFO (First In First Out)</button><button aria-selected="false" class="dropdown-option" data-value="Priority Queue" role="option" type="button">Priority Queue</button><button aria-selected="false" class="dropdown-option" data-value="Appointment Based" role="option" type="button">Appointment Based</button><button aria-selected="false" class="dropdown-option" data-value="Triage Based" role="option" type="button">Triage Based</button></div>
+</details></div>
+<div class="field"><label for="unitServiceTime">Estimasi Waktu Layanan</label><input class="input" data-control-label="Estimasi Waktu Layanan" data-validate-control="" id="unitServiceTime" placeholder="10 - 15 Menit / Pasien" type="text"/></div>
+<div class="field"><label for="unitOnlineQuota">Kuota Pasien Online</label><input class="input" data-control-label="Kuota Pasien Online" data-error-number="Masukkan angka yang valid." data-validate-control="" id="unitOnlineQuota" max="100" min="0" placeholder="30" type="number"/><small class="field-help">Isi angka persen, contoh 30 untuk 30%.</small></div>
+<div class="field"><label for="unitRegistrationDeadline">Batas Pendaftaran H-</label><input class="input" data-control-label="Batas Pendaftaran H-" data-error-number="Masukkan angka yang valid." data-validate-control="" id="unitRegistrationDeadline" min="0" placeholder="3" type="number"/><small class="field-help">Jumlah hari sebelum jadwal layanan.</small></div>
+<div class="field span-2"><label id="unitPhaseLabel">Fase Aktif</label><input id="unitPhase" name="unitPhase" type="hidden" value="Fase 1"/>
+<div aria-labelledby="unitPhaseLabel" class="unit-phase-grid unit-phase-choice-grid" role="radiogroup">
+<label class="unit-phase-card unit-phase-option is-active" data-unit-phase-option="Fase 1"><input checked="" class="unit-phase-radio" name="unitPhaseChoice" type="radio" value="Fase 1"/><strong>Fase 1</strong><span class="badge badge-success badge-sm">Dipilih</span><small>01/01/2024 -<br/>31/12/2024</small><p>Deploy awal untuk layanan utama dan pendaftaran tahun berjalan.</p></label>
+<label class="unit-phase-card unit-phase-option" data-unit-phase-option="Fase 2"><input class="unit-phase-radio" name="unitPhaseChoice" type="radio" value="Fase 2"/><strong>Fase 2</strong><span class="badge badge-neutral badge-sm">Tidak Dipilih</span><small>01/01/2025 -<br/>31/12/2025</small><p>Perluasan layanan setelah konfigurasi fase pertama selesai.</p></label>
+<label class="unit-phase-card unit-phase-option" data-unit-phase-option="Fase 3"><input class="unit-phase-radio" name="unitPhaseChoice" type="radio" value="Fase 3"/><strong>Fase 3</strong><span class="badge badge-neutral badge-sm">Tidak Dipilih</span><small>01/01/2026 -<br/>31/12/2026</small><p>Aktivasi lanjutan untuk unit tambahan dan penyesuaian operasional.</p></label>
+<label class="unit-phase-card unit-phase-option" data-unit-phase-option="Fase 4"><input class="unit-phase-radio" name="unitPhaseChoice" type="radio" value="Fase 4"/><strong>Fase 4</strong><span class="badge badge-neutral badge-sm">Tidak Dipilih</span><small>01/01/2027 -<br/>31/12/2027</small><p>Kontrol deploy untuk ekspansi layanan tahun berikutnya.</p></label>
+<label class="unit-phase-card unit-phase-option" data-unit-phase-option="Fase 5"><input class="unit-phase-radio" name="unitPhaseChoice" type="radio" value="Fase 5"/><strong>Fase 5</strong><span class="badge badge-neutral badge-sm">Tidak Dipilih</span><small>01/01/2028 -<br/>31/12/2028</small><p>Fase akhir untuk rollout penuh seluruh modul layanan.</p></label>
+</div><small class="field-help">Pilih satu fase aktif. Unit hanya muncul pada fase yang dipilih.</small></div>
+<div class="field span-2"><label>Status</label><div class="checkbox-stack is-two-col"><label class="radio"><input checked="" name="unitStatus" type="radio" value="Aktif"/> Aktif</label><label class="radio"><input name="unitStatus" type="radio" value="Nonaktif"/> Nonaktif</label></div><small class="field-help">Unit nonaktif tidak akan muncul pada dropdown pendaftaran.</small></div>
+</div>
+</section>
+</form>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-lg" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-primary btn-lg" form="unitForm" type="submit"><i aria-hidden="true" class="fa-solid fa-floppy-disk"></i>Simpan Unit</button>
+</div>
+</div>
+</section>
+<script src="../../js/table-search.js"></script>
+<script>
+(() => {
+  const layout = document.getElementById('dashboardLayout');
+  const sidebar = document.getElementById('dashboardSidebar');
+  const sidebarButton = document.getElementById('dashboardSidebarButton');
+  const backdrop = document.querySelector('[data-modal-backdrop]');
+  const modals = Array.from(document.querySelectorAll('.modal'));
+  const filters = { search: '', jenis: 'all', status: 'all' };
+  let searchTimer;
+  let unitTablePagination;
+
+  function setSidebarCollapsed(isCollapsed) {
+    if (!layout || !sidebar || !sidebarButton) return;
+    layout.classList.toggle('is-sidebar-collapsed', isCollapsed);
+    sidebar.classList.toggle('compact', isCollapsed);
+    sidebarButton.setAttribute('aria-expanded', String(!isCollapsed));
+    sidebarButton.setAttribute('aria-label', isCollapsed ? 'Buka sidebar' : 'Tutup sidebar');
+  }
+
+  sidebarButton?.addEventListener('click', () => {
+    setSidebarCollapsed(!sidebar?.classList.contains('compact'));
+  });
+
+  function closeDropdowns(except) {
+    document.querySelectorAll('details.ds-dropdown[open]').forEach((detail) => {
+      if (detail !== except) detail.removeAttribute('open');
+    });
+  }
+
+  document.querySelectorAll('details.ds-dropdown').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) closeDropdowns(detail);
+    });
+  });
+
+  function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal || !backdrop) return;
+    backdrop.hidden = false;
+    backdrop.setAttribute('aria-hidden', 'false');
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+    modal.querySelector('input, select, textarea, button')?.focus();
+  }
+
+  function closeModals() {
+    modals.forEach((modal) => { modal.hidden = true; });
+    if (backdrop) {
+      backdrop.hidden = true;
+      backdrop.setAttribute('aria-hidden', 'true');
+    }
+    document.body.classList.remove('modal-open');
+    clearUnitCodeError();
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (button.dataset.openModal === 'unitModal') resetUnitForm();
+      openModal(button.dataset.openModal);
+    });
+  });
+  document.querySelectorAll('[data-close-modal]').forEach((button) => button.addEventListener('click', closeModals));
+  backdrop?.addEventListener('click', closeModals);
+
+  document.querySelectorAll('[data-component="unit-filter"]').forEach((select) => {
+    const key = select.dataset.filterKey;
+    const text = select.querySelector('[data-select-text]');
+    select.querySelectorAll('.dropdown-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        select.querySelectorAll('.dropdown-option').forEach((item) => {
+          item.classList.remove('selected', 'active');
+          item.setAttribute('aria-selected', 'false');
+        });
+        option.classList.add('selected', 'active');
+        option.setAttribute('aria-selected', 'true');
+        if (text) text.textContent = option.textContent.trim();
+        filters[key] = option.dataset.filterValue || 'all';
+        select.removeAttribute('open');
+        applyUnitFilters();
+      });
+    });
+  });
+
+  function initTablePagination({ tableSelector, paginationSelector, summarySelector, label }) {
+    const table = document.querySelector(tableSelector);
+    const pagination = document.querySelector(paginationSelector);
+    const summary = document.querySelector(summarySelector);
+    if (!table || !pagination || !summary) return null;
+
+    const tbody = table.querySelector('tbody');
+    const perPageSelect = pagination.querySelector('.per-page');
+    const paginationPages = pagination.querySelector('.pagination-pages') || pagination;
+    const perPageSummary = perPageSelect?.querySelector('summary span');
+    let perPage = parseInt(perPageSummary?.textContent || '10', 10) || 10;
+    let currentPage = 1;
+
+    function visibleRows() {
+      return Array.from(tbody.querySelectorAll('tr:not([data-table-empty-row])')).filter((row) => row.dataset.tableFilterHidden !== 'true');
+    }
+
+    function buildPageButton(page, active = false) {
+      const button = document.createElement('button');
+      button.className = `page-button${active ? ' active' : ''}`;
+      button.type = 'button';
+      button.textContent = page;
+      if (active) button.setAttribute('aria-current', 'page');
+      button.addEventListener('click', () => {
+        currentPage = page;
+        render();
+      });
+      return button;
+    }
+
+    function render() {
+      const rows = visibleRows();
+      const total = rows.length;
+      const totalPages = Math.max(1, Math.ceil(total / perPage));
+      currentPage = Math.min(currentPage, totalPages);
+      const start = (currentPage - 1) * perPage;
+      const end = start + perPage;
+
+      Array.from(tbody.querySelectorAll('tr:not([data-table-empty-row])')).forEach((row) => { row.hidden = true; });
+      rows.slice(start, end).forEach((row) => { row.hidden = false; });
+
+      const visibleCount = total === 0 ? 0 : rows.slice(start, end).length;
+      const visibleNode = summary.querySelector('[data-visible-count]');
+      const totalNode = summary.querySelector('[data-total-count]');
+      if (visibleNode) visibleNode.textContent = visibleCount;
+      if (totalNode) totalNode.textContent = total;
+      summary.lastChild && (summary.lastChild.textContent = ` ${label}`);
+
+      paginationPages.querySelectorAll('.page-button, .page-ellipsis').forEach((item) => item.remove());
+      const prev = document.createElement('button');
+      prev.className = 'page-button';
+      prev.type = 'button';
+      prev.setAttribute('aria-label', 'Halaman sebelumnya');
+      prev.innerHTML = '<svg class="lucide" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>';
+      prev.disabled = currentPage === 1;
+      prev.addEventListener('click', () => { if (currentPage > 1) { currentPage -= 1; render(); } });
+
+      const next = document.createElement('button');
+      next.className = 'page-button';
+      next.type = 'button';
+      next.setAttribute('aria-label', 'Halaman berikutnya');
+      next.innerHTML = '<svg class="lucide" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>';
+      next.disabled = currentPage >= totalPages;
+      next.addEventListener('click', () => { if (currentPage < totalPages) { currentPage += 1; render(); } });
+
+      paginationPages.appendChild(prev);
+      for (let page = 1; page <= totalPages; page += 1) paginationPages.appendChild(buildPageButton(page, page === currentPage));
+      paginationPages.appendChild(next);
+    }
+
+    perPageSelect?.querySelectorAll('.dropdown-option').forEach((option) => {
+      option.addEventListener('click', () => {
+        perPageSelect.querySelectorAll('.dropdown-option').forEach((item) => {
+          item.classList.remove('selected');
+          item.setAttribute('aria-selected', 'false');
+        });
+        option.classList.add('selected');
+        option.setAttribute('aria-selected', 'true');
+        perPage = parseInt(option.textContent, 10) || perPage;
+        if (perPageSummary) perPageSummary.textContent = option.textContent.trim();
+        perPageSelect.removeAttribute('open');
+        currentPage = 1;
+        render();
+      });
+    });
+
+    table.addEventListener('table:sorted', () => { currentPage = 1; render(); });
+    return { render, reset() { currentPage = 1; render(); } };
+  }
+  function updateUnitStatsAndPreview() {
+    const rows = Array.from(document.querySelectorAll('#unitTableBody tr:not([data-table-empty-row])'));
+    const totalNode = document.querySelector('[data-unit-stat="total"]');
+    const registrationNode = document.querySelector('[data-unit-stat="registration"]');
+    const activeUnits = rows.filter((row) => row.dataset.status === 'Aktif');
+    if (totalNode) totalNode.textContent = rows.length;
+    if (registrationNode) registrationNode.textContent = activeUnits.length;
+  }
+
+  function applyUnitFilters() {
+    const rows = Array.from(document.querySelectorAll('#unitTableBody tr:not([data-table-empty-row])'));
+    rows.forEach((row) => {
+      const haystack = window.getTableRowSearchText(row);
+      const matchSearch = !filters.search || haystack.includes(filters.search);
+      const matchJenis = filters.jenis === 'all' || row.dataset.jenis === filters.jenis;
+      const matchStatus = filters.status === 'all' || row.dataset.status === filters.status;
+      row.dataset.tableFilterHidden = String(!(matchSearch && matchJenis && matchStatus));
+    });
+    updateUnitStatsAndPreview();
+    unitTablePagination?.reset();
+  }
+
+  document.querySelector('[data-unit-search]')?.addEventListener('input', (event) => {
+    window.clearTimeout(searchTimer);
+    searchTimer = window.setTimeout(() => {
+      filters.search = window.normalizeTableSearchText(event.target.value);
+      applyUnitFilters();
+    }, 120);
+  });
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function initialsFromName(name) {
+    return String(name || 'UN').split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]?.toUpperCase()).join('') || 'UN';
+  }
+
+  function jenisBadge(jenis) {
+    const classMap = { Poli: 'badge-info', Penunjang: 'badge-slate', Farmasi: 'badge-success', IGD: 'badge-danger', Administrasi: 'badge-neutral', 'Rawat Inap': 'badge-primary' };
+    return `<span class="badge ${classMap[jenis] || 'badge-slate'} badge-sm">${escapeHtml(jenis)}</span>`;
+  }
+  function statusBadge(status) {
+    if (status === 'Aktif') return '<span class="badge badge-success badge-sm"><span class="badge-dot" aria-hidden="true"></span>Aktif</span>';
+    return '<span class="badge badge-danger badge-sm"><span class="badge-dot" aria-hidden="true"></span>Nonaktif</span>';
+  }
+  function getUnitRowData(row) {
+    const strong = row.querySelector('.unit-name-cell strong');
+    const note = row.dataset.note || row.querySelector('.unit-name-cell small')?.textContent.replace(row.dataset.code || '', '').trim() || '';
+    const code = row.dataset.code || '';
+    const jenis = row.dataset.jenis || 'Poli';
+    const capacity = row.dataset.capacity || '0';
+    const phase = row.dataset.phase || 'Fase 1';
+    const onlineQuota = row.dataset.onlineQuota || '30';
+    return {
+      code,
+      name: strong?.textContent.trim() || row.dataset.name || '',
+      jenis,
+      prefix: row.dataset.prefix || '',
+      internalCode: row.dataset.internalCode || `UNIT-${code}`,
+      description: row.dataset.description || note || `Unit pelayanan ${jenis.toLowerCase()} untuk kebutuhan operasional rumah sakit.`,
+      capacity,
+      queueType: row.dataset.queueType || 'FIFO (First In First Out)',
+      serviceTime: row.dataset.serviceTime || '10 - 15 Menit / Pasien',
+      onlineQuota,
+      registrationDeadline: row.dataset.registrationDeadline || '3',
+      phase,
+      status: row.dataset.status || 'Aktif',
+      createdBy: row.dataset.createdBy || 'Superadmin',
+      createdAt: row.dataset.createdAt || '01/01/2024 09:00',
+      updatedBy: row.dataset.updatedBy || 'Superadmin',
+      updatedAt: row.dataset.updatedAt || '20/05/2024 10:30',
+      note
+    };
+  }
+
+  function makeUnitRow(data) {
+    const code = String(data.code || '').trim().toUpperCase();
+    const name = String(data.name || 'Unit Baru').trim();
+    const jenis = data.jenis || 'Poli';
+    const prefix = String(data.prefix || '').trim().toUpperCase();
+    const capacity = String(data.capacity || '0').trim();
+    const status = data.status || 'Aktif';
+    const note = String(data.note || data.description || jenis).trim();
+    const internalCode = String(data.internalCode || `UNIT-${code}`).trim().toUpperCase();
+    const description = String(data.description || note || '').trim();
+    const queueType = data.queueType || 'FIFO (First In First Out)';
+    const serviceTime = data.serviceTime || '10 - 15 Menit / Pasien';
+    const onlineQuota = String(data.onlineQuota || '30').trim();
+    const registrationDeadline = String(data.registrationDeadline || '3').trim();
+    const phase = data.phase || 'Fase 1';
+    const row = document.createElement('tr');
+    row.dataset.code = code;
+    row.dataset.name = name.toLowerCase();
+    row.dataset.jenis = jenis;
+    row.dataset.prefix = prefix;
+    row.dataset.internalCode = internalCode;
+    row.dataset.description = description;
+    row.dataset.capacity = capacity;
+    row.dataset.queueType = queueType;
+    row.dataset.serviceTime = serviceTime;
+    row.dataset.onlineQuota = onlineQuota;
+    row.dataset.registrationDeadline = registrationDeadline;
+    row.dataset.phase = phase;
+    row.dataset.status = status;
+    row.dataset.createdBy = data.createdBy || 'Superadmin';
+    row.dataset.createdAt = data.createdAt || '01/01/2024 09:00';
+    row.dataset.updatedBy = data.updatedBy || 'Superadmin';
+    row.dataset.updatedAt = data.updatedAt || '20/05/2024 10:30';
+    row.dataset.note = note;
+    row.dataset.keywords = `${code} ${name} ${jenis} ${prefix} ${internalCode} ${status} ${phase} ${description} ${note}`.toLowerCase();
+    row.innerHTML = `
+      <td><div class="admin-user-cell unit-name-cell"><span class="avatar">${initialsFromName(name)}</span><div><strong>${escapeHtml(name)}</strong><small><span class="unit-code-pill">${escapeHtml(code)}</span> ${escapeHtml(note)}</small></div></div></td>
+      <td>${jenisBadge(jenis)}</td>
+      <td><strong>${escapeHtml(prefix)}</strong></td>
+      <td><div class="unit-capacity-cell"><strong>${escapeHtml(capacity)}</strong><small>pasien / hari</small></div></td>
+      <td>${statusBadge(status)}</td>
+      <td><div class="action-group admin-action-group">
+        <details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+          <summary aria-label="Buka menu aksi ${escapeHtml(name)}" class="btn btn-xs btn-ghost btn-icon"><i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i></summary>
+          <div class="dropdown-panel compact row-action-panel" role="menu">
+            <button class="dropdown-option" data-unit-detail="" data-row-label="${escapeHtml(name)}" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-eye" aria-hidden="true"></i> Lihat Detail</strong></span></button>
+            <button class="dropdown-option" data-edit-unit type="button" role="menuitem"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Ubah Data</strong></span></button>
+            <button class="dropdown-option ${status === 'Aktif' ? 'is-danger danger-option' : ''}" data-toggle-unit-status type="button" role="menuitem"><span class="option-meta"><strong><i class="fa-solid ${status === 'Aktif' ? 'fa-circle-xmark' : 'fa-circle-check'}" aria-hidden="true"></i> ${status === 'Aktif' ? 'Nonaktifkan' : 'Aktifkan'}</strong></span></button>
+            <button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="${escapeHtml(name)}" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-trash-can" aria-hidden="true"></i> Hapus Data</strong></span></button>
+          </div>
+        </details>
+      </div></td>`;
+    bindUnitRowActions(row);
+    return row;
+  }
+
+  function normalizeUpperAlpha(value, maxLength) {
+    return String(value || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, maxLength);
+  }
+
+  function normalizeUnitCode(value, maxLength = 10) {
+    return String(value || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, maxLength);
+  }
+
+  function clearUnitCodeError() {
+    const input = document.getElementById('unitCode');
+    const error = document.getElementById('unitCodeError');
+    input?.classList.remove('is-error');
+    input?.removeAttribute('aria-invalid');
+    if (error) error.hidden = true;
+  }
+
+  function showUnitCodeError() {
+    const input = document.getElementById('unitCode');
+    const error = document.getElementById('unitCodeError');
+    input?.classList.add('is-error');
+    input?.setAttribute('aria-invalid', 'true');
+    if (error) error.hidden = false;
+    input?.focus();
+  }
+
+  function isDuplicateUnitCode(code, editingCode) {
+    return Array.from(document.querySelectorAll('#unitTableBody tr:not([data-table-empty-row])')).some((row) => row.dataset.code === code && row.dataset.code !== editingCode);
+  }
+
+  document.getElementById('unitCode')?.addEventListener('input', (event) => {
+    event.target.value = normalizeUnitCode(event.target.value, 10);
+    clearUnitCodeError();
+  });
+
+  document.getElementById('unitPrefix')?.addEventListener('input', (event) => {
+    event.target.value = normalizeUpperAlpha(event.target.value, 6);
+  });
+
+  document.getElementById('unitInternalCode')?.addEventListener('input', (event) => {
+    event.target.value = normalizeUnitCode(event.target.value, 20);
+  });
+
+  function setRadioValue(name, value) {
+    document.querySelectorAll(`input[name="${name}"]`).forEach((input) => {
+      input.checked = input.value === value;
+    });
+  }
+
+  function getRadioValue(name, fallback) {
+    return document.querySelector(`input[name="${name}"]:checked`)?.value || fallback;
+  }
+
+  function syncUnitPhaseChoice(phase = 'Fase 1') {
+    const selectedPhase = phase || 'Fase 1';
+    const hiddenInput = document.getElementById('unitPhase');
+    if (hiddenInput) hiddenInput.value = selectedPhase;
+    document.querySelectorAll('[data-unit-phase-option]').forEach((card) => {
+      const isActive = card.dataset.unitPhaseOption === selectedPhase;
+      card.classList.toggle('is-active', isActive);
+      const radio = card.querySelector('input[name="unitPhaseChoice"]');
+      if (radio) radio.checked = isActive;
+      const badge = card.querySelector('.badge');
+      if (badge) {
+        badge.className = `badge ${isActive ? 'badge-success' : 'badge-neutral'} badge-sm`;
+        badge.textContent = isActive ? 'Dipilih' : 'Tidak Dipilih';
+      }
+    });
+  }
+
+  document.querySelectorAll('input[name="unitPhaseChoice"]').forEach((input) => {
+    input.addEventListener('change', () => syncUnitPhaseChoice(input.value));
+  });
+
+  function syncUnitModalDropdowns() {
+    window.setTimeout(() => window.syncModalDropdowns?.(document.getElementById('unitModal')), 0);
+  }
+
+  function resetUnitForm() {
+    const form = document.getElementById('unitForm');
+    form?.reset();
+    document.getElementById('unitEditingCode').value = '';
+    document.getElementById('unitCode').disabled = false;
+    document.getElementById('unitInternalCode').value = '';
+    document.getElementById('unitModalTitle').textContent = 'Tambah Unit';
+    setRadioValue('unitStatus', 'Aktif');
+    syncUnitPhaseChoice('Fase 1');
+    clearUnitCodeError();
+    syncUnitModalDropdowns();
+  }
+
+  function fillUnitForm(row) {
+    const data = getUnitRowData(row);
+    document.getElementById('unitEditingCode').value = data.code;
+    document.getElementById('unitCode').value = data.code;
+    document.getElementById('unitCode').disabled = false;
+    document.getElementById('unitName').value = data.name;
+    document.getElementById('unitJenis').value = data.jenis;
+    document.getElementById('unitPrefix').value = data.prefix;
+    document.getElementById('unitInternalCode').value = data.internalCode;
+    document.getElementById('unitDescription').value = data.description;
+    document.getElementById('unitCapacity').value = data.capacity;
+    document.getElementById('unitQueueType').value = data.queueType;
+    document.getElementById('unitServiceTime').value = data.serviceTime;
+    document.getElementById('unitOnlineQuota').value = data.onlineQuota;
+    document.getElementById('unitRegistrationDeadline').value = data.registrationDeadline;
+    syncUnitPhaseChoice(data.phase);
+    setRadioValue('unitStatus', data.status);
+    document.getElementById('unitModalTitle').textContent = 'Ubah Unit';
+    clearUnitCodeError();
+    syncUnitModalDropdowns();
+  }
+
+  function setDetailText(key, value) {
+    const target = document.querySelector(`#unitDetailModal [data-unit-detail="${key}"]`);
+    if (target) target.textContent = value || '-';
+  }
+
+  function setDetailHtml(key, html) {
+    const target = document.querySelector(`#unitDetailModal [data-unit-detail="${key}"]`);
+    if (target) target.innerHTML = html || '-';
+  }
+
+  function refreshPhaseCards(activePhase) {
+    document.querySelectorAll('#unitDetailModal [data-phase-card]').forEach((card) => {
+      const isActive = card.dataset.phaseCard === activePhase;
+      card.classList.toggle('is-active', isActive);
+      const badge = card.querySelector('.badge');
+      if (badge) {
+        badge.className = `badge ${isActive ? 'badge-success' : 'badge-neutral'} badge-sm`;
+        badge.textContent = isActive ? 'Aktif' : 'Tidak Aktif';
+      }
+    });
+  }
+
+  function updateUnitDetailStatusButton(status) {
+    const button = document.querySelector('[data-unit-detail-toggle-status]');
+    if (!button) return;
+    const isActive = status === 'Aktif';
+    button.className = `btn ${isActive ? 'btn-danger-soft' : 'btn-primary'} btn-lg`;
+    const icon = button.querySelector('i');
+    if (icon) icon.className = `fa-solid ${isActive ? 'fa-circle-xmark' : 'fa-circle-check'}`;
+    const label = button.querySelector('[data-unit-detail-toggle-label]');
+    if (label) label.textContent = isActive ? 'Nonaktifkan Unit' : 'Aktifkan Unit';
+  }
+
+  function openUnitDetail(row) {
+    const data = getUnitRowData(row);
+    const modal = document.getElementById('unitDetailModal');
+    if (!modal) return;
+    activeUnitDetailRow = row;
+    setDetailText('code', data.code);
+    setDetailText('name', data.name);
+    setDetailText('jenis', data.jenis);
+    setDetailText('prefix', data.prefix);
+    setDetailText('internalCode', data.internalCode);
+    setDetailText('description', data.description);
+    setDetailHtml('status', statusBadge(data.status));
+    setDetailHtml('phase', `<span class="badge badge-primary badge-sm">${escapeHtml(data.phase)}</span>`);
+    setDetailText('capacityFull', `${data.capacity} Pasien / Hari`);
+    setDetailText('createdBy', data.createdBy);
+    setDetailText('createdAt', data.createdAt);
+    setDetailText('updatedBy', data.updatedBy);
+    setDetailText('updatedAt', data.updatedAt);
+    setDetailText('capacityDaily', `${data.capacity} Pasien`);
+    setDetailText('queueType', data.queueType);
+    setDetailText('registrationDeadline', `${data.registrationDeadline} Hari sebelumnya`);
+    setDetailText('serviceTime', data.serviceTime);
+    setDetailText('onlineQuota', `${data.onlineQuota}%`);
+    refreshPhaseCards(data.phase);
+    updateUnitDetailStatusButton(data.status);
+    row.querySelector('details.ds-dropdown')?.removeAttribute('open');
+    openModal('unitDetailModal');
+  }
+
+  let activeUnitDetailRow = null;
+
+  document.querySelector('[data-unit-detail-edit]')?.addEventListener('click', () => {
+    if (!activeUnitDetailRow) return;
+    const row = activeUnitDetailRow;
+    closeModals();
+    fillUnitForm(row);
+    openModal('unitModal');
+  });
+
+  document.querySelector('[data-unit-detail-toggle-status]')?.addEventListener('click', () => {
+    if (!activeUnitDetailRow) return;
+    const row = activeUnitDetailRow;
+    const data = getUnitRowData(row);
+    const nextStatus = data.status === 'Aktif' ? 'Nonaktif' : 'Aktif';
+    const applyStatusChange = () => {
+      data.status = nextStatus;
+      const newRow = makeUnitRow(data);
+      row.replaceWith(newRow);
+      activeUnitDetailRow = newRow;
+      setDetailHtml('status', statusBadge(data.status));
+      updateUnitDetailStatusButton(data.status);
+      if (data.status === 'Aktif') window.AlertToast?.success('Status unit berhasil diperbarui', `${data.name} sudah diaktifkan.`);
+      applyUnitFilters();
+    };
+    if (nextStatus === 'Nonaktif' && window.SIMRSStatusConfirm) {
+      window.SIMRSStatusConfirm.open({
+        kind: 'unit',
+        label: data.name,
+        message: 'Unit ini tidak akan muncul sebagai pilihan aktif setelah dinonaktifkan.',
+        onConfirm: applyStatusChange
+      });
+      return;
+    }
+    applyStatusChange();
+  });
+
+  function bindUnitRowActions(row) {
+    row.querySelector('[data-unit-detail]')?.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openUnitDetail(row);
+    });
+    row.querySelector('[data-edit-unit]')?.addEventListener('click', () => {
+      fillUnitForm(row);
+      openModal('unitModal');
+    });
+    row.querySelector('[data-toggle-unit-status]')?.addEventListener('click', () => {
+      const data = getUnitRowData(row);
+      const nextStatus = data.status === 'Aktif' ? 'Nonaktif' : 'Aktif';
+      const applyStatusChange = () => {
+        data.status = nextStatus;
+        row.replaceWith(makeUnitRow(data));
+        if (data.status === 'Aktif') window.AlertToast?.success('Status unit berhasil diperbarui', `${data.name} sudah diaktifkan.`);
+        applyUnitFilters();
+      };
+      row.querySelector('details.ds-dropdown')?.removeAttribute('open');
+      if (nextStatus === 'Nonaktif' && window.SIMRSStatusConfirm) {
+        window.SIMRSStatusConfirm.open({
+          kind: 'unit',
+          label: data.name,
+          message: 'Unit ini tidak akan muncul sebagai pilihan aktif setelah dinonaktifkan.',
+          onConfirm: applyStatusChange
+        });
+        return;
+      }
+      applyStatusChange();
+    });
+  }
+
+  document.querySelectorAll('#unitTableBody tr:not([data-table-empty-row])').forEach(bindUnitRowActions);
+
+  document.getElementById('unitForm')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const editingCode = document.getElementById('unitEditingCode').value;
+    const code = normalizeUnitCode(document.getElementById('unitCode').value, 10);
+    document.getElementById('unitCode').value = code;
+    if (isDuplicateUnitCode(code, editingCode)) {
+      showUnitCodeError();
+      return;
+    }
+    const tbody = document.getElementById('unitTableBody');
+    const existing = Array.from(tbody.querySelectorAll('tr:not([data-table-empty-row])')).find((row) => row.dataset.code === editingCode);
+    const previousData = existing ? getUnitRowData(existing) : null;
+    const data = {
+      code,
+      name: document.getElementById('unitName').value.trim(),
+      jenis: document.getElementById('unitJenis').value,
+      prefix: normalizeUpperAlpha(document.getElementById('unitPrefix').value, 6),
+      internalCode: normalizeUnitCode(document.getElementById('unitInternalCode').value || `UNIT-${code}`, 20),
+      description: document.getElementById('unitDescription').value.trim(),
+      capacity: document.getElementById('unitCapacity').value,
+      queueType: document.getElementById('unitQueueType').value,
+      serviceTime: document.getElementById('unitServiceTime').value.trim() || '10 - 15 Menit / Pasien',
+      onlineQuota: document.getElementById('unitOnlineQuota').value || '30',
+      registrationDeadline: document.getElementById('unitRegistrationDeadline').value || '3',
+      phase: getRadioValue('unitPhaseChoice', document.getElementById('unitPhase').value || 'Fase 1'),
+      status: getRadioValue('unitStatus', 'Aktif'),
+      createdBy: previousData?.createdBy || 'Superadmin',
+      createdAt: previousData?.createdAt || '01/01/2024 09:00',
+      updatedBy: 'Superadmin',
+      updatedAt: '20/05/2024 10:30',
+      note: document.getElementById('unitDescription').value.trim() || document.getElementById('unitJenis').value
+    };
+    if (existing) {
+      existing.replaceWith(makeUnitRow(data));
+    } else {
+      tbody.prepend(makeUnitRow(data));
+    }
+    window.AlertToast?.success(editingCode ? 'Data unit berhasil diperbarui' : 'Data unit berhasil disimpan', `${data.name} sudah tersimpan di tabel unit.`);
+    closeModals();
+    applyUnitFilters();
+  });
+
+  function closeHeaderSearches(except) {
+    document.querySelectorAll('[data-component="header-search-autocomplete"]').forEach((search) => {
+      if (search !== except) {
+        search.classList.remove('is-open');
+        search.querySelector('input')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  const headerSearches = Array.from(document.querySelectorAll('[data-component="header-search-autocomplete"]'));
+  headerSearches.forEach((search) => {
+    const input = search.querySelector('input');
+    const suggestions = Array.from(search.querySelectorAll('[data-search-suggestion]'));
+    const groups = Array.from(search.querySelectorAll('[data-suggestion-group]')).filter((item) => !item.hasAttribute('data-search-suggestion'));
+    const empty = search.querySelector('.autocomplete-empty');
+    if (!input) return;
+
+    function filterSuggestions() {
+      const query = input.value.trim().toLowerCase();
+      suggestions.forEach((item) => {
+        const haystack = (item.dataset.searchText || item.textContent || '').toLowerCase();
+        item.hidden = Boolean(query) && !haystack.includes(query);
+      });
+      groups.forEach((group) => {
+        const groupName = group.dataset.suggestionGroup;
+        group.hidden = !suggestions.some((item) => item.dataset.suggestionGroup === groupName && !item.hidden);
+      });
+      if (empty) empty.hidden = suggestions.some((item) => !item.hidden);
+    }
+    function openSearch() {
+      closeHeaderSearches(search);
+      search.classList.add('is-open');
+      input.setAttribute('aria-expanded', 'true');
+      filterSuggestions();
+    }
+    input.addEventListener('focus', openSearch);
+    input.addEventListener('input', openSearch);
+    suggestions.forEach((item) => {
+      item.addEventListener('click', () => {
+        input.value = item.dataset.searchValue || item.querySelector('strong')?.textContent || item.textContent.trim();
+        closeHeaderSearches();
+      });
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('details.ds-dropdown')) closeDropdowns();
+    if (!event.target.closest('[data-component="header-search-autocomplete"]')) closeHeaderSearches();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const isSearchShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
+    if (isSearchShortcut) {
+      const searchInput = document.getElementById('globalSearchInput');
+      if (searchInput) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    }
+    if (event.key === 'Escape') {
+      closeModals();
+      closeDropdowns();
+      closeHeaderSearches();
+    }
+  });
+
+  unitTablePagination = initTablePagination({
+    tableSelector: '#unitTable',
+    paginationSelector: '.unit-table-card .pagination',
+    summarySelector: '.unit-table-card [data-table-summary]',
+    label: 'unit'
+  });
+  applyUnitFilters();
+})();
+</script>
+<script src="../../js/modal-dropdowns.js"></script><script src="../../js/form-validation.js"></script>
+<script src="../../js/toast-messages.js"></script>
+<script src="../../js/table-actions.js"></script>
+<script src="../../js/inline-table-actions.js"></script>
+<script src="../../js/sidebar-flyout.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+<script src="../../js/bottom-tabs.js"></script>
+</body>
+</html>

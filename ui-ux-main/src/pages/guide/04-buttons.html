@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>04 Buttons · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link active" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">04</p>
+<h1>Buttons</h1>
+<p class="hero-subtitle">Aturan tombol untuk varian, ukuran, state, icon, hierarki aksi, dan aksesibilitas.</p>
+<div class="divider"></div>
+<nav aria-label="Daftar isi button guide" class="toc">
+<a href="#overview">Ringkasan</a>
+<a href="#tokens">Token Warna</a>
+<a href="#sizes">Ukuran</a>
+<a href="#variants">Jenis Button</a>
+<a href="#states">Matriks State</a>
+<a href="#icons">Icon &amp; Status Memuat</a>
+<a href="#usage">Panduan</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="overview">
+<div class="section-head">
+<div>
+<h2>Ringkasan</h2>
+<p>Button harus membantu pengguna mengambil keputusan dengan cepat. Gunakan hierarki visual yang konsisten: satu aksi utama, aksi sekunder secukupnya, dan aksi destruktif harus terlihat jelas.</p>
+</div>
+<span class="badge badge-sm"><span class="dot"></span> Grid 4px · radius 8px · focus terlihat</span>
+</div>
+<div class="grid-3">
+<div class="note"><strong>Primary hanya untuk aksi utama.</strong><br/>Contoh: Simpan, Daftarkan Pasien, Buat Resep, Bayar Tagihan.</div>
+<div class="note"><strong>Ukuran large tidak dipakai di form mobile.</strong><br/>Gunakan MD sebagai default. LG/XL hanya untuk desktop CTA, kiosk, atau display khusus.</div>
+<div class="note"><strong>Icon-only wajib memakai aria-label.</strong><br/>Icon tanpa teks harus punya label aksesibilitas dan tooltip untuk menghindari salah klik.</div>
+</div>
+</section>
+<section class="mt-12" id="tokens">
+<div class="section-head">
+<div>
+<h2>Token Warna Button</h2>
+<p>Warna button memakai brand resmi dan token semantik. Hover/focus/active menggunakan turunan warna agar tetap konsisten dengan color guide.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<h3>Token Utama</h3>
+<div class="u-style-001">
+<div class="token-row"><span class="swatch u-style-002"></span><div><div class="token-name">primary-blue</div><div class="token-hex">#1E4FD7 · button utama, link aktif</div></div></div>
+<div class="token-row"><span class="swatch u-style-003"></span><div><div class="token-name">primary-dark</div><div class="token-hex">#1740B0 · hover primary</div></div></div>
+<div class="token-row"><span class="swatch u-style-004"></span><div><div class="token-name">primary-light</div><div class="token-hex">#EEF2FF · hover secondary / ghost</div></div></div>
+<div class="token-row"><span class="swatch u-style-005"></span><div><div class="token-name">navy</div><div class="token-hex">#0F1F3D · button gelap / teks</div></div></div>
+<div class="token-row"><span class="swatch u-style-006"></span><div><div class="token-name">slate-light</div><div class="token-hex">#D1D5DB · border button</div></div></div>
+</div>
+</div>
+<div class="card">
+<h3>Token Semantik</h3>
+<div class="u-style-001">
+<div class="token-row"><span class="swatch u-style-007"></span><div><div class="token-name">primary-green</div><div class="token-hex">#00B894 · aksi sukses / konfirmasi positif</div></div></div>
+<div class="token-row"><span class="swatch u-style-008"></span><div><div class="token-name">warning</div><div class="token-hex">#F59E0B · aksi peringatan / pending</div></div></div>
+<div class="token-row"><span class="swatch u-style-009"></span><div><div class="token-name">danger</div><div class="token-hex">#EF4444 · aksi destruktif</div></div></div>
+<div class="token-row"><span class="swatch u-style-010"></span><div><div class="token-name">danger-light</div><div class="token-hex">#FFF5F5 · danger soft / modal konfirmasi</div></div></div>
+<div class="token-row"><span class="swatch u-style-011"></span><div><div class="token-name">light-gray</div><div class="token-hex">#F3F6FA · background nonaktif</div></div></div>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="sizes">
+<div class="section-head">
+<div>
+<h2>Ukuran Button</h2>
+<p>MD adalah default untuk aplikasi web medis. XS dan SM dipakai untuk tabel/aksi kecil. LG dan XL dipakai terbatas untuk CTA desktop, kiosk, touchscreen, atau halaman display.</p>
+</div>
+<span class="badge badge-sm">Default: <span class="mono">md / 36px</span></span>
+</div>
+<div class="card u-style-012">
+<div class="size-preview">
+<div class="size-name"><strong>XS</strong><span>28px · text 12px</span></div>
+<div><button class="btn btn-xs">Detail</button></div>
+<div><button class="btn btn-xs btn-secondary"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Tambah</button></div>
+<div class="muted">Tabel padat, toolbar kecil, aksi baris.</div>
+</div>
+<div class="size-preview">
+<div class="size-name"><strong>SM</strong><span>32px · text 13px</span></div>
+<div><button class="btn btn-sm">Pilih</button></div>
+<div><button class="btn btn-sm btn-outline"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="M7 10l5 5 5-5"></path><path d="M12 15V3"></path></svg>Export</button></div>
+<div class="muted">Filter, dialog kecil, panel kanan.</div>
+</div>
+<div class="size-preview">
+<div class="size-name"><strong>MD / Normal</strong><span>36px · text 14px</span></div>
+<div><button class="btn btn-md">Simpan</button></div>
+<div><button class="btn btn-md btn-secondary"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Tambah Pasien</button></div>
+<div class="muted">Default untuk form, modal, dan halaman operasional.</div>
+</div>
+<div class="size-preview">
+<div class="size-name"><strong>LG</strong><span>44px · text 14px</span></div>
+<div><button class="btn btn-lg">Daftarkan</button></div>
+<div><button class="btn btn-lg btn-success"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Selesai</button></div>
+<div class="muted">CTA desktop, halaman onboarding, aksi penting di monitor besar.</div>
+</div>
+<div class="size-preview">
+<div class="size-name"><strong>XL</strong><span>52px · text 16px</span></div>
+<div><button class="btn btn-xl">Ambil Nomor</button></div>
+<div><button class="btn btn-xl btn-dark"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>Lanjutkan</button></div>
+<div class="muted">Kiosk/touchscreen 1920×1080, bukan untuk form mobile.</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="variants">
+<div class="section-head">
+<div>
+<h2>Jenis Button</h2>
+<p>Setiap jenis memiliki fungsi spesifik. Hindari membuat warna baru di luar token karena akan mengacaukan hierarki dan konsistensi antar modul.</p>
+</div>
+</div>
+<div class="grid-4">
+<div class="variant-card"><div class="preview"><button class="btn">Simpan</button></div><h3>Primary</h3><p>Aksi utama dalam satu halaman atau modal.</p><div class="variant-meta"><span class="pill">primary-blue</span><span class="pill">prioritas tinggi</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-secondary">Batal</button></div><h3>Secondary</h3><p>Aksi pendukung yang masih penting.</p><div class="variant-meta"><span class="pill">primary-light</span><span class="pill">prioritas sedang</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-outline">Export</button></div><h3>Outline</h3><p>Export, download, filter, atau aksi non-primer.</p><div class="variant-meta"><span class="pill">aksi border</span><span class="pill">netral</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-ghost">Detail</button></div><h3>Ghost</h3><p>Aksi tersier, button mirip link, dan aksi toolbar.</p><div class="variant-meta"><span class="pill">prioritas rendah</span><span class="pill">transparan</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-danger">Hapus</button></div><h3>Danger</h3><p>Aksi destruktif: hapus, batalkan, tolak klaim.</p><div class="variant-meta"><span class="pill">danger</span><span class="pill">butuh konfirmasi</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-danger-soft">Batalkan</button></div><h3>Danger Soft</h3><p>Aksi destruktif sekunder di modal konfirmasi.</p><div class="variant-meta"><span class="pill">danger-light</span><span class="pill">danger-border-soft</span><span class="pill">destruktif sekunder</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-success">Setujui</button></div><h3>Success</h3><p>Konfirmasi positif final, approve, selesai.</p><div class="variant-meta"><span class="pill">primary-green</span><span class="pill">positif klinis</span></div></div>
+<div class="variant-card"><div class="preview"><button class="btn btn-warning">Pending</button></div><h3>Warning</h3><p>Aksi status pending/peringatan, gunakan terbatas.</p><div class="variant-meta"><span class="pill">warning</span><span class="pill">perhatian</span></div></div>
+</div>
+</section>
+<section class="mt-12" id="states">
+<div class="section-head">
+<div>
+<h2>Matriks State</h2>
+<p>Semua button wajib punya state default, hover, focus, active/click, loading, dan disabled. State focus harus terlihat untuk navigasi keyboard.</p>
+</div>
+</div>
+<div class="button-playground">
+<div class="playground-head">
+<div><h3>Varian × State</h3><p>Contoh visual state untuk ukuran MD / normal.</p></div>
+<span class="badge badge-sm">Focus ring: <span class="mono">#1E4FD7 / 16%</span></span>
+</div>
+<div class="matrix-scroll">
+<div class="state-grid">
+<div class="matrix-cell matrix-head">Varian</div>
+<div class="matrix-cell matrix-head">Default</div>
+<div class="matrix-cell matrix-head">Hover</div>
+<div class="matrix-cell matrix-head">Focus</div>
+<div class="matrix-cell matrix-head">Aktif / Klik</div>
+<div class="matrix-cell matrix-head">Loading</div>
+<div class="matrix-cell matrix-head">Nonaktif</div>
+<div class="matrix-cell matrix-label">Primary<span>Aksi utama</span></div>
+<div class="matrix-cell"><button class="btn">Simpan</button></div>
+<div class="matrix-cell"><button class="btn is-hover">Simpan</button></div>
+<div class="matrix-cell"><button class="btn is-focus">Simpan</button></div>
+<div class="matrix-cell"><button class="btn is-active">Simpan</button></div>
+<div class="matrix-cell"><button class="btn"><span class="spinner"></span>Menyimpan</button></div>
+<div class="matrix-cell"><button class="btn is-disabled">Simpan</button></div>
+<div class="matrix-cell matrix-label">Secondary<span>Aksi pendukung</span></div>
+<div class="matrix-cell"><button class="btn btn-secondary">Batal</button></div>
+<div class="matrix-cell"><button class="btn btn-secondary is-hover">Batal</button></div>
+<div class="matrix-cell"><button class="btn btn-secondary is-focus">Batal</button></div>
+<div class="matrix-cell"><button class="btn btn-secondary is-active">Batal</button></div>
+<div class="matrix-cell"><button class="btn btn-secondary"><span class="spinner"></span>Memuat</button></div>
+<div class="matrix-cell"><button class="btn btn-secondary is-disabled">Batal</button></div>
+<div class="matrix-cell matrix-label">Outline<span>Export / filter</span></div>
+<div class="matrix-cell"><button class="btn btn-outline">Export</button></div>
+<div class="matrix-cell"><button class="btn btn-outline is-hover">Export</button></div>
+<div class="matrix-cell"><button class="btn btn-outline is-focus">Export</button></div>
+<div class="matrix-cell"><button class="btn btn-outline is-active">Export</button></div>
+<div class="matrix-cell"><button class="btn btn-outline"><span class="spinner"></span>Export</button></div>
+<div class="matrix-cell"><button class="btn btn-outline is-disabled">Export</button></div>
+<div class="matrix-cell matrix-label">Ghost<span>Prioritas rendah</span></div>
+<div class="matrix-cell"><button class="btn btn-ghost">Detail</button></div>
+<div class="matrix-cell"><button class="btn btn-ghost is-hover">Detail</button></div>
+<div class="matrix-cell"><button class="btn btn-ghost is-focus">Detail</button></div>
+<div class="matrix-cell"><button class="btn btn-ghost is-active">Detail</button></div>
+<div class="matrix-cell"><button class="btn btn-ghost"><span class="spinner"></span>Detail</button></div>
+<div class="matrix-cell"><button class="btn btn-ghost is-disabled">Detail</button></div>
+<div class="matrix-cell matrix-label">Danger<span>Destruktif</span></div>
+<div class="matrix-cell"><button class="btn btn-danger">Hapus</button></div>
+<div class="matrix-cell"><button class="btn btn-danger is-hover">Hapus</button></div>
+<div class="matrix-cell"><button class="btn btn-danger is-focus">Hapus</button></div>
+<div class="matrix-cell"><button class="btn btn-danger is-active">Hapus</button></div>
+<div class="matrix-cell"><button class="btn btn-danger"><span class="spinner"></span>Menghapus</button></div>
+<div class="matrix-cell"><button class="btn btn-danger is-disabled">Hapus</button></div>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="icons">
+<div class="section-head">
+<div>
+<h2>Icon, Icon-only, dan Loading</h2>
+<p>Gunakan icon untuk mempercepat pemahaman, bukan dekorasi. Icon-only hanya untuk aksi yang sudah umum atau berada di konteks tabel yang jelas.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="card card-soft">
+<h3>Anatomi</h3>
+<div class="anatomy u-style-013">
+<span class="callout top">height: 36px / md</span>
+<span class="callout right">gap: 8px</span>
+<span class="callout bottom">radius: 7px</span>
+<span class="callout left">padding x: 14px</span>
+<button class="btn btn-md"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Tambah Pasien</button>
+</div>
+</div>
+<div class="card">
+<h3>Icon Pattern</h3>
+<div class="u-style-014">
+<div class="u-style-015"><button class="btn"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>Tambah</button><span class="muted">Icon kiri untuk create/add.</span></div>
+<div class="u-style-015"><button class="btn btn-secondary">Lanjut<svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button><span class="muted">Icon kanan untuk lanjut/continue.</span></div>
+<div class="u-style-015"><button aria-label="Ubah pasien" class="btn btn-outline btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button><span class="muted">Icon-only wajib <span class="code-inline">aria-label</span>.</span></div>
+<div class="u-style-015"><button class="btn"><span class="spinner"></span>Menyimpan</button><span class="muted">Saat loading, klik dinonaktifkan sampai proses selesai.</span></div>
+</div>
+</div>
+</div>
+<div class="button-playground u-style-016">
+<div class="playground-head"><div><h3>Matriks Ukuran Icon-only</h3><p>Gunakan ukuran yang sama dengan button teks agar alignment di tabel tetap rapi.</p></div></div>
+<div class="matrix-scroll">
+<div class="state-grid u-style-017">
+<div class="matrix-cell matrix-head">Ukuran</div>
+<div class="matrix-cell matrix-head">Primary</div>
+<div class="matrix-cell matrix-head">Secondary</div>
+<div class="matrix-cell matrix-head">Outline</div>
+<div class="matrix-cell matrix-head">Ghost</div>
+<div class="matrix-cell matrix-head">Danger</div>
+<div class="matrix-cell matrix-head">Nonaktif</div>
+<div class="matrix-cell matrix-label">XS<span>28×28</span></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-xs btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-xs btn-secondary btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-xs btn-outline btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-xs btn-ghost btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Hapus" class="btn btn-xs btn-danger btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-xs btn-icon is-disabled"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell matrix-label">MD<span>36×36</span></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-secondary btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-outline btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-ghost btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Hapus" class="btn btn-danger btn-icon"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path></svg></button></div>
+<div class="matrix-cell"><button aria-label="Ubah" class="btn btn-icon is-disabled"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button></div>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="usage">
+<div class="section-head">
+<div>
+<h2>Panduan Penggunaan</h2>
+<p>Aturan ini menjaga konsistensi di semua modul SIMRS, terutama pada form medis, tabel pasien, modal konfirmasi, dan alur transaksi.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="card">
+<h3 class="usage-title is-do">Yang disarankan</h3>
+<div class="usage-list u-style-018">
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Gunakan satu primary per section.</strong><p>Primary menjadi fokus utama, secondary/outline sebagai pendukung.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Label harus berupa aksi.</strong><p>Pakai “Simpan”, “Daftarkan”, “Export”, bukan label ambigu seperti “OK”.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Loading mengganti label secara jelas.</strong><p>Contoh: “Menyimpan”, “Menghapus”, “Memproses Pembayaran”.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Danger selalu butuh konfirmasi.</strong><p>Untuk hapus/batal/tolak, tampilkan modal konfirmasi sebelum eksekusi.</p></div></div>
+</div>
+</div>
+<div class="card">
+<h3 class="usage-title is-dont">Yang dihindari</h3>
+<div class="usage-list u-style-018">
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan pakai primary terlalu banyak.</strong><p>Lebih dari satu primary di area yang sama membuat pengguna bingung.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan pakai warna custom.</strong><p>Semua warna harus berasal dari token brand atau semantic.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan buat icon-only tanpa label.</strong><p>Wajib <span class="code-inline">aria-label</span> dan sebaiknya ada tooltip.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan pakai LG di mobile form.</strong><p>Gunakan MD atau full-width MD untuk mobile, bukan LG/XL.</p></div></div>
+</div>
+</div>
+</div>
+<div class="u-style-016">
+<table>
+<thead><tr><th>Konteks</th><th>Primary</th><th>Secondary</th><th>Danger</th><th>Catatan</th></tr></thead>
+<tbody>
+<tr><td><strong>Form pasien</strong></td><td>Simpan</td><td>Batal</td><td>—</td><td>Primary berada di kanan bawah form/modal.</td></tr>
+<tr><td><strong>Tabel data</strong></td><td>Tambah</td><td>Export / Filter</td><td>Icon hapus</td><td>Aksi baris pakai XS/SM dan icon-only.</td></tr>
+<tr><td><strong>Modal konfirmasi</strong></td><td>Ya, lanjutkan</td><td>Kembali</td><td>Ya, hapus</td><td>Danger ditempatkan sebagai aksi destruktif final.</td></tr>
+<tr><td><strong>Kiosk / touchscreen</strong></td><td>Ambil Nomor</td><td>Pilih Bahasa</td><td>Batalkan</td><td>Gunakan LG/XL dengan target tap besar.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Button memakai .btn sebagai base, lalu ditambah varian dan ukuran. Style komponen dikelola di buttons.css melalui @apply.</p>
+</div>
+<span class="badge badge-sm">buttons.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/buttons.css */
+.btn {
+  @apply h-9 min-w-[92px] py-0 px-3.5 rounded-[var(--radius-button-md)] border border-[color:var(--btn-border)] inline-flex items-center justify-center gap-2 text-[color:var(--btn-color)] font-sans text-body-md leading-none font-bold no-underline whitespace-nowrap cursor-pointer select-none shadow-[0_1px_1px_rgba(15,31,61,0.04)];
+
+  --btn-bg: var(--primary-blue);
+  --btn-color: var(--white);
+  --btn-border: var(--primary-blue);
+  --btn-hover-bg: var(--primary-dark);
+  --btn-active-bg: var(--primary-active);
+  background: var(--btn-bg);
+}
+
+.btn:hover {
+  @apply border-[color:var(--btn-hover-bg)];
+  background: var(--btn-hover-bg);
+}
+
+.btn-primary { --btn-bg: var(--primary-blue); --btn-color: var(--white); }
+.btn-secondary { --btn-bg: var(--primary-light); --btn-color: var(--primary-blue); }
+.btn-danger { --btn-bg: var(--danger); --btn-color: var(--white); }
+.btn-sm { @apply h-8 min-w-[76px] py-0 px-3 rounded-[var(--radius-button-sm)] text-body-md gap-2; }
+.btn-icon { @apply min-w-0 w-9 p-0; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;button class=&quot;btn btn-primary btn-md&quot; type=&quot;button&quot;&gt;Simpan&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary btn-sm&quot; type=&quot;button&quot;&gt;Batal&lt;/button&gt;
+&lt;button class=&quot;btn btn-danger btn-md is-loading&quot; type=&quot;button&quot;&gt;
+  &lt;span class=&quot;spinner&quot;&gt;&lt;/span&gt; Menghapus
+&lt;/button&gt;
+&lt;button class=&quot;btn btn-outline btn-icon&quot; type=&quot;button&quot; aria-label=&quot;Ubah pasien&quot;&gt;...&lt;/button&gt;
+
+const variantClass = {
+  primary: &#x27;btn-primary&#x27;,
+  secondary: &#x27;btn-secondary&#x27;,
+  outline: &#x27;btn-outline&#x27;,
+  ghost: &#x27;btn-ghost&#x27;,
+  danger: &#x27;btn-danger&#x27;,
+  success: &#x27;btn-success&#x27;,
+  warning: &#x27;btn-warning&#x27;,
+}
+const sizeClass = { xs: &#x27;btn-xs&#x27;, sm: &#x27;btn-sm&#x27;, md: &#x27;btn-md&#x27;, lg: &#x27;btn-lg&#x27;, xl: &#x27;btn-xl&#x27; }
+
+function Button({ variant = &#x27;primary&#x27;, size = &#x27;md&#x27;, iconOnly, loading, className = &#x27;&#x27;, ...props }) {
+  const classes = [&#x27;btn&#x27;, variantClass[variant], sizeClass[size], iconOnly &amp;&amp; &#x27;btn-icon&#x27;, loading &amp;&amp; &#x27;is-loading&#x27;, className]
+    .filter(Boolean)
+    .join(&#x27; &#x27;)
+  return &lt;button className={classes} {...props} /&gt;
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Class HTML lama seperti btn btn-primary btn-md tetap dipertahankan. Tailwind utility masuk di CSS source memakai @apply.</div>
+</section>
+<footer class="footer">
+<div><strong>SIMRS ZAIDAN · Panduan Button</strong><br/>Gunakan sebagai acuan Figma, Tailwind, dan komponen React.</div>
+<div class="mono">© 2026 · Panduan Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

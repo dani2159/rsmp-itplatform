@@ -1,0 +1,174 @@
+/* Floating bottom tab navigation, seperti tab browser untuk menu yang dibuka. */
+body.has-floating-bottom-tabs {
+  padding-bottom: 92px;
+}
+
+.floating-bottom-tabs {
+  position: fixed;
+  z-index: 95;
+  right: 22px;
+  bottom: 18px;
+  left: 22px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.floating-bottom-tabs-shell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(980px, calc(100vw - 44px));
+  min-height: 54px;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--border-color, #d8deea) 78%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #ffffff) 88%, transparent);
+  box-shadow: 0 18px 44px color-mix(in srgb, #0f172a 18%, transparent);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+}
+
+.floating-bottom-tabs-list {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: min(820px, calc(100vw - 138px));
+  overflow-x: auto;
+  padding: 1px;
+  scrollbar-width: none;
+}
+
+.floating-bottom-tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+.floating-bottom-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 126px;
+  max-width: 188px;
+  height: 38px;
+  padding: 0 8px 0 12px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-muted, #f4f7fb) 88%, transparent);
+  color: var(--text-muted, #526174);
+  text-decoration: none;
+  transition: background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.floating-bottom-tab:hover,
+.floating-bottom-tab:focus-visible {
+  color: var(--primary, #1238ff);
+  border-color: color-mix(in srgb, var(--primary, #1238ff) 22%, transparent);
+  background: color-mix(in srgb, var(--primary, #1238ff) 8%, var(--surface, #ffffff));
+  outline: none;
+}
+
+.floating-bottom-tab.is-active {
+  color: var(--primary, #1238ff);
+  border-color: color-mix(in srgb, var(--primary, #1238ff) 32%, transparent);
+  background: var(--surface, #ffffff);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--primary, #1238ff) 16%, transparent);
+}
+
+.floating-bottom-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  color: inherit;
+  flex: 0 0 auto;
+}
+
+.floating-bottom-tab-label {
+  overflow: hidden;
+  font-size: var(--text-body-sm, .875rem);
+  font-weight: var(--font-weight-semibold, 600);
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.floating-bottom-tab-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: color-mix(in srgb, currentColor 70%, transparent);
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: background .18s ease, color .18s ease;
+}
+
+.floating-bottom-tab-close:hover,
+.floating-bottom-tab-close:focus-visible {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  color: currentColor;
+  outline: none;
+}
+
+.floating-bottom-tab-close[disabled] {
+  opacity: .38;
+  cursor: not-allowed;
+}
+
+.floating-bottom-tabs-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid color-mix(in srgb, var(--primary, #1238ff) 18%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary, #1238ff) 9%, var(--surface, #ffffff));
+  color: var(--primary, #1238ff);
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: background .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.floating-bottom-tabs-home:hover,
+.floating-bottom-tabs-home:focus-visible {
+  background: color-mix(in srgb, var(--primary, #1238ff) 14%, var(--surface, #ffffff));
+  border-color: color-mix(in srgb, var(--primary, #1238ff) 34%, transparent);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  body.has-floating-bottom-tabs {
+    padding-bottom: 84px;
+  }
+
+  .floating-bottom-tabs {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .floating-bottom-tabs-shell {
+    width: 100%;
+    max-width: none;
+    border-radius: 24px;
+  }
+
+  .floating-bottom-tabs-list {
+    max-width: calc(100vw - 96px);
+  }
+
+  .floating-bottom-tab {
+    min-width: 112px;
+    max-width: 154px;
+  }
+}

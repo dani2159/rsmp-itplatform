@@ -1,0 +1,249 @@
+/* ==========================================================================
+   15. Komponen tombol
+   Gunakan `.btn` + variant (`.btn-secondary`, `.btn-outline`, dll.) + size.
+   Untuk tombol full width, pakai `.btn-full`.
+   ========================================================================== */
+
+.btn {
+  @apply h-9 min-w-[92px] py-0 px-3.5 rounded-[var(--radius-button-md)] border border-[color:var(--btn-border)] inline-flex items-center justify-center gap-2 text-[color:var(--btn-color)] font-sans text-body-md leading-none font-bold no-underline whitespace-nowrap cursor-pointer select-none shadow-[0_1px_1px_rgba(15,31,61,0.04)];
+
+  --btn-bg: var(--primary-blue);
+  --btn-color: var(--white);
+  --btn-border: var(--primary-blue);
+  --btn-hover-bg: var(--primary-dark);
+  --btn-active-bg: var(--primary-active);
+  background: var(--btn-bg);
+  transition: background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn:hover,
+.btn.is-hover {
+  @apply border-[color:var(--btn-hover-bg)];
+  background: var(--btn-hover-bg);
+}
+
+.btn:focus-visible,
+.btn.is-focus {
+  @apply outline-none shadow-[var(--ring)];
+}
+
+.btn:active,
+.btn.is-active {
+  @apply border-[color:var(--btn-active-bg)];
+  background: var(--btn-active-bg);
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn.is-disabled {
+  @apply text-[color:var(--ui-icon-muted)] border-[color:var(--ui-surface-blue-soft)] cursor-not-allowed shadow-none pointer-events-none;
+  background: var(--ui-surface-blue-soft);
+}
+
+.btn svg,
+.btn i {
+  @apply w-4 h-4 flex-none inline-flex items-center justify-center text-body-lg leading-none;
+  stroke-width: 2.2;
+}
+
+.btn .spinner {
+  @apply w-3.5 h-3.5 rounded-full border-2 border-current border-r-transparent opacity-[0.92] inline-block;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 900ms linear infinite;
+}
+
+.btn-primary {
+  --btn-bg: var(--primary-blue);
+  --btn-color: var(--white);
+  --btn-border: var(--primary-blue);
+  --btn-hover-bg: var(--primary-dark);
+  --btn-active-bg: var(--primary-active);
+}
+
+.btn-secondary {
+  --btn-bg: var(--primary-light);
+  --btn-color: var(--primary-blue);
+  --btn-border: var(--ui-primary-ring-soft);
+  --btn-hover-bg: var(--ui-primary-soft-active);
+  --btn-active-bg: var(--ui-indigo-border-soft);
+}
+
+.btn-outline {
+  --btn-bg: var(--white);
+  --btn-color: var(--primary-blue);
+  --btn-border: var(--ui-primary-ring);
+  --btn-hover-bg: var(--primary-light);
+  --btn-active-bg: var(--ui-primary-soft-active);
+}
+
+.btn-ghost {
+  @apply shadow-none;
+
+  --btn-bg: transparent;
+  --btn-color: var(--primary-blue);
+  --btn-border: transparent;
+  --btn-hover-bg: var(--primary-light);
+  --btn-active-bg: var(--ui-primary-soft-active);
+}
+
+.btn-danger {
+  --btn-bg: var(--danger);
+  --btn-color: var(--white);
+  --btn-border: var(--danger);
+  --btn-hover-bg: var(--danger-dark);
+  --btn-active-bg: var(--danger-active);
+}
+
+.btn-danger-soft {
+  --btn-bg: var(--danger-light);
+  --btn-color: var(--danger);
+  --btn-border: var(--danger-border-soft);
+  --btn-hover-bg: var(--danger-tint-80);
+  --btn-active-bg: var(--danger-tint-60);
+}
+
+.btn-success {
+  --btn-bg: var(--primary-green);
+  --btn-color: var(--white);
+  --btn-border: var(--primary-green);
+  --btn-hover-bg: var(--primary-green-shade-15);
+  --btn-active-bg: var(--success-dark);
+}
+
+.btn-warning {
+  --btn-bg: var(--warning);
+  --btn-color: var(--white);
+  --btn-border: var(--warning);
+  --btn-hover-bg: var(--warning-dark);
+  --btn-active-bg: var(--ui-warning-text-dark);
+}
+
+.btn-dark {
+  --btn-bg: var(--navy);
+  --btn-color: var(--white);
+  --btn-border: var(--navy);
+  --btn-hover-bg: var(--navy-light);
+  --btn-active-bg: var(--navy-shade-45);
+}
+
+.btn-xs {
+  @apply h-7 min-w-[64px] py-0 px-2.5 rounded-[var(--radius-button-xs)] text-body-sm gap-1.5;
+}
+
+.btn-xs svg {
+  @apply w-3.5 h-3.5;
+}
+
+.btn-sm {
+  @apply h-8 min-w-[76px] py-0 px-3 rounded-[var(--radius-button-sm)] text-body-md gap-[7px];
+}
+
+.btn-sm svg {
+  @apply w-3.5 h-3.5;
+}
+
+.btn-md {
+  @apply h-9 min-w-[92px] py-0 px-3.5 rounded-[var(--radius-button-md)] text-body-md;
+}
+
+.btn-lg {
+  @apply h-11 min-w-[112px] py-0 px-4.5 rounded-[var(--radius-button-lg)] text-body-md gap-[9px];
+}
+
+.btn-lg svg {
+  @apply w-4.5 h-4.5;
+}
+
+.btn-xl {
+  @apply h-[52px] min-w-[132px] p-[0_22px] rounded-[var(--radius-button-xl)] text-body-lg gap-2.5;
+}
+
+.btn-xl svg {
+  @apply w-5 h-5;
+}
+
+.btn-icon {
+  @apply min-w-0 w-9 p-0;
+}
+
+.btn-icon.btn-xs {
+  @apply w-7;
+}
+
+.btn-icon.btn-sm {
+  @apply w-8;
+}
+
+.btn-icon.btn-lg {
+  @apply w-11;
+}
+
+.btn-icon.btn-xl {
+  @apply w-[52px];
+}
+
+.btn-full {
+  @apply w-full;
+}
+
+.variant-card {
+  @apply border-0 rounded-[10px] p-4.5 bg-[color:var(--white)];
+}
+
+.variant-card .preview {
+  @apply min-h-[86px] rounded-[10px] bg-[color:var(--light-gray-tint-40)] border-0 flex gap-2.5 items-center justify-center mb-4 p-3.5;
+}
+
+.variant-card h3 {
+  @apply text-body-xl leading-6.5;
+}
+
+.variant-card p {
+  @apply text-[color:var(--slate)] text-body-md mt-2 mx-0 mb-0;
+}
+
+.variant-meta {
+  @apply flex flex-wrap gap-2 mt-3;
+}
+
+.pill {
+  @apply rounded-full bg-[color:var(--light-gray)] text-[color:var(--text-primary)] text-body-sm font-bold p-[5px_8px] border border-[color:var(--border-soft)];
+}
+
+
+.table-reset-filter-btn {
+  @apply relative;
+}
+
+.table-reset-filter-btn[data-tooltip]::before,
+.table-reset-filter-btn[data-tooltip]::after {
+  @apply pointer-events-none absolute left-1/2 z-[90] opacity-0 transition-all duration-150 ease-out;
+  content: "";
+  transform: translateX(-50%) translateY(4px);
+}
+
+.table-reset-filter-btn[data-tooltip]::before {
+  @apply bottom-[calc(100%+8px)] rounded-md px-2 py-1 text-body-sm font-semibold whitespace-nowrap shadow-lg;
+  content: attr(data-tooltip);
+  color: var(--white);
+  background: var(--ui-tooltip-bg);
+}
+
+.table-reset-filter-btn[data-tooltip]::after {
+  @apply bottom-[calc(100%+3px)] w-2 h-2 rotate-45;
+  background: var(--ui-tooltip-bg);
+}
+
+.table-reset-filter-btn[data-tooltip]:hover::before,
+.table-reset-filter-btn[data-tooltip]:hover::after,
+.table-reset-filter-btn[data-tooltip]:focus-visible::before,
+.table-reset-filter-btn[data-tooltip]:focus-visible::after {
+  @apply opacity-100;
+  transform: translateX(-50%) translateY(0);
+}

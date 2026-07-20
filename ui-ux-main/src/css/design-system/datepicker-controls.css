@@ -1,0 +1,23 @@
+/* Kontrol bulan/tahun untuk datepicker interaktif */
+.datepicker-month-year {
+  @apply grid grid-cols-[minmax(0,1.25fr)_minmax(76px,0.75fr)] gap-1.5 flex-1 min-w-0;
+}
+
+.datepicker-select {
+  @apply w-full h-8 border border-[color:var(--border,var(--ui-datepicker-border))] rounded-[var(--radius-input-sm,8px)] bg-[color:var(--white)] text-[color:var(--text-primary,var(--ui-datepicker-text))] font-sans text-body-sm font-semibold p-[0_8px] outline-none;
+  font-family: var(--font-sans, inherit);
+}
+
+.datepicker-select:focus-visible {
+  @apply shadow-[var(--ring)] border-[color:var(--primary-blue,var(--ui-datepicker-active))];
+}
+
+.calendar-date:disabled,
+.calendar-date[aria-disabled="true"] {
+  @apply opacity-[0.38] cursor-not-allowed bg-[color:var(--ui-surface-dashboard)] text-[color:var(--ui-datepicker-muted)] border-transparent;
+}
+
+.calendar-date:disabled:hover,
+.calendar-date[aria-disabled="true"]:hover {
+  @apply bg-[color:var(--ui-surface-dashboard)] border-transparent;
+}

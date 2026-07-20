@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>13 Wizard · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link active" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+  <p class="eyebrow">13</p>
+  <h1>Wizard</h1>
+  <p class="hero-subtitle">Stepper reusable untuk proses multi langkah seperti registrasi, verifikasi, dan setup data.</p>
+  <div class="divider"></div>
+  <nav aria-label="Daftar isi Wizard" class="toc">
+    <a href="#overview">Ringkasan</a>
+<a href="#variants">Varian Wizard</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+  </nav>
+</header>
+
+<section class="mt-12" id="overview">
+  <div class="section-head"><div><h2>Ringkasan</h2><p>Wizard dipakai untuk alur yang butuh urutan jelas. Setiap step harus punya status: belum dikerjakan, aktif, selesai, error, atau disabled.</p></div><span class="badge badge-sm"><span class="dot"></span>Complete · Active · Error · Disabled</span></div>
+  <div class="grid-3"><div class="note"><strong>Horizontal</strong><br/>Default untuk desktop dan alur 3–5 langkah.</div><div class="note"><strong>Vertical</strong><br/>Cocok untuk form panjang dengan panel isi di sebelah kanan.</div><div class="note"><strong>Compact</strong><br/>Dipakai saat ruang terbatas atau di layar tablet/mobile.</div></div>
+</section>
+<section class="mt-12" id="variants">
+  <div class="section-head"><div><h2>Varian Wizard</h2><p>Contoh dibuat satu kolom supaya step, body, dan status tiap varian terlihat rapi pada area konten guide.</p></div></div>
+  <div class="layout-stack is-lg">
+    <div class="card">
+      <h3>Horizontal Wizard</h3>
+      <p class="muted-text">Pola default untuk alur 3–5 langkah di desktop.</p>
+      <div class="wizard">
+        <div class="wizard-steps">
+          <div class="wizard-step is-complete"><span class="wizard-dot">✓</span><div class="wizard-text"><p class="wizard-title">Identitas</p><p class="wizard-caption">Data pasien</p></div></div>
+          <div class="wizard-step is-active"><span class="wizard-dot">2</span><div class="wizard-text"><p class="wizard-title">Penjamin</p><p class="wizard-caption">Asuransi atau umum</p></div></div>
+          <div class="wizard-step"><span class="wizard-dot">3</span><div class="wizard-text"><p class="wizard-title">Konfirmasi</p><p class="wizard-caption">Review akhir</p></div></div>
+        </div>
+        <div class="wizard-body"><strong>Step aktif: Penjamin</strong><p class="muted-text">Tampilkan form atau ringkasan yang berhubungan langsung dengan step aktif.</p></div>
+        <div class="wizard-actions"><button class="btn btn-secondary" type="button">Kembali</button><button class="btn btn-primary" type="button">Lanjutkan</button></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Vertical Wizard</h3>
+      <p class="muted-text">Cocok untuk alur administratif yang butuh panel isi besar di sisi kanan.</p>
+      <div class="wizard wizard-vertical">
+        <div class="wizard-steps">
+          <div class="wizard-step is-complete"><span class="wizard-dot">✓</span><div class="wizard-text"><p class="wizard-title">Data Dasar</p><p class="wizard-caption">Identitas utama</p></div></div>
+          <div class="wizard-step is-active"><span class="wizard-dot">2</span><div class="wizard-text"><p class="wizard-title">Dokumen</p><p class="wizard-caption">Berkas pendukung</p></div></div>
+          <div class="wizard-step is-error"><span class="wizard-dot">!</span><div class="wizard-text"><p class="wizard-title">Verifikasi</p><p class="wizard-caption">Perlu koreksi</p></div></div>
+          <div class="wizard-step is-disabled"><span class="wizard-dot">4</span><div class="wizard-text"><p class="wizard-title">Selesai</p><p class="wizard-caption">Menunggu verifikasi</p></div></div>
+        </div>
+        <div>
+          <div class="wizard-body"><strong>Dokumen belum lengkap</strong><p class="muted-text">Area body bisa diisi form upload, checklist dokumen, atau catatan validasi.</p></div>
+          <div class="wizard-actions"><button class="btn btn-secondary" type="button">Simpan Draft</button><button class="btn btn-primary" type="button">Validasi</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Compact Wizard</h3>
+      <p class="muted-text">Dipakai saat ruang terbatas, misalnya di modal atau tablet.</p>
+      <div class="wizard wizard-compact">
+        <div class="wizard-steps">
+          <div class="wizard-step is-complete"><span class="wizard-dot">✓</span><div class="wizard-text"><p class="wizard-title">Pilih</p></div></div>
+          <div class="wizard-step is-active"><span class="wizard-dot">2</span><div class="wizard-text"><p class="wizard-title">Isi</p></div></div>
+          <div class="wizard-step"><span class="wizard-dot">3</span><div class="wizard-text"><p class="wizard-title">Simpan</p></div></div>
+        </div>
+        <div class="wizard-body"><p class="muted-text">Compact wizard tetap memakai state yang sama, hanya tata letaknya lebih ringkas.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Progress Wizard</h3>
+      <p class="muted-text">Progress bar boleh dipakai sebagai pendamping label step, bukan pengganti step.</p>
+      <div class="layout-stack is-md">
+        <div class="wizard-progress"><span style="width: 66%"></span></div>
+        <div class="wizard">
+          <div class="wizard-steps">
+            <div class="wizard-step is-complete"><span class="wizard-dot">✓</span><div class="wizard-text"><p class="wizard-title">Data</p></div></div>
+            <div class="wizard-step is-active"><span class="wizard-dot">2</span><div class="wizard-text"><p class="wizard-title">Review</p></div></div>
+            <div class="wizard-step"><span class="wizard-dot">3</span><div class="wizard-text"><p class="wizard-title">Selesai</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mt-12" id="usage">
+  <div class="section-head"><div><h2>Panduan Pakai</h2><p>Wizard membantu memecah proses panjang tanpa menyembunyikan posisi pengguna.</p></div></div>
+  <div class="do-dont"><div class="card ok"><h3 class="usage-title is-do">Tampilkan langkah dan status</h3><p>Step aktif dan step yang sudah selesai harus terlihat jelas agar pengguna tahu progresnya.</p></div><div class="card no"><h3 class="usage-title is-dont">Jangan buat terlalu banyak step kecil</h3><p>Gabungkan field yang masih satu konteks. Wizard yang terlalu panjang membuat proses terasa berat.</p></div></div>
+</section>
+<section class="mt-12" id="implementation"><div class="section-head"><div><h2>Implementasi</h2><p>Class wizard berada di <code>src/css/design-system/wizard.css</code>.</p></div></div><div class="code-grid"><article><p class="code-title">HTML</p><pre><code>&lt;div class=&quot;wizard&quot;&gt;
+  &lt;div class=&quot;wizard-steps&quot;&gt;
+    &lt;div class=&quot;wizard-step is-complete&quot;&gt;
+      &lt;span class=&quot;wizard-dot&quot;&gt;✓&lt;/span&gt;
+      &lt;div class=&quot;wizard-text&quot;&gt;&lt;p class=&quot;wizard-title&quot;&gt;Identitas&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;wizard-step is-active&quot;&gt;
+      &lt;span class=&quot;wizard-dot&quot;&gt;2&lt;/span&gt;
+      &lt;div class=&quot;wizard-text&quot;&gt;&lt;p class=&quot;wizard-title&quot;&gt;Penjamin&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;wizard-body&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;wizard-actions&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre></article><article><p class="code-title">State</p><pre><code>.wizard-step          /* belum dikerjakan */
+.wizard-step.is-active
+.wizard-step.is-complete
+.wizard-step.is-error
+.wizard-step.is-disabled
+
+.wizard-vertical
+.wizard-compact
+.wizard-progress</code></pre></article></div></section>
+
+<footer class="footer">
+  <div><strong>SIMRS ZAIDAN · 13 Wizard</strong><br/>Gunakan sebagai acuan komponen UI, CSS, dan implementasi frontend.</div>
+  <div class="mono">© 2026 · Panduan Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,637 @@
+<svg width="1600" height="5606" viewBox="0 0 1600 5606" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Palet Warna Brand Guide - Figma Editable</title>
+  <desc>Editable SVG color guide with brand cards, shade/tint cards, semantic colors, scale, and developer tokens.</desc>
+  <rect width="1600" height="5606" fill="#FFFFFF"/>
+  <rect x="48.0" y="38.0" width="1504.0" height="220.0" rx="24" fill="#F8FAFC" stroke="#EEF2F7" stroke-width="1"/>
+<text x="82.0" y="96.0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" fill="#1E4FD7" text-anchor="start" letter-spacing="0.22em">02</text>
+<text x="82.0" y="150.0" font-family="Inter, Arial, sans-serif" font-size="62" font-weight="700" fill="#0F1F3D" text-anchor="start">Palet Warna</text>
+<text x="82.0" y="190.0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="400" fill="#6B7280" text-anchor="start">Gunakan nilai warna ini sebagai acuan utama di Figma, Tailwind, dan kode CSS. Semua token dibuat konsisten untuk tombol, link,</text>
+<text x="82.0" y="216.0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="400" fill="#6B7280" text-anchor="start">status, sidebar, tabel, form, badge, dan komponen dashboard.</text>
+<text x="48.0" y="323.0" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F1F3D" text-anchor="start">Warna Brand Resmi</text>
+<text x="48.0" y="357.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">Token utama untuk identitas visual, elemen interaktif, dan layout aplikasi. Bagian ini tersedia</text>
+<text x="48.0" y="381.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">dalam format card agar lebih mudah di-import dan diedit di Figma.</text>
+<rect x="1309.0" y="293.0" width="243.0" height="42.0" rx="21" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="1327.0" y="319.0" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="start">8 official brand colors</text>
+<line x1="48" y1="389" x2="1552" y2="389" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="48.0" y="427.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="66.0" y="445.0" width="326.5" height="88.0" rx="12" fill="#1E4FD7" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="66.0" y="561.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">primary-blue</text>
+<text x="66.0" y="587.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#1E4FD7</text>
+<text x="66.0" y="615.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Tombol utama, link aktif, sidebar</text>
+<text x="66.0" y="633.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">highlight, CTA.</text>
+<rect x="428.5" y="427.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="446.5" y="445.0" width="326.5" height="88.0" rx="12" fill="#00B894" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="446.5" y="561.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="446.5" y="587.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#00B894</text>
+<text x="446.5" y="615.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Status selesai, sukses, indikator</text>
+<text x="446.5" y="633.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">positif.</text>
+<rect x="809.0" y="427.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="827.0" y="445.0" width="326.5" height="88.0" rx="12" fill="#00D1B2" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="827.0" y="561.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">accent-teal</text>
+<text x="827.0" y="587.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#00D1B2</text>
+<text x="827.0" y="615.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Aksen sekunder, badge aktif, highlight.</text>
+<rect x="1189.5" y="427.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1207.5" y="445.0" width="326.5" height="88.0" rx="12" fill="#6C5CE7" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="1207.5" y="561.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">indigo</text>
+<text x="1207.5" y="587.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#6C5CE7</text>
+<text x="1207.5" y="615.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">VIP, casemix, chart category, badge</text>
+<text x="1207.5" y="633.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">spesial.</text>
+<rect x="48.0" y="660.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="66.0" y="678.0" width="326.5" height="88.0" rx="12" fill="#0F1F3D" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="66.0" y="794.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">navy</text>
+<text x="66.0" y="820.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#0F1F3D</text>
+<text x="66.0" y="848.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Sidebar background, heading, teks gelap</text>
+<text x="66.0" y="866.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">utama.</text>
+<rect x="428.5" y="660.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="446.5" y="678.0" width="326.5" height="88.0" rx="12" fill="#6B7280" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="446.5" y="794.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">slate</text>
+<text x="446.5" y="820.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#6B7280</text>
+<text x="446.5" y="848.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Teks sekunder, placeholder, label form.</text>
+<rect x="809.0" y="660.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="827.0" y="678.0" width="326.5" height="88.0" rx="12" fill="#F3F6FA" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="827.0" y="794.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">light-gray</text>
+<text x="827.0" y="820.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#F3F6FA</text>
+<text x="827.0" y="848.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Background halaman, zebra table, surface</text>
+<text x="827.0" y="866.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">lembut.</text>
+<rect x="1189.5" y="660.0" width="362.5" height="215.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1207.5" y="678.0" width="326.5" height="88.0" rx="12" fill="#FFFFFF" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="1207.5" y="794.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">white</text>
+<text x="1207.5" y="820.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#FFFFFF</text>
+<text x="1207.5" y="848.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Card, modal, input background, area</text>
+<text x="1207.5" y="866.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">konten utama.</text>
+<text x="48.0" y="939.0" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F1F3D" text-anchor="start">Shade &amp; Tint Warna Brand Resmi</text>
+<text x="48.0" y="973.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">Setiap warna brand resmi memiliki tint untuk background lembut dan shade untuk hover, pressed</text>
+<text x="48.0" y="997.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">state, heading, atau kontras lebih kuat.</text>
+<rect x="1111.0" y="909.0" width="441.0" height="42.0" rx="21" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="1129.0" y="935.0" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="start">Tint 80 · 60 · 40 · Base · Shade 15 · 30 · 45</text>
+<line x1="48" y1="1005" x2="1552" y2="1005" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="48.0" y="1043.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="1071.0" width="42.0" height="42.0" rx="12" fill="#1E4FD7" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="1097.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">primary-blue</text>
+<text x="128.0" y="1127.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#1E4FD7 · Tombol utama, link</text>
+<text x="128.0" y="1145.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">aktif, sidebar highlight,</text>
+<text x="128.0" y="1163.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">CTA.</text>
+<rect x="360.0" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="1081.0" width="131.1" height="62.0" rx="10" fill="#D2DCF7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue-tint-80</text>
+<text x="374.0" y="1218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#D2DCF7</text>
+<rect x="531.1" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="1081.0" width="131.1" height="62.0" rx="10" fill="#A5B9EF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue-tint-60</text>
+<text x="545.1" y="1218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#A5B9EF</text>
+<rect x="702.3" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="1081.0" width="131.1" height="62.0" rx="10" fill="#7895E7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue-tint-40</text>
+<text x="716.3" y="1218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#7895E7</text>
+<rect x="873.4" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="1081.0" width="131.1" height="62.0" rx="10" fill="#1E4FD7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue</text>
+<text x="887.4" y="1218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#1E4FD7</text>
+<rect x="1044.6" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="1081.0" width="131.1" height="62.0" rx="10" fill="#1A43B7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue</text>
+<text x="1058.6" y="1210.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-15</text>
+<text x="1058.6" y="1235.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#1A43B7</text>
+<rect x="1215.7" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="1081.0" width="131.1" height="62.0" rx="10" fill="#153796" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue</text>
+<text x="1229.7" y="1210.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-30</text>
+<text x="1229.7" y="1235.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#153796</text>
+<rect x="1386.9" y="1067.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="1081.0" width="131.1" height="62.0" rx="10" fill="#102B76" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="1168.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="1193.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-blue</text>
+<text x="1400.9" y="1210.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-45</text>
+<text x="1400.9" y="1235.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#102B76</text>
+<rect x="48.0" y="1296.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="1324.0" width="42.0" height="42.0" rx="12" fill="#00B894" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="1350.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">primary-green</text>
+<text x="128.0" y="1380.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#00B894 · Status selesai,</text>
+<text x="128.0" y="1398.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">sukses, indikator positif.</text>
+<rect x="360.0" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="1334.0" width="131.1" height="62.0" rx="10" fill="#CCF1EA" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="374.0" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">tint-80</text>
+<text x="374.0" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#CCF1EA</text>
+<rect x="531.1" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="1334.0" width="131.1" height="62.0" rx="10" fill="#99E3D4" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="545.1" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">tint-60</text>
+<text x="545.1" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#99E3D4</text>
+<rect x="702.3" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="1334.0" width="131.1" height="62.0" rx="10" fill="#66D4BF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="716.3" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">tint-40</text>
+<text x="716.3" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#66D4BF</text>
+<rect x="873.4" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="1334.0" width="131.1" height="62.0" rx="10" fill="#00B894" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="887.4" y="1471.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#00B894</text>
+<rect x="1044.6" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="1334.0" width="131.1" height="62.0" rx="10" fill="#009C7E" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="1058.6" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-15</text>
+<text x="1058.6" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#009C7E</text>
+<rect x="1215.7" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="1334.0" width="131.1" height="62.0" rx="10" fill="#008168" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="1229.7" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-30</text>
+<text x="1229.7" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#008168</text>
+<rect x="1386.9" y="1320.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="1334.0" width="131.1" height="62.0" rx="10" fill="#006551" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="1421.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="1446.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">primary-green</text>
+<text x="1400.9" y="1463.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">shade-45</text>
+<text x="1400.9" y="1488.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#006551</text>
+<rect x="48.0" y="1549.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="1577.0" width="42.0" height="42.0" rx="12" fill="#00D1B2" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="1603.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">accent-teal</text>
+<text x="128.0" y="1633.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#00D1B2 · Aksen sekunder,</text>
+<text x="128.0" y="1651.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">badge aktif, highlight.</text>
+<rect x="360.0" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="1587.0" width="131.1" height="62.0" rx="10" fill="#CCF6F0" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-tint-80</text>
+<text x="374.0" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#CCF6F0</text>
+<rect x="531.1" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="1587.0" width="131.1" height="62.0" rx="10" fill="#99EDE0" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-tint-60</text>
+<text x="545.1" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#99EDE0</text>
+<rect x="702.3" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="1587.0" width="131.1" height="62.0" rx="10" fill="#66E3D1" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-tint-40</text>
+<text x="716.3" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#66E3D1</text>
+<rect x="873.4" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="1587.0" width="131.1" height="62.0" rx="10" fill="#00D1B2" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal</text>
+<text x="887.4" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#00D1B2</text>
+<rect x="1044.6" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="1587.0" width="131.1" height="62.0" rx="10" fill="#00B297" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-shade-15</text>
+<text x="1058.6" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#00B297</text>
+<rect x="1215.7" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="1587.0" width="131.1" height="62.0" rx="10" fill="#00927D" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-shade-30</text>
+<text x="1229.7" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#00927D</text>
+<rect x="1386.9" y="1573.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="1587.0" width="131.1" height="62.0" rx="10" fill="#007362" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="1674.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="1699.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">accent-teal-shade-45</text>
+<text x="1400.9" y="1724.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#007362</text>
+<rect x="48.0" y="1802.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="1830.0" width="42.0" height="42.0" rx="12" fill="#6C5CE7" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="1856.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">indigo</text>
+<text x="128.0" y="1886.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#6C5CE7 · VIP, casemix,</text>
+<text x="128.0" y="1904.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">chart category, badge</text>
+<text x="128.0" y="1922.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">spesial.</text>
+<rect x="360.0" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="1840.0" width="131.1" height="62.0" rx="10" fill="#E2DEFA" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-tint-80</text>
+<text x="374.0" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#E2DEFA</text>
+<rect x="531.1" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="1840.0" width="131.1" height="62.0" rx="10" fill="#C4BEF5" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-tint-60</text>
+<text x="545.1" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#C4BEF5</text>
+<rect x="702.3" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="1840.0" width="131.1" height="62.0" rx="10" fill="#A79DF1" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-tint-40</text>
+<text x="716.3" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#A79DF1</text>
+<rect x="873.4" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="1840.0" width="131.1" height="62.0" rx="10" fill="#6C5CE7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo</text>
+<text x="887.4" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#6C5CE7</text>
+<rect x="1044.6" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="1840.0" width="131.1" height="62.0" rx="10" fill="#5C4EC4" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-shade-15</text>
+<text x="1058.6" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#5C4EC4</text>
+<rect x="1215.7" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="1840.0" width="131.1" height="62.0" rx="10" fill="#4C40A2" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-shade-30</text>
+<text x="1229.7" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#4C40A2</text>
+<rect x="1386.9" y="1826.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="1840.0" width="131.1" height="62.0" rx="10" fill="#3B337F" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="1927.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="1952.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">indigo-shade-45</text>
+<text x="1400.9" y="1977.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#3B337F</text>
+<rect x="48.0" y="2055.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="2083.0" width="42.0" height="42.0" rx="12" fill="#0F1F3D" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="2109.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">navy</text>
+<text x="128.0" y="2139.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#0F1F3D · Sidebar</text>
+<text x="128.0" y="2157.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">background, heading, teks</text>
+<text x="128.0" y="2175.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">gelap utama.</text>
+<rect x="360.0" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="2093.0" width="131.1" height="62.0" rx="10" fill="#CFD2D8" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-tint-80</text>
+<text x="374.0" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#CFD2D8</text>
+<rect x="531.1" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="2093.0" width="131.1" height="62.0" rx="10" fill="#9FA5B1" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-tint-60</text>
+<text x="545.1" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#9FA5B1</text>
+<rect x="702.3" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="2093.0" width="131.1" height="62.0" rx="10" fill="#6F798B" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-tint-40</text>
+<text x="716.3" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#6F798B</text>
+<rect x="873.4" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="2093.0" width="131.1" height="62.0" rx="10" fill="#0F1F3D" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy</text>
+<text x="887.4" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#0F1F3D</text>
+<rect x="1044.6" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="2093.0" width="131.1" height="62.0" rx="10" fill="#0D1A34" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-shade-15</text>
+<text x="1058.6" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#0D1A34</text>
+<rect x="1215.7" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="2093.0" width="131.1" height="62.0" rx="10" fill="#0A162B" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-shade-30</text>
+<text x="1229.7" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#0A162B</text>
+<rect x="1386.9" y="2079.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="2093.0" width="131.1" height="62.0" rx="10" fill="#081122" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="2180.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="2205.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">navy-shade-45</text>
+<text x="1400.9" y="2230.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#081122</text>
+<rect x="48.0" y="2308.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="2336.0" width="42.0" height="42.0" rx="12" fill="#6B7280" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="2362.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">slate</text>
+<text x="128.0" y="2392.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#6B7280 · Teks sekunder,</text>
+<text x="128.0" y="2410.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">placeholder, label form.</text>
+<rect x="360.0" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="2346.0" width="131.1" height="62.0" rx="10" fill="#E1E3E6" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-tint-80</text>
+<text x="374.0" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#E1E3E6</text>
+<rect x="531.1" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="2346.0" width="131.1" height="62.0" rx="10" fill="#C4C7CC" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-tint-60</text>
+<text x="545.1" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#C4C7CC</text>
+<rect x="702.3" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="2346.0" width="131.1" height="62.0" rx="10" fill="#A6AAB3" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-tint-40</text>
+<text x="716.3" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#A6AAB3</text>
+<rect x="873.4" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="2346.0" width="131.1" height="62.0" rx="10" fill="#6B7280" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate</text>
+<text x="887.4" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#6B7280</text>
+<rect x="1044.6" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="2346.0" width="131.1" height="62.0" rx="10" fill="#5B616D" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-shade-15</text>
+<text x="1058.6" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#5B616D</text>
+<rect x="1215.7" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="2346.0" width="131.1" height="62.0" rx="10" fill="#4B505A" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-shade-30</text>
+<text x="1229.7" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#4B505A</text>
+<rect x="1386.9" y="2332.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="2346.0" width="131.1" height="62.0" rx="10" fill="#3B3F46" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="2433.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="2458.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">slate-shade-45</text>
+<text x="1400.9" y="2483.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#3B3F46</text>
+<rect x="48.0" y="2561.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="2589.0" width="42.0" height="42.0" rx="12" fill="#F3F6FA" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="2615.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">light-gray</text>
+<text x="128.0" y="2645.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#F3F6FA · Background</text>
+<text x="128.0" y="2663.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">halaman, zebra table,</text>
+<text x="128.0" y="2681.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">surface lembut.</text>
+<rect x="360.0" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="2599.0" width="131.1" height="62.0" rx="10" fill="#FDFDFE" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-tint-80</text>
+<text x="374.0" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FDFDFE</text>
+<rect x="531.1" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="2599.0" width="131.1" height="62.0" rx="10" fill="#FAFBFD" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-tint-60</text>
+<text x="545.1" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FAFBFD</text>
+<rect x="702.3" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="2599.0" width="131.1" height="62.0" rx="10" fill="#F8FAFC" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-tint-40</text>
+<text x="716.3" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#F8FAFC</text>
+<rect x="873.4" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="2599.0" width="131.1" height="62.0" rx="10" fill="#F3F6FA" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray</text>
+<text x="887.4" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#F3F6FA</text>
+<rect x="1044.6" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="2599.0" width="131.1" height="62.0" rx="10" fill="#CFD1D4" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-shade-15</text>
+<text x="1058.6" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#CFD1D4</text>
+<rect x="1215.7" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="2599.0" width="131.1" height="62.0" rx="10" fill="#AAACAF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-shade-30</text>
+<text x="1229.7" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#AAACAF</text>
+<rect x="1386.9" y="2585.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="2599.0" width="131.1" height="62.0" rx="10" fill="#86878A" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="2686.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="2711.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">light-gray-shade-45</text>
+<text x="1400.9" y="2736.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#86878A</text>
+<rect x="48.0" y="2814.0" width="1504.0" height="235.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="70.0" y="2842.0" width="42.0" height="42.0" rx="12" fill="#FFFFFF" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="128.0" y="2868.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">white</text>
+<text x="128.0" y="2898.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">#FFFFFF · Card, modal, input</text>
+<text x="128.0" y="2916.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">background, area konten</text>
+<text x="128.0" y="2934.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">utama.</text>
+<rect x="360.0" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="374.0" y="2852.0" width="131.1" height="62.0" rx="10" fill="#FFFFFF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="374.0" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 80</text>
+<text x="374.0" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-tint-80</text>
+<text x="374.0" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FFFFFF</text>
+<rect x="531.1" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="545.1" y="2852.0" width="131.1" height="62.0" rx="10" fill="#FFFFFF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="545.1" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 60</text>
+<text x="545.1" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-tint-60</text>
+<text x="545.1" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FFFFFF</text>
+<rect x="702.3" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="716.3" y="2852.0" width="131.1" height="62.0" rx="10" fill="#FFFFFF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="716.3" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">TINT 40</text>
+<text x="716.3" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-tint-40</text>
+<text x="716.3" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FFFFFF</text>
+<rect x="873.4" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="887.4" y="2852.0" width="131.1" height="62.0" rx="10" fill="#FFFFFF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="887.4" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">BASE</text>
+<text x="887.4" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white</text>
+<text x="887.4" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#FFFFFF</text>
+<rect x="1044.6" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1058.6" y="2852.0" width="131.1" height="62.0" rx="10" fill="#D9D9D9" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1058.6" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 15</text>
+<text x="1058.6" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-shade-15</text>
+<text x="1058.6" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#D9D9D9</text>
+<rect x="1215.7" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1229.7" y="2852.0" width="131.1" height="62.0" rx="10" fill="#B2B2B2" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1229.7" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 30</text>
+<text x="1229.7" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-shade-30</text>
+<text x="1229.7" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#B2B2B2</text>
+<rect x="1386.9" y="2838.0" width="159.1" height="187.0" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1400.9" y="2852.0" width="131.1" height="62.0" rx="10" fill="#8C8C8C" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="1400.9" y="2939.0" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="700" fill="#6B7280" text-anchor="start" letter-spacing="0.08em">SHADE 45</text>
+<text x="1400.9" y="2964.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12" font-weight="500" fill="#374151" text-anchor="start">white-shade-45</text>
+<text x="1400.9" y="2989.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#374151" text-anchor="start">#8C8C8C</text>
+<text x="48.0" y="3109.0" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F1F3D" text-anchor="start">Warna Turunan &amp; Semantic</text>
+<text x="48.0" y="3143.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">Token pendukung untuk state, status, border, badge, dan background komponen.</text>
+<rect x="1332.0" y="3079.0" width="220.0" height="42.0" rx="21" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="1350.0" y="3105.0" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="start">12 semantic colors</text>
+<line x1="48" y1="3175" x2="1552" y2="3175" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="48.0" y="3213.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="66.0" y="3231.0" width="326.5" height="82.0" rx="12" fill="#1740B0" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="66.0" y="3341.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">primary-dark</text>
+<text x="66.0" y="3367.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#1740B0</text>
+<text x="66.0" y="3395.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Hover state tombol utama.</text>
+<rect x="428.5" y="3213.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="446.5" y="3231.0" width="326.5" height="82.0" rx="12" fill="#EEF2FF" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="446.5" y="3341.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">primary-light</text>
+<text x="446.5" y="3367.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#EEF2FF</text>
+<text x="446.5" y="3395.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Background info, selected row.</text>
+<rect x="809.0" y="3213.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="827.0" y="3231.0" width="326.5" height="82.0" rx="12" fill="#E6FAF6" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="827.0" y="3341.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">success-light</text>
+<text x="827.0" y="3367.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#E6FAF6</text>
+<text x="827.0" y="3395.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Background status sukses.</text>
+<rect x="1189.5" y="3213.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1207.5" y="3231.0" width="326.5" height="82.0" rx="12" fill="#E0FBF8" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="1207.5" y="3341.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">teal-light</text>
+<text x="1207.5" y="3367.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#E0FBF8</text>
+<text x="1207.5" y="3395.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Highlight teal lembut.</text>
+<rect x="48.0" y="3436.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="66.0" y="3454.0" width="326.5" height="82.0" rx="12" fill="#EDE9FE" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="66.0" y="3564.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">indigo-light</text>
+<text x="66.0" y="3590.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#EDE9FE</text>
+<text x="66.0" y="3618.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Badge VIP / special state.</text>
+<rect x="428.5" y="3436.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="446.5" y="3454.0" width="326.5" height="82.0" rx="12" fill="#1E3A5F" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="446.5" y="3564.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">navy-light</text>
+<text x="446.5" y="3590.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#1E3A5F</text>
+<text x="446.5" y="3618.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Sidebar hover, chart dark blue.</text>
+<rect x="809.0" y="3436.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="827.0" y="3454.0" width="326.5" height="82.0" rx="12" fill="#374151" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="827.0" y="3564.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">slate-dark</text>
+<text x="827.0" y="3590.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#374151</text>
+<text x="827.0" y="3618.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Body text dan table text.</text>
+<rect x="1189.5" y="3436.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1207.5" y="3454.0" width="326.5" height="82.0" rx="12" fill="#D1D5DB" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="1207.5" y="3564.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">slate-light</text>
+<text x="1207.5" y="3590.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#D1D5DB</text>
+<text x="1207.5" y="3618.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Border, divider, skeleton.</text>
+<rect x="48.0" y="3659.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="66.0" y="3677.0" width="326.5" height="82.0" rx="12" fill="#F59E0B" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="66.0" y="3787.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">warning</text>
+<text x="66.0" y="3813.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#F59E0B</text>
+<text x="66.0" y="3841.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Peringatan, pending, attention.</text>
+<rect x="428.5" y="3659.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="446.5" y="3677.0" width="326.5" height="82.0" rx="12" fill="#FEF3C7" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="446.5" y="3787.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">warning-light</text>
+<text x="446.5" y="3813.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#FEF3C7</text>
+<text x="446.5" y="3841.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Background alert warning.</text>
+<rect x="809.0" y="3659.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="827.0" y="3677.0" width="326.5" height="82.0" rx="12" fill="#EF4444" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="827.0" y="3787.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">danger</text>
+<text x="827.0" y="3813.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#EF4444</text>
+<text x="827.0" y="3841.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Error, delete, destructive action.</text>
+<rect x="1189.5" y="3659.0" width="362.5" height="205.0" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1207.5" y="3677.0" width="326.5" height="82.0" rx="12" fill="#FEF2F2" stroke="rgba(15,31,61,0.12)" stroke-width="1"/>
+<text x="1207.5" y="3787.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="500" fill="#374151" text-anchor="start">danger-light</text>
+<text x="1207.5" y="3813.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700" fill="#374151" text-anchor="start">#FEF2F2</text>
+<text x="1207.5" y="3841.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Background alert error.</text>
+<text x="48.0" y="3928.0" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F1F3D" text-anchor="start">Color Scale Ringkas</text>
+<text x="48.0" y="3962.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">Skala ringkas dari token brand dan semantic untuk referensi hover, background, border, dan</text>
+<text x="48.0" y="3986.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">state.</text>
+<rect x="1332.0" y="3898.0" width="220.0" height="42.0" rx="21" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="1350.0" y="3924.0" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="start">Light · Base · Dark</text>
+<line x1="48" y1="3994" x2="1552" y2="3994" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="48.0" y="4032.0" width="1504.0" height="680.0" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="78.0" y="4097.0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">Primary Blue</text>
+<text x="78.0" y="4124.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Brand utama dan CTA.</text>
+<rect x="303.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="303.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#EEF2FF"/>
+<text x="317.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">light</text>
+<text x="317.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#EEF2FF</text>
+<rect x="506.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="506.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#1E4FD7"/>
+<text x="520.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">base</text>
+<text x="520.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#1E4FD7</text>
+<rect x="709.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="709.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#1740B0"/>
+<text x="723.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">dark</text>
+<text x="723.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#1740B0</text>
+<rect x="912.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="912.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#1E3A5F"/>
+<text x="926.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">navy-light</text>
+<text x="926.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#1E3A5F</text>
+<rect x="1115.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1115.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#0F1F3D"/>
+<text x="1129.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">navy</text>
+<text x="1129.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#0F1F3D</text>
+<rect x="1318.0" y="4062.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1318.0" y="4062.0" width="189.0" height="66.0" rx="14" fill="#FFFFFF"/>
+<text x="1332.0" y="4156.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">white</text>
+<text x="1332.0" y="4179.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#FFFFFF</text>
+<text x="78.0" y="4255.0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">Success &amp; Teal</text>
+<text x="78.0" y="4282.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Sukses, aktif, dan aksen</text>
+<text x="78.0" y="4300.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">positif.</text>
+<rect x="303.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="303.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#E6FAF6"/>
+<text x="317.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">success-light</text>
+<text x="317.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#E6FAF6</text>
+<rect x="506.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="506.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#00B894"/>
+<text x="520.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">primary-green</text>
+<text x="520.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#00B894</text>
+<rect x="709.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="709.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#E0FBF8"/>
+<text x="723.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">teal-light</text>
+<text x="723.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#E0FBF8</text>
+<rect x="912.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="912.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#00D1B2"/>
+<text x="926.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">accent-teal</text>
+<text x="926.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#00D1B2</text>
+<rect x="1115.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1115.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#F3F6FA"/>
+<text x="1129.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">light-gray</text>
+<text x="1129.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#F3F6FA</text>
+<rect x="1318.0" y="4220.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1318.0" y="4220.0" width="189.0" height="66.0" rx="14" fill="#FFFFFF"/>
+<text x="1332.0" y="4314.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">white</text>
+<text x="1332.0" y="4337.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#FFFFFF</text>
+<text x="78.0" y="4413.0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">Indigo &amp; Neutral</text>
+<text x="78.0" y="4440.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">VIP, chart, teks, border,</text>
+<text x="78.0" y="4458.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">dan surface.</text>
+<rect x="303.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="303.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#EDE9FE"/>
+<text x="317.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">indigo-light</text>
+<text x="317.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#EDE9FE</text>
+<rect x="506.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="506.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#6C5CE7"/>
+<text x="520.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">indigo</text>
+<text x="520.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#6C5CE7</text>
+<rect x="709.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="709.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#D1D5DB"/>
+<text x="723.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">slate-light</text>
+<text x="723.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#D1D5DB</text>
+<rect x="912.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="912.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#6B7280"/>
+<text x="926.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">slate</text>
+<text x="926.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#6B7280</text>
+<rect x="1115.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1115.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#374151"/>
+<text x="1129.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">slate-dark</text>
+<text x="1129.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#374151</text>
+<rect x="1318.0" y="4378.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1318.0" y="4378.0" width="189.0" height="66.0" rx="14" fill="#0F1F3D"/>
+<text x="1332.0" y="4472.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">navy</text>
+<text x="1332.0" y="4495.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#0F1F3D</text>
+<text x="78.0" y="4571.0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F1F3D" text-anchor="start">Semantic State</text>
+<text x="78.0" y="4598.0" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#6B7280" text-anchor="start">Warning dan danger state.</text>
+<rect x="303.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="303.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#FEF3C7"/>
+<text x="317.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">warning-light</text>
+<text x="317.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#FEF3C7</text>
+<rect x="506.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="506.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#F59E0B"/>
+<text x="520.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">warning</text>
+<text x="520.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#F59E0B</text>
+<rect x="709.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="709.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#FEF2F2"/>
+<text x="723.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">danger-light</text>
+<text x="723.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#FEF2F2</text>
+<rect x="912.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="912.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#EF4444"/>
+<text x="926.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">danger</text>
+<text x="926.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#EF4444</text>
+<rect x="1115.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1115.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#EEF2FF"/>
+<text x="1129.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">info-light</text>
+<text x="1129.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#EEF2FF</text>
+<rect x="1318.0" y="4536.0" width="189.0" height="130.0" rx="14" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1318.0" y="4536.0" width="189.0" height="66.0" rx="14" fill="#1E4FD7"/>
+<text x="1332.0" y="4630.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#374151" text-anchor="start">info</text>
+<text x="1332.0" y="4653.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="13" font-weight="600" fill="#6B7280" text-anchor="start">#1E4FD7</text>
+<text x="48.0" y="4772.0" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#0F1F3D" text-anchor="start">Developer Tokens</text>
+<text x="48.0" y="4806.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">Referensi token untuk CSS variables dan Tailwind config. Teks tetap editable setelah SVG di-</text>
+<text x="48.0" y="4830.0" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="400" fill="#6B7280" text-anchor="start">import ke Figma.</text>
+<rect x="1332.0" y="4742.0" width="220.0" height="42.0" rx="21" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="1350.0" y="4768.0" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#374151" text-anchor="start">CSS · Tailwind</text>
+<line x1="48" y1="4838" x2="1552" y2="4838" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="48.0" y="4876.0" width="741.0" height="520.0" rx="18" fill="#0B1220" stroke="#1E293B" stroke-width="1"/>
+<text x="72.0" y="4914.0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">CSS Variables</text>
+<text x="72.0" y="4954.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">:root {</text>
+<text x="72.0" y="4976.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --primary-blue: #1E4FD7;</text>
+<text x="72.0" y="4998.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --primary-green: #00B894;</text>
+<text x="72.0" y="5020.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --accent-teal: #00D1B2;</text>
+<text x="72.0" y="5042.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --indigo: #6C5CE7;</text>
+<text x="72.0" y="5064.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --navy: #0F1F3D;</text>
+<text x="72.0" y="5086.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --slate: #6B7280;</text>
+<text x="72.0" y="5108.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --light-gray: #F3F6FA;</text>
+<text x="72.0" y="5130.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --white: #FFFFFF;</text>
+<text x="72.0" y="5152.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --primary-dark: #1740B0;</text>
+<text x="72.0" y="5174.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --primary-light: #EEF2FF;</text>
+<text x="72.0" y="5196.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --success-light: #E6FAF6;</text>
+<text x="72.0" y="5218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --teal-light: #E0FBF8;</text>
+<text x="72.0" y="5240.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --indigo-light: #EDE9FE;</text>
+<text x="72.0" y="5262.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --navy-light: #1E3A5F;</text>
+<text x="72.0" y="5284.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --slate-dark: #374151;</text>
+<text x="72.0" y="5306.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --slate-light: #D1D5DB;</text>
+<text x="72.0" y="5328.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --warning: #F59E0B;</text>
+<text x="72.0" y="5350.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --warning-light: #FEF3C7;</text>
+<text x="72.0" y="5372.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --danger: #EF4444;</text>
+<text x="72.0" y="5394.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  --danger-light: #FEF2F2;</text>
+<text x="72.0" y="5416.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  /* Shade &amp; Tint tokens tersedia di section atas */</text>
+<text x="72.0" y="5438.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">}</text>
+<rect x="811.0" y="4876.0" width="741.0" height="520.0" rx="18" fill="#0B1220" stroke="#1E293B" stroke-width="1"/>
+<text x="835.0" y="4914.0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF" text-anchor="start">Tailwind Config</text>
+<text x="835.0" y="4954.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">/* theme.css */</text>
+<text x="835.0" y="4976.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">export default {</text>
+<text x="835.0" y="4998.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  theme: {</text>
+<text x="835.0" y="5020.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">    extend: {</text>
+<text x="835.0" y="5042.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">      colors: {</text>
+<text x="835.0" y="5064.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">        brand: {</text>
+<text x="835.0" y="5086.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          primaryBlue: &quot;#1E4FD7&quot;,</text>
+<text x="835.0" y="5108.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          primaryGreen: &quot;#00B894&quot;,</text>
+<text x="835.0" y="5130.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          accentTeal: &quot;#00D1B2&quot;,</text>
+<text x="835.0" y="5152.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          indigo: &quot;#6C5CE7&quot;,</text>
+<text x="835.0" y="5174.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          navy: &quot;#0F1F3D&quot;,</text>
+<text x="835.0" y="5196.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          slate: &quot;#6B7280&quot;,</text>
+<text x="835.0" y="5218.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          lightGray: &quot;#F3F6FA&quot;,</text>
+<text x="835.0" y="5240.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">          white: &quot;#FFFFFF&quot;</text>
+<text x="835.0" y="5262.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">        },</text>
+<text x="835.0" y="5284.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">        semantic: { warning: &quot;#F59E0B&quot;, danger: &quot;#EF4444&quot; }</text>
+<text x="835.0" y="5306.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">      }</text>
+<text x="835.0" y="5328.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">    }</text>
+<text x="835.0" y="5350.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">  }</text>
+<text x="835.0" y="5372.0" font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="500" fill="#E5E7EB" text-anchor="start">}</text>
+<rect x="48.0" y="5456.0" width="1504.0" height="104.0" rx="20" fill="#F3F6FA"/>
+<text x="76.0" y="5501.0" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#0F1F3D" text-anchor="start">Brand Color Guide</text>
+<text x="76.0" y="5528.0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="400" fill="#6B7280" text-anchor="start">Gunakan token ini untuk konsistensi desain dan development.</text>
+<text x="1532.0" y="5518.0" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" fill="#6B7280" text-anchor="end">© 2026</text>
+</svg>

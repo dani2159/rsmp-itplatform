@@ -1,0 +1,2245 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil RM Pasien · SIMRS ZAIDAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="dashboard-app">
+  <div class="layout-preview dashboard-layout" id="dashboardLayout">
+    <aside class="app-sidebar" id="dashboardSidebar" aria-label="Sidebar dashboard SIMRS">
+      <div class="sidebar-head">
+        <a class="brand-lockup" href="../dashboard/30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img class="brand-logo-full" alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+          <img class="brand-logo-icon" alt="SIMRS ZAIDAN icon" src="../../assets/images/logo-simrs-icon.svg"/>
+        </a>
+      </div>
+
+      <div class="sidebar-user-info" data-tooltip="Petugas Loket · Pendaftaran Rawat Jalan" role="button" tabindex="0">
+        <span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+        <span class="sidebar-user-meta">
+          <span class="sidebar-user-name">Petugas Loket</span>
+          <span class="sidebar-user-role">Pendaftaran</span>
+        </span>
+      </div>
+
+      <nav class="sidebar-section" aria-label="Menu utama SIMRS">
+        <a class="nav-item" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+          <span class="nav-icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Admin">
+            <span class="nav-icon"><i class="fa-solid fa-user-gear" aria-hidden="true"></i></span>
+            <span class="nav-label">Admin</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../admin/50-users.html" data-route="/admin/users">Daftar Pengguna</a>
+            <a class="nav-subitem" href="../admin/51-role-permission.html" data-route="/admin/roles">Peran &amp; Hak Akses</a>
+            <a class="nav-subitem" href="../master/40-unit.html" data-route="/admin/units">Unit / Poli</a>
+            <a class="nav-subitem" href="../master/41-karyawan.html" data-route="/admin/employees">Karyawan</a>
+            <a class="nav-subitem" href="../master/42-jadwal-dokter.html" data-route="/admin/doctor-schedules">Jadwal Dokter</a>
+            <a class="nav-subitem" href="../master/43-kamar.html" data-route="/admin/rooms">Kamar</a>
+            <a class="nav-subitem" href="../master/44-penjamin.html" data-route="/admin/insurance">Penjamin</a>
+            <a class="nav-subitem" href="../master/45-tarif.html" data-route="/admin/tariffs">Tarif</a>
+            <a class="nav-subitem" href="../admin/53-konfigurasi-sistem.html" data-route="/admin/hospital-config">Profil Rumah Sakit</a>
+            <a class="nav-subitem" href="../admin/52-printer.html" data-route="/admin/printer-config">Master Printer</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Pendaftaran">
+            <span class="nav-icon"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></span>
+            <span class="nav-label">Pendaftaran</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../dashboard/32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+            <a class="nav-subitem" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new">Pasien Baru</a>
+            <a class="nav-subitem" href="#" data-route="/registration/visits/new">Buat Kunjungan</a>
+            <a class="nav-subitem" href="#" data-route="/registration/queue">Monitor Antrean</a>
+            <a class="nav-subitem" href="../dashboard/33-monitor-display-loket.html" data-route="/registration/display">Display TV Antrean</a>
+          </div>
+        </details>
+
+        <details class="nav-group" open>
+          <summary class="nav-summary active" data-tooltip="Rekam Medis">
+            <span class="nav-icon"><i class="fa-solid fa-notes-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Rekam Medis</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="70-rekam-medis.html" data-route="/emr/search">Cari RM Pasien</a>
+            <a class="nav-subitem active" href="71-profil-rm-pasien.html" data-route="/emr/patients/:id">Profil RM Terpadu</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rawat Jalan">
+            <span class="nav-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></span>
+            <span class="nav-label">Rawat Jalan</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/outpatient">Dashboard Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/queue">Antrean Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/visits/:id">Pemeriksaan</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Farmasi">
+            <span class="nav-icon"><i class="fa-solid fa-prescription-bottle-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Farmasi</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/pharmacy">Antrian Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/prescriptions/:id">Validasi Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/dispensing/:id">Penyerahan Obat</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/labels/:id">Cetak Etiket</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Kasir">
+            <span class="nav-icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></span>
+            <span class="nav-label">Kasir</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/billing">Pasien Siap Bayar</a>
+            <a class="nav-subitem" href="#" data-route="/billing/:visitId/receipt">Kwitansi</a>
+            <a class="nav-subitem" href="#" data-route="/billing/void">Pembatalan Penagihan</a>
+            <a class="nav-subitem" href="#" data-route="/billing/report">Laporan Kasir</a>
+          </div>
+        </details>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+    </aside>
+
+    <div class="app-main">
+      <header class="app-header">
+        <button class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button" aria-label="Tutup sidebar" aria-expanded="true" aria-controls="dashboardSidebar">
+          <i class="fa-solid fa-bars topbar-line-icon" aria-hidden="true"></i>
+        </button>
+        <a class="mobile-header-brand" href="../dashboard/30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN">
+        </a>
+
+        <div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+          <span class="field-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass topbar-line-icon" aria-hidden="true"></i></span>
+          <input class="input with-left with-right" id="globalSearchInput" type="search" placeholder="Cari pasien, nomor RM, NIK..." aria-label="Cari pasien, nomor RM, NIK" />
+          <span class="kbd-hint" aria-hidden="true">⌘ K</span>
+        </div>
+
+        <div class="topbar-spacer" aria-hidden="true"></div>
+
+        <div class="header-actions" aria-label="Aksi header">
+<button class="icon-btn topbar-icon" type="button" aria-label="Buka notifikasi"><i class="fa-regular fa-bell" aria-hidden="true"></i><span class="notification-dot">3</span></button>
+          <details class="ds-dropdown" data-component="topbar-dropdown">
+            <summary class="profile-menu" aria-label="Buka menu profil petugas loket">
+              <span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+              <span class="profile-copy"><span class="profile-name">Petugas Loket</span><span class="profile-role">Loket 1</span></span>
+              <i class="fa-solid fa-chevron-down topbar-line-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="dropdown-panel compact" style="right:0; left:auto; width:240px;" role="menu" aria-label="Menu profil">
+              <div class="dropdown-group-label">Akun</div>
+              <button class="dropdown-option selected" type="button" role="menuitem"><span class="option-meta">Siti Nurhaliza<small>Petugas Loket 1</small></span></button>
+              <a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+
+      <main aria-label="Halaman profil rekam medis pasien" class="dashboard-content patient-profile-content">
+        <nav aria-label="Breadcrumb" class="admin-breadcrumb text-body-sm patient-profile-breadcrumb">
+          <a href="../dashboard/30-dashboard.html"><i aria-hidden="true" class="fa-solid fa-house"></i>Dashboard</a>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <a href="70-rekam-medis.html">Rekam Medis</a>
+          <i aria-hidden="true" class="fa-solid fa-chevron-right"></i>
+          <span>Profil RM Pasien</span>
+        </nav>
+
+        <section class="patient-profile-actions" aria-label="Aksi profil pasien">
+          <a class="btn btn-ghost btn-lg" href="70-rekam-medis.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Kembali ke Rekam Medis</a>
+          <button class="btn btn-outline btn-lg" type="button" data-print-rm-summary><i class="fa-solid fa-print" aria-hidden="true"></i>Cetak Ringkasan RM</button>
+        </section>
+
+        <section class="card patient-identity-card" aria-label="Identitas pasien">
+          <div class="patient-identity-body">
+            <div class="patient-avatar-wrap">
+              <span class="avatar avatar-patient-male patient-profile-avatar" aria-hidden="true"><span class="avatar-initials">BS</span></span>
+            </div>
+            <div class="patient-identity-main">
+              <div class="patient-name-row">
+                <h1 class="text-h2 font-bold tracking-normal">BUDI SANTOSO</h1>
+                <span class="patient-gender-chip patient-gender-male" aria-label="Laki-laki"><i class="fa-solid fa-mars" aria-hidden="true"></i></span>
+              </div>
+              <p class="patient-rm-number">RM 00012345</p>
+              <div class="patient-meta-strip" aria-label="Ringkasan identitas pasien">
+                <span><small>Jenis Kelamin</small><strong>Laki-laki</strong></span>
+                <span><small>Usia</small><strong>45 Tahun</strong></span>
+                <span><small>Tanggal Lahir</small><strong>01/01/1980</strong></span>
+                <span><small>Gol. Darah</small><strong>O</strong></span>
+                <span><small>NIK</small><strong>3276010101800001</strong></span>
+              </div>
+            </div>
+            <aside class="patient-last-visit" aria-label="Kunjungan terakhir">
+              <span>Terakhir Berobat</span>
+              <strong>20 Mei 2024 09:15</strong>
+              <small>Poli Jantung</small>
+              <button class="btn btn-outline btn-md" type="button" data-open-timeline-tab><i class="fa-regular fa-clock" aria-hidden="true"></i>Lihat Timeline</button>
+            </aside>
+          </div>
+          <section class="alert alert-danger alert-md patient-allergy-banner" aria-label="Peringatan alergi pasien">
+            <div class="patient-allergy-main">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+              <strong>ALERGI (BERAT)</strong>
+              <span class="badge badge-danger badge-md allergy-pill">Penicillin</span>
+              <span class="badge badge-danger badge-md allergy-pill">Seafood</span>
+              <span class="badge badge-danger badge-md allergy-pill">Latex</span>
+            </div>
+            <button class="btn btn-ghost btn-md patient-allergy-link" type="button" data-open-allergy-tab>Lihat Detail Alergi <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+          </section>
+        </section>
+
+        <section class="tabs tabs-line patient-profile-tabs" data-tabs aria-label="Tab profil rekam medis pasien">
+          <div class="tabs-list" role="tablist" aria-label="Navigasi profil rekam medis pasien">
+            <button class="tab is-active" id="tab-rm-summary" role="tab" aria-selected="true" data-tab-target="panel-rm-summary" type="button">Ringkasan</button>
+            <button class="tab" id="tab-rm-timeline" role="tab" aria-selected="false" data-tab-target="panel-rm-timeline" type="button">Riwayat Kunjungan</button>
+            <button class="tab" id="tab-rm-allergy" role="tab" aria-selected="false" data-tab-target="panel-rm-allergy" type="button">Alergi &amp; Riwayat</button>
+            <button class="tab" id="tab-rm-guarantor" role="tab" aria-selected="false" data-tab-target="panel-rm-guarantor" type="button">Penjamin</button>
+            <button class="tab" id="tab-rm-document" role="tab" aria-selected="false" data-tab-target="panel-rm-document" type="button">Dokumen</button>
+          </div>
+
+          <div class="tab-panel" id="panel-rm-summary" role="tabpanel" aria-labelledby="tab-rm-summary">
+            <div class="patient-summary-grid">
+              <article class="card patient-info-card">
+                <h2 class="card-title">Informasi Utama</h2>
+                <dl class="profile-info-list">
+                  <div><dt><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Alamat</dt><dd>Jl. Merdeka No. 10,<br>Jakarta Pusat</dd></div>
+                  <div><dt><i class="fa-solid fa-phone" aria-hidden="true"></i>No. Telepon</dt><dd>0812-3456-7890</dd></div>
+                  <div><dt><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Pekerjaan</dt><dd>Wiraswasta</dd></div>
+                  <div><dt><i class="fa-regular fa-heart" aria-hidden="true"></i>Status Perkawinan</dt><dd>Menikah</dd></div>
+                  <div><dt><i class="fa-solid fa-language" aria-hidden="true"></i>Bahasa</dt><dd>Indonesia</dd></div>
+                </dl>
+              </article>
+
+              <article class="card patient-info-card">
+                <h2 class="card-title">Ringkasan Medis</h2>
+                <dl class="profile-info-list compact">
+                  <div><dt><i class="fa-solid fa-ruler-vertical" aria-hidden="true"></i>Tinggi Badan</dt><dd>170 cm</dd></div>
+                  <div><dt><i class="fa-solid fa-weight-scale" aria-hidden="true"></i>Berat Badan</dt><dd>72 kg</dd></div>
+                  <div><dt><i class="fa-solid fa-chart-line" aria-hidden="true"></i>IMT</dt><dd>24.9 <span>(Normal)</span></dd></div>
+                  <div><dt><i class="fa-solid fa-smoking" aria-hidden="true"></i>Merokok</dt><dd>Tidak</dd></div>
+                  <div><dt><i class="fa-solid fa-wine-glass" aria-hidden="true"></i>Riwayat Alkohol</dt><dd>Tidak</dd></div>
+                </dl>
+              </article>
+
+              <article class="card patient-info-card">
+                <h2 class="card-title">Ringkasan Pasien</h2>
+                <div class="profile-stat-row">
+                  <div><strong>52</strong><span>Total Kunjungan</span><small>kali</small></div>
+                  <div><strong>8</strong><span>Kunjungan Tahun Ini</span><small>kali</small></div>
+                </div>
+                <a class="card-link profile-card-link" href="#" data-open-timeline-tab>Lihat semua kunjungan</a>
+              </article>
+
+              <article class="card patient-info-card">
+                <h2 class="card-title">Diagnosa Kronis</h2>
+                <ul class="profile-med-list">
+                  <li>I10 - Hipertensi Esensial</li>
+                  <li>E11 - Diabetes Mellitus Tipe 2</li>
+                </ul>
+                <a class="card-link profile-card-link" href="#">Lihat semua (2)</a>
+                <hr class="profile-divider">
+                <h3 class="card-title">Obat Rutin</h3>
+                <ul class="profile-med-list is-medicine">
+                  <li><span>Amlodipine</span><strong>1x10 mg</strong></li>
+                  <li><span>Metformin</span><strong>2x500 mg</strong></li>
+                </ul>
+                <a class="card-link profile-card-link" href="#">Lihat semua (3)</a>
+              </article>
+            </div>
+
+            <div class="patient-secondary-grid">
+              <article class="card card-success patient-info-card patient-guarantor-card">
+                <div class="profile-title-row">
+                  <h2 class="card-title">Penjamin Aktif</h2>
+                  <span class="badge badge-success badge-sm">Aktif</span>
+                </div>
+                <div class="profile-guarantor-content">
+                  <div>
+                    <strong>BPJS Kesehatan</strong>
+                    <dl class="profile-mini-list">
+                      <div><dt>No. Peserta</dt><dd>0001234567890</dd></div>
+                      <div><dt>Kelas</dt><dd>Kelas 1</dd></div>
+                    </dl>
+                  </div>
+                  <div class="profile-bpjs-mark" aria-label="BPJS Kesehatan">
+                    <span>BPJS</span><small>Kesehatan</small>
+                  </div>
+                </div>
+                <a class="card-link profile-card-link" href="#" data-open-guarantor-tab>Lihat detail penjamin</a>
+              </article>
+
+              <article class="card patient-info-card patient-doctor-card">
+                <h2 class="card-title">Dokter Terakhir</h2>
+                <div class="profile-doctor-row">
+                  <img alt="dr. Andi Pratama" src="../../assets/images/data-rs/dokter-01.jpg">
+                  <div>
+                    <strong>dr. Andi Pratama, Sp.JP</strong>
+                    <span>Poli Jantung</span>
+                    <small>20 Mei 2024 09:15</small>
+                  </div>
+                </div>
+              </article>
+
+              <article class="card card-warning patient-important-note">
+                <h2 class="card-title">Catatan Penting</h2>
+                <p>Pasien memiliki riwayat hipertensi sejak 2018.</p>
+                <p>Kontrol rutin setiap 1 bulan.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-rm-timeline" role="tabpanel" aria-labelledby="tab-rm-timeline" hidden>
+            <div class="patient-timeline-layout">
+              <article class="card profile-timeline-card">
+                <div class="profile-title-row">
+                  <div>
+                    <h2 class="card-title">Riwayat Kunjungan</h2>
+                    <p class="card-subtitle">Riwayat episode pelayanan pasien berdasarkan kunjungan terbaru.</p>
+                  </div>
+                  <div class="profile-timeline-actions">
+                    <input id="visitUnitFilter" type="hidden" data-picker-value value="Semua Unit">
+                    <details class="ds-dropdown ds-select guide-select" data-component="guide-select">
+                      <summary aria-label="Filter Unit" class="dropdown-trigger is-md"><span data-select-text>Semua Unit</span></summary>
+                      <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-select-value="Semua Unit" role="option" type="button">Semua Unit</button><button aria-selected="false" class="dropdown-option" data-select-value="Poli Jantung" role="option" type="button">Poli Jantung</button><button aria-selected="false" class="dropdown-option" data-select-value="Poli Penyakit Dalam" role="option" type="button">Poli Penyakit Dalam</button><button aria-selected="false" class="dropdown-option" data-select-value="IGD" role="option" type="button">IGD</button><button aria-selected="false" class="dropdown-option" data-select-value="Laboratorium" role="option" type="button">Laboratorium</button></div>
+                    </details>
+                    <button class="btn btn-outline btn-md" type="button"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i>Muat Ulang</button>
+                  </div>
+                </div>
+
+                <ol class="visit-timeline-list">
+                  <li>
+                    <span class="timeline-dot is-active"></span>
+                    <div class="timeline-card visit-card is-expanded" data-visit-number="KJ-20240520-0915">
+                      <div class="visit-card-header">
+                        <div class="visit-date-block">
+                          <strong>20 Mei 2024</strong>
+                          <span>09:15</span>
+                        </div>
+                        <div class="visit-card-main">
+                          <div class="visit-card-title">
+                            <h3>Poli Jantung</h3>
+                            <span class="badge badge-success badge-sm">Selesai</span>
+                          </div>
+                          <p>dr. Andi Pratama, Sp.JP</p>
+                          <small>No. Kunjungan: <strong>KJ-20240520-0915</strong></small>
+                          <small>Kontrol hipertensi, evaluasi obat rutin, tekanan darah 130/85 mmHg.</small>
+                        </div>
+                        <div class="visit-card-actions">
+                          <button class="btn btn-outline btn-sm" type="button" data-visit-toggle aria-expanded="true">Tutup Detail <i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
+
+
+                          <details class="ds-dropdown row-action-dropdown profile-visit-menu" data-component="visit-row-actions">
+                            <summary class="btn btn-xs btn-ghost btn-icon" aria-label="Buka menu aksi kunjungan" title="Aksi kunjungan">
+                              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                            </summary>
+                            <div class="dropdown-panel compact row-action-panel profile-visit-menu-panel" role="menu">
+                              <button class="dropdown-option" data-profile-visit-action="print" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Ringkasan Kunjungan</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="document" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Lihat Dokumen</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="addendum" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Buat Addendum</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="copy" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin Nomor Kunjungan</strong></span></button>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+
+                      <div class="visit-detail-grid">
+                        <section>
+                          <h4><i class="fa-regular fa-comment-dots" aria-hidden="true"></i>Keluhan Utama</h4>
+                          <p>Sesak napas saat aktivitas berat, dada terasa berdebar.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>TTV</h4>
+                          <dl>
+                            <div><dt>TD</dt><dd>130/80 mmHg</dd></div>
+                            <div><dt>Nadi</dt><dd>88 x/menit</dd></div>
+                            <div><dt>RR</dt><dd>20 x/menit</dd></div>
+                            <div><dt>Suhu</dt><dd>36.7 °C</dd></div>
+                            <div><dt>SpO2</dt><dd>98 %</dd></div>
+                          </dl>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>SOAP</h4>
+                          <p><strong>S</strong> Sesak napas saat aktivitas berat.</p>
+                          <p><strong>O</strong> TD 130/80, Nadi 88, S1S2 reguler.</p>
+                          <p><strong>A</strong> I10 - Hipertensi terkontrol.</p>
+                          <p><strong>P</strong> Kontrol 1 bulan, lanjutkan terapi.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-stethoscope" aria-hidden="true"></i>Diagnosis</h4>
+                          <p>I10 - Hipertensi Esensial</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-pills" aria-hidden="true"></i>Resep</h4>
+                          <ol class="visit-prescription-list">
+                            <li>
+                              <span>1</span>
+                              <div><strong>Amlodipine</strong><small>1x10 mg · setelah makan</small></div>
+                            </li>
+                            <li>
+                              <span>2</span>
+                              <div><strong>Aspilet</strong><small>1x80 mg · malam hari</small></div>
+                            </li>
+                            <li>
+                              <span>3</span>
+                              <div><strong>Candesartan</strong><small>1x16 mg · pagi hari</small></div>
+                            </li>
+                          </ol>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card visit-card" data-visit-number="KJ-20240510-1030">
+                      <div class="visit-card-header">
+                        <div class="visit-date-block">
+                          <strong>10 Mei 2024</strong>
+                          <span>10:30</span>
+                        </div>
+                        <div class="visit-card-main">
+                          <div class="visit-card-title">
+                            <h3>IGD</h3>
+                            <span class="badge badge-warning badge-sm">Selesai</span>
+                          </div>
+                          <p>dr. Dinda Ayu</p>
+                          <small>No. Kunjungan: <strong>KJ-20240510-1030</strong></small>
+                          <small>Observasi keluhan nyeri dada ringan dan pemeriksaan awal.</small>
+                        </div>
+                        <div class="visit-card-actions">
+                          <button class="btn btn-outline btn-sm" type="button" data-visit-toggle aria-expanded="false">Lihat Detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+
+
+                          <details class="ds-dropdown row-action-dropdown profile-visit-menu" data-component="visit-row-actions">
+                            <summary class="btn btn-xs btn-ghost btn-icon" aria-label="Buka menu aksi kunjungan" title="Aksi kunjungan">
+                              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                            </summary>
+                            <div class="dropdown-panel compact row-action-panel profile-visit-menu-panel" role="menu">
+                              <button class="dropdown-option" data-profile-visit-action="print" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Ringkasan Kunjungan</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="document" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Lihat Dokumen</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="addendum" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Buat Addendum</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="copy" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin Nomor Kunjungan</strong></span></button>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+
+                      <div class="visit-detail-grid">
+                        <section>
+                          <h4><i class="fa-regular fa-comment-dots" aria-hidden="true"></i>Keluhan Utama</h4>
+                          <p>Nyeri dada ringan, terasa tidak nyaman sejak pagi.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>TTV</h4>
+                          <dl>
+                            <div><dt>TD</dt><dd>128/82 mmHg</dd></div>
+                            <div><dt>Nadi</dt><dd>92 x/menit</dd></div>
+                            <div><dt>RR</dt><dd>22 x/menit</dd></div>
+                            <div><dt>Suhu</dt><dd>36.8 °C</dd></div>
+                            <div><dt>SpO2</dt><dd>97 %</dd></div>
+                          </dl>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>SOAP</h4>
+                          <p><strong>S</strong> Nyeri dada ringan, tidak menjalar.</p>
+                          <p><strong>O</strong> EKG awal stabil, tanda vital dalam batas aman.</p>
+                          <p><strong>A</strong> Observasi nyeri dada non-spesifik.</p>
+                          <p><strong>P</strong> Observasi 2 jam, edukasi tanda bahaya.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-stethoscope" aria-hidden="true"></i>Diagnosis</h4>
+                          <p>R07.4 - Nyeri Dada Tidak Spesifik</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-pills" aria-hidden="true"></i>Resep</h4>
+                          <ol class="visit-prescription-list">
+                            <li>
+                              <span>1</span>
+                              <div><strong>Paracetamol</strong><small>3x500 mg · bila nyeri</small></div>
+                            </li>
+                            <li>
+                              <span>2</span>
+                              <div><strong>Omeprazole</strong><small>1x20 mg · sebelum makan</small></div>
+                            </li>
+                            <li>
+                              <span>3</span>
+                              <div><strong>Antasida</strong><small>3x1 tablet · bila perih</small></div>
+                            </li>
+                          </ol>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card visit-card" data-visit-number="KJ-20240505-1420">
+                      <div class="visit-card-header">
+                        <div class="visit-date-block">
+                          <strong>05 Mei 2024</strong>
+                          <span>14:20</span>
+                        </div>
+                        <div class="visit-card-main">
+                          <div class="visit-card-title">
+                            <h3>Poli Penyakit Dalam</h3>
+                            <span class="badge badge-success badge-sm">Selesai</span>
+                          </div>
+                          <p>dr. Raka Muhammad</p>
+                          <small>No. Kunjungan: <strong>KJ-20240505-1420</strong></small>
+                          <small>Monitoring gula darah puasa dan penyesuaian dosis Metformin.</small>
+                        </div>
+                        <div class="visit-card-actions">
+                          <button class="btn btn-outline btn-sm" type="button" data-visit-toggle aria-expanded="false">Lihat Detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+
+
+                          <details class="ds-dropdown row-action-dropdown profile-visit-menu" data-component="visit-row-actions">
+                            <summary class="btn btn-xs btn-ghost btn-icon" aria-label="Buka menu aksi kunjungan" title="Aksi kunjungan">
+                              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                            </summary>
+                            <div class="dropdown-panel compact row-action-panel profile-visit-menu-panel" role="menu">
+                              <button class="dropdown-option" data-profile-visit-action="print" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Ringkasan Kunjungan</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="document" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Lihat Dokumen</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="addendum" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Buat Addendum</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="copy" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin Nomor Kunjungan</strong></span></button>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+
+                      <div class="visit-detail-grid">
+                        <section>
+                          <h4><i class="fa-regular fa-comment-dots" aria-hidden="true"></i>Keluhan Utama</h4>
+                          <p>Kontrol diabetes, gula darah puasa masih fluktuatif.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>TTV</h4>
+                          <dl>
+                            <div><dt>TD</dt><dd>126/80 mmHg</dd></div>
+                            <div><dt>Nadi</dt><dd>84 x/menit</dd></div>
+                            <div><dt>RR</dt><dd>19 x/menit</dd></div>
+                            <div><dt>Suhu</dt><dd>36.6 °C</dd></div>
+                            <div><dt>GDS</dt><dd>156 mg/dL</dd></div>
+                          </dl>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>SOAP</h4>
+                          <p><strong>S</strong> Tidak ada keluhan akut, kontrol rutin DM.</p>
+                          <p><strong>O</strong> GDS 156 mg/dL, status umum baik.</p>
+                          <p><strong>A</strong> E11 - Diabetes Mellitus Tipe 2 terkontrol parsial.</p>
+                          <p><strong>P</strong> Lanjutkan diet, evaluasi HbA1c bulan depan.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-stethoscope" aria-hidden="true"></i>Diagnosis</h4>
+                          <p>E11 - Diabetes Mellitus Tipe 2</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-pills" aria-hidden="true"></i>Resep</h4>
+                          <ol class="visit-prescription-list">
+                            <li>
+                              <span>1</span>
+                              <div><strong>Metformin</strong><small>2x500 mg · setelah makan</small></div>
+                            </li>
+                            <li>
+                              <span>2</span>
+                              <div><strong>Glimepiride</strong><small>1x2 mg · pagi hari</small></div>
+                            </li>
+                            <li>
+                              <span>3</span>
+                              <div><strong>Vitamin B Complex</strong><small>1x1 tablet · setelah makan</small></div>
+                            </li>
+                          </ol>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card visit-card" data-visit-number="KJ-20240420-0900">
+                      <div class="visit-card-header">
+                        <div class="visit-date-block">
+                          <strong>20 Apr 2024</strong>
+                          <span>09:00</span>
+                        </div>
+                        <div class="visit-card-main">
+                          <div class="visit-card-title">
+                            <h3>Poli Jantung</h3>
+                            <span class="badge badge-primary badge-sm">Berjalan</span>
+                          </div>
+                          <p>dr. Andi Pratama, Sp.JP</p>
+                          <small>No. Kunjungan: <strong>KJ-20240420-0900</strong></small>
+                          <small>Kontrol lanjutan terapi hipertensi.</small>
+                        </div>
+                        <div class="visit-card-actions">
+                          <button class="btn btn-outline btn-sm" type="button" data-visit-toggle aria-expanded="false">Lihat Detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+
+
+                          <details class="ds-dropdown row-action-dropdown profile-visit-menu" data-component="visit-row-actions">
+                            <summary class="btn btn-xs btn-ghost btn-icon" aria-label="Buka menu aksi kunjungan" title="Aksi kunjungan">
+                              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                            </summary>
+                            <div class="dropdown-panel compact row-action-panel profile-visit-menu-panel" role="menu">
+                              <button class="dropdown-option" data-profile-visit-action="print" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Ringkasan Kunjungan</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="document" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Lihat Dokumen</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="addendum" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Buat Addendum</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="copy" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin Nomor Kunjungan</strong></span></button>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+
+                      <div class="visit-detail-grid">
+                        <section>
+                          <h4><i class="fa-regular fa-comment-dots" aria-hidden="true"></i>Keluhan Utama</h4>
+                          <p>Kontrol rutin hipertensi, tidak ada keluhan berat.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>TTV</h4>
+                          <dl>
+                            <div><dt>TD</dt><dd>132/84 mmHg</dd></div>
+                            <div><dt>Nadi</dt><dd>86 x/menit</dd></div>
+                            <div><dt>RR</dt><dd>20 x/menit</dd></div>
+                            <div><dt>Suhu</dt><dd>36.5 °C</dd></div>
+                            <div><dt>SpO2</dt><dd>98 %</dd></div>
+                          </dl>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>SOAP</h4>
+                          <p><strong>S</strong> Pasien merasa lebih stabil dengan obat rutin.</p>
+                          <p><strong>O</strong> TD 132/84, jantung reguler.</p>
+                          <p><strong>A</strong> Hipertensi dalam pemantauan.</p>
+                          <p><strong>P</strong> Evaluasi tekanan darah mandiri di rumah.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-stethoscope" aria-hidden="true"></i>Diagnosis</h4>
+                          <p>I10 - Hipertensi Esensial</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-pills" aria-hidden="true"></i>Resep</h4>
+                          <ol class="visit-prescription-list">
+                            <li>
+                              <span>1</span>
+                              <div><strong>Amlodipine</strong><small>1x10 mg · pagi hari</small></div>
+                            </li>
+                            <li>
+                              <span>2</span>
+                              <div><strong>Candesartan</strong><small>1x16 mg · pagi hari</small></div>
+                            </li>
+                            <li>
+                              <span>3</span>
+                              <div><strong>Simvastatin</strong><small>1x20 mg · malam hari</small></div>
+                            </li>
+                          </ol>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card visit-card" data-visit-number="KJ-20240415-1110">
+                      <div class="visit-card-header">
+                        <div class="visit-date-block">
+                          <strong>15 Apr 2024</strong>
+                          <span>11:10</span>
+                        </div>
+                        <div class="visit-card-main">
+                          <div class="visit-card-title">
+                            <h3>Laboratorium</h3>
+                            <span class="badge badge-success badge-sm">Selesai</span>
+                          </div>
+                          <p>-</p>
+                          <small>No. Kunjungan: <strong>KJ-20240415-1110</strong></small>
+                          <small>Pemeriksaan laboratorium rutin.</small>
+                        </div>
+                        <div class="visit-card-actions">
+                          <button class="btn btn-outline btn-sm" type="button" data-visit-toggle aria-expanded="false">Lihat Detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+
+
+                          <details class="ds-dropdown row-action-dropdown profile-visit-menu" data-component="visit-row-actions">
+                            <summary class="btn btn-xs btn-ghost btn-icon" aria-label="Buka menu aksi kunjungan" title="Aksi kunjungan">
+                              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+                            </summary>
+                            <div class="dropdown-panel compact row-action-panel profile-visit-menu-panel" role="menu">
+                              <button class="dropdown-option" data-profile-visit-action="print" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Ringkasan Kunjungan</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="document" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-file-lines" aria-hidden="true"></i> Lihat Dokumen</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="addendum" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i> Buat Addendum</strong></span></button>
+                              <button class="dropdown-option" data-profile-visit-action="copy" role="menuitem" type="button"><span class="option-meta"><strong><i class="fa-regular fa-copy" aria-hidden="true"></i> Salin Nomor Kunjungan</strong></span></button>
+                            </div>
+                          </details>
+                        </div>
+                      </div>
+
+                      <div class="visit-detail-grid">
+                        <section>
+                          <h4><i class="fa-regular fa-comment-dots" aria-hidden="true"></i>Keluhan Utama</h4>
+                          <p>Pemeriksaan penunjang untuk kontrol hipertensi dan diabetes.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i>TTV</h4>
+                          <dl>
+                            <div><dt>GDP</dt><dd>118 mg/dL</dd></div>
+                            <div><dt>HbA1c</dt><dd>6.8 %</dd></div>
+                            <div><dt>Kolesterol</dt><dd>188 mg/dL</dd></div>
+                            <div><dt>Ureum</dt><dd>28 mg/dL</dd></div>
+                            <div><dt>Kreatinin</dt><dd>0.9 mg/dL</dd></div>
+                          </dl>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-notes-medical" aria-hidden="true"></i>SOAP</h4>
+                          <p><strong>S</strong> Pasien datang sesuai jadwal pemeriksaan.</p>
+                          <p><strong>O</strong> Sampel darah berhasil diambil, kondisi stabil.</p>
+                          <p><strong>A</strong> Pemeriksaan penunjang rutin.</p>
+                          <p><strong>P</strong> Hasil dikirim ke dokter penanggung jawab.</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-stethoscope" aria-hidden="true"></i>Diagnosis</h4>
+                          <p>Pemeriksaan Laboratorium Kontrol Rutin</p>
+                        </section>
+                        <section>
+                          <h4><i class="fa-solid fa-pills" aria-hidden="true"></i>Resep</h4>
+                          <ol class="visit-prescription-list">
+                            <li>
+                              <span>1</span>
+                              <div><strong>Tidak ada resep</strong><small>Pemeriksaan penunjang saja</small></div>
+                            </li>
+                          </ol>
+                        </section>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+
+                <button class="btn btn-ghost btn-md profile-load-more" type="button">Muat lebih banyak <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-rm-allergy" role="tabpanel" aria-labelledby="tab-rm-allergy" hidden>
+            <article class="card patient-info-card profile-allergy-card">
+              <div class="profile-title-row">
+                <div class="profile-title-inline">
+                  <h2 class="card-title">Alergi</h2>
+                  <span class="badge badge-danger badge-sm">3 Alergi</span>
+                </div>
+                <button class="btn btn-outline btn-md" type="button" data-add-allergy>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>Tambah Alergi
+                </button>
+              </div>
+
+              <div class="alert alert-info alert-sm">
+                <span class="alert-icon"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+                <div class="alert-body">
+                  <strong>Informasi alergi ini akan ditampilkan di seluruh modul klinis untuk keselamatan pasien.</strong>
+                </div>
+              </div>
+
+              <div class="table-responsive profile-allergy-table-wrap">
+                <table class="data-table profile-allergy-table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Jenis</th>
+                      <th>Nama Alergen</th>
+                      <th>Reaksi</th>
+                      <th>Keparahan</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>
+                        <div class="allergy-type-cell"><span class="allergy-type-icon is-drug"><i class="fa-solid fa-pills" aria-hidden="true"></i></span>Obat</div>
+                      </td>
+                      <td><strong>Penicillin</strong></td>
+                      <td>Ruam, Sesak nafas</td>
+                      <td><span class="badge badge-danger badge-sm">Berat</span></td>
+                      <td><span class="badge badge-success badge-sm">Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-allergy data-tooltip="Ubah alergi Penicillin" aria-label="Ubah alergi Penicillin"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-alert-allergy data-tooltip="Hapus alergi Penicillin" aria-label="Hapus alergi Penicillin"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>
+                        <div class="allergy-type-cell"><span class="allergy-type-icon is-food"><i class="fa-solid fa-shrimp" aria-hidden="true"></i></span>Makanan</div>
+                      </td>
+                      <td><strong>Seafood (Udang, Kepiting)</strong></td>
+                      <td>Gatal, Bengkak pada bibir</td>
+                      <td><span class="badge badge-danger badge-sm">Berat</span></td>
+                      <td><span class="badge badge-success badge-sm">Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-allergy data-tooltip="Ubah alergi Seafood" aria-label="Ubah alergi Seafood"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-alert-allergy data-tooltip="Hapus alergi Seafood" aria-label="Hapus alergi Seafood"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        <div class="allergy-type-cell"><span class="allergy-type-icon is-environment"><i class="fa-solid fa-atom" aria-hidden="true"></i></span>Lingkungan</div>
+                      </td>
+                      <td><strong>Latex</strong></td>
+                      <td>Ruam di kulit</td>
+                      <td><span class="badge badge-warning badge-sm">Sedang</span></td>
+                      <td><span class="badge badge-success badge-sm">Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-allergy data-tooltip="Ubah alergi Latex" aria-label="Ubah alergi Latex"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-alert-allergy data-tooltip="Hapus alergi Latex" aria-label="Hapus alergi Latex"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-footer admin-table-footer">
+                <div data-table-summary>Menampilkan <span data-visible-count>3</span> dari <span data-total-count>3</span> alergi</div>
+                <nav aria-label="Pagination tabel alergi" class="pagination">
+                  <details class="ds-dropdown per-page" data-component="dropdown-select">
+                    <summary aria-label="Jumlah alergi per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+                    <div aria-label="Jumlah alergi per halaman" class="dropdown-panel" role="listbox">
+                      <button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+                      <button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+                      <button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+                    </div>
+                  </details>
+                  <div class="pagination-pages">
+                    <button aria-label="Halaman sebelumnya" class="page-button" type="button"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button aria-current="page" class="page-button active" type="button">1</button>
+                    <button aria-label="Halaman berikutnya" class="page-button" type="button"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+
+          <div class="tab-panel" id="panel-rm-guarantor" role="tabpanel" aria-labelledby="tab-rm-guarantor" hidden>
+            <article class="card patient-info-card">
+              <div class="profile-title-row">
+                <div>
+                  <h2 class="card-title">Penjamin Pasien</h2>
+                  <p class="card-subtitle">Kelola penjamin aktif dan status penjamin untuk kebutuhan billing.</p>
+                </div>
+                <button class="btn btn-outline btn-md" type="button" data-add-guarantor>
+                  <i class="fa-solid fa-plus" aria-hidden="true"></i>Tambah Penjamin
+                </button>
+              </div>
+
+              <section class="layout-stack is-md">
+                <div class="alert alert-info alert-md">
+                  <span class="alert-icon"><i class="fa-solid fa-id-card-clip" aria-hidden="true"></i></span>
+                  <div class="alert-body">
+                    <strong>Cek Eligibilitas BPJS</strong>
+                    <p>Verifikasi status kepesertaan BPJS langsung dari tab penjamin sebelum proses billing.</p>
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <label class="field">
+                    <span>No. Peserta BPJS</span>
+                    <input class="input" type="text" value="0001234567890">
+                  </label>
+                  <label class="field">
+                    <span>Tanggal Pelayanan</span>
+                    <input id="profileBpjsServiceDate" type="hidden" data-picker-value value="2024-05-20">
+              <details class="ds-dropdown ds-datepicker guide-select" data-component="guide-datepicker" data-date-value="2024-05-20">
+                <summary aria-label="Pilih Tanggal Pelayanan" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>20 Mei 2024</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel" role="dialog">
+                  <div class="calendar-widget"><div class="calendar-head"><strong class="calendar-title">20 Mei 2024</strong></div><div class="calendar-grid"><button class="calendar-date selected" data-guide-date data-label="20 Mei 2024" data-value="2024-05-20" type="button">20</button></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-guide-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details>
+                  </label>
+                </div>
+                <div class="layout-row">
+                  <button class="btn btn-primary btn-md" type="button" data-check-bpjs-eligibility><i class="fa-solid fa-shield-heart" aria-hidden="true"></i>Cek Eligibilitas</button>
+                  <span class="badge badge-success badge-sm"><i class="fa-solid fa-check" aria-hidden="true"></i>BPJS aktif sebagai penjamin utama</span>
+                </div>
+                <div class="alert alert-success alert-md" data-bpjs-eligibility-result hidden>
+                  <span class="alert-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                  <div class="alert-body">
+                    <strong>Eligibilitas BPJS valid</strong>
+                    <p>Peserta aktif, kelas 1, faskes Klinik Sehat Sentosa. Data siap digunakan untuk billing.</p>
+                  </div>
+                </div>
+              </section>
+
+              <div class="table-scroll">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Penjamin</th>
+                      <th>No. Peserta / Polis</th>
+                      <th>Kelas</th>
+                      <th>Prioritas</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>BPJS Kesehatan</strong><small class="block text-[color:var(--text-secondary)]">Penjamin utama</small></td>
+                      <td>0001234567890</td>
+                      <td>Kelas 1</td>
+                      <td><span class="badge badge-primary badge-sm">Utama</span></td>
+                      <td><span class="badge badge-success badge-sm">Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-guarantor data-tooltip="Edit BPJS Kesehatan" aria-label="Edit BPJS Kesehatan"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-delete-guarantor data-tooltip="Hapus BPJS Kesehatan" aria-label="Hapus BPJS Kesehatan"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Asuransi Mandiri InHealth</strong><small class="block text-[color:var(--text-secondary)]">Penjamin tambahan</small></td>
+                      <td>MIH-889120334</td>
+                      <td>Silver</td>
+                      <td><span class="badge badge-info badge-sm">Tambahan</span></td>
+                      <td><span class="badge badge-success badge-sm">Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-guarantor data-tooltip="Edit Mandiri InHealth" aria-label="Edit Mandiri InHealth"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-delete-guarantor data-tooltip="Hapus Mandiri InHealth" aria-label="Hapus Mandiri InHealth"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Perusahaan PT Sejahtera</strong><small class="block text-[color:var(--text-secondary)]">Corporate guarantee</small></td>
+                      <td>CORP-2023-7781</td>
+                      <td>-</td>
+                      <td><span class="badge badge-neutral badge-sm">Cadangan</span></td>
+                      <td><span class="badge badge-neutral badge-sm">Tidak Aktif</span></td>
+                      <td>
+                        <div class="row-inline-actions">
+                          <button class="row-icon-action" type="button" data-edit-guarantor data-tooltip="Edit PT Sejahtera" aria-label="Edit PT Sejahtera"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></button>
+                          <button class="row-icon-action is-danger" type="button" data-delete-guarantor data-tooltip="Hapus PT Sejahtera" aria-label="Hapus PT Sejahtera"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-footer admin-table-footer">
+                <div data-table-summary>Menampilkan <span data-visible-count>3</span> dari <span data-total-count>3</span> penjamin</div>
+                <nav aria-label="Pagination tabel penjamin" class="pagination">
+                  <details class="ds-dropdown per-page" data-component="dropdown-select">
+                    <summary aria-label="Jumlah penjamin per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+                    <div aria-label="Jumlah penjamin per halaman" class="dropdown-panel" role="listbox">
+                      <button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+                      <button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+                      <button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+                    </div>
+                  </details>
+                  <div class="pagination-pages">
+                    <button aria-label="Halaman sebelumnya" class="page-button" type="button"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                    <button aria-current="page" class="page-button active" type="button">1</button>
+                    <button aria-label="Halaman berikutnya" class="page-button" type="button"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                  </div>
+                </nav>
+              </div>
+            </article>
+          </div>
+
+          <div class="tab-panel" id="panel-rm-document" role="tabpanel" aria-labelledby="tab-rm-document" hidden>
+            <div class="layout-stack">
+              <article class="card patient-info-card">
+                <div class="profile-title-row">
+                  <div>
+                    <h2 class="card-title">Dokumen Rekam Medis</h2>
+                    <p class="card-subtitle">Semua dokumen yang pernah dibuat untuk pasien ini agar tidak terjadi duplikasi surat.</p>
+                  </div>
+                  <button class="btn btn-outline btn-md" type="button"><i class="fa-solid fa-upload" aria-hidden="true"></i>Upload Dokumen</button>
+                </div>
+
+                <div class="table-scroll">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Tanggal</th>
+                        <th>Jenis Dokumen</th>
+                        <th>Kunjungan</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-document-row data-doc-title="Surat Sakit - 20 Mei 2024" data-doc-date="20 Mei 2024" data-doc-type="Surat Sakit" data-doc-visit="KJ-20240520-0915 · Poli Jantung">
+                        <td>20 Mei 2024</td>
+                        <td><span class="badge badge-warning badge-sm">Surat Sakit</span></td>
+                        <td>KJ-20240520-0915<br><small>Poli Jantung</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Surat Sakit"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Surat Sakit"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download" aria-label="Download Surat Sakit"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                      <tr data-document-row data-doc-title="Surat Kontrol - 20 Mei 2024" data-doc-date="20 Mei 2024" data-doc-type="Surat Kontrol" data-doc-visit="KJ-20240520-0915 · Poli Jantung">
+                        <td>20 Mei 2024</td>
+                        <td><span class="badge badge-primary badge-sm">Surat Kontrol</span></td>
+                        <td>KJ-20240520-0915<br><small>Poli Jantung</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Surat Kontrol"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Surat Kontrol"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download" aria-label="Download Surat Kontrol"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                      <tr data-document-row data-doc-title="Surat Rujukan - 10 Mei 2024" data-doc-date="10 Mei 2024" data-doc-type="Surat Rujukan" data-doc-visit="KJ-20240510-1030 · IGD">
+                        <td>10 Mei 2024</td>
+                        <td><span class="badge badge-info badge-sm">Surat Rujukan</span></td>
+                        <td>KJ-20240510-1030<br><small>IGD</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Surat Rujukan"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Surat Rujukan"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download Surat Rujukan" aria-label="Download"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                      <tr data-document-row data-doc-title="Resep - 05 Mei 2024" data-doc-date="05 Mei 2024" data-doc-type="Resep" data-doc-visit="KJ-20240505-1420 · Poli Penyakit Dalam">
+                        <td>05 Mei 2024</td>
+                        <td><span class="badge badge-success badge-sm">Resep</span></td>
+                        <td>KJ-20240505-1420<br><small>Poli Penyakit Dalam</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Resep"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Resep"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download" aria-label="Download Resep"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                      <tr data-document-row data-doc-title="Hasil Lab Gula Darah - 15 April 2024" data-doc-date="15 April 2024" data-doc-type="Hasil Lab (PDF)" data-doc-visit="KJ-20240415-1110 · Laboratorium">
+                        <td>15 April 2024</td>
+                        <td><span class="badge badge-danger badge-sm">Hasil Lab (PDF)</span></td>
+                        <td>KJ-20240415-1110<br><small>Laboratorium</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Hasil Lab"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Hasil Lab"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download" aria-label="Download Hasil Lab"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                      <tr data-document-row data-doc-title="Resume Medis - 08 Maret 2024" data-doc-date="08 Maret 2024" data-doc-type="Resume Medis" data-doc-visit="KJ-20240308-1300 · IGD">
+                        <td>08 Maret 2024</td>
+                        <td><span class="badge badge-neutral badge-sm">Resume Medis</span></td>
+                        <td>KJ-20240308-1300<br><small>IGD</small></td>
+                        <td><div class="row-inline-actions"><button class="row-icon-action" type="button" data-document-preview data-tooltip="Preview" aria-label="Preview Resume Medis"><i class="fa-regular fa-eye" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-print data-tooltip="Cetak Ulang" aria-label="Cetak Ulang Resume Medis"><i class="fa-solid fa-print" aria-hidden="true"></i></button><button class="row-icon-action" type="button" data-document-download data-tooltip="Download" aria-label="Download Resume Medis"><i class="fa-solid fa-download" aria-hidden="true"></i></button></div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="table-footer admin-table-footer">
+                  <div data-table-summary>Menampilkan <span data-visible-count>6</span> dari <span data-total-count>6</span> dokumen</div>
+                  <nav aria-label="Pagination tabel dokumen" class="pagination">
+                    <details class="ds-dropdown per-page" data-component="dropdown-select">
+                      <summary aria-label="Jumlah dokumen per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+                      <div aria-label="Jumlah dokumen per halaman" class="dropdown-panel" role="listbox">
+                        <button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+                        <button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+                        <button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+                      </div>
+                    </details>
+                    <div class="pagination-pages">
+                      <button aria-label="Halaman sebelumnya" class="page-button" type="button"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                      <button aria-current="page" class="page-button active" type="button">1</button>
+                      <button aria-label="Halaman berikutnya" class="page-button" type="button"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    </div>
+                  </nav>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+
+  <div aria-hidden="true" class="modal-backdrop" data-modal-backdrop hidden></div>
+
+
+
+  <section aria-labelledby="documentPreviewModalTitle" aria-modal="true" class="modal" hidden id="documentPreviewModal" role="dialog">
+    <div class="modal-card is-xl">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="documentPreviewModalTitle">Preview Dokumen</h2>
+          <p class="modal-subtitle">Lihat preview PDF dokumen rekam medis pasien sebelum cetak ulang atau download.</p>
+        </div>
+        <button aria-label="Tutup preview dokumen" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-info alert-md">
+            <span class="alert-icon"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <span class="alert-text">Dokumen terpilih</span>
+              <strong data-doc-preview-title>Surat Sakit - 20 Mei 2024</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>Tanggal</dt><dd data-doc-preview-date>20 Mei 2024</dd></div>
+            <div><dt>Jenis</dt><dd data-doc-preview-type>Surat Sakit</dd></div>
+            <div><dt>Kunjungan</dt><dd data-doc-preview-visit>KJ-20240520-0915 · Poli Jantung</dd></div>
+            <div><dt>File</dt><dd data-doc-preview-file>surat_sakit_20240520.pdf</dd></div>
+          </dl>
+        </section>
+
+        <section class="modal-section">
+          <div class="document-pdf-viewer" aria-label="Preview PDF dokumen">
+            <div class="document-pdf-toolbar">
+              <div>
+                <i class="fa-regular fa-file-pdf" aria-hidden="true"></i>
+                <span data-doc-preview-file-toolbar>surat_sakit_20240520.pdf</span>
+              </div>
+              <span>100%</span>
+            </div>
+            <div class="document-pdf-canvas">
+              <article class="document-pdf-page">
+                <header>
+                  <small>SIMRS Klinik Sehat Sentosa</small>
+                  <strong data-doc-preview-pdf-title>Surat Sakit - 20 Mei 2024</strong>
+                </header>
+                <dl>
+                  <div><dt>Nama Pasien</dt><dd>BUDI SANTOSO</dd></div>
+                  <div><dt>No. RM</dt><dd>RM 00012345</dd></div>
+                  <div><dt>Tanggal Dokumen</dt><dd data-doc-preview-pdf-date>20 Mei 2024</dd></div>
+                  <div><dt>Jenis Dokumen</dt><dd data-doc-preview-pdf-type>Surat Sakit</dd></div>
+                  <div><dt>Kunjungan</dt><dd data-doc-preview-pdf-visit>KJ-20240520-0915 · Poli Jantung</dd></div>
+                </dl>
+                <section>
+                  <h3>Isi Dokumen</h3>
+                  <p data-doc-preview-pdf-body>Dokumen ini merupakan preview PDF rekam medis pasien berdasarkan data yang dipilih pada tabel dokumen.</p>
+                </section>
+                <footer>
+                  <span>Dokter Penanggung Jawab</span>
+                  <strong>dr. Andi Pratama, Sp.JP</strong>
+                </footer>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" type="button" data-preview-print><i class="fa-solid fa-print" aria-hidden="true"></i>Cetak Ulang</button>
+        <button class="btn btn-primary btn-lg" type="button" data-preview-download><i class="fa-solid fa-download" aria-hidden="true"></i>Download</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="guarantorModalTitle" aria-modal="true" class="modal" hidden id="guarantorModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="guarantorModalTitle" data-guarantor-modal-title>Tambah Penjamin</h2>
+          <p class="modal-subtitle">Lengkapi data penjamin pasien untuk akurasi billing.</p>
+        </div>
+        <button aria-label="Tutup modal penjamin" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <label class="field"><span>Jenis Penjamin <b class="required">*</b></span><select id="profileGuarantorName" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" data-guarantor-field="name"><option selected>BPJS Kesehatan</option><option>Asuransi Mandiri InHealth</option><option>Perusahaan PT Sejahtera</option><option>Umum / Pribadi</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileGuarantorName">
+                <summary aria-label="Pilih Jenis Penjamin" class="dropdown-trigger is-md"><span data-picker-text>BPJS Kesehatan</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="BPJS Kesehatan" role="option" type="button">BPJS Kesehatan</button><button aria-selected="false" class="dropdown-option" data-value="Asuransi Mandiri InHealth" role="option" type="button">Asuransi Mandiri InHealth</button><button aria-selected="false" class="dropdown-option" data-value="Perusahaan PT Sejahtera" role="option" type="button">Perusahaan PT Sejahtera</button><button aria-selected="false" class="dropdown-option" data-value="Umum / Pribadi" role="option" type="button">Umum / Pribadi</button></div>
+              </details></label>
+            <label class="field"><span>No. Peserta / Polis <b class="required">*</b></span><input class="input" data-guarantor-field="number" type="text" placeholder="Masukkan nomor peserta/polis"></label>
+            <label class="field"><span>Kelas / Plan</span><input class="input" data-guarantor-field="class" type="text" placeholder="Contoh: Kelas 1 / Silver"></label>
+            <label class="field"><span>Prioritas</span><select id="profileGuarantorPriority" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" data-guarantor-field="priority"><option selected>Utama</option><option>Tambahan</option><option>Cadangan</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileGuarantorPriority">
+                <summary aria-label="Pilih Prioritas" class="dropdown-trigger is-md"><span data-picker-text>Utama</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Utama" role="option" type="button">Utama</button><button aria-selected="false" class="dropdown-option" data-value="Tambahan" role="option" type="button">Tambahan</button><button aria-selected="false" class="dropdown-option" data-value="Cadangan" role="option" type="button">Cadangan</button></div>
+              </details></label>
+            <div class="field"><span class="label">Status</span><div class="control-row"><label class="radio"><input type="radio" name="guarantorStatus" checked><span>Aktif</span></label><label class="radio"><input type="radio" name="guarantorStatus"><span>Tidak Aktif</span></label></div></div>
+            <label class="field"><span>Masa Berlaku</span><input id="profileSickLeaveEndDate" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" type="date" value="2024-05-31">
+              <details class="ds-dropdown ds-datepicker modal-picker-dropdown modal-datepicker-dropdown" data-component="modal-control-datepicker" data-date-value="2024-05-31" data-sync-control="profileSickLeaveEndDate">
+                <summary aria-label="Pilih Tanggal Selesai" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>31 Mei 2024</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel modal-datepicker-panel" role="dialog">
+                  <div class="calendar-widget modal-datepicker-widget"><div class="calendar-head"><strong class="calendar-title">Pilih tanggal</strong></div><div class="calendar-grid"></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-modal-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details></label>
+            <label class="field span-2"><span>Catatan</span><textarea placeholder="Tambahkan catatan penjamin bila diperlukan..."></textarea></label>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-save-guarantor type="button"><i class="fa-solid fa-check" aria-hidden="true"></i>Simpan Penjamin</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="guarantorDeleteTitle" aria-modal="true" class="modal danger-modal" hidden id="guarantorDeleteModal" role="dialog">
+    <div class="modal-card is-sm">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="guarantorDeleteTitle">Hapus Penjamin?</h2>
+          <p class="modal-subtitle">Data penjamin tidak lagi tersedia untuk proses billing pasien.</p>
+        </div>
+        <button aria-label="Tutup popup hapus penjamin" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-danger alert-md">
+            <span class="alert-icon"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></span>
+            <div class="alert-body"><span class="alert-text">Penjamin</span><strong data-guarantor-delete-name>-</strong><p>Pastikan penjamin tidak dipakai pada tagihan aktif sebelum dihapus.</p></div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-danger btn-lg" data-confirm-delete-guarantor type="button"><i class="fa-regular fa-trash-can" aria-hidden="true"></i>Hapus Penjamin</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="addendumModalTitle" aria-modal="true" class="modal" hidden id="addendumModal" role="dialog">
+    <div class="modal-card is-xl">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="addendumModalTitle">Buat Addendum</h2>
+          <p class="modal-subtitle">Buat addendum untuk catatan medis yang sudah dikunci. Catatan asli tidak akan diubah.</p>
+        </div>
+        <button aria-label="Tutup modal addendum" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-warning alert-md">
+            <span class="alert-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Episode ini sudah dikunci (Selesai) sehingga perubahan hanya dapat dilakukan melalui addendum.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <label class="field">
+              <span>Tanggal &amp; Waktu Addendum</span>
+              <input class="input" type="text" value="20 Mei 2024 14:32" readonly>
+            </label>
+
+            <label class="field">
+              <span>Dibuat oleh</span>
+              <input class="input" type="text" value="dr. Andi Pratama, Sp.JP" readonly>
+            </label>
+
+            <label class="field">
+              <span>Alasan Koreksi <b class="required">*</b></span>
+              <textarea maxlength="250" placeholder="Jelaskan alasan koreksi secara detail..."></textarea>
+              <span class="helper">0/250</span>
+            </label>
+
+            <div class="field">
+              <span class="label">Bagian yang Dikoreksi <b class="required">*</b></span>
+              <select id="profileAddendumSection" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1"><option selected>Pilih bagian yang dikoreksi</option><option>SOAP</option><option>Diagnosis</option><option>Resep</option><option>Lainnya</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileAddendumSection">
+                <summary aria-label="Pilih Bagian yang Dikoreksi" class="dropdown-trigger is-md"><span data-picker-text>Pilih bagian yang dikoreksi</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Pilih bagian yang dikoreksi" role="option" type="button">Pilih bagian yang dikoreksi</button><button aria-selected="false" class="dropdown-option" data-value="SOAP" role="option" type="button">SOAP</button><button aria-selected="false" class="dropdown-option" data-value="Diagnosis" role="option" type="button">Diagnosis</button><button aria-selected="false" class="dropdown-option" data-value="Resep" role="option" type="button">Resep</button><button aria-selected="false" class="dropdown-option" data-value="Lainnya" role="option" type="button">Lainnya</button></div>
+              </details>
+              <div class="control-row">
+                <label class="radio"><input type="radio" name="addendumSection" checked><span>SOAP</span></label>
+                <label class="radio"><input type="radio" name="addendumSection"><span>Diagnosis</span></label>
+                <label class="radio"><input type="radio" name="addendumSection"><span>Resep</span></label>
+                <label class="radio"><input type="radio" name="addendumSection"><span>Lainnya</span></label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <label class="field">
+            <span>Isi Koreksi / Addendum <b class="required">*</b></span>
+            <textarea maxlength="2000" placeholder="Tulis koreksi atau penambahan informasi disini..."></textarea>
+            <span class="helper">0/2000</span>
+          </label>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <div class="field">
+              <span class="label">Lampiran (opsional)</span>
+              <label class="upload">
+                <span class="upload-icon"><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i></span>
+                <strong>Drag &amp; drop file disini atau klik untuk memilih</strong>
+                <p>PDF, JPG, PNG – Maks. 5 MB (Maks. 3 file)</p>
+                <input type="file" multiple hidden>
+                <button class="btn btn-outline btn-sm" type="button">Pilih File</button>
+              </label>
+            </div>
+
+            <div class="alert alert-info alert-md self-start">
+              <span class="alert-icon"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i></span>
+              <div class="alert-body">
+                <span class="alert-text">Akan Berstatus</span>
+                <strong>Menunggu Persetujuan Supervisor</strong>
+                <p>Addendum yang dibuat akan dikirim ke supervisor untuk disetujui atau ditolak melalui notifikasi.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <label class="check">
+            <input type="checkbox" checked data-addendum-confirm>
+            <span>Saya memahami bahwa addendum ini tidak akan mengubah catatan asli.</span>
+          </label>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-send-addendum type="button"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Kirim Addendum</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section aria-labelledby="allergyModalTitle" aria-modal="true" class="modal" hidden id="allergyModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="allergyModalTitle">Tambah Alergi</h2>
+          <p class="modal-subtitle">Lengkapi data alergi pasien agar muncul di seluruh modul klinis.</p>
+        </div>
+        <button aria-label="Tutup modal tambah alergi" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-info alert-md">
+            <span class="alert-icon"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Data alergi aktif akan tampil sebagai peringatan keselamatan pasien.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <label class="field">
+              <span>Jenis Alergi <b class="required">*</b></span>
+              <select id="profileAllergyType" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1"><option selected>Pilih jenis alergi</option><option>Obat</option><option>Makanan</option><option>Lingkungan</option><option>Lainnya</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileAllergyType">
+                <summary aria-label="Pilih Jenis Alergi" class="dropdown-trigger is-md"><span data-picker-text>Pilih jenis alergi</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Pilih jenis alergi" role="option" type="button">Pilih jenis alergi</button><button aria-selected="false" class="dropdown-option" data-value="Obat" role="option" type="button">Obat</button><button aria-selected="false" class="dropdown-option" data-value="Makanan" role="option" type="button">Makanan</button><button aria-selected="false" class="dropdown-option" data-value="Lingkungan" role="option" type="button">Lingkungan</button><button aria-selected="false" class="dropdown-option" data-value="Lainnya" role="option" type="button">Lainnya</button></div>
+              </details>
+            </label>
+
+            <label class="field">
+              <span>Nama Alergen <b class="required">*</b></span>
+              <input class="input" type="text" placeholder="Contoh: Penicillin, Seafood, Latex">
+            </label>
+
+            <label class="field">
+              <span>Reaksi <b class="required">*</b></span>
+              <input class="input" type="text" placeholder="Contoh: Ruam, sesak napas, gatal">
+            </label>
+
+            <label class="field">
+              <span>Keparahan <b class="required">*</b></span>
+              <select id="profileAllergySeverity" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1"><option selected>Pilih tingkat keparahan</option><option>Ringan</option><option>Sedang</option><option>Berat</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileAllergySeverity">
+                <summary aria-label="Pilih Keparahan" class="dropdown-trigger is-md"><span data-picker-text>Pilih tingkat keparahan</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Pilih tingkat keparahan" role="option" type="button">Pilih tingkat keparahan</button><button aria-selected="false" class="dropdown-option" data-value="Ringan" role="option" type="button">Ringan</button><button aria-selected="false" class="dropdown-option" data-value="Sedang" role="option" type="button">Sedang</button><button aria-selected="false" class="dropdown-option" data-value="Berat" role="option" type="button">Berat</button></div>
+              </details>
+            </label>
+
+            <div class="field">
+              <span class="label">Status</span>
+              <div class="control-row">
+                <label class="radio"><input type="radio" name="allergyStatus" checked><span>Aktif</span></label>
+                <label class="radio"><input type="radio" name="allergyStatus"><span>Nonaktif</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>Tanggal Diketahui</span>
+              <input id="profileGuarantorEffectiveDate" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" type="date" value="2024-05-20">
+              <details class="ds-dropdown ds-datepicker modal-picker-dropdown modal-datepicker-dropdown" data-component="modal-control-datepicker" data-date-value="2024-05-20" data-sync-control="profileGuarantorEffectiveDate">
+                <summary aria-label="Pilih Tanggal Berlaku" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>20 Mei 2024</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel modal-datepicker-panel" role="dialog">
+                  <div class="calendar-widget modal-datepicker-widget"><div class="calendar-head"><strong class="calendar-title">Pilih tanggal</strong></div><div class="calendar-grid"></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-modal-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details>
+            </label>
+
+            <label class="field span-2">
+              <span>Catatan</span>
+              <textarea placeholder="Tambahkan catatan klinis atau instruksi kewaspadaan..."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <label class="check">
+            <input type="checkbox" checked>
+            <span>Tampilkan alergi ini di banner peringatan pasien.</span>
+          </label>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-save-allergy type="button"><i class="fa-solid fa-check" aria-hidden="true"></i>Simpan Alergi</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section aria-labelledby="editAllergyModalTitle" aria-modal="true" class="modal" hidden id="editAllergyModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="editAllergyModalTitle">Edit Alergi</h2>
+          <p class="modal-subtitle">Perbarui data alergi pasien yang sudah tercatat.</p>
+        </div>
+        <button aria-label="Tutup modal edit alergi" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-warning alert-md">
+            <span class="alert-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Perubahan data alergi akan memengaruhi peringatan klinis pasien.</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <label class="field">
+              <span>Jenis Alergi <b class="required">*</b></span>
+              <select id="profileEditAllergyType" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" data-edit-allergy-field="type"><option selected>Obat</option><option>Makanan</option><option>Lingkungan</option><option>Lainnya</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileEditAllergyType">
+                <summary aria-label="Pilih Jenis Alergi" class="dropdown-trigger is-md"><span data-picker-text>Obat</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Obat" role="option" type="button">Obat</button><button aria-selected="false" class="dropdown-option" data-value="Makanan" role="option" type="button">Makanan</button><button aria-selected="false" class="dropdown-option" data-value="Lingkungan" role="option" type="button">Lingkungan</button><button aria-selected="false" class="dropdown-option" data-value="Lainnya" role="option" type="button">Lainnya</button></div>
+              </details>
+            </label>
+
+            <label class="field">
+              <span>Nama Alergen <b class="required">*</b></span>
+              <input class="input" data-edit-allergy-field="name" type="text">
+            </label>
+
+            <label class="field">
+              <span>Reaksi <b class="required">*</b></span>
+              <input class="input" data-edit-allergy-field="reaction" type="text">
+            </label>
+
+            <label class="field">
+              <span>Keparahan <b class="required">*</b></span>
+              <select id="profileEditAllergySeverity" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" data-edit-allergy-field="severity"><option selected>Ringan</option><option>Sedang</option><option>Berat</option></select>
+              <details class="ds-dropdown ds-select modal-picker-dropdown modal-select-dropdown" data-component="modal-control-select" data-sync-control="profileEditAllergySeverity">
+                <summary aria-label="Pilih Keparahan" class="dropdown-trigger is-md"><span data-picker-text>Ringan</span></summary>
+                <div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-value="Ringan" role="option" type="button">Ringan</button><button aria-selected="false" class="dropdown-option" data-value="Sedang" role="option" type="button">Sedang</button><button aria-selected="false" class="dropdown-option" data-value="Berat" role="option" type="button">Berat</button></div>
+              </details>
+            </label>
+
+            <div class="field">
+              <span class="label">Status</span>
+              <div class="control-row">
+                <label class="radio"><input type="radio" name="editAllergyStatus" checked><span>Aktif</span></label>
+                <label class="radio"><input type="radio" name="editAllergyStatus"><span>Nonaktif</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>Tanggal Diketahui</span>
+              <input id="profileAllergyKnownDate" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" type="date" value="2024-05-20">
+              <details class="ds-dropdown ds-datepicker modal-picker-dropdown modal-datepicker-dropdown" data-component="modal-control-datepicker" data-date-value="2024-05-20" data-sync-control="profileAllergyKnownDate">
+                <summary aria-label="Pilih Tanggal Diketahui" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>20 Mei 2024</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel modal-datepicker-panel" role="dialog">
+                  <div class="calendar-widget modal-datepicker-widget"><div class="calendar-head"><strong class="calendar-title">Pilih tanggal</strong></div><div class="calendar-grid"></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-modal-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details>
+            </label>
+
+            <label class="field span-2">
+              <span>Catatan</span>
+              <textarea placeholder="Tambahkan catatan klinis atau instruksi kewaspadaan..."></textarea>
+            </label>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-update-allergy type="button"><i class="fa-solid fa-check" aria-hidden="true"></i>Simpan Perubahan</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="allergyAlertModalTitle" aria-modal="true" class="modal danger-modal" hidden id="allergyAlertModal" role="dialog">
+    <div class="modal-card is-sm">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="allergyAlertModalTitle">Hapus Alergi?</h2>
+          <p class="modal-subtitle">Alergi yang dihapus tidak lagi tampil sebagai peringatan klinis.</p>
+        </div>
+        <button aria-label="Tutup popup hapus alergi" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-danger alert-md">
+            <span class="alert-icon"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <span class="alert-text">Data alergi</span>
+              <strong data-allergy-alert-name>-</strong>
+              <p>Pastikan data ini memang tidak diperlukan sebelum menghapus.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-danger btn-lg" data-confirm-delete-allergy type="button"><i class="fa-regular fa-trash-can" aria-hidden="true"></i>Hapus Alergi</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="rmSummaryPrintTitle" aria-modal="true" class="modal" hidden id="rmSummaryPrintModal" role="dialog">
+    <div class="modal-card is-xl">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="rmSummaryPrintTitle">Cetak Ringkasan Rekam Medis</h2>
+          <p class="modal-subtitle">Format A4 untuk diberikan ke pasien atau faskes lain.</p>
+        </div>
+        <button aria-label="Tutup cetak ringkasan rekam medis" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-info alert-md">
+            <span class="alert-icon"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Sebagai dokter, cetak ringkasan rekam medis pasien dalam format A4.</strong>
+              <p>Ringkasan ini dapat diberikan ke pasien atau faskes lain sesuai kebutuhan rujukan/kontrol.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>No. RM</dt><dd>RM 00012345</dd></div>
+            <div><dt>Nama Pasien</dt><dd>BUDI SANTOSO</dd></div>
+            <div><dt>Usia</dt><dd>45 Tahun</dd></div>
+            <div><dt>Penjamin Aktif</dt><dd>BPJS Kesehatan</dd></div>
+          </dl>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-section-head">
+            <div>
+              <h3>Periode Ringkasan</h3>
+              <p>Pilih rentang data yang akan masuk ke ringkasan A4.</p>
+            </div>
+          </div>
+          <div class="checkbox-stack is-two-col">
+            <label class="radio"><input type="radio" name="summaryPeriod" checked><span>Semua</span></label>
+            <label class="radio"><input type="radio" name="summaryPeriod"><span>1 Tahun</span></label>
+            <label class="radio"><input type="radio" name="summaryPeriod"><span>2 Tahun</span></label>
+            <label class="radio"><input type="radio" name="summaryPeriod"><span>Custom</span></label>
+          </div>
+          <div class="modal-form-grid">
+            <label class="field">
+              <span>Dari Tanggal</span>
+              <input id="profileSummaryStartDate" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" type="date">
+              <details class="ds-dropdown ds-datepicker modal-picker-dropdown modal-datepicker-dropdown" data-component="modal-control-datepicker" data-date-value="" data-sync-control="profileSummaryStartDate">
+                <summary aria-label="Pilih Tanggal Mulai" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>Pilih tanggal</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel modal-datepicker-panel" role="dialog">
+                  <div class="calendar-widget modal-datepicker-widget"><div class="calendar-head"><strong class="calendar-title">Pilih tanggal</strong></div><div class="calendar-grid"></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-modal-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details>
+            </label>
+            <label class="field">
+              <span>Sampai Tanggal</span>
+              <input id="profileSummaryEndDate" aria-hidden="true" class="input modal-sync-native" data-modal-native tabindex="-1" type="date">
+              <details class="ds-dropdown ds-datepicker modal-picker-dropdown modal-datepicker-dropdown" data-component="modal-control-datepicker" data-date-value="" data-sync-control="profileSummaryEndDate">
+                <summary aria-label="Pilih Tanggal Akhir" class="dropdown-trigger is-md">
+                  <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>Pilih tanggal</span></span>
+                </summary>
+                <div class="dropdown-panel compact datepicker-panel modal-datepicker-panel" role="dialog">
+                  <div class="calendar-widget modal-datepicker-widget"><div class="calendar-head"><strong class="calendar-title">Pilih tanggal</strong></div><div class="calendar-grid"></div><div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-modal-date-clear>Reset</button><button class="btn btn-primary btn-sm" type="button" data-datepicker-today>Hari ini</button></div></div>
+                </div>
+              </details>
+            </label>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-section-head">
+            <div>
+              <h3>Isi Ringkasan</h3>
+              <p>Bagian yang akan dicetak dalam dokumen ringkasan rekam medis.</p>
+            </div>
+          </div>
+          <div class="checkbox-stack is-two-col">
+            <label class="check"><input type="checkbox" checked><span>Identitas</span></label>
+            <label class="check"><input type="checkbox" checked><span>Penjamin Aktif</span></label>
+            <label class="check"><input type="checkbox" checked><span>Alergi</span></label>
+            <label class="check"><input type="checkbox" checked><span>Diagnosa Kronis</span></label>
+            <label class="check"><input type="checkbox" checked><span>Obat Rutin</span></label>
+            <label class="check"><input type="checkbox" checked><span>Riwayat Kunjungan Tabel</span></label>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-section-head">
+            <div>
+              <h3>Preview Riwayat Kunjungan</h3>
+              <p>Tabel ini akan masuk ke ringkasan rekam medis.</p>
+            </div>
+          </div>
+          <div class="modal-history-table-scroll">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Unit</th>
+                  <th>Dokter</th>
+                  <th>Diagnosis / Catatan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>20 Mei 2024</td>
+                  <td>Poli Jantung</td>
+                  <td>dr. Andi Pratama, Sp.JP</td>
+                  <td>Hipertensi terkontrol, evaluasi obat rutin.</td>
+                </tr>
+                <tr>
+                  <td>10 Mei 2024</td>
+                  <td>IGD</td>
+                  <td>dr. Maya Lestari</td>
+                  <td>Nyeri dada, EKG dalam batas normal.</td>
+                </tr>
+                <tr>
+                  <td>05 Mei 2024</td>
+                  <td>Poli Penyakit Dalam</td>
+                  <td>dr. Dimas Rahardian, Sp.PD</td>
+                  <td>Kontrol diabetes melitus tipe 2.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>Nama Dokter</dt><dd>dr. Andi Pratama, Sp.JP</dd></div>
+            <div><dt>Tanggal Cetak</dt><dd>20 Mei 2024 14:32</dd></div>
+          </dl>
+          <div class="alert alert-warning alert-md">
+            <span class="alert-icon"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Disclaimer Kerahasiaan</strong>
+              <p>Dokumen ini bersifat rahasia dan hanya digunakan untuk kepentingan pelayanan kesehatan pasien.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-outline btn-lg" data-download-rm-summary-pdf type="button"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i>Download PDF</button>
+        <button class="btn btn-primary btn-lg" data-print-rm-summary-document type="button"><i class="fa-solid fa-print" aria-hidden="true"></i>Cetak</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section aria-labelledby="visitPrintTitle" aria-modal="true" class="modal" hidden id="visitPrintModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitPrintTitle">Cetak Data Rekam Medis Kunjungan</h2>
+          <p class="modal-subtitle">Cetak data rekam medis untuk satu riwayat kunjungan yang dipilih.</p>
+        </div>
+        <button aria-label="Tutup cetak data rekam medis kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-info alert-md">
+            <span class="alert-icon"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <strong>Data yang dicetak hanya untuk 1 riwayat kunjungan terpilih.</strong>
+              <p>Tidak termasuk ringkasan rekam medis lintas periode.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>No. Kunjungan</dt><dd data-visit-modal="number">-</dd></div>
+            <div><dt>Tanggal Kunjungan</dt><dd data-visit-modal="date">-</dd></div>
+            <div><dt>Unit</dt><dd data-visit-modal="unit">-</dd></div>
+            <div><dt>Dokter</dt><dd data-visit-modal="doctor">-</dd></div>
+            <div><dt>Status</dt><dd data-visit-modal="status">-</dd></div>
+            <div><dt>Ringkasan</dt><dd data-visit-modal="summary">-</dd></div>
+          </dl>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-section-head">
+            <div>
+              <h3>Isi Cetak Kunjungan</h3>
+              <p>Bagian rekam medis dari card kunjungan ini.</p>
+            </div>
+          </div>
+          <div class="checkbox-stack is-two-col">
+            <label class="check"><input type="checkbox" checked><span>Identitas pasien</span></label>
+            <label class="check"><input type="checkbox" checked><span>Keluhan utama</span></label>
+            <label class="check"><input type="checkbox" checked><span>TTV</span></label>
+            <label class="check"><input type="checkbox" checked><span>SOAP</span></label>
+            <label class="check"><input type="checkbox" checked><span>Diagnosis</span></label>
+            <label class="check"><input type="checkbox" checked><span>Resep kunjungan</span></label>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-print-visit-summary type="button"><i class="fa-solid fa-print" aria-hidden="true"></i>Cetak Data</button>
+      </div>
+    </div>
+  </section>
+
+<section aria-labelledby="visitDocumentsTitle" aria-modal="true" class="modal" hidden id="visitDocumentsModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitDocumentsTitle">Dokumen Kunjungan</h2>
+          <p class="modal-subtitle">Dokumen terkait kunjungan terpilih.</p>
+        </div>
+        <button aria-label="Tutup dokumen kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>No. Kunjungan</dt><dd data-visit-modal="number">-</dd></div>
+            <div><dt>Unit</dt><dd data-visit-modal="unit">-</dd></div>
+          </dl>
+        </section>
+        <section class="modal-section">
+          <div class="document-list">
+            <a href="#"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i><span>Ringkasan kunjungan</span><small>PDF · 420 KB</small></a>
+            <a href="#"><i class="fa-regular fa-file-lines" aria-hidden="true"></i><span>Catatan SOAP</span><small>PDF · 310 KB</small></a>
+            <a href="#"><i class="fa-regular fa-file-image" aria-hidden="true"></i><span>Hasil penunjang</span><small>JPG · 860 KB</small></a>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Tutup</button>
+        <button class="btn btn-primary btn-lg" type="button"><i class="fa-solid fa-upload" aria-hidden="true"></i>Upload Dokumen</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="visitCopyTitle" aria-modal="true" class="modal" hidden id="visitCopyModal" role="dialog">
+    <div class="modal-card is-sm">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitCopyTitle">Nomor Kunjungan Disalin</h2>
+          <p class="modal-subtitle">Nomor kunjungan sudah disalin ke clipboard.</p>
+        </div>
+        <button aria-label="Tutup nomor kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="alert alert-success alert-md">
+            <span class="alert-icon"><i class="fa-solid fa-copy" aria-hidden="true"></i></span>
+            <div class="alert-body">
+              <span class="alert-text">No. Kunjungan</span>
+              <strong data-visit-modal="number">-</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary btn-lg" data-close-modal type="button">Mengerti</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../js/tabs.js"></script>
+  <script src="../../js/date-picker-controls.js"></script>
+  <script src="../../js/modal-dropdowns.js"></script>
+  <script src="../../js/guide-dropdowns.js"></script>
+  <script src="../../js/toast-messages.js"></script>
+  <script src="../../js/sidebar-flyout.js"></script>
+  <script src="../../js/responsive-navigation.js"></script>
+  <script src="../../js/bottom-tabs.js"></script>
+  <script>
+    (() => {
+      const selectTab = (targetId) => {
+        const button = document.querySelector(`[role="tab"][data-tab-target="${targetId}"]`);
+        if (button) button.click();
+      };
+
+      const backdrop = document.querySelector('[data-modal-backdrop]');
+      const modals = Array.from(document.querySelectorAll('.modal'));
+
+      const openModal = (id) => {
+        const modal = document.getElementById(id);
+        if (!modal || !backdrop) return;
+        modals.forEach((item) => { item.hidden = item !== modal; });
+        backdrop.hidden = false;
+        backdrop.setAttribute('aria-hidden', 'false');
+        modal.hidden = false;
+        document.body.classList.add('is-modal-open');
+      };
+
+      const closeModals = () => {
+        modals.forEach((modal) => { modal.hidden = true; });
+        if (backdrop) {
+          backdrop.hidden = true;
+          backdrop.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('is-modal-open');
+      };
+
+      const openAddendumModal = (visitNumber) => {
+        const modal = document.getElementById('addendumModal');
+        if (modal) modal.dataset.visitNumber = visitNumber || '';
+        openModal('addendumModal');
+      };
+
+      document.querySelectorAll('[data-open-timeline-tab]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          selectTab('panel-rm-timeline');
+        });
+      });
+
+      document.querySelectorAll('[data-open-allergy-tab]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          selectTab('panel-rm-allergy');
+        });
+      });
+
+      document.querySelectorAll('[data-open-guarantor-tab]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+          event.preventDefault();
+          selectTab('panel-rm-guarantor');
+        });
+      });
+
+      document.querySelectorAll('[data-close-modal]').forEach((button) => {
+        button.addEventListener('click', closeModals);
+      });
+
+      backdrop?.addEventListener('click', closeModals);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModals();
+      });
+
+      document.querySelector('[data-send-addendum]')?.addEventListener('click', () => {
+        const visitNumber = document.getElementById('addendumModal')?.dataset.visitNumber || 'kunjungan';
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Addendum dikirim',
+          message: `Addendum untuk ${visitNumber} dikirim ke supervisor untuk persetujuan.`
+        });
+      });
+
+      document.querySelector('[data-add-allergy]')?.addEventListener('click', () => {
+        openModal('allergyModal');
+      });
+
+      document.querySelector('[data-save-allergy]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Alergi disimpan',
+          message: 'Data alergi pasien berhasil ditambahkan.'
+        });
+      });
+
+      const getAllergyRowData = (row) => {
+        const cells = Array.from(row?.children || []);
+        return {
+          type: cells[1]?.textContent?.trim() || '-',
+          name: cells[2]?.textContent?.trim() || '-',
+          reaction: cells[3]?.textContent?.trim() || '-',
+          severity: cells[4]?.textContent?.trim() || '-',
+          status: cells[5]?.textContent?.trim() || '-'
+        };
+      };
+
+      const setFieldValue = (selector, value) => {
+        const field = document.querySelector(selector);
+        if (field) field.value = value;
+      };
+
+      const openEditAllergyModal = (row) => {
+        const data = getAllergyRowData(row);
+        setFieldValue('[data-edit-allergy-field="type"]', data.type);
+        setFieldValue('[data-edit-allergy-field="name"]', data.name);
+        setFieldValue('[data-edit-allergy-field="reaction"]', data.reaction);
+        setFieldValue('[data-edit-allergy-field="severity"]', data.severity);
+        openModal('editAllergyModal');
+      };
+
+      document.querySelectorAll('[data-edit-allergy]').forEach((button) => {
+        button.addEventListener('click', () => {
+          openEditAllergyModal(button.closest('tr'));
+        });
+      });
+
+      document.querySelectorAll('[data-alert-allergy]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const data = getAllergyRowData(button.closest('tr'));
+          const target = document.querySelector('[data-allergy-alert-name]');
+          if (target) target.textContent = data.name;
+          openModal('allergyAlertModal');
+        });
+      });
+
+      document.querySelector('[data-update-allergy]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Alergi diperbarui',
+          message: 'Perubahan data alergi pasien berhasil disimpan.'
+        });
+      });
+
+      document.querySelector('[data-confirm-delete-allergy]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Alergi dihapus',
+          message: 'Data alergi pasien sudah dihapus dari daftar aktif.'
+        });
+      });
+
+      const getGuarantorRowData = (row) => {
+        const cells = Array.from(row?.children || []);
+        return {
+          name: cells[1]?.querySelector('strong')?.textContent?.trim() || '-',
+          number: cells[2]?.textContent?.trim() || '-',
+          guarantorClass: cells[3]?.textContent?.trim() || '-',
+          priority: cells[4]?.textContent?.trim() || '-',
+          status: cells[5]?.textContent?.trim() || '-'
+        };
+      };
+
+      const openGuarantorModal = (mode, row = null) => {
+        const title = document.querySelector('[data-guarantor-modal-title]');
+        if (title) title.textContent = mode === 'edit' ? 'Edit Penjamin' : 'Tambah Penjamin';
+        const data = getGuarantorRowData(row);
+        const setValue = (selector, value) => {
+          const target = document.querySelector(selector);
+          if (target) target.value = value;
+        };
+        setValue('[data-guarantor-field="name"]', mode === 'edit' ? data.name : 'BPJS Kesehatan');
+        setValue('[data-guarantor-field="number"]', mode === 'edit' ? data.number : '');
+        setValue('[data-guarantor-field="class"]', mode === 'edit' ? data.guarantorClass : '');
+        setValue('[data-guarantor-field="priority"]', mode === 'edit' ? data.priority : 'Utama');
+        openModal('guarantorModal');
+      };
+
+      document.querySelector('[data-add-guarantor]')?.addEventListener('click', () => openGuarantorModal('add'));
+
+      document.querySelectorAll('[data-edit-guarantor]').forEach((button) => {
+        button.addEventListener('click', () => openGuarantorModal('edit', button.closest('tr')));
+      });
+
+      document.querySelectorAll('[data-delete-guarantor]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const data = getGuarantorRowData(button.closest('tr'));
+          const target = document.querySelector('[data-guarantor-delete-name]');
+          if (target) target.textContent = data.name;
+          openModal('guarantorDeleteModal');
+        });
+      });
+
+      document.querySelector('[data-save-guarantor]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({ type: 'success', title: 'Penjamin disimpan', message: 'Data penjamin pasien berhasil diperbarui.' });
+      });
+
+      document.querySelector('[data-confirm-delete-guarantor]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({ type: 'success', title: 'Penjamin dihapus', message: 'Data penjamin pasien sudah dihapus.' });
+      });
+
+      document.querySelector('[data-check-bpjs-eligibility]')?.addEventListener('click', () => {
+        const result = document.querySelector('[data-bpjs-eligibility-result]');
+        if (result) result.hidden = false;
+        window.showToast?.({ type: 'success', title: 'Eligibilitas valid', message: 'Status BPJS pasien aktif dan bisa digunakan untuk billing.' });
+      });
+
+      const getDocumentData = (row) => {
+        if (!row) {
+          return {
+            title: 'dokumen',
+            date: '-',
+            type: '-',
+            visit: '-',
+            file: 'dokumen_rekam_medis.pdf'
+          };
+        }
+
+        const title = row.dataset.docTitle || '-';
+        return {
+          title,
+          date: row.dataset.docDate || '-',
+          type: row.dataset.docType || '-',
+          visit: row.dataset.docVisit || '-',
+          file: `${title.toLowerCase().replaceAll(' ', '_').replaceAll('-', '').replaceAll('·', '').replaceAll('__', '_')}.pdf`
+        };
+      };
+
+      const setDocumentPreview = (row) => {
+        const data = getDocumentData(row);
+        document.querySelectorAll('[data-doc-preview-title], [data-doc-preview-pdf-title]').forEach((node) => {
+          node.replaceChildren(document.createTextNode(data.title));
+        });
+        document.querySelectorAll('[data-doc-preview-date], [data-doc-preview-pdf-date]').forEach((node) => {
+          node.replaceChildren(document.createTextNode(data.date));
+        });
+        document.querySelectorAll('[data-doc-preview-type], [data-doc-preview-pdf-type]').forEach((node) => {
+          node.replaceChildren(document.createTextNode(data.type));
+        });
+        document.querySelectorAll('[data-doc-preview-visit], [data-doc-preview-pdf-visit]').forEach((node) => {
+          node.replaceChildren(document.createTextNode(data.visit));
+        });
+        document.querySelectorAll('[data-doc-preview-file], [data-doc-preview-file-toolbar]').forEach((node) => {
+          node.replaceChildren(document.createTextNode(data.file));
+        });
+        document.querySelector('[data-doc-preview-pdf-body]')?.replaceChildren(document.createTextNode(`${data.type} ini dibuat dari kunjungan ${data.visit}. Preview PDF ditampilkan untuk memastikan dokumen tidak duplikat sebelum cetak ulang atau download.`));
+        return data;
+      };
+
+      const openDocumentPreviewModal = (row) => {
+        setDocumentPreview(row);
+        openModal('documentPreviewModal');
+      };
+
+      document.querySelectorAll('[data-document-preview]').forEach((button) => {
+        button.addEventListener('click', () => openDocumentPreviewModal(button.closest('[data-document-row]')));
+      });
+
+      document.querySelectorAll('[data-document-print]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const data = getDocumentData(button.closest('[data-document-row]'));
+          window.showToast?.({
+            type: 'success',
+            title: 'Cetak ulang diproses',
+            message: `${data.title} sedang disiapkan untuk dicetak ulang.`
+          });
+        });
+      });
+
+      document.querySelector('[data-preview-print]')?.addEventListener('click', () => {
+        const title = document.querySelector('[data-doc-preview-title]')?.textContent || 'dokumen';
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Cetak ulang diproses',
+          message: `${title} sedang dikirim ke antrean cetak.`
+        });
+      });
+
+      document.querySelectorAll('[data-document-download]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const data = getDocumentData(button.closest('[data-document-row]'));
+          window.showToast?.({
+            type: 'success',
+            title: 'Download diproses',
+            message: `${data.file} sedang diunduh.`
+          });
+        });
+      });
+
+      document.querySelector('[data-preview-download]')?.addEventListener('click', () => {
+        const title = document.querySelector('[data-doc-preview-title]')?.textContent || 'dokumen';
+        const file = document.querySelector('[data-doc-preview-file]')?.textContent || `${title.toLowerCase().replaceAll(' ', '_')}.pdf`;
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Download diproses',
+          message: `${file} sedang diunduh.`
+        });
+      });
+
+      document.querySelector('[data-print-rm-summary]')?.addEventListener('click', () => {
+        openModal('rmSummaryPrintModal');
+      });
+
+      document.querySelector('[data-print-rm-summary-document]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Ringkasan RM siap dicetak',
+          message: 'Ringkasan rekam medis pasien sedang disiapkan dalam format A4.'
+        });
+      });
+
+      document.querySelector('[data-download-rm-summary-pdf]')?.addEventListener('click', () => {
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'PDF Ringkasan RM disiapkan',
+          message: 'Dokumen ringkasan rekam medis pasien sedang diproses menjadi PDF.'
+        });
+      });
+
+      document.querySelectorAll('.profile-visit-menu').forEach((menu) => {
+        menu.addEventListener('toggle', () => {
+          if (!menu.open) return;
+          document.querySelectorAll('.profile-visit-menu[open]').forEach((otherMenu) => {
+            if (otherMenu !== menu) otherMenu.removeAttribute('open');
+          });
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (event.target.closest('.profile-visit-menu')) return;
+        document.querySelectorAll('.profile-visit-menu[open]').forEach((menu) => menu.removeAttribute('open'));
+      });
+
+
+      const updateVisitToggle = (card, expanded) => {
+        const toggle = card?.querySelector('[data-visit-toggle]');
+        if (!toggle) return;
+        toggle.setAttribute('aria-expanded', String(expanded));
+        toggle.innerHTML = expanded
+          ? 'Tutup Detail <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>'
+          : 'Lihat Detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>';
+      };
+
+      const setVisitCardExpanded = (card, expanded) => {
+        if (!card) return;
+        card.classList.toggle('is-expanded', expanded);
+        updateVisitToggle(card, expanded);
+      };
+
+      document.querySelectorAll('[data-visit-toggle]').forEach((toggle) => {
+        toggle.addEventListener('click', () => {
+          const card = toggle.closest('.visit-card');
+          setVisitCardExpanded(card, !card?.classList.contains('is-expanded'));
+        });
+      });
+
+      const getVisitContext = (card) => {
+        if (!card) {
+          return {
+            number: '-',
+            date: '-',
+            unit: '-',
+            doctor: '-',
+            status: '-',
+            summary: '-'
+          };
+        }
+
+        const date = card.querySelector('.visit-date-block strong')?.textContent?.trim() || '-';
+        const time = card.querySelector('.visit-date-block span')?.textContent?.trim() || '';
+        return {
+          number: card.dataset.visitNumber || '-',
+          date: time ? `${date} ${time}` : date,
+          unit: card.querySelector('.visit-card-title h3')?.textContent?.trim() || '-',
+          doctor: card.querySelector('.visit-card-main > p')?.textContent?.trim() || '-',
+          status: card.querySelector('.visit-card-title .badge')?.textContent?.trim() || '-',
+          summary: card.querySelector('.visit-card-main > small:last-child')?.textContent?.trim() || '-'
+        };
+      };
+
+      const fillVisitModal = (modalId, context) => {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.querySelectorAll('[data-visit-modal]').forEach((node) => {
+          const key = node.dataset.visitModal;
+          node.textContent = context[key] || '-';
+        });
+      };
+
+      const openVisitModal = (modalId, card) => {
+        fillVisitModal(modalId, getVisitContext(card));
+        openModal(modalId);
+      };
+
+      document.querySelectorAll('[data-profile-visit-action]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const card = button.closest('.visit-card');
+          const number = card?.dataset?.visitNumber || 'kunjungan';
+          const action = button.dataset.profileVisitAction;
+
+          button.closest('details')?.removeAttribute('open');
+
+
+          if (action === 'print') {
+            openVisitModal('visitPrintModal', card);
+            return;
+          }
+
+          if (action === 'document') {
+            openVisitModal('visitDocumentsModal', card);
+            return;
+          }
+
+          if (action === 'addendum') {
+            openAddendumModal(number);
+            return;
+          }
+
+          if (action === 'copy') {
+            if (navigator.clipboard?.writeText) {
+              navigator.clipboard.writeText(number).catch(() => {});
+            }
+            openVisitModal('visitCopyModal', card);
+          }
+        });
+      });
+
+
+      document.querySelector('[data-print-visit-summary]')?.addEventListener('click', () => {
+        const number = document.querySelector('#visitPrintModal [data-visit-modal="number"]')?.textContent || 'kunjungan';
+        closeModals();
+        window.showToast?.({
+          type: 'success',
+          title: 'Data rekam medis kunjungan siap dicetak',
+          message: `Data rekam medis ${number} sedang disiapkan.`
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

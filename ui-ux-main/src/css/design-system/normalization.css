@@ -1,0 +1,13 @@
+/* ==========================================================================
+   20. Helper normalisasi komponen
+   Patch kecil untuk menyamakan perilaku komponen setelah style dipusatkan.
+   ========================================================================== */
+
+.calendar-head .icon-btn,
+.calendar-nav .icon-btn {
+  @apply w-8 h-8 rounded-[var(--radius-button-md)] text-[color:var(--text-primary)];
+}
+
+.brand-lockup {
+  @apply no-underline;
+}

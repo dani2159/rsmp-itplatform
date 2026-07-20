@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@source "../pages*.html";
+@source "../js*.js";
+
+/* Entry Tailwind CSS v4.
+   Token theme berada di src/css/design-system/theme.css.
+   Pertahankan urutan import ini agar cascade visual tetap sama. */
+@import "./design-system/theme.css";
+
+
+/* Token desain global dan komponen design system reusable. */
+@import "./design-system/tokens.css";
+@import "./design-system/typography.css";
+@import "./design-system/forms.css";
+@import "./design-system/tables.css";
+@import "./design-system/dropdowns.css";
+@import "./design-system/master-tables.css";
+@import "./design-system/autocomplete.css";
+@import "./design-system/primitives.css";
+@import "./design-system/sidebar.css";
+@import "./design-system/navbar.css";
+@import "./design-system/base.css";
+@import "./design-system/buttons.css";
+@import "./design-system/animations.css";
+@import "./design-system/normalization.css";
+@import "./design-system/dashboard-widgets.css";
+@import "./design-system/statistics.css";
+@import "./design-system/badges.css";
+@import "./design-system/cards.css";
+@import "./design-system/tabs.css";
+@import "./design-system/wizard.css";
+@import "./design-system/layout-system.css";
+@import "./design-system/avatars.css";
+@import "./design-system/sidebar-theme.css";
+@import "./design-system/utilities.css";
+@import "./design-system/table-normalization.css";
+@import "./design-system/scrollbar.css";
+@import "./design-system/sidebar-flyout.css";
+@import "./design-system/modals.css";
+@import "./design-system/validation.css";
+@import "./design-system/toasts.css";
+@import "./design-system/datepicker-controls.css";
+@import "./design-system/bottom-tabs.css";
+
+/* CSS khusus halaman: hanya layout/perilaku unik untuk halaman tersebut. */
+@import "./pages/dashboard.css";
+@import "./pages/emr-profile.css";
+@import "./pages/login.css";
+

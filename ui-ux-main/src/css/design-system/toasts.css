@@ -1,0 +1,70 @@
+/* Alert toast untuk feedback singkat setelah user menjalankan aksi. */
+.alert-toast-region {
+  @apply fixed z-[140] top-6 left-1/2 grid gap-3 w-[min(380px,calc(100vw_-_32px))] pointer-events-none;
+  transform: translateX(-50%);
+}
+
+.alert-toast {
+  @apply grid grid-cols-[36px_1fr_auto] items-start gap-3 p-[14px_14px_14px_12px] border border-[color:var(--border)] rounded-[var(--radius-card)] bg-[color:var(--surface)] text-[color:var(--text-primary)] shadow-[var(--shadow-lg)] pointer-events-auto opacity-0;
+  transform: translateY(-8px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.alert-toast.is-visible {
+  @apply opacity-100;
+
+  transform: translateY(0);
+}
+
+.alert-toast.is-leaving {
+  @apply opacity-0;
+
+  transform: translateY(-8px);
+}
+
+.alert-toast-icon {
+  @apply inline-flex items-center justify-center w-9 h-9 rounded-full bg-[color:var(--slate-soft)] text-[color:var(--text-secondary)];
+}
+
+.alert-toast.is-success .alert-toast-icon {
+  @apply bg-[color:var(--success-light)] text-[color:var(--success-dark)];
+}
+
+.alert-toast.is-danger .alert-toast-icon {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger-dark)];
+}
+
+.alert-toast.is-warning .alert-toast-icon {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-dark)];
+}
+
+.alert-toast.is-info .alert-toast-icon {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-dark)];
+}
+
+.alert-toast-body {
+  @apply grid gap-0.5 min-w-0;
+}
+
+.alert-toast-title {
+  @apply m-0 text-body-md leading-5 font-bold;
+}
+
+.alert-toast-message {
+  @apply m-0 text-[color:var(--text-secondary)] text-body-sm leading-4.5;
+}
+
+.alert-toast-close {
+  @apply w-7 h-7 border-0 rounded-[var(--radius-input-sm)] bg-transparent text-[color:var(--text-muted)] cursor-pointer;
+}
+
+.alert-toast-close:hover {
+  @apply bg-[color:var(--slate-soft)] text-[color:var(--text-primary)];
+}
+
+@media (max-width: 640px) {
+  .alert-toast-region {
+  @apply top-4 left-4 right-4 w-auto;
+    transform: none;
+  }
+}

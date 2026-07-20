@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+
+/* ==========================================================================
+   RSMP-IT Platform — overlay kompatibilitas di atas design-system.css
+   (compiled Tailwind v4 dari ui-ux-main, 1:1 SIMRS ZAIDAN).
+
+   Posisi blok ini SENGAJA di antara @tailwind components dan @tailwind
+   utilities: menang atas design-system.css (dimuat lebih dulu via <link>),
+   tapi kalah dari utility Tailwind di JSX (p-4, text-xs, dst.) — hierarki
+   yang benar: DS < compat < utilities.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Struktur card lama: header/body bawa padding sendiri + garis pemisah.
+   DS menaruh padding di .card — dinolkan supaya tidak dobel.
+   -------------------------------------------------------------------------- */
+.card{padding:0}
+/* Override spesifik, BUKAN :not() -- :not() menaikkan specificity (0,2,0)
+   sampai mengalahkan utility Tailwind p-3/p-4 yang ditumpuk di banyak halaman
+   (card p-4 dst berubah jadi 0 padding, regresi luas). metric-card butuh
+   padding sendiri (18px, dari DS p-4.5) karena tidak dibungkus .card-body. */
+.metric-card.card{padding:18px}
+.card-header{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;margin:0;padding:13px 18px;border-bottom:1px solid var(--border-soft)}
+.card-body{display:block;padding:16px 18px}
+
+/* Tombol: DS pakai min-width 92px (untuk form action) — di app banyak tombol
+   kecil per-baris, jadi min-width dilepas. Ukuran ikut konten. */
+.btn{min-width:0}
+.btn-sm{height:30px;padding:0 11px;font-size:12px;font-weight:600}
+.btn-icon{width:36px;padding:0}
+.btn-sm.btn-icon{width:30px}
+.btn-sm svg{width:13px;height:13px}
+
+/* Badge: DS min-height 30px — kegedean buat pill status di tabel/sidebar. */
+.badge{min-height:22px;padding-inline:9px;font-size:11px;gap:5px}
+.badge .badge-dot,.badge .dot{width:6px;height:6px}
+
+/* Alias warna badge lama → pola --badge-* design system */
+.badge-green{--badge-bg:var(--success-light);--badge-color:var(--success-dark);--badge-border:var(--primary-green-tint-80);--badge-dot:var(--primary-green)}
+.badge-red{--badge-bg:var(--danger-light);--badge-color:var(--danger-dark);--badge-border:var(--danger-tint-80);--badge-dot:var(--danger)}
+.badge-yellow{--badge-bg:var(--warning-light);--badge-color:var(--warning-dark);--badge-border:var(--warning-tint-80);--badge-dot:var(--warning)}
+.badge-blue{--badge-bg:var(--primary-blue-light);--badge-color:var(--primary-blue);--badge-border:var(--primary-blue-tint-80);--badge-dot:var(--primary-blue)}
+.badge-gray{--badge-bg:var(--ui-surface-neutral);--badge-color:var(--slate);--badge-border:var(--slate-tint-80);--badge-dot:var(--slate)}
+.badge-purple{--badge-bg:var(--indigo-light);--badge-color:var(--indigo-shade-15);--badge-border:var(--indigo-tint-80);--badge-dot:var(--indigo)}
+
+/* Input: ukuran default app lebih ramping dari DS */
+.input,.select{min-height:36px;font-size:13px}
+
+/* Ikon lucide: DS menyize icon via font-size (Font Awesome). SVG lucide harus
+   dikunci eksplisit, kalau tidak melar ikut container. */
+.nav-icon svg{width:20px;height:20px;flex:none}
+.icon-btn svg{width:18px;height:18px;flex:none}
+.btn svg{width:14px;height:14px;flex:none}
+.app-sidebar.compact .nav-icon svg{width:20px !important;height:20px !important}
+.app-sidebar.compact .nav-icon{display:grid;place-items:center}
+.app-sidebar.compact .brand-mark{width:34px;height:34px;border-radius:10px}
+.app-sidebar.compact .brand-mark svg{width:17px;height:17px}
+.app-sidebar.compact .sidebar-user-avatar{margin:0 auto}
+.brand-mark svg{width:22px;height:22px}
+
+/* Logo sidebar: DS brand-lockup pasang filter brightness(100), didesain
+   untuk logo monokrom putih -- logo warna asli (logo.png/logo2.png) jadi
+   kebakar warnanya. Matikan filter, ukuran biarkan ikut aturan DS
+   (brand-logo-full 200px wordmark, brand-logo-icon 32px compact). */
+.app-sidebar .brand-lockup{filter:none}
+
+/* Tabel telanjang (halaman lama pakai <table> langsung) */
+.table-wrap{overflow-x:auto}
+.table-wrap table{width:100%;border-collapse:collapse;font-size:13px}
+.table-wrap thead th{padding:10px 14px;text-align:left;font-size:12px;font-weight:600;color:var(--slate);background:var(--ui-surface-table-header);border-bottom:1px solid var(--border-soft)}
+.table-wrap tbody td{padding:11px 14px;border-bottom:1px solid var(--border-soft);color:var(--slate)}
+.table-wrap tbody tr:last-child td{border-bottom:none}
+.table-wrap tbody tr:hover td{background:var(--primary-tint);color:var(--text-primary)}
+.table-wrap tbody tr{transition:background .1s}
+
+/* Kotak terminal / log */
+.terminal-box{background:var(--terminal-bg);border:1px solid var(--border-soft);border-radius:10px;padding:12px 14px;font-family:var(--font-mono);font-size:12px;color:var(--terminal-fg);line-height:1.6;overflow:auto}
+
+/* Kartu statistik dashboard (strip warna atas) */
+.stat-card{background:var(--surface);border:1px solid var(--border-soft);border-radius:var(--radius-card);box-shadow:var(--shadow-sm);padding:16px;position:relative;overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.stat-card:hover{box-shadow:var(--shadow-md)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.stat-card.green::before{background:var(--primary-green)}
+.stat-card.red::before{background:var(--danger)}
+.stat-card.blue::before{background:var(--primary-blue)}
+.stat-card.yellow::before{background:var(--warning)}
+.stat-card.purple::before{background:var(--indigo)}
+
+/* Alert inline lama */
+.alert{padding:11px 14px;border-radius:8px;font-size:12px;display:flex;align-items:flex-start;gap:8px}
+.alert-info{background:var(--primary-light);border:1px solid var(--ui-primary-border-soft);color:var(--primary-blue)}
+.alert-success{background:var(--success-light);border:1px solid var(--ui-success-border-soft);color:var(--ui-success-text)}
+.alert-warning{background:var(--warning-light);border:1px solid var(--warning-border-soft);color:var(--ui-warning-text-dark)}
+.alert-danger{background:var(--danger-light);border:1px solid var(--danger-border-soft);color:var(--danger-dark)}
+
+@tailwind utilities;
+
+/* --------------------------------------------------------------------------
+   Alias variabel lama → token SIMRS ZAIDAN (untuk inline style lama)
+   -------------------------------------------------------------------------- */
+:root{
+  --bg:var(--page);
+  --bg2:var(--surface);
+  --bg3:var(--ui-surface-card-muted);
+  --bg4:var(--ui-surface-slate-soft);
+  --border2:var(--ui-border-default);
+  --text2:var(--slate);
+  --text-muted:var(--ui-text-placeholder);
+  --accent:var(--primary-blue);
+  --accent2:var(--primary-light);
+  --accent-dim:var(--primary-tint);
+  --success:var(--primary-green);
+  --success2:var(--success-light);
+  --danger2:var(--danger-light);
+  --warn:var(--warning);
+  --warn2:var(--warning-light);
+  --info:var(--indigo);
+  --info2:var(--indigo-light);
+  --terminal-bg:#0f1f3d;
+  --terminal-fg:#99ede0;
+}
+
+html,body,#root{height:100%;margin:0}
+body{
+  font-family:var(--font-sans);
+  background:var(--page);color:var(--text-primary);
+  font-size:14px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+*{box-sizing:border-box}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--ui-scrollbar-thumb);border-radius:999px}
+::selection{background:var(--primary-light);color:var(--primary-blue)}
+
+.xterm{height:100%}
+.xterm-viewport{overflow-y:hidden!important}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 color-mix(in srgb,var(--primary-green) 40%,transparent)}50%{opacity:.8;box-shadow:0 0 0 4px transparent}}
+
+.animate-fade-in{animation:fadeIn .2s ease-out}
+.animate-slide-in{animation:slideIn .2s ease-out}
+.animate-pulse-slow{animation:pulse-dot 2s ease-in-out infinite}
+.cursor-blink{animation:blink .8s step-end infinite;display:inline-block;width:7px;height:13px;background:var(--primary-green);vertical-align:text-bottom}

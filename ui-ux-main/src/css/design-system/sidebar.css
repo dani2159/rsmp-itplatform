@@ -1,0 +1,391 @@
+/* ==========================================================================
+   12. Sidebar and header showcase shell
+   Area preview untuk komponen sidebar/header di guide.
+   ========================================================================== */
+
+.component-stage {
+  @apply border border-[color:var(--border)] rounded-3xl bg-[color:var(--page)] p-[22px] shadow-[var(--shadow-sm)] overflow-hidden;
+}
+
+.browser-bar {
+  @apply flex items-center justify-between gap-3 p-[0_2px_16px];
+}
+
+.browser-title {
+  @apply flex items-center gap-2.5 font-bold text-[color:var(--text-primary)];
+}
+
+.browser-title span {
+  @apply w-2.5 h-2.5 rounded-full bg-[color:var(--primary-green)] shadow-[15px_0_0_var(--warning),30px_0_0_var(--danger)];
+}
+
+.browser-meta {
+  @apply text-[color:var(--ui-text-placeholder)] text-body-sm font-bold;
+}
+
+.sidebar-showcase {
+  @apply grid grid-cols-[240px] gap-[44px] items-stretch justify-center p-7 bg-[color:var(--ui-sidebar-hover)] border border-[color:var(--ui-border-blue-gray)] rounded-[18px] overflow-x-auto;
+}
+
+/* --------------------------------------------------------------------------
+   12A. Komponen sidebar
+   Sidebar normal, compact mode, navigasi, tooltip, user card, dan avatar.
+   -------------------------------------------------------------------------- */
+
+.app-sidebar {
+  @apply w-[240px] min-h-[650px] flex flex-col bg-[color:var(--surface)] border border-[color:var(--border-soft)] rounded-[18px] shadow-[0_18px_44px_rgba(15,31,61,0.08)] p-4 text-[color:var(--text-primary)];
+}
+
+.sidebar-head {
+  @apply flex items-center justify-center gap-3 p-[9px_0_16px];
+}
+
+.brand-lockup {
+  @apply flex items-center justify-center gap-3 w-full min-w-0;
+}
+
+.brand-lockup > img {
+  @apply block w-[200px] max-w-[200px] h-auto;
+}
+
+.brand-lockup .brand-logo-icon {
+  @apply hidden;
+}
+
+.brand-mark {
+  @apply w-[42px] h-[42px] rounded-xl inline-flex items-center justify-center text-[color:var(--white)] shadow-[0_10px_18px_rgba(30,79,215,0.2)];
+  background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+}
+
+.brand-mark .lucide {
+  @apply w-6 h-6;
+  stroke-width: 2.4;
+}
+
+.brand-text {
+  @apply min-w-0;
+}
+
+.brand-title {
+  @apply block text-[color:var(--text-primary)] font-bold text-body-lg leading-[1.15] whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-subtitle {
+  @apply block text-[color:var(--ui-text-placeholder)] font-bold text-body-sm mt-0.5 whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-search {
+  @apply m-[0_2px_16px];
+}
+
+.sidebar-search .input {
+  @apply min-h-[38px] rounded-[var(--radius-input-sm)] text-body-md;
+}
+
+.sidebar-search .field-icon {
+  @apply left-3 w-[17px] h-[17px];
+}
+
+.sidebar-search .with-left {
+  @apply pl-[38px];
+}
+
+.sidebar-section {
+  @apply flex flex-col gap-1 p-[4px_0];
+}
+
+.sidebar-separator {
+  @apply h-px bg-[color:var(--border-soft)] m-[12px_2px];
+}
+
+.sidebar-spacer {
+  @apply flex-auto min-h-14;
+}
+
+.nav-item,
+.nav-summary,
+.nav-subitem {
+  @apply w-full min-h-10.5 flex items-center gap-3 border-0 rounded-[11px] bg-transparent text-[color:var(--text-primary)] font-sans text-body-md font-semibold no-underline py-0 px-2.5 cursor-pointer relative;
+  transition: background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.nav-item:hover,
+.nav-summary:hover,
+.nav-subitem:hover {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}
+
+.nav-item:focus-visible,
+.nav-summary:focus-visible,
+.nav-subitem:focus-visible {
+  @apply outline-none shadow-[var(--ring)];
+}
+
+.nav-item.active,
+.nav-summary.active,
+.nav-subitem.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] font-semibold;
+}
+
+.nav-item.active::before,
+.nav-summary.active::before,
+.nav-subitem.active::before {
+  @apply absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full bg-[color:var(--primary-blue)];
+
+  content: "";
+}
+
+.nav-icon {
+  @apply w-[22px] h-[22px] inline-flex items-center justify-center text-current opacity-[0.88] flex-none leading-none;
+}
+
+.nav-icon .lucide,
+.nav-icon i {
+  @apply w-5 h-5 inline-flex items-center justify-center text-h3 leading-none m-0 align-middle;
+}
+
+.nav-icon i::before {
+  @apply block leading-none;
+}
+
+.app-sidebar .nav-icon {
+  @apply text-[color:var(--primary-blue)] opacity-100;
+}
+
+.app-sidebar .nav-item:hover .nav-icon,
+.app-sidebar .nav-summary:hover .nav-icon,
+.app-sidebar .nav-subitem:hover .nav-icon,
+.app-sidebar .nav-item.active .nav-icon,
+.app-sidebar .nav-summary.active .nav-icon,
+.app-sidebar .nav-subitem.active .nav-icon {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.nav-label {
+  @apply flex-auto min-w-0 text-left overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.nav-chevron {
+  @apply text-[color:var(--primary-blue)] ml-auto;
+  transition: transform 0.15s ease;
+}
+
+.nav-count {
+  @apply ml-auto min-w-[24px] min-h-[22px] p-[3px_7px] rounded-full inline-flex items-center justify-center bg-[color:var(--ui-sidebar-surface-active)] text-[color:var(--primary-blue)] text-body-sm font-semibold;
+}
+
+details.nav-group {
+  @apply block;
+}
+
+details.nav-group summary {
+  @apply list-none;
+}
+
+details.nav-group summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+details.nav-group[open] > .nav-summary > .nav-chevron {
+  @apply text-[color:var(--primary-blue)];
+
+  transform: rotate(180deg);
+}
+
+.subnav {
+  @apply flex flex-col gap-1 m-[6px_0_6px_21px] pl-[18px] border-l border-l-[color:var(--border-soft)];
+}
+
+.nav-subitem {
+  @apply min-h-9 rounded-[9px];
+}
+
+.nav-subitem.active::before {
+  @apply left-[-20px] top-[15px] bottom-auto w-[7px] h-[7px];
+}
+
+.nav-subgroup {
+  @apply grid gap-1 min-w-0;
+}
+
+.nav-subsummary {
+  @apply list-none;
+}
+
+.nav-subsummary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.nav-subsummary .nav-chevron {
+  @apply ml-auto text-body-sm;
+}
+
+.nav-subgroup[open] > .nav-subsummary .nav-chevron {
+  transform: rotate(180deg);
+}
+
+.subnav-nested {
+  @apply flex flex-col gap-1 ml-[14px] pl-2.5 border-l border-l-[color:var(--border-soft)] mt-1 mb-1;
+}
+
+.subnav-nested .nav-subitem {
+  @apply min-h-8.5 text-body-sm py-0 px-2.5;
+}
+
+
+
+.avatar {
+  @apply w-9 h-9 rounded-full inline-flex items-center justify-center text-[color:var(--primary-blue)] text-body-md font-bold border border-[color:var(--ui-primary-border-muted)] flex-none overflow-hidden;
+  background: linear-gradient(180deg, var(--primary-light), var(--white));
+}
+
+.avatar img {
+  @apply w-full h-full object-cover block;
+}
+
+.user-meta {
+  @apply min-w-0 flex-auto;
+}
+
+.user-name {
+  @apply block text-body-md leading-[1.15] font-semibold text-[color:var(--text-primary)] whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email {
+  @apply block mt-0.5 text-body-sm leading-[1.2] text-[color:var(--ui-text-placeholder)] font-bold whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.app-sidebar.compact {
+  @apply w-16 items-center p-[12px_10px];
+}
+
+.app-sidebar.compact .sidebar-head {
+  @apply justify-center p-[6px_0_14px];
+}
+
+.app-sidebar.compact .brand-lockup {
+  @apply justify-center;
+}
+
+.app-sidebar.compact .brand-logo-full {
+  @apply hidden;
+}
+
+.app-sidebar.compact .brand-logo-icon {
+  @apply block w-8 max-w-[32px] h-8 object-contain;
+}
+
+.app-sidebar.compact .brand-text,
+.app-sidebar.compact .sidebar-search input,
+.app-sidebar.compact .sidebar-search .field-icon,
+.app-sidebar.compact .nav-label,
+.app-sidebar.compact .nav-count,
+.app-sidebar.compact .nav-chevron,
+.app-sidebar.compact .user-meta,
+.app-sidebar.compact .sidebar-head .icon-btn {
+  @apply hidden;
+}
+
+.app-sidebar.compact .sidebar-search {
+  @apply m-[0_0_14px];
+}
+
+.app-sidebar.compact .compact-search {
+  @apply flex;
+}
+
+.compact-search {
+  @apply w-10 h-10 border-0 bg-[color:var(--white)] text-[color:var(--text-primary)] rounded-[11px] items-center justify-center cursor-pointer;
+}
+
+.compact-search:hover {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}
+
+.app-sidebar:not(.compact) .compact-search {
+  @apply hidden;
+}
+
+.app-sidebar.compact .sidebar-section {
+  @apply w-full items-center;
+}
+
+.app-sidebar.compact .sidebar-separator {
+  @apply w-10;
+}
+
+.app-sidebar.compact .nav-item,
+.app-sidebar.compact .nav-summary {
+  @apply w-10 h-10 min-h-10 items-center justify-center p-0 leading-none gap-0;
+}
+
+.app-sidebar.compact .nav-icon {
+  @apply m-0 w-full h-full grid place-items-center leading-none;
+}
+
+.app-sidebar.compact .nav-icon .lucide,
+.app-sidebar.compact .nav-icon i {
+  @apply w-full h-full grid place-items-center leading-none m-0;
+}
+
+.app-sidebar.compact .nav-icon i::before {
+  @apply block leading-none;
+}
+.app-sidebar.compact .nav-icon .fa-gauge-high::before {
+  transform: translateY(1px);
+}
+
+.app-sidebar.compact .nav-item.active::before,
+.app-sidebar.compact .nav-summary.active::before {
+  @apply hidden;
+}
+
+.app-sidebar.compact details.nav-group[open] .subnav {
+  @apply hidden;
+}
+
+
+
+.app-sidebar.compact .avatar {
+  @apply w-8 h-8;
+}
+
+.app-sidebar.compact [data-tooltip] {
+  @apply relative;
+}
+
+.app-sidebar.compact [data-tooltip]::after {
+  @apply absolute left-[calc(100%_+_10px)] top-1/2 bg-[color:var(--navy)] text-[color:var(--white)] p-[7px_9px] rounded-lg text-body-sm font-bold whitespace-nowrap opacity-0 pointer-events-none shadow-[0_12px_30px_rgba(15,31,61,0.2)] z-[10];
+
+  content: attr(data-tooltip);
+  transform: translateY(-50%);
+  transition: opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.app-sidebar.compact [data-tooltip]::before {
+  @apply absolute left-[calc(100%_+_4px)] top-1/2 border-[6px] border-transparent border-r-[color:var(--text-primary)] opacity-0 pointer-events-none z-[11];
+
+  content: "";
+  transform: translateY(-50%);
+  transition: opacity 0.15s ease;
+}
+
+.app-sidebar.compact [data-tooltip]:hover::after,
+.app-sidebar.compact [data-tooltip]:focus-visible::after {
+  @apply opacity-100;
+  transform: translateY(-50%) translateX(2px);
+}
+
+.app-sidebar.compact [data-tooltip]:hover::before,
+.app-sidebar.compact [data-tooltip]:focus-visible::before {
+  @apply opacity-100;
+}

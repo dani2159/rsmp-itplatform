@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>12 Tabs · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link active" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+  <p class="eyebrow">12</p>
+  <h1>Tabs</h1>
+  <p class="hero-subtitle">Jenis tab untuk filter, kategori, detail konten, dan panel konfigurasi.</p>
+  <div class="divider"></div>
+  <nav aria-label="Daftar isi Tabs" class="toc">
+    <a href="#overview">Ringkasan</a>
+<a href="#variants">Jenis Tab</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+  </nav>
+</header>
+
+<section class="mt-12" id="overview">
+  <div class="section-head"><div><h2>Ringkasan</h2><p>Tab dipakai saat beberapa konten setara perlu berada dalam satu area. Gunakan tab untuk mengganti isi panel, bukan untuk navigasi halaman utama.</p></div><span class="badge badge-sm"><span class="dot"></span>Line · Pill · Segmented · Card · Vertical</span></div>
+  <div class="grid-3">
+    <div class="note"><strong>Line tab</strong><br/>Cocok untuk detail pasien, riwayat, dokumen, atau data yang perlu terasa ringan.</div>
+    <div class="note"><strong>Pill dan segmented</strong><br/>Cocok untuk filter cepat, status, atau kategori yang sering diganti.</div>
+    <div class="note"><strong>Card dan vertical</strong><br/>Cocok untuk pilihan besar, konfigurasi, atau konten dengan deskripsi pendek.</div>
+  </div>
+</section>
+<section class="mt-12" id="variants">
+  <div class="section-head"><div><h2>Jenis Tab</h2><p>Setiap contoh disusun satu kolom agar struktur, state aktif, dan isi panel mudah dibaca. Klik tab untuk melihat perubahan kontennya.</p></div></div>
+  <div class="layout-stack is-lg">
+    <div class="card">
+      <h3>Line Tab</h3>
+      <p class="muted-text">Untuk detail data yang masih ringan, seperti profil, riwayat, dan dokumen pasien.</p>
+      <div class="tabs tabs-line" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh line tab">
+          <button class="tab is-active" id="line-tab-profile" type="button" role="tab" aria-selected="true" aria-controls="line-panel-profile" data-tab-target="line-panel-profile">Profil</button>
+          <button class="tab" id="line-tab-history" type="button" role="tab" aria-selected="false" aria-controls="line-panel-history" data-tab-target="line-panel-history">Riwayat</button>
+          <button class="tab" id="line-tab-document" type="button" role="tab" aria-selected="false" aria-controls="line-panel-document" data-tab-target="line-panel-document">Dokumen</button>
+        </div>
+        <div class="tab-panel" id="line-panel-profile" role="tabpanel" aria-labelledby="line-tab-profile">
+          <strong>Profil pasien</strong>
+          <p class="muted-text">Berisi identitas pasien, nomor rekam medis, tanggal lahir, dan kontak utama.</p>
+        </div>
+        <div class="tab-panel" id="line-panel-history" role="tabpanel" aria-labelledby="line-tab-history" hidden>
+          <strong>Riwayat kunjungan</strong>
+          <p class="muted-text">Menampilkan kunjungan rawat jalan, rawat inap, dan catatan layanan terakhir.</p>
+        </div>
+        <div class="tab-panel" id="line-panel-document" role="tabpanel" aria-labelledby="line-tab-document" hidden>
+          <strong>Dokumen pendukung</strong>
+          <p class="muted-text">Tempat kartu identitas, surat rujukan, hasil pemeriksaan, dan dokumen penjamin.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Pill Tab</h3>
+      <p class="muted-text">Untuk filter cepat yang sering dipakai pada daftar data.</p>
+      <div class="tabs tabs-pill" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh pill tab">
+          <button class="tab is-active" id="pill-tab-all" type="button" role="tab" aria-selected="true" aria-controls="pill-panel-all" data-tab-target="pill-panel-all">Semua</button>
+          <button class="tab" id="pill-tab-active" type="button" role="tab" aria-selected="false" aria-controls="pill-panel-active" data-tab-target="pill-panel-active">Aktif</button>
+          <button class="tab" id="pill-tab-inactive" type="button" role="tab" aria-selected="false" aria-controls="pill-panel-inactive" data-tab-target="pill-panel-inactive">Nonaktif</button>
+        </div>
+        <div class="tab-panel" id="pill-panel-all" role="tabpanel" aria-labelledby="pill-tab-all">
+          <strong>Semua data</strong>
+          <p class="muted-text">Menampilkan data aktif dan nonaktif dalam satu daftar.</p>
+        </div>
+        <div class="tab-panel" id="pill-panel-active" role="tabpanel" aria-labelledby="pill-tab-active" hidden>
+          <strong>Data aktif</strong>
+          <p class="muted-text">Cocok untuk tampilan operasional harian yang hanya butuh data siap digunakan.</p>
+        </div>
+        <div class="tab-panel" id="pill-panel-inactive" role="tabpanel" aria-labelledby="pill-tab-inactive" hidden>
+          <strong>Data nonaktif</strong>
+          <p class="muted-text">Untuk arsip data yang masih perlu dilihat tanpa masuk ke pilihan utama.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Segmented Tab</h3>
+      <p class="muted-text">Untuk rentang waktu atau pilihan pendek yang perlu terasa seperti kontrol tunggal.</p>
+      <div class="tabs tabs-segmented" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh segmented tab">
+          <button class="tab is-active" id="seg-tab-today" type="button" role="tab" aria-selected="true" aria-controls="seg-panel-today" data-tab-target="seg-panel-today">Hari ini</button>
+          <button class="tab" id="seg-tab-week" type="button" role="tab" aria-selected="false" aria-controls="seg-panel-week" data-tab-target="seg-panel-week">Minggu ini</button>
+          <button class="tab" id="seg-tab-month" type="button" role="tab" aria-selected="false" aria-controls="seg-panel-month" data-tab-target="seg-panel-month">Bulan ini</button>
+        </div>
+        <div class="tab-panel" id="seg-panel-today" role="tabpanel" aria-labelledby="seg-tab-today"><strong>Ringkasan hari ini</strong><p class="muted-text">Menampilkan antrian, kunjungan, dan tindakan yang terjadi hari ini.</p></div>
+        <div class="tab-panel" id="seg-panel-week" role="tabpanel" aria-labelledby="seg-tab-week" hidden><strong>Ringkasan mingguan</strong><p class="muted-text">Menampilkan tren layanan dan volume kunjungan selama tujuh hari terakhir.</p></div>
+        <div class="tab-panel" id="seg-panel-month" role="tabpanel" aria-labelledby="seg-tab-month" hidden><strong>Ringkasan bulanan</strong><p class="muted-text">Dipakai untuk overview laporan dan monitoring target bulanan.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Card Tab</h3>
+      <p class="muted-text">Untuk pilihan besar yang butuh label dan deskripsi pendek.</p>
+      <div class="tabs tabs-card" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh card tab">
+          <button class="tab is-active" id="card-tab-outpatient" type="button" role="tab" aria-selected="true" aria-controls="card-panel-outpatient" data-tab-target="card-panel-outpatient">Rawat Jalan<small>Poli dan jadwal dokter</small></button>
+          <button class="tab" id="card-tab-inpatient" type="button" role="tab" aria-selected="false" aria-controls="card-panel-inpatient" data-tab-target="card-panel-inpatient">Rawat Inap<small>Kamar dan bed</small></button>
+          <button class="tab" id="card-tab-emergency" type="button" role="tab" aria-selected="false" aria-controls="card-panel-emergency" data-tab-target="card-panel-emergency">IGD<small>Triage dan tindakan cepat</small></button>
+        </div>
+        <div class="tab-panel" id="card-panel-outpatient" role="tabpanel" aria-labelledby="card-tab-outpatient"><strong>Rawat Jalan</strong><p class="muted-text">Fokus pada pemilihan poli, dokter, jadwal, dan nomor antrian.</p></div>
+        <div class="tab-panel" id="card-panel-inpatient" role="tabpanel" aria-labelledby="card-tab-inpatient" hidden><strong>Rawat Inap</strong><p class="muted-text">Fokus pada penempatan kamar, kelas perawatan, dan status bed.</p></div>
+        <div class="tab-panel" id="card-panel-emergency" role="tabpanel" aria-labelledby="card-tab-emergency" hidden><strong>Instalasi Gawat Darurat</strong><p class="muted-text">Fokus pada triage, prioritas layanan, dan tindakan awal.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Vertical Tab</h3>
+      <p class="muted-text">Untuk label yang lebih panjang atau konten panel yang perlu ruang baca lebih besar.</p>
+      <div class="tabs tabs-vertical" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh vertical tab">
+          <button class="tab is-active" id="vertical-tab-patient" type="button" role="tab" aria-selected="true" aria-controls="vertical-panel-patient" data-tab-target="vertical-panel-patient">Data Pasien</button>
+          <button class="tab" id="vertical-tab-guarantor" type="button" role="tab" aria-selected="false" aria-controls="vertical-panel-guarantor" data-tab-target="vertical-panel-guarantor">Penjamin</button>
+          <button class="tab" id="vertical-tab-document" type="button" role="tab" aria-selected="false" aria-controls="vertical-panel-document" data-tab-target="vertical-panel-document">Dokumen</button>
+        </div>
+        <div class="tab-panel" id="vertical-panel-patient" role="tabpanel" aria-labelledby="vertical-tab-patient"><strong>Data pasien</strong><p class="muted-text">Gunakan panel ini untuk informasi utama yang paling sering dibaca petugas.</p></div>
+        <div class="tab-panel" id="vertical-panel-guarantor" role="tabpanel" aria-labelledby="vertical-tab-guarantor" hidden><strong>Data penjamin</strong><p class="muted-text">Berisi jenis penjamin, nomor peserta, kelas layanan, dan status verifikasi.</p></div>
+        <div class="tab-panel" id="vertical-panel-document" role="tabpanel" aria-labelledby="vertical-tab-document" hidden><strong>Dokumen pasien</strong><p class="muted-text">Berisi dokumen identitas, rujukan, consent form, dan berkas administrasi lain.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Tab dengan Badge</h3>
+      <p class="muted-text">Untuk menampilkan jumlah data di tiap kategori tanpa perlu membuka semua panel.</p>
+      <div class="tabs tabs-pill" data-tabs>
+        <div class="tabs-list" role="tablist" aria-label="Contoh tab dengan badge">
+          <button class="tab is-active" id="badge-tab-queue" type="button" role="tab" aria-selected="true" aria-controls="badge-panel-queue" data-tab-target="badge-panel-queue">Antrian <span class="tab-badge">8</span></button>
+          <button class="tab" id="badge-tab-done" type="button" role="tab" aria-selected="false" aria-controls="badge-panel-done" data-tab-target="badge-panel-done">Selesai <span class="tab-badge">12</span></button>
+          <button class="tab" id="badge-tab-pending" type="button" role="tab" aria-selected="false" aria-controls="badge-panel-pending" data-tab-target="badge-panel-pending">Pending <span class="tab-badge">3</span></button>
+        </div>
+        <div class="tab-panel" id="badge-panel-queue" role="tabpanel" aria-labelledby="badge-tab-queue"><strong>Antrian aktif</strong><p class="muted-text">Daftar pasien yang masih menunggu dipanggil atau dilayani.</p></div>
+        <div class="tab-panel" id="badge-panel-done" role="tabpanel" aria-labelledby="badge-tab-done" hidden><strong>Layanan selesai</strong><p class="muted-text">Daftar pasien yang sudah selesai proses di unit terkait.</p></div>
+        <div class="tab-panel" id="badge-panel-pending" role="tabpanel" aria-labelledby="badge-tab-pending" hidden><strong>Butuh tindak lanjut</strong><p class="muted-text">Daftar data yang menunggu dokumen, validasi, atau keputusan petugas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="mt-12" id="usage">
+  <div class="section-head"><div><h2>Panduan Pakai</h2><p>Tab harus membantu pengguna membandingkan konten yang masih berada dalam satu konteks.</p></div></div>
+  <div class="do-dont">
+    <div class="card ok"><h3 class="usage-title is-do">Gunakan tab untuk konten setara</h3><p>Contoh: Profil, Riwayat, Dokumen, Jadwal, dan Log Aktivitas dalam halaman detail yang sama.</p></div>
+    <div class="card no"><h3 class="usage-title is-dont">Jangan pakai tab untuk menu utama</h3><p>Jika kontennya pindah domain besar, gunakan sidebar atau topnav agar struktur halaman tetap jelas.</p></div>
+  </div>
+</section>
+<section class="mt-12" id="implementation">
+  <div class="section-head"><div><h2>Implementasi</h2><p>Style tab berada di <code>src/css/design-system/tabs.css</code>. Interaksi klik memakai <code>src/js/tabs.js</code> dan atribut <code>data-tab-target</code>.</p></div></div>
+  <div class="code-grid"><article><p class="code-title">HTML</p><pre><code>&lt;div class=&quot;tabs tabs-line&quot; data-tabs&gt;
+  &lt;div class=&quot;tabs-list&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab is-active&quot; type=&quot;button&quot; role=&quot;tab&quot;
+      aria-selected=&quot;true&quot; data-tab-target=&quot;panel-profile&quot;&gt;
+      Profil
+    &lt;/button&gt;
+    &lt;button class=&quot;tab&quot; type=&quot;button&quot; role=&quot;tab&quot;
+      aria-selected=&quot;false&quot; data-tab-target=&quot;panel-history&quot;&gt;
+      Riwayat
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-panel&quot; id=&quot;panel-profile&quot; role=&quot;tabpanel&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;tab-panel&quot; id=&quot;panel-history&quot; role=&quot;tabpanel&quot; hidden&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre></article><article><p class="code-title">React mapping</p><pre><code>const tabVariant = {
+  line: 'tabs-line',
+  pill: 'tabs-pill',
+  segmented: 'tabs-segmented',
+  card: 'tabs-card',
+  vertical: 'tabs-vertical',
+}
+
+function Tabs({ variant = 'line', children }) {
+  return &lt;div className={`tabs ${tabVariant[variant]}`} data-tabs&gt;{children}&lt;/div&gt;
+}</code></pre></article></div>
+</section>
+
+<footer class="footer">
+  <div><strong>SIMRS ZAIDAN · 12 Tabs</strong><br/>Gunakan sebagai acuan komponen UI, CSS, dan implementasi frontend.</div>
+  <div class="mono">© 2026 · Panduan Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/tabs.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Master Printer Management &amp; Testing · Admin SIMRS ZAIDAN</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/> <link href="../../css/style.css" rel="stylesheet"/>
+</head>
+<body class="dashboard-app admin-users-page master-printer-page">
+<div class="layout-preview dashboard-layout admin-users-layout master-printer-page-layout" id="dashboardLayout">
+<aside aria-label="Sidebar dashboard SIMRS" class="app-sidebar" id="dashboardSidebar">
+<div class="sidebar-head">
+<a aria-label="SIMRS ZAIDAN dashboard" class="brand-lockup" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" class="brand-logo-full" src="../../assets/images/logo-simrs.svg"/>
+<img alt="SIMRS ZAIDAN icon" class="brand-logo-icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+</div>
+<div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+<span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+<span class="sidebar-user-meta">
+<span class="sidebar-user-name">Superadmin</span>
+<span class="sidebar-user-role">Super Admin</span>
+</span>
+</div>
+<nav aria-label="Menu utama SIMRS" class="sidebar-section">
+<a class="nav-item" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-gauge-high"></i></span>
+<span class="nav-label">Dashboard</span>
+</a>
+<details class="nav-group" open="">
+<summary class="nav-summary active" data-tooltip="Admin">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-gear"></i></span>
+<span class="nav-label">Admin</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/admin/users" href="50-users.html">Daftar Pengguna</a>
+<a class="nav-subitem" data-route="/admin/roles" href="51-role-permission.html">Peran &amp; Hak Akses</a>
+<a class="nav-subitem" data-route="/admin/units" href="../master/40-unit.html">Unit / Poli</a>
+<a class="nav-subitem" data-route="/admin/employees" href="../master/41-karyawan.html">Karyawan</a>
+<a class="nav-subitem" data-route="/admin/doctor-schedules" href="../master/42-jadwal-dokter.html">Jadwal Dokter</a>
+<a class="nav-subitem" data-route="/admin/rooms" href="../master/43-kamar.html">Kamar</a>
+<a class="nav-subitem" data-route="/admin/insurance" href="../master/44-penjamin.html">Penjamin</a>
+<a class="nav-subitem" data-route="/admin/tariffs" href="../master/45-tarif.html">Tarif</a>
+<a class="nav-subitem" data-route="/admin/hospital-config" href="#">Profil Rumah Sakit</a>
+<a class="nav-subitem" data-route="/admin/system-parameters" href="#">Parameter Sistem</a>
+<a class="nav-subitem active" data-route="/admin/printer-config" href="52-printer.html">Master Printer</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Pendaftaran">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-plus"></i></span>
+<span class="nav-label">Pendaftaran</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" href="../dashboard/32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+<a class="nav-subitem" data-route="/registration/patients/new" href="../registration/60-pendaftaran-pasien-baru.html">Pasien Baru</a>
+<a class="nav-subitem" data-route="/registration/visits/new" href="#">Buat Kunjungan</a>
+<a class="nav-subitem" data-route="/registration/queue" href="#">Monitor Antrean</a>
+<a class="nav-subitem" data-route="/registration/display" href="../dashboard/33-monitor-display-loket.html">Display TV Antrean</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rekam Medis">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></span>
+<span class="nav-label">Rekam Medis</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/emr/search" href="../emr/70-rekam-medis.html">Cari RM Pasien</a>
+<a class="nav-subitem" data-route="/emr/patients/:id" href="../emr/70-rekam-medis.html">Profil RM Terpadu</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rawat Jalan">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i></span>
+<span class="nav-label">Rawat Jalan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/outpatient" href="#">Dashboard Poli</a>
+<a class="nav-subitem" data-route="/outpatient/queue" href="#">Antrean Poli</a>
+<a class="nav-subitem" data-route="/outpatient/visits/:id" href="#">Pemeriksaan</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Farmasi">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i></span>
+<span class="nav-label">Farmasi</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/pharmacy" href="#">Antrian Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/prescriptions/:id" href="#">Validasi Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/dispensing/:id" href="#">Penyerahan Obat</a>
+<a class="nav-subitem" data-route="/pharmacy/labels/:id" href="#">Cetak Etiket</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Kasir">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-cash-register"></i></span>
+<span class="nav-label">Kasir</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/billing" href="#">Pasien Siap Bayar</a>
+<a class="nav-subitem" data-route="/billing/:visitId/receipt" href="#">Kwitansi</a>
+<a class="nav-subitem" data-route="/billing/void" href="#">Pembatalan Penagihan</a>
+<a class="nav-subitem" data-route="/billing/report" href="#">Laporan Kasir</a>
+</div>
+</details>
+</nav>
+<div class="sidebar-spacer"></div>
+</aside>
+<div class="app-main">
+<header class="app-header">
+<button aria-controls="dashboardSidebar" aria-expanded="true" aria-label="Tutup sidebar" class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button">
+<i aria-hidden="true" class="fa-solid fa-bars topbar-line-icon"></i>
+</button>
+<a class="mobile-header-brand" href="../dashboard/30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+  <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN">
+</a>
+<div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+<span aria-hidden="true" class="field-icon">
+<i aria-hidden="true" class="fa-solid fa-magnifying-glass topbar-line-icon"></i>
+</span>
+<input aria-autocomplete="list" aria-controls="globalSearchSuggestions" aria-expanded="false" aria-label="Cari pasien, tarif, penagihan" class="input with-left with-right" id="globalSearchInput" placeholder="Cari pasien, tarif, penagihan..." role="combobox" type="search"/>
+<span aria-hidden="true" class="kbd-hint">⌘ K</span>
+<div aria-label="Saran pencarian" class="doctor-autocomplete-panel" id="globalSearchSuggestions" role="listbox">
+<div class="dropdown-group-label" data-suggestion-group="recent">Terbaru</div>
+<button class="dropdown-option active" data-search-suggestion="" data-search-text="ayu lestari rm-10234 pasien rawat inap melati 203 recent" data-search-value="Ayu Lestari · RM-10234" data-suggestion-group="recent" role="option" type="button">
+<span class="option-meta"><strong>Ayu Lestari · RM-10234</strong><small>Pasien rawat inap · Ruang Melati 203</small></span>
+<span class="option-right">Pasien</span>
+</button>
+<div class="dropdown-group-label" data-suggestion-group="suggestion">Saran</div>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="dr bima pratama dokter penyakit dalam jadwal praktik poli" data-search-value="Dr. Bima Pratama" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Dr. Bima Pratama</strong><small>Dokter Penyakit Dalam · Jadwal praktik hari ini</small></span>
+<span class="option-right">Dokter</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="jadwal praktik dokter poli kalender shift appointment" data-search-value="Jadwal Praktik" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Jadwal Praktik</strong><small>Kelola jadwal dokter dan poli</small></span>
+<span class="option-right">Menu</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="ruang melati 203 kamar tersedia bed rawat inap" data-search-value="Ruang Melati 203" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Ruang Melati 203</strong><small>Kamar tersedia · Rawat inap</small></span>
+<span class="option-right">Kamar</span>
+</button>
+<div class="autocomplete-empty" hidden="">Tidak ada hasil yang cocok</div>
+<div class="dropdown-footer"><span>Gunakan ↑ ↓ untuk navigasi</span><span>Enter untuk pilih</span></div>
+</div>
+</div>
+<div aria-hidden="true" class="topbar-spacer"></div>
+<div aria-label="Aksi header" class="header-actions">
+
+
+
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu notifikasi" class="icon-btn topbar-icon">
+<i aria-hidden="true" class="fa-regular fa-bell"></i>
+<span class="notification-dot">4</span>
+</summary>
+<div aria-label="Menu notifikasi" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:320px;">
+<div class="dropdown-group-label">Notifikasi</div>
+<button class="dropdown-option active" role="menuitem" type="button"><span class="option-meta">Daftar tunggu meningkat<small>8 pasien butuh follow-up</small></span><span class="option-right"><span class="badge badge-warning badge-xs">Tinggi</span></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Kamar tersedia<small>Ruang Melati 203 kosong</small></span><span class="option-right">Baru</span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Approval tertunda<small>2 permintaan perubahan jadwal</small></span></button>
+<div class="dropdown-footer"><span>Tandai semua dibaca</span><span>Lihat semua</span></div>
+</div>
+</details>
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu profil superadmin" class="profile-menu">
+<span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+<span class="profile-copy"><span class="profile-name">Superadmin</span><span class="profile-role">Super Admin</span></span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down topbar-line-icon"></i>
+</summary>
+<div aria-label="Menu profil" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:240px;">
+<div class="dropdown-group-label">Akun</div>
+<button class="dropdown-option selected" role="menuitem" type="button"><span class="option-meta">Superadmin<small>Super Admin</small></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Pengaturan<small>Peran dan akses</small></span></button>
+<a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+</div>
+</details>
+</div>
+</header>
+<main aria-label="Halaman master printer" class="dashboard-content admin-users-content master-printer-content">
+<nav aria-label="Breadcrumb" class="admin-breadcrumb text-body-sm"><a href="../dashboard/30-dashboard.html"><i aria-hidden="true" class="fa-solid fa-house"></i>Dashboard</a><i aria-hidden="true" class="fa-solid fa-chevron-right"></i><a href="#">Konfigurasi Sistem</a><i aria-hidden="true" class="fa-solid fa-chevron-right"></i><span>Master Printer</span></nav>
+<section class="admin-page-head"><div><h1 class="text-h2 page-title">Master Printer Management &amp; Testing</h1><p class="admin-page-subtitle">Kelola printer per unit, default penggunaan dokumen, tes koneksi, dan cetak halaman tes.</p></div><div class="admin-page-actions"><button class="btn btn-primary btn-lg" data-open-modal="printerModal" type="button"><i aria-hidden="true" class="fa-solid fa-plus"></i>Tambah Printer</button></div></section>
+<section aria-label="Ringkasan printer" class="stat-grid"><article class="stat-card">
+<span class="stat-icon is-blue"><i aria-hidden="true" class="fa-solid fa-print"></i></span>
+<span class="stat-label">Total Printer</span>
+<strong class="stat-value" data-printer-total="">6</strong>
+<span class="stat-note">Terdaftar di sistem</span>
+</article><article class="stat-card">
+<span class="stat-icon is-green"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span>
+<span class="stat-label">Printer Aktif</span>
+<strong class="stat-value" data-printer-active="">5</strong>
+<span class="stat-note">Muncul di dropdown modul</span>
+</article><article class="stat-card">
+<span class="stat-icon is-yellow"><i aria-hidden="true" class="fa-solid fa-network-wired"></i></span>
+<span class="stat-label">Network Printer</span>
+<strong class="stat-value" data-printer-network="">4</strong>
+<span class="stat-note">IP:Port siap dites</span>
+</article></section>
+<section aria-label="Daftar printer" class="card admin-table-card printer-table-card"><div class="card-header admin-card-head"><div><h2 class="card-title">Daftar Printer</h2><p class="card-subtitle">Printer nonaktif tidak akan muncul pada pilihan printer di modul lain.</p></div></div>
+<div class="toolbar admin-user-toolbar"><div class="toolbar-left admin-toolbar-left"><div aria-label="Cari printer" class="input-wrap search-field admin-search-field"><span aria-hidden="true" class="field-icon"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i></span><input aria-label="Cari printer, koneksi, lokasi" class="input with-left" id="printerSearch" placeholder="Cari nama printer, lokasi, koneksi..." type="search"/></div></div><div class="toolbar-right admin-filter-group"><details class="ds-dropdown ds-select admin-filter-select flow-filter-select" data-component="printer-filter" data-filter-key="status"><summary aria-label="Filter status printer" class="dropdown-trigger"><span data-select-text="">Semua Status</span></summary><div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Status</button><button aria-selected="false" class="dropdown-option" data-filter-value="Aktif" role="option" type="button">Aktif</button><button aria-selected="false" class="dropdown-option" data-filter-value="Nonaktif" role="option" type="button">Nonaktif</button></div></details><details class="ds-dropdown ds-select admin-filter-select flow-filter-select" data-component="printer-filter" data-filter-key="connection"><summary aria-label="Filter koneksi printer" class="dropdown-trigger"><span data-select-text="">Semua Koneksi</span></summary><div class="dropdown-panel compact" role="listbox"><button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Koneksi</button><button aria-selected="false" class="dropdown-option" data-filter-value="Network" role="option" type="button">Network</button><button aria-selected="false" class="dropdown-option" data-filter-value="USB" role="option" type="button">USB</button><button aria-selected="false" class="dropdown-option" data-filter-value="Bluetooth" role="option" type="button">Bluetooth</button></div></details><button aria-label="Reset filter" class="btn btn-outline btn-icon btn-lg table-reset-filter-btn" data-reset-table-filter="" data-tooltip="Reset filter" title="Reset filter" type="button"><i aria-hidden="true" class="fa-solid fa-rotate-left"></i></button></div></div>
+<div class="table-scroll admin-table-scroll"><table aria-label="Tabel master printer" class="data-table admin-users-table printer-table" data-table-empty="true" data-table-empty-title="Printer tidak ditemukan" data-table-empty-description="Coba ubah kata kunci pencarian, status, atau koneksi yang dipilih." id="printerTable"><thead><tr><th scope="col">Nama Printer</th><th scope="col">Tipe</th><th scope="col">Koneksi</th><th scope="col">Lokasi</th><th scope="col">Default Untuk</th><th scope="col">Status</th><th class="text-right" scope="col">Aksi</th></tr></thead><tbody id="printerTableBody">
+<tr data-connection="Network" data-defaults="Tiket Antrian,Kwitansi" data-ip="192.168.1.20" data-keywords="printer kasir a 80mm network kasir tiket antrian kwitansi aktif epson tm-t82iii x7e12345678 epson opos adk 80 mm 48 ya" data-location="Kasir" data-auto-cut="Ya" data-brand="Epson" data-chars="48" data-driver="Epson OPOS ADK" data-model="TM-T82III" data-paper="80 mm" data-serial="X7E12345678" data-name="Printer Kasir A" data-port="9100" data-status="Aktif" data-type="80mm"><td><div class="admin-user-cell"><span class="avatar">PK</span><div><strong>Printer Kasir A</strong><small>192.168.1.20:9100</small></div></div></td><td><span class="badge badge-info badge-sm">80mm</span></td><td>Network</td><td>Kasir</td><td><span class="printer-default-list">Tiket Antrian, Kwitansi</span></td><td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td><td></td></tr>
+<tr data-connection="USB" data-defaults="Hasil Lab,Label Spesimen" data-ip="" data-keywords="printer lab a4 usb laboratorium hasil lab label spesimen aktif canon lbp6030 laba412901 canon ufr ii a4 - tidak" data-location="Laboratorium" data-auto-cut="Tidak" data-brand="Canon" data-chars="-" data-driver="Canon UFR II" data-model="LBP6030" data-paper="A4" data-serial="LABA412901" data-name="Printer Lab" data-port="" data-status="Aktif" data-type="A4"><td><div class="admin-user-cell"><span class="avatar">PL</span><div><strong>Printer Lab</strong><small>USB001</small></div></div></td><td><span class="badge badge-neutral badge-sm">A4</span></td><td>USB</td><td>Laboratorium</td><td><span class="printer-default-list">Hasil Lab, Label Spesimen</span></td><td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td><td></td></tr>
+<tr data-connection="Network" data-defaults="Etiket Obat" data-ip="192.168.1.31" data-keywords="printer farmasi 58mm network farmasi etiket obat aktif epson tm-t20iii farm583210 epson esc/pos 58 mm 32 ya" data-location="Farmasi" data-auto-cut="Ya" data-brand="Epson" data-chars="32" data-driver="Epson ESC/POS" data-model="TM-T20III" data-paper="58 mm" data-serial="FARM583210" data-name="Printer Farmasi" data-port="9100" data-status="Aktif" data-type="58mm"><td><div class="admin-user-cell"><span class="avatar">PF</span><div><strong>Printer Farmasi</strong><small>192.168.1.31:9100</small></div></div></td><td><span class="badge badge-primary badge-sm">58mm</span></td><td>Network</td><td>Farmasi</td><td><span class="printer-default-list">Etiket Obat</span></td><td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td><td></td></tr>
+<tr data-connection="Bluetooth" data-defaults="Tiket Antrian,Kwitansi" data-ip="" data-keywords="printer igd 80mm bluetooth igd tiket antrian kwitansi aktif rongta rpp02n igdbt88219 generic bluetooth pos 80 mm 48 ya" data-location="IGD" data-auto-cut="Ya" data-brand="Rongta" data-chars="48" data-driver="Generic Bluetooth POS" data-model="RPP02N" data-paper="80 mm" data-serial="IGDBT88219" data-name="Printer IGD" data-port="" data-status="Aktif" data-type="80mm"><td><div class="admin-user-cell"><span class="avatar">PI</span><div><strong>Printer IGD</strong><small>BT-IGD-01</small></div></div></td><td><span class="badge badge-info badge-sm">80mm</span></td><td>Bluetooth</td><td>IGD</td><td><span class="printer-default-list">Tiket Antrian, Kwitansi</span></td><td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td><td></td></tr>
+<tr data-connection="Network" data-defaults="Tiket Antrian" data-ip="192.168.1.99" data-keywords="printer rawat jalan 80mm network rawat jalan tiket antrian nonaktif epson tm-t82iii rj8021920 epson opos adk 80 mm 48 ya" data-location="Rawat Jalan" data-auto-cut="Ya" data-brand="Epson" data-chars="48" data-driver="Epson OPOS ADK" data-model="TM-T82III" data-paper="80 mm" data-serial="RJ8021920" data-name="Printer Rawat Jalan" data-port="9100" data-status="Nonaktif" data-type="80mm"><td><div class="admin-user-cell"><span class="avatar">RJ</span><div><strong>Printer Rawat Jalan</strong><small>192.168.1.99:9100</small></div></div></td><td><span class="badge badge-info badge-sm">80mm</span></td><td>Network</td><td>Rawat Jalan</td><td><span class="printer-default-list">Tiket Antrian</span></td><td><span class="badge badge-danger badge-sm"><span aria-hidden="true" class="badge-dot"></span>Nonaktif</span></td><td></td></tr>
+<tr data-connection="Network" data-defaults="Tiket Antrian,Label Spesimen" data-ip="192.168.1.22" data-keywords="printer pendaftaran 80mm network pendaftaran tiket antrian label spesimen aktif epson tm-t82iii pnd8022041 epson opos adk 80 mm 48 ya" data-location="Pendaftaran" data-auto-cut="Ya" data-brand="Epson" data-chars="48" data-driver="Epson OPOS ADK" data-model="TM-T82III" data-paper="80 mm" data-serial="PND8022041" data-name="Printer Pendaftaran" data-port="9100" data-status="Aktif" data-type="80mm"><td><div class="admin-user-cell"><span class="avatar">PP</span><div><strong>Printer Pendaftaran</strong><small>192.168.1.22:9100</small></div></div></td><td><span class="badge badge-info badge-sm">80mm</span></td><td>Network</td><td>Pendaftaran</td><td><span class="printer-default-list">Tiket Antrian, Label Spesimen</span></td><td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td><td></td></tr>
+</tbody></table></div><div class="table-footer admin-table-footer"><div>Menampilkan <span data-printer-visible="">0</span> dari <span data-printer-total-footer="">0</span> printer</div></div></section>
+</main>
+</div>
+</div>
+<div aria-hidden="true" class="modal-backdrop" data-modal-backdrop="" hidden=""></div>
+<section aria-labelledby="printerModalTitle" aria-modal="true" class="modal" hidden="" id="printerModal" role="dialog"><div class="modal-card is-lg"><div class="modal-head"><div><h2 class="modal-title" id="printerModalTitle">Tambah Printer</h2><p class="modal-subtitle">Lengkapi informasi printer, tipe kertas, koneksi, lokasi unit, dan penggunaan default.</p></div><button aria-label="Tutup jendela printer" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><form id="printerForm" novalidate=""><input id="printerEditingName" type="hidden"/><div class="form-error-summary" data-printer-error-summary="" hidden="">Mohon lengkapi atau perbaiki data yang ditandai sebelum menyimpan.</div><section class="modal-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-print"></i></span><div><h3>Informasi Printer</h3><p>Nama printer harus mudah dikenali berdasarkan lokasi dan fungsi penggunaannya.</p></div></div><div class="modal-form-grid"><div class="field span-2"><label for="printerName">Nama Printer <span class="required">*</span></label><input class="input" id="printerName" placeholder="Contoh: Printer Kasir A" required="" type="text"/><small class="field-error" data-printer-error-for="printerName" hidden="" id="printerNameError"></small></div><div class="field"><label>Tipe Printer <span class="required">*</span></label><div aria-label="Tipe printer" class="flow-radio-group" role="radiogroup"><label class="radio"><input name="printerType" type="radio" value="58mm"/>58 mm</label><label class="radio"><input checked="" name="printerType" type="radio" value="80mm"/>80 mm</label><label class="radio"><input name="printerType" type="radio" value="A4"/>A4</label></div></div><div class="field"><label>Konfigurasi Koneksi <span class="required">*</span></label><div aria-label="Koneksi printer" class="flow-radio-group" role="radiogroup"><label class="radio"><input checked="" name="printerConnection" type="radio" value="Network"/>Network</label><label class="radio"><input name="printerConnection" type="radio" value="USB"/>USB</label><label class="radio"><input name="printerConnection" type="radio" value="Bluetooth"/>Bluetooth</label></div></div><div class="field" data-network-field=""><label for="printerIp">IP Address <span class="required">*</span></label><input class="input" id="printerIp" placeholder="192.168.1.20" type="text"/><small class="field-error" data-printer-error-for="printerIp" hidden="" id="printerIpError"></small></div><div class="field" data-network-field=""><label for="printerPort">Port <span class="required">*</span></label><input class="input" id="printerPort" inputmode="numeric" placeholder="9100" type="text"/><small class="field-error" data-printer-error-for="printerPort" hidden="" id="printerPortError"></small></div><div class="field"><label for="printerLocation">Lokasi Unit</label><select class="input" id="printerLocation"><option>Pendaftaran</option><option>Kasir</option><option>IGD</option><option>Laboratorium</option><option>Farmasi</option><option>Rawat Jalan</option></select></div><div class="field"><label for="printerStatus">Status</label><select class="input" id="printerStatus"><option>Aktif</option><option>Nonaktif</option></select></div><div class="field span-2"><label>Default Digunakan Untuk</label><div class="checkbox-stack is-two-col"><label class="checkbox-row check"><input checked="" name="printerDefault" type="checkbox" value="Tiket Antrian"/><span>Tiket Antrian</span></label><label class="checkbox-row check"><input checked="" name="printerDefault" type="checkbox" value="Etiket Obat"/><span>Etiket Obat</span></label><label class="checkbox-row check"><input checked="" name="printerDefault" type="checkbox" value="Kwitansi"/><span>Kwitansi</span></label><label class="checkbox-row check"><input name="printerDefault" type="checkbox" value="Hasil Lab"/><span>Hasil Lab</span></label><label class="checkbox-row check"><input name="printerDefault" type="checkbox" value="Label Spesimen"/><span>Label Spesimen</span></label></div></div></div></section><section class="modal-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-sliders"></i></span><div><h3>Informasi Tambahan</h3><p>Lengkapi data perangkat, driver, dan konfigurasi cetak seperti yang tampil di detail printer.</p></div></div><div class="modal-form-grid"><div class="field"><label for="printerBrand">Merek</label><input class="input" id="printerBrand" placeholder="Contoh: Epson" type="text"/></div><div class="field"><label for="printerModel">Model</label><input class="input" id="printerModel" placeholder="Contoh: TM-T82III" type="text"/></div><div class="field"><label for="printerSerial">Nomor Seri</label><input class="input" id="printerSerial" placeholder="Contoh: X7E12345678" type="text"/></div><div class="field"><label for="printerDriver">Driver</label><input class="input" id="printerDriver" placeholder="Contoh: Epson OPOS ADK" type="text"/></div><div class="field"><label for="printerPaperWidth">Paper Width</label><select class="input" id="printerPaperWidth"><option>58 mm</option><option selected="">80 mm</option><option>A4</option></select></div><div class="field"><label for="printerChars">Karakter per Baris</label><input class="input" id="printerChars" inputmode="numeric" placeholder="48" type="text"/><small class="field-error" data-printer-error-for="printerChars" hidden="" id="printerCharsError"></small></div><div class="field"><label for="printerAutoCut">Auto Cut</label><select class="input" id="printerAutoCut"><option>Ya</option><option>Tidak</option></select></div></div></section></form></div><div class="modal-actions"><button class="btn btn-outline btn-lg" data-close-modal="" type="button">Batal</button><button class="btn btn-primary btn-lg" form="printerForm" type="submit"><i aria-hidden="true" class="fa-regular fa-floppy-disk"></i>Simpan</button></div></div></section>
+
+<section aria-labelledby="printerDetailTitle" aria-modal="true" class="modal" hidden="" id="printerDetailModal" role="dialog"><div class="modal-card is-lg printer-detail-modal-card"><div class="modal-head"><div><h2 class="modal-title" id="printerDetailTitle">Detail Printer</h2></div><button aria-label="Tutup detail printer" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button></div><div class="modal-body printer-detail-body"><section class="modal-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-circle-info"></i></span><div><h3>Informasi Umum</h3></div></div><div class="modal-info-grid"><dl class="modal-info-list"><div><dt>Nama Printer</dt><dd data-printer-detail-name>-</dd></div><div><dt>Tipe Printer</dt><dd data-printer-detail-type>-</dd></div><div><dt>Koneksi</dt><dd data-printer-detail-connection>-</dd></div><div><dt>IP Address</dt><dd data-printer-detail-ip>-</dd></div><div><dt>Port</dt><dd data-printer-detail-port>-</dd></div></dl><dl class="modal-info-list"><div><dt>Unit / Lokasi</dt><dd data-printer-detail-location>-</dd></div><div><dt>Default Untuk</dt><dd data-printer-detail-defaults>-</dd></div><div><dt>Status</dt><dd data-printer-detail-status>-</dd></div><div><dt>Dibuat Oleh</dt><dd>admin</dd></div><div><dt>Dibuat Pada</dt><dd>20/05/2024 09:12:33</dd></div><div><dt>Diubah Pada</dt><dd data-printer-detail-updated>31/05/2024 14:35:21</dd></div></dl></div></section><section class="modal-section printer-detail-test-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-plug-circle-check"></i></span><div><h3>Pengujian Koneksi</h3><p>Lakukan tes koneksi untuk memastikan printer dapat diakses.</p></div></div><div class="printer-detail-action-row"><button class="btn btn-outline btn-lg printer-detail-action-button" data-printer-detail-test="" type="button"><i aria-hidden="true" class="fa-solid fa-arrows-rotate"></i>Tes Koneksi</button><div class="printer-detail-status-card" data-printer-detail-connection-state><span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><div><strong>Terhubung</strong><p>Printer merespons pada target koneksi.</p></div><small data-printer-detail-last-test>Terakhir diuji: 31/05/2024 14:35:21</small></div></div></section><section class="modal-section printer-detail-print-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-print"></i></span><div><h3>Cetak Halaman Tes</h3><p>Kirim halaman tes untuk memastikan printer dapat mencetak dengan benar.</p></div></div><div class="printer-detail-action-row printer-detail-print-row"><button class="btn btn-outline btn-lg printer-detail-action-button" data-printer-detail-print="" type="button"><i aria-hidden="true" class="fa-solid fa-print"></i>Cetak Halaman Tes</button><div class="printer-detail-status-card" data-printer-detail-print-state><span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><div><strong>Berhasil Dicetak</strong><p>Halaman tes berhasil dikirim ke printer.</p><p data-printer-detail-last-print>Terakhir dicetak: 31/05/2024 14:36:02</p></div></div><div class="printer-receipt-preview" aria-label="Preview halaman tes"><div class="receipt-brand"><i aria-hidden="true" class="fa-solid fa-hospital"></i><span>SIMRS</span></div><h4>HALAMAN TES PRINTER</h4><dl><div><dt>Nama Printer</dt><dd data-receipt-printer-name>-</dd></div><div><dt>Tipe</dt><dd data-receipt-printer-type>-</dd></div><div><dt>Koneksi</dt><dd data-receipt-printer-connection>-</dd></div><div><dt>IP Address</dt><dd data-receipt-printer-ip>-</dd></div></dl><span class="receipt-barcode" aria-hidden="true"></span></div></div></section><section class="modal-section"><div class="modal-section-head"><span class="modal-section-icon"><i aria-hidden="true" class="fa-solid fa-sliders"></i></span><div><h3>Informasi Tambahan</h3></div></div><div class="modal-info-grid"><dl class="modal-info-list"><div><dt>Merek</dt><dd data-printer-detail-brand>-</dd></div><div><dt>Model</dt><dd data-printer-detail-model>-</dd></div><div><dt>Nomor Seri</dt><dd data-printer-detail-serial>-</dd></div></dl><dl class="modal-info-list"><div><dt>Driver</dt><dd data-printer-detail-driver>-</dd></div><div><dt>Paper Width</dt><dd data-printer-detail-paper>80 mm</dd></div><div><dt>Karakter per Baris</dt><dd data-printer-detail-chars>48</dd></div><div><dt>Auto Cut</dt><dd data-printer-detail-auto-cut>-</dd></div></dl></div></section></div><div class="modal-actions modal-actions-split"><button class="btn btn-danger-soft btn-lg" data-printer-detail-toggle-status="" type="button"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i><span data-printer-detail-toggle-label="">Nonaktifkan Printer</span></button><div class="modal-actions-right"><button class="btn btn-outline btn-lg" data-close-modal="" type="button">Tutup</button><button class="btn btn-primary btn-lg" data-printer-detail-save="" type="button">Simpan Perubahan</button></div></div></div></section>
+<section aria-labelledby="printerConnectionTitle" aria-modal="true" class="modal" hidden="" id="printerConnectionModal" role="dialog"><div class="modal-card is-sm"><div class="modal-head"><div><h2 class="modal-title" id="printerConnectionTitle">Tes Koneksi Printer</h2><p class="modal-subtitle" data-test-subtitle="">System ping IP:Port printer.</p></div><button aria-label="Tutup tes koneksi" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="printer-test-state" data-printer-test-state=""><span class="printer-test-icon"><i aria-hidden="true" class="fa-solid fa-circle-notch fa-spin"></i></span><h3>Mengetes koneksi...</h3><p>Mohon tunggu sebentar.</p></div></div><div class="modal-actions"><button class="btn btn-outline btn-lg" data-close-modal="" type="button">Tutup</button><button class="btn btn-primary btn-lg" id="retryPrinterTestButton" type="button"><i aria-hidden="true" class="fa-solid fa-rotate-right"></i>Test Ulang</button></div></div></section>
+<section aria-labelledby="printTestTitle" aria-modal="true" class="modal" hidden="" id="printTestModal" role="dialog"><div class="modal-card is-md"><div class="modal-head"><div><h2 class="modal-title" id="printTestTitle">Cetak Halaman Tes</h2><p class="modal-subtitle">Preview konten test print yang dikirim ke printer.</p></div><button aria-label="Tutup cetak test" class="btn btn-sm btn-ghost btn-icon" data-close-modal="" type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="alert alert-success" data-print-success=""><span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-check"></i></span><div class="alert-body"><strong>Halaman tes berhasil dikirim.</strong><p>Jika kertas tidak keluar, cek koneksi dan status printer.</p></div></div><pre class="print-test-preview" data-print-preview=""></pre></div><div class="modal-actions"><button class="btn btn-primary btn-lg" data-close-modal="" type="button">OK</button></div></div></section>
+<script src="../../js/table-search.js"></script>
+<script>
+(function () {
+  const backdrop = document.querySelector('[data-modal-backdrop]');
+  const modals = Array.from(document.querySelectorAll('.modal'));
+  const tableBody = document.getElementById('printerTableBody');
+  const filters = { status: 'all', connection: 'all' };
+  let currentTestRow = null;
+  let printerTestTimer = null;
+  let printerDetailRow = null;
+  let printerDetailConnectionTimer = null;
+  let printerDetailPrintTimer = null;
+
+  function initials(name) { return String(name || 'PR').split(/\s+/).map((part) => part[0]).join('').slice(0,2).toUpperCase(); }
+  function closeRowDropdown(button) { button.closest('details.ds-dropdown')?.removeAttribute('open'); }
+  function openModal(id) { const modal = document.getElementById(id); if (!modal) return; backdrop.hidden = false; modal.hidden = false; modal.querySelector('input, button, select')?.focus(); }
+  function closeModals() {
+    if (printerTestTimer) {
+      window.clearTimeout(printerTestTimer);
+      printerTestTimer = null;
+      setPrinterRetryLoading(false);
+    }
+    if (printerDetailConnectionTimer) {
+      window.clearTimeout(printerDetailConnectionTimer);
+      printerDetailConnectionTimer = null;
+    }
+    if (printerDetailPrintTimer) {
+      window.clearTimeout(printerDetailPrintTimer);
+      printerDetailPrintTimer = null;
+    }
+    modals.forEach((modal) => { modal.hidden = true; });
+    backdrop.hidden = true;
+  }
+  document.querySelectorAll('[data-open-modal]').forEach((button) => button.addEventListener('click', () => { resetPrinterForm(); openModal(button.dataset.openModal); }));
+  document.querySelectorAll('[data-close-modal]').forEach((button) => button.addEventListener('click', closeModals));
+  backdrop?.addEventListener('click', closeModals);
+
+  function statusBadge(status) { return status === 'Aktif' ? '<span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span>' : '<span class="badge badge-danger badge-sm"><span aria-hidden="true" class="badge-dot"></span>Nonaktif</span>'; }
+  function typeBadge(type) { const cls = type === '58mm' ? 'badge-primary' : (type === 'A4' ? 'badge-neutral' : 'badge-info'); return `<span class="badge ${cls} badge-sm">${type}</span>`; }
+  function actionMenu(name, status) {
+    const toggleText = status === 'Aktif' ? '<i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan' : '<i aria-hidden="true" class="fa-solid fa-circle-check"></i> Aktifkan';
+    const danger = status === 'Aktif' ? ' is-danger danger-option' : '';
+    return `<div class="action-group admin-action-group"><details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions"><summary aria-label="Buka menu aksi ${name}" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary><div class="dropdown-panel compact row-action-panel" role="menu"><button class="dropdown-option" data-row-detail="printer" data-row-label="${name}" role="menuitem" type="button"><span class="option-meta"><strong>Lihat Detail</strong></span></button><button class="dropdown-option" data-edit-printer role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah</strong></span></button><button class="dropdown-option" data-test-printer role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-plug-circle-check"></i> Tes Koneksi</strong></span></button><button class="dropdown-option" data-print-test role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-print"></i> Cetak Test</strong></span></button><button class="dropdown-option${danger}" data-toggle-printer-status role="menuitem" type="button"><span class="option-meta"><strong>${toggleText}</strong></span></button></div></details></div>`;
+  }
+  function connectionHint(data) { return data.connection === 'Network' ? `${data.ip}:${data.port}` : (data.connection === 'USB' ? 'USB001' : 'BT-DEVICE'); }
+  function rowHtml(data) {
+    const hardware = printerHardwareDefaults(data.type);
+    const paper = data.paper || hardware.paper;
+    const chars = data.chars || hardware.chars;
+    const keywords = `${data.name} ${data.type} ${data.connection} ${data.location} ${data.defaults.join(' ')} ${data.status} ${data.brand || ''} ${data.model || ''} ${data.serial || ''} ${data.driver || ''} ${paper} ${chars} ${data.autoCut || ''}`.toLowerCase();
+    return `<tr data-name="${data.name}" data-type="${data.type}" data-connection="${data.connection}" data-location="${data.location}" data-status="${data.status}" data-ip="${data.ip || ''}" data-port="${data.port || ''}" data-defaults="${data.defaults.join(',')}" data-brand="${data.brand || '-'}" data-model="${data.model || '-'}" data-serial="${data.serial || '-'}" data-driver="${data.driver || '-'}" data-paper="${paper}" data-chars="${chars}" data-auto-cut="${data.autoCut || 'Ya'}" data-keywords="${keywords}"><td><div class="admin-user-cell"><span class="avatar">${initials(data.name)}</span><div><strong>${data.name}</strong><small>${connectionHint(data)}</small></div></div></td><td>${typeBadge(data.type)}</td><td>${data.connection}</td><td>${data.location}</td><td><span class="printer-default-list">${data.defaults.join(', ') || '-'}</span></td><td>${statusBadge(data.status)}</td><td>${actionMenu(data.name, data.status)}</td></tr>`;
+  }
+  function hydrateActions() { Array.from(tableBody.querySelectorAll('tr:not([data-table-empty-row])')).forEach((row) => { const actionCell = row.lastElementChild; if (actionCell && !actionCell.querySelector('[data-toggle-printer-status]')) actionCell.innerHTML = actionMenu(row.dataset.name, row.dataset.status); }); }
+  hydrateActions();
+
+  function updateStats() {
+    const rows = Array.from(tableBody.querySelectorAll('tr:not([data-table-empty-row])'));
+    const visible = rows.filter((row) => !row.hidden);
+    document.querySelector('[data-printer-total]').textContent = String(rows.length);
+    document.querySelector('[data-printer-active]').textContent = String(rows.filter((row) => row.dataset.status === 'Aktif').length);
+    document.querySelector('[data-printer-network]').textContent = String(rows.filter((row) => row.dataset.connection === 'Network').length);
+    document.querySelector('[data-printer-visible]').textContent = String(visible.length);
+    document.querySelector('[data-printer-total-footer]').textContent = String(rows.length);
+  }
+  function applyFilters() {
+    const q = window.normalizeTableSearchText(document.getElementById('printerSearch')?.value || '');
+    Array.from(tableBody.querySelectorAll('tr:not([data-table-empty-row])')).forEach((row) => {
+      const okSearch = !q || window.getTableRowSearchText(row).includes(q);
+      const okStatus = filters.status === 'all' || row.dataset.status === filters.status;
+      const okConnection = filters.connection === 'all' || row.dataset.connection === filters.connection;
+      row.hidden = !(okSearch && okStatus && okConnection);
+    });
+    updateStats();
+  }
+  document.getElementById('printerSearch')?.addEventListener('input', applyFilters);
+  document.querySelectorAll('[data-component="printer-filter"]').forEach((dropdown) => {
+    dropdown.addEventListener('toggle', () => { if (dropdown.open) document.querySelectorAll('details.ds-dropdown[open]').forEach((item) => { if (item !== dropdown) item.removeAttribute('open'); }); });
+    dropdown.querySelectorAll('.dropdown-option').forEach((option) => option.addEventListener('click', () => {
+      filters[dropdown.dataset.filterKey] = option.dataset.filterValue;
+      dropdown.querySelector('[data-select-text]').textContent = option.textContent.trim();
+      dropdown.querySelectorAll('.dropdown-option').forEach((item) => { const active = item === option; item.classList.toggle('selected', active); item.classList.toggle('active', active); item.setAttribute('aria-selected', String(active)); });
+      dropdown.removeAttribute('open');
+      applyFilters();
+    }));
+  });
+
+  function selectedRadio(name) { return document.querySelector(`input[name="${name}"]:checked`)?.value || ''; }
+  function setRadio(name, value) { const input = document.querySelector(`input[name="${name}"][value="${CSS.escape(value)}"]`); if (input) input.checked = true; }
+  function selectedDefaults() { return Array.from(document.querySelectorAll('input[name="printerDefault"]:checked')).map((item) => item.value); }
+  function setDefaults(values) { document.querySelectorAll('input[name="printerDefault"]').forEach((item) => { item.checked = values.includes(item.value); }); }
+  function setPrinterFieldError(control, message) {
+    if (!control) return;
+    const field = control.closest('.field');
+    const hasError = Boolean(message);
+    field?.classList.toggle('is-error', hasError);
+    control.classList.toggle('is-error', hasError);
+    control.toggleAttribute('aria-invalid', hasError);
+    if (hasError) {
+      const error = field?.querySelector(`[data-printer-error-for="${CSS.escape(control.id)}"]`);
+      if (error?.id) {
+        const describedBy = new Set((control.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean));
+        describedBy.add(error.id);
+        control.setAttribute('aria-describedby', Array.from(describedBy).join(' '));
+      }
+    }
+  }
+  function resetErrors() {
+    document.querySelectorAll('#printerForm .field-error').forEach((item) => { item.hidden = true; item.textContent = ''; });
+    document.querySelectorAll('#printerForm .field.is-error').forEach((field) => field.classList.remove('is-error'));
+    document.querySelectorAll('#printerForm .input.is-error, #printerForm [aria-invalid="true"]').forEach((control) => {
+      control.classList.remove('is-error');
+      control.removeAttribute('aria-invalid');
+    });
+    const summary = document.querySelector('[data-printer-error-summary]');
+    if (summary) summary.hidden = true;
+  }
+  function showError(id, message) {
+    const node = document.getElementById(id);
+    if (!node) return;
+    node.textContent = message;
+    node.hidden = false;
+    const controlId = node.dataset.printerErrorFor;
+    setPrinterFieldError(controlId ? document.getElementById(controlId) : null, message);
+    const summary = document.querySelector('[data-printer-error-summary]');
+    if (summary) summary.hidden = false;
+  }
+  function clearPrinterErrorFor(control) {
+    const error = control?.id ? document.querySelector(`[data-printer-error-for="${CSS.escape(control.id)}"]`) : null;
+    if (error) { error.hidden = true; error.textContent = ''; }
+    setPrinterFieldError(control, '');
+    const hasVisibleError = Array.from(document.querySelectorAll('#printerForm .field-error')).some((item) => !item.hidden);
+    const summary = document.querySelector('[data-printer-error-summary]');
+    if (summary) summary.hidden = !hasVisibleError;
+  }
+  function focusFirstPrinterError() {
+    const firstError = document.querySelector('#printerForm .field.is-error .input, #printerForm .input.is-error');
+    firstError?.focus?.({ preventScroll: true });
+    firstError?.scrollIntoView?.({ block: 'center', behavior: 'smooth' });
+  }
+  function updateNetworkFields() {
+    const isNetwork = selectedRadio('printerConnection') === 'Network';
+    document.querySelectorAll('[data-network-field]').forEach((field) => {
+      field.hidden = !isNetwork;
+      if (!isNetwork) field.querySelectorAll('.input').forEach(clearPrinterErrorFor);
+    });
+  }
+  document.querySelectorAll('input[name="printerConnection"]').forEach((input) => input.addEventListener('change', updateNetworkFields));
+  ['printerName', 'printerIp', 'printerPort', 'printerChars'].forEach((id) => {
+    const control = document.getElementById(id);
+    control?.addEventListener('input', () => clearPrinterErrorFor(control));
+    control?.addEventListener('change', () => clearPrinterErrorFor(control));
+  });
+  function printerHardwareDefaults(type = selectedRadio('printerType')) {
+    if (type === '58mm') return { paper: '58 mm', chars: '32' };
+    if (type === 'A4') return { paper: 'A4', chars: '-' };
+    return { paper: '80 mm', chars: '48' };
+  }
+  function applyPrinterTypeDefaults() {
+    const defaults = printerHardwareDefaults();
+    const paper = document.getElementById('printerPaperWidth');
+    const chars = document.getElementById('printerChars');
+    if (paper) paper.value = defaults.paper;
+    if (chars) chars.value = defaults.chars;
+  }
+  document.querySelectorAll('input[name="printerType"]').forEach((input) => input.addEventListener('change', applyPrinterTypeDefaults));
+  function resetPrinterForm() { document.getElementById('printerModalTitle').textContent = 'Tambah Printer'; document.getElementById('printerForm').reset(); document.getElementById('printerEditingName').value = ''; setRadio('printerType','80mm'); setRadio('printerConnection','Network'); setDefaults(['Tiket Antrian','Etiket Obat','Kwitansi']); document.getElementById('printerStatus').value = 'Aktif'; document.getElementById('printerBrand').value = 'Epson'; document.getElementById('printerModel').value = 'TM-T82III'; document.getElementById('printerSerial').value = ''; document.getElementById('printerDriver').value = 'Epson OPOS ADK'; document.getElementById('printerPaperWidth').value = '80 mm'; document.getElementById('printerChars').value = '48'; document.getElementById('printerAutoCut').value = 'Ya'; resetErrors(); updateNetworkFields(); }
+  function fillPrinterForm(row) { document.getElementById('printerModalTitle').textContent = 'Ubah Printer'; document.getElementById('printerEditingName').value = row.dataset.name; document.getElementById('printerName').value = row.dataset.name; setRadio('printerType', row.dataset.type); setRadio('printerConnection', row.dataset.connection); document.getElementById('printerIp').value = row.dataset.ip || ''; document.getElementById('printerPort').value = row.dataset.port || ''; document.getElementById('printerLocation').value = row.dataset.location; document.getElementById('printerStatus').value = row.dataset.status; document.getElementById('printerBrand').value = row.dataset.brand || 'Epson'; document.getElementById('printerModel').value = row.dataset.model || 'TM-T82III'; document.getElementById('printerSerial').value = row.dataset.serial || ''; document.getElementById('printerDriver').value = row.dataset.driver || 'Epson OPOS ADK'; document.getElementById('printerPaperWidth').value = row.dataset.paper || printerHardwareDefaults(row.dataset.type).paper; document.getElementById('printerChars').value = row.dataset.chars || printerHardwareDefaults(row.dataset.type).chars; document.getElementById('printerAutoCut').value = row.dataset.autoCut || 'Ya'; setDefaults((row.dataset.defaults || '').split(',').filter(Boolean)); resetErrors(); updateNetworkFields(); }
+  function formData() { return { name: document.getElementById('printerName').value.trim(), type: selectedRadio('printerType'), connection: selectedRadio('printerConnection'), ip: document.getElementById('printerIp').value.trim(), port: document.getElementById('printerPort').value.trim(), location: document.getElementById('printerLocation').value, status: document.getElementById('printerStatus').value, defaults: selectedDefaults(), brand: document.getElementById('printerBrand').value.trim(), model: document.getElementById('printerModel').value.trim(), serial: document.getElementById('printerSerial').value.trim(), driver: document.getElementById('printerDriver').value.trim(), paper: document.getElementById('printerPaperWidth').value, chars: document.getElementById('printerChars').value.trim(), autoCut: document.getElementById('printerAutoCut').value }; }
+  function validatePrinter(data, editingName) {
+    resetErrors(); let valid = true;
+    if (!data.name) { showError('printerNameError','Nama Printer wajib diisi.'); valid = false; }
+    const duplicate = Array.from(tableBody.querySelectorAll('tr:not([data-table-empty-row])')).some((row) => row.dataset.name.toLowerCase() === data.name.toLowerCase() && row.dataset.name !== editingName);
+    if (duplicate) { showError('printerNameError','Nama Printer sudah digunakan.'); valid = false; }
+    if (data.connection === 'Network') {
+      if (!/^((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.|$)){4}$/.test(data.ip)) { showError('printerIpError','Format IP Address belum valid.'); valid = false; }
+      const port = Number(data.port); if (!Number.isInteger(port) || port < 1 || port > 65535) { showError('printerPortError','Port harus angka 1 sampai 65535.'); valid = false; }
+    } else { data.ip = ''; data.port = ''; }
+    if (data.chars && data.chars !== '-' && (!Number.isInteger(Number(data.chars)) || Number(data.chars) < 1)) { showError('printerCharsError','Karakter per baris harus angka atau isi dengan tanda - untuk A4.'); valid = false; }
+    return valid;
+  }
+  document.getElementById('printerForm')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const editingName = document.getElementById('printerEditingName').value;
+    const data = formData();
+    if (!validatePrinter(data, editingName)) { focusFirstPrinterError(); return; }
+    const existing = Array.from(tableBody.querySelectorAll('tr:not([data-table-empty-row])')).find((row) => row.dataset.name === editingName);
+    if (existing) existing.outerHTML = rowHtml(data); else tableBody.insertAdjacentHTML('afterbegin', rowHtml(data));
+    window.AlertToast?.success(editingName ? 'Data printer diperbarui' : 'Data printer disimpan', `${data.name} sudah tersimpan di master printer.`);
+    closeModals(); applyFilters();
+  });
+
+  function setRowStatus(row, status) {
+    row.dataset.status = status;
+    row.dataset.keywords = `${row.dataset.name} ${row.dataset.type} ${row.dataset.connection} ${row.dataset.location} ${row.dataset.defaults} ${status} ${row.dataset.brand || ''} ${row.dataset.model || ''} ${row.dataset.serial || ''} ${row.dataset.driver || ''} ${row.dataset.paper || ''} ${row.dataset.chars || ''} ${row.dataset.autoCut || ''}`.toLowerCase();
+    row.children[5].innerHTML = statusBadge(status);
+    row.children[6].innerHTML = actionMenu(row.dataset.name, status);
+    applyFilters();
+  }
+  function printerConnectionTarget(row) {
+    if (!row) return 'Target printer tidak tersedia.';
+    if (row.dataset.connection === 'Network') return `Ping ${row.dataset.ip}:${row.dataset.port}`;
+    return `Cek koneksi ${row.dataset.connection}`;
+  }
+
+  function setPrinterRetryLoading(isLoading) {
+    const retryButton = document.getElementById('retryPrinterTestButton');
+    if (!retryButton) return;
+    if (isLoading) {
+      if (!retryButton.dataset.originalHtml) retryButton.dataset.originalHtml = retryButton.innerHTML;
+      retryButton.disabled = true;
+      retryButton.classList.add('is-loading');
+      retryButton.innerHTML = '<span class="auth-spinner" aria-hidden="true"></span><span class="btn-label">Menguji...</span>';
+      return;
+    }
+    retryButton.disabled = false;
+    retryButton.classList.remove('is-loading');
+    if (retryButton.dataset.originalHtml) retryButton.innerHTML = retryButton.dataset.originalHtml;
+    delete retryButton.dataset.originalHtml;
+  }
+
+  function renderPrinterTestLoading(row) {
+    const modal = document.getElementById('printerConnectionModal');
+    const state = modal?.querySelector('[data-printer-test-state]');
+    if (!modal || !state || !row) return;
+    modal.querySelector('[data-test-subtitle]').textContent = printerConnectionTarget(row);
+    state.className = 'printer-test-state is-loading';
+    state.innerHTML = `<span class="printer-test-icon"><i aria-hidden="true" class="fa-solid fa-circle-notch fa-spin"></i></span><h3>Memproses tes koneksi...</h3><p>Menunggu respons dari <strong>${row.dataset.name}</strong>.<br>${printerConnectionTarget(row)}</p>`;
+    setPrinterRetryLoading(true);
+  }
+
+  function renderPrinterTestResult(row) {
+    const modal = document.getElementById('printerConnectionModal');
+    const state = modal?.querySelector('[data-printer-test-state]');
+    if (!modal || !state || !row) return;
+    const name = row.dataset.name;
+    const isSuccess = row.dataset.status === 'Aktif' && (row.dataset.connection !== 'Network' || row.dataset.ip !== '192.168.1.99');
+    const successDetail = row.dataset.connection === 'Network'
+      ? `IP: ${row.dataset.ip || '-'}<br>Port: ${row.dataset.port || '-'}<br>Response Time: 8ms`
+      : `Koneksi: ${row.dataset.connection}<br>Response Time: 1.2s`;
+    state.className = `printer-test-state ${isSuccess ? 'is-success' : 'is-failed'}`;
+    state.innerHTML = isSuccess
+      ? `<span class="printer-test-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><h3>Printer Terhubung</h3><p><strong>${name}</strong><br>${successDetail}</p>`
+      : `<span class="printer-test-icon"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i></span><h3>Tidak Merespons</h3><p><strong>${name}</strong><br>Pastikan printer aktif dan jaringan tersedia.</p>`;
+    setPrinterRetryLoading(false);
+    if (!modal.hidden) {
+      if (isSuccess) window.AlertToast?.success('Koneksi printer berhasil', `${name} berhasil merespons tes koneksi.`);
+      else window.AlertToast?.danger('Koneksi printer gagal', `${name} tidak merespons tes koneksi.`);
+    }
+  }
+
+
+  function printerTypeLabel(type) {
+    if (type === '80mm') return '80 mm (Thermal)';
+    if (type === '58mm') return '58 mm (Thermal)';
+    if (type === 'A4') return 'A4 / Laser Inkjet';
+    return type || '-';
+  }
+  function printerIpLabel(row) {
+    if (!row) return '-';
+    if (row.dataset.connection === 'Network') return row.dataset.ip || '-';
+    if (row.dataset.connection === 'USB') return 'USB001';
+    if (row.dataset.connection === 'Bluetooth') return 'BT-DEVICE';
+    return '-';
+  }
+  function printerPortLabel(row) {
+    if (!row) return '-';
+    return row.dataset.connection === 'Network' ? (row.dataset.port || '-') : '-';
+  }
+  function printerDetailSuccess(row) {
+    return row?.dataset.status === 'Aktif' && (row.dataset.connection !== 'Network' || row.dataset.ip !== '192.168.1.99');
+  }
+  function setText(selector, value, scope = document) {
+    const node = scope.querySelector(selector);
+    if (node) node.textContent = value;
+  }
+  function renderPrinterDetailConnectionState(row, state = 'idle') {
+    const modal = document.getElementById('printerDetailModal');
+    const card = modal?.querySelector('[data-printer-detail-connection-state]');
+    if (!card || !row) return;
+    const target = row.dataset.connection === 'Network' ? `${row.dataset.ip || '-'}:${row.dataset.port || '-'}` : connectionHint({ connection: row.dataset.connection });
+    if (state === 'loading') {
+      card.className = 'printer-detail-status-card is-loading';
+      card.innerHTML = `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-notch fa-spin"></i></span><div><strong>Menguji koneksi...</strong><p>Menunggu respons dari ${target}.</p></div><small>Mohon tunggu sebentar</small>`;
+      return;
+    }
+    const success = printerDetailSuccess(row);
+    card.className = `printer-detail-status-card ${success ? 'is-success' : 'is-failed'}`;
+    card.innerHTML = success
+      ? `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><div><strong>Terhubung</strong><p>Printer merespons pada ${target}</p></div><small data-printer-detail-last-test>Terakhir diuji: 31/05/2024 14:35:21</small>`
+      : `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i></span><div><strong>Tidak Merespons</strong><p>Pastikan printer aktif dan jaringan tersedia.</p></div><small data-printer-detail-last-test>Terakhir diuji: 31/05/2024 14:35:21</small>`;
+  }
+  function renderPrinterDetailPrintState(row, state = 'idle') {
+    const modal = document.getElementById('printerDetailModal');
+    const card = modal?.querySelector('[data-printer-detail-print-state]');
+    if (!card || !row) return;
+    if (state === 'loading') {
+      card.className = 'printer-detail-status-card is-loading';
+      card.innerHTML = `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-notch fa-spin"></i></span><div><strong>Mengirim halaman tes...</strong><p>Perintah cetak sedang diproses.</p></div>`;
+      return;
+    }
+    const success = row.dataset.status === 'Aktif';
+    card.className = `printer-detail-status-card ${success ? 'is-success' : 'is-failed'}`;
+    card.innerHTML = success
+      ? `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-check"></i></span><div><strong>Berhasil Dicetak</strong><p>Halaman tes berhasil dikirim ke printer.</p><p data-printer-detail-last-print>Terakhir dicetak: 31/05/2024 14:36:02</p></div>`
+      : `<span class="printer-detail-status-icon"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i></span><div><strong>Gagal Dicetak</strong><p>Printer sedang nonaktif atau tidak merespons.</p></div>`;
+  }
+  function updatePrinterDetailStatusButton(status) {
+    const button = document.querySelector('[data-printer-detail-toggle-status]');
+    if (!button) return;
+    const isActive = status === 'Aktif';
+    button.className = `btn ${isActive ? 'btn-danger-soft' : 'btn-primary'} btn-lg`;
+    const icon = button.querySelector('i');
+    if (icon) icon.className = `fa-solid ${isActive ? 'fa-circle-xmark' : 'fa-circle-check'}`;
+    const label = button.querySelector('[data-printer-detail-toggle-label]');
+    if (label) label.textContent = isActive ? 'Nonaktifkan Printer' : 'Aktifkan Printer';
+  }
+
+  function openPrinterDetail(row) {
+    if (!row) return;
+    printerDetailRow = row;
+    const modal = document.getElementById('printerDetailModal');
+    if (!modal) return;
+    const type = row.dataset.type || '-';
+    const hardware = printerHardwareDefaults(type);
+    const paperWidth = row.dataset.paper || hardware.paper;
+    const chars = row.dataset.chars || hardware.chars;
+    setText('[data-printer-detail-name]', row.dataset.name || '-', modal);
+    setText('[data-printer-detail-type]', printerTypeLabel(type), modal);
+    setText('[data-printer-detail-connection]', row.dataset.connection || '-', modal);
+    setText('[data-printer-detail-ip]', printerIpLabel(row), modal);
+    setText('[data-printer-detail-port]', printerPortLabel(row), modal);
+    setText('[data-printer-detail-location]', row.dataset.location || '-', modal);
+    setText('[data-printer-detail-defaults]', (row.dataset.defaults || '-').replaceAll(',', ', '), modal);
+    const statusNode = modal.querySelector('[data-printer-detail-status]');
+    if (statusNode) statusNode.innerHTML = statusBadge(row.dataset.status || 'Nonaktif');
+    setText('[data-printer-detail-brand]', row.dataset.brand || '-', modal);
+    setText('[data-printer-detail-model]', row.dataset.model || '-', modal);
+    setText('[data-printer-detail-serial]', row.dataset.serial || '-', modal);
+    setText('[data-printer-detail-driver]', row.dataset.driver || '-', modal);
+    setText('[data-printer-detail-paper]', paperWidth, modal);
+    setText('[data-printer-detail-chars]', chars, modal);
+    setText('[data-printer-detail-auto-cut]', row.dataset.autoCut || 'Ya', modal);
+    setText('[data-receipt-printer-name]', row.dataset.name || '-', modal);
+    setText('[data-receipt-printer-type]', type || '-', modal);
+    setText('[data-receipt-printer-connection]', row.dataset.connection || '-', modal);
+    setText('[data-receipt-printer-ip]', printerIpLabel(row), modal);
+    renderPrinterDetailConnectionState(row);
+    renderPrinterDetailPrintState(row);
+    updatePrinterDetailStatusButton(row.dataset.status || 'Nonaktif');
+    openModal('printerDetailModal');
+  }
+  function runPrinterDetailConnectionTest() {
+    if (!printerDetailRow) return;
+    if (printerDetailConnectionTimer) window.clearTimeout(printerDetailConnectionTimer);
+    renderPrinterDetailConnectionState(printerDetailRow, 'loading');
+    printerDetailConnectionTimer = window.setTimeout(() => {
+      renderPrinterDetailConnectionState(printerDetailRow);
+      const name = printerDetailRow.dataset.name || 'Printer';
+      if (printerDetailSuccess(printerDetailRow)) window.AlertToast?.success('Koneksi printer berhasil', `${name} berhasil merespons tes koneksi.`);
+      else window.AlertToast?.danger('Koneksi printer gagal', `${name} tidak merespons tes koneksi.`);
+      printerDetailConnectionTimer = null;
+    }, 900);
+  }
+  function runPrinterDetailPrintTest() {
+    if (!printerDetailRow) return;
+    if (printerDetailPrintTimer) window.clearTimeout(printerDetailPrintTimer);
+    renderPrinterDetailPrintState(printerDetailRow, 'loading');
+    printerDetailPrintTimer = window.setTimeout(() => {
+      renderPrinterDetailPrintState(printerDetailRow);
+      const name = printerDetailRow.dataset.name || 'Printer';
+      if (printerDetailRow.dataset.status === 'Aktif') window.AlertToast?.success('Halaman tes dikirim', `${name} menerima perintah cetak halaman tes.`);
+      else window.AlertToast?.danger('Cetak halaman tes gagal', `${name} sedang nonaktif.`);
+      printerDetailPrintTimer = null;
+    }, 900);
+  }
+
+  function runConnectionTest(row) {
+    currentTestRow = row;
+    if (printerTestTimer) window.clearTimeout(printerTestTimer);
+    renderPrinterTestLoading(row);
+    openModal('printerConnectionModal');
+    printerTestTimer = window.setTimeout(() => {
+      renderPrinterTestResult(row);
+      printerTestTimer = null;
+    }, 1100);
+  }
+  document.getElementById('retryPrinterTestButton')?.addEventListener('click', () => { if (currentTestRow) runConnectionTest(currentTestRow); });
+  function printTest(row) {
+    const now = '21/07/2026 10:20';
+    const preview = `================================\nRS ABC\nTEST PRINT\n================================\n\nNama Printer :\n${row.dataset.name}\n\nTanggal :\n${now}\n\nStatus :\n${row.dataset.status === 'Aktif' ? 'Berhasil' : 'Gagal'}\n\n================================`;
+    document.querySelector('[data-print-preview]').textContent = preview;
+    document.querySelector('[data-print-success]').classList.toggle('alert-success', row.dataset.status === 'Aktif');
+    if (row.dataset.status === 'Aktif') window.AlertToast?.success('Halaman tes dikirim', `${row.dataset.name} menerima perintah cetak test.`);
+    else window.AlertToast?.danger('Cetak test gagal', `${row.dataset.name} sedang nonaktif.`);
+    openModal('printTestModal');
+  }
+
+  document.addEventListener('click', (event) => {
+    const detail = event.target.closest('[data-row-detail="printer"]');
+    if (detail) { event.preventDefault(); event.stopImmediatePropagation(); const row = detail.closest('tr'); closeRowDropdown(detail); openPrinterDetail(row); return; }
+    const detailTest = event.target.closest('[data-printer-detail-test]');
+    if (detailTest) { runPrinterDetailConnectionTest(); return; }
+    const detailPrint = event.target.closest('[data-printer-detail-print]');
+    if (detailPrint) { runPrinterDetailPrintTest(); return; }
+    const detailSave = event.target.closest('[data-printer-detail-save]');
+    if (detailSave) { closeModals(); window.AlertToast?.success('Perubahan printer disimpan', 'Konfigurasi printer berhasil diperbarui.'); return; }
+    const detailToggle = event.target.closest('[data-printer-detail-toggle-status]');
+    if (detailToggle) {
+      if (!printerDetailRow) return;
+      const row = printerDetailRow;
+      const nextStatus = row.dataset.status === 'Aktif' ? 'Nonaktif' : 'Aktif';
+      const applyStatusChange = () => {
+        setRowStatus(row, nextStatus);
+        const statusNode = document.querySelector('#printerDetailModal [data-printer-detail-status]');
+        if (statusNode) statusNode.innerHTML = statusBadge(nextStatus);
+        updatePrinterDetailStatusButton(nextStatus);
+        renderPrinterDetailConnectionState(row);
+        renderPrinterDetailPrintState(row);
+        if (nextStatus === 'Aktif') window.AlertToast?.success('Printer diaktifkan', `${row.dataset.name} sudah aktif kembali.`);
+      };
+      if (nextStatus === 'Nonaktif' && window.SIMRSStatusConfirm) {
+        window.SIMRSStatusConfirm.open({
+          kind: 'printer',
+          label: row.dataset.name,
+          message: 'Printer ini tidak akan muncul pada dropdown printer modul lain setelah dinonaktifkan.',
+          onConfirm: applyStatusChange
+        });
+        return;
+      }
+      applyStatusChange();
+      return;
+    }
+    const edit = event.target.closest('[data-edit-printer]');
+    if (edit) { const row = edit.closest('tr'); closeRowDropdown(edit); fillPrinterForm(row); openModal('printerModal'); return; }
+    const test = event.target.closest('[data-test-printer]');
+    if (test) { const row = test.closest('tr'); closeRowDropdown(test); runConnectionTest(row); return; }
+    const print = event.target.closest('[data-print-test]');
+    if (print) { const row = print.closest('tr'); closeRowDropdown(print); printTest(row); return; }
+    const toggle = event.target.closest('[data-toggle-printer-status]');
+    if (toggle) {
+      const row = toggle.closest('tr'); closeRowDropdown(toggle);
+      if (row.dataset.status === 'Aktif') {
+        window.SIMRSStatusConfirm?.open({ kind: 'printer', label: row.dataset.name, message: 'Printer ini tidak akan muncul pada dropdown printer modul lain setelah dinonaktifkan.', onConfirm: () => { setRowStatus(row, 'Nonaktif'); } });
+      } else {
+        setRowStatus(row, 'Aktif'); window.AlertToast?.success('Printer diaktifkan', `${row.dataset.name} sudah aktif kembali.`);
+      }
+    }
+  });
+  document.addEventListener('click', (event) => { if (!event.target.closest('details.ds-dropdown')) document.querySelectorAll('details.ds-dropdown[open]').forEach((item) => item.removeAttribute('open')); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModals(); });
+  updateNetworkFields(); applyFilters();
+})();
+</script>
+<script src="../../js/modal-dropdowns.js"></script>
+<script src="../../js/form-validation.js"></script>
+<script src="../../js/toast-messages.js"></script>
+<script src="../../js/table-actions.js"></script>
+<script src="../../js/inline-table-actions.js"></script>
+<script src="../../js/sidebar-flyout.js"></script>
+<script src="../../js/date-picker-controls.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+<script src="../../js/bottom-tabs.js"></script>
+</body>
+</html>

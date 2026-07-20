@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@source "../pages/guide/**/*.html";
+
+/* Token theme dibutuhkan supaya guide-pages.css bisa @apply utility tipografi design system. */
+@import "./design-system/theme.css";
+
+/* CSS khusus halaman guide.
+   Build ke guide.css dan hanya diload pada halaman src/pages/guide. */
+@import "./pages/guide-pages.css";
+

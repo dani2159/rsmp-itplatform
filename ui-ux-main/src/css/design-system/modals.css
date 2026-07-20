@@ -1,0 +1,614 @@
+/* --------------------------------------------------------------------------
+   Modal dasar: backdrop, posisi dialog, ukuran panel, area body, dan footer.
+   Komponen modal berdiri sendiri, tanpa dependency ke class card.
+   -------------------------------------------------------------------------- */
+
+.is-modal-open {
+  @apply overflow-hidden;
+}
+
+.modal-backdrop {
+  @apply fixed inset-0 z-[80] bg-[color:rgba(15,31,61,0.46)];
+  backdrop-filter: blur(4px);
+}
+
+.modal-backdrop[hidden] {
+  @apply hidden;
+}
+
+.modal {
+  @apply fixed inset-0 z-[90] grid place-items-center p-6 overflow-hidden;
+}
+
+.modal[hidden] {
+  @apply hidden;
+}
+
+.modal-card {
+  @apply w-[min(760px,calc(100vw_-_48px))] min-w-0 max-h-[calc(100dvh_-_48px)] flex flex-col p-0 border-0 rounded-[var(--radius-card)] bg-[color:var(--surface)] shadow-[0_30px_90px_rgba(15,31,61,0.24)] overflow-hidden;
+}
+
+.modal-card > form {
+  @apply min-h-0 flex flex-col;
+}
+
+.modal-card.is-sm {
+  @apply w-[min(420px,calc(100vw_-_48px))];
+}
+
+.modal-card.is-md {
+  @apply w-[min(760px,calc(100vw_-_48px))];
+}
+
+.modal-card.is-lg {
+  @apply w-[min(980px,calc(100vw_-_48px))];
+}
+
+.modal-card.is-xl {
+  @apply w-[min(1120px,calc(100vw_-_48px))];
+}
+
+.modal-head {
+  @apply flex items-start justify-between gap-3 min-w-0 p-[22px_24px_14px] m-0 border-b border-b-[color:var(--border-soft)];
+}
+
+.modal-title {
+  @apply m-0 text-[color:var(--text-primary)] text-body-lg leading-6 font-bold;
+}
+
+.modal-subtitle {
+  @apply mt-0.5 mx-0 mb-0 text-[color:var(--text-secondary)] text-body-sm leading-5 font-normal;
+}
+
+.modal-body {
+  @apply grid gap-4 min-w-0 min-h-0 p-[20px_24px_24px] overflow-y-auto overflow-x-hidden overscroll-contain;
+}
+
+.modal-body > form {
+  @apply grid gap-[inherit] m-0;
+}
+
+.modal-form-grid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.span-2 {
+  @apply col-[span_2];
+}
+
+.modal-actions {
+  @apply flex items-center justify-end gap-3 min-w-0 m-0 mt-auto p-[14px_24px_18px] bg-[color:var(--surface)] border-t border-t-[color:var(--border-soft)] rounded-[0_0_var(--radius-card)_var(--radius-card)];
+}
+
+.danger-modal .modal-title {
+  @apply text-[color:var(--danger)];
+}
+
+@media (max-width: 900px) {
+  .modal-form-grid {
+    @apply grid-cols-1;
+  }
+
+  .span-2 {
+    @apply col-[span_1];
+  }
+
+  .modal {
+    @apply p-3.5;
+  }
+
+  .modal-card,
+  .modal-card.is-sm,
+  .modal-card.is-md,
+  .modal-card.is-lg,
+  .modal-card.is-xl {
+    @apply w-[calc(100vw_-_28px)] max-h-[calc(100dvh_-_28px)];
+  }
+
+  .modal-actions {
+    @apply flex-col-reverse items-stretch;
+  }
+
+  .modal-actions .btn {
+    @apply w-full;
+  }
+}
+
+/* Section modal untuk kelompok field, ringkasan detail, checkbox, dan preview file. */
+
+.modal-body .modal-section {
+  @apply grid gap-3.5 p-0 border-0 rounded-none bg-transparent shadow-none;
+}
+
+.modal-body .modal-section:has(~ .modal-section) {
+  @apply pb-4.5 border-b border-b-[color:var(--border-soft)];
+}
+
+.modal-body .modal-section-head {
+  @apply flex items-start gap-3;
+  justify-content: start;
+}
+
+.modal-body .modal-section-head h3,
+.modal-body .modal-section-head p,
+.modal-body .modal-section-head .modal-title,
+.modal-body .modal-section-head .modal-subtitle {
+  @apply m-0;
+}
+
+.modal-body .modal-section-head h3,
+.modal-body .modal-section-head .modal-title {
+  @apply text-[color:var(--text-primary)] text-body-lg leading-6 font-bold;
+}
+
+.modal-body .modal-section-head p,
+.modal-body .modal-section-head .modal-subtitle {
+  @apply mt-[3px] text-[color:var(--text-secondary)] text-body-sm leading-5 font-medium;
+}
+
+.modal-body .modal-section-head:not(:has(p)):not(:has(.modal-subtitle)) {
+  @apply items-center;
+}
+
+.modal-body .modal-section-icon {
+  @apply w-[38px] h-[38px] inline-grid place-items-center flex-none rounded-[14px] text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.modal-body .checkbox-stack {
+  @apply grid gap-2.5 p-0 border-0 rounded-none bg-transparent;
+}
+
+.modal-body .checkbox-stack.is-center {
+  @apply min-h-[46px] items-center;
+}
+
+.modal-body .checkbox-stack.is-two-col {
+  @apply grid-cols-2;
+}
+
+.modal-body .modal-table-scroll {
+  @apply border-0 rounded-none bg-transparent;
+}
+
+.modal-body .modal-history-table-scroll {
+  @apply overflow-auto rounded-[var(--radius-input-md)] border border-[color:var(--border-soft)] bg-[color:var(--surface)];
+}
+
+.modal-body .modal-history-table-scroll .data-table {
+  @apply min-w-[720px];
+}
+
+.modal-body .modal-history-table-scroll .data-table th,
+.modal-body .modal-history-table-scroll .data-table td {
+  @apply align-top;
+}
+
+.modal-body .modal-detail-grid {
+  @apply grid grid-cols-2 gap-[12px_16px];
+}
+
+.modal-body .modal-info-grid {
+  @apply grid grid-cols-2 gap-x-10 gap-y-3 min-w-0;
+}
+
+.modal-body .modal-info-list {
+  @apply grid gap-3 m-0 min-w-0;
+}
+
+.modal-body .modal-info-list > div {
+  @apply grid items-baseline min-w-0;
+  grid-template-columns: minmax(128px, 160px) 12px minmax(0, 1fr);
+  column-gap: 10px;
+}
+
+.modal-body .modal-info-list > div::before {
+  content: ':';
+  @apply text-[color:var(--text-secondary)] font-semibold text-center;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.modal-body .modal-info-list dt {
+  @apply text-body-md font-semibold text-[color:var(--text-secondary)] min-w-0;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.modal-body .modal-info-list dd {
+  @apply m-0 text-body-md font-semibold text-[color:var(--text-primary)] min-w-0 break-words;
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.modal-body .modal-info-list.is-stacked {
+  @apply gap-3;
+}
+
+.modal-body .modal-info-list.is-stacked > div {
+  @apply grid grid-cols-1 gap-1 p-3 rounded-xl border border-[color:var(--border-soft)] bg-[color:var(--surface-muted)] min-w-0;
+}
+
+.modal-body .modal-info-list.is-stacked > div::before {
+  content: none;
+}
+
+.modal-body .modal-info-list.is-stacked dt,
+.modal-body .modal-info-list.is-stacked dd {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.modal-body .modal-info-list.is-stacked dt {
+  @apply text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+.modal-body .modal-info-list.is-stacked dd {
+  @apply text-body-md font-bold text-[color:var(--text-primary)] break-words;
+}
+
+.modal-body .modal-detail-item {
+  @apply grid gap-1 p-0 border-0 rounded-none bg-transparent;
+}
+
+.modal-body .modal-detail-item span {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-semibold;
+}
+
+.modal-body .modal-detail-item strong {
+  @apply text-[color:var(--text-primary)] text-body-md leading-5.5 font-bold;
+}
+
+.modal-body .modal-file-preview {
+  @apply flex items-center gap-3 p-0 border-0 rounded-none bg-transparent;
+}
+
+.modal-body .modal-file-preview i {
+  @apply w-10 h-10 inline-grid place-items-center flex-none rounded-[14px] text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.modal-body .modal-file-preview strong,
+.modal-body .modal-file-preview small {
+  @apply block;
+}
+
+.modal-body .modal-file-preview strong {
+  @apply text-[color:var(--text-primary)] text-body-md leading-5.5 font-bold;
+}
+
+.modal-body .modal-file-preview small {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-5 font-medium;
+}
+
+.modal-form-grid.is-3-col {
+  @apply grid-cols-3;
+}
+
+.field-help {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-4.5;
+}
+
+.field-error {
+  @apply text-[color:var(--danger-dark)] text-body-sm font-semibold leading-4.5;
+}
+
+@media (max-width: 900px) {
+  .modal-body .modal-section-head {
+    @apply flex-col;
+    justify-content: start;
+  }
+
+  .modal-body .checkbox-stack.is-two-col,
+  .modal-body .modal-detail-grid,
+  .modal-body .modal-info-grid,
+  .modal-form-grid.is-3-col {
+    @apply grid-cols-1;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .modal-body .modal-info-list > div {
+    @apply gap-1;
+    grid-template-columns: 1fr;
+  }
+
+  .modal-body .modal-info-list > div::before {
+    content: none;
+  }
+
+  .modal-body .modal-info-list dt,
+  .modal-body .modal-info-list dd {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* Dropdown di dalam modal memakai panel sendiri agar tidak terpotong area dialog. */
+
+.modal-sync-native {
+  @apply absolute w-px h-px min-w-[1px] min-h-[1px] p-0 -m-px border-0 opacity-0 overflow-hidden pointer-events-none;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.modal-picker-dropdown {
+  @apply w-full min-w-0;
+}
+
+.modal-picker-dropdown .dropdown-trigger {
+  @apply w-full bg-[color:var(--white)];
+}
+
+.modal-picker-dropdown .dropdown-panel {
+  @apply z-[140];
+}
+
+.modal-select-dropdown .dropdown-option {
+  @apply justify-start;
+}
+
+.modal-datepicker-panel {
+  @apply w-[304px] min-w-[304px] max-w-[min(304px,calc(100vw_-_40px))];
+}
+
+.modal-time-panel {
+  @apply w-[260px] min-w-[260px] max-w-[min(260px,calc(100vw_-_40px))];
+}
+
+.modal-datepicker-widget {
+  @apply p-3.5;
+}
+
+.modal-datepicker-widget .calendar-head {
+  @apply mb-3;
+}
+
+.modal-datepicker-widget .calendar-date,
+.modal-timepicker-widget .time-option {
+  @apply border-0 appearance-none cursor-pointer;
+}
+
+.modal-timepicker-widget {
+  @apply w-full grid-cols-2;
+}
+
+.modal-timepicker-widget .time-col {
+  @apply min-w-0;
+}
+
+.modal-timepicker-widget .time-option {
+  @apply w-full min-w-0 p-0 bg-transparent text-center;
+}
+
+.modal-timepicker-widget .time-option:hover,
+.modal-timepicker-widget .time-option.active {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.modal-timepicker-widget .time-option.selected {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+.modal-picker-dropdown .dropdown-footer {
+  @apply flex items-center justify-between gap-3 p-[10px_12px_0] mt-3 border-t border-t-[color:var(--border-soft)] text-[color:var(--text-muted)] text-body-sm;
+}
+
+.modal-history-list {
+  @apply grid gap-1 pl-4 list-disc text-body-md text-[color:var(--text-primary)];
+}
+
+.modal-history-list li {
+  @apply min-w-0 text-left;
+}
+
+/* Success state modal: compact centered confirmation that still uses modal body + footer. */
+#successModal .modal-body {
+  @apply place-items-center p-[30px_24px_18px] text-center;
+}
+
+#successModal .modal-body .modal-section {
+  @apply place-items-center gap-4 text-center;
+}
+
+#successModal .modal-body .modal-section-head {
+  @apply flex-col items-center gap-4 text-center;
+}
+
+#successModal .modal-body .modal-section-head > div {
+  @apply grid gap-2 justify-items-center;
+}
+
+#successModal .modal-body .modal-section-icon {
+  @apply w-20 h-20 rounded-full bg-[color:var(--primary-green)] text-[color:var(--white)] text-h2;
+}
+
+#successModal .modal-actions {
+  @apply justify-center gap-3 p-[0_24px_28px] border-t-0;
+}
+
+/* Compact success modal content, reused by registration and visit success confirmations. */
+.modal-body .success-state {
+  @apply grid justify-items-center gap-3 text-center;
+}
+
+.modal-body .success-state-icon {
+  @apply w-20 h-20 rounded-full inline-grid place-items-center bg-[color:var(--primary-green)] text-[color:var(--white)] text-h2;
+}
+
+#successModal .modal-body,
+#visitSuccessModal .modal-body {
+  @apply place-items-center p-[30px_24px_18px] text-center;
+}
+
+#successModal .modal-body .modal-section,
+#visitSuccessModal .modal-body .modal-section {
+  @apply place-items-center gap-4 text-center;
+}
+
+#successModal .modal-actions,
+#visitSuccessModal .modal-actions {
+  @apply justify-center gap-3 p-[0_24px_28px] border-t-0;
+}
+
+/* Global action success modal used after delete and deactivate confirmations. */
+#tableActionSuccessModal .modal-body {
+  @apply place-items-center p-[30px_24px_18px] text-center;
+}
+
+#tableActionSuccessModal .modal-body .modal-section {
+  @apply place-items-center gap-4 text-center;
+}
+
+#tableActionSuccessModal .modal-actions {
+  @apply justify-center gap-3 p-[0_24px_28px] border-t-0;
+}
+
+/* BPJS verification loading modal with progress bar. */
+.bpjs-loading-body {
+  padding: 34px 24px 28px;
+  overflow: hidden;
+}
+
+.bpjs-loading-state {
+  justify-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+.bpjs-loading-visual {
+  position: relative;
+  width: 124px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin-top: 2px;
+}
+
+.bpjs-card-icon {
+  width: 78px;
+  height: 52px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--primary-blue);
+  background: linear-gradient(180deg, var(--primary-light), #dce7ff);
+  box-shadow: 0 14px 34px rgba(30, 79, 215, 0.16);
+  font-size: 26px;
+}
+
+.bpjs-shield-icon {
+  position: absolute;
+  right: 16px;
+  bottom: 8px;
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--white);
+  background: var(--primary-blue);
+  box-shadow: 0 14px 28px rgba(30, 79, 215, 0.24);
+  font-size: 20px;
+}
+
+.bpjs-spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 3px solid rgba(30, 79, 215, 0.16);
+  border-top-color: var(--primary-blue);
+  animation: bpjsSpin 0.85s linear infinite;
+}
+
+.bpjs-loading-state .modal-title {
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  margin: 0;
+}
+
+.bpjs-loading-state .modal-subtitle {
+  max-width: 420px;
+  margin: -8px auto 0;
+  color: var(--text-secondary);
+  font-size: var(--text-body-md);
+  line-height: var(--text-body-md--line-height);
+}
+
+.bpjs-loading-bar {
+  width: min(320px, 100%);
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--primary-light);
+}
+
+.bpjs-loading-bar span {
+  display: block;
+  width: 78%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary-blue);
+  animation: bpjsLoadingPulse 1.2s ease-in-out infinite alternate;
+}
+
+.bpjs-check-card {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  text-align: left;
+}
+
+.bpjs-check-card strong {
+  color: var(--text-primary);
+  font-size: var(--text-body-md);
+  line-height: var(--text-body-md--line-height);
+  font-weight: var(--font-weight-bold);
+}
+
+.bpjs-check-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bpjs-check-card li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-primary);
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm--line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.bpjs-check-card li i {
+  width: 16px;
+  color: var(--primary-blue);
+  font-size: 13px;
+  text-align: center;
+}
+
+.bpjs-process-alert {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.bpjs-process-alert .alert-body p {
+  margin: 0;
+}
+
+@keyframes bpjsSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bpjsLoadingPulse {
+  from { width: 66%; }
+  to { width: 88%; }
+}

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>07 Tables · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/> <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link active" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<section class="hero mt-12">
+<p class="eyebrow">07</p>
+<h1>Tables</h1>
+<p class="hero-subtitle">Aturan tabel untuk data operasional: toolbar, filter, sorting, action, pagination, state kosong, dan responsive layout.</p>
+<div class="divider"></div>
+<nav aria-label="Navigasi halaman" class="toc">
+<a href="#master-doctor">Master Data Unit / Poli</a>
+<a href="#inline-actions">Aksi Button Tooltip</a>
+<a href="#anatomy">Anatomi</a>
+<a href="#tokens">Tokens</a>
+<a href="#variants">Varian &amp; state</a>
+<a href="#responsive">Responsive md</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</section>
+<section class="mt-12" id="master-doctor">
+<div class="section-head">
+<div>
+<h2>Preview — Master Data Unit / Poli</h2>
+<p>Contoh ini memakai struktur tabel yang sama dengan halaman master data. Wrapper, toolbar, filter, table scroll, action button tooltip, dan pagination mengikuti implementasi di halaman master.</p>
+</div>
+<span class="badge badge-primary badge-sm">Master Data</span>
+</div>
+<div class="master-unit-content guide-master-table-preview">
+<article class="card admin-table-card unit-table-card">
+<div class="card-header admin-card-head">
+<div>
+<h2 class="card-title">Daftar Unit / Poli</h2>
+<p class="card-subtitle">Setiap unit perlu memiliki kode yang singkat dan unik agar mudah dikenali oleh petugas.</p>
+</div>
+</div>
+<div class="toolbar admin-user-toolbar">
+<div class="toolbar-left admin-toolbar-left">
+<div aria-label="Cari unit" class="input-wrap search-field admin-search-field">
+<span aria-hidden="true" class="field-icon"><i aria-hidden="true" class="fa-solid fa-magnifying-glass"></i></span>
+<input aria-label="Cari kode, nama unit, jenis, atau kode awal" class="input with-left" data-unit-search="" placeholder="Cari kode, nama unit, jenis, kode awal..." type="search"/>
+</div>
+</div>
+<div class="toolbar-right admin-filter-group">
+<details class="ds-dropdown ds-select admin-filter-select" data-component="unit-filter" data-filter-key="jenis">
+<summary aria-label="Filter jenis unit" class="dropdown-trigger"><span data-select-text="">Semua Jenis</span></summary>
+<div aria-label="Filter jenis unit" class="dropdown-panel compact" role="listbox">
+<button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Jenis</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Poli" role="option" type="button">Poli</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Penunjang" role="option" type="button">Penunjang</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Farmasi" role="option" type="button">Farmasi</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="IGD" role="option" type="button">IGD</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Administrasi" role="option" type="button">Administrasi</button>
+</div>
+</details>
+<details class="ds-dropdown ds-select admin-filter-select" data-component="unit-filter" data-filter-key="status">
+<summary aria-label="Filter status unit" class="dropdown-trigger"><span data-select-text="">Semua Status</span></summary>
+<div aria-label="Filter status unit" class="dropdown-panel compact" role="listbox">
+<button aria-selected="true" class="dropdown-option selected active" data-filter-value="all" role="option" type="button">Semua Status</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Aktif" role="option" type="button">Aktif</button>
+<button aria-selected="false" class="dropdown-option" data-filter-value="Nonaktif" role="option" type="button">Nonaktif</button>
+</div>
+</details>
+<button aria-label="Reset filter" class="btn btn-outline btn-icon btn-lg table-reset-filter-btn" data-reset-table-filter="" data-tooltip="Reset filter" title="Reset filter" type="button"><i aria-hidden="true" class="fa-solid fa-rotate-left"></i></button></div>
+</div>
+<div class="table-scroll admin-table-scroll unit-table-scroll" id="unitTableSection">
+<table aria-label="Tabel master data unit dan poli" class="data-table admin-users-table unit-table" id="unitTable">
+<thead>
+<tr>
+<th scope="col"><span class="sort">Unit / Poli <i aria-hidden="true" class="fa-solid fa-sort"></i></span></th>
+<th scope="col">Jenis</th>
+<th scope="col">Kode Awal No. Reg</th>
+<th scope="col">Kapasitas Antrian</th>
+<th scope="col">Status</th>
+<th class="text-right" scope="col">Aksi</th>
+</tr>
+</thead>
+<tbody id="unitTableBody">
+<tr data-capacity="45" data-code="POLU" data-jenis="Poli" data-keywords="polu poli umum rju poli aktif" data-name="poli umum" data-prefix="RJU" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PU</span><div><strong>Poli Umum</strong><small><span class="unit-code-pill">POLU</span> Rawat jalan umum</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>RJU</strong></td>
+<td><div class="unit-capacity-cell"><strong>45</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Umum" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Poli Umum" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Umum" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="28" data-code="GIGI" data-jenis="Poli" data-keywords="gigi poli gigi rjg poli aktif" data-name="poli gigi" data-prefix="RJG" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PG</span><div><strong>Poli Gigi</strong><small><span class="unit-code-pill">GIGI</span> Jadwal dokter gigi</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>RJG</strong></td>
+<td><div class="unit-capacity-cell"><strong>28</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Gigi" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Poli Gigi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Gigi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="60" data-code="IGD" data-jenis="IGD" data-keywords="igd instalasi gawat darurat er igd aktif" data-name="instalasi gawat darurat" data-prefix="ER" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">IG</span><div><strong>Instalasi Gawat Darurat</strong><small><span class="unit-code-pill">IGD</span> Pasien emergency</small></div></div></td>
+<td><span class="badge badge-danger badge-sm">IGD</span></td>
+<td><strong>ER</strong></td>
+<td><div class="unit-capacity-cell"><strong>60</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Instalasi Gawat Darurat" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Instalasi Gawat Darurat" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Instalasi Gawat Darurat" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="80" data-code="LAB" data-jenis="Penunjang" data-keywords="lab laboratorium penunjang lab aktif" data-name="laboratorium" data-prefix="LAB" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">LB</span><div><strong>Laboratorium</strong><small><span class="unit-code-pill">LAB</span> Pemeriksaan penunjang lab</small></div></div></td>
+<td><span class="badge badge-slate badge-sm">Penunjang</span></td>
+<td><strong>LAB</strong></td>
+<td><div class="unit-capacity-cell"><strong>80</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Laboratorium" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Laboratorium" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Laboratorium" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="36" data-code="RAD" data-jenis="Penunjang" data-keywords="rad radiologi penunjang rad aktif" data-name="radiologi" data-prefix="RAD" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">RD</span><div><strong>Radiologi</strong><small><span class="unit-code-pill">RAD</span> X-Ray, USG, CT Scan</small></div></div></td>
+<td><span class="badge badge-slate badge-sm">Penunjang</span></td>
+<td><strong>RAD</strong></td>
+<td><div class="unit-capacity-cell"><strong>36</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Radiologi" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Radiologi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Radiologi" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="120" data-code="FARM" data-jenis="Farmasi" data-keywords="farm farmasi rawat jalan frm farmasi aktif" data-name="farmasi rawat jalan" data-prefix="FRM" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">FR</span><div><strong>Farmasi Rawat Jalan</strong><small><span class="unit-code-pill">FARM</span> Antrian resep pasien RJ</small></div></div></td>
+<td><span class="badge badge-success badge-sm">Farmasi</span></td>
+<td><strong>FRM</strong></td>
+<td><div class="unit-capacity-cell"><strong>120</strong><small>resep / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Farmasi Rawat Jalan" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Farmasi Rawat Jalan" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Farmasi Rawat Jalan" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="75" data-code="ADM" data-jenis="Administrasi" data-keywords="adm administrasi pasien adm administrasi aktif" data-name="administrasi pasien" data-prefix="ADM" data-status="Aktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">AD</span><div><strong>Administrasi Pasien</strong><small><span class="unit-code-pill">ADM</span> Administrasi dan verifikasi berkas</small></div></div></td>
+<td><span class="badge badge-neutral badge-sm">Administrasi</span></td>
+<td><strong>ADM</strong></td>
+<td><div class="unit-capacity-cell"><strong>75</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Administrasi Pasien" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Administrasi Pasien" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i> Nonaktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Administrasi Pasien" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+<tr data-capacity="24" data-code="ANAK" data-jenis="Poli" data-keywords="anak poli anak rja poli nonaktif" data-name="poli anak" data-prefix="RJA" data-status="Nonaktif">
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">PA</span><div><strong>Poli Anak</strong><small><span class="unit-code-pill">ANAK</span> Belum dibuka untuk pendaftaran</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Poli</span></td>
+<td><strong>RJA</strong></td>
+<td><div class="unit-capacity-cell"><strong>24</strong><small>pasien / hari</small></div></td>
+<td><span class="badge badge-danger badge-sm"><span aria-hidden="true" class="badge-dot"></span>Nonaktif</span></td>
+<td><div class="action-group admin-action-group">
+<details class="ds-dropdown row-action-dropdown admin-row-menu" data-component="row-actions">
+<summary aria-label="Buka menu aksi Poli Anak" class="btn btn-xs btn-ghost btn-icon"><i aria-hidden="true" class="fa-solid fa-ellipsis-vertical"></i></summary>
+<div class="dropdown-panel compact row-action-panel" role="menu">
+<button class="dropdown-option" data-row-detail="unit" data-row-label="Poli Anak" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-eye"></i> Lihat Detail</strong></span></button>
+<button class="dropdown-option" data-edit-unit="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i> Ubah Data</strong></span></button>
+<button class="dropdown-option" data-toggle-unit-status="" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-solid fa-circle-check"></i> Aktifkan</strong></span></button>
+<button class="dropdown-option is-danger danger-option" data-row-delete="unit" data-row-label="Poli Anak" role="menuitem" type="button"><span class="option-meta"><strong><i aria-hidden="true" class="fa-regular fa-trash-can"></i> Hapus Data</strong></span></button>
+</div>
+</details>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-footer admin-table-footer">
+<div data-table-summary="">Menampilkan <span data-visible-count="">0</span> dari <span data-total-count="">0</span> unit</div>
+<nav aria-label="Pagination tabel unit" class="pagination">
+<details class="ds-dropdown per-page" data-component="dropdown-select">
+<summary aria-label="Jumlah unit per halaman" class="dropdown-trigger"><span>10 / halaman</span></summary>
+<div aria-label="Jumlah unit per halaman" class="dropdown-panel" role="listbox">
+<button aria-selected="true" class="dropdown-option selected" role="option" type="button">10 / halaman</button>
+<button aria-selected="false" class="dropdown-option" role="option" type="button">25 / halaman</button>
+<button aria-selected="false" class="dropdown-option" role="option" type="button">50 / halaman</button>
+</div>
+</details>
+<div class="pagination-pages">
+<button aria-label="Halaman sebelumnya" class="page-button" type="button"><svg class="lucide" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button>
+<button aria-current="page" class="page-button active" type="button">1</button>
+<button aria-label="Halaman berikutnya" class="page-button" type="button"><svg class="lucide" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button>
+
+</div></nav>
+</div>
+</article>
+</div>
+<div class="note u-style-013"><strong>Aturan reuse:</strong> gunakan pola master data yang sama: <span class="mono">.card.admin-table-card</span>, <span class="mono">.toolbar.admin-user-toolbar</span>, <span class="mono">.admin-filter-select</span>, <span class="mono">.admin-table-scroll</span>, <span class="mono">.data-table.admin-users-table</span>, <span class="mono">.row-inline-actions</span>, dan <span class="mono">.admin-table-footer</span>.</div>
+</section>
+<section class="mt-12" id="inline-actions">
+<div class="section-head">
+<div>
+<h2>Contoh — Aksi Button Tooltip</h2>
+<p>Pakai pola ini kalau aksi baris hanya 2–4 item dan perlu langsung terlihat. Setiap button wajib punya <span class="mono">aria-label</span>, <span class="mono">data-tooltip</span>, dan icon yang jelas.</p>
+</div>
+<span class="badge badge-info badge-sm">Direct Action</span>
+</div>
+<div class="master-unit-content guide-master-table-preview">
+<article class="card admin-table-card unit-table-card">
+<div class="card-header admin-card-head">
+<div>
+<h2 class="card-title">Daftar Master Layanan</h2>
+<p class="card-subtitle">Contoh table dengan action button langsung seperti tampilan master data.</p>
+</div>
+</div>
+<div class="table-scroll admin-table-scroll unit-table-scroll">
+<table aria-label="Contoh tabel dengan action button tooltip" class="data-table admin-users-table unit-table">
+<thead>
+<tr>
+<th scope="col"><span class="sort">Layanan <i aria-hidden="true" class="fa-solid fa-sort"></i></span></th>
+<th scope="col">Kategori</th>
+<th scope="col">Kode</th>
+<th scope="col">Status</th>
+<th class="text-right" scope="col">Aksi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">RJ</span><div><strong>Rawat Jalan Umum</strong><small><span class="unit-code-pill">RJUM</span> Kunjungan pasien umum</small></div></div></td>
+<td><span class="badge badge-info badge-sm">Rawat Jalan</span></td>
+<td><strong>RJUM</strong></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td class="text-right">
+<div class="action-group admin-action-group">
+<div aria-label="Aksi Rawat Jalan Umum" class="row-inline-actions" role="group">
+<button aria-label="Lihat Detail" class="row-icon-action is-info" data-tooltip="Lihat Detail" title="Lihat Detail" type="button"><i aria-hidden="true" class="fa-regular fa-eye"></i></button>
+<button aria-label="Ubah Data" class="row-icon-action" data-tooltip="Ubah Data" title="Ubah Data" type="button"><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i></button>
+<button aria-label="Nonaktifkan" class="row-icon-action is-danger" data-tooltip="Nonaktifkan" title="Nonaktifkan" type="button"><i aria-hidden="true" class="fa-solid fa-circle-xmark"></i></button>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">GD</span><div><strong>Gawat Darurat</strong><small><span class="unit-code-pill">IGD</span> Layanan emergency 24 jam</small></div></div></td>
+<td><span class="badge badge-danger badge-sm">IGD</span></td>
+<td><strong>IGD</strong></td>
+<td><span class="badge badge-success badge-sm"><span aria-hidden="true" class="badge-dot"></span>Aktif</span></td>
+<td class="text-right">
+<div class="action-group admin-action-group">
+<div aria-label="Aksi Gawat Darurat" class="row-inline-actions" role="group">
+<button aria-label="Lihat Detail" class="row-icon-action is-info" data-tooltip="Lihat Detail" title="Lihat Detail" type="button"><i aria-hidden="true" class="fa-regular fa-eye"></i></button>
+<button aria-label="Ubah Data" class="row-icon-action" data-tooltip="Ubah Data" title="Ubah Data" type="button"><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i></button>
+<button aria-label="Hapus Data" class="row-icon-action is-danger" data-tooltip="Hapus Data" title="Hapus Data" type="button"><i aria-hidden="true" class="fa-regular fa-trash-can"></i></button>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td><div class="admin-user-cell unit-name-cell"><span class="avatar">LB</span><div><strong>Laboratorium Klinik</strong><small><span class="unit-code-pill">LAB</span> Pemeriksaan penunjang</small></div></div></td>
+<td><span class="badge badge-slate badge-sm">Penunjang</span></td>
+<td><strong>LAB</strong></td>
+<td><span class="badge badge-warning badge-sm"><span aria-hidden="true" class="badge-dot"></span>Review</span></td>
+<td class="text-right">
+<div class="action-group admin-action-group">
+<div aria-label="Aksi Laboratorium Klinik" class="row-inline-actions" role="group">
+<button aria-label="Lihat Detail" class="row-icon-action is-info" data-tooltip="Lihat Detail" title="Lihat Detail" type="button"><i aria-hidden="true" class="fa-regular fa-eye"></i></button>
+<button aria-label="Ubah Data" class="row-icon-action" data-tooltip="Ubah Data" title="Ubah Data" type="button"><i aria-hidden="true" class="fa-regular fa-pen-to-square"></i></button>
+<button aria-label="Review Data" class="row-icon-action is-warning" data-tooltip="Review Data" title="Review Data" type="button"><i aria-hidden="true" class="fa-solid fa-clipboard-check"></i></button>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article>
+</div>
+<div class="note u-style-013"><strong>Catatan:</strong> gunakan direct action untuk aksi cepat. Kalau pilihan aksi terlalu banyak, kembali pakai dropdown agar kolom tidak terlalu lebar.</div>
+</section>
+<section class="mt-12" id="anatomy">
+<div class="section-head">
+<div>
+<h2>Anatomi</h2>
+<p>Struktur wajib agar tabel konsisten di seluruh modul: rawat inap, rawat jalan, penunjang, inventory, billing, dan master data.</p>
+</div>
+</div>
+<div class="grid-4">
+<div class="card soft"><div class="mini-title">01</div><h3>Category tabs</h3><p>Menggunakan tab aktif dengan underline <span class="mono">primary-blue</span>. Tab dapat diberi ubah/hapus action jika kategori bisa dikelola.</p></div>
+<div class="card soft"><div class="mini-title">02</div><h3>Toolbar</h3><p>Cari dokter pakai autocomplete input. Filter pakai dropdown select dari design system, versi table tanpa icon dan tanpa sub description. CTA utama selalu button primary di kanan.</p></div>
+<div class="card soft"><div class="mini-title">03</div><h3>Surface tabel</h3><p>Header sortable, row divider soft, teks 14px, kode pakai JetBrains Mono untuk readability.</p></div>
+<div class="card soft"><div class="mini-title">04</div><h3>Pagination</h3><p>Summary data di kiri. Per-page memakai dropdown select dan page navigation di kanan. Di tablet, pindah ke bawah dan wrap.</p></div>
+</div>
+</section>
+<section class="mt-12" id="tokens">
+<div class="section-head">
+<div>
+<h2>Token yang digunakan</h2>
+<p>Semua style diambil dari token design system, bukan hard-code visual yang tidak terdokumentasi.</p>
+</div>
+</div>
+<div class="grid-3">
+<div class="card">
+<h3>Brand &amp; surface</h3>
+<div class="token-row"><span class="swatch u-style-094"></span><div><div class="token-name">primary-blue</div><div class="token-hex">#1E4FD7 · tab aktif, button primary</div></div></div>
+<div class="token-row"><span class="swatch u-style-095"></span><div><div class="token-name">primary-light</div><div class="token-hex">#EEF2FF · hover / selected light</div></div></div>
+<div class="token-row"><span class="swatch u-style-096"></span><div><div class="token-name">surface / white</div><div class="token-hex">#FFFFFF / #FFF · card, surface tabel</div></div></div>
+</div>
+<div class="card">
+<h3>Status &amp; semantic</h3>
+<div class="token-row"><span class="swatch u-style-097"></span><div><div class="token-name">success-light + success</div><div class="token-hex">Aktif / selesai</div></div></div>
+<div class="token-row"><span class="swatch u-style-098"></span><div><div class="token-name">light-gray + slate</div><div class="token-hex">Nonaktif sesuai guideline</div></div></div>
+<div class="token-row"><span class="swatch u-style-099"></span><div><div class="token-name">danger-light + danger</div><div class="token-hex">hapus, error, destruktif</div></div></div>
+</div>
+<div class="card">
+<h3>Border, tipografi, motion</h3>
+<div class="token-row"><span class="swatch u-style-100"></span><div><div class="token-name">ui-border-default</div><div class="token-hex">#D8DEE8 · card / button outline</div></div></div>
+<div class="token-row"><span class="swatch u-style-101"></span><div><div class="token-name">ui-border-subtle</div><div class="token-hex">#E7ECF4 · row divider</div></div></div>
+<div class="token-row"><span class="swatch u-style-102"></span><div><div class="token-name">focus ring</div><div class="token-hex">0 0 0 4px rgba(30,79,215,.16)</div></div></div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="variants">
+<div class="section-head">
+<div>
+<h2>Varian &amp; state</h2>
+<p>State yang harus tersedia ketika komponen ini dipakai di aplikasi.</p>
+</div>
+</div>
+<div class="card u-style-103">
+<table class="spec-table">
+<thead>
+<tr><th>Varian / State</th><th>Tujuan</th><th>Aturan visual</th><th>Aksesibilitas</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Default</strong></td><td>List data normal</td><td>Surface putih, border token, row divider lembut</td><td>Tabel wajib punya caption/aria-label</td></tr>
+<tr><td><strong>Loading</strong></td><td>Data sedang dimuat</td><td>Skeleton row 5–8 baris, bukan spinner full page</td><td>Gunakan <span class="mono">aria-busy=true</span></td></tr>
+<tr><td><strong>Empty</strong></td><td>Tidak ada data / hasil search kosong</td><td>Empty card di dalam table surface, icon muted, CTA opsional</td><td>Copy harus menjelaskan langkah berikutnya</td></tr>
+<tr><td><strong>Error</strong></td><td>Fetch gagal</td><td>Alert danger-light di atas tabel + button coba lagi</td><td>Pesan error dibaca screen reader</td></tr>
+<tr><td><strong>Baris terpilih</strong></td><td>Aksi massal</td><td>Background primary-light, checkbox terlihat</td><td>Checkbox punya label baris</td></tr>
+<tr><td><strong>Dense</strong></td><td>Tabel master data besar</td><td>Cell padding 12px 14px, font tetap minimal 13px</td><td>Target tap action minimal 36px</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mt-12" id="responsive">
+<div class="section-head">
+<div>
+<h2>Responsive md</h2>
+<p>Design system menempatkan desktop ≥1366px sebagai utama, tablet ≥768px sebagai pendukung, dan mobile sebagai read-only untuk pimpinan.</p>
+</div>
+</div>
+<div class="grid-3">
+<div class="card soft"><h3>Desktop / XL</h3><p>Toolbar satu baris. Cari di kiri, filter + CTA di kanan. Tabel full width tanpa horizontal scroll jika ruang cukup.</p><ul class="guideline-list"><li><span class="mono">min-width: 980px</span></li><li>Cell padding 20px 16px</li><li>Icon aksi 40px</li></ul></div>
+<div class="card soft"><h3>Tablet / md</h3><p>Toolbar boleh stack. Tabel tetap berbentuk table dan memakai horizontal scroll agar data klinis tidak terpotong.</p><ul class="guideline-list"><li><span class="mono">@media max-width: 900px</span></li><li>Tab horizontal scroll</li><li>Pagination wrap</li></ul></div>
+<div class="card soft"><h3>Mobile read-only</h3><p>Untuk pimpinan dan monitoring. Hindari aksi destruktif. Prioritaskan search, filter, dan detail ringkas.</p><ul class="guideline-list"><li>Sembunyikan aksi massal</li><li>CTA admin boleh disembunyikan</li><li>Gunakan compact row</li></ul></div>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Tabel master data memakai card, toolbar, filter, table scroll, action dropdown, dan pagination yang sama dengan halaman operasional.</p>
+</div>
+<span class="badge badge-sm">tables.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/tables.css */
+.table-scroll { @apply overflow-auto rounded-none; }
+table.data-table { @apply w-full min-w-[980px] border-collapse; }
+.data-table th,
+.data-table td { @apply py-5 px-4 border-b border-b-[color:var(--border-soft)] text-left align-middle; }
+.data-table th { @apply h-[54px] bg-[color:var(--ui-surface-table-cell)] text-[color:var(--text-primary)] text-body-sm font-bold whitespace-nowrap; }
+.data-table td { @apply text-[color:var(--text-primary)] text-body-md font-medium; }
+
+/* src/css/pages/dashboard.css */
+.admin-user-toolbar.toolbar { @apply mb-5 items-end; }
+.admin-toolbar-left.toolbar-left { @apply justify-start w-auto flex-auto; }
+.admin-search-field.search-field { @apply w-[min(320px,100%)]; }
+.admin-filter-group.toolbar-right { @apply gap-2.5 flex-wrap; }
+.admin-filter-select { @apply w-[168px]; }
+.admin-table-scroll.table-scroll { @apply border border-[color:var(--border-soft)] rounded-[14px] bg-[color:var(--surface)]; }
+.admin-users-table.data-table { @apply min-w-[1040px]; }
+.admin-table-footer.table-footer { @apply pt-5; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;article class=&quot;card admin-table-card unit-table-card&quot;&gt;
+  &lt;div class=&quot;card-header admin-card-head&quot;&gt;
+    &lt;div&gt;
+      &lt;h2 class=&quot;card-title&quot;&gt;Daftar Ruangan&lt;/h2&gt;
+      &lt;p class=&quot;card-subtitle&quot;&gt;Kelola kamar dan status ketersediaan.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;toolbar admin-user-toolbar&quot;&gt;
+    &lt;div class=&quot;toolbar-left admin-toolbar-left&quot;&gt;
+      &lt;div class=&quot;input-wrap search-field admin-search-field&quot;&gt;
+        &lt;span class=&quot;field-icon&quot;&gt;&lt;i class=&quot;fa-solid fa-magnifying-glass&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;input class=&quot;input with-left&quot; type=&quot;search&quot; placeholder=&quot;Cari ruangan&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;toolbar-right admin-filter-group&quot;&gt;
+      &lt;details class=&quot;ds-dropdown ds-select admin-filter-select&quot;&gt;...&lt;/details&gt;
+      &lt;button class=&quot;btn btn-primary btn-lg&quot;&gt;Tambah Ruangan&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;table-scroll admin-table-scroll unit-table-scroll&quot;&gt;
+    &lt;table class=&quot;data-table admin-users-table unit-table&quot;&gt;...&lt;/table&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;table-footer admin-table-footer&quot;&gt;...&lt;/div&gt;
+&lt;/article&gt;
+
+function MasterTable() {
+  return &lt;article className=&quot;card admin-table-card unit-table-card&quot;&gt;...&lt;/article&gt;;
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Gunakan class tabel yang sudah ada sebelum membuat pola baru.</div>
+</section>
+</main>
+</div>
+<script src="../../js/table-search.js"></script>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/inline-table-actions.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

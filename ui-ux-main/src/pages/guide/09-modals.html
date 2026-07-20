@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>09 Modals · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/> <link href="../../css/style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="modal-guide-page guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link active" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">09</p>
+<h1>Modals</h1>
+<p class="hero-subtitle">Struktur modal untuk tambah data, ubah data, konfirmasi hapus, detail singkat, dan review data.</p>
+<div class="divider"></div>
+<nav aria-label="Daftar isi modal guide" class="toc">
+<a href="#overview">Ringkasan</a>
+<a href="#sizes">Ukuran Modal</a>
+<a href="#anatomy">Anatomi</a>
+<a href="#examples">Contoh Modal</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="overview">
+<div class="section-head">
+<div>
+<h2>Ringkasan</h2>
+<p>Modal memakai backdrop, panel utama, header, body, dan footer action di bagian bawah. Default aplikasi memakai ukuran <span class="mono">md</span>, sedangkan modal permission atau matrix besar memakai <span class="mono">lg</span>.</p>
+</div>
+<span class="badge badge-primary badge-md">Centered · Footer radius · Accessible trigger</span>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<h3 class="card-title">Centered Modal</h3>
+<p class="card-text">Modal tampil di tengah layar, bukan drawer, untuk form tambah/ubah master data dan detail ringkas.</p>
+<button class="btn btn-primary btn-md" data-open-modal="modalMd" type="button"><i class="fa-solid fa-window-maximize"></i>Preview MD</button>
+</div>
+<div class="card component-stack">
+<h3 class="card-title">Sticky Footer</h3>
+<p class="card-text">Action utama selalu ada di footer modal memakai <span class="mono">modal-actions</span>.</p>
+<button class="btn btn-outline btn-md" data-open-modal="modalForm" type="button"><i class="fa-solid fa-table-list"></i>Preview Form</button>
+</div>
+<div class="card component-stack">
+<h3 class="card-title">Confirm Modal</h3>
+<p class="card-text">Untuk aksi destructive seperti hapus data, tampilkan modal konfirmasi lebih dulu.</p>
+<button class="btn btn-danger-soft btn-md" data-open-modal="modalConfirm" type="button"><i class="fa-solid fa-triangle-exclamation"></i>Preview Confirm</button>
+</div>
+</div>
+</section>
+<section class="mt-12" id="sizes">
+<div class="section-head">
+<div>
+<h2>Ukuran Modal</h2>
+<p>Gunakan class ukuran pada elemen <span class="mono">.modal-card</span>. Tanpa modifier ukuran, modal mengikuti ukuran standar <span class="mono">md</span>.</p>
+</div>
+</div>
+<div class="card component-stack">
+<div class="modal-size-actions">
+<button class="btn btn-outline btn-sm" data-open-modal="modalSm" type="button">Open SM</button>
+<button class="btn btn-outline btn-sm" data-open-modal="modalMd" type="button">Open MD</button>
+<button class="btn btn-outline btn-sm" data-open-modal="modalLg" type="button">Open LG</button>
+<button class="btn btn-outline btn-sm" data-open-modal="modalXl" type="button">Open XL</button>
+</div>
+<div class="table-scroll">
+<table class="spec-table">
+<thead>
+<tr>
+<th>Ukuran</th>
+<th>Class</th>
+<th>Lebar Rekomendasi</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="badge badge-slate badge-sm">SM</span></td>
+<td><span class="code-chip">.is-sm</span></td>
+<td>420px</td>
+<td>Konfirmasi hapus, warning kecil, validasi singkat, resend OTP.</td>
+</tr>
+<tr>
+<td><span class="badge badge-primary badge-sm">MD</span></td>
+<td><span class="code-chip">.is-md</span> / default</td>
+<td>760px</td>
+<td>Tambah/ubah master data standar seperti unit, kamar, tarif, karyawan, dan penjamin.</td>
+</tr>
+<tr>
+<td><span class="badge badge-indigo badge-sm">LG</span></td>
+<td><span class="code-chip">.is-lg</span></td>
+<td>980px</td>
+<td>Form 2 kolom yang lebih padat, detail panjang, role permission, atau data dengan table kecil.</td>
+</tr>
+<tr>
+<td><span class="badge badge-navy badge-sm">XL</span></td>
+<td><span class="code-chip">.is-xl</span></td>
+<td>1120px</td>
+<td>Matrix lebar, preview laporan, atau konten kompleks yang memang butuh ruang ekstra.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="mt-12" id="anatomy">
+<div class="section-head">
+<div>
+<h2>Anatomi Modal</h2>
+<p>Struktur modal harus konsisten: backdrop, wrapper modal, panel, header, body, dan footer action.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="card component-stack">
+<h3 class="card-title">Struktur HTML</h3>
+<pre><code>&lt;div class="modal-backdrop"&gt;&lt;/div&gt;
+&lt;section class="modal"&gt;
+  &lt;div class="modal-card is-md"&gt;
+    &lt;div class="modal-head"&gt;...&lt;/div&gt;
+    &lt;div class="modal-body"&gt;...&lt;/div&gt;
+    &lt;div class="modal-actions"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+</div>
+<div class="card component-stack modal-anatomy-preview">
+<div class="modal-mini-card">
+<div class="modal-mini-head">
+<div>
+<h3>Tambah Unit</h3>
+<p>Header berisi title dan deskripsi singkat.</p>
+</div>
+<button class="btn btn-icon btn-ghost btn-sm" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-mini-body">
+<div class="modal-mini-field"></div>
+<div class="modal-mini-field"></div>
+<div class="modal-mini-field wide"></div>
+</div>
+<div class="modal-mini-footer">
+<button class="btn btn-outline btn-sm" type="button">Batal</button>
+<button class="btn btn-primary btn-sm" type="button">Simpan</button>
+</div>
+</div>
+<p class="component-note">Footer action tetap di bawah saat body modal scroll.</p>
+</div>
+</div>
+</section>
+<section class="mt-12" id="examples">
+<div class="section-head">
+<div>
+<h2>Contoh Modal</h2>
+<p>Pilih contoh berikut untuk melihat pola title, deskripsi, content, dan tombol action.</p>
+</div>
+</div>
+<div class="grid-4">
+<button class="card modal-example-trigger" data-open-modal="modalSm" type="button">
+<span class="modal-example-icon"><i class="fa-solid fa-circle-info"></i></span>
+<strong>SM Confirm</strong>
+<span>Konfirmasi pendek.</span>
+</button>
+<button class="card modal-example-trigger" data-open-modal="modalForm" type="button">
+<span class="modal-example-icon"><i class="fa-solid fa-user-plus"></i></span>
+<strong>MD Form</strong>
+<span>Form master data.</span>
+</button>
+<button class="card modal-example-trigger" data-open-modal="modalLg" type="button">
+<span class="modal-example-icon"><i class="fa-solid fa-shield-halved"></i></span>
+<strong>LG Permission</strong>
+<span>Konten lebih lebar.</span>
+</button>
+<button class="card modal-example-trigger" data-open-modal="modalXl" type="button">
+<span class="modal-example-icon"><i class="fa-solid fa-table-cells-large"></i></span>
+<strong>XL Matrix</strong>
+<span>Preview matrix besar.</span>
+</button>
+</div>
+</section>
+<section class="mt-12" id="usage">
+<div class="section-head">
+<div>
+<h2>Panduan Pakai</h2>
+<p>Aturan praktis supaya modal tidak terlalu ramai dan tetap konsisten di halaman admin/master data.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Gunakan <span class="mono">modal-actions</span> untuk footer.</strong><p>Tombol Batal/Simpan tetap rata kanan dengan jarak yang sama.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Pilih ukuran sesuai konten.</strong><p>Form master data cukup MD, matrix permission boleh LG, konfirmasi cukup SM.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Isi title dan subtitle dengan konteks jelas.</strong><p>User harus langsung tahu data apa yang sedang dibuat, diubah, atau dihapus.</p></div></div>
+</div>
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan langsung menjalankan delete.</strong><p>Aksi hapus wajib lewat confirm modal dengan copy yang jelas dan tombol destructive.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan memakai modal XL untuk form pendek.</strong><p>Ukuran terlalu besar membuat fokus user melebar tanpa kebutuhan.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan menaruh scroll di seluruh page.</strong><p>Konten panjang harus scroll di <span class="mono">modal-body</span>, bukan membuat modal keluar viewport.</p></div></div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Modal memakai class modal-* sebagai struktur utama dialog, mulai dari backdrop, panel, body, sampai footer action.</p>
+</div>
+<span class="badge badge-sm">design-system/modals.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/modals.css */
+.modal-backdrop { @apply fixed inset-0 z-[80] bg-[color:rgba(15,31,61,0.46)]; backdrop-filter: blur(4px); }
+.modal-backdrop[hidden] { @apply hidden; }
+.modal { @apply fixed inset-0 z-[90] grid place-items-center p-6; }
+.modal[hidden] { @apply hidden; }
+.modal-card { @apply w-[min(760px,calc(100vw_-_48px))] min-w-0 p-0 border-0 rounded-[var(--radius-card)] bg-[color:var(--surface)] shadow-[0_30px_90px_rgba(15,31,61,0.24)]; }
+.modal-card.is-sm { @apply w-[min(420px,calc(100vw_-_48px))]; }
+.modal-card.is-lg { @apply w-[min(980px,calc(100vw_-_48px))]; }
+.modal-head { @apply flex items-start justify-between gap-3 min-w-0 pt-6 pb-3.5 px-6 m-0 border-b border-b-[color:var(--border-soft)]; }
+.modal-body { @apply grid gap-4 min-w-0 pt-5 pb-6 px-6; }
+.modal-actions { @apply flex items-center justify-end gap-3 min-w-0 m-0 pt-3.5 pb-5 px-6 bg-[color:var(--surface)] border-t border-t-[color:var(--border-soft)] rounded-[0_0_var(--radius-card)_var(--radius-card)]; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;div class="modal-backdrop" hidden&gt;&lt;/div&gt;
+&lt;section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden&gt;
+  &lt;article class="modal-card is-md"&gt;
+    &lt;header class="modal-head"&gt;
+      &lt;h2 id="modalTitle" class="modal-title"&gt;Tambah Unit&lt;/h2&gt;
+      &lt;button class="btn btn-ghost btn-icon" type="button" aria-label="Tutup"&gt;...&lt;/button&gt;
+    &lt;/header&gt;
+    &lt;div class="modal-body"&gt;...&lt;/div&gt;
+    &lt;footer class="modal-actions"&gt;
+      &lt;button class="btn btn-secondary"&gt;Batal&lt;/button&gt;
+      &lt;button class="btn btn-primary"&gt;Simpan&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+
+function Modal({ open, title, size = 'is-md', children, footer }) {
+  return open ? &lt;section className="modal" role="dialog" aria-modal="true"&gt;...&lt;/section&gt; : null
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Di React, state modal cukup mengatur buka/tutup. Class visual tetap memakai struktur yang sama.</div>
+</section>
+</main>
+</div>
+<div class="modal-backdrop" data-modal-backdrop="" hidden=""></div>
+<section aria-hidden="true" aria-labelledby="modalSmTitle" class="modal" data-modal="modalSm" hidden="" role="dialog">
+<div class="modal-card is-sm">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalSmTitle">Konfirmasi Hapus</h3>
+<p class="modal-subtitle">Pastikan data yang dipilih memang ingin dihapus.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<div class="alert alert-danger alert-sm"><i class="fa-solid fa-triangle-exclamation"></i><div>Data yang dihapus tidak akan tampil lagi di tabel.</div></div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-danger btn-md" data-close-modal="" type="button">Hapus Data</button>
+</div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="modalMdTitle" class="modal" data-modal="modalMd" hidden="" role="dialog">
+<div class="modal-card is-md">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalMdTitle">Modal Ukuran MD</h3>
+<p class="modal-subtitle">Ukuran default untuk mayoritas form master data.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<p class="card-text">MD cocok untuk form satu sampai dua kolom yang tidak membutuhkan area table besar.</p>
+<div class="modal-form-grid">
+<div class="form-group"><label class="label">Nama</label><input class="input is-md" value="Poli Umum"/></div>
+<div class="form-group"><label class="label">Status</label><input class="input is-md" value="Aktif"/></div>
+<div class="form-group span-2"><label class="label">Catatan</label><textarea class="is-md" rows="3">Contoh konten modal ukuran MD.</textarea></div>
+</div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-primary btn-md" data-close-modal="" type="button">Simpan</button>
+</div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="modalLgTitle" class="modal" data-modal="modalLg" hidden="" role="dialog">
+<div class="modal-card is-lg">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalLgTitle">Modal Ukuran LG</h3>
+<p class="modal-subtitle">Dipakai untuk role permission, form 2 kolom yang panjang, atau detail dengan table kecil.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<div class="table-scroll">
+<table class="data-table">
+<thead><tr><th>Modul</th><th>Lihat</th><th>Tambah</th><th>Ubah</th><th>Hapus</th></tr></thead>
+<tbody>
+<tr><td>Pendaftaran</td><td><span class="badge badge-success badge-sm">Ya</span></td><td><span class="badge badge-success badge-sm">Ya</span></td><td><span class="badge badge-success badge-sm">Ya</span></td><td><span class="badge badge-danger badge-sm">Tidak</span></td></tr>
+<tr><td>Billing</td><td><span class="badge badge-success badge-sm">Ya</span></td><td><span class="badge badge-danger badge-sm">Tidak</span></td><td><span class="badge badge-success badge-sm">Ya</span></td><td><span class="badge badge-danger badge-sm">Tidak</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-primary btn-md" data-close-modal="" type="button">Simpan</button>
+</div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="modalXlTitle" class="modal" data-modal="modalXl" hidden="" role="dialog">
+<div class="modal-card is-xl">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalXlTitle">Modal Ukuran XL</h3>
+<p class="modal-subtitle">Hanya untuk konten sangat lebar seperti matrix besar atau preview laporan.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<div class="modal-guide-matrix">
+<span>Pasien</span><span>Pendaftaran</span><span>Billing</span><span>EMR</span><span>Farmasi</span><span>Rawat Inap</span>
+<span>Lab</span><span>Radiologi</span><span>IGD</span><span>Laporan</span><span>Admin</span><span>Audit</span>
+</div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Tutup</button>
+<button class="btn btn-primary btn-md" data-close-modal="" type="button">Gunakan Pola</button>
+</div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="modalFormTitle" class="modal" data-modal="modalForm" hidden="" role="dialog">
+<div class="modal-card is-md">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalFormTitle">Tambah Penjamin</h3>
+<p class="modal-subtitle">Contoh modal form dengan footer action di bagian bawah.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<div class="modal-form-grid">
+<div class="form-group"><label class="label">Kode</label><input class="input is-md" value="BPJS"/></div>
+<div class="form-group"><label class="label">Tipe</label><input class="input is-md" value="BPJS"/></div>
+<div class="form-group span-2"><label class="label">Nama Penjamin</label><input class="input is-md" value="BPJS Kesehatan"/></div>
+<div class="form-group"><label class="label">PIC</label><input class="input is-md" value="Ahmad Saputra"/></div>
+<div class="form-group"><label class="label">Kontak</label><input class="input is-md" value="021-1500400"/></div>
+<div class="form-group span-2"><label class="label">Alamat</label><textarea class="is-md" rows="3">Jl. Letjen Suprapto No.1 Jakarta</textarea></div>
+</div>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-primary btn-md" data-close-modal="" type="button">Simpan</button>
+</div>
+</div>
+</section>
+<section aria-hidden="true" aria-labelledby="modalConfirmTitle" class="modal" data-modal="modalConfirm" hidden="" role="dialog">
+<div class="modal-card is-sm danger-modal">
+<div class="modal-head">
+<div>
+<h3 class="modal-title" id="modalConfirmTitle">Nonaktifkan Data?</h3>
+<p class="modal-subtitle">Data tidak akan muncul di pilihan transaksi setelah dinonaktifkan.</p>
+</div>
+<button aria-label="Tutup modal" class="btn btn-icon btn-ghost btn-sm" data-close-modal="" type="button"><i class="fa-solid fa-xmark"></i></button>
+</div>
+<div class="modal-body">
+<p class="card-text">Gunakan copy yang jelas tanpa menyalahkan user. Aksi destructive harus punya tombol berbeda warna.</p>
+</div>
+<div class="modal-actions">
+<button class="btn btn-outline btn-md" data-close-modal="" type="button">Batal</button>
+<button class="btn btn-danger btn-md" data-close-modal="" type="button">Nonaktifkan</button>
+</div>
+</div>
+</section>
+<script>
+  (function () {
+    const backdrop = document.querySelector('[data-modal-backdrop]');
+    const modals = Array.from(document.querySelectorAll('[data-modal]'));
+    let lastTrigger = null;
+
+    function openModal(id, trigger) {
+      const modal = document.querySelector(`[data-modal="${id}"]`);
+      if (!modal) return;
+      lastTrigger = trigger || document.activeElement;
+      backdrop.hidden = false;
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-modal-open');
+      const focusTarget = modal.querySelector('[data-close-modal], button, input, textarea, select, a[href]');
+      if (focusTarget) focusTarget.focus({ preventScroll: true });
+    }
+
+    function closeModal() {
+      modals.forEach((modal) => {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+      });
+      backdrop.hidden = true;
+      document.body.classList.remove('is-modal-open');
+      if (lastTrigger && typeof lastTrigger.focus === 'function') {
+        lastTrigger.focus({ preventScroll: true });
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const openButton = event.target.closest('[data-open-modal]');
+      if (openButton) {
+        openModal(openButton.dataset.openModal, openButton);
+        return;
+      }
+      if (event.target.closest('[data-close-modal]') || event.target === backdrop) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeModal();
+    });
+  })();
+</script>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

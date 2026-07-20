@@ -1,0 +1,960 @@
+/* Tambahan halaman login untuk SIMRS ZAIDAN.
+   Semua ukuran/leading/weight tipografi mengambil token dari design-system
+   yang sinkron dengan typography guide dan Tailwind v4 @theme di input.css.
+   File ini hanya menambah layout khusus halaman, efek glass, dan motion. */
+
+.login-page {
+  @apply relative min-h-screen grid place-items-center p-8 overflow-x-hidden;
+  background: radial-gradient(circle at 14% 10%, color-mix(in srgb, var(--primary-blue) 8%, transparent), transparent 34%),
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--accent-teal) 7%, transparent), transparent 32%),
+    linear-gradient(125deg,
+      var(--page) 0%,
+      color-mix(in srgb, var(--primary-light) 24%, var(--page)) 28%,
+      var(--page) 52%,
+      color-mix(in srgb, var(--teal-light) 18%, var(--page)) 74%,
+      var(--page) 100%);
+  background-size: 220% 220%, 220% 220%, 360% 360%;
+  animation: loginGradientFlow 22s ease-in-out infinite;
+  isolation: isolate;
+}
+
+.login-page::before,
+.login-page::after {
+  @apply fixed pointer-events-none z-[0] rounded-full opacity-[.42];
+
+  content: "";
+  filter: blur(14px);
+}
+
+.login-page::before {
+  @apply w-[420px] h-[420px] left-[-140px] top-[-120px];
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary-blue) 10%, transparent), transparent 72%);
+  animation: loginBlobMoveOne 24s ease-in-out infinite;
+}
+
+.login-page::after {
+  @apply w-[460px] h-[460px] right-[-160px] bottom-[-150px];
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-teal) 9%, transparent), transparent 72%);
+  animation: loginBlobMoveTwo 26s ease-in-out infinite;
+}
+
+.login-shell {
+  @apply relative z-[1] w-[min(1468px,100%)] min-h-[min(920px,calc(100vh_-_64px))] grid grid-cols-[minmax(0,1.02fr)_minmax(430px,.98fr)] overflow-hidden bg-transparent;
+  isolation: isolate;
+  animation: loginSurfaceIn .7s ease both;
+}
+
+.login-hero-panel,
+.login-form-panel {
+  @apply relative min-w-0 mt-0;
+}
+
+.login-hero-panel {
+  @apply p-[clamp(38px,4.2vw,74px)_clamp(34px,5vw,78px)] flex flex-col justify-start gap-10;
+}
+
+.login-form-panel {
+  @apply flex flex-col justify-center p-[clamp(38px,4.8vw,88px)_clamp(34px,5.2vw,96px)];
+}
+
+.login-logo {
+  @apply inline-flex items-center gap-4 w-fit text-[color:var(--text-primary)] no-underline;
+  transition: transform .15s ease, filter .15s ease;
+  animation: loginFadeUp .55s ease .04s both;
+}
+
+.login-logo:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.login-logo > img {
+  @apply block w-[clamp(154px,16vw,220px)] h-auto;
+}
+
+.login-hero-content {
+  @apply grid gap-7 max-w-[570px];
+  animation: loginFadeUp .62s ease .12s both;
+}
+
+.login-trust-badge {
+  @apply w-fit border-[color:var(--border-soft)] shadow-[var(--shadow-sm)];
+}
+
+.login-heading-stack {
+  @apply grid gap-4.5;
+}
+
+.login-heading-stack h1 {
+  @apply max-w-[590px];
+}
+
+.login-heading-stack h1 span {
+  @apply block text-transparent;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.login-heading-stack p {
+  @apply m-0 max-w-[510px] text-[color:var(--text-primary)];
+}
+
+.login-feature-grid {
+  @apply grid grid-cols-2 gap-3.5 max-w-[540px];
+}
+
+.login-feature-card {
+  @apply min-h-[102px] p-4.5 flex items-center gap-3.5 rounded-[var(--radius-card)] bg-[color:color-mix(in_srgb,var(--surface)_82%,transparent)] shadow-[var(--shadow-sm)] border-0;
+  padding: 18px;
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: var(--shadow-sm);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.login-feature-card:hover {
+  @apply bg-[color:color-mix(in_srgb,var(--surface)_92%,transparent)] shadow-[var(--shadow-md)];
+
+  transform: translateY(-4px);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  box-shadow: var(--shadow-md);
+}
+
+.login-feature-card .option-icon {
+  @apply w-[52px] h-[52px] rounded-[12px] bg-[color:var(--primary-blue)] text-[color:var(--light-gray)];
+}
+
+.login-feature-card .option-icon.green {
+  @apply bg-[color:var(--success-dark)] text-[color:var(--success-light)];
+}
+
+.login-feature-card .option-icon.indigo {
+  @apply bg-[color:var(--indigo)] text-[color:var(--indigo-light)];
+}
+
+.login-feature-card .option-icon.login-feature-icon-warning {
+  @apply bg-[color:var(--warning-dark)] text-[color:var(--warning-light)];
+}
+
+.login-feature-card .option-icon i {
+  @apply text-h3;
+}
+
+.login-trust-badge i {
+  @apply inline-flex items-center justify-center text-body-md;
+}
+
+.login-feature-icon-warning {
+  @apply text-[color:var(--warning-light)] bg-[color:var(--warning-dark)];
+}
+
+.login-card {
+  @apply relative w-[min(100%,570px)] m-[0_auto] grid gap-7 p-[clamp(36px,4vw,56px)] overflow-hidden rounded-[var(--radius-card)] bg-[color:color-mix(in_srgb,var(--surface)_68%,transparent)] shadow-[var(--shadow-sm)] border-0;
+  padding: clamp(36px, 4vw, 56px);
+  background: color-mix(in srgb, var(--surface) 68%, transparent);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(30px) saturate(150%);
+  -webkit-backdrop-filter: blur(30px) saturate(150%);
+  animation: loginFadeUp .62s ease .18s both;
+}
+
+.login-card::before {
+  @apply absolute inset-0 pointer-events-none;
+
+  content: "";
+  background: linear-gradient(135deg, color-mix(in srgb, var(--surface) 78%, transparent) 0%, color-mix(in srgb, var(--surface) 22%, transparent) 48%, color-mix(in srgb, var(--surface) 50%, transparent) 100%),
+    radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--accent-teal) 12%, transparent), transparent 24%);
+}
+
+.login-card > * {
+  @apply relative z-[1];
+}
+
+.login-form-head {
+  @apply text-center;
+}
+
+.login-form-head h2 {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.login-form-head p {
+  @apply m-[12px_0_0] text-[color:var(--text-secondary)];
+}
+
+.login-form {
+  @apply grid gap-[22px];
+}
+
+.login-password-toggle {
+  @apply absolute top-1/2 right-3.5 z-[2];
+  transform: translateY(-50%);
+}
+
+.login-password-toggle:hover,
+.login-password-toggle:focus-visible,
+.login-password-toggle:active,
+.login-password-toggle[aria-pressed="true"] {
+  transform: translateY(-50%);
+}
+
+.password-toggle-icon {
+  @apply inline-flex items-center justify-center leading-[0];
+}
+
+.password-toggle-icon-off {
+  @apply hidden;
+}
+
+.login-password-toggle[aria-pressed="true"] .password-toggle-icon-on {
+  @apply hidden;
+}
+
+.login-password-toggle[aria-pressed="true"] .password-toggle-icon-off {
+  @apply inline-flex;
+}
+
+.login-password-toggle:disabled {
+  @apply opacity-[.48] cursor-not-allowed pointer-events-none;
+}
+
+.login-form[aria-busy="true"] .input,
+.login-form[aria-busy="true"] .login-password-toggle {
+  cursor: wait;
+}
+
+.login-form-row {
+  @apply flex items-center justify-between gap-4 mt-[-2px];
+}
+
+.login-link {
+  @apply text-[color:var(--primary-blue)] no-underline;
+}
+
+.login-link:hover {
+  @apply text-[color:var(--primary-dark)] underline;
+}
+
+.login-submit {
+  @apply relative overflow-hidden shadow-[var(--shadow-md)];
+
+  --btn-bg: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+  --btn-border: transparent;
+  --btn-hover-bg: linear-gradient(90deg, var(--primary-dark) 0%, var(--accent-teal-shade-15) 100%);
+  --btn-active-bg: linear-gradient(90deg, var(--primary-active) 0%, var(--accent-teal-shade-30) 100%);
+  transition: background .15s ease, border-color .15s ease, color .15s ease, box-shadow .15s ease, transform .15s ease, filter .15s ease;
+}
+
+.login-submit::before {
+  @apply absolute inset-[-40%_auto_-40%_-42%] w-[34%] opacity-0 pointer-events-none;
+
+  content: "";
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--surface) 62%, transparent), transparent);
+  transform: skewX(-18deg);
+}
+
+.login-submit:hover {
+  @apply shadow-[var(--shadow-lg)] border-transparent;
+  transform: translateY(-2px);
+  filter: saturate(1.08);
+}
+
+.login-submit:hover::before {
+  animation: loginButtonHighlight .85s ease;
+}
+
+.login-submit {
+  @apply justify-center;
+}
+
+.login-submit :is(.lucide, i) {
+  @apply ml-0;
+}
+
+.login-submit i,
+.btn i {
+  @apply inline-flex items-center justify-center flex-none;
+}
+
+.login-divider {
+  @apply flex items-center gap-4 text-[color:var(--slate)];
+}
+
+.login-divider::before,
+.login-divider::after {
+  @apply h-px flex-auto bg-[color:var(--border)];
+
+  content: "";
+}
+
+.login-provider-grid {
+  @apply grid grid-cols-3 gap-4.5;
+}
+
+.login-provider-mark {
+  @apply w-6 h-6 inline-flex items-center justify-center flex-none;
+}
+
+.login-provider-mark.google {
+  @apply text-[color:var(--primary-blue)] font-sans;
+}
+
+.login-provider-mark.microsoft {
+  @apply grid grid-cols-[repeat(2,10px)] grid-rows-[repeat(2,10px)] gap-0.5;
+}
+
+.login-provider-mark.microsoft span:nth-child(1) {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.login-provider-mark.microsoft span:nth-child(2) {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.login-provider-mark.microsoft span:nth-child(3) {
+  @apply bg-[color:var(--accent-teal)];
+}
+
+.login-provider-mark.microsoft span:nth-child(4) {
+  @apply bg-[color:var(--warning)];
+}
+
+.login-provider-mark.sso {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.login-help-card {
+  @apply mt-3.5 min-h-[88px] p-[18px_22px] flex items-center gap-3.5 bg-[color:color-mix(in_srgb,var(--primary-light)_54%,transparent)] shadow-[var(--shadow-sm)] border-0 rounded-[var(--radius-card)];
+  padding: 18px 22px;
+  background: color-mix(in srgb, var(--primary-light) 54%, transparent);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.login-help-card:hover {
+  @apply bg-[color:color-mix(in_srgb,var(--surface)_82%,var(--primary-light))] shadow-[var(--shadow-md)];
+
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--surface) 82%, var(--primary-light));
+  box-shadow: var(--shadow-md);
+}
+
+.login-help-card .option-icon {
+  @apply w-11 h-11 rounded-full;
+}
+
+.login-help-card .option-meta {
+  @apply flex-auto;
+}
+
+.login-copyright {
+  @apply m-[46px_0_0] text-center text-[color:var(--slate)];
+}
+
+.login-decor {
+  @apply absolute rounded-full pointer-events-none;
+}
+
+.login-decor-one {
+  @apply w-[118px] h-[118px] top-[108px] right-[98px] border-[28px] border-[color:color-mix(in_srgb,var(--primary-blue)_5%,transparent)];
+  border: 28px solid color-mix(in srgb, var(--primary-blue) 5%, transparent);
+  animation: loginFloat 7s ease-in-out infinite;
+}
+
+.login-decor-two {
+  @apply w-[74px] h-[74px] left-1/2 bottom-[135px] border border-[color:color-mix(in_srgb,var(--primary-blue)_8%,transparent)] bg-[color:color-mix(in_srgb,var(--surface)_32%,transparent)];
+  border: 1px solid color-mix(in srgb, var(--primary-blue) 8%, transparent);
+  background: color-mix(in srgb, var(--surface) 32%, transparent);
+  filter: blur(.2px);
+  animation: loginFloat 8s ease-in-out .5s infinite reverse;
+}
+
+.login-dot-grid {
+  @apply absolute w-[62px] h-[62px] pointer-events-none;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--primary-blue) 25%, transparent) 2px, transparent 2.5px);
+  background-size: 22px 22px;
+}
+
+.login-dot-grid-top {
+  @apply top-[74px] right-[32%];
+}
+
+.login-dot-grid-bottom {
+  @apply left-[72px] bottom-[68px];
+}
+
+.login-wave {
+  @apply absolute left-[24%] right-[-24px] bottom-[-56px] h-[250px] rounded-[50%_50%_0_0] opacity-[.78] pointer-events-none;
+  background: repeating-radial-gradient(ellipse at 30% 100%, transparent 0 13px, color-mix(in srgb, var(--primary-blue) 8%, transparent) 14px, transparent 15px);
+  transform: rotate(-6deg);
+}
+
+@keyframes loginGradientFlow {
+  0%, 100% { background-position: 0% 50%, 100% 50%, 0% 50%; }
+  50% { background-position: 100% 50%, 0% 50%, 100% 50%; }
+}
+
+@keyframes loginBlobMoveOne {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(90px, 70px, 0) scale(1.14); }
+}
+
+@keyframes loginBlobMoveTwo {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-110px, -68px, 0) scale(1.1); }
+}
+
+@keyframes loginSurfaceIn {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes loginFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loginFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes loginButtonHighlight {
+  0% { left: -42%; opacity: 0; }
+  18% { opacity: 1; }
+  100% { left: 118%; opacity: 0; }
+}
+
+@media (max-width: 1180px) {
+  .login-page {
+  @apply p-[22px];
+}
+
+  .login-shell {
+  @apply grid-cols-1 min-h-auto;
+}
+
+  .login-hero-panel {
+  @apply gap-[30px] pb-[34px];
+}
+
+  .login-hero-content {
+  @apply max-w-[none];
+}
+
+  .login-feature-grid {
+  @apply max-w-[none];
+}
+
+  .login-form-panel {
+  @apply pt-[30px];
+}
+
+  .login-card {
+  @apply w-[min(100%,620px)];
+}
+}
+
+@media (max-width: 720px) {
+  .login-page {
+  @apply p-3.5;
+}
+
+  .login-hero-panel,
+  .login-form-panel {
+  @apply p-[28px_20px];
+}
+
+  .login-heading-stack h1 {
+  @apply text-h1;
+}
+
+  .login-heading-stack h1 span {
+  @apply inline;
+}
+
+  .login-card {
+  @apply p-[24px_18px] rounded-[var(--radius-card)];
+}
+
+  .login-logo > img {
+  @apply w-[154px];
+}
+
+  .login-feature-grid,
+  .login-provider-grid {
+  @apply grid-cols-1;
+}
+
+  .login-form-row,
+  .login-help-card {
+  @apply items-start flex-col;
+}
+
+  .login-decor-one,
+  .login-decor-two,
+  .login-dot-grid-top,
+  .login-wave {
+  @apply hidden;
+}
+}
+
+@media (max-width: 420px) {
+  .login-heading-stack h1 {
+  @apply text-h2;
+}
+}
+
+/* Halaman lupa password
+   Reuse layout login dua kolom; hanya konten card kanan yang berubah untuk reset password. */
+
+.forgot-page .forgot-card {
+  @apply gap-7;
+}
+
+.forgot-auth-icon {
+  @apply relative w-[76px] h-[76px] m-[0_auto_-4px] rounded-full inline-flex items-center justify-center text-[color:var(--primary-blue)] bg-[color:color-mix(in_srgb,var(--primary-light)_82%,transparent)] shadow-[var(--shadow-sm)];
+  color: var(--primary-blue);
+  background: color-mix(in srgb, var(--primary-light) 82%, transparent);
+  box-shadow: var(--shadow-sm);
+  animation: loginFadeUp .55s ease .04s both;
+}
+
+.forgot-auth-icon::before,
+.forgot-auth-icon::after {
+  @apply absolute inset-[-14px] rounded-[inherit] border border-[color:color-mix(in_srgb,var(--primary-blue)_12%,transparent)] pointer-events-none;
+
+  content: "";
+  border: 1px solid color-mix(in srgb, var(--primary-blue) 12%, transparent);
+}
+
+.forgot-auth-icon::after {
+  @apply inset-[-26px] border-[color:color-mix(in_srgb,var(--primary-blue)_7%,transparent)];
+  border-color: color-mix(in srgb, var(--primary-blue) 7%, transparent);
+  animation: forgotAuthPulse 2.8s ease-in-out infinite;
+}
+
+.forgot-auth-icon .lucide {
+  @apply w-8.5 h-8.5;
+  stroke-width: 2.2;
+}
+
+.forgot-auth-icon i {
+  @apply text-h2;
+}
+
+.forgot-form-head p {
+  @apply max-w-[510px] mx-auto;
+}
+
+.login-reset-note {
+  @apply min-h-[78px] p-[18px_20px] flex items-center gap-3.5 border-[color:var(--border-soft)] bg-[color:color-mix(in_srgb,var(--primary-light)_58%,transparent)] shadow-[var(--shadow-sm)];
+  padding: 18px 20px;
+  background: color-mix(in srgb, var(--primary-light) 58%, transparent);
+  box-shadow: var(--shadow-sm);
+}
+
+.login-reset-note .option-icon {
+  @apply w-[42px] h-[42px] rounded-full bg-[color:color-mix(in_srgb,var(--surface)_72%,transparent)];
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+}
+
+.login-reset-note-copy {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.forgot-help-card {
+  @apply mt-4.5;
+}
+
+/* Halaman reset password
+   Reuse layout login/lupa password. Hanya menambah meter kekuatan dan helper validasi. */
+
+.reset-password-strength {
+  @apply grid gap-2.5 mt-[-4px];
+}
+
+.reset-strength-head {
+  @apply flex items-center gap-3.5;
+}
+
+.reset-strength-label {
+  @apply text-[color:var(--text-primary)];
+}
+
+.reset-strength-meter {
+  @apply grid grid-cols-4 gap-3;
+
+  --strength-color: var(--slate-light);
+}
+
+.reset-strength-meter.is-weak {
+  --strength-color: var(--danger);
+}
+
+.reset-strength-meter.is-medium {
+  --strength-color: var(--warning);
+}
+
+.reset-strength-meter.is-strong {
+  --strength-color: var(--primary-green);
+}
+
+.reset-strength-meter.is-excellent {
+  --strength-color: var(--primary-blue);
+}
+
+.reset-strength-segment {
+  @apply h-1.5 rounded-full bg-[color:var(--slate-light)];
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.reset-strength-segment.is-active {
+  @apply bg-[color:var(--strength-color)] shadow-[var(--shadow-sm)];
+  transform: translateY(-1px);
+}
+
+.reset-password-helper {
+  @apply m-[-8px_0_0];
+}
+
+.reset-submit-message {
+  @apply hidden m-[-6px_0_0];
+}
+
+.reset-submit-message.is-visible {
+  @apply block;
+}
+
+@keyframes forgotAuthPulse {
+  0%, 100% { transform: scale(.96); opacity: .72; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+@media (max-width: 720px) {
+  .forgot-auth-icon {
+  @apply w-[68px] h-[68px];
+}
+
+  .forgot-auth-icon .lucide {
+  @apply w-[30px] h-[30px];
+}
+}
+
+/* Halaman password berhasil
+   Reuse layout login/lupa password; hanya menambah visual konfirmasi dan catatan keamanan. */
+
+.password-success-card {
+  @apply text-center;
+}
+
+.success-celebration {
+  @apply relative min-h-[156px] grid place-items-center;
+}
+
+.password-success-icon {
+  @apply relative w-[112px] h-[112px] rounded-full inline-flex items-center justify-center text-[color:var(--primary-green)] bg-[color:color-mix(in_srgb,var(--success-light)_78%,transparent)] shadow-[var(--shadow-md)];
+  color: var(--primary-green);
+  background: color-mix(in srgb, var(--success-light) 78%, transparent);
+  box-shadow: var(--shadow-md);
+  animation: passwordSuccessPop .58s ease .08s both;
+}
+
+.password-success-icon::before,
+.password-success-icon::after {
+  @apply absolute rounded-[inherit] pointer-events-none;
+
+  content: "";
+}
+
+.password-success-icon::before {
+  @apply inset-[-18px] bg-[color:color-mix(in_srgb,var(--success-light)_72%,transparent)] z-[-1];
+  background: color-mix(in srgb, var(--success-light) 72%, transparent);
+}
+
+.password-success-icon::after {
+  @apply inset-[-34px] border border-[color:color-mix(in_srgb,var(--primary-green)_12%,transparent)];
+  border: 1px solid color-mix(in srgb, var(--primary-green) 12%, transparent);
+  animation: forgotAuthPulse 2.8s ease-in-out infinite;
+}
+
+.password-success-icon .lucide {
+  @apply w-[58px] h-[58px];
+  stroke-width: 1.9;
+}
+
+.password-success-icon i {
+  @apply text-display-lg;
+}
+
+.password-success-head p {
+  @apply max-w-[520px];
+}
+
+.password-success-note {
+  @apply text-left;
+}
+
+.password-success-note .option-meta small strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.success-confetti {
+  @apply absolute w-2.5 h-2.5 rounded-full bg-[color:var(--accent-teal)] shadow-[var(--shadow-sm)];
+  animation: successConfettiFloat 3.2s ease-in-out infinite;
+}
+
+.success-confetti-one {
+  @apply left-[26%] top-[14%] bg-[color:var(--accent-teal)];
+}
+
+.success-confetti-two {
+  @apply right-[24%] top-[22%] bg-[color:var(--primary-blue)];
+  animation-delay: .15s;
+}
+
+.success-confetti-three {
+  @apply left-[18%] bottom-[26%] bg-[color:var(--indigo)];
+  animation-delay: .3s;
+}
+
+.success-confetti-four {
+  @apply right-[16%] bottom-[20%] bg-[color:var(--indigo-tint-40)];
+  animation-delay: .45s;
+}
+
+.success-confetti-five {
+  @apply left-[30%] bottom-[14%] bg-[color:var(--warning)];
+  animation-delay: .6s;
+}
+
+.success-confetti-six {
+  @apply right-[34%] top-[12%] bg-[color:var(--warning)] rounded;
+  animation-delay: .75s;
+}
+
+@keyframes passwordSuccessPop {
+  0% { opacity: 0; transform: scale(.72); }
+  70% { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes successConfettiFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: .78; }
+  50% { transform: translateY(-10px) rotate(18deg); opacity: 1; }
+}
+
+@media (max-width: 720px) {
+  .success-celebration {
+  @apply min-h-[132px];
+}
+
+  .password-success-icon {
+  @apply w-[92px] h-[92px];
+}
+
+  .password-success-icon .lucide {
+  @apply w-12 h-12;
+}
+}
+
+/* --------------------------------------------------------------------------
+   Card halaman auth
+   Card login, forgot password, dan reset password mengikuti base design system.
+   -------------------------------------------------------------------------- */
+
+:is( .login-card, .login-feature-card.card, .login-help-card.card, .login-reset-note.card, .forgot-card.card, .forgot-help-card.card, .reset-card.card, .password-success-card.card, .password-success-note.card ) {
+  @apply border-0 rounded-[var(--radius-card)] shadow-[var(--shadow-sm)];
+}
+
+:is( .login-feature-card.card, .login-help-card.card, .login-reset-note.card, .forgot-card.card, .forgot-help-card.card, .reset-card.card, .password-success-card.card, .password-success-note.card ) {
+  @apply p-5;
+}
+
+/* --------------------------------------------------------------------------
+   Layar alur auth G01-G05
+   -------------------------------------------------------------------------- */
+
+.auth-flow-page .login-card.auth-card {
+  @apply max-w-[580px];
+}
+
+.auth-flow-page .login-form-head {
+  @apply grid justify-items-center gap-2.5;
+}
+
+.auth-inline-alert {
+  @apply items-center;
+}
+
+.auth-forgot-link {
+  @apply w-fit text-center;
+  justify-self: center;
+}
+
+.auth-note-card {
+  @apply gap-3;
+}
+
+.auth-lock-card[hidden],
+.auth-inline-alert[hidden],
+#passwordSuccessMessage[hidden],
+#forgotSuccess[hidden] {
+  @apply hidden;
+}
+
+.auth-timer-inline {
+  @apply flex items-center justify-between gap-4 p-0 text-[color:var(--slate)];
+}
+
+.auth-timer-inline .auth-countdown {
+  @apply text-h2;
+}
+
+.auth-countdown {
+  @apply font-sans text-h1 leading-none font-bold tracking-[-0.04em] text-[color:var(--text-primary)];
+}
+
+.auth-spinner {
+  @apply hidden w-4.5 h-4.5 rounded-full border-2 border-[color:color-mix(in_srgb,currentColor_24%,transparent)] border-t-current;
+  border: 2px solid color-mix(in srgb, currentColor 24%, transparent);
+  animation: authSpin .72s linear infinite;
+}
+
+.login-submit.is-loading .auth-spinner,
+.btn.is-loading .auth-spinner {
+  @apply inline-flex;
+}
+
+.login-submit.is-loading > svg,
+.login-submit.is-loading > i,
+.btn.is-loading > svg,
+.btn.is-loading > i {
+  @apply hidden;
+}
+
+.auth-otp-fieldset {
+  @apply m-0 p-0 border-0 grid gap-2.5;
+}
+
+.auth-otp-grid {
+  @apply grid grid-cols-6 gap-2.5;
+}
+
+.auth-otp-input {
+  @apply min-w-0 px-0 text-center text-h2 font-semibold font-sans tracking-[0];
+}
+
+.auth-link-stack {
+  @apply grid justify-items-center gap-2.5;
+}
+
+.auth-resend-link {
+  @apply justify-self-center text-center;
+}
+
+.auth-requirement-list {
+  @apply grid gap-2 m-0 p-0 list-none;
+}
+
+.auth-requirement-list li {
+  @apply relative flex items-center gap-2 text-[color:var(--slate)] text-body-sm leading-[1.45];
+}
+
+.auth-requirement-list li::before {
+  @apply w-2 h-2 rounded-full flex-none bg-[color:var(--slate-light)];
+
+  content: "";
+}
+
+.auth-requirement-list li.is-valid {
+  @apply text-[color:var(--primary-green)];
+}
+
+.auth-requirement-list li.is-valid::before {
+  @apply bg-[color:var(--primary-green)];
+}
+
+@keyframes authSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 720px) {
+  .auth-otp-grid {
+  @apply gap-2;
+}
+
+  .auth-otp-input {
+  @apply text-body-xl;
+}
+
+  .auth-countdown {
+  @apply text-h2;
+}
+}
+
+/* Penyelarasan warna semantik login */
+
+.login-page {
+  @apply text-[color:var(--text-primary)];
+}
+
+.login-secondary-text {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.login-helper-text {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.login-card .field-helper {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.login-card .muted {
+  @apply text-[color:var(--text-secondary)];
+}
+
+/* --------------------------------------------------------------------------
+   Validasi dan susunan responsive halaman auth
+   -------------------------------------------------------------------------- */
+
+.login-feature-grid-mobile {
+  @apply hidden;
+}
+
+.auth-field-error {
+  @apply mt-1.5;
+}
+
+.auth-otp-fieldset.is-error .auth-otp-input {
+  @apply border-[color:var(--danger)] bg-[color:var(--danger-light)];
+}
+
+@media (max-width: 1180px) {
+  .login-hero-panel .login-feature-grid {
+    @apply hidden;
+  }
+
+  .login-feature-grid-mobile {
+    @apply grid w-[min(100%,620px)] max-w-none mx-auto mt-5;
+  }
+
+  .login-form-panel {
+    @apply gap-5;
+  }
+}
+
+@media (max-width: 720px) {
+  .login-feature-grid.login-feature-grid-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .login-feature-grid.login-feature-grid-mobile {
+    grid-template-columns: 1fr;
+  }
+}

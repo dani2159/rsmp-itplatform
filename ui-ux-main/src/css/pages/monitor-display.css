@@ -1,0 +1,724 @@
+/* ==========================================================================
+   Monitor Display Loket / TV Queue Display
+   Source khusus halaman monitor. Semua ukuran visual memakai unit vw supaya
+   skala tampilan konsisten untuk layar TV dan tetap fit dalam satu layar.
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eef5ff;
+}
+
+.queue-tv-page,
+.queue-tv-page * {
+  box-sizing: border-box;
+}
+
+.queue-tv-page {
+  --monitor-blue: #1e4fd7;
+  --monitor-blue-dark: #0b2b74;
+  --monitor-blue-deep: #063b9f;
+  --monitor-blue-soft: #eff6ff;
+  --monitor-green: #27a269;
+  --monitor-yellow: #ffdd3d;
+  --monitor-border: rgba(30, 79, 215, 0.18);
+  --monitor-text: #07123e;
+  --monitor-muted: #314066;
+  --monitor-white: #ffffff;
+  --monitor-shadow: 0 0.9vw 2.4vw rgba(15, 31, 61, 0.1);
+  width: 100vw;
+  height: 56.25vw;
+  overflow: hidden;
+  color: var(--monitor-text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  background: radial-gradient(circle at 18% 10%, rgba(30, 79, 215, 0.1), transparent 31vw), linear-gradient(135deg, #fbfdff 0%, #eef5ff 56%, #f9fbff 100%);
+}
+
+.queue-display-screen {
+  width: 100vw;
+  height: 56.25vw;
+  padding: 1.05vw 1.45vw;
+  display: grid;
+  grid-template-rows: 4.8vw 38.5vw 9.25vw;
+  gap: 0.8vw;
+  overflow: hidden;
+}
+
+.queue-display-header {
+  display: grid;
+  grid-template-columns: 23.4vw 51vw 18.7vw;
+  align-items: center;
+  gap: 1vw;
+  min-width: 0;
+}
+
+.queue-display-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9vw;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.queue-display-logo {
+  width: 3.8vw;
+  height: 3.8vw;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.queue-display-brand-copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.24vw;
+  overflow: hidden;
+}
+
+.queue-display-brand-copy strong {
+  color: var(--monitor-blue-dark);
+  font-size: 1.26vw;
+  font-weight: 900;
+  letter-spacing: 0.02vw;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-display-brand-copy span {
+  color: var(--monitor-muted);
+  font-size: 0.72vw;
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-display-title {
+  min-width: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.queue-display-title h1 {
+  margin: 0;
+  color: var(--monitor-blue-dark);
+  font-size: 2.18vw;
+  font-weight: 900;
+  letter-spacing: 0.14vw;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.queue-display-title p {
+  margin: 0.38vw 0 0;
+  color: var(--monitor-muted);
+  font-size: 1.2vw;
+  font-weight: 600;
+  letter-spacing: 0.05vw;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-display-clock {
+  display: grid;
+  justify-items: end;
+  gap: 0.2vw;
+  color: var(--monitor-blue-dark);
+  overflow: hidden;
+}
+
+.queue-display-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6vw;
+  font-size: 2.42vw;
+  font-weight: 900;
+  letter-spacing: 0.04vw;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.queue-icon {
+  font-size: 2vw;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.queue-display-date {
+  font-size: 0.92vw;
+  font-weight: 600;
+  letter-spacing: 0.02vw;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-display-main {
+  display: grid;
+  grid-template-columns: 21.5vw 74.15vw;
+  gap: 1vw;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.queue-now-panel {
+  display: grid;
+  grid-template-rows: 27.9vw 9.7vw;
+  gap: 0.9vw;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.queue-now-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 1.45vw 1.55vw 1.25vw;
+  border-radius: 0.58vw;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  overflow: hidden;
+  color: var(--monitor-white);
+  background: radial-gradient(circle at 20% 85%, rgba(255,255,255,0.18), transparent 10vw), linear-gradient(180deg, var(--monitor-blue) 0%, #083b9e 100%);
+  box-shadow: var(--monitor-shadow);
+}
+
+.queue-now-label {
+  margin: 0;
+  font-size: 1.08vw;
+  font-weight: 900;
+  letter-spacing: 0.04vw;
+  line-height: 1;
+  text-align: center;
+}
+
+.queue-now-unit {
+  margin-top: 1.05vw;
+  padding: 0.46vw 1.25vw;
+  border-radius: 999vw;
+  background-color: var(--monitor-yellow);
+  color: var(--monitor-blue-dark);
+  font-size: 0.92vw;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.queue-now-number {
+  margin-top: 1.18vw;
+  color: var(--monitor-white);
+  font-size: 5.8vw;
+  font-weight: 900;
+  letter-spacing: 0.12vw;
+  line-height: 0.9;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.queue-now-separator {
+  width: 16.2vw;
+  height: 0.08vw;
+  margin: 1.18vw 0 1.05vw;
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+.queue-now-patient {
+  display: grid;
+  justify-items: center;
+  gap: 0.3vw;
+  text-align: center;
+}
+
+.queue-now-patient strong {
+  font-size: 2.4vw;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.queue-now-patient span {
+  font-size: 1.18vw;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+.queue-now-room {
+  margin-top: 1.45vw;
+  display: grid;
+  grid-template-columns: 3.9vw 12.6vw;
+  align-items: center;
+  gap: 1vw;
+  text-align: left;
+}
+
+.queue-now-sound {
+  width: 3.9vw;
+  height: 3.9vw;
+  border-radius: 999vw;
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow: inset 0 0 0 0.13vw rgba(255, 255, 255, 0.2);
+  font-size: 1.95vw;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.queue-now-room span:last-child {
+  font-size: 1.18vw;
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.queue-now-room strong {
+  display: block;
+  color: var(--monitor-yellow);
+  font-size: 2vw;
+  font-weight: 900;
+  letter-spacing: 0.08vw;
+  line-height: 1.05;
+}
+
+.queue-announcement-card,
+.queue-info-card,
+.queue-list-panel {
+  border: 0.08vw solid var(--monitor-border);
+  background-color: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 0.55vw 1.5vw rgba(15, 31, 61, 0.06);
+  backdrop-filter: blur(0.12vw);
+}
+
+.queue-announcement-card {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 0.52vw;
+  padding: 1.05vw 1.25vw;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff9de 0%, #fff1ae 100%);
+}
+
+.queue-announcement-title {
+  display: flex;
+  align-items: center;
+  gap: 0.58vw;
+  color: #101828;
+  font-size: 1.2vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-announcement-title span {
+  color: #8a6200;
+  font-size: 1.18vw;
+  line-height: 1;
+}
+
+.queue-announcement-card p {
+  margin: 0.78vw 0 0;
+  color: #101828;
+  font-size: 1.1vw;
+  font-weight: 600;
+  line-height: 1.42;
+}
+
+.queue-list-panel {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 0.68vw;
+  padding: 1.05vw 0.45vw 0.45vw;
+  display: grid;
+  grid-template-rows: 2.7vw 34.3vw;
+  overflow: hidden;
+}
+
+.queue-list-head {
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8vw;
+  padding: 0 1vw;
+  overflow: hidden;
+}
+
+.queue-list-head h2 {
+  margin: 0;
+  color: var(--monitor-blue-dark);
+  font-size: 1.9vw;
+  font-weight: 900;
+  letter-spacing: 0.08vw;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-display-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.1vw;
+  color: var(--monitor-muted);
+  font-size: 0.78vw;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-display-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4vw;
+}
+
+.queue-dot {
+  width: 0.72vw;
+  height: 0.72vw;
+  min-width: 0.72vw;
+  border-radius: 999vw;
+  display: inline-block;
+}
+
+.queue-dot-online {
+  background-color: #126ce0;
+}
+
+.queue-dot-onsite {
+  background-color: var(--monitor-green);
+}
+
+.queue-unit-grid {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.22vw;
+  overflow: hidden;
+}
+
+.queue-unit-card {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 3.65vw 27.1vw 3.55vw;
+  border: 0.08vw solid rgba(30, 79, 215, 0.16);
+  border-radius: 0.46vw;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.78);
+}
+
+.queue-unit-card header {
+  min-width: 0;
+  padding: 0.72vw 1.05vw;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--monitor-blue-deep) 0%, #052e82 100%);
+  color: var(--monitor-white);
+}
+
+
+.queue-unit-card header span {
+  min-width: 0;
+  font-size: 1.3vw;
+  font-weight: 900;
+  letter-spacing: 0.04vw;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.queue-number-list {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.queue-number-list li {
+  min-width: 0;
+  padding: 0 1.35vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65vw;
+  border-bottom: 0.08vw solid rgba(30, 79, 215, 0.12);
+  color: var(--monitor-blue-dark);
+  font-size: 2vw;
+  font-weight: 800;
+  letter-spacing: 0.06vw;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.queue-number-list li.queue-featured {
+  background-color: rgba(255, 255, 255, 0.52);
+}
+
+.queue-number-list li.queue-featured strong {
+  font-size: 2.42vw;
+  font-weight: 900;
+  letter-spacing: 0.07vw;
+  line-height: 1;
+}
+
+.queue-unit-card footer {
+  min-width: 0;
+  padding: 0.68vw 1.55vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65vw;
+  overflow: hidden;
+  background-color: rgba(239, 246, 255, 0.78);
+  color: var(--monitor-blue-dark);
+}
+
+.queue-unit-card footer span {
+  font-size: 0.82vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-unit-card footer strong {
+  font-size: 1.95vw;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.queue-display-footer {
+  display: grid;
+  grid-template-columns: 26.8vw 21.4vw 26.6vw 20.85vw;
+  gap: 0.8vw;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.queue-info-card {
+  min-width: 0;
+  min-height: 0;
+  border-radius: 0.56vw;
+  padding: 1.05vw 1.25vw;
+  overflow: hidden;
+}
+
+.queue-service-hours,
+.queue-priority-card {
+  background: linear-gradient(135deg, var(--monitor-blue-deep) 0%, #052e82 100%);
+  color: var(--monitor-white);
+}
+
+.queue-info-title {
+  display: flex;
+  align-items: center;
+  gap: 0.72vw;
+  font-size: 1.02vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-info-title span {
+  font-size: 1.48vw;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.queue-hours-grid {
+  margin-top: 1.34vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vw;
+}
+
+.queue-hours-grid p {
+  margin: 0;
+  display: grid;
+  gap: 0.62vw;
+}
+
+.queue-hours-grid p + p {
+  padding-left: 1vw;
+  border-left: 0.08vw solid rgba(255, 255, 255, 0.24);
+}
+
+.queue-hours-grid span {
+  font-size: 0.86vw;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.queue-hours-grid strong {
+  font-size: 1.2vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-help-card,
+.queue-app-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1vw;
+  background-color: rgba(239, 246, 255, 0.92);
+}
+
+.queue-help-icon {
+  width: 4.6vw;
+  height: 4.6vw;
+  border-radius: 999vw;
+  display: grid;
+  place-items: center;
+  background-color: rgba(30, 79, 215, 0.08);
+  color: var(--monitor-blue);
+  font-size: 2vw;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.queue-help-card div,
+.queue-app-card div {
+  min-width: 0;
+  display: grid;
+  gap: 0.35vw;
+  overflow: hidden;
+}
+
+.queue-help-card strong,
+.queue-app-card span {
+  color: var(--monitor-blue-dark);
+  font-size: 1.02vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-help-card span,
+.queue-app-card p {
+  margin: 0;
+  color: var(--monitor-muted);
+  font-size: 0.74vw;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.queue-help-card b {
+  color: var(--monitor-blue-dark);
+  font-size: 1.28vw;
+  font-weight: 900;
+  letter-spacing: 0.08vw;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.queue-app-card strong {
+  color: var(--monitor-blue-dark);
+  font-size: 1.46vw;
+  font-weight: 900;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-qr {
+  width: 6.35vw;
+  height: 6.35vw;
+  padding: 0.45vw;
+  border-radius: 0.36vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0.23vw;
+  background-color: var(--monitor-white);
+  box-shadow: 0 0.45vw 1vw rgba(15, 31, 61, 0.1);
+}
+
+.queue-qr span {
+  display: block;
+  background-color: var(--monitor-blue-dark);
+}
+
+.queue-qr span:nth-child(2),
+.queue-qr span:nth-child(4),
+.queue-qr span:nth-child(8) {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 0.16vw var(--monitor-blue-dark);
+}
+
+.queue-qr span:nth-child(5) {
+  background-color: var(--monitor-green);
+}
+
+.queue-priority-card {
+  display: grid;
+  grid-template-columns: 4.8vw minmax(0, 1fr);
+  align-content: center;
+  align-items: center;
+  column-gap: 1vw;
+}
+
+.queue-priority-icon {
+  grid-row: span 2;
+  font-size: 3.85vw;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.88;
+}
+
+.queue-priority-card strong,
+.queue-priority-card span:last-child {
+  min-width: 0;
+  font-size: 1.22vw;
+  font-weight: 900;
+  line-height: 1.12;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.queue-priority-card span:last-child {
+  font-weight: 700;
+}
+
+@media (max-aspect-ratio: 13/9) {
+  .queue-display-title h1 {
+    font-size: 1.9vw;
+    letter-spacing: 0.09vw;
+  }
+
+  .queue-display-title p {
+    font-size: 1.02vw;
+  }
+
+  .queue-display-brand-copy strong {
+    font-size: 1.1vw;
+  }
+
+  .queue-display-brand-copy span,
+  .queue-display-date,
+  .queue-display-legend {
+    font-size: 0.66vw;
+  }
+
+  .queue-unit-card header span {
+    font-size: 0.7vw;
+  }
+}

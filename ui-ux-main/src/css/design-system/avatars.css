@@ -1,0 +1,90 @@
+/* Avatars
+   Identitas visual untuk user, dokter, pasien, dan grup petugas. */
+.avatar {
+  @apply relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] font-bold uppercase;
+}
+
+.avatar img {
+  @apply h-full w-full object-cover;
+}
+
+.avatar-xs { @apply h-6 w-6 text-body-xs; }
+.avatar-sm { @apply h-8 w-8 text-body-sm; }
+.avatar-md { @apply h-10 w-10 text-body-md; }
+.avatar-lg { @apply h-14 w-14 text-body-xl; }
+.avatar-xl { @apply h-[72px] w-[72px] text-h2; }
+
+.avatar-square {
+  @apply rounded-[10px];
+}
+
+.avatar-soft {
+  @apply bg-[color:var(--ui-surface-primary-soft)] text-[color:var(--primary-blue)];
+}
+
+.avatar-green {
+  @apply bg-[color:var(--success-light)] text-[color:var(--primary-green)];
+}
+
+.avatar-warning {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-dark)];
+}
+
+.avatar-danger {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+}
+
+.avatar-patient-male {
+  border: 1px solid var(--primary-blue-tint-80);
+  background-color: var(--primary-blue-light);
+  background-image: none;
+  color: var(--primary-blue);
+}
+
+.avatar-patient-female {
+  border: 1px solid var(--accent-pink-border-soft);
+  background-color: var(--accent-pink-light);
+  background-image: none;
+  color: var(--accent-pink-shade-30);
+}
+
+.avatar-initials {
+  @apply inline-flex items-center justify-center font-extrabold tracking-wide leading-none;
+}
+
+.avatar-xl .avatar-initials {
+  @apply text-h3;
+}
+
+.avatar-status::after {
+  content: "";
+  @apply absolute bottom-[1px] right-[1px] h-2.5 w-2.5 rounded-full border-2 border-[color:var(--white)] bg-[color:var(--slate-light)];
+}
+
+.avatar-status.is-online::after {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.avatar-status.is-busy::after {
+  @apply bg-[color:var(--danger)];
+}
+
+.avatar-status.is-away::after {
+  @apply bg-[color:var(--warning)];
+}
+
+.avatar-group {
+  @apply flex items-center;
+}
+
+.avatar-group .avatar {
+  @apply border-2 border-[color:var(--white)];
+}
+
+.avatar-group .avatar + .avatar {
+  @apply -ml-[10px];
+}
+
+.avatar-count {
+  @apply inline-flex h-8 min-w-8 items-center justify-center rounded-full border-2 border-[color:var(--white)] bg-[color:var(--navy)] px-2 text-body-sm font-bold text-[color:var(--white)] -ml-[10px];
+}

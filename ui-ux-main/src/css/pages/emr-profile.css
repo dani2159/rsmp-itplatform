@@ -1,0 +1,936 @@
+/* ==========================================================================
+   Profil RM Pasien
+   Layout khusus halaman profil rekam medis terpadu.
+   Komponen dasar tetap memakai design system: card, btn, tabs, badge, alert,
+   avatar, breadcrumb, dan typography tokens.
+   ========================================================================== */
+
+.patient-profile-content {
+  @apply grid gap-4.5;
+}
+
+.patient-profile-breadcrumb {
+  @apply mb-0;
+}
+
+.patient-profile-actions {
+  @apply flex flex-wrap items-center justify-between gap-3;
+}
+
+.patient-identity-card.card {
+  @apply border border-[color:var(--border-soft)] p-0 shadow-[var(--shadow-sm)];
+}
+
+.patient-identity-body {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_minmax(260px,300px)] items-center gap-6 p-7 px-8;
+}
+
+.patient-avatar-wrap {
+  @apply flex items-center justify-center;
+}
+
+.patient-profile-avatar.avatar {
+  @apply h-28 w-28 rounded-[10px] text-[32px] font-extrabold tracking-[-0.04em] shadow-[var(--shadow-sm)];
+}
+
+.patient-identity-main {
+  @apply min-w-0;
+}
+
+.patient-name-row {
+  @apply flex min-w-0 items-center gap-3;
+}
+
+.patient-name-row h1 {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.patient-gender-chip {
+  @apply inline-flex h-8.5 w-8.5 flex-none items-center justify-center rounded-full;
+}
+
+.patient-gender-male {
+  @apply border border-[color:var(--primary-blue-tint-80)] bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue)];
+}
+
+.patient-gender-female {
+  @apply border border-[color:var(--accent-pink-border-soft)] bg-[color:var(--accent-pink-light)] text-[color:var(--accent-pink)];
+}
+
+.patient-rm-number {
+  @apply mt-2 mb-0 text-[18px] leading-[26px] font-bold tracking-[0.02em] text-[color:var(--text-primary)];
+}
+
+.patient-meta-strip {
+  @apply mt-5.5 flex flex-wrap items-center gap-y-2;
+}
+
+.patient-meta-strip span {
+  @apply inline-grid min-w-0 items-start gap-1 border-l border-l-[color:var(--border-soft)] px-5 text-[color:var(--text-primary)];
+}
+
+.patient-meta-strip span:first-child {
+  @apply border-l-0 pl-0;
+}
+
+.patient-meta-strip small {
+  @apply text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.patient-meta-strip strong {
+  @apply text-body-md leading-5 font-bold tracking-normal text-[color:var(--text-primary)];
+}
+
+.patient-last-visit {
+  @apply grid justify-items-end gap-2 border-l border-l-[color:var(--border-soft)] pl-7 text-right;
+}
+
+.patient-last-visit span,
+.patient-last-visit small {
+  @apply text-body-md leading-5 text-[color:var(--text-secondary)];
+}
+
+.patient-last-visit strong {
+  @apply text-[20px] leading-7 font-extrabold text-[color:var(--text-primary)];
+}
+
+.patient-allergy-banner.alert {
+  @apply mx-6 mb-5 min-h-0 items-center justify-between gap-3 rounded-[var(--radius-input-xl)] px-4 py-3;
+}
+
+.patient-allergy-main {
+  @apply flex flex-wrap items-center gap-2.5 text-[color:var(--danger-dark)];
+}
+
+.patient-allergy-main > i {
+  @apply text-xl;
+}
+
+.patient-allergy-main strong {
+  @apply text-body-md leading-5 font-extrabold tracking-[0.02em] text-[color:var(--danger-dark)];
+}
+
+.allergy-pill.badge {
+  @apply min-h-7.5 rounded-[var(--radius-input-md)] px-3 font-bold;
+}
+
+.patient-allergy-link.btn {
+  @apply flex-none text-[color:var(--danger-dark)];
+}
+
+.patient-profile-tabs {
+  @apply grid gap-5.5;
+}
+
+.patient-profile-tabs .tabs-list {
+  @apply w-full;
+}
+
+.patient-profile-tabs .tab {
+  @apply min-w-[132px] justify-center font-bold;
+}
+
+.patient-profile-tabs .tab-panel {
+  @apply pt-0;
+}
+
+.patient-summary-grid {
+  @apply grid grid-cols-[1.12fr_1.02fr_0.9fr_0.98fr] items-stretch gap-4.5;
+}
+
+.patient-summary-grid.is-two-col {
+  @apply grid-cols-2;
+}
+
+.patient-secondary-grid {
+  @apply mt-4.5 grid grid-cols-[1.35fr_0.75fr_1.2fr] gap-4.5;
+}
+
+.patient-info-card.card,
+.patient-important-note.card,
+.profile-timeline-card.card {
+  @apply border border-[color:var(--border-soft)] p-5.5 shadow-[var(--shadow-sm)];
+}
+
+.profile-title-row {
+  @apply mb-4.5 flex items-start justify-between gap-3;
+}
+
+.profile-info-list {
+  @apply mt-6 mb-0 grid gap-5;
+}
+
+.profile-info-list.compact {
+  @apply gap-4.5;
+}
+
+.profile-info-list div {
+  @apply grid grid-cols-[minmax(120px,0.8fr)_minmax(0,1fr)] items-start gap-4.5;
+}
+
+.profile-info-list dt {
+  @apply inline-flex min-w-0 items-center gap-3 text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.profile-info-list dt i {
+  @apply w-4.5 text-center text-[color:var(--primary-blue)];
+}
+
+.profile-info-list dd {
+  @apply m-0 text-body-md leading-[21px] font-semibold text-[color:var(--text-primary)];
+}
+
+.profile-info-list dd span {
+  @apply font-medium text-[color:var(--text-secondary)];
+}
+
+.profile-stat-row {
+  @apply mt-6.5 mb-5.5 grid grid-cols-2 gap-0 border-b border-b-[color:var(--border-soft)];
+}
+
+.profile-stat-row > div {
+  @apply grid gap-1 pt-0 pr-4.5 pb-5.5 pl-0;
+}
+
+.profile-stat-row > div + div {
+  @apply border-l border-l-[color:var(--border-soft)] pl-4.5;
+}
+
+.profile-stat-row strong {
+  @apply text-[28px] leading-[34px] font-extrabold tracking-[-0.04em] text-[color:var(--primary-blue)];
+}
+
+.profile-stat-row span,
+.profile-stat-row small {
+  @apply text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.profile-card-link {
+  @apply mt-2.5;
+}
+
+.profile-med-list {
+  @apply mt-5.5 mb-0 grid list-none gap-3 p-0 text-body-md leading-5 font-semibold text-[color:var(--text-primary)];
+}
+
+.profile-med-list.is-medicine {
+  @apply mt-0 gap-2;
+}
+
+.profile-med-list.is-medicine li {
+  @apply flex items-center justify-between gap-3;
+}
+
+.profile-med-list.is-medicine strong {
+  @apply font-bold;
+}
+
+.profile-divider {
+  @apply my-5.5 mx-0 border-0 border-t border-t-[color:var(--border-soft)];
+}
+
+.profile-guarantor-content {
+  @apply my-4.5 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4.5;
+}
+
+.profile-guarantor-content strong {
+  @apply mb-3 block text-[15px] leading-[22px] font-extrabold text-[color:var(--text-primary)];
+}
+
+.profile-mini-list {
+  @apply m-0 grid gap-2;
+}
+
+.profile-mini-list div {
+  @apply grid grid-cols-[92px_minmax(0,1fr)] gap-3.5;
+}
+
+.profile-mini-list dt,
+.profile-mini-list dd {
+  @apply m-0 text-body-sm leading-4.5 text-[color:var(--text-secondary)];
+}
+
+.profile-mini-list dd {
+  @apply font-bold text-[color:var(--text-primary)];
+}
+
+.profile-bpjs-mark {
+  @apply grid min-w-[128px] justify-items-center gap-0.5 rounded-[18px] border border-[color:var(--primary-green-tint-80)] bg-[color:var(--success-light)] px-4.5 py-3.5 font-extrabold text-[color:var(--success-dark)];
+}
+
+.profile-bpjs-mark span {
+  @apply text-[20px] leading-6;
+}
+
+.profile-bpjs-mark small {
+  @apply text-[12px] leading-4 font-bold;
+}
+
+.profile-doctor-row {
+  @apply mt-5 flex items-center gap-3.5;
+}
+
+.profile-doctor-row img {
+  @apply h-[52px] w-[52px] rounded-full border-2 border-[color:var(--primary-blue-light)] object-cover;
+}
+
+.profile-doctor-row div {
+  @apply grid min-w-0 gap-1;
+}
+
+.profile-doctor-row strong {
+  @apply text-body-md leading-5 text-[color:var(--text-primary)];
+}
+
+.profile-doctor-row span,
+.profile-doctor-row small {
+  @apply text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.patient-important-note.card {
+  @apply border-[color:var(--warning-border-soft)] bg-[color:var(--warning-light)];
+}
+
+.patient-important-note p {
+  @apply mt-4.5 mb-0 text-body-md leading-[22px] font-medium text-[color:var(--text-primary)];
+}
+
+.patient-important-note p + p {
+  @apply mt-2.5;
+}
+
+.patient-timeline-layout {
+  @apply grid gap-4.5;
+}
+
+.visit-timeline-list {
+  @apply mt-5.5 mb-0 grid list-none gap-4.5 p-0;
+}
+
+.visit-timeline-list li {
+  @apply relative grid grid-cols-[18px_minmax(0,1fr)] gap-3.5;
+}
+
+.visit-timeline-list > li:not(:last-child) {
+  @apply before:content-[''] before:absolute before:left-2 before:top-[22px] before:bottom-[-18px] before:w-0.5 before:bg-[color:var(--border-soft)];
+}
+
+.timeline-dot {
+  @apply z-[1] h-4.5 w-4.5 rounded-full border-4 border-[color:var(--surface)] bg-[color:var(--slate-light)] shadow-[0_0_0_1px_var(--border-soft)];
+}
+
+.timeline-dot.is-active {
+  @apply bg-[color:var(--primary-blue)] shadow-[0_0_0_1px_var(--primary-blue-tint-80)];
+}
+
+.timeline-card {
+  @apply grid gap-2.5 rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--surface)] p-4;
+}
+
+.timeline-card > div {
+  @apply grid gap-1;
+}
+
+.timeline-card strong {
+  @apply text-[15px] leading-[22px] text-[color:var(--text-primary)];
+}
+
+.timeline-card:not(.visit-card) > div > span {
+  @apply text-body-sm leading-4.5 font-bold text-[color:var(--primary-blue)];
+}
+
+.timeline-card p {
+  @apply m-0 text-body-md leading-[22px] text-[color:var(--text-secondary)];
+}
+
+.timeline-card .badge {
+  @apply justify-self-start;
+}
+
+
+.profile-timeline-actions {
+  @apply flex flex-wrap items-end justify-end gap-3;
+}
+
+.profile-timeline-actions .field-label {
+  @apply mb-0 text-body-sm leading-4.5 font-bold text-[color:var(--text-primary)];
+}
+
+.profile-timeline-actions .input {
+  @apply min-h-10 w-[220px];
+}
+
+.visit-card.timeline-card {
+  @apply gap-0 overflow-visible p-0;
+}
+
+.visit-card-header {
+  @apply grid grid-cols-[112px_minmax(0,1fr)_auto] items-center gap-4 p-4;
+}
+
+.visit-date-block {
+  @apply grid gap-1 text-[color:var(--primary-blue)];
+}
+
+.visit-date-block strong {
+  @apply text-body-md leading-5 font-extrabold text-[color:var(--primary-blue)];
+}
+
+.visit-date-block span {
+  @apply text-body-sm leading-4.5 font-bold text-[color:var(--primary-blue)];
+}
+
+.visit-card-main {
+  @apply grid min-w-0 gap-1;
+}
+
+.visit-card-title {
+  @apply flex min-w-0 flex-wrap items-center gap-2;
+}
+
+.visit-card-title h3 {
+  @apply m-0 text-[18px] leading-[26px] font-extrabold text-[color:var(--text-primary)];
+}
+
+.visit-card-main p {
+  @apply m-0 text-body-md leading-5 font-bold text-[color:var(--text-primary)];
+}
+
+.visit-card-main small {
+  @apply text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.visit-card-main > small strong {
+  @apply font-extrabold text-[color:var(--primary-blue)];
+}
+
+.visit-card-actions {
+  @apply relative flex flex-none items-center justify-end gap-2;
+}
+
+.profile-visit-menu.row-action-dropdown {
+  @apply relative inline-flex justify-end;
+}
+
+.profile-visit-menu > summary {
+  @apply list-none;
+}
+
+.profile-visit-menu > summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.profile-visit-menu-panel.row-action-panel {
+  @apply right-0 left-auto z-[80] w-[292px];
+}
+
+.profile-visit-menu-panel .dropdown-option .option-meta strong {
+  @apply inline-flex items-center gap-2;
+}
+
+.profile-visit-menu-panel .dropdown-option i {
+  @apply w-4.5 text-center text-[color:var(--primary-blue)];
+}
+
+.visit-detail-grid {
+  @apply grid grid-cols-[1fr_1fr_1.2fr_1fr_1fr] gap-0 border-t border-t-[color:var(--border-soft)];
+}
+
+.visit-card:not(.is-expanded) .visit-detail-grid {
+  @apply hidden;
+}
+
+
+.visit-detail-grid section {
+  @apply min-w-0 border-l border-l-[color:var(--border-soft)] p-4;
+}
+
+.visit-detail-grid section:first-child {
+  @apply border-l-0;
+}
+
+.visit-detail-grid h4 {
+  @apply m-0 mb-3 text-[14px] leading-5 font-extrabold text-[color:var(--text-primary)];
+}
+
+.visit-detail-grid h4 i {
+  @apply mr-2 inline-flex h-6 w-6 items-center justify-center rounded-lg bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue)];
+}
+
+
+.visit-detail-grid p,
+.visit-detail-grid li {
+  @apply m-0 text-body-sm leading-5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.visit-detail-grid p + p {
+  @apply mt-2;
+}
+
+.visit-detail-grid dl {
+  @apply m-0 grid gap-2;
+}
+
+.visit-detail-grid dl div {
+  @apply grid grid-cols-[48px_minmax(0,1fr)] gap-2;
+}
+
+.visit-detail-grid dt,
+.visit-detail-grid dd {
+  @apply m-0 text-body-sm leading-4.5;
+}
+
+.visit-detail-grid dt {
+  @apply font-extrabold text-[color:var(--text-primary)];
+}
+
+.visit-detail-grid dd {
+  @apply font-semibold text-[color:var(--text-secondary)];
+}
+
+.visit-detail-grid ol:not(.visit-prescription-list) {
+  @apply m-0 grid list-decimal gap-2 pl-4;
+}
+
+.visit-prescription-list {
+  @apply m-0 grid list-none gap-1.5 p-0;
+}
+
+.visit-prescription-list li {
+  @apply grid min-w-0 grid-cols-[22px_minmax(0,1fr)] items-start gap-2 rounded-[var(--radius-input-md)] border border-[color:var(--border-soft)] bg-[color:var(--primary-tint)] p-2;
+}
+
+.visit-prescription-list li::before {
+  content: none;
+}
+
+.visit-prescription-list li > span {
+  @apply inline-flex h-5.5 w-5.5 items-center justify-center rounded-full bg-[color:var(--primary-blue)] text-[11px] font-extrabold leading-none text-[color:var(--white)];
+}
+
+.visit-prescription-list div {
+  @apply grid min-w-0 gap-0.5;
+}
+
+.visit-prescription-list strong {
+  @apply break-words text-body-sm leading-4.5 font-extrabold text-[color:var(--text-primary)];
+}
+
+.visit-prescription-list small {
+  @apply break-words text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.profile-load-more.btn {
+  @apply mt-4.5 w-full justify-center;
+}
+
+
+
+.profile-title-inline {
+  @apply flex min-w-0 flex-wrap items-center gap-3;
+}
+
+.profile-allergy-card.card {
+  @apply overflow-hidden;
+}
+
+.profile-allergy-table-wrap {
+  @apply mt-4.5 rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--surface)] overflow-hidden;
+}
+
+.profile-allergy-table.data-table {
+  @apply min-w-[960px] border-0;
+}
+
+.profile-allergy-table th,
+.profile-allergy-table td {
+  @apply text-left align-middle;
+}
+
+.profile-allergy-table th:first-child,
+.profile-allergy-table td:first-child {
+  @apply w-[72px] text-left;
+}
+
+.profile-allergy-table th:last-child,
+.profile-allergy-table td:last-child {
+  @apply w-[132px] text-left;
+}
+
+.allergy-type-cell {
+  @apply inline-flex items-center gap-3 font-bold text-[color:var(--text-primary)];
+}
+
+.allergy-type-icon {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-[var(--radius-input-md)] text-body-lg;
+}
+
+.allergy-type-icon.is-drug {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+}
+
+.allergy-type-icon.is-food {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-dark)];
+}
+
+.allergy-type-icon.is-environment {
+  @apply bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue)];
+}
+
+
+
+
+
+
+
+
+
+
+
+.field-label b {
+  @apply text-[color:var(--danger)];
+}
+
+.field-counter {
+  @apply absolute right-3.5 bottom-3 text-body-sm font-bold text-[color:var(--text-secondary)];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.allergy-detail-list,
+.document-list {
+  @apply mt-5 grid gap-3;
+}
+
+.allergy-detail-list {
+  @apply list-none p-0;
+}
+
+.allergy-detail-list li {
+  @apply grid gap-1 rounded-[var(--radius-input-xl)] border border-[color:var(--danger-border-soft)] bg-[color:var(--danger-light)] p-3.5;
+}
+
+.allergy-detail-list strong {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.allergy-detail-list span,
+.allergy-detail-list small {
+  @apply text-body-sm leading-4.5 text-[color:var(--text-secondary)];
+}
+
+.profile-detail-grid {
+  @apply m-0 grid grid-cols-3 gap-3.5;
+}
+
+.profile-detail-grid div {
+  @apply grid gap-1.5 rounded-[var(--radius-input-xl)] border border-[color:var(--border-soft)] bg-[color:var(--primary-tint)] p-3.5;
+}
+
+.profile-detail-grid dt,
+.profile-detail-grid dd {
+  @apply m-0;
+}
+
+.profile-detail-grid dt {
+  @apply text-body-sm leading-4.5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.profile-detail-grid dd {
+  @apply text-body-md leading-5 font-extrabold text-[color:var(--text-primary)];
+}
+
+.document-list a {
+  @apply grid min-h-14 grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 rounded-[var(--radius-input-xl)] border border-[color:var(--border-soft)] bg-[color:var(--surface)] px-3 py-2.5 text-[color:var(--text-primary)] no-underline;
+}
+
+.document-list a:hover,
+.document-list a:focus-visible {
+  @apply border-[color:var(--primary-blue)] bg-[color:var(--primary-tint)] outline-none;
+}
+
+.document-list i {
+  @apply inline-flex h-[38px] w-[38px] items-center justify-center rounded-xl bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue)];
+}
+
+.document-list span {
+  @apply font-bold text-[color:var(--text-primary)];
+}
+
+.document-list small {
+  @apply text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+@media (max-width: 1280px) {
+  .patient-identity-body {
+    @apply grid-cols-[auto_minmax(0,1fr)];
+  }
+
+  .patient-last-visit {
+    @apply col-span-full grid-cols-[repeat(4,auto)] items-center justify-start justify-items-start border-t border-t-[color:var(--border-soft)] border-l-0 pt-5 pl-0 text-left;
+  }
+
+  .patient-summary-grid {
+    @apply grid-cols-2;
+  }
+
+  .patient-secondary-grid {
+    @apply grid-cols-2;
+  }
+
+  .patient-important-note {
+    @apply col-span-full;
+  }
+}
+
+@media (max-width: 920px) {
+  .patient-identity-body {
+    @apply grid-cols-1 p-5.5 text-left;
+  }
+
+  .patient-avatar-wrap {
+    @apply justify-start;
+  }
+
+  .patient-meta-strip {
+    @apply gap-x-0;
+  }
+
+  .patient-meta-strip span {
+    @apply w-1/2 border-l-0 border-t border-t-[color:var(--border-soft)] px-0 py-2.5;
+  }
+
+  .patient-meta-strip span:first-child,
+  .patient-meta-strip span:nth-child(2) {
+    @apply border-t-0;
+  }
+
+  .patient-last-visit {
+    @apply grid-cols-1;
+  }
+
+  .patient-allergy-banner.alert {
+    @apply mx-4 mb-4 flex-col items-start;
+  }
+
+  .patient-summary-grid,
+  .patient-summary-grid.is-two-col,
+  .patient-secondary-grid,
+  .profile-detail-grid {
+    @apply grid-cols-1;
+  }
+
+  .profile-guarantor-content {
+    @apply grid-cols-1;
+  }
+
+  .profile-bpjs-mark {
+    @apply justify-self-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .patient-profile-actions {
+    @apply flex-col items-stretch;
+  }
+
+  .patient-profile-actions .btn {
+    @apply w-full;
+  }
+
+  .patient-name-row {
+    @apply items-start;
+  }
+
+  .patient-profile-avatar.avatar {
+    @apply h-[86px] w-[86px] text-[26px];
+  }
+
+  .patient-meta-strip span {
+    @apply w-full px-0 py-2.5;
+  }
+
+  .patient-meta-strip span:nth-child(2) {
+    @apply border-t border-t-[color:var(--border-soft)];
+  }
+
+  .profile-info-list div,
+  .profile-mini-list div,
+  .document-list a {
+    @apply grid-cols-1;
+  }
+
+  .profile-stat-row {
+    @apply grid-cols-1;
+  }
+
+  .profile-stat-row > div + div {
+    @apply border-l-0 border-t border-t-[color:var(--border-soft)] pt-4.5 pl-0;
+  }
+}
+
+
+@media (max-width: 1180px) {
+  .visit-card-header {
+    @apply grid-cols-[96px_minmax(0,1fr)] items-start;
+  }
+
+  .visit-card-actions {
+    @apply col-span-2 justify-start;
+  }
+
+  .visit-detail-grid {
+    @apply grid-cols-2;
+  }
+
+  .visit-detail-grid section {
+    @apply border-l-0 border-t border-t-[color:var(--border-soft)];
+  }
+
+  .visit-detail-grid section:first-child,
+  .visit-detail-grid section:nth-child(2) {
+    @apply border-t-0;
+  }
+}
+
+@media (max-width: 720px) {
+  .profile-timeline-actions {
+    @apply w-full items-stretch justify-start;
+  }
+
+  .profile-timeline-actions .input,
+  .profile-timeline-actions .btn {
+    @apply w-full;
+  }
+
+  .visit-card-header {
+    @apply grid-cols-1;
+  }
+
+  .visit-card-actions {
+    @apply col-span-1 flex-wrap justify-start;
+  }
+
+  .visit-detail-grid {
+    @apply grid-cols-1;
+  }
+
+  .visit-detail-grid section,
+  .visit-detail-grid section:nth-child(2) {
+    @apply border-l-0 border-t border-t-[color:var(--border-soft)];
+  }
+
+  .visit-detail-grid section:first-child {
+    @apply border-t-0;
+  }
+
+  .profile-visit-menu-panel.row-action-panel {
+    @apply right-auto left-0 w-[min(292px,calc(100vw_-_48px))];
+  }
+}
+
+
+
+@media (max-width: 920px) {
+
+  .profile-allergy-card .profile-title-row {
+    @apply items-start;
+  }
+}
+
+
+.document-pdf-viewer {
+  @apply overflow-hidden rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--surface-muted)];
+}
+
+.document-pdf-toolbar {
+  @apply flex items-center justify-between gap-3 border-b border-b-[color:var(--border-soft)] bg-[color:var(--surface)] px-4 py-3 text-body-sm font-extrabold text-[color:var(--text-primary)];
+}
+
+.document-pdf-toolbar div {
+  @apply flex min-w-0 items-center gap-2;
+}
+
+.document-pdf-toolbar i {
+  @apply text-[color:var(--danger)];
+}
+
+.document-pdf-toolbar span {
+  @apply truncate;
+}
+
+.document-pdf-canvas {
+  @apply max-h-[58vh] overflow-auto bg-[color:var(--ui-surface-canvas)] p-5;
+}
+
+.document-pdf-page {
+  @apply mx-auto grid min-h-[720px] w-full max-w-[620px] gap-5 rounded-[10px] border border-[color:var(--border-soft)] bg-[color:var(--surface)] p-8 shadow-[var(--shadow-sm)];
+}
+
+.document-pdf-page header {
+  @apply grid gap-1 border-b border-b-[color:var(--border-soft)] pb-4 text-center;
+}
+
+.document-pdf-page header small {
+  @apply text-body-sm font-bold uppercase tracking-[0.08em] text-[color:var(--text-secondary)];
+}
+
+.document-pdf-page header strong {
+  @apply text-[20px] font-extrabold leading-7 text-[color:var(--text-primary)];
+}
+
+.document-pdf-page dl {
+  @apply m-0 grid gap-2.5;
+}
+
+.document-pdf-page dl div {
+  @apply grid grid-cols-[150px_minmax(0,1fr)] gap-3;
+}
+
+.document-pdf-page dt,
+.document-pdf-page dd {
+  @apply m-0 text-body-sm leading-5;
+}
+
+.document-pdf-page dt {
+  @apply font-bold text-[color:var(--text-secondary)];
+}
+
+.document-pdf-page dd {
+  @apply font-extrabold text-[color:var(--text-primary)];
+}
+
+.document-pdf-page section {
+  @apply grid gap-2 rounded-[var(--radius-input-xl)] border border-[color:var(--border-soft)] bg-[color:var(--primary-tint)] p-4;
+}
+
+.document-pdf-page h3 {
+  @apply m-0 text-body-md font-extrabold text-[color:var(--text-primary)];
+}
+
+.document-pdf-page p {
+  @apply m-0 text-body-sm font-semibold leading-6 text-[color:var(--text-secondary)];
+}
+
+.document-pdf-page footer {
+  @apply mt-auto grid gap-1 border-t border-t-[color:var(--border-soft)] pt-4 text-right;
+}
+
+.document-pdf-page footer span {
+  @apply text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+.document-pdf-page footer strong {
+  @apply text-body-md font-extrabold text-[color:var(--text-primary)];
+}

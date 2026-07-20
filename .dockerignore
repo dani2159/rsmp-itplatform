@@ -1,0 +1,13 @@
+.git
+.worktrees
+.claude
+node_modules
+**/node_modules
+frontend/dist
+docs
+ui-ux-main
+rs-agent
+rs-agent-windows
+*.md
+.env
+.env.docker

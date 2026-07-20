@@ -5,18 +5,18 @@ Platform monitoring & manajemen IT internal untuk Rumah Sakit — memantau semua
 ## Arsitektur
 
 ```
-┌─────────────┐      HTTP (session)      ┌──────────────────┐
-│   Browser   │ ────────────────────────▶│  Backend (Node)   │
+┌─────────────┐      HTTP (session)      ┌────────────────────┐
+│   Browser   │ ────────────────────────▶│  Backend (Node)    │
 │  (React)    │◀──────────────────────── │  Express + MariaDB │
-└─────────────┘                          └─────────┬─────────┘
+└─────────────┘                          └───────────┬────────┘
                                                      │ SSH (master key) /
                                                      │ HTTP push (agent)
                                         ┌────────────┼────────────┐
                                         ▼                         ▼
                               ┌──────────────────┐     ┌──────────────────┐
-                              │  Client Linux     │     │  Client Windows   │
-                              │  rsmp-agent.py    │     │  rs-agent.ps1     │
-                              │  x11vnc :5901     │     │  TightVNC :5901   │
+                              │  Client Linux    │     │  Client Windows  │
+                              │  rsmp-agent.py   │     │  rs-agent.ps1    │
+                              │  x11vnc :5901    │     │  TightVNC :5901  │
                               └──────────────────┘     └──────────────────┘
 ```
 
@@ -24,12 +24,24 @@ Platform monitoring & manajemen IT internal untuk Rumah Sakit — memantau semua
 - **Frontend**: React + Vite, styling pakai design system SIMRS ZAIDAN (Tailwind v4 compiled → `design-system.css`, dimuat statis, bukan lewat build pipeline Tailwind v3 milik app).
 - **Database**: MariaDB.
 - **Agent**: berjalan di tiap client, push metrik ke server tiap 60 detik lewat HTTP (`X-Agent-Token` auth), bukan pull/polling dari server.
-- **Remote desktop**: VNC (x11vnc di Linux, TightVNC di Windows) di-tunnel lewat noVNC WebSocket proxy (`novnc-proxy.py`) — browser connect langsung tanpa VNC client terpisah.
+- **Remote desktop**: VNC (x11vnc di Linux, TightVNC di Windows) di-tunnel lewat noVNC WebSocket proxy (`novnc-proxy.py`) — browser connect langsung tanpa VNC client terpisah. RustDesk self-hosted (hbbs/hbbr) tersedia sebagai alternatif/cadangan.
+
+## Role & Akses (RBAC)
+
+Tiga tingkat, makin ke bawah makin luas aksesnya:
+
+| Role | Bisa |
+| --- | --- |
+| `viewer` | Lihat dashboard, detail client, riwayat — read-only. Bisa buat tiket IT. |
+| `operator` | Semua akses viewer + jalankan aksi (ping, deploy massal, restart service, remote desktop, terminal) |
+| `admin` | Semua akses operator + kelola user, ubah pengaturan sistem, lihat/ubah agent token |
+
+Dicek di setiap route backend lewat middleware `requireAuth` / `requireOperator` / `requireAdmin`.
 
 ## Fitur
 
 | Halaman | Fungsi |
-|---|---|
+| --- | --- |
 | **Dashboard** | Ringkasan online/offline, breakdown OS, trend, uptime fleet 7 hari, status tiket, status RustDesk server |
 | **Semua Client** | List semua client, filter OS/status/departemen, ping massal, tambah/import/hapus client |
 | **Detail Client** | Metrik lengkap (CPU/RAM/disk/uptime/proses/network/service), riwayat uptime, terminal, remote desktop, SSH setup |
@@ -63,7 +75,8 @@ rs-agent/             Agent Linux + installer/uninstaller
 rs-agent-windows/     Agent Windows + installer/uninstaller
 client/               Script deploy massal (01_install_apps, 02_autoupdate, 03_hardening)
 server-setup/         Script setup & finalize server, ISO builder, util
-nginx/                Konfigurasi reverse proxy
+nginx/                Konfigurasi reverse proxy (bare-metal)
+docker/               Konfigurasi Docker (nginx.conf, init.sql, novnc-proxy.Dockerfile)
 ```
 
 ## Stack
@@ -136,6 +149,66 @@ uninstall-agent-windows.bat
 ```
 
 Installer pasang TightVNC (port 5901, remote desktop) dan Scheduled Task (agent jalan sebagai SYSTEM). RDP **tidak** diaktifkan.
+
+### Server (alternatif — Docker)
+
+Buat server saja (agent client tetap dipasang manual seperti di atas). Delapan container: `mariadb`, `redis`, `rustdesk-hbbs`, `rustdesk-hbbr`, `docker-proxy`, `backend`, `novnc-proxy`, `frontend`.
+
+```bash
+cp .env.docker.example .env   # isi DB_PASS, SESSION_SECRET, AGENT_TOKEN, dst — JANGAN pakai nilai contoh
+make build
+make up
+make seed-admin                # buat user admin pertama, password dicetak ke output
+```
+
+Buka `http://SERVER_IP:WEB_PORT` (default port `8080`, atur di `.env`). Lihat `make help` untuk perintah lain (logs, db-shell, restart, dll).
+
+Catatan Docker:
+
+- **ISO Builder tidak didukung** — butuh akses privileged host untuk xorriso/squashfs/loop mount. Pakai deployment bare-metal kalau butuh fitur itu.
+- **RustDesk server ikut jalan otomatis** (hbbs+hbbr, image resmi `rustdesk/rustdesk-server`), beda dengan bare-metal yang butuh `install-rustdesk-server.sh` terpisah.
+- Tombol **restart** RustDesk di halaman web jalan lewat `docker-proxy` (docker-socket-proxy) — sengaja **tidak** mount `/var/run/docker.sock` langsung ke container backend (itu setara akses root ke seluruh host kalau backend-nya ke-compromise). `docker-proxy` cuma diizinin baca+restart container, gak lebih.
+- Server ini nge-deploy diri sendiri lewat Docker; kalau di mesin yang sama juga ada service lain (Apache, aplikasi lain, dst), pastikan `WEB_PORT` di `.env` gak bentrok — cek dulu pakai `ss -tlnp` sebelum `make up`.
+
+### Development (lokal, tanpa Docker)
+
+```bash
+make install       # npm install backend + frontend
+make dev-backend    # nodemon, baca backend/.env
+make dev-frontend   # vite dev server, port 5173
+```
+
+Butuh MariaDB + Redis jalan lokal (atau `docker compose up mariadb redis` dari compose file yang sama, tanpa build service lain).
+
+### Environment Variables
+
+Backend baca dari `backend/.env` (bare-metal) atau env compose (Docker, lihat `.env.docker.example`):
+
+| Variabel | Wajib | Keterangan |
+| --- | --- | --- |
+| `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASS` | ya | Koneksi MariaDB |
+| `REDIS_HOST`, `REDIS_PORT` | ya | Koneksi Redis |
+| `SESSION_SECRET` | ya | Random string, dipakai sign cookie session |
+| `AGENT_TOKEN` | ya (production) | Dicek di header `X-Agent-Token` tiap request dari agent client |
+| `SSH_KEY_PATH`, `SSH_PUB_KEY_PATH` | ya | Lokasi SSH master key (dipakai fitur Terminal, Deploy Massal, SSH Setup) |
+| `SERVER_IP`, `WEB_PORT` | ya | Dipakai bikin URL CORS & one-liner install command |
+| `APP_DIR` | ya | Base path (`/opt/rsmp-it-platform` bare-metal, `/app` Docker) |
+| `RS_NAME` | tidak | Nama RS/instansi, tampil di header dashboard |
+| `RUSTDESK_HBBS_HOST`, `RUSTDESK_HBBR_HOST` | tidak | Override host cek status RustDesk (dipakai Docker, default `localhost`) |
+| `DOCKER_PROXY_URL` | tidak | Cuma di Docker — alamat `docker-proxy` buat tombol restart RustDesk |
+
+### Port Reference
+
+| Port | Service | Catatan |
+| --- | --- | --- |
+| 8080/8081 | Web (nginx) | Satu-satunya port yang wajib reachable dari browser client |
+| 3001 | Backend API | Internal (di-proxy nginx), jangan expose langsung |
+| 3306/3307 | MariaDB | Internal |
+| 6379 | Redis | Internal |
+| 6081 | noVNC proxy | Internal (di-proxy nginx lewat `/novnc-ws/`) |
+| 5901 | VNC (per-client) | Dibuka di tiap **client**, bukan server |
+| 21115-21119 | RustDesk hbbs/hbbr | Wajib reachable dari client RustDesk (bukan cuma browser) |
+| 22 | SSH | Server (deploy/terminal) & client (agent Linux) |
 
 ### Fix Error Umum
 

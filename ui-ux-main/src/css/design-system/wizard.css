@@ -1,0 +1,133 @@
+/* Wizard
+   Stepper untuk alur form panjang, verifikasi, atau onboarding. */
+.wizard {
+  @apply w-full rounded-[10px] bg-[color:var(--white)] shadow-[var(--shadow-sm)];
+}
+
+.wizard-steps {
+  @apply relative grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] items-start gap-4 p-4.5;
+  isolation: isolate;
+}
+
+.wizard-step {
+  @apply relative z-[1] flex items-start gap-3 rounded-[10px] p-3 text-left;
+  --wizard-step-bg: var(--white);
+  isolation: isolate;
+}
+
+.wizard-step::before {
+  content: "";
+  @apply absolute inset-0 rounded-[inherit] bg-[color:var(--wizard-step-bg)];
+  z-index: 1;
+  pointer-events: none;
+}
+
+.wizard-step:not(:last-child)::after {
+  content: "";
+  @apply absolute left-[34px] right-[-16px] top-6 h-0.5 bg-[color:var(--border-soft)];
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wizard-dot {
+  @apply relative z-[2] flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--ui-surface-slate-soft)] text-body-sm font-bold text-[color:var(--slate)];
+}
+
+.wizard-text {
+  @apply relative z-[2] grid gap-1 min-w-0;
+}
+
+.wizard-title {
+  @apply block m-0 text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.wizard-caption {
+  @apply block m-0 text-body-sm leading-[1.45] text-[color:var(--slate)];
+}
+
+.wizard-step.is-complete .wizard-dot {
+  @apply bg-[color:var(--primary-green)] text-[color:var(--white)];
+  font-size: 0;
+}
+
+.wizard-step.is-complete .wizard-dot::before {
+  content: "✓";
+  @apply text-body-sm font-bold leading-none text-[color:var(--white)];
+}
+
+.wizard-step.is-active {
+  @apply bg-[color:var(--primary-tint)];
+  --wizard-step-bg: var(--primary-tint);
+}
+
+.wizard-step.is-active .wizard-dot {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+.wizard-step.is-error .wizard-dot {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+}
+
+.wizard-step.is-disabled {
+  @apply opacity-55;
+}
+
+.wizard-body {
+  @apply border-t border-t-[color:var(--border-soft)] p-5;
+}
+
+.wizard-vertical .wizard-body {
+  @apply border-t-0;
+}
+
+.wizard-actions {
+  @apply flex flex-wrap items-center justify-end gap-2.5 border-t border-t-[color:var(--border-soft)] p-[14px_20px];
+}
+
+.wizard-vertical {
+  @apply grid grid-cols-[260px_minmax(0,1fr)] items-stretch;
+}
+
+.wizard-vertical .wizard-steps {
+  @apply grid-cols-1 gap-5 self-stretch border-r border-r-[color:var(--border-soft)];
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+
+.wizard-vertical .wizard-step:not(:last-child)::after {
+  @apply left-[26px] right-auto top-[40px] h-[calc(100%_+_16px)] w-0.5;
+}
+
+.wizard-compact .wizard-steps {
+  @apply flex overflow-x-auto;
+}
+
+.wizard-compact .wizard-step {
+  @apply min-w-[120px] flex-col items-center text-center;
+}
+
+.wizard-progress {
+  @apply h-2 overflow-hidden rounded-full bg-[color:var(--ui-border-subtle)];
+}
+
+.wizard-progress span {
+  @apply block h-full rounded-full bg-[color:var(--primary-blue)];
+}
+
+@media (max-width: 768px) {
+  .wizard-vertical {
+    @apply grid-cols-1;
+  }
+
+  .wizard-vertical .wizard-steps {
+    @apply border-r-0 border-b border-b-[color:var(--border-soft)];
+  }
+}
+
+.wizard-body strong {
+  @apply block text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.wizard-body p {
+  @apply mt-1.5;
+}

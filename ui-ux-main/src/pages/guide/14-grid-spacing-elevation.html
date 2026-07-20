@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>14 Grid, Spacing & Elevation · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link active" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+  <p class="eyebrow">14</p>
+  <h1>Grid, Spacing & Elevation</h1>
+  <p class="hero-subtitle">Aturan layout, jarak antar elemen, dan kedalaman visual yang mengikuti pola halaman saat ini.</p>
+  <div class="divider"></div>
+  <nav aria-label="Daftar isi Grid, Spacing & Elevation" class="toc">
+    <a href="#overview">Ringkasan</a>
+<a href="#grid">Grid</a>
+<a href="#spacing">Spacing</a>
+<a href="#elevation">Elevation</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+  </nav>
+</header>
+
+<section class="mt-12" id="overview"><div class="section-head"><div><h2>Ringkasan</h2><p>Aturan grid, spacing, dan elevation menjaga halaman tetap konsisten walau komponennya berbeda. Gunakan class layout untuk pola yang berulang, bukan membuat spacing baru di tiap halaman.</p></div><span class="badge badge-sm"><span class="dot"></span>Grid · Stack · Gap · Shadow</span></div><div class="grid-3"><div class="note"><strong>Grid</strong><br/>Gunakan 2, 3, 4 kolom, auto-fit, sidebar grid, atau content grid sesuai kebutuhan halaman.</div><div class="note"><strong>Spacing</strong><br/>Gunakan utility Tailwind scale: gap-1.5, gap-2.5, gap-4, gap-6, dan gap-8 sebagai skala utama.</div><div class="note"><strong>Elevation</strong><br/>Gunakan shadow ringan untuk card, sedang untuk panel, dan besar untuk overlay/floating element.</div></div></section>
+<section class="mt-12" id="grid"><div class="section-head"><div><h2>Grid</h2><p>Grid reusable berada di <code>layout-system.css</code>. Pola ini cocok untuk card KPI, form section, sidebar content, dan panel konfigurasi.</p></div></div><div class="layout-grid is-3"><div class="card"><h3>layout-grid is-2</h3><p class="muted-text">Dua kolom untuk form dan panel sederhana.</p></div><div class="card"><h3>layout-grid is-3</h3><p class="muted-text">Tiga kolom untuk KPI atau ringkasan.</p></div><div class="card"><h3>layout-grid is-auto</h3><p class="muted-text">Auto-fit untuk card yang jumlahnya dinamis.</p></div></div></section>
+<section class="mt-12" id="spacing"><div class="section-head"><div><h2>Spacing</h2><p>Skala spacing utama mengikuti spacing bawaan Tailwind, tanpa bracket arbitrary value untuk margin, padding, atau gap.</p></div></div><div class="grid-2"><div class="card"><h3>Stack</h3><div class="layout-stack is-md"><span class="badge badge-sm">gap-4 / 16px</span><span class="badge badge-sm badge-info">untuk field group</span><span class="badge badge-sm badge-success">untuk list pendek</span></div></div><div class="card"><h3>Padding Card</h3><div class="layout-stack is-sm"><div class="elevation-card space-card is-compact">Compact p-3.5 / 14px</div><div class="elevation-card space-card">Default p-5 / 20px</div><div class="elevation-card space-card is-relaxed">Relaxed p-7 / 28px</div></div></div></div></section>
+<section class="mt-12" id="elevation"><div class="section-head"><div><h2>Elevation</h2><p>Gunakan elevation sesuai hirarki. Jangan memakai shadow besar untuk semua card karena halaman akan terlihat berat.</p></div></div><div class="grid-4"><div class="card elevation-none"><h3>None</h3><p class="muted-text">Area datar atau section biasa.</p></div><div class="card elevation-sm"><h3>SM</h3><p class="muted-text">Card kecil dan avatar group.</p></div><div class="card elevation-md"><h3>MD</h3><p class="muted-text">Panel utama dan table card.</p></div><div class="card elevation-lg"><h3>LG</h3><p class="muted-text">Drawer, modal, dan floating menu.</p></div></div></section>
+<section class="mt-12" id="usage"><div class="section-head"><div><h2>Panduan Pakai</h2><p>Gunakan layout class untuk pola yang berulang, lalu gunakan class halaman hanya untuk kebutuhan spesifik.</p></div></div><div class="do-dont"><div class="card ok"><h3 class="usage-title is-do">Pakai gap yang konsisten</h3><p>gap-4 untuk elemen dekat, gap-6 untuk antar panel, dan gap-8 untuk section besar.</p></div><div class="card no"><h3 class="usage-title is-dont">Jangan buat shadow baru per halaman</h3><p>Jika butuh kedalaman visual, pilih dari token <code>--shadow-sm</code>, <code>--shadow-md</code>, atau <code>--shadow-lg</code>.</p></div></div></section>
+<section class="mt-12" id="implementation"><div class="section-head"><div><h2>Implementasi</h2><p>Class layout memakai utility Tailwind scale di <code>src/css/design-system/layout-system.css</code>. Token shadow berada di <code>tokens.css</code>.</p></div></div><div class="code-grid"><article><p class="code-title">Grid dan stack</p><pre><code>&lt;section class=&quot;layout-container layout-section&quot;&gt;
+  &lt;div class=&quot;layout-grid is-3&quot;&gt;
+    &lt;article class=&quot;card&quot;&gt;...&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;...&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;...&lt;/article&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div class=&quot;layout-stack is-md&quot;&gt;...&lt;/div&gt;</code></pre></article><article><p class="code-title">Elevation</p><pre><code>&lt;article class=&quot;elevation-card space-card&quot;&gt;...&lt;/article&gt;
+&lt;article class=&quot;card elevation-sm&quot;&gt;...&lt;/article&gt;
+&lt;article class=&quot;card elevation-md&quot;&gt;...&lt;/article&gt;
+&lt;article class=&quot;card elevation-lg&quot;&gt;...&lt;/article&gt;</code></pre></article></div></section>
+
+<footer class="footer">
+  <div><strong>SIMRS ZAIDAN · 14 Grid, Spacing & Elevation</strong><br/>Gunakan sebagai acuan komponen UI, CSS, dan implementasi frontend.</div>
+  <div class="mono">© 2026 · Panduan Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

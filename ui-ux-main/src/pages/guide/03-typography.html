@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>03 Tipografi · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link active" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">03</p>
+<h1>Tipografi</h1>
+<p class="hero-subtitle">Inter untuk UI medis, JetBrains Mono untuk nomor RM, kode ICD, nomor SEP, hasil lab, barcode, dan data teknis yang butuh keterbacaan karakter tinggi.</p>
+<div class="divider"></div>
+<nav aria-label="Daftar isi" class="toc">
+<a href="#font-family">Font Family</a>
+<a href="#core-style">Style Utama</a>
+<a href="#type-scale">Type Scale</a>
+<a href="#weights">Font Weight</a>
+<a href="#specimen">Specimen</a>
+<a href="#mono">Monospace</a>
+<a href="#examples">UI Examples</a>
+<a href="#guidelines">Panduan</a>
+<a href="#handoff">Developer Handoff</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="font-family">
+<div class="section-head">
+<div>
+<h2>Font Family Resmi</h2>
+<p>Gunakan dua keluarga font supaya hierarki UI tetap konsisten: Inter untuk semua interface dan JetBrains Mono untuk data medis berbasis kode.</p>
+</div>
+<span class="badge badge-sm"><span class="dot"></span>Token tipografi utama</span>
+</div>
+<div class="grid-2">
+<article class="font-card">
+<div>
+<h3 class="font-name">Inter</h3>
+<p class="font-desc">Font utama untuk heading, body, label, tombol, tabel, sidebar, form, modal, dan seluruh teks operasional aplikasi.</p>
+<div class="meta-list">
+<span class="meta-pill">400 Regular</span>
+<span class="meta-pill">500 Medium</span>
+<span class="meta-pill">600 Semibold</span>
+<span class="meta-pill">700 Bold</span>
+</div>
+</div>
+<div class="font-sample">Ag</div>
+</article>
+<article class="font-card mono-card">
+<div>
+<h3 class="font-name">JetBrains Mono</h3>
+<p class="font-desc">Font khusus untuk string teknis: RM, ICD, SEP, nomor antrean, barcode, timestamp sistem, dan hasil lab numerik.</p>
+<div class="meta-list">
+<span class="meta-pill">400 Regular</span>
+<span class="meta-pill">500 Medium</span>
+<span class="meta-pill">600 Semibold</span>
+<span class="meta-pill">700 Bold</span>
+</div>
+</div>
+<div class="font-sample">01</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="core-style">
+<div class="section-head">
+<div>
+<h2>Style Tipografi Utama</h2>
+<p>Versi lengkap dari komposisi pada screenshot pertama. Bagian kiri untuk hierarki judul, bagian kanan untuk body copy, caption, tiny text, dan monospace.</p>
+</div>
+<span class="badge badge-sm">Medical UI baseline</span>
+</div>
+<div class="typography-demo">
+<article class="heading-stack">
+<div class="block">
+<p class="label">Heading H1 · 32px · 700</p>
+<p class="h1-demo">Judul Halaman</p>
+</div>
+<div class="block">
+<p class="label">Heading H2 · 24px · 600</p>
+<p class="h2-demo">Judul Section</p>
+</div>
+<div class="block">
+<p class="label">Heading H3 · 20px · 600</p>
+<p class="h3-demo">Judul Card</p>
+</div>
+<div class="block">
+<p class="label">Heading H4 · 16px · 600</p>
+<p class="h4-demo">Label Grup</p>
+</div>
+</article>
+<article class="body-stack">
+<div class="block">
+<p class="label">Body · 14px</p>
+<p class="body-copy">Nama pasien, tanggal lahir, alamat, status kunjungan, dan informasi operasional utama.</p>
+</div>
+<div class="block">
+<p class="label">Small · 12px</p>
+<p class="small-copy">Caption, timestamp, label badge, helper text, status tambahan, dan microcopy di form.</p>
+</div>
+<div class="block">
+<p class="label">Tiny · 10px</p>
+<p class="tiny-copy">Label printer, barcode, metadata ringkas, watermark, nomor versi, dan teks pendukung yang tidak dominan.</p>
+</div>
+<div class="block">
+<p class="label">Monospace</p>
+<p class="mono-copy">RM-240001 · ICD-J18.9 · SEP-0301R0010626V000001</p>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="type-scale">
+<div class="section-head">
+<div>
+<h2>Type Scale &amp; Token</h2>
+<p>Gunakan token ini di Figma, Tailwind, dan CSS supaya ukuran font tidak dibuat manual per halaman.</p>
+</div>
+<span class="badge badge-sm">Desktop-first, aman responsif</span>
+</div>
+<article class="card scale-card">
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Font</th>
+<th>Ukuran / Line Tinggi</th>
+<th>Weight</th>
+<th>Tracking</th>
+<th>Preview</th>
+<th>Penggunaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="token-name">display-2xl</span></td>
+<td>Inter</td>
+<td>72 / 90</td>
+<td>700</td>
+<td>-2%</td>
+<td><span class="preview-text s36 w700">Display 2xl</span></td>
+<td><span class="role-tag indigo">Marketing</span> Hero landing page besar.</td>
+</tr>
+<tr>
+<td><span class="token-name">display-xl</span></td>
+<td>Inter</td>
+<td>60 / 72</td>
+<td>700</td>
+<td>-2%</td>
+<td><span class="preview-text s32 w700">Display xl</span></td>
+<td>Headline campaign, ringkasan dashboard khusus.</td>
+</tr>
+<tr>
+<td><span class="token-name">display-lg</span></td>
+<td>Inter</td>
+<td>48 / 60</td>
+<td>700</td>
+<td>-2%</td>
+<td><span class="preview-text s24 w700">Display lg</span></td>
+<td>Section hero dan empty state besar.</td>
+</tr>
+<tr>
+<td><span class="token-name">display-md</span></td>
+<td>Inter</td>
+<td>36 / 44</td>
+<td>700</td>
+<td>-2%</td>
+<td><span class="preview-text s20 w700">Display md</span></td>
+<td>Judul dashboard dan summary page.</td>
+</tr>
+<tr>
+<td><span class="token-name">heading-h1</span></td>
+<td>Inter</td>
+<td>32 / 40</td>
+<td>700</td>
+<td>-1%</td>
+<td><span class="preview-text s32 w700">Judul Halaman</span></td>
+<td><span class="role-tag">UI Utama</span> Judul halaman utama.</td>
+</tr>
+<tr>
+<td><span class="token-name">heading-h2</span></td>
+<td>Inter</td>
+<td>24 / 32</td>
+<td>600</td>
+<td>-1%</td>
+<td><span class="preview-text s24 w600">Judul Section</span></td>
+<td>Judul section di halaman.</td>
+</tr>
+<tr>
+<td><span class="token-name">heading-h3</span></td>
+<td>Inter</td>
+<td>20 / 28</td>
+<td>600</td>
+<td>0</td>
+<td><span class="preview-text s20 w600">Judul Card</span></td>
+<td>Judul card, panel, modal title kecil.</td>
+</tr>
+<tr>
+<td><span class="token-name">heading-h4</span></td>
+<td>Inter</td>
+<td>16 / 24</td>
+<td>600</td>
+<td>0</td>
+<td><span class="preview-text s16 w600">Label Grup</span></td>
+<td>Subsection, group label, table group.</td>
+</tr>
+<tr>
+<td><span class="token-name">body-xl</span></td>
+<td>Inter</td>
+<td>18 / 28</td>
+<td>400 / 500 / 600</td>
+<td>0</td>
+<td><span class="preview-text text-body-xl w500">Body XL</span></td>
+<td>Subtitle, intro section, dan teks penekanan medium.</td>
+</tr>
+<tr>
+<td><span class="token-name">body-lg</span></td>
+<td>Inter</td>
+<td>16 / 26</td>
+<td>400 / 500</td>
+<td>0</td>
+<td><span class="preview-text s16 w400">Body besar</span></td>
+<td>Intro copy, deskripsi halaman pendek.</td>
+</tr>
+<tr>
+<td><span class="token-name">body-md</span></td>
+<td>Inter</td>
+<td>14 / 22</td>
+<td>400 / 500</td>
+<td>0</td>
+<td><span class="preview-text s14 w400">Body default</span></td>
+<td><span class="role-tag green">Default</span> Isi tabel, paragraf, input.</td>
+</tr>
+<tr>
+<td><span class="token-name">body-sm</span></td>
+<td>Inter</td>
+<td>12 / 18</td>
+<td>400 / 500 / 600</td>
+<td>0</td>
+<td><span class="preview-text s12 w500">Small text</span></td>
+<td>Caption, helper, badge, timestamp.</td>
+</tr>
+<tr>
+<td><span class="token-name">body-xs</span></td>
+<td>Inter</td>
+<td>10 / 14</td>
+<td>500 / 600</td>
+<td>.02em</td>
+<td><span class="preview-text s10 w600">Label kecil</span></td>
+<td><span class="role-tag gray">Metadata</span> Printer, barcode, label kecil.</td>
+</tr>
+<tr>
+<td><span class="token-name">mono-md</span></td>
+<td>JetBrains Mono</td>
+<td>14 / 22</td>
+<td>600 / 700</td>
+<td>-3.5%</td>
+<td><span class="preview-text mono s14 w700">RM-240001</span></td>
+<td><span class="role-tag orange">Medical ID</span> RM, ICD, SEP, hasil lab.</td>
+</tr>
+<tr>
+<td><span class="token-name">mono-sm</span></td>
+<td>JetBrains Mono</td>
+<td>12 / 18</td>
+<td>500 / 600</td>
+<td>-3.5%</td>
+<td><span class="preview-text mono s12 w600">ICD-J18.9</span></td>
+<td>String teknis di tabel padat.</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section class="mt-12" id="weights">
+<div class="section-head">
+<div>
+<h2>Font Weight</h2>
+<p>Weight dibatasi supaya desain tidak terlalu ramai. Gunakan 400, 500, 600, dan 700 sebagai standar utama.</p>
+</div>
+<span class="badge badge-sm">Sistem weight Inter</span>
+</div>
+<div class="grid-4">
+<article class="weight-card">
+<p class="weight-title">Regular · 400</p>
+<p class="weight-sample w400">Inter Regular</p>
+<p class="weight-use">Dipakai untuk body paragraph, deskripsi, isi tabel, dan teks netral.</p>
+</article>
+<article class="weight-card">
+<p class="weight-title">Medium · 500</p>
+<p class="weight-sample w500">Inter Medium</p>
+<p class="weight-use">Dipakai untuk value penting, input value, tab, menu item aktif ringan.</p>
+</article>
+<article class="weight-card">
+<p class="weight-title">Semibold · 600</p>
+<p class="weight-sample w600">Inter Semibold</p>
+<p class="weight-use">Dipakai untuk H2, H3, H4, label form, tombol, badge, dan table header.</p>
+</article>
+<article class="weight-card">
+<p class="weight-title">Bold · 700</p>
+<p class="weight-sample w700">Inter Bold</p>
+<p class="weight-use">Dipakai untuk H1, angka KPI, status kritikal, dan emphasis yang perlu cepat terlihat.</p>
+</article>
+</div>
+</section>
+<section class="mt-12" id="specimen">
+<div class="section-head">
+<div>
+<h2>Inter Specimen Lengkap</h2>
+<p>Contoh lengkap seperti referensi typography sheet: alphabet, angka, simbol, display text, heading, body, small, dan tiny dalam beberapa weight.</p>
+</div>
+<span class="badge badge-sm">Aa–Zz · 0–9 · symbols</span>
+</div>
+<article class="card">
+<div class="specimen-top">
+<p class="label">Inter</p>
+<div class="ag">Ag</div>
+<p class="alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZ<br/>abcdefghijklmnopqrstuvwxyz<br/>0123456789 !@#$%^&amp;*()</p>
+</div>
+<div class="spec-row">
+<div class="spec-size">Display 2xl</div>
+<div><p class="sample-title s72 w400">Display 2xl</p><p class="sample-weight s24 w400">Regular</p></div>
+<div><p class="sample-title s72 w500">Display 2xl</p><p class="sample-weight s24 w500">Medium</p></div>
+<div><p class="sample-title s72 w600">Display 2xl</p><p class="sample-weight s24 w600">Semibold</p></div>
+<div><p class="sample-title s72 w700">Display 2xl</p><p class="sample-weight s24 w700">Bold</p></div>
+<div class="spec-meta">Font size: 72px / 4.5rem<br/>Line height: 90px / 5.625rem<br/>Tracking: -2%</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Display xl</div>
+<div><p class="sample-title s60 w400">Display xl</p><p class="sample-weight s20 w400">Regular</p></div>
+<div><p class="sample-title s60 w500">Display xl</p><p class="sample-weight s20 w500">Medium</p></div>
+<div><p class="sample-title s60 w600">Display xl</p><p class="sample-weight s20 w600">Semibold</p></div>
+<div><p class="sample-title s60 w700">Display xl</p><p class="sample-weight s20 w700">Bold</p></div>
+<div class="spec-meta">Font size: 60px / 3.75rem<br/>Line height: 72px / 4.5rem<br/>Tracking: -2%</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Display lg</div>
+<div><p class="sample-title s48 w400">Display lg</p><p class="sample-weight s16 w400">Regular</p></div>
+<div><p class="sample-title s48 w500">Display lg</p><p class="sample-weight s16 w500">Medium</p></div>
+<div><p class="sample-title s48 w600">Display lg</p><p class="sample-weight s16 w600">Semibold</p></div>
+<div><p class="sample-title s48 w700">Display lg</p><p class="sample-weight s16 w700">Bold</p></div>
+<div class="spec-meta">Font size: 48px / 3rem<br/>Line height: 60px / 3.75rem<br/>Tracking: -2%</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Display md</div>
+<div><p class="sample-title s36 w400">Display md</p><p class="sample-weight s16 w400">Regular</p></div>
+<div><p class="sample-title s36 w500">Display md</p><p class="sample-weight s16 w500">Medium</p></div>
+<div><p class="sample-title s36 w600">Display md</p><p class="sample-weight s16 w600">Semibold</p></div>
+<div><p class="sample-title s36 w700">Display md</p><p class="sample-weight s16 w700">Bold</p></div>
+<div class="spec-meta">Font size: 36px / 2.25rem<br/>Line height: 44px / 2.75rem<br/>Tracking: -2%</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Heading H1</div>
+<div><p class="sample-title s32 w400">Judul H1</p><p class="sample-weight s14 w400">Regular</p></div>
+<div><p class="sample-title s32 w500">Judul H1</p><p class="sample-weight s14 w500">Medium</p></div>
+<div><p class="sample-title s32 w600">Judul H1</p><p class="sample-weight s14 w600">Semibold</p></div>
+<div><p class="sample-title s32 w700">Judul H1</p><p class="sample-weight s14 w700">Bold</p></div>
+<div class="spec-meta">Font size: 32px / 2rem<br/>Line height: 40px / 2.5rem<br/>Direkomendasikan: 700</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Heading H2</div>
+<div><p class="sample-title s24 w400">Judul H2</p><p class="sample-weight s14 w400">Regular</p></div>
+<div><p class="sample-title s24 w500">Judul H2</p><p class="sample-weight s14 w500">Medium</p></div>
+<div><p class="sample-title s24 w600">Judul H2</p><p class="sample-weight s14 w600">Semibold</p></div>
+<div><p class="sample-title s24 w700">Judul H2</p><p class="sample-weight s14 w700">Bold</p></div>
+<div class="spec-meta">Font size: 24px / 1.5rem<br/>Line height: 32px / 2rem<br/>Direkomendasikan: 600</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Teks md</div>
+<div><p class="sample-title s14 w400">Teks md</p><p class="sample-weight s12 w400">Regular</p></div>
+<div><p class="sample-title s14 w500">Teks md</p><p class="sample-weight s12 w500">Medium</p></div>
+<div><p class="sample-title s14 w600">Teks md</p><p class="sample-weight s12 w600">Semibold</p></div>
+<div><p class="sample-title s14 w700">Teks md</p><p class="sample-weight s12 w700">Bold</p></div>
+<div class="spec-meta">Font size: 14px / .875rem<br/>Line height: 22px / 1.375rem<br/>Body default</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Teks sm</div>
+<div><p class="sample-title s12 w400">Teks sm</p><p class="sample-weight s10 w400">Regular</p></div>
+<div><p class="sample-title s12 w500">Teks sm</p><p class="sample-weight s10 w500">Medium</p></div>
+<div><p class="sample-title s12 w600">Teks sm</p><p class="sample-weight s10 w600">Semibold</p></div>
+<div><p class="sample-title s12 w700">Teks sm</p><p class="sample-weight s10 w700">Bold</p></div>
+<div class="spec-meta">Font size: 12px / .75rem<br/>Line height: 18px / 1.125rem<br/>Caption dan helper</div>
+</div>
+<div class="spec-row">
+<div class="spec-size">Teks xs</div>
+<div><p class="sample-title s10 w400">Teks xs</p><p class="sample-weight s10 w400">Regular</p></div>
+<div><p class="sample-title s10 w500">Teks xs</p><p class="sample-weight s10 w500">Medium</p></div>
+<div><p class="sample-title s10 w600">Teks xs</p><p class="sample-weight s10 w600">Semibold</p></div>
+<div><p class="sample-title s10 w700">Teks xs</p><p class="sample-weight s10 w700">Bold</p></div>
+<div class="spec-meta">Font size: 10px / .625rem<br/>Line height: 14px / .875rem<br/>Metadata kecil</div>
+</div>
+</article>
+</section>
+<section class="mt-12" id="mono">
+<div class="section-head">
+<div>
+<h2>Panduan JetBrains Mono</h2>
+<p>Monospace hanya digunakan saat perbedaan karakter harus jelas, terutama angka, huruf kapital, separator, dan kode medis.</p>
+</div>
+<span class="badge badge-sm">RM · ICD · SEP · LAB</span>
+</div>
+<div class="grid-2">
+<article class="card card-pad">
+<p class="label">Monospace specimen</p>
+<p class="mono u-style-104">0O1l</p>
+<p class="mono u-style-105">RM-240001<br/>ICD-J18.9<br/>SEP-0301R0010626V000001<br/>LAB-HB-13.2 · WBC-7.40 · PLT-250</p>
+</article>
+<article class="card scale-card">
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Ukuran</th>
+<th>Weight</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="token-name">mono-lg</span></td>
+<td>16 / 24</td>
+<td>600 / 700</td>
+<td><span class="mono w700">RM-240001</span></td>
+</tr>
+<tr>
+<td><span class="token-name">mono-md</span></td>
+<td>14 / 22</td>
+<td>600 / 700</td>
+<td><span class="mono w700">ICD-J18.9</span></td>
+</tr>
+<tr>
+<td><span class="token-name">mono-sm</span></td>
+<td>12 / 18</td>
+<td>500 / 600</td>
+<td><span class="mono w600">SEP-0301R0010626V000001</span></td>
+</tr>
+<tr>
+<td><span class="token-name">mono-xs</span></td>
+<td>10 / 14</td>
+<td>500 / 600</td>
+<td><span class="mono w600">LAB-HB-13.2</span></td>
+</tr>
+</tbody>
+</table>
+</article>
+</div>
+</section>
+<section class="mt-12" id="examples">
+<div class="section-head">
+<div>
+<h2>Contoh Implementasi UI</h2>
+<p>Contoh penggunaan Inter dan JetBrains Mono pada komponen medis: detail pasien, form, badge, dan alert.</p>
+</div>
+<span class="badge badge-sm">Tipografi komponen</span>
+</div>
+<div class="example-grid">
+<article class="app-preview">
+<div class="app-topbar">
+<p class="app-title">Detail Kunjungan Pasien</p>
+<span class="app-id">RM-240001</span>
+</div>
+<div class="app-content">
+<div class="patient-card">
+<h4>Andi Saputra</h4>
+<p class="patient-meta">Laki-laki · 34 tahun · Rawat Jalan</p>
+<div class="info-row">
+<span class="info-label">Nomor SEP</span>
+<span class="info-value mono">0301R0010626V000001</span>
+</div>
+<div class="info-row">
+<span class="info-label">Diagnosa</span>
+<span class="info-value"><span class="mono">ICD-J18.9</span> · Pneumonia unspecified</span>
+</div>
+<div class="info-row">
+<span class="info-label">Status</span>
+<span class="info-value">Menunggu validasi dokter</span>
+</div>
+</div>
+<div class="alert alert-warning alert-md">
+<div class="alert-icon">!</div>
+<div>
+<strong>Data asuransi belum lengkap</strong>
+<p>Periksa kembali nomor SEP, kode diagnosa, dan lampiran pendukung sebelum melanjutkan klaim.</p>
+</div>
+</div>
+</div>
+</article>
+<article class="form-preview">
+<p class="label">Contoh form</p>
+<h3 class="u-style-107">Input Data Medis</h3>
+<p class="muted u-style-108">Gunakan body-md untuk field value, body-sm untuk helper text, dan mono untuk kode.</p>
+<div class="field">
+<label for="sep">Nomor SEP</label>
+<div class="input mono">0301R0010626V000001</div>
+<p class="helper">Gunakan format resmi dari sistem BPJS.</p>
+</div>
+<div class="field">
+<label for="icd">Kode ICD</label>
+<div class="input mono">J18.9</div>
+<p class="helper">Pastikan titik dan huruf kapital terbaca jelas.</p>
+</div>
+<div class="badge-list">
+<span class="ui-badge success">Selesai</span>
+<span class="ui-badge warning">Butuh Review</span>
+<span class="ui-badge mono-badge">LAB-HB-13.2</span>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="guidelines">
+<div class="section-head">
+<div>
+<h2>Panduan Penggunaan</h2>
+<p>Aturan praktis untuk menjaga konsistensi halaman dengan data padat.</p>
+</div>
+<span class="badge badge-sm">Yang disarankan &amp; dihindari</span>
+</div>
+<div class="grid-3">
+<article class="guideline-card">
+<div class="icon">01</div>
+<h3>Jaga hierarki halaman</h3>
+<ul>
+<li>Gunakan satu H1 per halaman.</li>
+<li>Gunakan H2 untuk section utama.</li>
+<li>Gunakan H3/H4 untuk card dan group kecil.</li>
+</ul>
+</article>
+<article class="guideline-card">
+<div class="icon">02</div>
+<h3>Body default 14px</h3>
+<ul>
+<li>Gunakan 14px untuk mayoritas UI.</li>
+<li>Gunakan line-height 22px agar teks tidak padat.</li>
+<li>Hindari body 12px untuk paragraf panjang.</li>
+</ul>
+</article>
+<article class="guideline-card">
+<div class="icon">03</div>
+<h3>Monospace hanya untuk kode</h3>
+<ul>
+<li>Gunakan untuk RM, ICD, SEP, hasil lab.</li>
+<li>Jangan gunakan untuk paragraf umum.</li>
+<li>Pakai semibold/bold untuk ID penting.</li>
+</ul>
+</article>
+<article class="guideline-card">
+<div class="icon">04</div>
+<h3>Batasi weight</h3>
+<ul>
+<li>400 untuk body.</li>
+<li>500 untuk value/menu.</li>
+<li>600 untuk heading kecil dan label.</li>
+<li>700 untuk H1 dan emphasis penting.</li>
+</ul>
+</article>
+<article class="guideline-card">
+<div class="icon">05</div>
+<h3>Jangan terlalu banyak uppercase</h3>
+<ul>
+<li>Uppercase hanya untuk label pendek.</li>
+<li>Tambahkan tracking .05em untuk label.</li>
+<li>Jangan uppercase untuk kalimat panjang.</li>
+</ul>
+</article>
+<article class="guideline-card">
+<div class="icon">06</div>
+<h3>Readable di tabel padat</h3>
+<ul>
+<li>Header tabel 12px semibold/bold.</li>
+<li>Cell default 14px regular/medium.</li>
+<li>ID teknis pakai mono-sm atau mono-md.</li>
+</ul>
+</article>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Tipografi memakai Inter untuk interface dan JetBrains Mono untuk data teknis. Class seperti .text-h1, .text-body-xl, dan .text-body-md menjadi acuan ukuran teks.</p>
+</div>
+<span class="badge badge-sm">typography.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/theme.css */
+@theme {
+  --font-sans: &quot;Inter&quot;, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: &quot;JetBrains Mono&quot;, ui-monospace, monospace;
+  --text-h1: 32px;
+  --text-h1--line-height: 40px;
+  --text-body-md: 14px;
+  --text-body-md--line-height: 22px;
+}
+
+/* src/css/design-system/typography.css */
+.text-h1 {
+  @apply text-h1 leading-[var(--leading-h1)] tracking-[var(--tracking-h1)] font-bold;
+}
+
+.text-body-md {
+  @apply text-body-md leading-[var(--leading-body-md)];
+}
+
+.text-mono-sm {
+  @apply font-mono text-mono-sm leading-[var(--leading-mono-sm)] tracking-[var(--tracking-mono-sm)];
+}</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;h1 class=&quot;text-h1&quot;&gt;Dashboard SIMRS&lt;/h1&gt;
+&lt;p class=&quot;text-body-md&quot;&gt;Ringkasan aktivitas pasien hari ini.&lt;/p&gt;
+&lt;span class=&quot;text-mono-sm&quot;&gt;RM-2026-000341&lt;/span&gt;
+
+function PageHeader({ title, subtitle }) {
+  return (
+    &lt;header className=&quot;card&quot;&gt;
+      &lt;h1 className=&quot;text-h1&quot;&gt;{title}&lt;/h1&gt;
+      &lt;p className=&quot;text-body-xl&quot;&gt;{subtitle}&lt;/p&gt;
+    &lt;/header&gt;
+  )
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Gunakan class tipografi yang sudah tersedia; jangan membuat ukuran teks baru tanpa kebutuhan yang jelas.</div>
+</section>
+<footer class="footer">
+<div>
+<strong>Panduan Tipografi Medical UI</strong>
+        Inter untuk interface, JetBrains Mono untuk data teknis medis.
+      </div>
+<div>© 2026 · Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

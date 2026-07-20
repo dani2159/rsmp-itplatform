@@ -1,0 +1,3623 @@
+html {
+  @apply h-full;
+}
+
+body.dashboard-app {
+  @apply h-screen min-h-screen overflow-hidden;
+}
+
+/* ============================================================================
+   SIMRS ZAIDAN Halaman Dashboard
+   --------------------------------------------------------------------------
+   CSS khusus halaman dashboard. Struktur sidebar, input, button,
+   dropdown, badge, typography, dan card component tetap reuse dari
+   `design-system.css`. File ini hanya mengatur canvas/scroll area halaman.
+   ========================================================================== */
+
+.dashboard-app {
+  @apply bg-[color:var(--page)] overflow-hidden;
+}
+
+.dashboard-layout.layout-preview {
+  @apply w-full min-h-screen h-screen border-0 rounded-none shadow-none;
+}
+
+.dashboard-layout.layout-preview .app-sidebar {
+  @apply min-h-screen h-screen max-h-screen overflow-y-auto overflow-x-hidden overscroll-contain;
+}
+
+.mobile-nav-overlay {
+  @apply fixed inset-0 z-[1100] hidden bg-[color:rgba(15,31,61,0.46)];
+  backdrop-filter: blur(3px);
+}
+
+.mobile-nav-overlay.is-open {
+  @apply block;
+}
+
+.is-mobile-sidebar-open,
+.is-topnav-menu-open {
+  @apply overflow-hidden;
+}
+
+.dashboard-layout .app-main {
+  @apply min-h-screen overflow-hidden;
+}
+
+.dashboard-content {
+  @apply flex-auto min-h-0 overflow-auto overscroll-contain p-5;
+  align-content: start;
+}
+
+@media (max-width: 980px) {
+  body.dashboard-app {
+    @apply h-auto min-h-screen overflow-x-hidden overflow-y-auto;
+  }
+
+  body.dashboard-app.is-mobile-sidebar-open,
+  body.dashboard-app.is-topnav-menu-open {
+    @apply overflow-hidden;
+  }
+
+  .dashboard-layout.layout-preview {
+    @apply h-auto min-h-screen grid-cols-1 overflow-visible;
+  }
+
+  .dashboard-layout .app-header {
+    @apply h-auto min-h-16 flex-wrap gap-2.5 py-2.5 px-3;
+  }
+
+  .dashboard-layout .header-menu-btn {
+    order: 1;
+  }
+
+  .dashboard-layout .mobile-header-brand {
+    @apply inline-flex;
+    order: 2;
+  }
+
+  .dashboard-layout .topbar-spacer {
+    @apply flex-1 min-w-0;
+    order: 3;
+  }
+
+  .dashboard-layout .header-actions {
+    @apply gap-1 ml-auto;
+    order: 4;
+  }
+
+  .dashboard-layout .header-search {
+    @apply w-full min-w-0 basis-full flex-auto;
+    order: 5;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar {
+    @apply fixed left-0 top-0 bottom-0 z-[1120] flex w-[min(300px,88vw)] h-[100dvh] min-h-0 max-h-[100dvh] rounded-none border-0 border-r border-r-[color:var(--border-soft)] shadow-[0_26px_70px_rgba(15,31,61,0.28)] p-4 overflow-y-auto overflow-x-hidden overscroll-contain;
+    transform: translateX(-105%);
+    transition: transform 0.22s ease;
+  }
+
+  .is-mobile-sidebar-open .dashboard-layout.layout-preview .app-sidebar {
+    transform: translateX(0);
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar .sidebar-head {
+    @apply hidden;
+  }
+
+
+  .dashboard-layout.layout-preview .app-sidebar.compact {
+    @apply w-[min(300px,88vw)] items-stretch p-4;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .brand-lockup {
+    @apply justify-center;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .brand-logo-full {
+    @apply block w-[200px] max-w-[200px] h-auto;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .brand-logo-icon,
+  .dashboard-layout.layout-preview .app-sidebar.compact .compact-search {
+    @apply hidden;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-user-meta,
+  .dashboard-layout.layout-preview .app-sidebar.compact .brand-text,
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-label,
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-count,
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-chevron,
+  .dashboard-layout.layout-preview .app-sidebar.compact .user-meta {
+    @apply flex;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-head .icon-btn {
+    @apply inline-flex;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-user-info {
+    @apply w-auto justify-start min-h-12 p-2 m-[0_2px_16px];
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-section {
+    @apply w-full items-stretch overflow-visible;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .sidebar-separator {
+    @apply w-auto;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-item,
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-summary {
+    @apply w-full h-auto min-h-10.5 justify-start py-0 px-2.5;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .nav-icon {
+    @apply m-0 w-[22px] h-[22px] inline-flex;
+  }
+
+  .dashboard-layout.layout-preview .app-sidebar.compact details.nav-group[open] .subnav {
+    @apply flex;
+  }
+
+
+  .dashboard-layout.layout-preview .app-sidebar.compact .avatar {
+    @apply w-9 h-9;
+  }
+
+  .dashboard-layout .app-main {
+    @apply overflow-visible;
+  }
+
+  .dashboard-content {
+    @apply p-4 overflow-visible;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Card dashboard
+   -------------------------------------------------------------------------- */
+
+.dashboard-status-alert {
+  @apply mb-3;
+}
+
+.dashboard-content {
+  @apply bg-[color:var(--page)] text-[color:var(--text-primary)];
+}
+
+/* ============================================================================
+   Halaman Manajemen User Admin
+   --------------------------------------------------------------------------
+   Halaman daftar user admin. Reuse komponen sistem desain: card, data-table,
+   toolbar, input, dropdown, badge, button, alert, checkbox, dan sidebar.
+   ========================================================================== */
+
+.admin-users-content {
+  @apply grid gap-4.5 p-[24px_32px_32px] min-w-0;
+}
+
+.admin-users-content > * {
+  @apply min-w-0 max-w-full;
+}
+
+.admin-breadcrumb {
+  @apply flex items-center gap-2 mb-0 text-[color:var(--text-secondary)];
+}
+
+.admin-breadcrumb a,
+.admin-breadcrumb span {
+  @apply inline-flex items-center gap-2 font-semibold;
+}
+
+.admin-breadcrumb a:last-of-type,
+.admin-breadcrumb span {
+  @apply text-[color:var(--text-primary)];
+}
+
+.admin-breadcrumb i {
+  @apply text-body-sm leading-none text-[color:var(--slate)];
+}
+
+.admin-page-head {
+  @apply flex items-start justify-between gap-4.5;
+}
+
+
+.admin-page-head h1 {
+  @apply m-0;
+}
+
+.admin-page-subtitle {
+  @apply max-w-[760px] mt-2 mx-0 mb-0 text-[color:var(--text-secondary)] text-body-md leading-5.5;
+}
+
+.admin-page-actions {
+  @apply flex items-center justify-end gap-3 flex-wrap;
+}
+
+.system-assets-aside.card-body {
+  align-content: start;
+  align-items: start;
+}
+
+.admin-card-head {
+  @apply mb-3.5;
+}
+
+.admin-user-toolbar.toolbar {
+  @apply mb-4.5 items-end;
+}
+
+.admin-toolbar-left.toolbar-left {
+  @apply justify-start w-auto flex-auto;
+}
+
+.admin-search-field.search-field {
+  @apply w-[min(320px,100%)];
+}
+
+.admin-filter-group.toolbar-right {
+  @apply gap-2.5 flex-wrap;
+}
+
+.admin-filter-select {
+  @apply w-[168px];
+}
+
+.admin-table-scroll.table-scroll {
+  @apply w-full min-w-0 max-w-full overflow-x-auto overflow-y-auto overscroll-x-contain border border-[color:var(--border-soft)] rounded-[14px] bg-[color:var(--surface)];
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-users-table.data-table {
+  @apply min-w-[1040px];
+}
+
+.admin-users-table .admin-user-cell {
+  @apply flex items-center gap-3 min-w-[220px];
+}
+
+.admin-users-table .admin-user-cell .avatar {
+  @apply w-[38px] h-[38px] flex-none;
+}
+
+.admin-users-table .admin-user-cell .avatar img {
+  @apply block w-full h-full;
+  object-fit: cover;
+}
+
+.admin-users-table .admin-user-cell strong,
+.admin-users-table .admin-user-cell small {
+  @apply block;
+}
+
+.admin-users-table .admin-user-cell small {
+  @apply mt-0.5 text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-medium;
+}
+
+.admin-users-table tr.is-inactive {
+  @apply opacity-[0.56];
+}
+
+.admin-users-table tr[hidden] {
+  @apply hidden;
+}
+
+.admin-action-group.action-group {
+  @apply gap-2.5;
+}
+
+.admin-row-menu {
+  @apply flex-none;
+}
+
+.admin-row-menu > summary.btn {
+  @apply list-none;
+}
+
+.admin-row-menu > summary.btn::-webkit-details-marker {
+  @apply hidden;
+}
+
+.admin-row-menu .dropdown-panel {
+  @apply left-auto right-0 min-w-[218px] z-[42];
+}
+
+.admin-row-menu .dropdown-option {
+  @apply gap-2.5;
+}
+
+.admin-row-menu .danger-option {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.admin-row-menu .danger-option:hover {
+  @apply bg-[color:var(--danger-light)];
+}
+
+.admin-table-footer.table-footer {
+  @apply pt-4.5;
+}
+
+
+
+
+
+
+
+@media (max-width: 1180px) {
+  .master-tariff-content .admin-filter-group.toolbar-right {
+  @apply flex-wrap;
+}
+
+  .admin-page-head,
+  .admin-user-toolbar.toolbar {
+  @apply items-stretch flex-col;
+}
+
+  .admin-page-actions,
+  .admin-filter-group.toolbar-right {
+  @apply justify-start;
+}
+
+  .admin-filter-select {
+  @apply w-[min(220px,100%)];
+}
+}
+
+@media (max-width: 720px) {
+  .admin-users-content {
+  @apply p-[18px_16px_24px];
+}
+
+  .admin-page-actions,
+  .admin-filter-group.toolbar-right {
+  @apply flex-wrap items-stretch;
+}
+
+  .admin-page-actions .btn {
+  width: auto;
+  flex: 1 1 148px;
+}
+
+  .admin-filter-select {
+  width: auto;
+  min-width: min(150px, 100%);
+  flex: 1 1 150px;
+}
+
+  .admin-search-field.search-field {
+  width: auto;
+  min-width: min(220px, 100%);
+  flex: 1 1 220px;
+}
+}
+
+/* ============================================================================
+   Halaman Role & Permission Admin
+   --------------------------------------------------------------------------
+   Reuse guide tabel sistem desain: data-table, toolbar, input, badge, button,
+   alert, checkbox state, card surface, and responsive table scroll.
+   ========================================================================== */
+
+.admin-roles-content {
+  @apply grid gap-4.5 p-[24px_32px_32px];
+}
+
+.admin-roles-table-card.card,
+.admin-permission-card.card {
+  @apply border-0 rounded-[var(--radius-card)] p-4 shadow-[var(--shadow-sm)];
+}
+
+.admin-role-toolbar.toolbar {
+  @apply items-center;
+}
+
+.admin-roles-table.data-table {
+  @apply min-w-[980px];
+}
+
+.admin-roles-table tbody tr {
+  @apply cursor-pointer;
+  transition: background-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.admin-roles-table tbody tr:hover,
+.admin-roles-table tbody tr.is-selected {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.admin-roles-table tbody tr.is-selected {
+  @apply shadow-[inset_3px_0_0_var(--primary-blue)];
+}
+
+.admin-roles-table tbody tr[hidden] {
+  @apply hidden;
+}
+
+.role-name-cell {
+  @apply flex items-center gap-3 min-w-[220px];
+}
+
+.role-name-cell strong,
+.role-name-cell small,
+.permission-matrix-table td strong,
+.permission-matrix-table td small {
+  @apply block;
+}
+
+.role-name-cell small,
+.permission-matrix-table td small {
+  @apply mt-0.5 text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-medium;
+}
+
+.role-icon {
+  @apply w-10 h-10 rounded-[14px] inline-grid place-items-center flex-none text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.role-icon.is-locked {
+  @apply text-[color:var(--slate-shade-30)] bg-[color:var(--slate-tint-80)];
+}
+
+.permission-eyebrow.eyebrow {
+  @apply m-[0_0_6px] text-[color:var(--primary-blue)] text-body-sm leading-4.5 font-bold tracking-[0.08em] uppercase;
+}
+
+.permission-head-actions {
+  @apply flex items-center justify-end gap-2.5 flex-wrap;
+}
+
+.permission-info-alert.alert {
+  @apply mb-3.5;
+}
+
+.permission-save-bar {
+  @apply flex items-center justify-between gap-3.5 mb-4 p-3.5 border border-[color:var(--border-soft)] rounded-[14px] bg-[color:var(--light-gray-tint-40)];
+}
+
+.permission-save-bar strong,
+.permission-save-bar span {
+  @apply block;
+}
+
+.permission-save-bar strong {
+  @apply text-[color:var(--text-primary)] text-body-md leading-5.5 font-bold;
+}
+
+.permission-save-bar span {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-medium;
+}
+
+.permission-save-actions {
+  @apply flex items-center justify-end gap-2.5 flex-wrap;
+}
+
+.permission-matrix-scroll.table-scroll {
+  @apply w-full max-w-full overflow-auto border border-[color:var(--border-soft)] rounded-[var(--radius-card)] bg-[color:var(--surface)];
+}
+
+.permission-matrix-table.data-table {
+  @apply w-full min-w-[820px] border-collapse;
+  table-layout: fixed;
+}
+
+.permission-matrix-table.data-table th,
+.permission-matrix-table.data-table td {
+  @apply p-4 border-b border-b-[color:var(--border-soft)] align-middle;
+}
+
+.permission-matrix-table.data-table thead th {
+  @apply bg-[color:var(--ui-surface-table-cell)] text-[color:var(--text-primary)] text-body-sm font-bold whitespace-nowrap;
+}
+
+.permission-matrix-table.data-table tbody td {
+  @apply text-[color:var(--text-primary)] text-body-md font-medium;
+}
+
+.permission-matrix-table th:first-child,
+.permission-matrix-table td:first-child {
+  @apply w-[220px];
+}
+
+.permission-matrix-table th:not(:first-child),
+.permission-matrix-table td:not(:first-child) {
+  @apply w-[90px] text-center;
+}
+
+@media (max-width: 1180px) {
+  .admin-role-toolbar.toolbar,
+  .permission-save-bar,
+  .permission-head-actions,
+  .permission-save-actions {
+  @apply justify-start;
+}
+}
+
+@media (max-width: 720px) {
+  .admin-roles-content {
+  @apply p-[18px_16px_24px];
+}
+
+  .permission-save-actions .btn {
+  @apply w-full;
+}
+}
+
+/* ==========================================================================
+   Normalisasi teks tabel
+   Semua table menggunakan text-primary; thead/th 12px di semua halaman.
+   ========================================================================== */
+
+table,
+table th,
+table td,
+table td strong,
+table td small,
+table td p,
+table td a,
+table td > span:not(.badge),
+.data-table th,
+.data-table td,
+.data-table th .sort,
+.data-table td strong,
+.data-table td small,
+.data-table td p,
+.data-table td a,
+.data-table td > span:not(.badge),
+.role-name-cell strong,
+.role-name-cell small,
+.permission-matrix-table td strong,
+.permission-matrix-table td small {
+  @apply text-[color:var(--text-primary)];
+}
+
+table thead th {
+  @apply text-[color:var(--text-primary)] text-body-sm;
+}
+
+table th {
+  @apply text-body-sm;
+}
+
+.data-table thead th {
+  @apply text-[color:var(--text-primary)] text-body-sm;
+}
+
+.data-table th {
+  @apply text-body-sm;
+}
+
+table.data-table thead th {
+  @apply text-[color:var(--text-primary)] text-body-sm;
+}
+
+/* ============================================================================
+   Halaman Master Data Karyawan (US-A07)
+   --------------------------------------------------------------------------
+   Berdasarkan sistem tabel/card user admin dengan alert masa berlaku SIP/STR dan upload.
+   ========================================================================== */
+
+.master-employee-content .employee-license-alert {
+  @apply items-center justify-between;
+}
+
+.master-employee-content .employee-license-alert .alert-body {
+  @apply flex-auto;
+}
+
+.employee-table.data-table {
+  @apply min-w-[1240px];
+}
+
+.employee-table-card.is-review-focus {
+  @apply shadow-[0_0_0_2px_var(--warning-border-soft),var(--shadow-sm)];
+  transition: box-shadow 0.2s ease;
+}
+
+.employee-muted,
+.employee-expiry-cell small {
+  @apply block mt-[3px] text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-medium;
+}
+
+.employee-expiry-cell {
+  @apply grid gap-[5px] min-w-[158px];
+}
+
+.employee-expiry-cell strong {
+  @apply text-[color:var(--text-primary)] text-body-sm leading-4.5 font-bold;
+}
+
+.employee-document-cell {
+  @apply inline-flex items-center gap-2 min-w-[148px] text-[color:var(--text-primary)] text-body-sm leading-4.5 font-semibold;
+}
+
+.employee-document-cell i {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.employee-document-cell.is-review i {
+  @apply text-[color:var(--warning-dark)];
+}
+
+.employee-document-cell.is-missing {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.employee-document-cell.is-missing i {
+  @apply text-[color:var(--slate-shade-30)];
+}
+
+.employee-form-alert.alert {
+  @apply m-0;
+}
+
+.employee-file-upload {
+  @apply flex items-center gap-2.5 min-h-[46px] w-full py-2.5 px-3.5 border border-dashed border-[color:var(--primary-blue-tint-60)] rounded-[var(--radius-input-md)] bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)] text-body-md leading-5.5 font-bold cursor-pointer;
+}
+
+.employee-file-upload input {
+  @apply absolute overflow-hidden opacity-0;
+  inline-size: 1px;
+  block-size: 1px;
+}
+
+.employee-file-upload span {
+  @apply min-w-0 overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1180px) {
+  .master-employee-content .employee-license-alert {
+  @apply items-stretch flex-col;
+}
+}
+
+/* ==========================================================================
+   Master Data Jadwal Dokter
+   ========================================================================== */
+
+.master-doctor-schedule-content .doctor-schedule-alert {
+  @apply items-center;
+}
+
+.schedule-workspace-grid {
+  @apply grid grid-cols-[minmax(260px,320px)_minmax(0,1fr)] gap-4 items-stretch;
+}
+
+.doctor-picker-card,
+.schedule-calendar-card {
+  @apply min-w-0;
+}
+
+.doctor-picker-list {
+  @apply flex flex-col gap-2.5;
+}
+
+.doctor-picker-item {
+  @apply w-full grid grid-cols-[44px_minmax(0,1fr)_auto] items-center gap-3 border border-[color:var(--border-soft)] rounded-[var(--radius-card-sm)] bg-[color:var(--surface)] py-2.5 px-3 text-left text-[color:var(--text-primary)] cursor-pointer;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.doctor-picker-item:hover,
+.doctor-picker-item.active {
+  @apply border-[color:var(--primary-blue-tint-60)] bg-[color:var(--primary-light)] shadow-[var(--shadow-sm)];
+}
+
+.doctor-picker-avatar {
+  @apply w-11 h-11 rounded-[14px] inline-flex items-center justify-center bg-[color:var(--primary-blue-tint-80)] text-[color:var(--primary-dark)] text-body-xs font-extrabold tracking-[.04em];
+}
+
+.doctor-picker-copy {
+  @apply min-w-0 grid gap-0.5;
+}
+
+.doctor-picker-copy strong {
+  @apply text-body-sm font-bold overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.doctor-picker-copy small {
+  @apply text-[color:var(--muted)] text-body-xs overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.doctor-picker-count {
+  @apply min-w-[28px] h-7 p-[0_8px] inline-flex items-center justify-center rounded-full bg-[color:var(--field-muted)] text-[color:var(--text-secondary)] text-body-sm font-bold;
+}
+
+.schedule-calendar-head {
+  @apply items-start;
+}
+
+.calendar-dot-legend,
+.schedule-dot {
+  @apply inline-block w-2 h-2 rounded-full bg-[color:var(--primary-light0)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--primary-light0)_14%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-light0) 14%, transparent);
+}
+
+.schedule-calendar-weekdays,
+.schedule-calendar-grid {
+  @apply grid grid-cols-7;
+}
+
+.schedule-calendar-weekdays {
+  @apply gap-2 mb-2 text-[color:var(--muted)] text-body-xs font-bold uppercase tracking-[.04em];
+}
+
+.schedule-calendar-weekdays span {
+  @apply text-center;
+}
+
+.schedule-calendar-grid {
+  @apply gap-2;
+}
+
+.schedule-calendar-day {
+  @apply relative min-h-[88px] flex flex-col items-start justify-between border border-[color:var(--border-soft)] rounded-[var(--radius-card-sm)] bg-[color:var(--surface)] text-[color:var(--text-primary)] p-2.5 text-left cursor-pointer;
+  transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.schedule-calendar-day:hover,
+.schedule-calendar-day.has-visible-schedule {
+  @apply border-[color:var(--primary-blue-tint-60)] bg-[color:var(--primary-light)];
+}
+
+.schedule-calendar-day.is-today {
+  @apply shadow-[inset_0_0_0_2px_var(--primary-light0)];
+}
+
+.schedule-calendar-day.is-muted {
+  @apply text-[color:var(--light-gray-shade-45)] bg-[color:var(--field-muted)];
+}
+
+.schedule-calendar-day.is-weekend:not(.has-visible-schedule) {
+  @apply bg-[color:var(--field-muted)];
+}
+
+.schedule-calendar-day.is-dimmed {
+  @apply opacity-[.42];
+}
+
+.schedule-calendar-day > span {
+  @apply text-body-sm font-extrabold;
+}
+
+.schedule-calendar-day small {
+  @apply text-[color:var(--muted)] text-body-sm font-bold;
+}
+
+.schedule-calendar-day.is-leave small {
+  @apply inline-flex items-center min-h-[20px] rounded-full bg-[color:var(--danger-light)] text-[color:var(--danger-active)] p-[0_8px];
+}
+
+.schedule-table .quota-chip {
+  @apply inline-flex items-center justify-center min-h-[28px] py-0 px-2.5 rounded-full bg-[color:var(--primary-light)] text-[color:var(--primary-dark)] text-body-xs font-extrabold;
+}
+
+.schedule-delete-btn {
+  @apply text-[color:var(--danger-dark)];
+}
+
+@media (max-width: 1200px) {
+  .schedule-workspace-grid {
+  @apply grid-cols-1;
+}
+}
+
+@media (max-width: 768px) {
+  .schedule-calendar-weekdays,
+  .schedule-calendar-grid {
+  @apply gap-1.5;
+}
+
+  .schedule-calendar-day {
+  @apply min-h-[72px] p-2;
+}
+}
+
+@media (max-width: 560px) {
+  .schedule-calendar-weekdays {
+  @apply hidden;
+}
+
+  .schedule-calendar-grid {
+  @apply grid-cols-2;
+}
+}
+
+/* Master Data Tarif */
+
+.master-tariff-content {
+  @apply gap-4.5;
+}
+
+.tariff-workspace-grid {
+  @apply grid grid-cols-[minmax(0,1fr)] gap-4;
+  align-items: start;
+}
+
+.tariff-table-card {
+  @apply min-w-0;
+}
+
+.master-tariff-content .admin-user-toolbar.toolbar {
+  @apply items-end mb-4.5;
+}
+
+.master-tariff-content .admin-filter-group.toolbar-right {
+  @apply flex-nowrap;
+}
+
+.master-tariff-content .admin-filter-select {
+  @apply flex-[0_0_168px];
+}
+
+.tariff-table-scroll {
+  @apply max-w-full;
+}
+
+.tariff-table {
+  @apply min-w-[1320px];
+}
+
+.tariff-table th:nth-child(n+3):nth-child(-n+8),
+.tariff-table td:nth-child(n+3):nth-child(-n+8) {
+  @apply min-w-[136px];
+}
+
+.tariff-name-cell .avatar {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-dark)];
+}
+
+.tariff-price-value {
+  @apply inline-flex items-center justify-end min-w-[96px] min-h-9 text-body-sm font-medium text-[color:var(--grey-900)] text-right;
+}
+
+@media (max-width: 1280px) {
+  .tariff-workspace-grid {
+  @apply grid-cols-1;
+}
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+
+  .tariff-price-value {
+  @apply min-w-[88px];
+}
+}
+
+/* ==========================================================================
+   Master Data Jadwal Dokter - Tampilan Kalender/List
+   ========================================================================== */
+
+.schedule-view-card {
+  @apply flex items-center justify-between gap-4 p-0 bg-transparent shadow-none;
+}
+
+.schedule-view-copy {
+  @apply min-w-0 grid gap-1;
+}
+
+.schedule-view-actions {
+  @apply inline-flex items-center gap-2 ml-auto p-0 border-0 rounded-full bg-transparent shrink-0;
+}
+
+.schedule-view-actions-standalone {
+  @apply w-full justify-end m-[0_0_16px];
+}
+
+.schedule-view-button {
+  @apply min-h-9 inline-flex items-center gap-2 border-0 rounded-full bg-transparent text-[color:var(--text-secondary)] py-0 px-3.5 text-body-sm font-bold cursor-pointer;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.schedule-view-button:hover,
+.schedule-view-button.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-dark)] shadow-none;
+}
+
+[data-schedule-panel][hidden] {
+  @apply hidden;
+}
+
+.doctor-picker-card {
+  @apply overflow-visible bg-transparent shadow-none rounded-none p-0;
+}
+
+.google-calendar-card {
+  @apply min-w-0 overflow-visible bg-transparent shadow-none rounded-none p-0;
+}
+
+.doctor-picker-card .card-header,
+.google-calendar-card .card-header {
+  @apply mb-3;
+}
+
+.google-calendar-head {
+  @apply items-start;
+}
+
+.google-calendar-body {
+  @apply pt-0;
+}
+
+.google-calendar-weekdays,
+.google-calendar-grid {
+  @apply grid grid-cols-7;
+}
+
+.google-calendar-weekdays {
+  @apply border border-[color:var(--border-soft)] border-b-0 rounded-[var(--radius-card-sm)_var(--radius-card-sm)_0_0] bg-[color:var(--field-muted)] text-[color:var(--muted)] text-body-sm font-extrabold tracking-[.04em] uppercase;
+}
+
+.google-calendar-weekdays span {
+  @apply min-h-9 inline-flex items-center justify-center border-r border-r-[color:var(--border-soft)];
+}
+
+.google-calendar-weekdays span:last-child {
+  @apply border-r-0;
+}
+
+.google-calendar-grid {
+  @apply border border-[color:var(--border-soft)] rounded-[0_0_var(--radius-card-sm)_var(--radius-card-sm)] overflow-visible bg-[color:var(--border-soft)] gap-[1px];
+}
+
+.google-calendar-day {
+  @apply min-h-[142px] relative flex flex-col gap-2.5 bg-[color:var(--surface)] p-2.5 text-[color:var(--text-primary)];
+  transition: background .2s ease, opacity .2s ease;
+}
+
+.google-calendar-day:hover {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.google-calendar-day.is-muted {
+  @apply bg-[color:var(--field-muted)] text-[color:var(--light-gray-shade-45)];
+}
+
+.google-calendar-day.is-weekend:not(.has-visible-schedule) {
+  @apply bg-[color:var(--field-muted)];
+}
+
+.google-calendar-day.is-today {
+  @apply shadow-[inset_0_0_0_2px_var(--primary-light0)];
+}
+
+.google-calendar-day.is-dimmed {
+  @apply opacity-[.42];
+}
+
+.google-calendar-day.is-leave {
+  @apply bg-[color:color-mix(in_srgb,var(--danger-light)_16%,var(--surface))];
+
+  background: color-mix(in srgb, var(--danger-light) 16%, var(--surface));
+}
+
+.calendar-day-head {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_auto] gap-2;
+  align-items: start;
+}
+
+.calendar-day-actions {
+  @apply inline-flex items-center justify-end gap-1 flex-wrap;
+}
+
+.calendar-day-number {
+  @apply w-7 h-7 inline-flex items-center justify-center rounded-full text-body-sm font-extrabold;
+}
+
+.google-calendar-day.is-today .calendar-day-number {
+  @apply bg-[color:var(--primary-light0)] text-[color:var(--surface)];
+}
+
+.calendar-day-meta {
+  @apply min-w-0 inline-flex items-center gap-1.5 text-[color:var(--muted)] text-body-sm font-bold whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+.calendar-add-btn {
+  @apply min-h-[26px] inline-flex items-center gap-[5px] border border-[color:var(--primary-blue-tint-70)] rounded-full bg-[color:var(--surface)] text-[color:var(--primary-dark)] p-[0_8px] text-body-sm font-extrabold cursor-pointer opacity-100;
+  transform: none;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.calendar-add-btn:hover,
+.calendar-add-menu[open] > .calendar-add-btn {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.calendar-add-menu {
+  @apply relative inline-block;
+}
+
+.calendar-add-menu > summary {
+  @apply list-none;
+}
+
+.calendar-add-menu > summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.calendar-add-menu-panel {
+  @apply absolute top-[calc(100%_+_6px)] right-0 z-[30] w-max min-w-[156px] grid gap-1 p-1.5 border border-[color:var(--border-soft)] rounded-xl bg-[color:var(--surface)] shadow-[0_16px_34px_rgba(15,31,61,0.14)];
+}
+
+.calendar-add-option {
+  @apply min-h-8.5 w-full inline-flex items-center gap-2 border-0 rounded-[10px] bg-transparent text-[color:var(--text-primary)] py-0 px-2.5 text-body-sm font-bold text-left whitespace-nowrap cursor-pointer;
+}
+
+.calendar-add-option:hover {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-dark)];
+}
+
+.calendar-leave-btn {
+  @apply border-[color:var(--danger-border-soft)] text-[color:var(--danger-dark)];
+}
+
+.calendar-leave-btn:hover {
+  @apply bg-[color:var(--danger-light)];
+}
+
+.calendar-events {
+  @apply grid gap-1.5;
+}
+
+.calendar-event-chip {
+  @apply w-full grid gap-0.5 border-0 border-l-[3px] border-l-[color:var(--primary-light0)] rounded-[10px] bg-[color:var(--primary-light)] text-[color:var(--primary-dark)] p-[7px_8px] text-left cursor-pointer;
+}
+
+.calendar-event-chip strong {
+  @apply text-body-sm font-extrabold leading-[1.15];
+}
+
+.calendar-event-chip span {
+  @apply overflow-hidden text-[color:var(--text-secondary)] text-body-sm font-bold leading-[1.2] whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.calendar-event-chip.is-leave {
+  @apply border-l-[color:var(--danger-active)] bg-[color:var(--danger-light)] text-[color:var(--danger-active)];
+}
+
+.calendar-empty-slot {
+  @apply inline-flex items-center min-h-[30px] border border-dashed border-[color:var(--border-soft)] rounded-[10px] text-[color:var(--muted)] p-[0_8px] text-body-sm font-bold;
+}
+
+@media (max-width: 1200px) {
+  .google-calendar-layout {
+  @apply grid-cols-1;
+}
+}
+
+@media (max-width: 900px) {
+  .schedule-view-card {
+  @apply items-stretch flex-col;
+}
+
+  .schedule-view-actions {
+  @apply w-full;
+}
+
+  .schedule-view-button {
+  @apply flex-1 justify-center;
+}
+
+  .google-calendar-grid,
+  .google-calendar-weekdays {
+  @apply min-w-[840px];
+}
+
+  .google-calendar-body {
+  @apply overflow-x-auto;
+}
+}
+
+@media (max-width: 560px) {
+  .calendar-add-btn {
+  @apply opacity-100;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Master Data Jadwal Dokter - Card Kalender/List Terpadu
+   ========================================================================== */
+
+.master-doctor-schedule-content .schedule-master-card {
+  @apply overflow-visible;
+}
+
+.schedule-master-head {
+  @apply items-start gap-4;
+}
+
+.schedule-master-body {
+  @apply grid gap-4.5;
+}
+
+.schedule-shared-toolbar {
+  @apply items-stretch gap-3 pb-0 border-b-0;
+}
+
+.schedule-shared-toolbar .admin-search-field {
+  @apply min-w-[min(300px,100%)];
+}
+
+.schedule-panel-content {
+  @apply min-w-0;
+}
+
+.schedule-list-panel {
+  @apply grid gap-4;
+}
+
+.google-calendar-periodbar {
+  @apply flex items-start justify-between gap-4 mb-3;
+}
+
+.calendar-panel-title {
+  @apply m-0 text-[color:var(--text-primary)] text-h4 font-extrabold leading-[1.25];
+}
+
+.calendar-panel-subtitle {
+  @apply block m-0 mt-1 text-[color:var(--muted)] text-body-sm leading-normal;
+}
+
+.calendar-panel-subtitle .calendar-dot-legend {
+  @apply mr-2 align-middle;
+}
+
+.google-calendar-layout {
+  @apply block;
+}
+
+.google-calendar-card {
+  @apply border-0;
+}
+
+@media (max-width: 1024px) {
+  .schedule-master-head,
+  .google-calendar-periodbar,
+  .schedule-shared-toolbar {
+  @apply items-stretch flex-col;
+}
+
+  .schedule-view-actions,
+  .schedule-calendar-actions {
+  @apply w-full justify-start;
+}
+
+  .schedule-shared-toolbar .toolbar-right,
+  .schedule-shared-toolbar .admin-filter-group {
+  @apply w-full;
+}
+}
+
+@media (max-width: 640px) {
+  .schedule-master-head .schedule-view-actions {
+  @apply w-full;
+}
+
+  .schedule-master-head .schedule-view-button {
+  @apply flex-1 justify-center;
+}
+}
+
+/* Master Data Jadwal Dokter - penyempurnaan yang diminta */
+
+.master-doctor-schedule-content .admin-page-head > div:first-child {
+  @apply min-w-0;
+}
+
+.master-doctor-schedule-content .admin-page-actions .btn {
+  @apply w-auto whitespace-nowrap;
+}
+
+.master-doctor-schedule-content .schedule-shared-toolbar .admin-filter-group {
+  @apply flex-wrap;
+}
+
+@media (max-width: 720px) {
+  .master-doctor-schedule-content .admin-page-actions {
+  @apply w-full;
+}
+
+  .master-doctor-schedule-content .admin-page-actions .btn {
+  @apply flex-none w-auto;
+}
+}
+
+.schedule-row-date {
+  @apply block mt-1 text-[color:var(--text-muted,var(--ui-text-muted-blue))] text-body-sm font-medium leading-[1.35];
+}
+
+/* State filter kalender: semua jadwal tetap terlihat, hasil cocok di-highlight, yang tidak cocok diredupkan */
+
+.google-calendar-day.has-filter-match {
+  @apply bg-[color:color-mix(in_srgb,var(--primary-light)_42%,var(--surface))] shadow-[inset_0_0_0_1px_var(--primary-blue-tint-70)];
+
+  background: color-mix(in srgb, var(--primary-light) 42%, var(--surface));
+  box-shadow: inset 0 0 0 1px var(--primary-blue-tint-70);
+}
+
+.google-calendar-day.is-filter-muted {
+  @apply bg-[color:var(--field-muted)];
+}
+
+.google-calendar-day.is-filter-muted .calendar-day-meta {
+  @apply text-[color:var(--light-gray-shade-45)];
+}
+
+.google-calendar-day.is-filter-muted .schedule-dot.is-muted,
+.schedule-dot.is-muted {
+  @apply bg-[color:var(--border-soft)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--border-soft)_16%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--border-soft) 16%, transparent);
+}
+
+.calendar-event-chip.is-filter-match {
+  @apply bg-[color:var(--primary-light)] border-l-[color:var(--primary-light0)] shadow-[inset_0_0_0_1px_var(--primary-blue-tint-70)];
+}
+
+.calendar-event-chip.is-filter-muted {
+  @apply bg-[color:var(--field-muted)] border-l-[color:var(--border-soft)] text-[color:var(--light-gray-shade-45)] opacity-[.58];
+  filter: grayscale(1);
+}
+
+.calendar-event-chip.is-filter-muted span,
+.calendar-event-chip.is-filter-muted strong {
+  @apply text-[color:var(--light-gray-shade-45)];
+}
+
+.calendar-event-chip.is-leave.is-filter-match {
+  @apply bg-[color:var(--danger-light)] border-l-[color:var(--danger-active)] shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--danger-active)_24%,transparent)];
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--danger-active) 24%, transparent);
+}
+
+/* Master Data Jadwal Dokter - picker bulan/tahun kalender */
+
+.master-doctor-schedule-content .admin-page-head {
+  @apply items-start;
+}
+
+.master-doctor-schedule-content .admin-page-actions {
+  @apply flex items-center justify-end flex-none flex-nowrap gap-3 min-w-max overflow-visible;
+}
+
+.master-doctor-schedule-content .admin-page-actions .btn-lg {
+  @apply flex-none whitespace-nowrap;
+}
+
+.calendar-period-picker {
+  @apply inline-flex items-center gap-2 flex-nowrap;
+}
+
+.calendar-period-select.input {
+  @apply w-auto min-w-[132px] h-9 pr-[36px] text-body-md font-bold;
+}
+
+.calendar-year-select.input {
+  @apply min-w-[104px];
+}
+
+.schedule-calendar-actions {
+  @apply inline-flex items-center justify-end gap-2 flex-nowrap shrink-0;
+}
+
+@media (max-width: 1180px) {
+  .master-doctor-schedule-content .admin-page-actions {
+  @apply justify-start min-w-0 overflow-x-auto pb-[2px];
+}
+}
+
+@media (max-width: 640px) {
+  .schedule-calendar-actions,
+  .calendar-period-picker {
+  @apply w-full;
+}
+
+  .calendar-period-select.input,
+  .calendar-year-select.input {
+  @apply flex-[1_1_0] min-w-0;
+}
+}
+
+/* Master Data Unit / Poli */
+
+.master-unit-content .admin-user-toolbar.toolbar {
+  @apply items-end;
+}
+
+.master-unit-content .admin-filter-group.toolbar-right {
+  @apply flex-nowrap;
+}
+
+.master-unit-content .admin-filter-select {
+  @apply w-[172px];
+}
+
+.unit-name-cell small {
+  @apply inline-flex items-center gap-1.5 flex-wrap;
+}
+
+.unit-code-pill {
+  @apply inline-flex items-center min-h-[20px] p-[2px_7px] rounded-full bg-[color:var(--primary-light)] text-[color:var(--primary-dark)] text-body-xs font-extrabold tracking-[0.04em];
+}
+
+.unit-capacity-cell {
+  @apply grid gap-0.5;
+}
+
+.unit-capacity-cell small {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-4.5;
+}
+
+.input.is-error {
+  @apply border-[color:var(--danger)] shadow-[var(--danger-ring)];
+}
+
+@media (max-width: 1280px) {
+  .master-unit-content .admin-filter-group.toolbar-right {
+  @apply flex-wrap;
+}
+}
+
+.segmented-control {
+  @apply inline-flex items-center gap-1 p-1 border border-[color:var(--border-soft)] rounded-[var(--radius-input-md)] bg-[color:var(--light-gray-tint-40)];
+}
+
+.segmented-item {
+  @apply inline-flex items-center justify-center min-h-9 py-2 px-3 border-0 rounded-[var(--radius-input-sm)] bg-transparent text-[color:var(--text-secondary)] text-body-sm font-bold cursor-pointer;
+  font: inherit;
+}
+
+.segmented-item.active,
+.segmented-item[aria-selected="true"] {
+  @apply bg-[color:var(--surface)] text-[color:var(--primary-blue)] shadow-[var(--shadow-xs)];
+}
+
+/* Master Data Penjamin */
+
+.master-guarantor-content .admin-user-toolbar.toolbar {
+  @apply items-end;
+}
+
+.master-guarantor-content .admin-filter-group.toolbar-right {
+  @apply flex-nowrap;
+}
+
+.master-guarantor-content .admin-filter-select {
+  @apply w-[172px];
+}
+
+.guarantor-workspace-grid {
+  @apply grid grid-cols-[minmax(0,1fr)] gap-4;
+  align-items: start;
+}
+
+.guarantor-table-card {
+  @apply min-w-0;
+}
+
+.guarantor-table-scroll {
+  @apply max-w-full;
+}
+
+.guarantor-name-cell small {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.guarantor-data-table th:nth-child(1),
+.guarantor-data-table td:nth-child(1) {
+  @apply w-24;
+}
+
+.guarantor-data-table th:nth-child(8),
+.guarantor-data-table td:nth-child(8) {
+  @apply w-[72px] text-right;
+}
+
+.row-action-dropdown {
+  @apply relative inline-flex justify-end;
+}
+
+.row-action-dropdown > summary {
+  @apply list-none;
+}
+
+.row-action-dropdown > summary::-webkit-details-marker {
+  @apply hidden;
+}
+
+.row-action-panel.dropdown-panel {
+  @apply right-0 left-auto w-[224px] z-[30];
+}
+
+.row-action-panel .dropdown-option .option-meta strong {
+  @apply inline-flex items-center gap-2;
+}
+
+.row-action-panel .dropdown-option.is-danger {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.guarantor-detail-badges {
+  @apply flex items-center gap-2 flex-wrap;
+}
+
+
+.guarantor-detail-list.detail-list {
+  @apply grid gap-2.5;
+}
+
+.guarantor-detail-list.detail-list > div {
+  @apply grid gap-1 p-[10px_0] border-b border-b-[color:var(--border-soft)];
+}
+
+.guarantor-detail-list.detail-list span {
+  @apply text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-semibold;
+}
+
+.guarantor-detail-list.detail-list strong {
+  @apply text-[color:var(--text-primary)] text-body-md leading-5 font-bold;
+}
+
+.guarantor-module-grid {
+  @apply grid grid-cols-2 gap-2;
+}
+
+.guarantor-module-grid span {
+  @apply inline-flex items-center justify-center min-h-8.5 py-2 px-2.5 border border-[color:var(--border-soft)] rounded-[var(--radius-input-sm)] bg-[color:var(--light-gray-tint-40)] text-[color:var(--text-primary)] text-body-sm font-bold;
+}
+
+
+
+
+@media (max-width: 1280px) {
+  .master-guarantor-content .admin-filter-group.toolbar-right {
+  @apply flex-wrap;
+}
+}
+
+@media (max-width: 680px) {
+  .guarantor-module-grid {
+  @apply grid-cols-1;
+}
+}
+
+/* Master Data Jadwal Dokter - penyesuaian visual grid kalender + popover */
+
+.master-doctor-schedule-content .google-calendar-weekdays {
+  @apply bg-[color:var(--ui-surface-table-header)] border-[color:var(--ui-calendar-border)] text-[color:var(--slate)] text-body-sm tracking-[.08em];
+}
+
+.master-doctor-schedule-content .google-calendar-weekdays span {
+  @apply min-h-10.5 border-[color:var(--ui-calendar-border)];
+}
+
+.master-doctor-schedule-content .google-calendar-grid {
+  @apply gap-0 overflow-visible bg-[color:var(--ui-calendar-border)] border-[color:var(--ui-calendar-border)];
+}
+
+.master-doctor-schedule-content .google-calendar-day {
+  @apply min-h-[188px] gap-2.5 p-3 border-r border-r-[color:var(--ui-calendar-border)] border-b border-b-[color:var(--ui-calendar-border)] bg-[color:var(--surface)];
+}
+
+.master-doctor-schedule-content .google-calendar-day:hover {
+  @apply bg-[color:var(--surface)];
+}
+
+.master-doctor-schedule-content .google-calendar-day.is-weekend,
+.master-doctor-schedule-content .google-calendar-day.is-muted {
+  @apply bg-[color:var(--ui-surface-neutral-soft)];
+}
+
+.master-doctor-schedule-content .google-calendar-day.is-today {
+  @apply shadow-[inset_0_0_0_2px_var(--primary-blue-tint-70)];
+}
+
+.master-doctor-schedule-content .calendar-day-head {
+  @apply grid-cols-[auto_minmax(0,1fr)] gap-2.5;
+}
+
+.master-doctor-schedule-content .calendar-day-number {
+  @apply w-auto h-auto min-w-[24px] rounded-none text-[color:var(--slate-dark)] text-body-md leading-[1.35];
+}
+
+.master-doctor-schedule-content .google-calendar-day.is-today .calendar-day-number {
+  @apply w-7 h-7 rounded-full bg-[color:var(--primary-light0)] text-[color:var(--surface)];
+}
+
+.master-doctor-schedule-content .calendar-day-meta {
+  @apply min-w-0 text-[color:var(--slate)] text-body-sm font-extrabold overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.master-doctor-schedule-content .calendar-events {
+  @apply flex-auto gap-2;
+  align-content: start;
+}
+
+.master-doctor-schedule-content .calendar-day-actions {
+  @apply mt-auto justify-end;
+}
+
+.master-doctor-schedule-content .calendar-add-btn {
+  @apply min-h-8 border-0 rounded-full bg-[color:var(--surface)] text-[color:var(--primary-dark)] py-0 px-3 shadow-[0_8px_18px_rgba(15,31,61,0.06)];
+}
+
+.master-doctor-schedule-content .calendar-add-btn:hover,
+.master-doctor-schedule-content .calendar-add-menu[open] > .calendar-add-btn {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-dark)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip {
+  @apply border-0 rounded-[10px] bg-[color:var(--ui-surface-neutral)] text-[color:var(--ui-text-neutral-strong)] py-2 px-2.5 shadow-none;
+}
+
+.master-doctor-schedule-content .calendar-event-chip:hover {
+  @apply bg-[color:var(--ui-surface-slate-soft)] shadow-[inset_0_0_0_1px_var(--ui-border-shadow)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip strong {
+  @apply text-[color:var(--ui-text-neutral-strong)] text-body-sm leading-[1.25];
+}
+
+.master-doctor-schedule-content .calendar-event-chip span {
+  @apply text-[color:var(--slate)] text-body-sm font-semibold;
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-leave {
+  @apply bg-[color:var(--ui-danger-surface-pale)] text-[color:var(--ui-danger-text-muted)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-leave strong,
+.master-doctor-schedule-content .calendar-event-chip.is-leave span {
+  @apply text-[color:var(--ui-danger-text-muted)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-filter-match {
+  @apply bg-[color:var(--primary-light)] shadow-[inset_0_0_0_1px_var(--primary-blue-tint-70)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-filter-muted {
+  @apply bg-[color:var(--ui-surface-neutral)] text-[color:var(--ui-text-disabled)] opacity-[.58];
+  filter: grayscale(1);
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-filter-muted strong,
+.master-doctor-schedule-content .calendar-event-chip.is-filter-muted span {
+  @apply text-[color:var(--ui-text-disabled)];
+}
+
+.master-doctor-schedule-content .calendar-event-chip.is-leave.is-filter-match {
+  @apply bg-[color:var(--danger-light)] shadow-[inset_0_0_0_1px_var(--danger-border-soft)];
+}
+
+.master-doctor-schedule-content .calendar-empty-slot {
+  @apply min-h-8.5 border-[color:var(--ui-border-neutral-soft)] text-[color:var(--slate)] bg-transparent;
+}
+
+.schedule-detail-popover {
+  @apply fixed z-[1600] w-[min(340px,calc(100vw_-_32px))] grid gap-3 border border-[color:var(--border-soft)] rounded-[var(--radius-card-sm)] bg-[color:var(--surface)] shadow-[0_22px_48px_rgba(15,31,61,0.18)] p-3.5;
+}
+
+.schedule-detail-popover-head {
+  @apply flex items-start justify-between gap-3;
+}
+
+.schedule-detail-popover-head span {
+  @apply inline-flex mb-1 text-[color:var(--muted)] text-body-sm font-extrabold uppercase tracking-[.04em];
+}
+
+.schedule-detail-popover-head h4 {
+  @apply m-0 text-[color:var(--text-primary)] text-body-md font-extrabold leading-[1.25];
+}
+
+.schedule-detail-popover-body {
+  @apply grid gap-2;
+}
+
+.schedule-detail-popover-body div {
+  @apply grid grid-cols-[108px_minmax(0,1fr)] gap-2.5;
+  align-items: start;
+}
+
+.schedule-detail-popover-body span {
+  @apply text-[color:var(--muted)] text-body-sm font-bold;
+}
+
+.schedule-detail-popover-body strong {
+  @apply text-[color:var(--text-primary)] text-body-sm font-extrabold leading-[1.35];
+}
+
+.schedule-detail-popover-actions {
+  @apply flex justify-end gap-2 pt-[2px];
+}
+
+#scheduleTableBody tr {
+  @apply cursor-pointer;
+}
+
+@media (max-width: 960px) {
+  .master-doctor-schedule-content .google-calendar-grid,
+  .master-doctor-schedule-content .google-calendar-weekdays {
+  @apply min-w-[920px];
+}
+
+  .master-doctor-schedule-content .google-calendar-body {
+  @apply overflow-x-auto;
+}
+}
+
+
+/* Normalisasi responsive halaman master/admin table.
+   Baseline mengikuti halaman Master Karyawan: parent boleh mengecil,
+   sedangkan tabel lebar ditahan di dalam .admin-table-scroll. */
+.unit-workspace-grid,
+.room-workspace-grid,
+.guarantor-workspace-grid,
+.tariff-workspace-grid,
+.schedule-list-panel,
+.printer-table-card {
+  @apply min-w-0 max-w-full;
+}
+
+.unit-workspace-grid,
+.room-workspace-grid,
+.guarantor-workspace-grid,
+.tariff-workspace-grid {
+  @apply grid grid-cols-1 gap-4;
+  align-items: start;
+}
+
+/* Jangan set min-width: 0 secara broad ke toolbar/filter.
+   Untuk mencegah layout control jadi collapse/acak, min-width hanya dipakai pada
+   container tabel dan sisi search yang memang perlu boleh shrink. */
+.admin-table-card .admin-user-toolbar.toolbar,
+.admin-users-table-card .admin-user-toolbar.toolbar {
+  @apply w-full max-w-full;
+}
+
+.admin-table-card .admin-toolbar-left.toolbar-left,
+.admin-users-table-card .admin-toolbar-left.toolbar-left {
+  @apply min-w-0 max-w-full;
+}
+
+.admin-table-card .admin-filter-group.toolbar-right,
+.admin-users-table-card .admin-filter-group.toolbar-right {
+  @apply max-w-full;
+  min-width: auto;
+}
+
+.admin-table-card .admin-search-field.search-field,
+.admin-users-table-card .admin-search-field.search-field {
+  @apply max-w-full;
+}
+
+@media (max-width: 720px) {
+  .admin-table-card.card,
+  .admin-users-table-card.card {
+    @apply p-3;
+  }
+
+  .admin-table-card .card-header,
+  .admin-users-table-card .card-header {
+    @apply items-start flex-col;
+  }
+
+  .admin-table-scroll.table-scroll {
+    @apply rounded-xl;
+  }
+}
+
+/* Normalisasi tabel master: reuse style tabel Master Unit */
+
+.room-table-card .admin-table-scroll.table-scroll,
+.guarantor-table-card .admin-table-scroll.table-scroll,
+.schedule-master-card .admin-table-scroll.table-scroll {
+  @apply border border-[color:var(--border-soft)] rounded-[14px] bg-[color:var(--surface)] overflow-auto;
+}
+
+.room-table.data-table,
+.guarantor-data-table.data-table,
+.schedule-table.data-table {
+  @apply w-full;
+}
+
+.room-table.admin-users-table,
+.guarantor-data-table.admin-users-table,
+.schedule-table.admin-users-table {
+  @apply min-w-[1040px];
+}
+
+.schedule-table .schedule-doctor-cell small {
+  @apply block mt-0.5 text-[color:var(--text-secondary)] text-body-sm leading-4.5 font-medium;
+}
+
+.room-table th:last-child,
+.room-table td:last-child,
+.guarantor-data-table th:last-child,
+.guarantor-data-table td:last-child,
+.schedule-table th:last-child,
+.schedule-table td:last-child {
+  @apply text-left;
+}
+
+.room-table .admin-action-group,
+.guarantor-data-table .admin-action-group,
+.schedule-table .admin-action-group {
+  @apply justify-start;
+}
+
+/* Printer Configuration */
+.print-test-preview {
+  @apply m-0 p-3.5 overflow-auto border border-[color:var(--border-soft)] rounded-[14px] bg-[color:var(--light-gray-tint-40)] text-[color:var(--text-primary)] text-mono-sm leading-5 whitespace-pre-wrap;
+}
+
+.flow-radio-group {
+  @apply flex flex-wrap gap-2.5 min-h-10.5 items-center;
+}
+.flow-radio-group .radio,
+.checkbox-row.check {
+  @apply inline-flex items-center gap-2;
+}
+.printer-default-list {
+  @apply text-[color:var(--text-primary)] font-semibold;
+}
+.printer-test-state {
+  @apply grid justify-items-center text-center gap-2.5 p-[8px_0];
+}
+.printer-test-state h3,
+.printer-test-state p {
+  @apply m-0;
+}
+.printer-test-state h3 {
+  @apply text-[color:var(--text-primary)] text-body-xl leading-6.5;
+}
+.printer-test-state p {
+  @apply text-[color:var(--text-secondary)] text-body-md leading-5.5;
+}
+.printer-test-icon {
+  @apply w-[58px] h-[58px] inline-grid place-items-center rounded-[20px] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] text-h2;
+}
+.printer-test-state.is-loading .printer-test-icon {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+.printer-test-state.is-loading p strong {
+  @apply text-[color:var(--text-primary)];
+}
+.printer-test-state.is-success .printer-test-icon {
+  @apply bg-[color:rgba(0,184,148,0.12)] text-[color:var(--primary-green)];
+}
+.printer-test-state.is-failed .printer-test-icon {
+  @apply bg-[color:rgba(239,68,68,0.12)] text-[color:var(--danger)];
+}
+
+
+/* Tombol aksi inline pada tabel */
+.admin-action-group.action-group,
+.action-group.admin-action-group {
+  @apply justify-end gap-2;
+}
+
+.row-inline-actions {
+  @apply inline-flex items-center justify-end gap-1.5 flex-nowrap whitespace-nowrap;
+}
+
+.row-icon-action {
+  @apply relative w-8 h-8 p-0 border border-[color:var(--border-soft)] rounded-[10px] bg-[color:var(--surface)] text-[color:var(--text-secondary)] inline-flex items-center justify-center cursor-pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.row-icon-action i {
+  @apply text-body-md leading-none;
+}
+
+.row-icon-action:hover,
+.row-icon-action:focus-visible {
+  @apply border-[color:var(--primary-blue)] text-[color:var(--primary-blue)] bg-[color:var(--primary-light)] shadow-[0_8px_20px_rgba(43,85,255,0.12)] outline-none;
+
+  transform: translateY(-1px);
+}
+
+.row-icon-action.is-info:hover,
+.row-icon-action.is-info:focus-visible {
+  @apply border-[color:var(--info)] text-[color:var(--info-dark)] bg-[color:var(--info-light)];
+}
+
+.row-icon-action.is-success:hover,
+.row-icon-action.is-success:focus-visible {
+  @apply border-[color:var(--primary-green)] text-[color:var(--success-dark)] bg-[color:var(--success-light)];
+}
+
+.row-icon-action.is-warning:hover,
+.row-icon-action.is-warning:focus-visible {
+  @apply border-[color:var(--warning)] text-[color:var(--warning-dark)] bg-[color:var(--warning-light)];
+}
+
+.row-icon-action.is-danger:hover,
+.row-icon-action.is-danger:focus-visible {
+  @apply border-[color:var(--danger)] text-[color:var(--danger-dark)] bg-[color:var(--danger-light)] shadow-[0_8px_20px_rgba(220,38,38,0.12)];
+}
+
+.row-icon-action::after,
+.row-icon-action::before {
+  @apply absolute left-1/2 opacity-0 pointer-events-none z-[60];
+  transform: translate(-50%, 6px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.row-icon-action::after {
+  @apply bottom-[calc(100%_+_8px)] p-[6px_9px] rounded-lg bg-[color:var(--ui-tooltip-bg)] text-[color:var(--white)] text-body-xs font-bold leading-none whitespace-nowrap shadow-[0_12px_28px_rgba(15,23,42,0.18)];
+
+  content: attr(data-tooltip);
+}
+
+.row-icon-action::before {
+  @apply bottom-[calc(100%_+_3px)] w-2 h-2 bg-[color:var(--ui-tooltip-bg)];
+
+  content: "";
+  transform: translate(-50%, 6px) rotate(45deg);
+}
+
+.row-icon-action:hover::after,
+.row-icon-action:hover::before,
+.row-icon-action:focus-visible::after,
+.row-icon-action:focus-visible::before {
+  @apply opacity-100;
+  transform: translate(-50%, 0);
+}
+
+.row-icon-action:focus-visible::before {
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+@media (max-width: 768px) {
+  .row-inline-actions {
+  @apply gap-[5px];
+}
+
+  .row-icon-action {
+  @apply w-[30px] h-[30px] rounded-[9px];
+}
+}
+
+.admin-table-scroll .data-table th:last-child,
+.admin-table-scroll .data-table td:last-child {
+  @apply min-w-[172px];
+
+  width: auto !important;
+}
+
+.admin-table-scroll .data-table td:last-child {
+  @apply overflow-visible;
+}
+
+.row-icon-action::before,
+.row-icon-action::after {
+  @apply hidden;
+}
+
+.row-action-floating-tooltip {
+  @apply absolute z-[9999] p-[7px_10px] rounded-lg bg-[color:var(--ui-tooltip-bg)] text-[color:var(--white)] text-body-xs font-bold leading-none whitespace-nowrap shadow-[0_12px_28px_rgba(15,23,42,0.18)] opacity-0 pointer-events-none;
+  transform: translateY(4px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.row-action-floating-tooltip.is-visible {
+  @apply opacity-100;
+  transform: translateY(0);
+}
+
+/* ============================================================================
+   Unified Master/Admin table toolbar
+   --------------------------------------------------------------------------
+   Baseline mengikuti halaman Master Karyawan. Toolbar table di halaman master
+   dan admin tidak boleh punya aturan nowrap/min-width berbeda per halaman.
+   Search boleh shrink, filter tetap punya ukuran aman lalu wrap saat sempit.
+   ========================================================================== */
+
+.admin-roles-content,
+.admin-roles-content > *,
+.admin-users-content,
+.admin-users-content > * {
+  @apply min-w-0 max-w-full;
+}
+
+.admin-table-card.card,
+.admin-users-table-card.card,
+.admin-roles-table-card.card,
+.printer-table-card.card,
+.unit-table-card.card,
+.room-table-card.card,
+.guarantor-table-card.card,
+.tariff-table-card.card,
+.schedule-master-card.card {
+  @apply min-w-0 max-w-full overflow-visible;
+}
+
+.admin-table-card .admin-user-toolbar.toolbar,
+.admin-users-table-card .admin-user-toolbar.toolbar,
+.admin-roles-table-card .admin-user-toolbar.toolbar,
+.schedule-master-card .admin-user-toolbar.toolbar {
+  @apply flex items-end justify-between gap-4.5 mb-4.5 w-full max-w-full;
+  flex-wrap: nowrap;
+}
+
+.admin-table-card .admin-toolbar-left.toolbar-left,
+.admin-users-table-card .admin-toolbar-left.toolbar-left,
+.admin-roles-table-card .admin-toolbar-left.toolbar-left,
+.schedule-master-card .admin-toolbar-left.toolbar-left {
+  @apply flex items-center justify-start gap-3 min-w-0 max-w-full;
+  flex: 1 1 320px;
+}
+
+.admin-table-card .admin-search-field.search-field,
+.admin-users-table-card .admin-search-field.search-field,
+.admin-roles-table-card .admin-search-field.search-field,
+.schedule-master-card .admin-search-field.search-field {
+  @apply max-w-full;
+  width: min(320px, 100%);
+  flex: 0 1 320px;
+  min-width: 0;
+}
+
+.admin-table-card .admin-filter-group.toolbar-right,
+.admin-users-table-card .admin-filter-group.toolbar-right,
+.admin-roles-table-card .admin-filter-group.toolbar-right,
+.schedule-master-card .admin-filter-group.toolbar-right {
+  @apply flex items-center justify-end gap-2.5 max-w-full;
+  flex-wrap: nowrap;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+.admin-table-card .admin-filter-select,
+.admin-users-table-card .admin-filter-select,
+.admin-roles-table-card .admin-filter-select,
+.schedule-master-card .admin-filter-select {
+  width: 168px;
+  min-width: min(150px, 100%);
+  max-width: 100%;
+  flex: 0 1 168px;
+}
+
+.admin-table-card .admin-table-scroll.table-scroll,
+.admin-users-table-card .admin-table-scroll.table-scroll,
+.admin-roles-table-card .admin-table-scroll.table-scroll,
+.printer-table-card .admin-table-scroll.table-scroll,
+.unit-table-card .admin-table-scroll.table-scroll,
+.room-table-card .admin-table-scroll.table-scroll,
+.guarantor-table-card .admin-table-scroll.table-scroll,
+.tariff-table-card .admin-table-scroll.table-scroll,
+.schedule-master-card .admin-table-scroll.table-scroll {
+  @apply w-full min-w-0 max-w-full overflow-x-auto overflow-y-auto overscroll-x-contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table-card table.data-table,
+.admin-users-table-card table.data-table,
+.admin-roles-table-card table.data-table,
+.printer-table-card table.data-table,
+.unit-table-card table.data-table,
+.room-table-card table.data-table,
+.guarantor-table-card table.data-table,
+.tariff-table-card table.data-table,
+.schedule-master-card table.data-table {
+  max-width: none;
+}
+
+@media (max-width: 1180px) {
+  .admin-table-card .admin-user-toolbar.toolbar,
+  .admin-users-table-card .admin-user-toolbar.toolbar,
+  .admin-roles-table-card .admin-user-toolbar.toolbar,
+  .schedule-master-card .admin-user-toolbar.toolbar {
+    @apply items-stretch flex-col;
+  }
+
+  .admin-table-card .admin-toolbar-left.toolbar-left,
+  .admin-users-table-card .admin-toolbar-left.toolbar-left,
+  .admin-roles-table-card .admin-toolbar-left.toolbar-left,
+  .schedule-master-card .admin-toolbar-left.toolbar-left,
+  .admin-table-card .admin-filter-group.toolbar-right,
+  .admin-users-table-card .admin-filter-group.toolbar-right,
+  .admin-roles-table-card .admin-filter-group.toolbar-right,
+  .schedule-master-card .admin-filter-group.toolbar-right {
+    @apply w-full justify-start;
+    flex: 1 1 auto;
+  }
+
+  .admin-table-card .admin-filter-group.toolbar-right,
+  .admin-users-table-card .admin-filter-group.toolbar-right,
+  .admin-roles-table-card .admin-filter-group.toolbar-right,
+  .schedule-master-card .admin-filter-group.toolbar-right {
+    flex-wrap: wrap;
+  }
+
+  .admin-table-card .admin-search-field.search-field,
+  .admin-users-table-card .admin-search-field.search-field,
+  .admin-roles-table-card .admin-search-field.search-field,
+  .schedule-master-card .admin-search-field.search-field {
+    @apply w-full;
+    flex: 1 1 220px;
+  }
+
+  .admin-table-card .admin-filter-select,
+  .admin-users-table-card .admin-filter-select,
+  .admin-roles-table-card .admin-filter-select,
+  .schedule-master-card .admin-filter-select {
+    width: min(220px, 100%);
+    flex: 0 1 220px;
+  }
+}
+
+@media (max-width: 720px) {
+  .admin-table-card .admin-filter-group.toolbar-right,
+  .admin-users-table-card .admin-filter-group.toolbar-right,
+  .admin-roles-table-card .admin-filter-group.toolbar-right,
+  .schedule-master-card .admin-filter-group.toolbar-right {
+    @apply items-stretch;
+  }
+
+  .admin-table-card .admin-filter-select,
+  .admin-users-table-card .admin-filter-select,
+  .admin-roles-table-card .admin-filter-select,
+  .schedule-master-card .admin-filter-select {
+    width: auto;
+    min-width: min(150px, 100%);
+    flex: 1 1 150px;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-table-card .admin-filter-select,
+  .admin-users-table-card .admin-filter-select,
+  .admin-roles-table-card .admin-filter-select,
+  .schedule-master-card .admin-filter-select {
+    flex-basis: 100%;
+  }
+}
+
+/* System configuration number preview */
+.system-number-preview-list {
+  @apply grid grid-cols-2 gap-3 min-w-0;
+}
+
+.system-number-preview-card {
+  @apply grid items-start gap-1.5 min-w-0;
+}
+
+.system-number-preview-card .card-subtitle {
+  @apply m-0;
+}
+
+.system-number-preview-value {
+  @apply block text-h3 font-mono tracking-[-0.02em] font-bold text-[color:var(--text-primary)] break-words;
+}
+
+
+.permission-matrix-table .check {
+  @apply m-0 w-full min-h-7 justify-center gap-0;
+}
+
+.permission-matrix-table .check input {
+  @apply m-0;
+}
+
+@media (max-width: 720px) {
+  .permission-matrix-scroll.table-scroll {
+    @apply rounded-[var(--radius-card)];
+  }
+
+  .permission-matrix-table.data-table {
+    @apply min-w-[760px];
+  }
+}
+
+.system-upload-frame {
+  @apply min-h-[172px] flex items-center justify-center p-6 text-center border border-dashed border-[color:var(--border-soft)] bg-[color:var(--surface-muted)] overflow-visible;
+}
+
+.system-upload-box {
+  @apply grid w-full justify-items-center gap-2.5 text-center;
+}
+
+.system-upload-icon {
+  @apply flex items-center justify-center w-11 h-11 rounded-[14px] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] text-body-xl;
+}
+
+.system-upload-box strong {
+  @apply text-body-lg font-bold text-[color:var(--text-primary)];
+}
+
+.system-upload-box p {
+  @apply m-0 text-body-sm text-[color:var(--text-secondary)];
+}
+
+.system-empty-preview {
+  @apply grid w-full justify-items-center gap-2 text-center text-[color:var(--text-secondary)];
+}
+
+.system-empty-icon {
+  @apply flex items-center justify-center w-10 h-10 rounded-[12px] bg-[color:var(--surface-muted)] text-[color:var(--muted)] border border-[color:var(--border-soft)];
+}
+
+.system-empty-preview p {
+  @apply m-0 text-body-sm text-[color:var(--text-secondary)];
+}
+
+/* ============================================================================
+   Dashboard Loket Pendaftaran
+   --------------------------------------------------------------------------
+   Halaman loket baru memakai komponen design system existing: card, button,
+   input, badge, data-table, sidebar, dan topbar. CSS di sini hanya mengatur
+   layout page-specific sesuai wireframe loket.
+   ========================================================================== */
+
+.loket-dashboard-content {
+  @apply grid gap-4 p-5 bg-[color:var(--page)] text-[color:var(--text-primary)];
+}
+
+.loket-page-head {
+  @apply flex items-start justify-between gap-4 min-w-0;
+}
+
+.loket-page-head > div {
+  @apply grid gap-1 min-w-0;
+}
+
+.loket-page-head h1,
+.loket-page-head p {
+  @apply m-0;
+}
+
+.loket-page-head .eyebrow {
+  @apply mb-0 text-[color:var(--primary-blue)] font-bold;
+}
+
+.loket-page-head .text-body-lg {
+  @apply text-[color:var(--text-secondary)] max-w-[760px];
+}
+
+.loket-action-bar.card {
+  @apply p-4 border border-[color:var(--border-soft)] shadow-[var(--shadow-sm)] overflow-visible;
+}
+
+.loket-action-head.card-header {
+  @apply items-start;
+}
+
+.loket-patient-toolbar {
+  @apply grid gap-3 items-center min-w-0;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.loket-patient-search-field.field {
+  @apply min-w-0 gap-2;
+}
+
+.loket-new-patient.btn {
+  @apply h-13 justify-center min-w-[170px] shadow-[var(--shadow-md)] whitespace-nowrap;
+}
+
+.loket-new-patient strong {
+  @apply min-w-0 text-body-lg font-bold;
+}
+
+.loket-new-patient i {
+  @apply w-5 h-5 text-h3;
+}
+
+.loket-search-field.search-field {
+  @apply w-full min-w-0 max-w-full z-[90];
+}
+
+.loket-search-field .input {
+  @apply w-full;
+}
+
+.loket-search-field .field-action {
+  @apply z-[1];
+}
+
+.loket-patient-suggestions.doctor-autocomplete-panel {
+  @apply w-full max-w-full;
+}
+
+.loket-patient-suggestions .dropdown-footer {
+  @apply justify-start;
+}
+
+.loket-quick-section.dashboard-shortcuts-section {
+  @apply mt-0;
+}
+
+.loket-shortcut-grid.shortcut-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.loket-queue-hero {
+  @apply rounded-[var(--radius-card)] p-4 shadow-[var(--shadow-md)] text-[color:var(--surface)] overflow-visible;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--primary-dark) 100%);
+}
+
+.loket-hero-title {
+  @apply m-0 uppercase tracking-[0.06em] text-[color:var(--surface)];
+}
+
+.loket-hero-title span {
+  @apply text-[color:rgba(255,255,255,0.76)];
+}
+
+.loket-hero-grid {
+  @apply grid gap-4 mt-4;
+  grid-template-columns: minmax(0, 1.6fr) minmax(360px, 0.95fr);
+}
+
+.loket-metric-grid {
+  @apply grid grid-cols-4 gap-3 min-w-0;
+}
+
+.loket-kpi-card.card {
+  @apply relative min-h-[150px] p-5 overflow-hidden shadow-[var(--shadow-sm)] bg-[color:var(--surface)] text-[color:var(--text-primary)];
+}
+
+.loket-kpi-label,
+.loket-kpi-unit,
+.loket-kpi-value {
+  @apply relative z-[1] block;
+}
+
+.loket-kpi-label {
+  @apply text-[color:var(--text-primary)] font-bold;
+}
+
+.loket-kpi-value {
+  @apply mt-6 text-[color:var(--navy)];
+}
+
+.loket-kpi-unit {
+  @apply mt-3 text-[color:var(--text-primary)] font-bold;
+}
+
+.loket-kpi-icon {
+  @apply absolute right-5 bottom-6 text-display-md opacity-90;
+}
+
+.loket-kpi-card.is-blue .loket-kpi-icon {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.loket-kpi-card.is-green .loket-kpi-icon,
+.loket-live-label {
+  @apply text-[color:var(--primary-green)];
+}
+
+.loket-kpi-card.is-warning .loket-kpi-icon {
+  @apply text-[color:var(--warning)];
+}
+
+.loket-kpi-card.is-indigo .loket-kpi-icon {
+  @apply text-[color:var(--indigo)];
+}
+
+.loket-now-card {
+  @apply p-5 rounded-[var(--radius-card)] border border-[color:rgba(255,255,255,0.12)] bg-[color:rgba(255,255,255,0.04)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)];
+}
+
+.loket-now-title {
+  @apply m-0 uppercase tracking-[0.05em] text-[color:var(--surface)];
+}
+
+.loket-current-row {
+  @apply mt-5 flex items-center justify-center gap-5;
+}
+
+.loket-current-number {
+  @apply font-mono font-bold leading-none text-[color:var(--surface)];
+  font-size: clamp(48px, 5vw, 76px);
+  letter-spacing: 0.08em;
+}
+
+.loket-speaker-btn {
+  @apply w-14 h-14 rounded-full inline-grid place-items-center text-[color:var(--surface)] bg-transparent border border-[color:rgba(255,255,255,0.18)] cursor-pointer;
+}
+
+.loket-speaker-btn i {
+  @apply text-display-md leading-none;
+}
+
+.loket-current-name {
+  @apply mt-2 mx-0 mb-0 text-center text-[color:var(--surface)] font-semibold;
+}
+
+.loket-next-row {
+  @apply mt-5 pt-4 border-t border-t-[color:rgba(255,255,255,0.22)] grid items-center gap-3 text-[color:rgba(255,255,255,0.88)];
+  grid-template-columns: minmax(150px, 1fr) repeat(3, auto);
+}
+
+.loket-next-row strong {
+  @apply px-4 border-l border-l-[color:rgba(255,255,255,0.18)] text-h3 font-mono tracking-[0.04em] text-[color:var(--surface)];
+}
+
+.loket-workspace {
+  @apply grid gap-4 items-start min-w-0;
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.75fr);
+}
+
+.loket-active-queue-card.card,
+.loket-side-stack > .card {
+  @apply border border-[color:var(--border-soft)] shadow-[var(--shadow-sm)];
+}
+
+.loket-section-head.card-header {
+  @apply items-center;
+}
+
+.loket-live-label {
+  @apply inline-flex items-center gap-2 text-body-sm font-bold;
+}
+
+
+.loket-table-scroll.admin-table-scroll.table-scroll {
+  @apply rounded-[14px];
+}
+
+.loket-data-table.admin-users-table.data-table {
+  @apply min-w-[900px];
+}
+
+.loket-data-table.data-table td:first-child {
+  @apply font-mono font-bold text-[color:var(--primary-blue)];
+}
+
+.loket-data-table.data-table th:nth-child(2),
+.loket-data-table.data-table td:nth-child(2) {
+  @apply text-center;
+}
+
+.loket-row-action.btn {
+  @apply inline-flex min-w-[96px] justify-center gap-2 whitespace-nowrap;
+}
+
+.loket-patient-cell {
+  @apply grid gap-1.5 items-start min-w-0;
+}
+
+.loket-patient-cell strong {
+  @apply text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.loket-patient-cell .badge {
+  @apply w-fit;
+}
+
+.loket-table-footer {
+  @apply flex items-center justify-between gap-3 pt-4 text-body-md font-bold text-[color:var(--text-secondary)];
+}
+
+.loket-table-footer span {
+  @apply inline-flex items-center gap-2 min-w-0;
+}
+
+.loket-table-footer span i {
+  @apply text-[color:var(--primary-green)] text-body-sm;
+}
+
+.loket-side-stack {
+  @apply grid gap-4 min-w-0;
+}
+
+.loket-info-list {
+  @apply grid gap-3 m-0;
+}
+
+.loket-info-list div {
+  @apply grid grid-cols-[160px_minmax(0,1fr)] gap-3 items-center;
+}
+
+.loket-info-list dt {
+  @apply text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.loket-info-list dd {
+  @apply m-0 text-body-md text-[color:var(--text-primary)] font-medium;
+}
+
+.loket-info-list dd i {
+  @apply ml-2 text-[color:var(--primary-blue)];
+}
+
+.loket-chart-legend {
+  @apply flex items-center gap-6 mb-3 text-body-sm font-medium text-[color:var(--text-secondary)];
+}
+
+.loket-chart-legend span {
+  @apply inline-flex items-center gap-2;
+}
+
+.loket-chart-legend i {
+  @apply w-2.5 h-2.5 rounded-full inline-flex;
+}
+
+.loket-chart-legend i.is-blue {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.loket-chart-legend i.is-green {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.loket-chart-wrap {
+  @apply overflow-x-auto;
+}
+
+.loket-line-chart {
+  @apply block w-full min-w-[430px] h-auto;
+}
+
+.loket-chart-grid line {
+  stroke: var(--border-soft);
+  stroke-width: 1;
+}
+
+.loket-chart-axis text {
+  fill: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-sm);
+}
+
+.loket-chart-line {
+  fill: none;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.loket-chart-line.is-blue {
+  stroke: var(--primary-blue);
+}
+
+.loket-chart-line.is-green {
+  stroke: var(--primary-green);
+}
+
+.loket-chart-points circle {
+  fill: var(--surface);
+  stroke-width: 4;
+}
+
+.loket-chart-points.is-blue circle {
+  stroke: var(--primary-blue);
+}
+
+.loket-chart-points.is-green circle {
+  stroke: var(--primary-green);
+}
+
+.loket-chart-hitpoints circle {
+  fill: transparent;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.loket-chart-hitpoints circle:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 3px;
+}
+
+.loket-summary-head.card-header {
+  @apply items-center;
+}
+
+.loket-other-carousel {
+  @apply grid gap-3 min-w-0;
+}
+
+.loket-other-viewport {
+  @apply min-w-0 overflow-hidden;
+}
+
+.loket-other-track {
+  @apply flex min-w-0;
+  transition: transform 0.22s ease;
+}
+
+.loket-other-card {
+  @apply w-full flex-none min-w-0 rounded-[var(--radius-card)] border border-[color:var(--border-soft)] p-4 bg-[color:var(--surface)];
+}
+
+.loket-other-card strong {
+  @apply flex items-center gap-2 text-body-md font-bold text-[color:var(--text-primary)] mb-4;
+}
+
+.loket-other-card strong i {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.loket-other-card dl {
+  @apply grid grid-cols-4 gap-3 m-0;
+}
+
+.loket-other-card div,
+.loket-other-card dt,
+.loket-other-card dd {
+  @apply min-w-0 m-0 text-center;
+}
+
+.loket-other-card dt {
+  @apply text-h3 font-bold text-[color:var(--navy)];
+}
+
+.loket-other-card dd {
+  @apply text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+.loket-carousel-controls {
+  @apply flex items-center justify-between gap-2;
+}
+
+.loket-carousel-dots {
+  @apply flex items-center justify-center gap-2;
+}
+
+.loket-carousel-dots button {
+  @apply w-2 h-2 rounded-full bg-[color:var(--border)] cursor-pointer;
+}
+
+.loket-carousel-dots button.is-active {
+  @apply w-5 bg-[color:var(--primary-blue)];
+}
+
+.loket-patient-modal-card .modal-body {
+  @apply gap-4;
+}
+
+.loket-patient-summary-card {
+  @apply flex items-center gap-3 rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--surface-muted)] p-3 min-w-0;
+}
+
+.loket-patient-avatar {
+  @apply inline-flex w-14 h-14 flex-none items-center justify-center rounded-[16px] bg-[color:var(--primary-blue)] text-[color:var(--surface)] text-h3 font-bold;
+}
+
+.loket-patient-summary-copy {
+  @apply grid gap-0.5 min-w-0 flex-1;
+}
+
+.loket-patient-summary-copy strong {
+  @apply text-h4 text-[color:var(--text-primary)] truncate;
+}
+
+.loket-patient-summary-copy span {
+  @apply text-body-sm text-[color:var(--text-secondary)] truncate;
+}
+
+.loket-visit-section-head.modal-section-head {
+  @apply items-start;
+}
+
+.loket-patient-detail-grid.modal-detail-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.loket-visit-table.data-table {
+  @apply min-w-[720px];
+}
+
+.loket-visit-table.data-table th {
+  @apply whitespace-nowrap;
+}
+
+@media (max-width: 1480px) {
+  .loket-hero-grid,
+  .loket-workspace {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .loket-metric-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .loket-shortcut-grid.shortcut-grid {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .loket-dashboard-content {
+    @apply p-4 gap-3;
+  }
+
+  .loket-page-head {
+    @apply flex-col;
+  }
+
+  .loket-patient-toolbar {
+    @apply grid-cols-1;
+  }
+
+  .loket-new-patient.btn {
+    @apply w-full;
+  }
+
+  .loket-shortcut-grid.shortcut-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .loket-queue-hero {
+    @apply p-3.5;
+  }
+
+  .loket-metric-grid {
+    grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+  }
+
+  .loket-kpi-card.card {
+    @apply min-h-[132px] p-4;
+  }
+
+  .loket-kpi-value {
+    @apply mt-4 text-h1;
+  }
+
+  .loket-kpi-icon {
+    @apply text-h1 right-4 bottom-5;
+  }
+
+  .loket-current-row {
+    @apply justify-start gap-3;
+  }
+
+  .loket-current-number {
+    font-size: clamp(40px, 14vw, 56px);
+  }
+
+  .loket-next-row {
+    @apply grid-cols-1 gap-2;
+  }
+
+  .loket-next-row strong {
+    @apply border-l-0 px-0;
+  }
+
+  .loket-section-head.card-header,
+  .loket-summary-head.card-header {
+    @apply items-start flex-col;
+  }
+
+  .loket-table-footer {
+    @apply flex-col items-start;
+  }
+
+  .loket-info-list div {
+    @apply grid-cols-1 gap-1;
+  }
+
+  .loket-patient-summary-card {
+    @apply items-start;
+  }
+
+  .loket-patient-summary-card .badge {
+    @apply hidden;
+  }
+
+  .loket-visit-section-head.modal-section-head {
+    @apply grid gap-3;
+  }
+}
+
+/* Printer detail modal */
+.printer-detail-modal-card {
+  width: min(100% - 48px, 1080px);
+  max-width: min(100% - 48px, 1080px);
+}
+
+.printer-detail-body {
+  @apply gap-4;
+}
+
+.printer-detail-action-row {
+  @apply grid items-center gap-5 min-w-0;
+  grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.printer-detail-action-button {
+  @apply justify-center w-full;
+}
+
+.printer-detail-status-card {
+  @apply min-w-0 border border-[color:var(--border-soft)] rounded-[var(--radius-card)] bg-[color:var(--surface)] p-4 grid items-center gap-3 text-[color:var(--text-primary)];
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.printer-detail-status-card strong,
+.printer-detail-status-card p,
+.printer-detail-status-card small {
+  @apply m-0;
+}
+
+.printer-detail-status-card strong {
+  @apply block text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.printer-detail-status-card p {
+  @apply text-body-md text-[color:var(--text-secondary)];
+}
+
+.printer-detail-status-card small {
+  @apply text-body-sm text-[color:var(--text-secondary)] justify-self-end text-right;
+}
+
+.printer-detail-status-icon {
+  @apply w-8 h-8 rounded-full inline-grid place-items-center bg-[color:var(--success-light)] text-[color:var(--primary-green)] text-body-lg;
+}
+
+.printer-detail-status-card.is-loading .printer-detail-status-icon {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.printer-detail-status-card.is-success .printer-detail-status-icon {
+  @apply bg-[color:var(--success-light)] text-[color:var(--primary-green)];
+}
+
+.printer-detail-status-card.is-failed .printer-detail-status-icon {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+}
+
+.printer-detail-print-row {
+  grid-template-columns: 220px minmax(0, 1fr) 220px;
+}
+
+.printer-receipt-preview {
+  @apply border border-[color:var(--border-soft)] rounded-[var(--radius-card)] bg-[color:var(--surface)] p-4 min-w-0 shadow-xs text-[color:var(--text-primary)];
+}
+
+.receipt-brand {
+  @apply flex items-center gap-2 text-body-sm font-bold text-[color:var(--text-primary)] mb-2;
+}
+
+.printer-receipt-preview h4 {
+  @apply m-0 mb-3 pb-2 border-b border-[color:var(--border-soft)] text-center text-body-sm font-bold tracking-wide;
+}
+
+.printer-receipt-preview dl {
+  @apply grid gap-1.5 m-0 text-body-xs;
+}
+
+.printer-receipt-preview dl div {
+  @apply grid gap-2;
+  grid-template-columns: 82px minmax(0, 1fr);
+}
+
+.printer-receipt-preview dt,
+.printer-receipt-preview dd {
+  @apply m-0 min-w-0;
+}
+
+.printer-receipt-preview dt {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.printer-receipt-preview dd {
+  @apply text-[color:var(--text-primary)] font-semibold break-words;
+}
+
+.receipt-barcode {
+  @apply block mt-3 h-9 rounded-[4px];
+  background: repeating-linear-gradient(90deg, var(--text-primary) 0 2px, transparent 2px 5px, var(--text-primary) 5px 7px, transparent 7px 11px);
+}
+
+@media (max-width: 980px) {
+  .printer-detail-modal-card {
+    width: min(100% - 24px, 760px);
+    max-width: min(100% - 24px, 760px);
+  }
+
+  .printer-detail-action-row,
+  .printer-detail-print-row {
+    @apply grid-cols-1;
+  }
+
+  .printer-detail-status-card {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .printer-detail-status-card small {
+    @apply justify-self-start text-left;
+    grid-column: 2;
+  }
+
+  .printer-receipt-preview {
+    @apply max-w-[280px];
+  }
+}
+
+
+.employee-detail-body {
+  @apply gap-4;
+}
+
+.employee-detail-profile-layout {
+  @apply grid grid-cols-[160px_minmax(0,1fr)] gap-6 items-start min-w-0;
+}
+
+.employee-detail-photo {
+  @apply w-full aspect-square rounded-[var(--radius-card)] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] grid place-items-center text-display-md font-bold overflow-hidden;
+}
+
+.employee-detail-photo img {
+  @apply h-full w-full object-cover;
+}
+
+.employee-detail-profile-content {
+  @apply grid gap-3.5 min-w-0;
+}
+
+.employee-detail-profile-head {
+  @apply grid gap-1 min-w-0;
+}
+
+.employee-detail-profile-head h3 {
+  @apply m-0 text-[color:var(--text-primary)] text-body-lg leading-6 font-bold;
+}
+
+.employee-detail-license-row {
+  @apply grid grid-cols-[minmax(0,1fr)_minmax(260px,0.38fr)] gap-5 items-start min-w-0;
+}
+
+.employee-license-warning.alert {
+  @apply m-0 self-start;
+}
+
+.employee-document-table.data-table {
+  @apply min-w-[840px];
+}
+
+.employee-detail-file {
+  @apply inline-flex items-center gap-2 min-w-0 text-body-sm font-semibold text-[color:var(--text-primary)];
+}
+
+.employee-detail-file i {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.employee-detail-file small {
+  @apply text-[color:var(--text-secondary)] font-medium;
+}
+
+@media (max-width: 900px) {
+  .employee-detail-profile-layout,
+  .employee-detail-license-row {
+    @apply grid-cols-1;
+  }
+
+  .employee-detail-photo {
+    @apply w-32;
+  }
+}
+
+/* Detail Permission modal -------------------------------------------------- */
+.permission-detail-modal-card.modal-card {
+  @apply max-w-[1040px];
+}
+
+.permission-detail-body.modal-body {
+  @apply gap-4;
+}
+
+.permission-detail-profile {
+  @apply grid items-start gap-5 min-w-0;
+  grid-template-columns: 132px minmax(0, 1fr);
+}
+
+.permission-detail-avatar {
+  @apply w-[112px] h-[112px] rounded-[28px] inline-grid place-items-center flex-none text-[color:var(--primary-blue)] bg-[color:var(--primary-light)] border border-[color:var(--border-soft)] shadow-[var(--shadow-sm)];
+}
+
+.permission-detail-avatar i {
+  @apply text-h1;
+}
+
+.permission-detail-info-grid.modal-info-grid {
+  @apply gap-x-8;
+}
+
+.permission-detail-access-head.modal-section-head {
+  @apply items-center justify-between gap-4 flex-wrap;
+}
+
+.permission-legend {
+  @apply flex items-center justify-end gap-5 flex-wrap text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+.permission-legend span {
+  @apply inline-flex items-center gap-2;
+}
+
+.permission-legend i,
+.permission-allowed-icon,
+.permission-denied-icon,
+.permission-lock-icon {
+  @apply inline-flex items-center justify-center text-body-lg;
+}
+
+.permission-legend .is-allowed,
+.permission-allowed-icon {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.permission-legend .is-denied,
+.permission-denied-mark {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.permission-legend .is-locked,
+.permission-lock-icon {
+  @apply text-[color:var(--slate)];
+}
+
+.permission-detail-table.data-table {
+  @apply min-w-[920px];
+}
+
+.permission-module-cell {
+  @apply flex items-center gap-3 min-w-[220px] text-left;
+}
+
+.permission-module-icon {
+  @apply w-8 h-8 rounded-[10px] inline-grid place-items-center flex-none text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.permission-module-cell strong,
+.permission-module-cell small {
+  @apply block;
+}
+
+.permission-module-cell strong {
+  @apply text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.permission-module-cell small {
+  @apply mt-0.5 text-body-sm font-medium text-[color:var(--text-secondary)] leading-4.5;
+}
+
+.permission-denied-mark {
+  @apply inline-flex items-center justify-center font-bold text-body-lg leading-none;
+}
+
+.permission-detail-alert.alert {
+  @apply m-0;
+}
+
+@media (max-width: 900px) {
+  .permission-detail-profile {
+    @apply grid-cols-1;
+  }
+
+  .permission-detail-avatar {
+    @apply w-20 h-20 rounded-[22px];
+  }
+
+  .permission-detail-access-head.modal-section-head,
+  .permission-legend {
+    @apply items-start justify-start;
+  }
+}
+
+/* Permission matrix table refinement: same visual style for Detail, Tambah, and Ubah. */
+.permission-matrix-table.data-table {
+  min-width: 880px;
+  table-layout: fixed;
+}
+
+.permission-matrix-table.data-table col.permission-module-col {
+  width: 304px;
+}
+
+.permission-matrix-table.data-table col.permission-action-col {
+  width: 96px;
+}
+
+.permission-matrix-table.data-table th:first-child,
+.permission-matrix-table.data-table td:first-child {
+  width: auto;
+  min-width: 280px;
+}
+
+.permission-matrix-table.data-table th:not(:first-child),
+.permission-matrix-table.data-table td:not(:first-child) {
+  width: 174px;
+  min-width: 174px;
+  max-width: 96px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.permission-matrix-table.data-table .permission-module-cell {
+  min-width: 0;
+  width: 100%;
+}
+
+.permission-matrix-table.data-table .permission-module-cell > div {
+  min-width: 0;
+}
+
+.permission-matrix-table.data-table .permission-module-cell strong,
+.permission-matrix-table.data-table .permission-module-cell small {
+  overflow-wrap: anywhere;
+}
+
+.permission-matrix-table.data-table .check {
+  justify-content: center;
+  justify-self: center;
+}
+
+@media (max-width: 720px) {
+  .permission-matrix-table.data-table {
+    min-width: 820px;
+  }
+
+  .permission-matrix-table.data-table col.permission-module-col {
+    width: 244px;
+  }
+
+  .permission-matrix-table.data-table col.permission-action-col {
+    width: 96px;
+  }
+}
+
+/* Detail Karyawan - dokumen SIP/STR action & preview */
+.employee-document-table th:last-child,
+.employee-document-table td:last-child {
+  @apply w-[150px] text-left;
+}
+
+.employee-document-table .row-inline-actions {
+  @apply justify-start;
+}
+
+.row-icon-action:disabled,
+.row-icon-action[disabled] {
+  @apply cursor-not-allowed opacity-45 shadow-none;
+  transform: none;
+}
+
+.row-icon-action:disabled:hover,
+.row-icon-action[disabled]:hover,
+.row-icon-action:disabled:focus-visible,
+.row-icon-action[disabled]:focus-visible {
+  @apply border-[color:var(--border-soft)] bg-[color:var(--surface)] text-[color:var(--text-secondary)] shadow-none;
+  transform: none;
+}
+
+.document-preview-body.modal-body {
+  @apply gap-4;
+}
+
+.document-preview-layout {
+  @apply grid grid-cols-[minmax(0,1fr)_minmax(260px,0.35fr)] gap-5 items-start min-w-0;
+}
+
+.document-preview-frame {
+  @apply min-h-[420px] rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--light-gray-tint-40)] p-5 grid place-items-center overflow-auto;
+}
+
+.document-preview-page {
+  @apply relative grid gap-5 w-[min(100%,420px)] min-h-[520px] p-7 rounded-[10px] bg-[color:var(--surface)] border border-[color:var(--border-soft)] shadow-[var(--shadow-sm)] text-[color:var(--text-primary)];
+  align-content: start;
+}
+
+.document-preview-page-head {
+  @apply flex items-center gap-3 pb-4 border-b border-b-[color:var(--border-soft)];
+}
+
+.document-preview-page-head strong,
+.document-preview-page h3,
+.document-preview-page p {
+  @apply m-0;
+}
+
+.document-preview-page-head strong {
+  @apply block text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.document-preview-page-head small {
+  @apply block text-body-sm font-semibold text-[color:var(--text-secondary)];
+}
+
+.document-preview-logo {
+  @apply inline-grid h-11 w-11 place-items-center rounded-xl bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] text-h3;
+}
+
+.document-preview-watermark {
+  @apply absolute inset-0 grid place-items-center pointer-events-none text-[color:var(--light-gray)] text-display-lg opacity-70;
+}
+
+.document-preview-page h3,
+.document-preview-page p,
+.document-preview-page dl {
+  @apply relative z-[1];
+}
+
+.document-preview-page h3 {
+  @apply text-h3 font-bold;
+}
+
+.document-preview-page p {
+  @apply text-body-lg font-bold text-[color:var(--primary-blue)];
+}
+
+.document-preview-page dl {
+  @apply grid gap-3 m-0 pt-4 border-t border-t-[color:var(--border-soft)];
+}
+
+.document-preview-page dl > div {
+  @apply grid grid-cols-[120px_minmax(0,1fr)] gap-3;
+}
+
+.document-preview-page dt {
+  @apply text-body-sm font-bold text-[color:var(--text-secondary)];
+}
+
+.document-preview-page dd {
+  @apply m-0 text-body-sm font-semibold text-[color:var(--text-primary)] break-words;
+}
+
+.document-preview-aside {
+  @apply grid gap-4 min-w-0;
+}
+
+@media (max-width: 900px) {
+  .document-preview-layout {
+    @apply grid-cols-1;
+  }
+}
+
+
+.unit-detail-modal-card .modal-body.unit-detail-body {
+  @apply gap-5;
+}
+
+.unit-phase-grid {
+  @apply grid grid-cols-5 gap-4;
+}
+
+.unit-phase-card {
+  @apply relative grid content-start gap-2 min-h-[132px] p-4 rounded-xl border border-[color:var(--primary-blue-tint-60)] bg-[color:var(--primary-tint)] text-[color:var(--text-primary)];
+  box-shadow: inset 0 0 0 1px var(--primary-blue-tint-80);
+}
+
+.unit-phase-card strong {
+  @apply text-body-md font-bold;
+}
+
+.unit-phase-card small {
+  @apply text-body-sm leading-5 font-semibold text-[color:var(--text-secondary)];
+}
+
+.unit-phase-card p {
+  @apply m-0 text-body-sm leading-5 font-medium text-[color:var(--text-secondary)];
+}
+
+.unit-phase-card.is-active {
+  @apply border-[color:var(--primary-blue)] bg-[color:var(--primary-light)] shadow-[0_0_0_1px_var(--primary-blue)];
+}
+
+.unit-phase-card.is-active strong {
+  @apply text-[color:var(--primary-dark)];
+}
+
+.unit-phase-choice-grid {
+  @apply mt-2;
+}
+
+.unit-phase-option {
+  @apply pr-11 cursor-pointer transition;
+}
+
+.unit-phase-option:hover {
+  @apply border-[color:var(--primary-blue)] bg-[color:var(--surface)];
+}
+
+.unit-phase-radio {
+  @apply absolute top-3 right-3 size-4 cursor-pointer;
+  accent-color: var(--primary-blue);
+}
+
+.unit-history-list {
+  @apply grid gap-1 pl-4 m-0 list-disc;
+}
+
+@media (max-width: 980px) {
+  .unit-phase-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@media (max-width: 640px) {
+  .unit-phase-grid {
+    @apply grid-cols-1;
+  }
+}
+
+.user-detail-modal-card .modal-body.user-detail-body {
+  @apply gap-5;
+}
+
+.user-detail-profile {
+  @apply grid gap-6 items-start;
+  grid-template-columns: 168px minmax(0, 1fr);
+}
+
+.user-detail-avatar {
+  @apply overflow-hidden rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-muted)] shadow-sm;
+  width: 168px;
+  height: 196px;
+}
+
+.user-detail-avatar img {
+  @apply block w-full h-full;
+  object-fit: cover;
+}
+
+.user-detail-info-grid {
+  @apply min-w-0;
+}
+
+.modal-actions-split {
+  @apply justify-between;
+}
+
+.modal-actions-right {
+  @apply flex items-center gap-3;
+}
+
+@media (max-width: 860px) {
+  .user-detail-profile {
+    grid-template-columns: 1fr;
+  }
+
+  .user-detail-avatar {
+    width: 144px;
+    height: 168px;
+  }
+
+  .modal-actions-split,
+  .modal-actions-right {
+    @apply flex-col items-stretch;
+  }
+}
+
+
+.tariff-detail-modal-card .modal-body.tariff-detail-body { @apply gap-5; }
+.tariff-detail-profile { @apply grid gap-6 items-start; grid-template-columns: 112px minmax(0, 1fr); }
+.tariff-detail-icon { @apply w-28 h-28 rounded-xl border border-[color:var(--primary-blue-tint-70)] bg-[color:var(--primary-tint)] text-[color:var(--primary-dark)] flex items-center justify-center shadow-sm; position: relative; }
+.tariff-detail-icon .fa-stethoscope { @apply text-h1; }
+.tariff-detail-icon .fa-circle-dollar-to-slot { @apply text-body-lg; position: absolute; right: 22px; bottom: 24px; }
+.tariff-detail-info-grid { @apply min-w-0; }
+.modal-section-head.with-action { @apply grid items-center gap-3; grid-template-columns: auto 1fr auto; }
+.tariff-detail-price-table { @apply min-w-[760px]; }
+.tariff-detail-price-table th, .tariff-detail-price-table td { @apply text-center whitespace-nowrap; }
+.tariff-detail-price-table th:first-child, .tariff-detail-price-table td:first-child { @apply text-left; }
+.tariff-detail-price-alert { @apply mt-3 rounded-[var(--radius-input-sm)] border border-[color:var(--alert-border)]; }
+@media (max-width: 860px) { .tariff-detail-profile { grid-template-columns: 1fr; } .tariff-detail-icon { width: 96px; height: 96px; } .modal-section-head.with-action { grid-template-columns: auto 1fr; } .modal-section-head.with-action .btn { grid-column: 1 / -1; justify-self: start; } }
+
+/* ============================================================================
+   EMR Rekam Medis page styles
+   ---------------------------------------------------------------------------
+   Source CSS untuk halaman Rekam Medis. File src/css/style.css harus dihasilkan
+   melalui compile Tailwind dari src/css/input.css, bukan diedit manual.
+   ========================================================================== */
+
+/* Filter toolbar: radio, search, dropdown, reset sejajar dan rapi. */
+.rm-filter-toolbar.toolbar {
+  display: grid;
+  grid-template-columns: minmax(232px, 270px) minmax(300px, 1fr) minmax(300px, 1.2fr) 44px;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.rm-filter-toolbar .toolbar-left,
+.rm-filter-toolbar .toolbar-right,
+.rm-filter-toolbar .rm-search-type-group,
+.rm-filter-toolbar .rm-keyword-group,
+.rm-filter-toolbar .rm-filter-group,
+.rm-filter-toolbar .rm-gender-field,
+.rm-filter-toolbar .field {
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.rm-filter-toolbar .toolbar-left,
+.rm-filter-toolbar .toolbar-right,
+.rm-filter-toolbar .rm-filter-group {
+  display: block;
+}
+
+.rm-filter-toolbar .field {
+  display: grid;
+  gap: 8px;
+}
+
+.rm-filter-toolbar .field > label {
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body-sm, 18px);
+  font-weight: 700;
+}
+
+.rm-filter-toolbar .rm-search-radio-row,
+.rm-filter-toolbar .input,
+.rm-filter-toolbar .dropdown-trigger,
+.rm-filter-toolbar .rm-reset-filter-btn {
+  min-height: 44px;
+}
+
+.rm-filter-toolbar .rm-search-radio-row {
+  flex-wrap: nowrap;
+}
+
+.rm-filter-toolbar .admin-search-field.search-field,
+.rm-filter-toolbar .rm-keyword-group .admin-search-field.search-field,
+.rm-filter-toolbar .rm-filter-group .admin-filter-select,
+.rm-filter-toolbar .rm-filter-group .ds-select,
+.rm-filter-toolbar .dropdown-trigger {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.rm-filter-toolbar .dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rm-filter-toolbar .dropdown-panel {
+  width: 100%;
+  min-width: 100%;
+}
+
+.rm-filter-toolbar .rm-reset-filter-btn {
+  align-self: end;
+  justify-self: end;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+}
+
+/* Riwayat pencarian pasien. */
+.rm-search-history {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--primary-tint, #eef2ff) 68%, var(--surface));
+}
+
+.rm-search-history-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.rm-search-history-head h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--text-primary);
+  font-size: var(--text-body-md);
+  line-height: var(--leading-body-md, 22px);
+  font-weight: 700;
+}
+
+.rm-search-history-head h3 i {
+  color: var(--primary-blue);
+}
+
+.rm-search-history-head p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  line-height: 18px;
+}
+
+.rm-history-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.rm-history-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 34px;
+  padding: 4px 5px 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--primary-blue) 20%, var(--border-soft));
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(15, 31, 61, 0.04);
+  cursor: pointer;
+}
+
+.rm-history-chip:hover,
+.rm-history-chip:focus-visible {
+  border-color: color-mix(in srgb, var(--primary-blue) 48%, var(--border-soft));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-blue) 10%, transparent);
+  outline: none;
+}
+
+.rm-history-chip-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--primary-blue);
+  font-size: var(--text-body-xs);
+  line-height: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rm-history-chip strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: var(--text-body-sm);
+  line-height: 18px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rm-history-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--field-muted);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.rm-history-remove:hover,
+.rm-history-remove:focus-visible {
+  background: var(--danger-light);
+  color: var(--danger-dark);
+  outline: none;
+}
+
+.rm-history-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: var(--text-body-sm);
+  line-height: 18px;
+}
+
+.rm-clear-history-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tabel Rekam Medis: kolom kunjungan dan action icon. */
+.admin-users-table.data-table {
+  min-width: 1320px;
+}
+
+.rm-visit-col,
+.rm-visit-cell {
+  width: 196px;
+  min-width: 196px;
+  text-align: center !important;
+}
+
+.rm-action-col {
+  min-width: 112px;
+}
+
+.rm-visit-cell {
+  overflow: visible;
+}
+
+
+.rm-visit-action.btn {
+  min-width: 0;
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+
+.rm-visit-action.row-icon-action,
+.row-icon-action.is-primary {
+  color: var(--primary-blue);
+  border-color: color-mix(in srgb, var(--primary-blue) 22%, var(--border-soft));
+  background: color-mix(in srgb, var(--primary-blue) 8%, var(--surface));
+}
+
+.row-icon-action.is-primary:hover,
+.row-icon-action.is-primary:focus-visible,
+.rm-visit-action.row-icon-action:hover,
+.rm-visit-action.row-icon-action:focus-visible {
+  color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  background: var(--primary-light);
+  box-shadow: 0 8px 20px rgba(43, 85, 255, 0.12);
+}
+
+@media (max-width: 1100px) {
+  .rm-filter-toolbar.toolbar {
+    grid-template-columns: minmax(232px, 270px) minmax(280px, 1fr) 44px;
+  }
+
+  .rm-filter-toolbar .rm-filter-group {
+    grid-column: 1 / -2;
+  }
+
+  .rm-filter-toolbar .rm-reset-filter-btn {
+    grid-column: -2 / -1;
+  }
+}
+
+@media (max-width: 820px) {
+  .rm-filter-toolbar.toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .rm-filter-toolbar .rm-filter-group,
+  .rm-filter-toolbar .rm-reset-filter-btn {
+    grid-column: auto;
+  }
+
+  .rm-filter-toolbar .rm-reset-filter-btn {
+    justify-self: flex-start;
+  }
+
+  .rm-search-history-head {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .rm-filter-toolbar .rm-search-radio-row {
+    flex-wrap: wrap;
+  }
+
+  .rm-visit-col,
+  .rm-visit-cell {
+    width: 82px;
+    min-width: 82px;
+  }
+}
+
+/* Global data table last column alignment override.
+   Disimpan di source CSS agar style.css tetap hasil compile. */
+.data-table td:last-child {
+  text-align: left !important;
+}
+
+.data-table td:last-child :is(.action-group, .admin-action-group, .row-inline-actions) {
+  justify-content: flex-start !important;
+}

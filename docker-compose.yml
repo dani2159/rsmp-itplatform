@@ -1,0 +1,143 @@
+name: rsmp-it-platform
+
+services:
+  mariadb:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS:?set DB_ROOT_PASS in .env}
+      MYSQL_DATABASE: ${DB_NAME:-rsmpitdb}
+      MYSQL_USER: ${DB_USER:-rsmpitadmin}
+      MYSQL_PASSWORD: ${DB_PASS:?set DB_PASS in .env}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  # RustDesk self-hosted (opsional -- remote desktop client Windows/lain
+  # yang gak pakai VNC). hbbs & hbbr wajib pakai key yang sama, makanya
+  # share volume rustdesk-data (working dir /root pada image resmi).
+  rustdesk-hbbs:
+    image: rustdesk/rustdesk-server:latest
+    restart: unless-stopped
+    command: hbbs -r rustdesk-hbbr:21117 -k _
+    volumes:
+      - rustdesk-data:/root
+    ports:
+      - "21115:21115"
+      - "21116:21116"
+      - "21116:21116/udp"
+      - "21118:21118"
+
+  rustdesk-hbbr:
+    image: rustdesk/rustdesk-server:latest
+    restart: unless-stopped
+    command: hbbr -k _
+    volumes:
+      - rustdesk-data:/root
+    ports:
+      - "21117:21117"
+      - "21119:21119"
+
+  # Proxy Docker API terbatas -- dipakai backend buat tombol "Restart" hbbs/hbbr
+  # dari web. Cuma izinin baca+restart container (CONTAINERS+POST), SEMUA
+  # resource lain (image, volume, exec ke container lain, dst) dimatikan.
+  # Ini bukan mount /var/run/docker.sock langsung ke backend -- itu setara
+  # akses root ke seluruh host kalau backend-nya ke-compromise.
+  docker-proxy:
+    image: tecnativa/docker-socket-proxy:latest
+    restart: unless-stopped
+    environment:
+      CONTAINERS: 1
+      POST: 1
+      IMAGES: 0
+      NETWORKS: 0
+      VOLUMES: 0
+      EXEC: 0
+      BUILD: 0
+      COMMIT: 0
+      SERVICES: 0
+      SWARM: 0
+      SYSTEM: 0
+      AUTH: 0
+      SECRETS: 0
+      CONFIGS: 0
+      PLUGINS: 0
+      DISTRIBUTION: 0
+      NODES: 0
+      TASKS: 0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      docker-proxy:
+        condition: service_started
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      APP_DIR: /app
+      DB_HOST: mariadb
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-rsmpitdb}
+      DB_USER: ${DB_USER:-rsmpitadmin}
+      DB_PASS: ${DB_PASS:?set DB_PASS in .env}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SESSION_SECRET: ${SESSION_SECRET:?set SESSION_SECRET in .env}
+      AGENT_TOKEN: ${AGENT_TOKEN:?set AGENT_TOKEN in .env}
+      SSH_KEY_PATH: /app/keys/rs_master_key
+      SSH_PUB_KEY_PATH: /app/keys/rs_master_key.pub
+      RS_NAME: ${RS_NAME:-RSMP-IT}
+      SERVER_IP: ${SERVER_IP:-localhost}
+      WEB_PORT: ${WEB_PORT:-8080}
+      CORS_ORIGIN: http://${SERVER_IP:-localhost}:${WEB_PORT:-8080}
+      RUSTDESK_HBBS_HOST: rustdesk-hbbs
+      RUSTDESK_HBBR_HOST: rustdesk-hbbr
+      RUSTDESK_DATA_DIR: /rustdesk-data
+      DOCKER_PROXY_URL: http://docker-proxy:2375
+    volumes:
+      - ssh-keys:/app/keys
+      - uploads-data:/app/uploads
+      - rustdesk-data:/rustdesk-data:ro
+
+  novnc-proxy:
+    build:
+      context: .
+      dockerfile: docker/novnc-proxy.Dockerfile
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - novnc-proxy
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    volumes:
+      - uploads-data:/data/uploads:ro
+
+volumes:
+  mariadb-data:
+  ssh-keys:
+  uploads-data:
+  rustdesk-data:

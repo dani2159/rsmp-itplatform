@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Statistic cards
+   --------------------------------------------------------------------------
+   Ringkasan angka untuk dashboard, master data, dan halaman admin.
+   Pattern ini mengikuti card statistik Dashboard Rawat Inap: ikon solid,
+   label, nilai utama, lalu catatan kecil di bagian bawah.
+   ========================================================================== */
+
+.stat-grid {
+  @apply grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3.5;
+}
+
+.stat-card {
+  @apply min-h-[148px] flex flex-col items-start gap-[9px] rounded-2xl border-0 bg-[color:var(--surface)] p-[18px_20px] shadow-[var(--shadow-sm)];
+}
+
+.stat-icon {
+  @apply w-12 h-12 inline-grid place-items-center flex-none rounded-2xl text-[color:var(--white)] text-h2 leading-none shadow-[var(--shadow-md)];
+}
+
+.stat-icon i,
+.stat-icon svg {
+  @apply inline-flex items-center justify-center w-6 h-6 text-h2 leading-none;
+}
+
+.stat-icon.is-blue {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.stat-icon.is-green {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.stat-icon.is-indigo {
+  @apply bg-[color:var(--indigo)];
+}
+
+.stat-icon.is-warning,
+.stat-icon.is-yellow {
+  @apply bg-[color:var(--warning)];
+}
+
+.stat-icon.is-danger,
+.stat-icon.is-red {
+  @apply bg-[color:var(--danger)];
+}
+
+.stat-icon.is-muted {
+  @apply bg-[color:var(--primary-blue)] opacity-[0.72];
+}
+
+.stat-label {
+  @apply block max-w-full text-[color:var(--text-secondary)] text-body-md leading-6 font-medium;
+}
+
+.stat-value {
+  @apply block text-[color:var(--text-primary)] text-h2 leading-[30px] font-bold tracking-[-0.035em];
+}
+
+.stat-note {
+  @apply mt-auto inline-flex items-center gap-1.5 text-[color:var(--text-secondary)] text-body-sm leading-5 font-medium;
+}
+
+.stat-note.is-positive {
+  @apply text-[color:var(--primary-green-shade-15)];
+}
+
+.stat-note.is-negative {
+  @apply text-[color:var(--danger)];
+}
+
+@media (max-width: 720px) {
+  .stat-grid {
+    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+  }
+
+  .stat-card {
+    @apply min-h-[136px];
+  }
+}

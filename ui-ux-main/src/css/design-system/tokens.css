@@ -1,0 +1,381 @@
+/* ==========================================================================
+   Token desain SIMRS ZAIDAN
+   --------------------------------------------------------------------------
+   File ini menyimpan warna, tipografi, radius, shadow, ring, dan token komponen.
+   CSS komponen/page cukup memanggil token dari sini lewat `var(--...)`.
+   ========================================================================== */
+
+:root {
+  /* -----------------------------------------------------------------------
+     01. Skala warna brand
+     Pakai scale ini saat butuh variasi tint/shade dari warna brand.
+     Untuk komponen umum, gunakan token semantik di bagian 02.
+  ----------------------------------------------------------------------- */
+  --primary-blue-tint-80: #d2dcf7;
+  --primary-blue-tint-60: #a5b9ef;
+  --primary-blue-tint-40: #7895e7;
+  --primary-blue-shade-15: #1a43b7;
+  --primary-blue-shade-30: #153796;
+  --primary-blue-shade-45: #102b76;
+
+  --primary-green-tint-80: #ccf1ea;
+  --primary-green-tint-60: #99e3d4;
+  --primary-green-tint-40: #66d4bf;
+  --primary-green-shade-15: #009c7e;
+  --primary-green-shade-30: #008168;
+  --primary-green-shade-45: #006551;
+
+  --yellow-tint-80: #fdeccc;
+  --yellow-tint-60: #fbd999;
+  --yellow-tint-40: #f8c566;
+  --yellow-shade-15: #d08509;
+  --yellow-shade-30: #ac6f08;
+  --yellow-shade-45: #875806;
+  --warning-tint-80: var(--yellow-tint-80);
+  --warning-tint-60: var(--yellow-tint-60);
+  --warning-tint-40: var(--yellow-tint-40);
+  --warning-shade-15: var(--yellow-shade-15);
+  --warning-shade-30: var(--yellow-shade-30);
+  --warning-shade-45: var(--yellow-shade-45);
+
+  --red-tint-80: #fcdddd;
+  --red-tint-60: #f9b4b4;
+  --red-tint-40: #f58f8f;
+  --red-shade-15: #cb3a3a;
+  --red-shade-30: #a73030;
+  --red-shade-45: #832626;
+  --danger-tint-80: var(--red-tint-80);
+  --danger-tint-60: var(--red-tint-60);
+  --danger-tint-40: var(--red-tint-40);
+  --danger-shade-15: var(--red-shade-15);
+  --danger-shade-30: var(--red-shade-30);
+  --danger-shade-45: var(--red-shade-45);
+
+  --accent-teal-tint-80: #ccf6f0;
+  --accent-teal-tint-60: #99ede0;
+  --accent-teal-tint-40: #66e3d1;
+  --accent-teal-shade-15: #00b297;
+  --accent-teal-shade-30: #00927d;
+  --accent-teal-shade-45: #007362;
+
+  --accent-pink-tint-90: #fff0f6;
+  --accent-pink-tint-80: #fce7f3;
+  --accent-pink-tint-60: #fbcfe8;
+  --accent-pink-tint-40: #f9a8d4;
+  --accent-pink-shade-15: #db2777;
+  --accent-pink-shade-30: #be185d;
+  --accent-pink-shade-45: #9d174d;
+
+  --indigo-tint-80: #e2defa;
+  --indigo-tint-60: #c4bef5;
+  --indigo-tint-40: #a79df1;
+  --indigo-shade-15: #5c4ec4;
+  --indigo-shade-30: #4c40a2;
+  --indigo-shade-45: #3b337f;
+
+  --navy-tint-80: #cfd2d8;
+  --navy-tint-60: #9fa5b1;
+  --navy-tint-40: #6f798b;
+  --navy-shade-15: #0d1a34;
+  --navy-shade-30: #0a162b;
+  --navy-shade-45: #081122;
+
+  --slate-tint-80: #e1e3e6;
+  --slate-tint-60: #c4c7cc;
+  --slate-tint-40: #a6aab3;
+  --slate-shade-15: #5b616d;
+  --slate-shade-30: #4b505a;
+  --slate-shade-45: #3b3f46;
+
+  --light-gray-tint-80: #fdfdfe;
+  --light-gray-tint-60: #fafbfd;
+  --light-gray-tint-40: #f8fafc;
+  --light-gray-shade-15: #cfd1d4;
+  --light-gray-shade-30: #aaacaf;
+  --light-gray-shade-45: #86878a;
+
+  --white-tint-80: #ffffff;
+  --white-tint-60: #ffffff;
+  --white-tint-40: #ffffff;
+  --white-shade-15: #d9d9d9;
+  --white-shade-30: #b2b2b2;
+  --white-shade-45: #8c8c8c;
+
+  /* -----------------------------------------------------------------------
+     02. Token warna semantik
+     Pakai token ini untuk UI sehari-hari agar warna konsisten antar halaman.
+  ----------------------------------------------------------------------- */
+  --primary-blue: #1e4fd7;
+  --primary-dark: #1740b0;
+  --primary-active: #153796;
+  --primary-light: #eef2ff;
+  --primary-tint: #f6f8ff;
+  --primary-blue-dark: #1740b0;
+  --primary-blue-light: #eef2ff;
+
+  --primary-green: #00b894;
+  --success-dark: #008168;
+  --success-light: #e6faf6;
+
+  --accent-teal: #00d1b2;
+  --teal-light: #e0fbf8;
+  --accent-pink: var(--accent-pink-shade-15);
+  --accent-pink-light: var(--accent-pink-tint-90);
+  --accent-pink-border-soft: var(--accent-pink-tint-60);
+
+  --indigo: #6c5ce7;
+  --indigo-light: #ede9fe;
+
+  --navy: #0f1f3d;
+  --navy-light: #1e3a5f;
+
+  --slate: #6b7280;
+  --slate-dark: #374151;
+  --slate-light: #d1d5db;
+
+  --light-gray: #f3f6fa;
+  --white: #ffffff;
+  --white-short: var(--white); /* Alias dokumentasi untuk #fff. Di CSS tetap gunakan var(--white). */
+
+  --warning: #f59e0b;
+  --warning-dark: var(--warning-shade-30);
+  --warning-light: #fffbeb;
+  --warning-border-soft: var(--warning-tint-80);
+  --warning-icon-soft: var(--warning-tint-80);
+
+  --danger: #ef4444;
+  --danger-dark: var(--danger-shade-30);
+  --danger-active: var(--danger-shade-45);
+  --danger-light: #fff5f5;
+  --danger-border-soft: var(--danger-tint-80);
+  --danger-icon-soft: var(--danger-tint-80);
+
+  --info: #38bdf8;
+  --info-dark: #0284c7;
+  --info-light: #e0f2fe;
+
+  /* Alias teks. Dipertahankan untuk kompatibilitas halaman lama. */
+  --text: var(--slate-dark);
+  --muted: var(--slate);
+
+  /* -----------------------------------------------------------------------
+     03. Token surface, border, dan field
+     Gunakan untuk background halaman, card, form field, dan border.
+  ----------------------------------------------------------------------- */
+  --page: var(--light-gray);
+  --surface: var(--white);
+  --field: var(--white);
+  --field-muted: var(--light-gray);
+  --border: var(--slate-light);
+  --border-soft: color-mix(in srgb, var(--slate-light) 54%, var(--white));
+  --divider: var(--slate-light);
+  --text-primary: var(--slate-dark);
+  --text-secondary: var(--slate);
+  --page-title-size: var(--text-h2);
+  --page-title-leading: var(--leading-h2);
+  --page-title-tracking: var(--tracking-h2);
+  --form-label-size: var(--text-body-md);
+  --form-label-leading: var(--leading-body-md);
+  --form-label-weight: var(--weight-medium);
+  --form-label-tracking: var(--tracking-body-md);
+
+  /* Token radius */
+  --radius-card: 12px;
+  --radius-input-xs: 4px;
+  --radius-input-sm: 6px;
+  --radius-input-md: 7px;
+  --radius-input-lg: 8px;
+  --radius-input-xl: 10px;
+  --radius-button-xs: 4px;
+  --radius-button-sm: 6px;
+  --radius-button-md: 7px;
+  --radius-button-lg: 8px;
+  --radius-button-xl: 10px;
+  --radius-dropdown-xs: var(--radius-input-xs);
+  --radius-dropdown-sm: var(--radius-input-sm);
+  --radius-dropdown-md: var(--radius-input-md);
+  --radius-dropdown-lg: var(--radius-input-lg);
+  --radius-dropdown-xl: var(--radius-input-xl);
+  --radius-dropdown-panel: var(--radius-input-md);
+  --radius-dropdown-item: var(--radius-input-md);
+
+  /* -----------------------------------------------------------------------
+     03A. Token warna pendukung UI
+     Token ini menampung warna UI lama yang sebelumnya tersebar sebagai HEX
+     di file komponen/page. Nilainya tetap sama agar tampilan tidak berubah,
+     tetapi pemakaiannya sekarang melalui var(--...) dari root design system.
+  ----------------------------------------------------------------------- */
+  --ui-autocomplete-text: #6b7fa8;
+  --ui-blue-300: #93c5fd;
+  --ui-blue-border-soft: #cfe3ff;
+  --ui-border-blue-gray: #dde6f4;
+  --ui-border-control-hover: #9eaec5;
+  --ui-border-dashed: #b8c4d6;
+  --ui-border-default: #d8dee8;
+  --ui-border-guide-dashed: #b9c7e8;
+  --ui-border-muted-blue: #dfe7f3;
+  --ui-border-neutral-soft: #e1e5ed;
+  --ui-border-subtle: #e7ecf4;
+  --ui-border-shadow: #d7dde8;
+  --ui-code-border: #172554;
+  --ui-code-text: #e8eeff;
+  --ui-text-body-muted: #536174;
+  --ui-text-placeholder: #8aa0bd;
+  --ui-text-muted-soft: #8b9aaf;
+  --ui-text-disabled: #9ca3af;
+  --ui-primary-soft-active: #e0e7ff;
+  --ui-calendar-border: #e6eaf1;
+  --ui-danger-gradient-start: #fff7f7;
+  --ui-danger-surface: #fffbfb;
+  --ui-danger-surface-pale: #fff1f1;
+  --ui-danger-text-muted: #8a2b2b;
+  --ui-datepicker-active: #2f6df6;
+  --ui-datepicker-border: #d7e0ee;
+  --ui-datepicker-muted: #a8b4c6;
+  --ui-datepicker-text: #16213a;
+  --ui-form-border-soft: #e4e9f1;
+  --ui-green-200: #a7f3d0;
+  --ui-icon-gray: #a3aec0;
+  --ui-icon-muted: #a9b1c0;
+  --ui-icon-soft: #7b8ba3;
+  --ui-indigo-bg-soft: #ddd6fe;
+  --ui-indigo-border-soft: #c7d2fe;
+  --ui-indigo-text: #4e5e9d;
+  --ui-indigo-text-dark: #4c1d95;
+  --ui-info-text-dark: #075985;
+  --ui-navbar-surface-light: #f7fbff;
+  --ui-navbar-surface-muted: #e9eef6;
+  --ui-navbar-surface-selected: #eef5ff;
+  --ui-navbar-text-muted: #98a6bb;
+  --ui-primary-border-muted: #dce5ff;
+  --ui-primary-border-soft: #c9d6ff;
+  --ui-primary-deep: #10277a;
+  --ui-primary-icon: #4456a7;
+  --ui-primary-ring: #9cb3f7;
+  --ui-primary-ring-soft: #d8e1ff;
+  --ui-purple-border: #d8b4fe;
+  --ui-scrollbar-thumb: #00000045;
+  --ui-sidebar-hover: #edf2f8;
+  --ui-sidebar-primary-mid: #256db6;
+  --ui-sidebar-primary-start: #244eb7;
+  --ui-sidebar-surface-active: #f0f6ff;
+  --ui-sidebar-teal-end: #36b7ad;
+  --ui-slate-400: #94a3b8;
+  --ui-success-border-pale: #c7f7ef;
+  --ui-success-border-soft: #bdf3e8;
+  --ui-success-gradient-start: #f3fffc;
+  --ui-success-pill-active: #c9f2e6;
+  --ui-success-pill-bg: #d7f7ed;
+  --ui-success-surface-white: #fbfffe;
+  --ui-success-text: #007b63;
+  --ui-success-text-strong: #007a62;
+  --ui-surface-blue-soft: #f1f4fa;
+  --ui-surface-canvas: #fbfcff;
+  --ui-surface-card-muted: #f4f6fb;
+  --ui-surface-dashboard: #f4f7fb;
+  --ui-surface-filter: #f0f4f9;
+  --ui-surface-light-blue: #f8fbff;
+  --ui-surface-muted: #f1f4f8;
+  --ui-surface-neutral: #f3f4f6;
+  --ui-surface-neutral-soft: #f4f6fa;
+  --ui-surface-primary-soft: #f4f7ff;
+  --ui-surface-slate-soft: #eef2f7;
+  --ui-surface-table-cell: #fcfdff;
+  --ui-surface-table-header: #f7f8fb;
+  --ui-table-primary-icon: #5064c8;
+  --ui-table-primary-icon-hover: #4253b2;
+  --ui-table-primary-text: #293a7a;
+  --ui-text-blue-gray: #7d8fa8;
+  --ui-text-filter: #324158;
+  --ui-text-heading: #1f2937;
+  --ui-text-ink: #172033;
+  --ui-text-muted-blue: #64748b;
+  --ui-text-neutral-strong: #202938;
+  --ui-text-soft: #8ca0bc;
+  --ui-text-strong: #263348;
+  --ui-tooltip-bg: #111827;
+  --ui-transparent-dark: #232e3300;
+  --ui-warning-icon: #a16207;
+  --ui-warning-surface-pale: #fffef8;
+  --ui-warning-text-dark: #b45309;
+  --ui-widget-text-muted: #9aa8bb;
+
+  /* -----------------------------------------------------------------------
+     04. Elevation dan focus ring
+     Pakai `--ring` untuk focus-visible; jangan buat ring manual per halaman.
+  ----------------------------------------------------------------------- */
+  --shadow: 0 10px 28px rgba(15, 31, 61, 0.06);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 20px rgba(15, 31, 61, 0.07);
+  --shadow-lg: 0 20px 50px rgba(15, 31, 61, 0.1);
+  --ring: 0 0 0 4px rgba(30, 79, 215, 0.16);
+  --warning-ring: 0 0 0 4px rgba(245, 158, 11, 0.18);
+  --success-ring: 0 0 0 4px rgba(0, 184, 148, 0.14);
+  --danger-ring: 0 0 0 4px rgba(239, 68, 68, 0.14);
+
+  /* -----------------------------------------------------------------------
+     05. Token tipografi
+     Sumber token mengikuti `typography-guide.html`. Gunakan token ini untuk
+     font-size, line-height, letter-spacing, dan weight agar tidak set manual
+     per halaman.
+  ----------------------------------------------------------------------- */
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+
+  --text-display-2xl: 72px;
+  --leading-display-2xl: 90px;
+  --tracking-display-2xl: -0.02em;
+  --text-display-xl: 60px;
+  --leading-display-xl: 72px;
+  --tracking-display-xl: -0.02em;
+  --text-display-lg: 48px;
+  --leading-display-lg: 60px;
+  --tracking-display-lg: -0.02em;
+  --text-display-md: 36px;
+  --leading-display-md: 44px;
+  --tracking-display-md: -0.02em;
+
+  --text-h1: 32px;
+  --leading-h1: 40px;
+  --tracking-h1: -0.01em;
+  --text-h2: 24px;
+  --leading-h2: 32px;
+  --tracking-h2: -0.01em;
+  --text-h3: 20px;
+  --leading-h3: 28px;
+  --tracking-h3: 0;
+  --text-h4: 16px;
+  --leading-h4: 24px;
+  --tracking-h4: 0;
+
+  --text-body-xl: 18px;
+  --leading-body-xl: 28px;
+  --tracking-body-xl: 0;
+  --text-body-lg: 16px;
+  --leading-body-lg: 26px;
+  --tracking-body-lg: 0;
+  --text-body-md: 14px;
+  --leading-body-md: 22px;
+  --tracking-body-md: 0;
+  --text-body-sm: 12px;
+  --leading-body-sm: 18px;
+  --tracking-body-sm: 0;
+  --text-body-xs: 10px;
+  --leading-body-xs: 14px;
+  --tracking-body-xs: 0.02em;
+  --text-mono-md: 14px;
+  --leading-mono-md: 22px;
+  --tracking-mono-md: -0.035em;
+  --text-mono-sm: 12px;
+  --leading-mono-sm: 18px;
+  --tracking-mono-sm: -0.035em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>15 Avatars · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link active" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+  <p class="eyebrow">15</p>
+  <h1>Avatars</h1>
+  <p class="hero-subtitle">Komponen avatar reusable untuk user, dokter, pasien, status, dan avatar group.</p>
+  <div class="divider"></div>
+  <nav aria-label="Daftar isi Avatars" class="toc">
+    <a href="#overview">Ringkasan</a>
+<a href="#sizes">Ukuran</a>
+<a href="#variants">Varian</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+  </nav>
+</header>
+
+<section class="mt-12" id="overview"><div class="section-head"><div><h2>Ringkasan</h2><p>Avatar dipakai untuk identitas user, dokter, pasien, atau grup petugas. Gunakan initials saat foto belum tersedia, dan status dot hanya jika statusnya memang dibutuhkan.</p></div><span class="badge badge-sm"><span class="dot"></span>Initials · Image · Status · Group</span></div><div class="grid-3"><div class="note"><strong>Initials</strong><br/>Gunakan 1–2 huruf dari nama yang tampil.</div><div class="note"><strong>Image</strong><br/>Gunakan foto dengan object-fit cover agar tidak merusak ratio.</div><div class="note"><strong>Status</strong><br/>Online, busy, atau away hanya untuk konteks real-time.</div></div></section>
+<section class="mt-12" id="sizes"><div class="section-head"><div><h2>Ukuran Avatar</h2><p>Ukuran disediakan dari XS sampai XL agar bisa dipakai di table, navbar, sidebar, card profil, dan halaman detail.</p></div></div><div class="card"><div class="layout-row"><span class="avatar avatar-xs">AU</span><span class="avatar avatar-sm">AU</span><span class="avatar avatar-md">AU</span><span class="avatar avatar-lg">AU</span><span class="avatar avatar-xl">AU</span></div></div></section>
+<section class="mt-12" id="variants"><div class="section-head"><div><h2>Varian Avatar</h2><p>Warna avatar mengikuti token semantik. Hindari warna acak agar identitas visual tetap konsisten.</p></div></div><div class="grid-3"><div class="card"><h3>Initials</h3><div class="layout-row"><span class="avatar avatar-md">AU</span><span class="avatar avatar-md avatar-green">DR</span><span class="avatar avatar-md avatar-warning">RJ</span><span class="avatar avatar-md avatar-danger">ER</span></div></div><div class="card"><h3>Image</h3><div class="layout-row"><span class="avatar avatar-lg"><img src="../../assets/images/avatar-dr-ahmad-fauzi.svg" alt="Avatar dokter"></span><span class="avatar avatar-lg avatar-square"><img src="../../assets/images/avatar-dr-ahmad-fauzi.svg" alt="Avatar dokter"></span></div></div><div class="card"><h3>Status</h3><div class="layout-row"><span class="avatar avatar-md avatar-status is-online">AU</span><span class="avatar avatar-md avatar-status is-busy">DR</span><span class="avatar avatar-md avatar-status is-away">RJ</span></div></div><div class="card"><h3>Avatar Group</h3><div class="avatar-group"><span class="avatar avatar-sm">AU</span><span class="avatar avatar-sm avatar-green">DR</span><span class="avatar avatar-sm avatar-warning">RJ</span><span class="avatar-count">+4</span></div></div></div></section>
+<section class="mt-12" id="usage"><div class="section-head"><div><h2>Panduan Pakai</h2><p>Avatar harus membantu mengenali orang atau tim, bukan menjadi dekorasi.</p></div></div><div class="do-dont"><div class="card ok"><h3 class="usage-title is-do">Gunakan initials yang jelas</h3><p>Ambil dari nama yang sama dengan teks di sebelahnya, misalnya Superadmin menjadi AU.</p></div><div class="card no"><h3 class="usage-title is-dont">Jangan campur terlalu banyak warna</h3><p>Gunakan varian semantik hanya saat ada makna status atau kategori.</p></div></div></section>
+<section class="mt-12" id="implementation"><div class="section-head"><div><h2>Implementasi</h2><p>Class avatar berada di <code>src/css/design-system/avatars.css</code>.</p></div></div><div class="code-grid"><article><p class="code-title">HTML</p><pre><code>&lt;span class=&quot;avatar avatar-md&quot;&gt;AU&lt;/span&gt;
+&lt;span class=&quot;avatar avatar-md avatar-status is-online&quot;&gt;DR&lt;/span&gt;
+&lt;span class=&quot;avatar avatar-lg&quot;&gt;
+  &lt;img src=&quot;avatar.svg&quot; alt=&quot;Avatar dokter&quot; /&gt;
+&lt;/span&gt;
+
+&lt;div class=&quot;avatar-group&quot;&gt;
+  &lt;span class=&quot;avatar avatar-sm&quot;&gt;AU&lt;/span&gt;
+  &lt;span class=&quot;avatar avatar-sm avatar-green&quot;&gt;DR&lt;/span&gt;
+  &lt;span class=&quot;avatar-count&quot;&gt;+4&lt;/span&gt;
+&lt;/div&gt;</code></pre></article><article><p class="code-title">React mapping</p><pre><code>const sizeClass = {
+  xs: &#x27;avatar-xs&#x27;,
+  sm: &#x27;avatar-sm&#x27;,
+  md: &#x27;avatar-md&#x27;,
+  lg: &#x27;avatar-lg&#x27;,
+  xl: &#x27;avatar-xl&#x27;,
+}
+
+function Avatar({ initials, src, size = &#x27;md&#x27;, status }) {
+  return &lt;span className={`avatar ${sizeClass[size]} ${status ? `avatar-status is-${status}` : &#x27;&#x27;}`}&gt;
+    {src ? &lt;img src={src} alt=&quot;&quot; /&gt; : initials}
+  &lt;/span&gt;
+}</code></pre></article></div></section>
+
+<footer class="footer">
+  <div><strong>SIMRS ZAIDAN · 15 Avatars</strong><br/>Gunakan sebagai acuan komponen UI, CSS, dan implementasi frontend.</div>
+  <div class="mono">© 2026 · Panduan Design System</div>
+</footer>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* ==========================================================================
+   09. Search autocomplete / autosuggest
+   Dipakai oleh search header dan input pencarian dengan suggestion panel.
+   ========================================================================== */
+
+.doctor-autocomplete {
+  @apply relative z-[60];
+}
+
+.doctor-autocomplete .input {
+  @apply font-normal;
+}
+
+.doctor-autocomplete .field-icon.right {
+  @apply text-[color:var(--ui-icon-soft)];
+}
+
+.doctor-autocomplete.is-open .input,
+.doctor-autocomplete:focus-within .input {
+  @apply border-[color:var(--primary-blue)] shadow-[var(--ring)];
+}
+
+.doctor-autocomplete-panel {
+  @apply hidden absolute z-[80] top-[calc(100%_+_10px)] left-0 w-[min(560px,calc(100vw_-_56px))] max-w-[calc(100vw_-_56px)] min-w-full max-h-[420px] overflow-auto border border-[color:var(--ui-primary-border-soft)] rounded-[var(--radius-dropdown-panel)] bg-[color:var(--white)] shadow-[0_18px_44px_rgba(15,31,61,0.13)];
+}
+
+.doctor-autocomplete.is-open .doctor-autocomplete-panel,
+.doctor-autocomplete:focus-within .doctor-autocomplete-panel {
+  @apply block;
+}
+
+.doctor-autocomplete-panel .dropdown-option {
+  @apply min-h-[58px] gap-3 py-3 px-3.5 font-normal whitespace-normal;
+}
+
+.doctor-autocomplete-panel .dropdown-option[hidden],
+.doctor-autocomplete-panel [hidden] {
+  @apply hidden;
+}
+
+.option-icon {
+  @apply w-8 h-8 rounded-[var(--radius-input-md)] bg-[color:var(--light-gray)] text-[color:var(--primary-blue)] flex items-center justify-center flex-none;
+}
+
+.option-icon.green {
+  @apply text-[color:var(--success-dark)] bg-[color:var(--success-light)];
+}
+
+.option-icon.indigo {
+  @apply text-[color:var(--indigo)] bg-[color:var(--indigo-light)];
+}
+
+.option-meta {
+  @apply flex flex-col gap-0.5 min-w-0;
+}
+
+.option-meta strong {
+  @apply text-body-md leading-[1.2];
+
+  color: inherit;
+}
+
+.option-meta small {
+  @apply text-[color:var(--ui-text-muted-soft)] text-body-sm font-normal leading-[1.35];
+}
+
+.doctor-autocomplete-panel .dropdown-option.active .option-meta small,
+.doctor-autocomplete-panel .dropdown-option:hover .option-meta small {
+  @apply text-[color:var(--ui-autocomplete-text)];
+}
+
+.option-right {
+  @apply ml-auto text-[color:var(--ui-text-placeholder)] text-body-sm font-normal whitespace-nowrap;
+}
+
+.dropdown-footer {
+  @apply flex items-center justify-between gap-3 py-2.5 px-3 border-t border-t-[color:var(--border-soft)] bg-[color:var(--ui-surface-canvas)] text-[color:var(--ui-text-muted-soft)] text-body-sm;
+}
+
+.kbd {
+  @apply border border-[color:var(--ui-border-default)] border-b-[2px] bg-[color:var(--white)] rounded-md p-[1px_5px] text-[color:var(--text-primary)] text-mono-sm font-bold;
+}
+
+.autocomplete-empty {
+  @apply p-[18px_14px] text-[color:var(--ui-text-muted-soft)] text-body-md font-bold text-center border-t border-t-[color:var(--border-soft)];
+}

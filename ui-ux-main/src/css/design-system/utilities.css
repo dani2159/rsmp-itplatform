@@ -1,0 +1,137 @@
+/* --------------------------------------------------------------------------
+   Penyelarasan surface halaman, teks, divider, dan judul halaman secara semantik
+   Background halaman = light-gray, card/panel = white, teks body = slate-dark,
+   secondary text = slate, border/divider = slate-light.
+   -------------------------------------------------------------------------- */
+
+.dashboard-app {
+  @apply bg-[color:var(--page)] text-[color:var(--text-primary)];
+}
+
+.app-main {
+  @apply text-[color:var(--text-primary)];
+}
+
+.content-card,
+.dashboard-panel,
+.metric-card,
+.chart-card,
+.login-card,
+.login-feature-card,
+.topnav-hero-card {
+  @apply bg-[color:var(--surface)];
+}
+
+.content-card {
+  @apply border-0;
+}
+
+.dashboard-panel {
+  @apply border-0 shadow-[var(--shadow-sm)];
+}
+
+.metric-card {
+  @apply border-0;
+}
+
+.chart-card,
+.login-card,
+.login-feature-card {
+  @apply border-0 shadow-[var(--shadow-sm)];
+}
+
+hr,
+.sidebar-separator,
+.card-divider,
+.table-divider,
+.select,
+.textarea,
+.native-select,
+.input-shell,
+.form-control {
+  @apply border-[color:var(--border)];
+}
+
+.muted {
+  @apply text-[color:var(--text-secondary)];
+}
+
+/* Class utility warna: gunakan langsung di HTML saat butuh warna semantik. */
+
+.text-primary,
+.u-text-primary {
+  @apply text-[color:var(--text-primary)];
+}
+
+.text-secondary,
+.text-muted,
+.u-text-secondary,
+.u-text-muted {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.text-brand,
+.u-text-brand {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.text-success,
+.u-text-success {
+  @apply text-[color:var(--success-dark)];
+}
+
+.text-warning,
+.u-text-warning {
+  @apply text-[color:var(--warning-dark)];
+}
+
+.text-danger,
+.u-text-danger {
+  @apply text-[color:var(--danger-dark)];
+}
+
+.caption {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.field-helper {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.field-label {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.form-label {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.input-label {
+  @apply text-[color:var(--text-secondary)];
+}
+
+/* --------------------------------------------------------------------------
+   Normalisasi label form
+   Label input di semua halaman memakai 14px / 500 sesuai token design system.
+   -------------------------------------------------------------------------- */
+
+label:not(.sr-only),
+.field > label:not(.sr-only),
+.field .label,
+.field-label,
+.form-label,
+.input-label,
+.label-line > label {
+  @apply text-body-md leading-[var(--form-label-leading)] font-[var(--form-label-weight)] tracking-[var(--form-label-tracking)];
+}
+
+.check,
+.radio,
+.switch {
+  @apply tracking-[var(--form-label-tracking)];
+}
+
+.page-title,
+.dashboard-hero-head h1 {
+  @apply mt-0 text-h2 leading-[var(--page-title-leading)] tracking-[var(--page-title-tracking)] font-bold text-[color:var(--text-primary)];
+}

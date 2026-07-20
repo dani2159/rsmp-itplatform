@@ -1,0 +1,121 @@
+/* ==========================================================================
+   00. Utility tipografi
+   Class ini mengikuti token font size, line-height, letter-spacing, dan weight.
+   Dipakai untuk HTML statis dan bisa dimapping langsung ke komponen React.
+   ========================================================================== */
+
+.text-display-2xl {
+  font-size: var(--text-display-2xl);
+  line-height: var(--leading-display-2xl);
+  letter-spacing: var(--tracking-display-2xl);
+  font-weight: var(--weight-bold);
+}
+
+.text-display-xl {
+  font-size: var(--text-display-xl);
+  line-height: var(--leading-display-xl);
+  letter-spacing: var(--tracking-display-xl);
+  font-weight: var(--weight-bold);
+}
+
+.text-display-lg {
+  font-size: var(--text-display-lg);
+  line-height: var(--leading-display-lg);
+  letter-spacing: var(--tracking-display-lg);
+  font-weight: var(--weight-bold);
+}
+
+.text-display-md {
+  font-size: var(--text-display-md);
+  line-height: var(--leading-display-md);
+  letter-spacing: var(--tracking-display-md);
+  font-weight: var(--weight-bold);
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  letter-spacing: var(--tracking-h1);
+  font-weight: var(--weight-bold);
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  letter-spacing: var(--tracking-h2);
+  font-weight: var(--weight-bold);
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  letter-spacing: var(--tracking-h3);
+  font-weight: var(--weight-bold);
+}
+
+.text-h4 {
+  font-size: var(--text-h4);
+  line-height: var(--leading-h4);
+  letter-spacing: var(--tracking-h4);
+  font-weight: var(--weight-bold);
+}
+
+.text-body-xl {
+  font-size: var(--text-body-xl);
+  line-height: var(--leading-body-xl);
+  letter-spacing: var(--tracking-body-xl);
+}
+
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body-lg);
+  letter-spacing: var(--tracking-body-lg);
+}
+
+.text-body-md {
+  font-size: var(--text-body-md);
+  line-height: var(--leading-body-md);
+  letter-spacing: var(--tracking-body-md);
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: var(--leading-body-sm);
+  letter-spacing: var(--tracking-body-sm);
+}
+
+.text-body-xs {
+  font-size: var(--text-body-xs);
+  line-height: var(--leading-body-xs);
+  letter-spacing: var(--tracking-body-xs);
+}
+
+.text-mono-md {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-md);
+  line-height: var(--leading-mono-md);
+  letter-spacing: var(--tracking-mono-md);
+}
+
+.text-mono-sm {
+  font-family: var(--font-mono);
+  font-size: var(--text-mono-sm);
+  line-height: var(--leading-mono-sm);
+  letter-spacing: var(--tracking-mono-sm);
+}
+
+.font-regular {
+  @apply font-normal;
+}
+
+.font-medium {
+  @apply font-medium;
+}
+
+.font-semibold {
+  @apply font-semibold;
+}
+
+.font-bold {
+  @apply font-bold;
+}

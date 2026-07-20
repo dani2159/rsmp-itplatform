@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>11 Header &amp; Sidebar · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/> <link href="../../css/style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link active" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">11</p>
+<h1>Header &amp; Sidebar</h1>
+<p class="hero-subtitle">Struktur header dan sidebar untuk brand, search, menu utama, nested menu, badge count, user switcher, dan collapsed sidebar.</p>
+<div class="divider"></div>
+<nav aria-label="Navigasi halaman" class="toc">
+<a href="#preview">Preview</a>
+<a href="#app-layout">Layout dengan header</a>
+<a href="#sidebar-three-layer">Sidebar 3 Layer</a>
+<a href="#top-navigation">Top navigation</a>
+<a href="#anatomy">Anatomi</a>
+<a href="#usage">Aturan Penggunaan</a>
+<a href="#code">Struktur HTML</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="preview">
+<div class="section-head">
+<div>
+<h2>Sidebar Dashboard</h2>
+<p>Preview ini memakai struktur yang sama dengan halaman <span class="mono">Dashboard Sidebar</span>: logo, user info, menu utama, nested menu, dan state aktif memakai class produksi yang sama.</p>
+</div>
+</div>
+<div class="component-stage">
+<div class="browser-bar">
+<div class="browser-title"><span></span>Preview sidebar dashboard</div>
+<div class="browser-meta">mengikuti dashboard/30-dashboard.html</div>
+</div>
+<div class="sidebar-showcase"><aside aria-label="Preview sidebar dashboard SIMRS" class="app-sidebar">
+<div class="sidebar-head">
+<a aria-label="SIMRS ZAIDAN dashboard" class="brand-lockup" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" class="brand-logo-full" src="../../assets/images/logo-simrs.svg"/>
+<img alt="SIMRS ZAIDAN icon" class="brand-logo-icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+</div>
+<div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+<span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+<span class="sidebar-user-meta">
+<span class="sidebar-user-name">Superadmin</span>
+<span class="sidebar-user-role">Super Admin</span>
+</span>
+</div>
+<nav aria-label="Menu utama SIMRS" class="sidebar-section">
+<a class="nav-item active" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-gauge-high"></i></span>
+<span class="nav-label">Dashboard</span>
+</a>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Admin">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-gear"></i></span>
+<span class="nav-label">Admin</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/admin/users" href="../admin/50-users.html">Daftar User</a>
+<a class="nav-subitem" data-route="/admin/roles" href="../admin/51-role-permission.html">Role &amp; Permission</a>
+<a class="nav-subitem" data-route="/admin/units" href="../master/40-unit.html">Unit / Poli</a>
+<a class="nav-subitem" data-route="/admin/employees" href="../master/41-karyawan.html">Karyawan</a>
+<a class="nav-subitem" data-route="/admin/doctor-schedules" href="../master/42-jadwal-dokter.html">Jadwal Dokter</a>
+<a class="nav-subitem" data-route="/admin/rooms" href="../master/43-kamar.html">Kamar</a>
+<a class="nav-subitem" data-route="/admin/insurance" href="../master/44-penjamin.html">Penjamin</a>
+<a class="nav-subitem" data-route="/admin/tariffs" href="../master/45-tarif.html">Tarif</a>
+<a class="nav-subitem" data-route="/admin/hospital-config" href="#">Konfigurasi RS</a>
+<a class="nav-subitem" data-route="/admin/printer-config" href="#">Printer</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Pendaftaran">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-plus"></i></span>
+<span class="nav-label">Pendaftaran</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" href="../dashboard/32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+<a class="nav-subitem" data-route="/registration/patients/new" href="../registration/60-pendaftaran-pasien-baru.html">Pasien Baru</a>
+<a class="nav-subitem" data-route="/registration/visits/new" href="#">Buat Kunjungan</a>
+<a class="nav-subitem" data-route="/registration/queue" href="#">Monitor Antrean</a>
+<a class="nav-subitem" data-route="/registration/display" href="../dashboard/33-monitor-display-loket.html">Display TV Antrean</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rekam Medis">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></span>
+<span class="nav-label">Rekam Medis</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/emr/search" href="../emr/70-rekam-medis.html">Cari RM Pasien</a>
+<a class="nav-subitem" data-route="/emr/patients/:id" href="../emr/70-rekam-medis.html">Profil RM Terpadu</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rawat Jalan">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i></span>
+<span class="nav-label">Rawat Jalan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/outpatient" href="#">Dashboard Poli</a>
+<a class="nav-subitem" data-route="/outpatient/queue" href="#">Antrean Poli</a>
+<a class="nav-subitem" data-route="/outpatient/visits/:id" href="#">Pemeriksaan</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Farmasi">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i></span>
+<span class="nav-label">Farmasi</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/pharmacy" href="#">Antrian Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/prescriptions/:id" href="#">Validasi Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/dispensing/:id" href="#">Dispensing</a>
+<a class="nav-subitem" data-route="/pharmacy/labels/:id" href="#">Cetak Etiket</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Kasir">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-cash-register"></i></span>
+<span class="nav-label">Kasir</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/billing" href="#">Pasien Siap Bayar</a>
+<a class="nav-subitem" data-route="/billing/:visitId/receipt" href="#">Kwitansi</a>
+<a class="nav-subitem" data-route="/billing/void" href="#">Void Billing</a>
+<a class="nav-subitem" data-route="/billing/report" href="#">Laporan Kasir</a>
+</div>
+</details>
+</nav>
+<div class="sidebar-spacer"></div>
+</aside></div>
+</div>
+<div class="note u-style-013"><strong>Aturan reuse:</strong> search memakai komponen input, angka notifikasi memakai badge, icon sidebar memakai <span class="mono">fa-solid</span>, top navbar memakai icon FontAwesome line/outline, dan warna memakai token <span class="mono">primary-blue</span>, <span class="mono">primary-light</span>, <span class="mono">border-soft</span>, <span class="mono">slate</span>, serta <span class="mono">navy</span>.</div>
+</section>
+
+<section class="mt-12" id="sidebar-three-layer">
+<div class="section-head">
+<div>
+<h2>Sidebar 3 Layer</h2>
+<p>Contoh menu bertingkat: menu utama, submenu, lalu submenu level ketiga. Gunakan pola ini hanya untuk modul yang memang punya banyak aksi turunan.</p>
+</div>
+<span class="badge badge-sm">nav-subgroup</span>
+</div>
+<div class="component-stage">
+<div class="browser-bar">
+<div class="browser-title"><span></span>Preview sidebar nested menu</div>
+<div class="browser-meta">3 layer submenu</div>
+</div>
+<div class="sidebar-showcase sidebar-showcase-nested">
+<aside aria-label="Preview sidebar 3 layer" class="app-sidebar guide-nested-sidebar-preview">
+<div class="sidebar-head">
+<a aria-label="SIMRS ZAIDAN dashboard" class="brand-lockup" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" class="brand-logo-full" src="../../assets/images/logo-simrs.svg"/>
+<img alt="SIMRS ZAIDAN icon" class="brand-logo-icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+</div>
+<div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+<span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+<span class="sidebar-user-meta"><span class="sidebar-user-name">Superadmin</span><span class="sidebar-user-role">Super Admin</span></span>
+</div>
+<nav aria-label="Contoh menu bertingkat" class="sidebar-section">
+<a class="nav-item active" href="../dashboard/30-dashboard.html">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-gauge-high"></i></span>
+<span class="nav-label">Dashboard</span>
+</a>
+<details class="nav-group" open>
+<summary class="nav-summary" data-tooltip="Layanan">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-layer-group"></i></span>
+<span class="nav-label">Layanan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<details class="nav-subgroup" open>
+<summary class="nav-subitem nav-subsummary">
+<span>Rawat Inap</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav-nested">
+<a class="nav-subitem" href="#">Mutasi Pasien</a>
+<details class="nav-subgroup" open>
+<summary class="nav-subitem nav-subsummary">
+<span>Bed Management</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav-nested">
+<a class="nav-subitem" href="#">Dashboard Bed</a>
+<a class="nav-subitem" href="#">Mapping Ruangan</a>
+<a class="nav-subitem" href="#">Status Bed</a>
+</div>
+</details>
+</div>
+</details>
+<details class="nav-subgroup">
+<summary class="nav-subitem nav-subsummary">
+<span>Rawat Jalan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav-nested">
+<a class="nav-subitem" href="#">Antrean Poli</a>
+<a class="nav-subitem" href="#">Pemeriksaan</a>
+<a class="nav-subitem" href="#">Resume Medis</a>
+</div>
+</details>
+</div>
+</details>
+</nav>
+<div class="sidebar-spacer"></div>
+</aside>
+</div>
+</div>
+<div class="note u-style-013"><strong>Catatan:</strong> Sidebar 3 layer tetap memakai <span class="mono">details</span> native. Level kedua memakai <span class="mono">nav-subgroup</span>, level ketiga memakai <span class="mono">subnav-nested</span>.</div>
+</section>
+<section class="mt-12" id="app-layout">
+<div class="section-head">
+<div>
+<h2>Layout Dashboard Sidebar</h2>
+<p>Struktur ini mengikuti halaman dashboard sidebar: sidebar tetap di kiri, header berisi hamburger, logo mobile, search global, icon aksi, dan profil pengguna.</p>
+</div>
+</div>
+<div class="layout-preview dashboard-layout guide-dashboard-layout-preview" id="sidebarLayoutDemo"><aside aria-label="Sidebar layout preview SIMRS" class="app-sidebar" id="demoSidebar">
+<div class="sidebar-head">
+<a aria-label="SIMRS ZAIDAN dashboard" class="brand-lockup" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" class="brand-logo-full" src="../../assets/images/logo-simrs.svg"/>
+<img alt="SIMRS ZAIDAN icon" class="brand-logo-icon" src="../../assets/images/logo-simrs-icon.svg"/>
+</a>
+</div>
+<div class="sidebar-user-info" data-tooltip="Superadmin · Super Admin" role="button" tabindex="0">
+<span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+<span class="sidebar-user-meta">
+<span class="sidebar-user-name">Superadmin</span>
+<span class="sidebar-user-role">Super Admin</span>
+</span>
+</div>
+<nav aria-label="Menu utama SIMRS" class="sidebar-section">
+<a class="nav-item active" data-tooltip="Dashboard" href="../dashboard/30-dashboard.html">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-gauge-high"></i></span>
+<span class="nav-label">Dashboard</span>
+</a>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Admin">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-gear"></i></span>
+<span class="nav-label">Admin</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/admin/users" href="../admin/50-users.html">Daftar User</a>
+<a class="nav-subitem" data-route="/admin/roles" href="../admin/51-role-permission.html">Role &amp; Permission</a>
+<a class="nav-subitem" data-route="/admin/units" href="../master/40-unit.html">Unit / Poli</a>
+<a class="nav-subitem" data-route="/admin/employees" href="../master/41-karyawan.html">Karyawan</a>
+<a class="nav-subitem" data-route="/admin/doctor-schedules" href="../master/42-jadwal-dokter.html">Jadwal Dokter</a>
+<a class="nav-subitem" data-route="/admin/rooms" href="../master/43-kamar.html">Kamar</a>
+<a class="nav-subitem" data-route="/admin/insurance" href="../master/44-penjamin.html">Penjamin</a>
+<a class="nav-subitem" data-route="/admin/tariffs" href="../master/45-tarif.html">Tarif</a>
+<a class="nav-subitem" data-route="/admin/hospital-config" href="#">Konfigurasi RS</a>
+<a class="nav-subitem" data-route="/admin/printer-config" href="#">Printer</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Pendaftaran">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-user-plus"></i></span>
+<span class="nav-label">Pendaftaran</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" href="../dashboard/32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+<a class="nav-subitem" data-route="/registration/patients/new" href="../registration/60-pendaftaran-pasien-baru.html">Pasien Baru</a>
+<a class="nav-subitem" data-route="/registration/visits/new" href="#">Buat Kunjungan</a>
+<a class="nav-subitem" data-route="/registration/queue" href="#">Monitor Antrean</a>
+<a class="nav-subitem" data-route="/registration/display" href="../dashboard/33-monitor-display-loket.html">Display TV Antrean</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rekam Medis">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-notes-medical"></i></span>
+<span class="nav-label">Rekam Medis</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/emr/search" href="../emr/70-rekam-medis.html">Cari RM Pasien</a>
+<a class="nav-subitem" data-route="/emr/patients/:id" href="../emr/70-rekam-medis.html">Profil RM Terpadu</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Rawat Jalan">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-stethoscope"></i></span>
+<span class="nav-label">Rawat Jalan</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/outpatient" href="#">Dashboard Poli</a>
+<a class="nav-subitem" data-route="/outpatient/queue" href="#">Antrean Poli</a>
+<a class="nav-subitem" data-route="/outpatient/visits/:id" href="#">Pemeriksaan</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Farmasi">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-prescription-bottle-medical"></i></span>
+<span class="nav-label">Farmasi</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/pharmacy" href="#">Antrian Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/prescriptions/:id" href="#">Validasi Resep</a>
+<a class="nav-subitem" data-route="/pharmacy/dispensing/:id" href="#">Dispensing</a>
+<a class="nav-subitem" data-route="/pharmacy/labels/:id" href="#">Cetak Etiket</a>
+</div>
+</details>
+<details class="nav-group">
+<summary class="nav-summary" data-tooltip="Kasir">
+<span class="nav-icon"><i aria-hidden="true" class="fa-solid fa-cash-register"></i></span>
+<span class="nav-label">Kasir</span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down nav-chevron"></i>
+</summary>
+<div class="subnav">
+<a class="nav-subitem" data-route="/billing" href="#">Pasien Siap Bayar</a>
+<a class="nav-subitem" data-route="/billing/:visitId/receipt" href="#">Kwitansi</a>
+<a class="nav-subitem" data-route="/billing/void" href="#">Void Billing</a>
+<a class="nav-subitem" data-route="/billing/report" href="#">Laporan Kasir</a>
+</div>
+</details>
+</nav>
+<div class="sidebar-spacer"></div>
+</aside><div class="app-main"><header class="app-header">
+<button aria-controls="demoSidebar" aria-expanded="true" aria-label="Tutup sidebar" class="icon-btn header-menu-btn" id="topbarSidebarButton" type="button">
+<i aria-hidden="true" class="fa-solid fa-bars topbar-line-icon"></i>
+</button>
+<a aria-label="SIMRS ZAIDAN dashboard" class="mobile-header-brand" href="../dashboard/30-dashboard.html">
+<img alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+</a>
+<div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+<span aria-hidden="true" class="field-icon">
+<i aria-hidden="true" class="fa-solid fa-magnifying-glass topbar-line-icon"></i>
+</span>
+<input aria-autocomplete="list" aria-controls="sidebarDemoSearchSuggestions" aria-expanded="false" aria-label="Cari pasien, jadwal, dokter" class="input with-left with-right" id="sidebarDemoSearchInput" placeholder="Cari pasien, jadwal, dokter..." role="combobox" type="search"/>
+<span aria-hidden="true" class="kbd-hint">⌘ K</span>
+<div aria-label="Saran pencarian" class="doctor-autocomplete-panel" id="sidebarDemoSearchSuggestions" role="listbox">
+<div class="dropdown-group-label" data-suggestion-group="recent">Terbaru</div>
+<button class="dropdown-option active" data-search-suggestion="" data-search-text="ayu lestari rm-10234 pasien rawat inap melati 203 recent" data-search-value="Ayu Lestari · RM-10234" data-suggestion-group="recent" role="option" type="button">
+<span class="option-meta"><strong>Ayu Lestari · RM-10234</strong><small>Pasien rawat inap · Ruang Melati 203</small></span>
+<span class="option-right">Pasien</span>
+</button>
+<div class="dropdown-group-label" data-suggestion-group="suggestion">Saran</div>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="dr bima pratama dokter penyakit dalam jadwal praktik poli" data-search-value="Dr. Bima Pratama" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Dr. Bima Pratama</strong><small>Dokter Penyakit Dalam · Jadwal praktik hari ini</small></span>
+<span class="option-right">Dokter</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="jadwal praktik dokter poli kalender shift appointment" data-search-value="Jadwal Praktik" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Jadwal Praktik</strong><small>Kelola jadwal dokter dan poli</small></span>
+<span class="option-right">Menu</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="ruang melati 203 kamar tersedia bed rawat inap" data-search-value="Ruang Melati 203" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Ruang Melati 203</strong><small>Kamar tersedia · Rawat inap</small></span>
+<span class="option-right">Kamar</span>
+</button>
+<div class="autocomplete-empty" hidden="">Tidak ada hasil yang cocok</div>
+<div class="dropdown-footer"><span>Gunakan ↑ ↓ untuk navigasi</span><span>Enter untuk pilih</span></div>
+</div>
+</div>
+<div aria-hidden="true" class="topbar-spacer"></div>
+<div aria-label="Aksi header" class="header-actions">
+
+
+
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu notifikasi" class="icon-btn topbar-icon">
+<i aria-hidden="true" class="fa-regular fa-bell"></i>
+<span class="notification-dot">4</span>
+</summary>
+<div aria-label="Menu notifikasi" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:320px;">
+<div class="dropdown-group-label">Notifikasi</div>
+<button class="dropdown-option active" role="menuitem" type="button"><span class="option-meta">Daftar tunggu meningkat<small>8 pasien butuh follow-up</small></span><span class="option-right"><span class="badge badge-warning badge-xs">Tinggi</span></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Kamar tersedia<small>Ruang Melati 203 kosong</small></span><span class="option-right">Baru</span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Approval tertunda<small>2 permintaan perubahan jadwal</small></span></button>
+<div class="dropdown-footer"><span>Tandai semua dibaca</span><span>Lihat semua</span></div>
+</div>
+</details>
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu profil superadmin" class="profile-menu">
+<span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+<span class="profile-copy"><span class="profile-name">Superadmin</span><span class="profile-role">Super Admin</span></span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down topbar-line-icon"></i>
+</summary>
+<div aria-label="Menu profil" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:240px;">
+<div class="dropdown-group-label">Akun</div>
+<button class="dropdown-option selected" role="menuitem" type="button"><span class="option-meta">Superadmin<small>Super Admin</small></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Pengaturan<small>Role dan akses</small></span></button>
+<a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+</div>
+</details>
+</div>
+</header><div class="app-content"><article class="content-card"><h3>Dokter Aktif</h3><div class="skeleton short"></div><div class="skeleton mid"></div></article><article class="content-card"><h3>Jadwal Hari Ini</h3><div class="skeleton short"></div><div class="skeleton mid"></div></article><article class="content-card wide"><h3>Surface Tabel</h3><div class="skeleton"></div><div class="skeleton mid"></div><div class="skeleton mid"></div></article></div></div></div>
+</section>
+<section class="mt-12" id="top-navigation">
+<div class="section-head">
+<div>
+<h2>Layout Dashboard Top Nav</h2>
+<p>Struktur ini mengikuti halaman dashboard top nav: utility bar di atas, menu horizontal di bawah, dropdown bertingkat, dan drawer responsive dari kiri.</p>
+</div>
+</div>
+<div class="component-stage topnav-stage">
+<div class="browser-bar">
+<div class="browser-title"><span></span>Preview full-width top navigation + multi-level dropdown</div>
+<div class="browser-meta">desktop · multi submenu · full header</div>
+</div>
+<div class="topnav-preview">
+<header aria-label="Top navigation SIMRS" class="topnav-shell">
+<div aria-label="Header utilitas" class="topnav-utilitybar">
+<button aria-controls="topnavMainMenu" aria-expanded="false" aria-label="Buka menu" class="topnav-mobile-btn" type="button"><i aria-hidden="true" class="fa-solid fa-bars"></i></button>
+<a aria-label="SIMRS ZAIDAN dashboard" class="topnav-brand" href="../dashboard/31-dashboard-topnav.html">
+<img alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+</a>
+<div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+<span aria-hidden="true" class="field-icon">
+<i aria-hidden="true" class="fa-solid fa-magnifying-glass topbar-line-icon"></i>
+</span>
+<input aria-autocomplete="list" aria-controls="topnavDemoSearchSuggestions" aria-expanded="false" aria-label="Cari pasien, jadwal, dokter" class="input with-left with-right" id="topnavDemoSearchInput" placeholder="Cari pasien, jadwal, dokter..." role="combobox" type="search"/>
+<span aria-hidden="true" class="kbd-hint">⌘ K</span>
+<div aria-label="Saran pencarian" class="doctor-autocomplete-panel" id="topnavDemoSearchSuggestions" role="listbox">
+<div class="dropdown-group-label" data-suggestion-group="recent">Terbaru</div>
+<button class="dropdown-option active" data-search-suggestion="" data-search-text="ayu lestari rm-10234 pasien rawat inap melati 203 recent" data-search-value="Ayu Lestari · RM-10234" data-suggestion-group="recent" role="option" type="button">
+<span class="option-meta"><strong>Ayu Lestari · RM-10234</strong><small>Pasien rawat inap · Ruang Melati 203</small></span>
+<span class="option-right">Pasien</span>
+</button>
+<div class="dropdown-group-label" data-suggestion-group="suggestion">Saran</div>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="dr bima pratama dokter penyakit dalam jadwal praktik poli" data-search-value="Dr. Bima Pratama" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Dr. Bima Pratama</strong><small>Dokter Penyakit Dalam · Jadwal praktik hari ini</small></span>
+<span class="option-right">Dokter</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="jadwal praktik dokter poli kalender shift appointment" data-search-value="Jadwal Praktik" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Jadwal Praktik</strong><small>Kelola jadwal dokter dan poli</small></span>
+<span class="option-right">Menu</span>
+</button>
+<button class="dropdown-option" data-search-suggestion="" data-search-text="ruang melati 203 kamar tersedia bed rawat inap" data-search-value="Ruang Melati 203" data-suggestion-group="suggestion" role="option" type="button">
+<span class="option-meta"><strong>Ruang Melati 203</strong><small>Kamar tersedia · Rawat inap</small></span>
+<span class="option-right">Kamar</span>
+</button>
+<div class="autocomplete-empty" hidden="">Tidak ada hasil yang cocok</div>
+<div class="dropdown-footer"><span>Gunakan ↑ ↓ untuk navigasi</span><span>Enter untuk pilih</span></div>
+</div>
+</div>
+<div aria-label="Aksi header" class="header-actions">
+
+
+
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu notifikasi" class="icon-btn topbar-icon">
+<i aria-hidden="true" class="fa-regular fa-bell"></i>
+<span class="notification-dot">4</span>
+</summary>
+<div aria-label="Menu notifikasi" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:320px;">
+<div class="dropdown-group-label">Notifikasi</div>
+<button class="dropdown-option active" role="menuitem" type="button"><span class="option-meta">Daftar tunggu meningkat<small>8 pasien butuh follow-up</small></span><span class="option-right"><span class="badge badge-warning badge-xs">Tinggi</span></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Kamar tersedia<small>Ruang Melati 203 kosong</small></span><span class="option-right">Baru</span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Approval tertunda<small>2 permintaan perubahan jadwal</small></span></button>
+<div class="dropdown-footer"><span>Tandai semua dibaca</span><span>Lihat semua</span></div>
+</div>
+</details>
+<details class="ds-dropdown" data-component="topbar-dropdown">
+<summary aria-label="Buka menu profil superadmin" class="profile-menu">
+<span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+<span class="profile-copy"><span class="profile-name">Superadmin</span><span class="profile-role">Super Admin</span></span>
+<i aria-hidden="true" class="fa-solid fa-chevron-down topbar-line-icon"></i>
+</summary>
+<div aria-label="Menu profil" class="dropdown-panel compact" role="menu" style="right:0; left:auto; width:240px;">
+<div class="dropdown-group-label">Akun</div>
+<button class="dropdown-option selected" role="menuitem" type="button"><span class="option-meta">Superadmin<small>Super Admin</small></span></button>
+<button class="dropdown-option" role="menuitem" type="button"><span class="option-meta">Pengaturan<small>Role dan akses</small></span></button>
+<a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+</div>
+</details>
+</div>
+</div>
+<div aria-label="Menu navigasi utama" class="topnav-menubar">
+<nav aria-label="Menu utama horizontal" class="topnav-main topnav-main-complex" id="topnavMainMenu">
+<a class="topnav-link active" href="../dashboard/31-dashboard-topnav.html">
+<i aria-hidden="true" class="fa-solid fa-gauge-high"></i>
+<span>Dashboard</span>
+</a>
+<div class="topnav-dropdown topnav-classic" data-component="topbar-hover-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="topnav-link" type="button">
+<i aria-hidden="true" class="fa-solid fa-user-plus"></i>
+<span>Pendaftaran</span>
+</button>
+<div aria-label="Menu Pendaftaran" class="topnav-dropdown-panel classic" role="menu">
+<div class="topnav-menu-list">
+<div class="topnav-submenu">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-id-card"></i>Registrasi Pasien</span><i aria-hidden="true" class="fa-solid fa-angle-right"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-user-plus"></i>Pasien Baru</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-user-check"></i>Pasien Lama</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-file-import"></i>Import Data Pasien</span></a>
+<div class="topnav-submenu">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-clipboard-check"></i>Verifikasi Data</span><i aria-hidden="true" class="fa-solid fa-angle-right"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-id-card"></i>Verifikasi Identitas</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-shield-halved"></i>Verifikasi Penjamin</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-clock-rotate-left"></i>Riwayat Perubahan</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="topnav-submenu">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-calendar-check"></i>Appointment</span><i aria-hidden="true" class="fa-solid fa-angle-right"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-calendar-plus"></i>Booking Poli</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-user-doctor"></i>Jadwal Dokter</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-list-ol"></i>Kuota Antrian</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-calendar-days"></i>Reschedule</span></a>
+</div>
+</div>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-clock"></i>Antrian Loket</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-file-lines"></i>Consent Form</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-folder-open"></i>Dokumen Pasien</span></a>
+</div>
+</div>
+</div>
+<div class="topnav-dropdown topnav-classic" data-component="topbar-hover-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="topnav-link" type="button">
+<i aria-hidden="true" class="fa-solid fa-clipboard-list"></i>
+<span>Rawat Jalan</span>
+</button>
+<div aria-label="Menu Rawat Jalan" class="topnav-dropdown-panel classic" role="menu">
+<div class="topnav-menu-list">
+<div class="topnav-submenu">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-user"></i>Poliklinik</span><i aria-hidden="true" class="fa-solid fa-angle-right"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-calendar-day"></i>Kunjungan Hari Ini</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-notes-medical"></i>Input Tindakan</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-file-medical"></i>Resume Medis</span></a>
+</div>
+</div>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-calendar-check"></i>Jadwal Dokter</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-folder-open"></i>Rujukan</span></a>
+</div>
+</div>
+</div>
+<a class="topnav-link" href="#"><i aria-hidden="true" class="fa-solid fa-kit-medical"></i><span>IGD</span></a>
+<a class="topnav-link" href="#"><i aria-hidden="true" class="fa-regular fa-clipboard"></i><span>Laboratorium</span></a>
+<a class="topnav-link" href="#"><i aria-hidden="true" class="fa-regular fa-image"></i><span>Radiologi</span></a>
+<a class="topnav-link" href="#"><i aria-hidden="true" class="fa-regular fa-square-plus"></i><span>Farmasi</span></a>
+<a class="topnav-link" href="#"><i aria-hidden="true" class="fa-regular fa-credit-card"></i><span>Kasir</span></a>
+<div class="topnav-dropdown topnav-classic topnav-right" data-component="topbar-hover-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="topnav-link" type="button">
+<i aria-hidden="true" class="fa-solid fa-chart-line"></i>
+<span>Laporan</span>
+</button>
+<div aria-label="Menu Laporan" class="topnav-dropdown-panel classic right flyout-left" role="menu">
+<div class="topnav-menu-list">
+<div class="topnav-submenu flyout-left">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-chart-bar"></i>Operasional</span><i aria-hidden="true" class="fa-solid fa-angle-left"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-calendar-day"></i>Harian</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-calendar-days"></i>Bulanan</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-bed-pulse"></i>BOR &amp; LOS</span></a>
+</div>
+</div>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-file-lines"></i>Executive Dashboard</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-folder-open"></i>Export Data</span></a>
+</div>
+</div>
+</div>
+<div class="topnav-dropdown topnav-classic topnav-right" data-component="topbar-hover-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="topnav-link" type="button">
+<i aria-hidden="true" class="fa-solid fa-table-cells-large"></i>
+<span>Admin</span>
+</button>
+<div aria-label="Menu Admin" class="topnav-dropdown-panel classic right flyout-left" role="menu">
+<div class="topnav-menu-list">
+<div class="topnav-submenu flyout-left">
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-building"></i>Ruangan</span><i aria-hidden="true" class="fa-solid fa-angle-left"></i></a>
+<div class="topnav-submenu-panel" role="menu">
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-layer-group"></i>Kelas</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-building"></i>Lantai</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-door-open"></i>Kamar</span></a>
+<a href="#" role="menuitem"><span><i aria-hidden="true" class="fa-solid fa-bed"></i>Bed</span></a>
+</div>
+</div>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-id-badge"></i>Data Dokter</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-credit-card"></i>Tarif &amp; Paket</span></a>
+<a class="topnav-menu-row" href="#" role="menuitem"><span><i aria-hidden="true" class="fa-regular fa-folder-open"></i>Penjamin</span></a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+</header>
+<div class="topnav-surface"><div class="topnav-hero-card"><span class="badge badge-primary badge-sm">Dashboard top nav</span><h3>Header full-width dengan menu utama di bar kedua</h3><p>Gunakan struktur yang sama dengan dashboard top nav agar desktop, hover dropdown, dan drawer mobile tetap konsisten.</p></div><div class="topnav-stat-grid"><article><span>Utility header</span><strong>Search</strong><small>notifikasi + profil</small></article><article><span>Menu utama</span><strong>Horizontal</strong><small>dropdown bertingkat</small></article><article><span>Responsive</span><strong>Drawer</strong><small>overlay + scroll</small></article></div></div>
+</div>
+</div>
+<div class="note u-style-013"><strong>Catatan implementasi:</strong> markup top nav di guide ini memakai class yang sama dengan halaman dashboard top nav. Perubahan style topnav sebaiknya dilakukan di <code>navbar.css</code> agar preview dan halaman produksi tetap sejalan.</div>
+<pre class="code-block"><code>&lt;header class="topnav-shell" aria-label="Top navigation SIMRS"&gt;
+  &lt;div class="topnav-utilitybar"&gt;
+    &lt;button class="topnav-mobile-btn" type="button" aria-controls="topnavMainMenu"&gt;...&lt;/button&gt;
+    &lt;a class="topnav-brand" href="../dashboard/31-dashboard-topnav.html"&gt;...logo...&lt;/a&gt;
+    &lt;div class="input-wrap header-search doctor-autocomplete"&gt;...search...&lt;/div&gt;
+    &lt;div class="header-actions"&gt;...notifikasi, profil...&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="topnav-menubar"&gt;
+    &lt;nav class="topnav-main topnav-main-complex" id="topnavMainMenu"&gt;
+      &lt;a class="topnav-link active" href="../dashboard/31-dashboard-topnav.html"&gt;Dashboard&lt;/a&gt;
+      &lt;div class="topnav-dropdown topnav-classic"&gt;
+        &lt;button class="topnav-link" type="button"&gt;Rawat Inap&lt;/button&gt;
+        &lt;div class="topnav-dropdown-panel classic"&gt;
+          &lt;div class="topnav-menu-list"&gt;
+            &lt;div class="topnav-submenu"&gt;
+              &lt;a class="topnav-menu-row" href="#"&gt;&lt;span&gt;Bed Management&lt;/span&gt;&lt;i class="fa-solid fa-angle-right"&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;div class="topnav-submenu-panel"&gt;...submenu...&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</section>
+<section class="mt-12" id="anatomy">
+<div class="section-head">
+<div><h2>Anatomi Komponen</h2><p>Struktur dasar sidebar yang perlu konsisten di semua dashboard SIMRS.</p></div>
+</div>
+<div class="grid-3">
+<div class="card soft"><div class="mini-title">01</div><h3>Header sidebar</h3><p>Berisi logo/brand, nama produk atau RS, dan aksi switch/collapse memakai icon button.</p></div>
+<div class="card soft"><div class="mini-title">02</div><h3>Item navigasi</h3><p>Setiap item terdiri dari icon, label, badge count opsional, chevron opsional, dan state active/hover/focus.</p></div>
+<div class="card soft"><div class="mini-title">03</div><h3>Mobile drawer</h3><p>Saat responsive, sidebar berubah menjadi drawer dari kiri dengan overlay. Logo tetap di header, bukan di dalam drawer.</p></div>
+</div>
+</section>
+<section class="mt-12" id="usage">
+<div class="section-head">
+<div><h2>Aturan Penggunaan</h2><p>Aturan penggunaan agar sidebar tetap konsisten dan tidak membuat layout terasa penuh.</p></div>
+</div>
+<div class="grid-2">
+<div class="card">
+<h3 class="usage-title is-do">Yang disarankan</h3>
+<ul class="guideline-list">
+<li>Gunakan active state hanya untuk satu parent atau satu leaf page.</li>
+<li>Gunakan badge count untuk item yang benar-benar perlu perhatian pengguna.</li>
+<li>Gunakan collapsed sidebar saat ruang horizontal terbatas, tetap sediakan tooltip.</li>
+<li>Gunakan FontAwesome: sidebar memakai <span class="mono">fa-solid</span> / filled, sedangkan top navbar memakai gaya line/outline seperti <span class="mono">fa-regular</span> bila tersedia.</li>
+</ul>
+</div>
+<div class="card">
+<h3 class="usage-title is-dont">Yang dihindari</h3>
+<ul class="guideline-list">
+<li>Jangan memakai lebih dari dua level nested navigation di sidebar.</li>
+<li>Jangan campur style sidebar gelap dan terang dalam satu aplikasi.</li>
+<li>Jangan gunakan warna status merah untuk menu inactive kecuali ada error.</li>
+<li>Jangan hilangkan focus state untuk navigasi keyboard.</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Sidebar memakai .app-sidebar, .sidebar-user-info, .nav-item, .nav-group, dan .subnav. Top nav memakai .topnav-shell, .topnav-utilitybar, .topnav-main, .topnav-link, dan .topnav-dropdown.</p>
+</div>
+<span class="badge badge-sm">sidebar.css + navbar.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/sidebar.css */
+.app-sidebar { @apply w-[240px] min-h-[650px] flex flex-col bg-[color:var(--surface)] border border-[color:var(--border-soft)] rounded-[18px] shadow-[0_18px_44px_rgba(15,31,61,0.08)] p-4 text-[color:var(--text-primary)]; }
+.sidebar-user-info { @apply flex items-center gap-2.5 min-h-13 rounded-[14px] bg-[color:var(--surface-muted)] py-2 px-2.5 mb-3; }
+.nav-item,
+.nav-summary { @apply w-full min-h-10.5 flex items-center gap-3 rounded-[11px] bg-transparent text-[color:var(--text-primary)] text-body-md font-semibold py-0 px-2.5; }
+.subnav { @apply flex flex-col gap-1 mt-1.5 mr-0 mb-1.5 ml-5 pl-5 border-l border-l-[color:var(--border-soft)]; }
+
+/* src/css/design-system/navbar.css */
+.topnav-shell { @apply relative z-[40] w-full overflow-visible border-b border-b-[color:var(--primary-blue-tint-80)] bg-[color:rgba(255,255,255,0.98)] shadow-[0_10px_28px_rgba(15,31,61,0.07)]; }
+.topnav-utilitybar { @apply flex items-center gap-3.5 min-h-[72px] px-6; }
+.topnav-link { @apply min-h-[38px] inline-flex items-center gap-2 rounded-[var(--radius-dropdown-md)] text-[color:var(--text-primary)] bg-transparent text-body-md font-semibold py-0 px-3; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>function SidebarLayout() {
+  return (
+    &lt;div className="layout-preview dashboard-layout"&gt;
+      &lt;aside className="app-sidebar"&gt;...sidebar dashboard...&lt;/aside&gt;
+      &lt;div className="app-main"&gt;
+        &lt;header className="app-header"&gt;...topbar dashboard...&lt;/header&gt;
+        &lt;main className="app-content"&gt;...&lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function TopNavLayout() {
+  return (
+    &lt;&gt;
+      &lt;header className="topnav-shell"&gt;...dashboard top nav...&lt;/header&gt;
+      &lt;main className="topnav-content"&gt;...&lt;/main&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Untuk React, pindahkan struktur ini ke komponen tanpa mengganti nama class.</div>
+</section>
+<section class="mt-12" id="code">
+<div class="section-head">
+<div><h2>Struktur HTML</h2><p>Contoh markup minimal. Di React, struktur ini bisa dibagi menjadi komponen <span class="mono">Sidebar</span>, <span class="mono">SidebarItem</span>, dan <span class="mono">SidebarGroup</span>.</p></div>
+</div>
+<pre class="code-block"><code>&lt;aside class="app-sidebar" aria-label="Sidebar dashboard SIMRS"&gt;
+  &lt;div class="sidebar-head"&gt;
+    &lt;a class="brand-lockup" href="../dashboard/30-dashboard.html"&gt;...logo...&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class="sidebar-user-info"&gt;
+    &lt;span class="sidebar-user-avatar sidebar-user-initials"&gt;AU&lt;/span&gt;
+    &lt;span class="sidebar-user-meta"&gt;
+      &lt;span class="sidebar-user-name"&gt;Superadmin&lt;/span&gt;
+      &lt;span class="sidebar-user-role"&gt;Super Admin&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;nav class="sidebar-section" aria-label="Menu utama SIMRS"&gt;
+    &lt;a class="nav-item active" href="../dashboard/30-dashboard.html"&gt;
+      &lt;span class="nav-icon"&gt;...&lt;/span&gt;
+      &lt;span class="nav-label"&gt;Dashboard&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;details class="nav-group"&gt;
+      &lt;summary class="nav-summary"&gt;
+        &lt;span class="nav-icon"&gt;...&lt;/span&gt;
+        &lt;span class="nav-label"&gt;Admin&lt;/span&gt;
+        &lt;i class="fa-solid fa-chevron-down nav-chevron"&gt;&lt;/i&gt;
+      &lt;/summary&gt;
+      &lt;div class="subnav"&gt;
+        &lt;a class="nav-subitem" href="../admin/50-users.html"&gt;Daftar User&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/details&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</code></pre>
+</section>
+<footer class="note u-style-109"><strong>Class utama:</strong> <span class="mono">.app-sidebar</span>, <span class="mono">.sidebar-user-info</span>, <span class="mono">.nav-item</span>, <span class="mono">.nav-group</span>, <span class="mono">.subnav</span>, <span class="mono">.topnav-shell</span>, <span class="mono">.topnav-link</span>, <span class="mono">.topnav-dropdown</span>.</footer>
+</main>
+</div>
+<script>
+    const layoutDemo = document.getElementById('sidebarLayoutDemo');
+    const demoSidebar = document.getElementById('demoSidebar');
+    const topbarSidebarButton = document.getElementById('topbarSidebarButton');
+
+    function setSidebarCollapsed(isCollapsed) {
+      if (!layoutDemo || !demoSidebar || !topbarSidebarButton) return;
+      layoutDemo.classList.toggle('is-sidebar-collapsed', isCollapsed);
+      demoSidebar.classList.toggle('compact', isCollapsed);
+      topbarSidebarButton.setAttribute('aria-expanded', String(!isCollapsed));
+      topbarSidebarButton.setAttribute('aria-label', isCollapsed ? 'Buka sidebar' : 'Tutup sidebar');
+    }
+
+    if (topbarSidebarButton) {
+      topbarSidebarButton.addEventListener('click', () => {
+        const isCollapsed = demoSidebar.classList.contains('compact');
+        setSidebarCollapsed(!isCollapsed);
+      });
+    }
+
+    const topbarDropdowns = Array.from(document.querySelectorAll('[data-component="topbar-dropdown"]'));
+
+    function closeTopbarDropdowns(activeDropdown = null) {
+      topbarDropdowns.forEach((dropdown) => {
+        if (dropdown !== activeDropdown) dropdown.removeAttribute('open');
+      });
+    }
+
+    topbarDropdowns.forEach((dropdown) => {
+      dropdown.addEventListener('toggle', () => {
+        if (dropdown.open) closeTopbarDropdowns(dropdown);
+      });
+
+      dropdown.querySelectorAll('.dropdown-option').forEach((option) => {
+        option.addEventListener('click', () => dropdown.removeAttribute('open'));
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="topbar-dropdown"]')) closeTopbarDropdowns();
+    });
+
+    const headerSearches = Array.from(document.querySelectorAll('[data-component="header-search-autocomplete"]'));
+
+    function closeHeaderSearches(activeSearch = null) {
+      headerSearches.forEach((search) => {
+        if (search === activeSearch) return;
+        const input = search.querySelector('input');
+        search.classList.remove('is-open');
+        if (input) input.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    headerSearches.forEach((search) => {
+      const input = search.querySelector('input');
+      const options = Array.from(search.querySelectorAll('[data-search-suggestion]'));
+      const groups = Array.from(search.querySelectorAll('[data-suggestion-group]:not([data-search-suggestion])'));
+      const emptyState = search.querySelector('.autocomplete-empty');
+      if (!input || !options.length) return;
+
+      function openSearch() {
+        closeTopbarDropdowns();
+        closeHeaderSearches(search);
+        search.classList.add('is-open');
+        input.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeSearch() {
+        search.classList.remove('is-open');
+        input.setAttribute('aria-expanded', 'false');
+      }
+
+      function visibleOptions() {
+        return options.filter((option) => !option.hidden);
+      }
+
+      function setActiveOption(nextOption) {
+        options.forEach((option) => option.classList.toggle('active', option === nextOption));
+      }
+
+      function filterOptions() {
+        const query = input.value.trim().toLowerCase();
+
+        options.forEach((option) => {
+          const searchText = option.dataset.searchText || option.textContent.toLowerCase();
+          option.hidden = query ? !searchText.includes(query) : false;
+        });
+
+        groups.forEach((group) => {
+          const groupName = group.dataset.suggestionGroup;
+          group.hidden = !options.some((option) => option.dataset.suggestionGroup === groupName && !option.hidden);
+        });
+
+        const visible = visibleOptions();
+        if (emptyState) emptyState.hidden = visible.length > 0;
+        setActiveOption(visible[0] || null);
+      }
+
+      function selectOption(option) {
+        if (!option || option.hidden) return;
+        input.value = option.dataset.searchValue || option.textContent.trim();
+        closeSearch();
+        input.focus();
+      }
+
+      input.addEventListener('focus', () => {
+        filterOptions();
+        openSearch();
+      });
+
+      input.addEventListener('input', () => {
+        filterOptions();
+        openSearch();
+      });
+
+      input.addEventListener('keydown', (event) => {
+        const visible = visibleOptions();
+        const activeIndex = visible.findIndex((option) => option.classList.contains('active'));
+
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          openSearch();
+          setActiveOption(visible[(activeIndex + 1) % visible.length] || visible[0]);
+        }
+
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          openSearch();
+          setActiveOption(visible[(activeIndex - 1 + visible.length) % visible.length] || visible[visible.length - 1]);
+        }
+
+        if (event.key === 'Enter' && search.classList.contains('is-open')) {
+          const activeOption = visible.find((option) => option.classList.contains('active'));
+          if (activeOption) {
+            event.preventDefault();
+            selectOption(activeOption);
+          }
+        }
+
+        if (event.key === 'Escape') closeSearch();
+      });
+
+      options.forEach((option) => {
+        option.addEventListener('mousedown', (event) => event.preventDefault());
+        option.addEventListener('click', () => selectOption(option));
+      });
+
+      filterOptions();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-component="header-search-autocomplete"]')) closeHeaderSearches();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const isSearchShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k';
+      if (isSearchShortcut) {
+        const searchInput = document.getElementById('globalSearchInput');
+        if (searchInput) {
+          event.preventDefault();
+          searchInput.focus();
+        }
+      }
+
+      if (event.key === 'Escape') {
+        closeTopbarDropdowns();
+        closeHeaderSearches();
+      }
+    });
+  </script>
+<script src="../../js/sidebar-flyout.js"></script>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

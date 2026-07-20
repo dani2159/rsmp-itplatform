@@ -1,0 +1,1418 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="5820" viewBox="0 0 1800 5820">
+<defs>
+<style>
+  text { font-family: Inter, Arial, sans-serif; }
+  .mono { font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace; }
+</style>
+</defs>
+<rect x="0" y="0" width="1800" height="10" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="56" y="36" width="1688" height="390" rx="24" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="2"/>
+<text x="100" y="98" fill="#1E4FD7" font-family="Inter" font-size="22" font-weight="700" text-anchor="start" style="letter-spacing:0.10em;" xml:space="preserve">
+<tspan x="100" dy="0">06</tspan>
+</text>
+<text x="100" y="148" fill="#0F1F3D" font-family="Inter" font-size="58" font-weight="700" text-anchor="start" style="letter-spacing:-0.045em;" xml:space="preserve">
+<tspan x="100" dy="0">Buttons</tspan>
+</text>
+<text x="100" y="198" fill="#536174" font-family="Inter" font-size="21" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="100" dy="0">Aturan tombol SIMRS ZAIDAN: varian, ukuran, state, icon, hierarki aksi, aksesibilitas, dan contoh</tspan>
+<tspan x="100" dy="32">implementasi komponen.</tspan>
+</text>
+<line x1="100" y1="262" x2="1700" y2="262" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="100" y="296" width="74.8" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="111" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="111" dy="0">Overview</tspan>
+</text>
+<rect x="184.8" y="296" width="94.6" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="195.8" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="195.8" dy="0">Token Warna</tspan>
+</text>
+<rect x="289.4" y="296" width="61.6" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="300.4" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="300.4" dy="0">Ukuran</tspan>
+</text>
+<rect x="361.0" y="296" width="101.2" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="372.0" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="372.0" dy="0">Jenis Button</tspan>
+</text>
+<rect x="472.2" y="296" width="101.2" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="483.2" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="483.2" dy="0">State Matrix</tspan>
+</text>
+<rect x="583.4" y="296" width="114.4" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="594.4" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="594.4" dy="0">Icon &amp; Loading</tspan>
+</text>
+<rect x="707.8" y="296" width="81.4" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="718.8" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="718.8" dy="0">Guideline</tspan>
+</text>
+<rect x="799.2" y="296" width="101.2" height="30" rx="15" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="810.2" y="316" fill="#374151" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="810.2" dy="0">Implementasi</tspan>
+</text>
+<rect x="100.0" y="354" width="521.33" height="70" rx="16" fill="#F4F7FF" stroke="#DCE5FF" stroke-width="1"/>
+<text x="118.0" y="381" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="118.0" dy="0">Primary hanya untuk aksi utama</tspan>
+</text>
+<text x="118.0" y="404" fill="#374151" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="118.0" dy="0">Simpan, Daftarkan Pasien, Buat Resep, Bayar Tagihan.</tspan>
+</text>
+<rect x="639.33" y="354" width="521.33" height="70" rx="16" fill="#F4F7FF" stroke="#DCE5FF" stroke-width="1"/>
+<text x="657.33" y="381" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="657.33" dy="0">Large tidak dipakai di mobile form</tspan>
+</text>
+<text x="657.33" y="404" fill="#374151" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="657.33" dy="0">MD adalah default. LG/XL untuk desktop CTA, kiosk, atau display.</tspan>
+</text>
+<rect x="1178.67" y="354" width="521.33" height="70" rx="16" fill="#F4F7FF" stroke="#DCE5FF" stroke-width="1"/>
+<text x="1196.67" y="381" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1196.67" dy="0">Icon-only wajib aria-label</tspan>
+</text>
+<text x="1196.67" y="404" fill="#374151" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1196.67" dy="0">Icon tanpa teks perlu label aksesibilitas dan tooltip.</tspan>
+</text>
+<text x="72" y="506" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Token Warna Button</tspan>
+</text>
+<text x="72" y="550" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Warna button memakai brand resmi dan semantic token. Hover, focus, dan active menggunakan warna turunan agar</tspan>
+<tspan x="72" dy="25">hierarchy tetap konsisten.</tspan>
+</text>
+<rect x="1518" y="500" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="519" r="5" fill="#1E4FD7"/>
+<text x="1556" y="524" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">Color tokens</tspan>
+</text>
+<rect x="72.0" y="598" width="814.0" height="390" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="98.0" y="644" fill="#0F1F3D" font-family="Inter" font-size="24" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="98.0" dy="0">Core Token</tspan>
+</text>
+<rect x="98.0" y="674" width="40" height="40" rx="10" fill="#1E4FD7" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="154.0" y="693" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">primary-blue</tspan>
+</text>
+<text x="154.0" y="713" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">#1E4FD7 · Primary button, link aktif</tspan>
+</text>
+<line x1="98.0" y1="725" x2="860.0" y2="725" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="98.0" y="735" width="40" height="40" rx="10" fill="#1740B0" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="154.0" y="754" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">primary-dark</tspan>
+</text>
+<text x="154.0" y="774" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">#1740B0 · Hover primary</tspan>
+</text>
+<line x1="98.0" y1="786" x2="860.0" y2="786" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="98.0" y="796" width="40" height="40" rx="10" fill="#EEF2FF" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="154.0" y="815" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">primary-light</tspan>
+</text>
+<text x="154.0" y="835" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">#EEF2FF · Secondary / ghost hover</tspan>
+</text>
+<line x1="98.0" y1="847" x2="860.0" y2="847" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="98.0" y="857" width="40" height="40" rx="10" fill="#0F1F3D" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="154.0" y="876" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">navy</tspan>
+</text>
+<text x="154.0" y="896" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">#0F1F3D · Dark button / text</tspan>
+</text>
+<line x1="98.0" y1="908" x2="860.0" y2="908" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="98.0" y="918" width="40" height="40" rx="10" fill="#D1D5DB" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="154.0" y="937" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">slate-light</tspan>
+</text>
+<text x="154.0" y="957" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="154.0" dy="0">#D1D5DB · Border button</tspan>
+</text>
+<line x1="98.0" y1="969" x2="860.0" y2="969" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="914.0" y="598" width="814.0" height="390" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="940.0" y="644" fill="#0F1F3D" font-family="Inter" font-size="24" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="940.0" dy="0">Semantic Token</tspan>
+</text>
+<rect x="940.0" y="674" width="40" height="40" rx="10" fill="#00B894" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="996.0" y="693" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">primary-green</tspan>
+</text>
+<text x="996.0" y="713" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">#00B894 · Success action / approve</tspan>
+</text>
+<line x1="940.0" y1="725" x2="1702.0" y2="725" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="940.0" y="735" width="40" height="40" rx="10" fill="#F59E0B" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="996.0" y="754" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">warning</tspan>
+</text>
+<text x="996.0" y="774" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">#F59E0B · Aksi peringatan / pending</tspan>
+</text>
+<line x1="940.0" y1="786" x2="1702.0" y2="786" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="940.0" y="796" width="40" height="40" rx="10" fill="#EF4444" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="996.0" y="815" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">danger</tspan>
+</text>
+<text x="996.0" y="835" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">#EF4444 · Destructive action</tspan>
+</text>
+<line x1="940.0" y1="847" x2="1702.0" y2="847" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="940.0" y="857" width="40" height="40" rx="10" fill="#FEF2F2" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="996.0" y="876" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">danger-light</tspan>
+</text>
+<text x="996.0" y="896" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">#FEF2F2 · Danger soft / modal confirm</tspan>
+</text>
+<line x1="940.0" y1="908" x2="1702.0" y2="908" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="940.0" y="918" width="40" height="40" rx="10" fill="#F3F6FA" stroke="rgba(15,31,61,0.10)" stroke-width="1"/>
+<text x="996.0" y="937" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">light-gray</tspan>
+</text>
+<text x="996.0" y="957" fill="#6B7280" font-family="JetBrains Mono" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="996.0" dy="0">#F3F6FA · Disabled background</tspan>
+</text>
+<line x1="940.0" y1="969" x2="1702.0" y2="969" stroke="#E7ECF4" stroke-width="1"/>
+<text x="72" y="1048" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Ukuran Button</tspan>
+</text>
+<text x="72" y="1092" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">MD adalah default untuk web app medis. XS/SM untuk tabel dan toolbar, sedangkan LG/XL dipakai terbatas untuk</tspan>
+<tspan x="72" dy="25">desktop CTA, kiosk, dan touchscreen.</tspan>
+</text>
+<rect x="1518" y="1042" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="1061" r="5" fill="#1E4FD7"/>
+<text x="1556" y="1066" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">Default: md / 36px</tspan>
+</text>
+<rect x="72" y="1140" width="1656" height="390" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="72" y="1140" width="1656" height="54" rx="22" fill="#F3F6FA" stroke="none" stroke-width="1"/>
+<text x="90" y="1174" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="90" dy="0">SIZE</tspan>
+</text>
+<text x="270" y="1174" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="270" dy="0">TEXT ONLY</tspan>
+</text>
+<text x="510" y="1174" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="510" dy="0">ICON LEFT</tspan>
+</text>
+<text x="820" y="1174" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="820" dy="0">ICON RIGHT</tspan>
+</text>
+<text x="1130" y="1174" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="1130" dy="0">PENGGUNAAN</tspan>
+</text>
+<line x1="72" y1="1194" x2="1728" y2="1194" stroke="#D8DEE8" stroke-width="1"/>
+<text x="90" y="1224" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">XS</tspan>
+</text>
+<text x="90" y="1244" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">28px · text 12px</tspan>
+</text>
+<rect x="270" y="1213.5" width="64" height="28" rx="6" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="276" y1="1214.5" x2="328" y2="1214.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="281.84" y="1231.82" fill="#FFFFFF" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="281.84" dy="0">Detail</tspan>
+</text>
+<rect x="510" y="1213.5" width="80.32" height="28" rx="6" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="516" y1="1214.5" x2="584.32" y2="1214.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="527.0" y1="1224.0" x2="527.0" y2="1231.0" stroke="#1E4FD7" stroke-width="2"/>
+<line x1="523.5" y1="1227.5" x2="530.5" y2="1227.5" stroke="#1E4FD7" stroke-width="2"/>
+<text x="540.0" y="1231.82" fill="#1E4FD7" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="540.0" dy="0">Tambah</tspan>
+</text>
+<rect x="820" y="1213.5" width="80.32" height="28" rx="6" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="826" y1="1214.5" x2="894.32" y2="1214.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="833.5" y1="1227.5" x2="840.5" y2="1227.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="837.7,1224.98 840.5,1227.5 837.7,1230.02" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="830.0" y="1231.82" fill="#1E4FD7" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="830.0" dy="0">Lanjut</tspan>
+</text>
+<line x1="879.82" y1="1227.5" x2="886.82" y2="1227.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="884.02,1224.98 886.82,1227.5 884.02,1230.02" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1130" y="1234" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1130" dy="0">Tabel padat, toolbar kecil, row action.</tspan>
+</text>
+<line x1="72" y1="1261" x2="1728" y2="1261" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="1291" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">SM</tspan>
+</text>
+<text x="90" y="1311" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">32px · text 13px</tspan>
+</text>
+<rect x="270" y="1278.5" width="76" height="32" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="278" y1="1279.5" x2="338" y2="1279.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="289.8" y="1299.18" fill="#FFFFFF" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="289.8" dy="0">Pilih</tspan>
+</text>
+<rect x="510" y="1278.5" width="88.68" height="32" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="518" y1="1279.5" x2="590.68" y2="1279.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="529.0" y1="1291.0" x2="529.0" y2="1298.0" stroke="#1E4FD7" stroke-width="2"/>
+<line x1="525.5" y1="1294.5" x2="532.5" y2="1294.5" stroke="#1E4FD7" stroke-width="2"/>
+<text x="543.0" y="1299.18" fill="#1E4FD7" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="543.0" dy="0">Export</tspan>
+</text>
+<rect x="820" y="1278.5" width="76" height="32" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="828" y1="1279.5" x2="888" y2="1279.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="836.44" y1="1294.5" x2="843.44" y2="1294.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="840.64,1291.98 843.44,1294.5 840.64,1297.02" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="832.94" y="1299.18" fill="#1E4FD7" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="832.94" dy="0">Cari</tspan>
+</text>
+<line x1="872.56" y1="1294.5" x2="879.56" y2="1294.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="876.76,1291.98 879.56,1294.5 876.76,1297.02" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1130" y="1301" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1130" dy="0">Filter, dialog kecil, panel kanan.</tspan>
+</text>
+<line x1="72" y1="1328" x2="1728" y2="1328" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="1358" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">MD / Normal</tspan>
+</text>
+<text x="90" y="1378" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">36px · text 14px</tspan>
+</text>
+<rect x="270" y="1343.5" width="92" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="278" y1="1344.5" x2="354" y2="1344.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="292.48" y="1366.54" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="292.48" dy="0">Simpan</tspan>
+</text>
+<rect x="510" y="1343.5" width="153.92" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="518" y1="1344.5" x2="655.92" y2="1344.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="532.0" y1="1357.5" x2="532.0" y2="1365.5" stroke="#1E4FD7" stroke-width="2"/>
+<line x1="528.0" y1="1361.5" x2="536.0" y2="1361.5" stroke="#1E4FD7" stroke-width="2"/>
+<text x="548.0" y="1366.54" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="548.0" dy="0">Tambah Pasien</tspan>
+</text>
+<rect x="820" y="1343.5" width="99.04" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="828" y1="1344.5" x2="911.04" y2="1344.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="838.0" y1="1361.5" x2="846.0" y2="1361.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="842.8,1358.62 846.0,1361.5 842.8,1364.38" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="834.0" y="1366.54" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="834.0" dy="0">Lanjut</tspan>
+</text>
+<line x1="893.04" y1="1361.5" x2="901.04" y2="1361.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="897.84,1358.62 901.04,1361.5 897.84,1364.38" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1130" y="1368" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1130" dy="0">Default form, modal, dan halaman operasional.</tspan>
+</text>
+<line x1="72" y1="1395" x2="1728" y2="1395" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="1425" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">LG</tspan>
+</text>
+<text x="90" y="1445" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">44px · text 14px</tspan>
+</text>
+<rect x="270" y="1406.5" width="112" height="44" rx="10" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="280" y1="1407.5" x2="372" y2="1407.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="290.72" y="1433.54" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="290.72" dy="0">Daftarkan</tspan>
+</text>
+<rect x="510" y="1406.5" width="117.88" height="44" rx="10" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="520" y1="1407.5" x2="617.88" y2="1407.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="537.0" y1="1424.0" x2="537.0" y2="1433.0" stroke="#1E4FD7" stroke-width="2"/>
+<line x1="532.5" y1="1428.5" x2="541.5" y2="1428.5" stroke="#1E4FD7" stroke-width="2"/>
+<text x="555.0" y="1433.54" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="555.0" dy="0">Selesai</tspan>
+</text>
+<rect x="820" y="1406.5" width="133.56" height="44" rx="10" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="830" y1="1407.5" x2="943.56" y2="1407.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="842.5" y1="1428.5" x2="851.5" y2="1428.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="847.9,1425.26 851.5,1428.5 847.9,1431.74" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="838.0" y="1433.54" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="838.0" dy="0">Lanjutkan</tspan>
+</text>
+<line x1="922.06" y1="1428.5" x2="931.06" y2="1428.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="927.46,1425.26 931.06,1428.5 927.46,1431.74" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1130" y="1435" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1130" dy="0">Desktop CTA dan aksi penting di monitor besar.</tspan>
+</text>
+<line x1="72" y1="1462" x2="1728" y2="1462" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="1492" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">XL</tspan>
+</text>
+<text x="90" y="1512" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">52px · text 16px</tspan>
+</text>
+<rect x="270" y="1469.5" width="142.56" height="52" rx="12" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="282" y1="1470.5" x2="400.56" y2="1470.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="292.0" y="1501.26" fill="#FFFFFF" font-family="Inter" font-size="16" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="292.0" dy="0">Ambil Nomor</tspan>
+</text>
+<rect x="510" y="1469.5" width="132" height="52" rx="12" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="522" y1="1470.5" x2="630" y2="1470.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="548.6" y1="1490.5" x2="548.6" y2="1500.5" stroke="#1E4FD7" stroke-width="2"/>
+<line x1="543.6" y1="1495.5" x2="553.6" y2="1495.5" stroke="#1E4FD7" stroke-width="2"/>
+<text x="568.6" y="1501.26" fill="#1E4FD7" font-family="Inter" font-size="16" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="568.6" dy="0">Mulai</tspan>
+</text>
+<rect x="820" y="1469.5" width="154.64" height="52" rx="12" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="832" y1="1470.5" x2="962.64" y2="1470.5" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="847.0" y1="1495.5" x2="857.0" y2="1495.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="853.0,1491.9 857.0,1495.5 853.0,1499.1" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="842.0" y="1501.26" fill="#1E4FD7" font-family="Inter" font-size="16" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="842.0" dy="0">Lanjutkan</tspan>
+</text>
+<line x1="937.64" y1="1495.5" x2="947.64" y2="1495.5" stroke="#1E4FD7" stroke-width="2"/>
+<polyline points="943.64,1491.9 947.64,1495.5 943.64,1499.1" fill="none" stroke="#1E4FD7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1130" y="1502" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1130" dy="0">Kiosk / touchscreen 1920×1080.</tspan>
+</text>
+<text x="72" y="1600" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Jenis Button</tspan>
+</text>
+<text x="72" y="1644" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Setiap jenis punya fungsi spesifik. Hindari membuat warna baru di luar token karena akan mengacaukan</tspan>
+<tspan x="72" dy="25">hierarchy antar modul.</tspan>
+</text>
+<rect x="1518" y="1594" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="1613" r="5" fill="#1E4FD7"/>
+<text x="1556" y="1618" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">8 variants</tspan>
+</text>
+<rect x="72.0" y="1692" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="90.0" y="1710" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="224.25" y="1736" width="92" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="232.25" y1="1737" x2="308.25" y2="1737" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="246.73" y="1759.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="246.73" dy="0">Simpan</tspan>
+</text>
+<text x="90.0" y="1827" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="90.0" dy="0">Primary</tspan>
+</text>
+<text x="90.0" y="1854" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90.0" dy="0">Aksi utama dalam satu halaman atau modal.</tspan>
+</text>
+<rect x="90.0" y="1882" width="206.8" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="101.0" y="1902" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="101.0" dy="0">primary-blue · high emphasis</tspan>
+</text>
+<rect x="490.5" y="1692" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="508.5" y="1710" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="642.75" y="1736" width="92" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="650.75" y1="1737" x2="726.75" y2="1737" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="669.15" y="1759.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="669.15" dy="0">Batal</tspan>
+</text>
+<text x="508.5" y="1827" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="508.5" dy="0">Secondary</tspan>
+</text>
+<text x="508.5" y="1854" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="508.5" dy="0">Aksi pendukung yang masih penting.</tspan>
+</text>
+<rect x="508.5" y="1882" width="167.2" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="519.5" y="1902" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="519.5" dy="0">primary-light · medium</tspan>
+</text>
+<rect x="909.0" y="1692" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="927.0" y="1710" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1061.25" y="1736" width="92" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1069.25" y1="1737" x2="1145.25" y2="1737" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1083.73" y="1759.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1083.73" dy="0">Export</tspan>
+</text>
+<text x="927.0" y="1827" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="927.0" dy="0">Outline</tspan>
+</text>
+<text x="927.0" y="1854" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="927.0" dy="0">Export, download, filter, action non-primer.</tspan>
+</text>
+<rect x="927.0" y="1882" width="107.8" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="938.0" y="1902" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">border action</tspan>
+</text>
+<rect x="1327.5" y="1692" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1345.5" y="1710" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1479.75" y="1736" width="92" height="36" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<text x="1502.23" y="1759.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1502.23" dy="0">Detail</tspan>
+</text>
+<text x="1345.5" y="1827" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="1345.5" dy="0">Ghost</tspan>
+</text>
+<text x="1345.5" y="1854" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1345.5" dy="0">Tertiary action, link-like button, toolbar.</tspan>
+</text>
+<rect x="1345.5" y="1882" width="101.2" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="1356.5" y="1902" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1356.5" dy="0">low emphasis</tspan>
+</text>
+<rect x="72.0" y="1940" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="90.0" y="1958" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="224.25" y="1984" width="92" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="232.25" y1="1985" x2="308.25" y2="1985" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="250.65" y="2007.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="250.65" dy="0">Hapus</tspan>
+</text>
+<text x="90.0" y="2075" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="90.0" dy="0">Danger</tspan>
+</text>
+<text x="90.0" y="2102" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90.0" dy="0">Aksi destruktif: hapus, batalkan, tolak.</tspan>
+</text>
+<rect x="90.0" y="2130" width="127.6" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="101.0" y="2150" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="101.0" dy="0">confirm required</tspan>
+</text>
+<rect x="490.5" y="1940" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="508.5" y="1958" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="642.75" y="1984" width="92" height="36" rx="8" fill="#FEF2F2" stroke="#FEE2E2" stroke-width="1"/>
+<line x1="650.75" y1="1985" x2="726.75" y2="1985" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="657.39" y="2007.04" fill="#EF4444" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="657.39" dy="0">Batalkan</tspan>
+</text>
+<text x="508.5" y="2075" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="508.5" dy="0">Danger Soft</tspan>
+</text>
+<text x="508.5" y="2102" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="508.5" dy="0">Destructive secondary di modal konfirmasi.</tspan>
+</text>
+<rect x="508.5" y="2130" width="101.2" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="519.5" y="2150" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="519.5" dy="0">danger-light</tspan>
+</text>
+<rect x="909.0" y="1940" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="927.0" y="1958" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1061.25" y="1984" width="92" height="36" rx="8" fill="#00B894" stroke="#00B894" stroke-width="1"/>
+<line x1="1069.25" y1="1985" x2="1145.25" y2="1985" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1079.81" y="2007.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1079.81" dy="0">Setujui</tspan>
+</text>
+<text x="927.0" y="2075" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="927.0" dy="0">Success</tspan>
+</text>
+<text x="927.0" y="2102" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="927.0" dy="0">Konfirmasi positif final, approve, selesai.</tspan>
+</text>
+<rect x="927.0" y="2130" width="107.8" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="938.0" y="2150" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">primary-green</tspan>
+</text>
+<rect x="1327.5" y="1940" width="400.5" height="230" rx="20" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="1345.5" y="1958" width="364.5" height="86" rx="16" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1479.75" y="1984" width="92" height="36" rx="8" fill="#F59E0B" stroke="#F59E0B" stroke-width="1"/>
+<line x1="1487.75" y1="1985" x2="1563.75" y2="1985" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1498.31" y="2007.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1498.31" dy="0">Pending</tspan>
+</text>
+<text x="1345.5" y="2075" fill="#0F1F3D" font-family="Inter" font-size="21" font-weight="700" text-anchor="start" style="letter-spacing:-0.02em;" xml:space="preserve">
+<tspan x="1345.5" dy="0">Warning</tspan>
+</text>
+<text x="1345.5" y="2102" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1345.5" dy="0">Aksi status pending/peringatan.</tspan>
+</text>
+<rect x="1345.5" y="2130" width="68.2" height="30" rx="15" fill="#F3F6FA" stroke="#E7ECF4" stroke-width="1"/>
+<text x="1356.5" y="2150" fill="#374151" font-family="Inter" font-size="11" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1356.5" dy="0">warning</tspan>
+</text>
+<text x="72" y="2240" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">State Matrix</tspan>
+</text>
+<text x="72" y="2284" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Semua button wajib punya default, hover, focus, active/click, loading, dan disabled. Focus harus terlihat</tspan>
+<tspan x="72" dy="25">untuk keyboard navigation.</tspan>
+</text>
+<rect x="1474" y="2234" width="254" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1496" cy="2253" r="5" fill="#1E4FD7"/>
+<text x="1512" y="2258" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1512" dy="0">Focus ring: #1E4FD7 / 16%</tspan>
+</text>
+<rect x="72" y="2332" width="1656" height="570" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="72" y="2332" width="1656" height="66" rx="22" fill="#F8FAFC" stroke="none" stroke-width="1"/>
+<text x="96" y="2374" fill="#0F1F3D" font-family="Inter" font-size="24" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">Variant × State</tspan>
+</text>
+<text x="322" y="2374" fill="#6B7280" font-family="Inter" font-size="14" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="322" dy="0">Visual state untuk ukuran MD / normal.</tspan>
+</text>
+<rect x="72" y="2398" width="1656" height="46" rx="0" fill="#F3F6FA" stroke="none" stroke-width="1"/>
+<text x="90" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="90" dy="0">VARIANT</tspan>
+</text>
+<text x="300.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="300.0" dy="0">DEFAULT</tspan>
+</text>
+<text x="541.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="541.0" dy="0">HOVER</tspan>
+</text>
+<text x="782.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="782.0" dy="0">FOCUS</tspan>
+</text>
+<text x="1023.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="1023.0" dy="0">ACTIVE / CLICK</tspan>
+</text>
+<text x="1264.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="1264.0" dy="0">LOADING</tspan>
+</text>
+<text x="1505.0" y="2428" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.06em;" xml:space="preserve">
+<tspan x="1505.0" dy="0">DISABLED</tspan>
+</text>
+<line x1="72" y1="2444" x2="1728" y2="2444" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2475" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Primary</tspan>
+</text>
+<text x="90" y="2495" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Aksi utama</tspan>
+</text>
+<line x1="282.0" y1="2444" x2="282.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2463" width="92" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="308.0" y1="2464" x2="384.0" y2="2464" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="326.4" y="2486.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2444" x2="523.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2463" width="92" height="36" rx="8" fill="#1740B0" stroke="#1740B0" stroke-width="1"/>
+<line x1="549.0" y1="2464" x2="625.0" y2="2464" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="567.4" y="2486.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2444" x2="764.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2459" width="100" height="44" rx="13" fill="none" stroke="#1E4FD7" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2463" width="92" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="790.0" y1="2464" x2="866.0" y2="2464" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="808.4" y="2486.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2444" x2="1005.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2463" width="92" height="36" rx="8" fill="#153796" stroke="#153796" stroke-width="1"/>
+<line x1="1031.0" y1="2464" x2="1107.0" y2="2464" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1049.4" y="2486.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2444" x2="1246.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2463" width="106.88" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1272.0" y1="2464" x2="1362.88" y2="2464" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="1286.0" cy="2481.0" r="6.08" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2474.92 A 6.08 6.08 0 0 1 1292.08 2481.0" fill="none" stroke="#EEF2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2486.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2444" x2="1487.0" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2463" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2486.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2518" x2="1728" y2="2518" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2549" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Secondary</tspan>
+</text>
+<text x="90" y="2569" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Aksi pendukung</tspan>
+</text>
+<line x1="282.0" y1="2518" x2="282.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2537" width="92" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="308.0" y1="2538" x2="384.0" y2="2538" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="326.4" y="2560.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2518" x2="523.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2537" width="92" height="36" rx="8" fill="#E0E7FF" stroke="#E0E7FF" stroke-width="1"/>
+<line x1="549.0" y1="2538" x2="625.0" y2="2538" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="567.4" y="2560.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2518" x2="764.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2533" width="100" height="44" rx="13" fill="none" stroke="#1E4FD7" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2537" width="92" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="790.0" y1="2538" x2="866.0" y2="2538" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="808.4" y="2560.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2518" x2="1005.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2537" width="92" height="36" rx="8" fill="#C7D2FE" stroke="#C7D2FE" stroke-width="1"/>
+<line x1="1031.0" y1="2538" x2="1107.0" y2="2538" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1049.4" y="2560.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2518" x2="1246.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2537" width="106.88" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1272.0" y1="2538" x2="1362.88" y2="2538" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="1286.0" cy="2555.0" r="6.08" fill="none" stroke="#1E4FD7" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2548.92 A 6.08 6.08 0 0 1 1292.08 2555.0" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2560.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2518" x2="1487.0" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2537" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2560.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2592" x2="1728" y2="2592" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2623" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Outline</tspan>
+</text>
+<text x="90" y="2643" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Non-primer</tspan>
+</text>
+<line x1="282.0" y1="2592" x2="282.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2611" width="92" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="308.0" y1="2612" x2="384.0" y2="2612" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="326.4" y="2634.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2592" x2="523.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2611" width="92" height="36" rx="8" fill="#EEF2FF" stroke="#EEF2FF" stroke-width="1"/>
+<line x1="549.0" y1="2612" x2="625.0" y2="2612" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="567.4" y="2634.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2592" x2="764.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2607" width="100" height="44" rx="13" fill="none" stroke="#1E4FD7" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2611" width="92" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="790.0" y1="2612" x2="866.0" y2="2612" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="808.4" y="2634.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2592" x2="1005.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2611" width="92" height="36" rx="8" fill="#E0E7FF" stroke="#E0E7FF" stroke-width="1"/>
+<line x1="1031.0" y1="2612" x2="1107.0" y2="2612" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1049.4" y="2634.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2592" x2="1246.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2611" width="106.88" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1272.0" y1="2612" x2="1362.88" y2="2612" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="1286.0" cy="2629.0" r="6.08" fill="none" stroke="#1E4FD7" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2622.92 A 6.08 6.08 0 0 1 1292.08 2629.0" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2634.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2592" x2="1487.0" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2611" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2634.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2666" x2="1728" y2="2666" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2697" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Ghost</tspan>
+</text>
+<text x="90" y="2717" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Toolbar / link</tspan>
+</text>
+<line x1="282.0" y1="2666" x2="282.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2685" width="92" height="36" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<text x="326.4" y="2708.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2666" x2="523.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2685" width="92" height="36" rx="8" fill="#EEF2FF" stroke="#EEF2FF" stroke-width="1"/>
+<text x="567.4" y="2708.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2666" x2="764.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2681" width="100" height="44" rx="13" fill="none" stroke="#1E4FD7" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2685" width="92" height="36" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<text x="808.4" y="2708.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2666" x2="1005.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2685" width="92" height="36" rx="8" fill="#E0E7FF" stroke="#E0E7FF" stroke-width="1"/>
+<text x="1049.4" y="2708.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2666" x2="1246.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2685" width="106.88" height="36" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<circle cx="1286.0" cy="2703.0" r="6.08" fill="none" stroke="#1E4FD7" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2696.92 A 6.08 6.08 0 0 1 1292.08 2703.0" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2708.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2666" x2="1487.0" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2685" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2708.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2740" x2="1728" y2="2740" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2771" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Danger</tspan>
+</text>
+<text x="90" y="2791" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Destructive</tspan>
+</text>
+<line x1="282.0" y1="2740" x2="282.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2759" width="92" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="308.0" y1="2760" x2="384.0" y2="2760" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="326.4" y="2782.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2740" x2="523.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2759" width="92" height="36" rx="8" fill="#DC2626" stroke="#DC2626" stroke-width="1"/>
+<line x1="549.0" y1="2760" x2="625.0" y2="2760" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="567.4" y="2782.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2740" x2="764.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2755" width="100" height="44" rx="13" fill="none" stroke="#EF4444" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2759" width="92" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="790.0" y1="2760" x2="866.0" y2="2760" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="808.4" y="2782.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2740" x2="1005.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2759" width="92" height="36" rx="8" fill="#991B1B" stroke="#991B1B" stroke-width="1"/>
+<line x1="1031.0" y1="2760" x2="1107.0" y2="2760" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1049.4" y="2782.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2740" x2="1246.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2759" width="106.88" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1272.0" y1="2760" x2="1362.88" y2="2760" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="1286.0" cy="2777.0" r="6.08" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2770.92 A 6.08 6.08 0 0 1 1292.08 2777.0" fill="none" stroke="#EEF2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2782.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2740" x2="1487.0" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2759" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2782.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2814" x2="1728" y2="2814" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="2845" fill="#0F1F3D" font-family="Inter" font-size="15" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Success</tspan>
+</text>
+<text x="90" y="2865" fill="#6B7280" font-family="Inter" font-size="12" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Approve</tspan>
+</text>
+<line x1="282.0" y1="2814" x2="282.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="300.0" y="2833" width="92" height="36" rx="8" fill="#00B894" stroke="#00B894" stroke-width="1"/>
+<line x1="308.0" y1="2834" x2="384.0" y2="2834" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="326.4" y="2856.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="326.4" dy="0">Label</tspan>
+</text>
+<line x1="523.0" y1="2814" x2="523.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="541.0" y="2833" width="92" height="36" rx="8" fill="#009C7E" stroke="#009C7E" stroke-width="1"/>
+<line x1="549.0" y1="2834" x2="625.0" y2="2834" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="567.4" y="2856.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="567.4" dy="0">Label</tspan>
+</text>
+<line x1="764.0" y1="2814" x2="764.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="778.0" y="2829" width="100" height="44" rx="13" fill="none" stroke="#00B894" stroke-width="3" opacity="0.22"/>
+<rect x="782.0" y="2833" width="92" height="36" rx="8" fill="#00B894" stroke="#00B894" stroke-width="1"/>
+<line x1="790.0" y1="2834" x2="866.0" y2="2834" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="808.4" y="2856.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="808.4" dy="0">Label</tspan>
+</text>
+<line x1="1005.0" y1="2814" x2="1005.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1023.0" y="2833" width="92" height="36" rx="8" fill="#008168" stroke="#008168" stroke-width="1"/>
+<line x1="1031.0" y1="2834" x2="1107.0" y2="2834" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<text x="1049.4" y="2856.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1049.4" dy="0">Label</tspan>
+</text>
+<line x1="1246.0" y1="2814" x2="1246.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1264.0" y="2833" width="106.88" height="36" rx="8" fill="#00B894" stroke="#00B894" stroke-width="1"/>
+<line x1="1272.0" y1="2834" x2="1362.88" y2="2834" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="1286.0" cy="2851.0" r="6.08" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+<path d="M 1286.0 2844.92 A 6.08 6.08 0 0 1 1292.08 2851.0" fill="none" stroke="#EEF2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1302.0" y="2856.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1302.0" dy="0">Loading</tspan>
+</text>
+<line x1="1487.0" y1="2814" x2="1487.0" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<rect x="1505.0" y="2833" width="92" height="36" rx="8" fill="#F1F4FA" stroke="#F1F4FA" stroke-width="1"/>
+<text x="1531.4" y="2856.04" fill="#A9B1C0" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1531.4" dy="0">Label</tspan>
+</text>
+<line x1="72" y1="2888" x2="1728" y2="2888" stroke="#E7ECF4" stroke-width="1"/>
+<text x="72" y="2962" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Icon, Icon-only, dan Loading</tspan>
+</text>
+<text x="72" y="3006" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Icon mempercepat scanning, tetapi tidak boleh menggantikan label pada aksi yang kompleks. Icon-only dipakai</tspan>
+<tspan x="72" dy="25">untuk tabel padat dan wajib punya aria-label.</tspan>
+</text>
+<rect x="1518" y="2956" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="2975" r="5" fill="#1E4FD7"/>
+<text x="1556" y="2980" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">Lucide style</tspan>
+</text>
+<rect x="72" y="3054" width="814.0" height="360" rx="22" fill="#FBFCFF" stroke="#B9C7E8" stroke-width="1.2" stroke-dasharray="6 6"/>
+<text x="96" y="3096" fill="#0F1F3D" font-family="Inter" font-size="22" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">Anatomy Button</tspan>
+</text>
+<text x="96" y="3122" fill="#6B7280" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">Struktur tombol: container, label, icon, padding, radius, focus ring.</tspan>
+</text>
+<rect x="393.0" y="3219" width="164.92" height="44" rx="10" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="403.0" y1="3220" x2="547.92" y2="3220" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="420.0" y1="3236.5" x2="420.0" y2="3245.5" stroke="#FFFFFF" stroke-width="2"/>
+<line x1="415.5" y1="3241.0" x2="424.5" y2="3241.0" stroke="#FFFFFF" stroke-width="2"/>
+<text x="438.0" y="3246.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="438.0" dy="0">Tambah Pasien</tspan>
+</text>
+<rect x="96" y="3164" width="128" height="34" rx="12" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="108" y="3186" fill="#374151" font-family="JetBrains Mono" font-size="12" font-weight="600" text-anchor="start" style="" xml:space="preserve">
+<tspan x="108" dy="0">height 44px</tspan>
+</text>
+<rect x="722.0" y="3180" width="128" height="34" rx="12" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="734.0" y="3202" fill="#374151" font-family="JetBrains Mono" font-size="12" font-weight="600" text-anchor="start" style="" xml:space="preserve">
+<tspan x="734.0" dy="0">radius 10px</tspan>
+</text>
+<rect x="132" y="3314" width="128" height="34" rx="12" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="144" y="3336" fill="#374151" font-family="JetBrains Mono" font-size="12" font-weight="600" text-anchor="start" style="" xml:space="preserve">
+<tspan x="144" dy="0">icon 18px</tspan>
+</text>
+<rect x="696.0" y="3314" width="128" height="34" rx="12" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="708.0" y="3336" fill="#374151" font-family="JetBrains Mono" font-size="12" font-weight="600" text-anchor="start" style="" xml:space="preserve">
+<tspan x="708.0" dy="0">padding 18px</tspan>
+</text>
+<rect x="914.0" y="3054" width="814.0" height="360" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="938.0" y="3096" fill="#0F1F3D" font-family="Inter" font-size="22" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Icon-only Size Matrix</tspan>
+</text>
+<text x="938.0" y="3122" fill="#6B7280" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Gunakan ukuran yang sama dengan button text agar alignment di tabel rapi.</tspan>
+</text>
+<text x="938.0" y="3188" fill="#0F1F3D" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">XS 28×28</tspan>
+</text>
+<rect x="1068.0" y="3172.0" width="28" height="28" rx="6" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1074.0" y1="3173.0" x2="1090.0" y2="3173.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1078.5 3189.92 L 1079.62 3186.7 L 1084.52 3181.8 C 1085.36 3180.96 1087.04 3182.64 1086.2 3183.48 L 1081.3 3188.38 Z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1083.4" y1="3182.92" x2="1085.08" y2="3184.6" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="1134.0" y="3172.0" width="28" height="28" rx="6" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1140.0" y1="3173.0" x2="1156.0" y2="3173.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1144.5 3189.92 L 1145.62 3186.7 L 1150.52 3181.8 C 1151.36 3180.96 1153.04 3182.64 1152.2 3183.48 L 1147.3 3188.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1149.4" y1="3182.92" x2="1151.08" y2="3184.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1200.0" y="3172.0" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1206.0" y1="3173.0" x2="1222.0" y2="3173.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1210.5 3189.92 L 1211.62 3186.7 L 1216.52 3181.8 C 1217.36 3180.96 1219.04 3182.64 1218.2 3183.48 L 1213.3 3188.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1215.4" y1="3182.92" x2="1217.08" y2="3184.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1266.0" y="3172.0" width="28" height="28" rx="6" fill="transparent" stroke="transparent" stroke-width="1"/>
+<path d="M 1276.5 3189.92 L 1277.62 3186.7 L 1282.52 3181.8 C 1283.36 3180.96 1285.04 3182.64 1284.2 3183.48 L 1279.3 3188.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1281.4" y1="3182.92" x2="1283.08" y2="3184.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1332.0" y="3172.0" width="28" height="28" rx="6" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1338.0" y1="3173.0" x2="1354.0" y2="3173.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="1341.52" y1="3183.2" x2="1350.48" y2="3183.2" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1344.32" y1="3183.2" x2="1344.6" y2="3181.52" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1344.6" y1="3181.52" x2="1347.68" y2="3181.52" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1347.68" y1="3181.52" x2="1347.96" y2="3183.2" stroke="#FFFFFF" stroke-width="1.8"/>
+<path d="M 1342.92 3183.2 L 1343.76 3190.48 L 1348.24 3190.48 L 1349.08 3183.2" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="938.0" y="3232" fill="#0F1F3D" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">SM 32×32</tspan>
+</text>
+<rect x="1068.0" y="3214.0" width="32" height="32" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1076.0" y1="3215.0" x2="1092.0" y2="3215.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1080.5 3233.92 L 1081.62 3230.7 L 1086.52 3225.8 C 1087.36 3224.96 1089.04 3226.64 1088.2 3227.48 L 1083.3 3232.38 Z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1085.4" y1="3226.92" x2="1087.08" y2="3228.6" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="1134.0" y="3214.0" width="32" height="32" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1142.0" y1="3215.0" x2="1158.0" y2="3215.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1146.5 3233.92 L 1147.62 3230.7 L 1152.52 3225.8 C 1153.36 3224.96 1155.04 3226.64 1154.2 3227.48 L 1149.3 3232.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1151.4" y1="3226.92" x2="1153.08" y2="3228.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1200.0" y="3214.0" width="32" height="32" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1208.0" y1="3215.0" x2="1224.0" y2="3215.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1212.5 3233.92 L 1213.62 3230.7 L 1218.52 3225.8 C 1219.36 3224.96 1221.04 3226.64 1220.2 3227.48 L 1215.3 3232.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1217.4" y1="3226.92" x2="1219.08" y2="3228.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1266.0" y="3214.0" width="32" height="32" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<path d="M 1278.5 3233.92 L 1279.62 3230.7 L 1284.52 3225.8 C 1285.36 3224.96 1287.04 3226.64 1286.2 3227.48 L 1281.3 3232.38 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1283.4" y1="3226.92" x2="1285.08" y2="3228.6" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1332.0" y="3214.0" width="32" height="32" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1340.0" y1="3215.0" x2="1356.0" y2="3215.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="1343.52" y1="3227.2" x2="1352.48" y2="3227.2" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1346.32" y1="3227.2" x2="1346.6" y2="3225.52" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1346.6" y1="3225.52" x2="1349.68" y2="3225.52" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1349.68" y1="3225.52" x2="1349.96" y2="3227.2" stroke="#FFFFFF" stroke-width="1.8"/>
+<path d="M 1344.92 3227.2 L 1345.76 3234.48 L 1350.24 3234.48 L 1351.08 3227.2" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="938.0" y="3276" fill="#0F1F3D" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">MD 36×36</tspan>
+</text>
+<rect x="1068.0" y="3256.0" width="36" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1076.0" y1="3257.0" x2="1096.0" y2="3257.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1082.0 3278.48 L 1083.28 3274.8 L 1088.88 3269.2 C 1089.84 3268.24 1091.76 3270.16 1090.8 3271.12 L 1085.2 3276.72 Z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1087.6" y1="3270.48" x2="1089.52" y2="3272.4" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="1134.0" y="3256.0" width="36" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1142.0" y1="3257.0" x2="1162.0" y2="3257.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1148.0 3278.48 L 1149.28 3274.8 L 1154.88 3269.2 C 1155.84 3268.24 1157.76 3270.16 1156.8 3271.12 L 1151.2 3276.72 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1153.6" y1="3270.48" x2="1155.52" y2="3272.4" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1200.0" y="3256.0" width="36" height="36" rx="8" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1208.0" y1="3257.0" x2="1228.0" y2="3257.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1214.0 3278.48 L 1215.28 3274.8 L 1220.88 3269.2 C 1221.84 3268.24 1223.76 3270.16 1222.8 3271.12 L 1217.2 3276.72 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1219.6" y1="3270.48" x2="1221.52" y2="3272.4" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1266.0" y="3256.0" width="36" height="36" rx="8" fill="transparent" stroke="transparent" stroke-width="1"/>
+<path d="M 1280.0 3278.48 L 1281.28 3274.8 L 1286.88 3269.2 C 1287.84 3268.24 1289.76 3270.16 1288.8 3271.12 L 1283.2 3276.72 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1285.6" y1="3270.48" x2="1287.52" y2="3272.4" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1332.0" y="3256.0" width="36" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1340.0" y1="3257.0" x2="1360.0" y2="3257.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="1344.88" y1="3270.8" x2="1355.12" y2="3270.8" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1348.08" y1="3270.8" x2="1348.4" y2="3268.88" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1348.4" y1="3268.88" x2="1351.92" y2="3268.88" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1351.92" y1="3268.88" x2="1352.24" y2="3270.8" stroke="#FFFFFF" stroke-width="1.8"/>
+<path d="M 1346.48 3270.8 L 1347.44 3279.12 L 1352.56 3279.12 L 1353.52 3270.8" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="938.0" y="3320" fill="#0F1F3D" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">LG 44×44</tspan>
+</text>
+<rect x="1068.0" y="3296.0" width="44" height="44" rx="10" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1078.0" y1="3297.0" x2="1102.0" y2="3297.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1085.5 3323.04 L 1086.94 3318.9 L 1093.24 3312.6 C 1094.32 3311.52 1096.48 3313.68 1095.4 3314.76 L 1089.1 3321.06 Z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1091.8" y1="3314.04" x2="1093.96" y2="3316.2" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="1134.0" y="3296.0" width="44" height="44" rx="10" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1144.0" y1="3297.0" x2="1168.0" y2="3297.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1151.5 3323.04 L 1152.94 3318.9 L 1159.24 3312.6 C 1160.32 3311.52 1162.48 3313.68 1161.4 3314.76 L 1155.1 3321.06 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1157.8" y1="3314.04" x2="1159.96" y2="3316.2" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1200.0" y="3296.0" width="44" height="44" rx="10" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1210.0" y1="3297.0" x2="1234.0" y2="3297.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1217.5 3323.04 L 1218.94 3318.9 L 1225.24 3312.6 C 1226.32 3311.52 1228.48 3313.68 1227.4 3314.76 L 1221.1 3321.06 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1223.8" y1="3314.04" x2="1225.96" y2="3316.2" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1266.0" y="3296.0" width="44" height="44" rx="10" fill="transparent" stroke="transparent" stroke-width="1"/>
+<path d="M 1283.5 3323.04 L 1284.94 3318.9 L 1291.24 3312.6 C 1292.32 3311.52 1294.48 3313.68 1293.4 3314.76 L 1287.1 3321.06 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1289.8" y1="3314.04" x2="1291.96" y2="3316.2" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1332.0" y="3296.0" width="44" height="44" rx="10" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1342.0" y1="3297.0" x2="1366.0" y2="3297.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="1348.24" y1="3314.4" x2="1359.76" y2="3314.4" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1351.84" y1="3314.4" x2="1352.2" y2="3312.24" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1352.2" y1="3312.24" x2="1356.16" y2="3312.24" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1356.16" y1="3312.24" x2="1356.52" y2="3314.4" stroke="#FFFFFF" stroke-width="1.8"/>
+<path d="M 1350.04 3314.4 L 1351.12 3323.76 L 1356.88 3323.76 L 1357.96 3314.4" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="938.0" y="3364" fill="#0F1F3D" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">XL 52×52</tspan>
+</text>
+<rect x="1068.0" y="3336.0" width="52" height="52" rx="12" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="1080.0" y1="3337.0" x2="1108.0" y2="3337.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1089.0 3367.6 L 1090.6 3363.0 L 1097.6 3356.0 C 1098.8 3354.8 1101.2 3357.2 1100.0 3358.4 L 1093.0 3365.4 Z" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1096.0" y1="3357.6" x2="1098.4" y2="3360.0" stroke="#FFFFFF" stroke-width="1.5"/>
+<rect x="1134.0" y="3336.0" width="52" height="52" rx="12" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="1146.0" y1="3337.0" x2="1174.0" y2="3337.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1155.0 3367.6 L 1156.6 3363.0 L 1163.6 3356.0 C 1164.8 3354.8 1167.2 3357.2 1166.0 3358.4 L 1159.0 3365.4 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1162.0" y1="3357.6" x2="1164.4" y2="3360.0" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1200.0" y="3336.0" width="52" height="52" rx="12" fill="#FFFFFF" stroke="#9CB3F7" stroke-width="1"/>
+<line x1="1212.0" y1="3337.0" x2="1240.0" y2="3337.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<path d="M 1221.0 3367.6 L 1222.6 3363.0 L 1229.6 3356.0 C 1230.8 3354.8 1233.2 3357.2 1232.0 3358.4 L 1225.0 3365.4 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1228.0" y1="3357.6" x2="1230.4" y2="3360.0" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1266.0" y="3336.0" width="52" height="52" rx="12" fill="transparent" stroke="transparent" stroke-width="1"/>
+<path d="M 1287.0 3367.6 L 1288.6 3363.0 L 1295.6 3356.0 C 1296.8 3354.8 1299.2 3357.2 1298.0 3358.4 L 1291.0 3365.4 Z" fill="none" stroke="#1E4FD7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="1294.0" y1="3357.6" x2="1296.4" y2="3360.0" stroke="#1E4FD7" stroke-width="1.5"/>
+<rect x="1332.0" y="3336.0" width="52" height="52" rx="12" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="1344.0" y1="3337.0" x2="1372.0" y2="3337.0" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<line x1="1351.6" y1="3358.0" x2="1364.4" y2="3358.0" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1355.6" y1="3358.0" x2="1356.0" y2="3355.6" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1356.0" y1="3355.6" x2="1360.4" y2="3355.6" stroke="#FFFFFF" stroke-width="1.8"/>
+<line x1="1360.4" y1="3355.6" x2="1360.8" y2="3358.0" stroke="#FFFFFF" stroke-width="1.8"/>
+<path d="M 1353.6 3358.0 L 1354.8 3368.4 L 1361.2 3368.4 L 1362.4 3358.0" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="72" y="3474" width="1656" height="190" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="96" y="3516" fill="#0F1F3D" font-family="Inter" font-size="22" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">Loading Pattern</tspan>
+</text>
+<text x="96" y="3544" fill="#6B7280" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">Saat proses berlangsung, tombol di-disable, label berubah sesuai proses, dan spinner muncul di</tspan>
+<tspan x="96" dy="18.9">kiri label.</tspan>
+</text>
+<rect x="96" y="3586" width="122.56" height="36" rx="8" fill="#1E4FD7" stroke="#1E4FD7" stroke-width="1"/>
+<line x1="104" y1="3587" x2="210.56" y2="3587" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="118.0" cy="3604.0" r="6.08" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+<path d="M 118.0 3597.92 A 6.08 6.08 0 0 1 124.08 3604.0" fill="none" stroke="#EEF2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="134.0" y="3609.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="134.0" dy="0">Menyimpan</tspan>
+</text>
+<rect x="242" y="3586" width="122.56" height="36" rx="8" fill="#EF4444" stroke="#EF4444" stroke-width="1"/>
+<line x1="250" y1="3587" x2="356.56" y2="3587" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="264.0" cy="3604.0" r="6.08" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+<path d="M 264.0 3597.92 A 6.08 6.08 0 0 1 270.08 3604.0" fill="none" stroke="#EEF2FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="280.0" y="3609.04" fill="#FFFFFF" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="280.0" dy="0">Menghapus</tspan>
+</text>
+<rect x="392" y="3586" width="122.56" height="36" rx="8" fill="#EEF2FF" stroke="#D8E1FF" stroke-width="1"/>
+<line x1="400" y1="3587" x2="506.56" y2="3587" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+<circle cx="414.0" cy="3604.0" r="6.08" fill="none" stroke="#1E4FD7" stroke-width="2" opacity="0.9"/>
+<path d="M 414.0 3597.92 A 6.08 6.08 0 0 1 420.08 3604.0" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="430.0" y="3609.04" fill="#1E4FD7" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="430.0" dy="0">Memproses</tspan>
+</text>
+<text x="592" y="3595" fill="#6B7280" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="592" dy="0">Contoh label: Menyimpan, Menghapus, Memproses Pembayaran, Mengirim Klaim.</tspan>
+</text>
+<text x="72" y="3734" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Guideline Penggunaan</tspan>
+</text>
+<text x="72" y="3778" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Aturan ini menjaga konsistensi di semua modul SIMRS, terutama form medis, tabel pasien, modal konfirmasi, dan</tspan>
+<tspan x="72" dy="25">alur transaksi.</tspan>
+</text>
+<rect x="1518" y="3728" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="3747" r="5" fill="#1E4FD7"/>
+<text x="1556" y="3752" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">Do / Don't</tspan>
+</text>
+<rect x="72.0" y="3826" width="814.0" height="384" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="96.0" y="3870" fill="#0F1F3D" font-family="Inter" font-size="24" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">Do</tspan>
+</text>
+<rect x="96.0" y="3902" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="112.0" y="3916" width="34" height="34" rx="10" fill="#E6FAF6" stroke="none" stroke-width="1"/>
+<text x="129.0" y="3940" fill="#00B894" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="129.0" dy="0">✓</tspan>
+</text>
+<text x="160.0" y="3926" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Gunakan satu primary per section</tspan>
+</text>
+<text x="160.0" y="3947" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Primary menjadi fokus utama, secondary/outline sebagai pendukung.</tspan>
+</text>
+<rect x="96.0" y="3974" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="112.0" y="3988" width="34" height="34" rx="10" fill="#E6FAF6" stroke="none" stroke-width="1"/>
+<text x="129.0" y="4012" fill="#00B894" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="129.0" dy="0">✓</tspan>
+</text>
+<text x="160.0" y="3998" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Label harus berupa aksi</tspan>
+</text>
+<text x="160.0" y="4019" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Pakai “Simpan”, “Daftarkan”, “Export”, bukan label ambigu seperti “OK”.</tspan>
+</text>
+<rect x="96.0" y="4046" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="112.0" y="4060" width="34" height="34" rx="10" fill="#E6FAF6" stroke="none" stroke-width="1"/>
+<text x="129.0" y="4084" fill="#00B894" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="129.0" dy="0">✓</tspan>
+</text>
+<text x="160.0" y="4070" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Loading mengganti label jelas</tspan>
+</text>
+<text x="160.0" y="4091" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Contoh: Menyimpan, Menghapus, Memproses Pembayaran.</tspan>
+</text>
+<rect x="96.0" y="4118" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="112.0" y="4132" width="34" height="34" rx="10" fill="#E6FAF6" stroke="none" stroke-width="1"/>
+<text x="129.0" y="4156" fill="#00B894" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="129.0" dy="0">✓</tspan>
+</text>
+<text x="160.0" y="4142" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Danger selalu butuh konfirmasi</tspan>
+</text>
+<text x="160.0" y="4163" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="160.0" dy="0">Untuk hapus/batal/tolak, tampilkan modal konfirmasi sebelum eksekusi.</tspan>
+</text>
+<rect x="914.0" y="3826" width="814.0" height="384" rx="22" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<text x="938.0" y="3870" fill="#0F1F3D" font-family="Inter" font-size="24" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Don't</tspan>
+</text>
+<rect x="938.0" y="3902" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="954.0" y="3916" width="34" height="34" rx="10" fill="#FEF2F2" stroke="none" stroke-width="1"/>
+<text x="971.0" y="3940" fill="#EF4444" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="971.0" dy="0">×</tspan>
+</text>
+<text x="1002.0" y="3926" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Jangan pakai primary terlalu banyak</tspan>
+</text>
+<text x="1002.0" y="3947" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Lebih dari satu primary di area yang sama membuat user bingung.</tspan>
+</text>
+<rect x="938.0" y="3974" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="954.0" y="3988" width="34" height="34" rx="10" fill="#FEF2F2" stroke="none" stroke-width="1"/>
+<text x="971.0" y="4012" fill="#EF4444" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="971.0" dy="0">×</tspan>
+</text>
+<text x="1002.0" y="3998" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Jangan pakai warna custom</tspan>
+</text>
+<text x="1002.0" y="4019" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Semua warna harus berasal dari token brand atau semantic.</tspan>
+</text>
+<rect x="938.0" y="4046" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="954.0" y="4060" width="34" height="34" rx="10" fill="#FEF2F2" stroke="none" stroke-width="1"/>
+<text x="971.0" y="4084" fill="#EF4444" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="971.0" dy="0">×</tspan>
+</text>
+<text x="1002.0" y="4070" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Jangan buat icon-only tanpa label</tspan>
+</text>
+<text x="1002.0" y="4091" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Wajib aria-label dan sebaiknya ada tooltip.</tspan>
+</text>
+<rect x="938.0" y="4118" width="766.0" height="62" rx="16" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="954.0" y="4132" width="34" height="34" rx="10" fill="#FEF2F2" stroke="none" stroke-width="1"/>
+<text x="971.0" y="4156" fill="#EF4444" font-family="Inter" font-size="18" font-weight="700" text-anchor="middle" style="" xml:space="preserve">
+<tspan x="971.0" dy="0">×</tspan>
+</text>
+<text x="1002.0" y="4142" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Jangan pakai LG di mobile form</tspan>
+</text>
+<text x="1002.0" y="4163" fill="#6B7280" font-family="Inter" font-size="12" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1002.0" dy="0">Gunakan MD atau full-width MD untuk mobile, bukan LG/XL.</tspan>
+</text>
+<rect x="72" y="4270" width="1656" height="314" rx="18" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<rect x="72" y="4270" width="1656" height="52" rx="18" fill="#F3F6FA" stroke="none" stroke-width="1"/>
+<text x="90" y="4303" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="90" dy="0">KONTEKS</tspan>
+</text>
+<text x="390" y="4303" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="390" dy="0">PRIMARY</tspan>
+</text>
+<text x="650" y="4303" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="650" dy="0">SECONDARY</tspan>
+</text>
+<text x="920" y="4303" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="920" dy="0">DANGER</tspan>
+</text>
+<text x="1190" y="4303" fill="#6B7280" font-family="Inter" font-size="12" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="1190" dy="0">CATATAN</tspan>
+</text>
+<text x="90" y="4360" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Form pasien</tspan>
+</text>
+<text x="390" y="4360" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="390" dy="0">Simpan</tspan>
+</text>
+<text x="650" y="4360" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="650" dy="0">Batal</tspan>
+</text>
+<text x="920" y="4360" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="920" dy="0">—</tspan>
+</text>
+<text x="1190" y="4360" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1190" dy="0">Primary di kanan bawah form/modal.</tspan>
+</text>
+<line x1="72" y1="4387" x2="1728" y2="4387" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="4425" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Data table</tspan>
+</text>
+<text x="390" y="4425" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="390" dy="0">Tambah</tspan>
+</text>
+<text x="650" y="4425" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="650" dy="0">Export / Filter</tspan>
+</text>
+<text x="920" y="4425" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="920" dy="0">Icon hapus</tspan>
+</text>
+<text x="1190" y="4425" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1190" dy="0">Row action pakai XS/SM dan icon-only.</tspan>
+</text>
+<line x1="72" y1="4452" x2="1728" y2="4452" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="4490" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Modal konfirmasi</tspan>
+</text>
+<text x="390" y="4490" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="390" dy="0">Ya, lanjutkan</tspan>
+</text>
+<text x="650" y="4490" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="650" dy="0">Kembali</tspan>
+</text>
+<text x="920" y="4490" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="920" dy="0">Ya, hapus</tspan>
+</text>
+<text x="1190" y="4490" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1190" dy="0">Danger sebagai final destructive action.</tspan>
+</text>
+<line x1="72" y1="4517" x2="1728" y2="4517" stroke="#E7ECF4" stroke-width="1"/>
+<text x="90" y="4555" fill="#0F1F3D" font-family="Inter" font-size="14" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="90" dy="0">Kiosk / touchscreen</tspan>
+</text>
+<text x="390" y="4555" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="390" dy="0">Ambil Nomor</tspan>
+</text>
+<text x="650" y="4555" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="650" dy="0">Pilih Bahasa</tspan>
+</text>
+<text x="920" y="4555" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="920" dy="0">Batalkan</tspan>
+</text>
+<text x="1190" y="4555" fill="#374151" font-family="Inter" font-size="14" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1190" dy="0">Gunakan LG/XL dengan target tap besar.</tspan>
+</text>
+<text x="72" y="4650" fill="#0F1F3D" font-family="Inter" font-size="36" font-weight="700" text-anchor="start" style="letter-spacing:-0.035em;" xml:space="preserve">
+<tspan x="72" dy="0">Implementasi CSS, Tailwind, dan React</tspan>
+</text>
+<text x="72" y="4694" fill="#6B7280" font-family="Inter" font-size="16" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="72" dy="0">Token di bawah bisa dipakai sebagai basis komponen button. Untuk produksi, simpan sebagai reusable component</tspan>
+<tspan x="72" dy="25">agar semua state konsisten.</tspan>
+</text>
+<rect x="1518" y="4644" width="210" height="38" rx="19" fill="#FFFFFF" stroke="#D8DEE8" stroke-width="1"/>
+<circle cx="1540" cy="4663" r="5" fill="#1E4FD7"/>
+<text x="1556" y="4668" fill="#374151" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="1556" dy="0">Developer handoff</tspan>
+</text>
+<text x="72.0" y="4742" fill="#6B7280" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="72.0" dy="0">CSS variables &amp; base button</tspan>
+</text>
+<rect x="72.0" y="4760" width="814.0" height="420" rx="18" fill="#081122" stroke="#172554" stroke-width="1"/>
+<text x="96.0" y="4792" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">:root {</tspan>
+</text>
+<text x="96.0" y="4811" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">--color-primary-blue: #1E4FD7;</tspan>
+</text>
+<text x="96.0" y="4830" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">--color-primary-dark: #1740B0;</tspan>
+</text>
+<text x="96.0" y="4849" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">--color-primary-light: #EEF2FF;</tspan>
+</text>
+<text x="96.0" y="4868" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">--color-danger: #EF4444;</tspan>
+</text>
+<text x="96.0" y="4887" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">--color-slate-light: #D1D5DB;</tspan>
+</text>
+<text x="96.0" y="4906" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">}</tspan>
+</text>
+<text x="96.0" y="4925" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0"></tspan>
+</text>
+<text x="96.0" y="4944" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">.btn {</tspan>
+</text>
+<text x="96.0" y="4963" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">height: 36px;</tspan>
+</text>
+<text x="96.0" y="4982" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">min-width: 92px;</tspan>
+</text>
+<text x="96.0" y="5001" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">padding: 0 14px;</tspan>
+</text>
+<text x="96.0" y="5020" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">border-radius: 8px;</tspan>
+</text>
+<text x="96.0" y="5039" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">display: inline-flex;</tspan>
+</text>
+<text x="96.0" y="5058" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">align-items: center;</tspan>
+</text>
+<text x="96.0" y="5077" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">justify-content: center;</tspan>
+</text>
+<text x="96.0" y="5096" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">gap: 8px;</tspan>
+</text>
+<text x="96.0" y="5115" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">font-size: 14px;</tspan>
+</text>
+<text x="96.0" y="5134" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">font-weight: 700;</tspan>
+</text>
+<text x="96.0" y="5153" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">}</tspan>
+</text>
+<text x="96.0" y="5172" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0"></tspan>
+</text>
+<text x="96.0" y="5191" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">.btn:focus-visible {</tspan>
+</text>
+<text x="96.0" y="5210" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">outline: 2px solid var(--color-primary-blue);</tspan>
+</text>
+<text x="96.0" y="5229" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">outline-offset: 2px;</tspan>
+</text>
+<text x="96.0" y="5248" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96.0" dy="0">}</tspan>
+</text>
+<text x="914.0" y="4742" fill="#6B7280" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="914.0" dy="0">React component API</tspan>
+</text>
+<rect x="914.0" y="4760" width="814.0" height="420" rx="18" fill="#081122" stroke="#172554" stroke-width="1"/>
+<text x="938.0" y="4792" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;Button variant="primary" size="md"&gt;</tspan>
+</text>
+<text x="938.0" y="4811" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Simpan</tspan>
+</text>
+<text x="938.0" y="4830" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;/Button&gt;</tspan>
+</text>
+<text x="938.0" y="4849" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0"></tspan>
+</text>
+<text x="938.0" y="4868" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;Button variant="secondary" size="sm"&gt;</tspan>
+</text>
+<text x="938.0" y="4887" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Batal</tspan>
+</text>
+<text x="938.0" y="4906" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;/Button&gt;</tspan>
+</text>
+<text x="938.0" y="4925" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0"></tspan>
+</text>
+<text x="938.0" y="4944" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;Button variant="danger" loading&gt;</tspan>
+</text>
+<text x="938.0" y="4963" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">Menghapus</tspan>
+</text>
+<text x="938.0" y="4982" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;/Button&gt;</tspan>
+</text>
+<text x="938.0" y="5001" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0"></tspan>
+</text>
+<text x="938.0" y="5020" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">&lt;Button</tspan>
+</text>
+<text x="938.0" y="5039" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">variant="outline"</tspan>
+</text>
+<text x="938.0" y="5058" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">size="icon"</tspan>
+</text>
+<text x="938.0" y="5077" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">aria-label="Edit pasien"</tspan>
+</text>
+<text x="938.0" y="5096" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">icon={&lt;PencilIcon /&gt;}</tspan>
+</text>
+<text x="938.0" y="5115" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="938.0" dy="0">/&gt;</tspan>
+</text>
+<text x="72" y="5250" fill="#6B7280" font-family="Inter" font-size="13" font-weight="700" text-anchor="start" style="letter-spacing:0.08em;" xml:space="preserve">
+<tspan x="72" dy="0">Tailwind class recommendation</tspan>
+</text>
+<rect x="72" y="5268" width="1656" height="310" rx="18" fill="#081122" stroke="#172554" stroke-width="1"/>
+<text x="96" y="5300" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">const buttonVariants = {</tspan>
+</text>
+<text x="96" y="5319" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">primary: 'bg-primary-blue text-white hover:bg-primary-dark',</tspan>
+</text>
+<text x="96" y="5338" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">secondary: 'bg-primary-light text-primary-blue hover:bg-blue-100',</tspan>
+</text>
+<text x="96" y="5357" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">outline: 'bg-white text-primary-blue border border-blue-300 hover:bg-primary-light',</tspan>
+</text>
+<text x="96" y="5376" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">ghost: 'bg-transparent text-primary-blue hover:bg-primary-light',</tspan>
+</text>
+<text x="96" y="5395" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">danger: 'bg-danger text-white hover:bg-red-600',</tspan>
+</text>
+<text x="96" y="5414" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">}</tspan>
+</text>
+<text x="96" y="5433" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0"></tspan>
+</text>
+<text x="96" y="5452" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">const buttonSizes = {</tspan>
+</text>
+<text x="96" y="5471" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">xs: 'h-7 px-2.5 text-xs rounded-md gap-1.5',</tspan>
+</text>
+<text x="96" y="5490" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">sm: 'h-8 px-3 text-[13px] rounded-lg gap-1.5',</tspan>
+</text>
+<text x="96" y="5509" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">md: 'h-9 px-3.5 text-sm rounded-lg gap-2',</tspan>
+</text>
+<text x="96" y="5528" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">lg: 'h-11 px-4.5 text-sm rounded-[10px] gap-2',</tspan>
+</text>
+<text x="96" y="5547" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">xl: 'h-13 px-5.5 text-base rounded-xl gap-2.5',</tspan>
+</text>
+<text x="96" y="5566" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">icon: 'w-9 h-9 p-0 rounded-lg',</tspan>
+</text>
+<text x="96" y="5585" fill="#E8EEFF" font-family="JetBrains Mono" font-size="13" font-weight="500" text-anchor="start" style="" xml:space="preserve">
+<tspan x="96" dy="0">}</tspan>
+</text>
+<rect x="72" y="5640" width="1656" height="94" rx="22" fill="#F8FAFC" stroke="#E7ECF4" stroke-width="1"/>
+<text x="100" y="5679" fill="#0F1F3D" font-family="Inter" font-size="16" font-weight="700" text-anchor="start" style="" xml:space="preserve">
+<tspan x="100" dy="0">SIMRS ZAIDAN · Button Guide</tspan>
+</text>
+<text x="100" y="5704" fill="#6B7280" font-family="Inter" font-size="13" font-weight="400" text-anchor="start" style="" xml:space="preserve">
+<tspan x="100" dy="0">Gunakan sebagai acuan Figma, Tailwind, dan komponen React.</tspan>
+</text>
+<text x="1700" y="5695" fill="#6B7280" font-family="JetBrains Mono" font-size="13" font-weight="600" text-anchor="end" style="" xml:space="preserve">
+<tspan x="1700" dy="0">© 2026 · Design System Guidelines</tspan>
+</text>
+</svg>

@@ -1,0 +1,81 @@
+/* Grid, spacing, dan elevation
+   Utility level design system untuk layout yang sering dipakai ulang. */
+.layout-container {
+  @apply w-full max-w-[1240px] mx-auto px-6;
+}
+
+.layout-section {
+  @apply py-8;
+}
+
+.layout-stack {
+  @apply flex flex-col;
+}
+
+.layout-stack.is-xs { @apply gap-1.5; }
+.layout-stack.is-sm { @apply gap-2.5; }
+.layout-stack.is-md { @apply gap-4; }
+.layout-stack.is-lg { @apply gap-6; }
+.layout-stack.is-xl { @apply gap-8; }
+
+.layout-row {
+  @apply flex flex-wrap items-center gap-3;
+}
+
+.layout-grid {
+  @apply grid gap-4;
+}
+
+.layout-grid.is-2 { @apply grid-cols-2; }
+.layout-grid.is-3 { @apply grid-cols-3; }
+.layout-grid.is-4 { @apply grid-cols-4; }
+.layout-grid.is-auto { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.layout-sidebar-grid {
+  @apply grid grid-cols-[280px_minmax(0,1fr)] gap-6 items-start;
+}
+
+.layout-content-grid {
+  @apply grid grid-cols-[minmax(0,1fr)_320px] gap-6 items-start;
+}
+
+.space-card {
+  @apply p-5;
+}
+
+.space-card.is-compact { @apply p-3.5; }
+.space-card.is-relaxed { @apply p-7; }
+
+.elevation-none { @apply shadow-none; }
+.elevation-sm { box-shadow: var(--shadow-sm); }
+.elevation-md { box-shadow: var(--shadow-md); }
+.elevation-lg { box-shadow: var(--shadow-lg); }
+.elevation-card {
+  @apply rounded-[10px] bg-[color:var(--white)];
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 1024px) {
+  .layout-grid.is-4,
+  .layout-content-grid,
+  .layout-sidebar-grid {
+    @apply grid-cols-2;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    @apply px-4;
+  }
+
+  .layout-grid.is-2,
+  .layout-grid.is-3,
+  .layout-grid.is-4 {
+    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+  }
+
+  .layout-content-grid,
+  .layout-sidebar-grid {
+    @apply grid-cols-1;
+  }
+}

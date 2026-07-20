@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login · SIMRS ZAIDAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="login-page auth-flow-page">
+  <main class="login-shell" aria-label="G01 Login SIMRS ZAIDAN">
+
+    <section class="login-hero-panel" aria-labelledby="loginBrandTitle">
+      <div class="login-decor login-decor-one" aria-hidden="true"></div>
+      <div class="login-decor login-decor-two" aria-hidden="true"></div>
+      <div class="login-dot-grid login-dot-grid-top" aria-hidden="true"></div>
+      <div class="login-dot-grid login-dot-grid-bottom" aria-hidden="true"></div>
+      <div class="login-wave" aria-hidden="true"></div>
+
+      <a class="login-logo" href="../guide/00-overview.html" aria-label="Kembali ke panduan SIMRS ZAIDAN">
+        <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN" />
+      </a>
+
+      <div class="login-hero-content">
+        <span class="badge badge-primary badge-md login-trust-badge">
+          <i class="fa-solid fa-shield-heart" aria-hidden="true"></i>
+          Sistem terintegrasi · Aman · Terpercaya
+        </span>
+
+        <div class="login-heading-stack">
+          <h1 id="loginBrandTitle" class="text-display-md">Kelola Rumah Sakit Lebih Cerdas, <span>Pelayanan Lebih Optimal.</span></h1>
+          <p class="text-body-lg font-medium">SIMRS ZAIDAN membantu mengelola proses manajemen rumah sakit secara terintegrasi untuk meningkatkan kualitas layanan kesehatan.</p>
+        </div>
+
+        <div class="login-feature-grid" aria-label="Keunggulan SIMRS ZAIDAN">
+          <article class="card login-feature-card">
+            <span class="option-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+            <div class="option-meta">
+              <strong>Aman &amp; Terpercaya</strong>
+              <small>Keamanan data sesuai standar dan terlindungi.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon green" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+            <div class="option-meta">
+              <strong>Akses Kapan Saja</strong>
+              <small>Sistem dapat diakses kapan saja dan di mana saja.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon indigo" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
+            <div class="option-meta">
+              <strong>Data Akurat</strong>
+              <small>Informasi real-time untuk keputusan lebih tepat.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon login-feature-icon-warning" aria-hidden="true"><i class="fa-solid fa-laptop-medical"></i></span>
+            <div class="option-meta">
+              <strong>Multi Perangkat</strong>
+              <small>Dapat diakses melalui berbagai perangkat.</small>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="login-form-panel" aria-labelledby="loginTitle">
+      <div class="login-card auth-card" data-auth-card="login">
+        <div class="login-form-head">
+          <h2 id="loginTitle" class="text-h2">Masuk ke SIMRS ZAIDAN</h2>
+          <p class="text-body-md font-medium text-secondary">Gunakan email staf RS dan password Anda untuk mengakses dashboard.</p>
+        </div>
+
+        <div class="alert alert-danger alert-sm auth-inline-alert" id="loginError" role="alert" aria-live="polite" hidden>
+          <span class="alert-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+          <div><strong>Email atau password salah</strong></div>
+        </div>
+
+        <div class="alert alert-warning alert-sm auth-inline-alert" id="attemptWarning" role="alert" aria-live="polite" hidden>
+          <span class="alert-icon" aria-hidden="true"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+          <div><strong id="attemptWarningText">Akun Anda akan dikunci setelah 5x percobaan gagal (2 lagi)</strong></div>
+        </div>
+
+        <div class="card card-danger component-stack auth-lock-card" id="lockCard" role="alert" aria-live="assertive" hidden>
+          <div class="card-header">
+            <div class="card-title-row">
+              <span class="card-tone-icon" aria-hidden="true"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+              <h3 class="card-title">Akun dikunci selama 30 menit</h3>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Silakan coba lagi setelah timer selesai atau hubungi administrator sistem.</p>
+            <div class="auth-countdown" id="lockTimer">30:00</div>
+          </div>
+        </div>
+
+        <form class="login-form" id="loginForm" action="21-login-2fa.html" method="post" novalidate data-auth-validate>
+          <div class="field" id="emailField">
+            <label for="email">Email</label>
+            <div class="input-wrap">
+              <span class="field-icon" aria-hidden="true"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
+              <input class="input is-lg with-left" id="email" name="email" type="email" placeholder="nama@rszaidan.id" autocomplete="username" required data-auth-control data-auth-label="Email" />
+            </div>
+          </div>
+
+          <div class="field" id="passwordField">
+            <label for="password">Password</label>
+            <div class="input-wrap">
+              <span class="field-icon" aria-hidden="true"><i class="fa-solid fa-lock" aria-hidden="true"></i></span>
+              <input class="input is-lg with-left with-right" id="password" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required data-auth-control data-auth-label="Password" />
+              <button class="btn btn-ghost btn-icon btn-sm login-password-toggle" type="button" aria-label="Tampilkan password" aria-pressed="false" data-password-toggle data-target="password" data-show-label="Tampilkan password" data-hide-label="Sembunyikan password">
+                <span class="password-toggle-icon password-toggle-icon-on" aria-hidden="true"><i class="fa-regular fa-eye" aria-hidden="true"></i></span>
+                <span class="password-toggle-icon password-toggle-icon-off" aria-hidden="true"><i class="fa-regular fa-eye-slash" aria-hidden="true"></i></span>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-xl btn-full login-submit" id="loginButton" type="submit">
+            <span class="btn-label">Masuk</span>
+            <span class="auth-spinner" aria-hidden="true"></span>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <a class="login-link auth-forgot-link text-body-md font-semibold" href="24-password-forgot.html">Lupa password? Klik di sini</a>
+      </div>
+      <div class="login-feature-grid login-feature-grid-mobile" aria-label="Keunggulan SIMRS ZAIDAN">
+          <article class="card login-feature-card">
+            <span class="option-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></span>
+            <div class="option-meta">
+              <strong>Aman &amp; Terpercaya</strong>
+              <small>Keamanan data sesuai standar dan terlindungi.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon green" aria-hidden="true"><i class="fa-solid fa-clock"></i></span>
+            <div class="option-meta">
+              <strong>Akses Kapan Saja</strong>
+              <small>Sistem dapat diakses kapan saja dan di mana saja.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon indigo" aria-hidden="true"><i class="fa-solid fa-chart-line"></i></span>
+            <div class="option-meta">
+              <strong>Data Akurat</strong>
+              <small>Informasi real-time untuk keputusan lebih tepat.</small>
+            </div>
+          </article>
+          <article class="card login-feature-card">
+            <span class="option-icon login-feature-icon-warning" aria-hidden="true"><i class="fa-solid fa-laptop-medical"></i></span>
+            <div class="option-meta">
+              <strong>Multi Perangkat</strong>
+              <small>Dapat diakses melalui berbagai perangkat.</small>
+            </div>
+          </article>
+        </div>
+
+      <p class="login-copyright text-body-sm font-semibold">© 2026 SIMRS ZAIDAN. Semua hak cipta dilindungi.</p>
+    </section>
+  </main>
+
+  <script>
+
+    function initPasswordToggles(root = document) {
+      root.querySelectorAll('[data-password-toggle]').forEach((button) => {
+        const input = document.getElementById(button.dataset.target);
+        if (!input) return;
+        const showLabel = button.dataset.showLabel || 'Tampilkan password';
+        const hideLabel = button.dataset.hideLabel || 'Sembunyikan password';
+        const syncPasswordToggle = () => {
+          const isVisible = input.type === 'text';
+          button.setAttribute('aria-pressed', String(isVisible));
+          button.setAttribute('aria-label', isVisible ? hideLabel : showLabel);
+        };
+        syncPasswordToggle();
+        button.addEventListener('click', () => {
+          const shouldShow = input.type === 'password';
+          const selectionStart = input.selectionStart;
+          const selectionEnd = input.selectionEnd;
+          input.type = shouldShow ? 'text' : 'password';
+          syncPasswordToggle();
+          input.focus({ preventScroll: true });
+          if (typeof selectionStart === 'number' && typeof selectionEnd === 'number') {
+            input.setSelectionRange(selectionStart, selectionEnd);
+          }
+        });
+      });
+    }
+
+    initPasswordToggles();
+
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const passwordField = document.getElementById('passwordField');
+    const loginButton = document.getElementById('loginButton');
+    const loginError = document.getElementById('loginError');
+    const attemptWarning = document.getElementById('attemptWarning');
+    const attemptWarningText = document.getElementById('attemptWarningText');
+    const lockCard = document.getElementById('lockCard');
+    const lockTimer = document.getElementById('lockTimer');
+    const passwordToggleButtons = Array.from(document.querySelectorAll('[data-password-toggle]'));
+    const loginControls = [emailInput, passwordInput, loginButton, ...passwordToggleButtons];
+    const MAX_FAILED_ATTEMPTS = 5;
+    const WARNING_ATTEMPT = 3;
+    const LOCK_DURATION_MS = 30 * 60 * 1000;
+    const LOGIN_DEMO_USERS = [
+      { email: 'staf@rszaidan.id', password: 'Zaidan@2026', twoFactorActive: true },
+      { email: 'admin@rszaidan.id', password: 'Zaidan@2026', twoFactorActive: true },
+      { email: 'no2fa@rszaidan.id', password: 'Zaidan@2026', twoFactorActive: false },
+      { email: 'dashboard@rszaidan.id', password: 'Zaidan@2026', twoFactorActive: false }
+    ];
+    let failedAttempts = Number(sessionStorage.getItem('simrsLoginAttempts') || '0');
+    let lockUntil = Number(sessionStorage.getItem('simrsLockUntil') || '0');
+    let lockInterval = null;
+
+    function setControlsDisabled(isDisabled) {
+      loginControls.forEach((control) => {
+        if (!control) return;
+        control.disabled = isDisabled;
+      });
+    }
+
+    function setLoading(isLoading) {
+      loginForm.setAttribute('aria-busy', String(isLoading));
+      loginButton.classList.toggle('is-loading', isLoading);
+      loginButton.querySelector('.btn-label').textContent = isLoading ? 'Memproses...' : 'Masuk';
+      setControlsDisabled(isLoading);
+    }
+
+    function clearLoginFeedback() {
+      loginError.hidden = true;
+      attemptWarning.hidden = true;
+      passwordField.classList.remove('state-error');
+    }
+
+    function renderAttemptWarning() {
+      const remainingAttempts = Math.max(0, MAX_FAILED_ATTEMPTS - failedAttempts);
+      attemptWarningText.textContent = `Akun Anda akan dikunci setelah 5x percobaan gagal (${remainingAttempts} lagi)`;
+      attemptWarning.hidden = false;
+    }
+
+    function setLocked(isLocked) {
+      setControlsDisabled(isLocked);
+      lockCard.hidden = !isLocked;
+      loginForm.dataset.locked = String(isLocked);
+      if (!isLocked) {
+        if (lockInterval) window.clearInterval(lockInterval);
+        lockInterval = null;
+        sessionStorage.removeItem('simrsLockUntil');
+        sessionStorage.setItem('simrsLoginAttempts', '0');
+        failedAttempts = 0;
+        lockUntil = 0;
+        clearLoginFeedback();
+      }
+    }
+
+    function renderLockTimer() {
+      const remaining = Math.max(0, lockUntil - Date.now());
+      const totalSeconds = Math.ceil(remaining / 1000);
+      const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
+      lockTimer.textContent = `${minutes}:${seconds}`;
+      if (remaining <= 0) setLocked(false);
+    }
+
+    function startLockout() {
+      lockUntil = Date.now() + LOCK_DURATION_MS;
+      sessionStorage.setItem('simrsLockUntil', String(lockUntil));
+      loginError.hidden = true;
+      attemptWarning.hidden = true;
+      passwordField.classList.add('state-error');
+      setLocked(true);
+      renderLockTimer();
+      lockInterval = window.setInterval(renderLockTimer, 1000);
+    }
+
+    function findDemoUser(email, password) {
+      return LOGIN_DEMO_USERS.find((user) => user.email === email && user.password === password);
+    }
+
+    function redirectAfterLogin(user) {
+      sessionStorage.removeItem('simrsLoginAttempts');
+      sessionStorage.removeItem('simrsLockUntil');
+      if (user.twoFactorActive) {
+        window.location.href = '21-login-2fa.html';
+        return;
+      }
+      window.location.href = '../dashboard/30-dashboard.html';
+    }
+
+    if (lockUntil > Date.now()) {
+      setLocked(true);
+      renderLockTimer();
+      lockInterval = window.setInterval(renderLockTimer, 1000);
+    }
+
+    [emailInput, passwordInput].forEach((input) => {
+      input.addEventListener('input', () => {
+        if (lockUntil > Date.now()) return;
+        loginError.hidden = true;
+        passwordField.classList.remove('state-error');
+      });
+    });
+
+    loginForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (lockUntil > Date.now()) {
+        setLocked(true);
+        renderLockTimer();
+        return;
+      }
+
+      setLoading(true);
+      clearLoginFeedback();
+
+      window.setTimeout(() => {
+        const email = emailInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+        const demoUser = findDemoUser(email, password);
+
+        if (demoUser) {
+          redirectAfterLogin(demoUser);
+          return;
+        }
+
+        failedAttempts += 1;
+        sessionStorage.setItem('simrsLoginAttempts', String(failedAttempts));
+        setLoading(false);
+        passwordField.classList.add('state-error');
+        loginError.hidden = false;
+
+        if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+          startLockout();
+          return;
+        }
+
+        if (failedAttempts >= WARNING_ATTEMPT) {
+          renderAttemptWarning();
+        }
+      }, 750);
+    });
+  </script>
+<script src="../../js/auth-validation.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,2668 @@
+/* ==========================================================================
+   Halaman guide SIMRS
+   Layout dokumentasi, side menu sticky, preview komponen, tabel spesifikasi,
+   dan code snippet untuk guide design system.
+   ========================================================================== */
+
+/* ==========================================================================
+   00A. Side menu sticky halaman guide
+   Dipakai oleh semua halaman di src/pages/guide agar navigasi antar guide
+   tetap mudah tanpa mengubah class komponen aplikasi.
+   ========================================================================== */
+
+.guide-layout {
+  @apply w-[min(1500px,calc(100%_-_48px))] my-0 mx-auto grid grid-cols-[240px_minmax(0,1fr)] gap-6 items-start;
+}
+
+.guide-layout > .page,
+.guide-layout > .docs-main {
+  @apply w-full m-0;
+}
+
+.docs-main {
+  @apply pt-7 pb-16 px-0;
+}
+
+.docs-hero {
+  @apply border-0 rounded-[10px] pt-10 pb-9 px-10 shadow-[0_1px_0_rgba(15,31,61,0.02)] mb-11;
+  background: linear-gradient(180deg, var(--white) 0%, var(--ui-surface-canvas) 100%);
+}
+
+.docs-hero .muted {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.guide-side-menu {
+  @apply sticky top-6 self-start pt-7 z-[20];
+}
+
+.guide-side-menu-card {
+  @apply border-0 bg-[color:var(--white)] rounded-[10px] p-3.5 shadow-[var(--shadow-sm)];
+}
+
+.guide-side-menu-kicker {
+  @apply mt-0 mb-1 mx-0 text-[color:var(--primary-blue)] text-body-xs leading-none font-bold tracking-[0.12em] uppercase;
+}
+
+.guide-side-menu-title {
+  @apply block text-[color:var(--text-primary)] text-body-lg leading-[1.2] font-bold mb-3;
+}
+
+.guide-side-menu-list {
+  @apply grid gap-1;
+}
+
+.guide-side-menu-link {
+  @apply min-h-9 flex items-center gap-2.5 py-2 px-2.5 rounded-[11px] text-[color:var(--text-secondary)] text-body-sm leading-[1.25] font-semibold no-underline;
+}
+
+.guide-side-menu-link span {
+  @apply inline-flex items-center justify-center w-[26px] h-[22px] rounded-lg bg-[color:var(--light-gray)] text-[color:var(--slate)] text-body-xs font-bold flex-none;
+}
+
+.guide-side-menu-link:hover {
+  @apply bg-[color:var(--primary-tint)] text-[color:var(--primary-blue)];
+}
+
+.guide-side-menu-link.active {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.guide-side-menu-link.active span {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+@media (max-width: 1180px) {
+  .guide-layout {
+    @apply block w-[min(1200px,calc(100%_-_48px))];
+  }
+
+  .guide-side-menu {
+    @apply static pt-5 mb-5;
+  }
+
+  .guide-side-menu-list {
+    @apply grid-cols-2;
+  }
+}
+
+@media (max-width: 640px) {
+  .guide-layout {
+    @apply w-[min(100%_-_28px,1540px)];
+  }
+
+  .guide-side-menu-list {
+    @apply grid-cols-1;
+  }
+}
+
+/* ==========================================================================
+   01. Documentation index
+   Dipakai oleh `index.html` untuk daftar halaman guide.
+   ========================================================================== */
+
+.docs-index {
+  @apply bg-[color:var(--page)];
+}
+
+.index-main {
+  @apply w-[min(960px,calc(100%_-_40px))] my-0 mx-auto py-14 px-0;
+}
+
+.index-hero {
+  @apply bg-[color:var(--surface)] border-0 rounded-[10px] p-9 shadow-[var(--shadow-md)];
+}
+
+.index-hero h1 {
+  @apply m-0 text-display-lg tracking-[-0.04em];
+}
+
+.index-hero p {
+  @apply text-[color:var(--slate)] text-body-lg;
+}
+
+.index-grid {
+  @apply grid grid-cols-2 gap-3.5 mt-6;
+}
+
+.index-card {
+  @apply block py-5 px-5 bg-[color:var(--surface)] border-0 rounded-[10px] text-[color:var(--primary-blue)] no-underline font-bold;
+}
+
+.index-card:hover {
+  @apply shadow-[var(--shadow-sm)];
+}
+
+.index-card-meta {
+  @apply block text-[color:var(--slate)] font-medium text-body-md mt-1;
+}
+
+/* ==========================================================================
+   02. Helper layout halaman guide
+   Layout umum untuk halaman panduan warna, tipografi, dan komponen guide.
+   ========================================================================== */
+
+.hero p {
+  @apply max-w-[900px] mt-5 mb-0 mx-0 text-h3 text-[color:var(--text-secondary)];
+}
+
+.section-title {
+  @apply flex justify-between gap-5 mb-5;
+  align-items: end;
+}
+
+.section-title p {
+  @apply mt-2 mb-0 mx-0 text-[color:var(--text-secondary)] text-body-lg;
+}
+
+.layout-2 {
+  @apply grid grid-cols-[0.95fr_1.05fr] gap-7;
+  align-items: start;
+}
+
+.token-cell {
+  @apply flex items-center gap-3 text-body-lg text-[color:var(--text-primary)];
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.mini-swatch {
+  @apply flex-none w-7 h-7 rounded-[7px] border border-[color:rgba(15,31,61,0.12)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.32)];
+}
+
+.hex {
+  @apply text-[color:var(--text-primary)] font-bold whitespace-nowrap;
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* --------------------------------------------------------------------------
+   02A. Komponen guide warna
+   Swatch, palette, scale, dan contoh penggunaan warna.
+   -------------------------------------------------------------------------- */
+
+.color-grid {
+  @apply grid grid-cols-3 gap-4;
+}
+
+.brand-card-grid {
+  @apply grid-cols-4;
+}
+
+.color-card {
+  @apply p-4 border-0 rounded-[10px] bg-[color:var(--white)] min-h-[152px] shadow-[0_8px_24px_rgba(15,31,61,0.04)];
+}
+
+.color-name {
+  @apply m-0 text-body-lg text-[color:var(--text-primary)];
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  word-break: break-word;
+}
+
+.color-hex {
+  @apply mt-0.5 mb-0 mx-0 text-body-lg text-[color:var(--text-primary)] font-bold;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.color-usage {
+  @apply mt-2 mb-0 mx-0 text-body-md text-[color:var(--slate)];
+}
+
+.tone-wrapper {
+  @apply grid gap-5;
+}
+
+.tone-row {
+  @apply grid grid-cols-[240px_1fr] gap-5 items-stretch p-5 border-0 rounded-[10px] bg-[color:var(--white)] shadow-[0_8px_24px_rgba(15,31,61,0.04)];
+}
+
+.tone-meta {
+  @apply flex gap-3 items-start py-1.5 px-1;
+}
+
+.tone-dot {
+  @apply inline-block w-8.5 h-8.5 flex-[0_0_34px] rounded-[10px] border border-[color:rgba(15,31,61,0.12)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.32)];
+}
+
+.tone-meta h3 {
+  @apply mt-0 mb-1.5 mx-0 text-[color:var(--text-primary)] text-body-xl leading-6.5 tracking-[-0.02em];
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.tone-meta p {
+  @apply m-0 text-[color:var(--slate)] text-body-md;
+}
+
+.tone-grid {
+  @apply grid grid-cols-7 gap-3;
+}
+
+.tone-card {
+  @apply p-3 border-0 rounded-[10px] bg-[color:var(--white)] min-h-[144px] overflow-hidden;
+}
+
+.tone-swatch {
+  @apply h-[58px] rounded-xl border border-[color:rgba(15,31,61,0.08)] mb-2.5;
+}
+
+.tone-label {
+  @apply mt-0 mb-0.5 mx-0 text-body-sm tracking-[0.08em] uppercase text-[color:var(--slate)] font-bold;
+}
+
+.tone-name {
+  @apply m-0 text-body-sm text-[color:var(--text-primary)] leading-[1.25];
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  word-break: break-word;
+}
+
+.tone-hex {
+  @apply mt-1.5 mb-0 mx-0 text-body-sm text-[color:var(--text-primary)] font-bold;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.palette-table {
+  @apply grid gap-6;
+}
+
+.scale-row {
+  @apply grid grid-cols-[165px_1fr] gap-6 items-center;
+}
+
+.scale-meta h3 {
+  @apply mt-0 mb-1.5 mx-0 text-[color:var(--text-primary)] text-body-xl leading-6.5 tracking-[-0.02em];
+}
+
+.scale-meta p {
+  @apply m-0 text-[color:var(--slate)] text-body-md;
+}
+
+.scale-grid {
+  @apply grid grid-cols-6 gap-3;
+}
+
+.scale-color {
+  @apply h-[46px] border-b border-b-[color:rgba(15,31,61,0.06)];
+}
+
+.scale-label {
+  @apply pt-2 pb-2.5 px-2.5 text-body-sm text-[color:var(--slate)] leading-[1.25];
+}
+
+.scale-label strong {
+  @apply block mb-0.5 text-[color:var(--text-primary)] text-body-sm;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.examples {
+  @apply grid grid-cols-3 gap-5 mt-5;
+}
+
+.example-card {
+  @apply border-0 rounded-[10px] p-6 bg-[color:var(--white)] shadow-[0_8px_24px_rgba(15,31,61,0.04)];
+}
+
+.example-card h3 {
+  @apply mt-0 mb-3 mx-0 text-[color:var(--text-primary)] text-body-xl leading-6.5;
+}
+
+.button-row {
+  @apply flex flex-wrap gap-2.5;
+}
+
+.sidebar-demo {
+  @apply overflow-hidden rounded-[10px] border-0 grid grid-cols-[125px_1fr] min-h-[190px];
+}
+
+.sidebar {
+  @apply bg-[color:var(--navy)] p-3.5 text-[color:var(--white)];
+}
+
+.nav-item {
+  @apply block py-2.5 px-3 rounded-[10px] text-[color:rgba(255,255,255,0.72)] text-body-md mb-1.5;
+}
+
+.nav-item.active {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+.demo-content {
+  @apply bg-[color:var(--light-gray)] p-4;
+}
+
+.demo-pill {
+  @apply inline-flex py-1.5 px-2.5 rounded-full text-[color:var(--ui-success-text)] bg-[color:var(--success-light)] font-bold text-body-sm mb-3;
+}
+
+.demo-box {
+  @apply h-4.5 rounded-full bg-[color:var(--slate-light)] mb-2.5;
+}
+
+.card-pad {
+  @apply p-7;
+}
+
+.label {
+  @apply text-[color:var(--ui-text-soft)] text-body-md leading-[1.2] uppercase tracking-[0.05em] font-medium mt-0 mb-2 mx-0;
+}
+
+/* ==========================================================================
+   03. Komponen guide tipografi
+   Kartu font, specimen, weight, size scale, dan contoh teks.
+   ========================================================================== */
+
+.font-card {
+  @apply grid grid-cols-[1fr_auto] gap-5 min-h-[220px] p-8 border-0 rounded-[10px] shadow-[var(--shadow)];
+  background: linear-gradient(180deg, var(--white) 0%, var(--ui-surface-canvas) 100%);
+}
+
+.font-name {
+  @apply mt-0 mb-2 mx-0 text-body-xl leading-6.5 tracking-[-0.02em] font-bold;
+}
+
+.font-desc {
+  @apply max-w-[540px] text-[color:var(--slate)] m-0 text-body-lg;
+}
+
+.font-sample {
+  @apply self-center text-[color:var(--text-primary)] text-body-xl leading-6.5 tracking-[-0.02em] font-bold;
+}
+
+.font-card.mono-card .font-sample,
+.font-card.mono-card .font-name {
+  @apply font-mono tracking-[-0.05em];
+}
+
+.meta-list {
+  @apply flex gap-2.5 flex-wrap mt-5;
+}
+
+.meta-pill {
+  @apply text-body-sm font-bold text-[color:var(--text-primary)] py-2 px-2.5 rounded-full border border-[color:var(--border)] bg-[color:var(--white)];
+}
+
+.specimen-top {
+  @apply p-8 border-b border-b-[color:var(--border-soft)];
+}
+
+.alphabet {
+  @apply mt-5 mb-0 mx-0 text-[length:clamp(24px,3vw,48px)] leading-[1.3] tracking-[-0.035em] text-[color:var(--ui-text-heading)];
+}
+
+.ag {
+  @apply text-display-2xl leading-[0.95] tracking-[-0.07em] mt-1.5 mb-2.5 mx-0 font-medium;
+}
+
+.spec-row {
+  @apply grid grid-cols-[150px_repeat(4,1fr)_280px] gap-5 py-6 px-7 border-t border-t-[color:var(--border-soft)];
+  align-items: end;
+}
+
+.spec-size {
+  @apply text-[color:var(--slate)] text-body-sm font-semibold;
+
+  align-self: start;
+}
+
+.spec-meta {
+  @apply text-[color:var(--slate)] text-body-sm text-right leading-[1.55];
+
+  align-self: start;
+  justify-self: end;
+}
+
+.sample-title {
+  @apply mt-0 mb-2 mx-0 leading-[1.05] text-[color:var(--text-primary)] tracking-[-0.04em];
+}
+
+.sample-weight {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.w400 {
+  @apply font-normal;
+}
+
+.w500 {
+  @apply font-medium;
+}
+
+.w600 {
+  @apply font-semibold;
+}
+
+.w700 {
+  @apply font-bold;
+}
+
+.s72 {
+  @apply text-display-2xl;
+}
+
+.s60 {
+  @apply text-display-xl;
+}
+
+.s48 {
+  @apply text-display-lg;
+}
+
+.s36 {
+  @apply text-display-md;
+}
+
+.s32 {
+  @apply text-h1;
+}
+
+.s24 {
+  @apply text-h2;
+}
+
+.s20 {
+  @apply text-h3;
+}
+
+.s16 {
+  @apply text-body-lg;
+}
+
+.s14 {
+  @apply text-body-md;
+}
+
+.s12 {
+  @apply text-body-sm;
+}
+
+.s10 {
+  @apply text-body-xs;
+}
+
+.typography-demo {
+  @apply grid grid-cols-[0.98fr_1.02fr] gap-7 items-stretch;
+}
+
+.heading-stack,
+.body-stack {
+  @apply border border-[color:var(--border)] rounded-[20px] py-9 px-9 bg-[color:var(--white)] shadow-[var(--shadow)];
+}
+
+.heading-stack .h1-demo {
+  @apply mt-0 mb-6 mx-0 text-h1 leading-10 font-bold tracking-[-0.02em];
+}
+
+.heading-stack .h2-demo {
+  @apply mt-0 mb-5 mx-0 text-h2 leading-8 font-bold tracking-[-0.015em];
+}
+
+.heading-stack .h3-demo {
+  @apply mt-0 mb-5 mx-0 text-h3 leading-7 font-bold;
+}
+
+.heading-stack .h4-demo {
+  @apply m-0 text-body-lg leading-6 font-bold;
+}
+
+.body-stack p {
+  @apply m-0;
+}
+
+.body-copy {
+  @apply text-[color:var(--ui-text-strong)] text-body-md leading-5.5 max-w-[580px];
+}
+
+.small-copy {
+  @apply text-[color:var(--ui-text-body-muted)] text-body-sm leading-4.5 max-w-[580px];
+}
+
+.tiny-copy {
+  @apply text-[color:var(--ui-text-muted-blue)] text-body-xs leading-[14px] max-w-[580px];
+}
+
+.mono-copy {
+  @apply text-mono-md leading-5.5 tracking-[-0.035em] font-bold text-[color:var(--ui-text-ink)];
+  word-break: break-word;
+}
+
+.body-stack .block {
+  @apply mb-8;
+}
+
+.body-stack .block:last-child {
+  @apply mb-0;
+}
+
+.preview-text {
+  @apply text-[color:var(--text-primary)];
+}
+
+.scale-card {
+  @apply overflow-x-auto;
+}
+
+.role-tag {
+  @apply inline-flex items-center py-1.5 px-2.5 rounded-full bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue-dark)] text-body-sm font-bold tracking-[0.02em] uppercase;
+}
+
+.role-tag.green {
+  @apply bg-[color:var(--success-light)] text-[color:var(--ui-success-text-strong)];
+}
+
+.role-tag.gray {
+  @apply bg-[color:var(--light-gray)] text-[color:var(--text-primary)];
+}
+
+.role-tag.orange {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-shade-30)];
+}
+
+.role-tag.indigo {
+  @apply bg-[color:var(--indigo-light)] text-[color:var(--ui-indigo-text-dark)];
+}
+
+.weight-card {
+  @apply border-0 rounded-[10px] bg-[color:var(--white)] p-6 min-h-[170px] shadow-[0_8px_18px_rgba(15,31,61,0.04)];
+}
+
+.weight-card .weight-title {
+  @apply mt-0 mb-3 mx-0 text-[color:var(--slate)] text-body-sm uppercase tracking-[0.08em] font-bold;
+}
+
+.weight-card .weight-sample {
+  @apply mt-0 mb-3.5 mx-0 text-[color:var(--text-primary)] text-body-xl leading-6.5 tracking-[-0.02em];
+}
+
+.weight-card .weight-use {
+  @apply m-0 text-[color:var(--slate)] text-body-md leading-[1.55];
+}
+
+.guideline-card {
+  @apply border-0 rounded-[10px] bg-[color:var(--white)] p-6 shadow-[var(--shadow)];
+}
+
+.guideline-card h3 {
+  @apply mt-0 mb-2.5 mx-0 text-body-xl leading-6.5 tracking-[-0.02em] text-[color:var(--text-primary)];
+}
+
+.guideline-card p,
+.guideline-card li {
+  @apply text-[color:var(--slate)] text-body-md leading-[1.65];
+}
+
+.guideline-card ul {
+  @apply m-0 pl-5;
+}
+
+.guideline-card .icon {
+  @apply w-[42px] h-[42px] grid place-items-center rounded-xl mb-4 text-[color:var(--white)] bg-[color:var(--primary-blue)] font-bold;
+}
+
+/* ==========================================================================
+   04. UI example previews
+   Preview komponen untuk contoh pasien, alert, form, dan sample app.
+   ========================================================================== */
+
+.example-grid {
+  @apply grid grid-cols-[1.1fr_0.9fr] gap-7;
+}
+
+.app-preview {
+  @apply bg-[color:var(--white)] border-0 rounded-[10px] shadow-[var(--shadow)] overflow-hidden;
+}
+
+.app-topbar {
+  @apply flex items-center justify-between gap-5 py-5 px-6 border-b border-b-[color:var(--border)] bg-[color:var(--light-gray)];
+}
+
+.app-title {
+  @apply m-0 text-[color:var(--text-primary)] text-body-xl leading-6.5 tracking-[-0.02em] font-bold;
+}
+
+.app-id {
+  @apply text-mono-sm leading-4.5 text-[color:var(--text-primary)] font-bold tracking-[-0.035em];
+}
+
+.patient-card {
+  @apply border-0 rounded-[10px] p-5 mb-5;
+}
+
+.patient-card h4 {
+  @apply m-0 text-[color:var(--text-primary)] text-body-lg leading-6 font-bold;
+}
+
+.patient-card .patient-meta {
+  @apply mt-1 mb-4 mx-0 text-[color:var(--slate)] text-body-sm leading-4.5;
+}
+
+.info-row .info-label {
+  @apply text-[color:var(--slate)] font-medium;
+}
+
+.info-row .info-value {
+  @apply text-[color:var(--text-primary)] font-medium;
+}
+
+.form-preview {
+  @apply border-0 rounded-[10px] bg-[color:var(--white)] shadow-[var(--shadow)] p-6;
+}
+
+.field label {
+  @apply block mb-0 text-body-md leading-[var(--form-label-leading)] text-[color:var(--text-secondary)] font-[var(--form-label-weight)] tracking-[var(--form-label-tracking)];
+}
+
+.badge-list {
+  @apply flex flex-wrap gap-2 mt-4;
+}
+
+.ui-badge {
+  @apply inline-flex items-center min-h-[28px] py-1.5 px-2.5 rounded-full text-body-sm leading-4 font-bold bg-[color:var(--primary-blue-light)] text-[color:var(--primary-blue-dark)];
+}
+
+.ui-badge.success {
+  @apply bg-[color:var(--success-light)] text-[color:var(--ui-success-text-strong)];
+}
+
+.ui-badge.warning {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-shade-30)];
+}
+
+.ui-badge.mono-badge {
+  @apply font-mono tracking-[-0.04em];
+}
+
+/* Card demo di guide tetap mengikuti warna semantik dari design system. */
+
+/* ==========================================================================
+   05. Helper grid, card, badge, dan konten
+   Helper visual yang dipakai lintas halaman guide.
+   ========================================================================== */
+
+.grid-5 {
+  @apply grid grid-cols-5 gap-4;
+}
+
+.card.blue {
+  @apply bg-[color:var(--primary-tint)] border-0;
+}
+
+.card.green {
+  @apply bg-[color:var(--success-light)] border-0;
+}
+
+.card.amber {
+  @apply bg-[color:var(--warning-light)] border-0;
+}
+
+.card.red {
+  @apply bg-[color:var(--danger-light)] border-0;
+}
+
+.card-head {
+  @apply flex items-start justify-between gap-4 mb-5;
+}
+
+.info-row {
+  @apply flex items-center gap-2 flex-wrap;
+}
+
+/* ==========================================================================
+   16. Helper tabel dokumentasi, code block, dan anatomi
+   Dipakai untuk tabel spesifikasi, snippet kode, daftar penggunaan, do/don’t, footer.
+   ========================================================================== */
+
+table {
+  @apply w-full border-separate overflow-hidden border border-[color:var(--border)] rounded-[18px] bg-[color:var(--white)] shadow-[var(--shadow-sm)];
+  border-spacing: 0;
+}
+
+th,
+td {
+  @apply py-3.5 px-4 text-left border-b border-b-[color:var(--border-soft)] align-top;
+}
+
+th {
+  @apply bg-[color:var(--light-gray)] text-[color:var(--text-primary)] uppercase tracking-[0.08em] text-body-sm font-bold;
+}
+
+tr:last-child td {
+  @apply border-b-0;
+}
+
+td {
+  @apply text-[color:var(--text-primary)] text-body-md;
+}
+
+td strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.code-inline {
+  @apply font-mono bg-[color:var(--light-gray)] border border-[color:var(--border-soft)] py-0.5 px-1.5 rounded-[7px] text-[color:var(--text-primary)] text-body-sm;
+}
+
+.code-block {
+  @apply relative overflow-auto bg-[color:var(--navy-shade-45)] text-[color:var(--ui-code-text)] rounded-[18px] p-5 border border-[color:var(--ui-code-border)] shadow-[var(--shadow-md)] text-mono-md leading-[1.7] whitespace-pre;
+}
+
+.code-title {
+  @apply inline-flex items-center gap-2 mb-2.5 text-[color:var(--slate)] text-body-sm font-bold uppercase tracking-[0.08em];
+}
+
+.size-preview {
+  @apply grid grid-cols-[130px_1fr_1fr_1fr] items-center gap-4 p-5 border-b border-b-[color:var(--border-soft)];
+}
+
+.size-preview:last-child {
+  @apply border-b-0;
+}
+
+.size-name strong {
+  @apply block text-[color:var(--text-primary)];
+}
+
+.size-name span {
+  @apply text-[color:var(--slate)] text-body-sm;
+}
+
+.usage-list {
+  @apply grid gap-3;
+}
+
+.usage-item {
+  @apply grid grid-cols-[34px_1fr] gap-3 p-4 bg-[color:var(--white)] border border-[color:var(--border)] rounded-[18px];
+}
+
+.usage-icon {
+  @apply w-8.5 h-8.5 rounded-[10px] grid place-items-center font-bold text-body-lg leading-none;
+}
+
+.usage-icon::before {
+  @apply block leading-none;
+}
+
+.usage-icon.do::before,
+.usage-icon.check::before {
+  content: "✓";
+}
+
+.usage-icon.dont::before {
+  content: "×";
+}
+
+.usage-title {
+  @apply flex items-center gap-2.5 m-0 text-body-xl leading-[1.35] font-bold text-[color:var(--text-primary)];
+}
+
+.usage-title::before {
+  @apply w-[30px] h-[30px] rounded-[9px] grid place-items-center flex-none text-body-md leading-none font-extrabold;
+}
+
+.usage-title.is-do::before {
+  @apply bg-[color:var(--success-light)] text-[color:var(--primary-green)];
+  content: "✓";
+}
+
+.usage-title.is-dont::before {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+  content: "×";
+}
+
+.usage-list .usage-title {
+  @apply mb-2.5;
+}
+
+.do-dont .usage-title {
+  @apply mb-2.5;
+}
+
+.usage-item strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.usage-item p {
+  @apply mt-1 mb-0 mx-0 text-[color:var(--slate)] text-body-md;
+}
+
+.usage-icon.do {
+  @apply bg-[color:var(--success-light)] text-[color:var(--primary-green)];
+}
+
+.usage-icon.dont {
+  @apply bg-[color:var(--danger-light)] text-[color:var(--danger)];
+}
+
+.usage-icon.check {
+  @apply bg-[color:var(--warning-light)] text-[color:var(--warning-dark)];
+}
+
+.anatomy {
+  @apply border border-dashed border-[color:var(--ui-border-guide-dashed)] rounded-[22px] bg-[color:var(--ui-surface-canvas)] p-9 grid place-items-center min-h-[260px] relative;
+}
+
+.callout {
+  @apply absolute text-mono-sm text-[color:var(--text-primary)] bg-[color:var(--page)] border border-[color:var(--border)] shadow-[var(--shadow-sm)] rounded-xl py-2.5 px-2.5;
+}
+
+.callout:after {
+  @apply absolute bg-[color:var(--primary-blue)] opacity-[0.45];
+
+  content: "";
+}
+
+.callout.top {
+  @apply top-4.5 left-6;
+}
+
+.callout.right {
+  @apply right-6 top-[88px];
+}
+
+.callout.bottom {
+  @apply bottom-4.5 right-8;
+}
+
+.callout.left {
+  @apply left-6 bottom-[74px];
+}
+
+.footer {
+  @apply mt-16 rounded-[22px] bg-[color:var(--light-gray-tint-40)] border border-[color:var(--border-soft)] py-7 px-7 text-[color:var(--slate)] flex justify-between gap-5 flex-wrap text-body-md;
+}
+
+.footer strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+/* ==========================================================================
+   18. Responsive rules
+   Breakpoint mengikuti kebutuhan halaman guide dan preview komponen.
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  .brand-card-grid {
+  @apply grid-cols-3;
+}
+
+  .tone-row {
+  @apply grid-cols-1;
+}
+
+  .tone-grid {
+  @apply grid-cols-4;
+}
+}
+
+@media (max-width: 1100px) {
+  .layout-2,
+  .examples {
+  @apply grid-cols-1;
+}
+
+  .color-grid {
+  @apply grid-cols-2;
+}
+
+  .brand-card-grid {
+  @apply grid-cols-2;
+}
+
+  .scale-row {
+  @apply grid-cols-1;
+}
+
+  .scale-grid {
+  @apply grid-cols-3;
+}
+}
+
+@media (max-width: 720px) {
+  .page {
+  @apply w-[min(100%_-_28px,1480px)] pt-5;
+}
+
+  .hero {
+  @apply py-7 px-6 rounded-2xl;
+}
+
+  .section-title {
+  @apply flex-col;
+
+    align-items: start;
+}
+
+  .color-grid,
+  .brand-card-grid,
+  .scale-grid,
+  .tone-grid {
+  @apply grid-cols-1;
+}
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+  @apply block;
+}
+
+  thead {
+  @apply hidden;
+}
+
+  tr {
+  @apply border-t border-t-[color:var(--border)];
+}
+
+  tr:first-child {
+  @apply border-t-0;
+}
+
+  td {
+  @apply border-t-0 py-2.5 px-4;
+}
+
+  td::before {
+  @apply block mb-1 text-body-sm text-[color:var(--slate)] uppercase tracking-[0.08em] font-bold;
+
+    content: attr(data-label);
+}
+
+  .footer {
+  @apply flex-col;
+    align-items: start;
+  }
+}
+
+@media (max-width: 1180px) {
+  .grid-2,
+  .typography-demo,
+  .example-grid {
+  @apply grid-cols-1;
+}
+
+  .grid-3 {
+  @apply grid-cols-2;
+}
+
+  .spec-row {
+  @apply grid-cols-[120px_repeat(2,1fr)];
+}
+
+  .spec-meta {
+  @apply col-span-full text-left;
+    justify-self: start;
+}
+
+  .grid-4 {
+  @apply grid-cols-2;
+}
+
+  .toolbar {
+  @apply items-start flex-col;
+}
+
+  .toolbar-left,
+  .toolbar-right {
+  @apply w-full;
+}
+
+  .search-field {
+  @apply w-full;
+}
+
+  .toolbar-right {
+  @apply justify-end;
+}
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .card-pad,
+  .heading-stack,
+  .body-stack {
+  @apply p-6;
+}
+
+  .badge {
+  @apply mt-3.5;
+}
+
+  .grid-3,
+  .grid-4 {
+  @apply grid-cols-1;
+}
+
+  .font-card {
+  @apply grid-cols-1;
+}
+
+  .font-sample {
+  @apply text-display-2xl;
+}
+
+  .spec-row {
+  @apply grid-cols-1 p-6;
+}
+
+  .spec-meta {
+  @apply text-left;
+}
+
+  .info-row {
+  @apply grid-cols-1 gap-1;
+}
+
+  .footer {
+  @apply flex-col;
+    align-items: start;
+  }
+
+  .s72 {
+  @apply text-display-lg;
+}
+
+  .s60 {
+  @apply text-display-lg;
+}
+
+  .s48 {
+  @apply text-display-md;
+}
+
+  .page {
+  @apply w-[min(100%_-_28px,1540px)] pt-5;
+}
+
+  .hero {
+  @apply py-7 px-6 rounded-[20px];
+}
+
+  .component-stage {
+  @apply p-3.5;
+}
+
+  .sidebar-showcase {
+  @apply p-5 gap-5;
+}
+
+  .section-head {
+  @apply items-start flex-col;
+}
+
+  .app-header {
+  @apply min-h-auto p-3.5 gap-2.5 flex-wrap;
+}
+
+  .header-menu-btn {
+    order: 1;
+  }
+
+  .header-search {
+  @apply w-full basis-full min-w-0;
+
+    order: 3;
+}
+
+  .topbar-spacer {
+  @apply flex-1 min-w-0;
+
+    order: 2;
+}
+
+  .header-actions {
+  @apply gap-1;
+
+    order: 2;
+}
+
+  .topbar-icon {
+  @apply w-[38px] h-[38px] rounded-[var(--radius-dropdown-sm)];
+}
+
+  .profile-menu {
+  @apply min-h-10 p-1;
+}
+
+  .profile-avatar {
+  @apply w-8.5 h-8.5;
+}
+
+  .profile-menu > .lucide,
+  .profile-menu > i {
+  @apply hidden;
+}
+}
+
+@media (max-width: 1120px) {
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .grid-5,
+  .do-dont {
+  @apply grid-cols-1;
+}
+
+  .form-grid,
+  .form-grid.three,
+  .form-grid.four {
+  @apply grid-cols-1;
+}
+
+  .state-grid {
+  @apply grid grid-cols-[170px_repeat(4,minmax(128px,1fr))] min-w-[1080px] gap-[10px];
+}
+
+  .state-label {
+  @apply pt-0;
+}
+
+  .vital-grid {
+  @apply grid-cols-2;
+}
+
+  .section-head {
+  @apply items-start flex-col;
+}
+}
+
+@media (max-width: 640px) {
+  .page {
+  @apply w-[min(100%_-_28px,1540px)] pt-4;
+}
+
+  .hero {
+  @apply py-6 px-5 rounded-[20px];
+}
+
+  .hero-subtitle {
+  @apply text-body-lg;
+}
+
+  .card {
+  @apply p-5 rounded-[10px];
+}
+
+  .vital-grid {
+  @apply grid-cols-1;
+}
+
+  .room-shell {
+  @apply rounded-[14px];
+}
+
+  .data-table th,
+  .data-table td {
+  @apply py-4 px-3.5;
+}
+
+  .browser-bar {
+  @apply flex-col items-start;
+}
+
+  .state-grid {
+  @apply grid grid-cols-[170px_repeat(4,minmax(128px,1fr))] min-w-[1080px] gap-[10px];
+}
+
+  .callout {
+  @apply static m-2;
+}
+
+  .anatomy {
+  @apply block p-5;
+}
+
+  .anatomy .btn {
+  @apply my-6 mx-2;
+}
+}
+
+@media (max-width: 900px) {
+  .page {
+  @apply w-[min(100%_-_28px,1540px)] pt-3.5;
+}
+
+  .hero {
+  @apply py-7 px-6 rounded-[20px];
+}
+
+  .hero-subtitle {
+  @apply text-body-lg;
+}
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+  @apply grid-cols-1;
+}
+
+  .section-head {
+  @apply block;
+}
+
+  .component-stage {
+  @apply p-3 rounded-[18px];
+}
+
+  .room-content {
+  @apply py-5 px-4;
+}
+
+  .tab {
+  @apply min-w-[178px] min-h-14 text-body-md;
+}
+
+  .toolbar-right {
+  @apply flex-wrap justify-start;
+}
+
+  .btn,
+  .status-select,
+  .admin-filter-select {
+  @apply flex-[1_1_168px];
+
+    flex: 1 1 168px;
+  }
+
+  .table-footer {
+  @apply flex-col items-start;
+}
+
+  .pagination {
+  @apply w-full flex-wrap;
+}
+}
+
+@media (max-width: 1060px) {
+  .sidebar-showcase {
+  @apply grid-cols-[240px];
+    justify-content: start;
+  }
+
+  .layout-preview {
+  @apply grid-cols-1;
+}
+
+  .layout-preview .app-sidebar {
+  @apply hidden;
+}
+
+  .header-search {
+  @apply w-[min(520px,100%)] min-w-[220px] flex-auto;
+}
+
+  .profile-copy {
+  @apply hidden;
+}
+
+  .app-content {
+  @apply grid-cols-1;
+}
+
+  .grid-2,
+  .grid-3 {
+  @apply grid-cols-1;
+}
+}
+
+@media (max-width: 980px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+  @apply grid-cols-1;
+}
+
+  .section-head {
+  @apply flex-col;
+
+    align-items: start;
+}
+
+  .size-preview {
+  @apply grid-cols-1;
+}
+
+  .page {
+  @apply w-[min(100%_-_28px,1520px)];
+}
+
+  .hero {
+  @apply py-7 px-6 rounded-[20px];
+}
+
+  .hero-subtitle {
+  @apply text-body-lg;
+}
+}
+
+@media print {
+  .toc {
+  @apply hidden;
+}
+
+  body {
+  @apply bg-[color:var(--white)];
+}
+
+  .page {
+  @apply w-auto p-0;
+}
+
+  .hero,
+  .card,
+  table,
+  .button-playground {
+  @apply shadow-none;
+}
+
+  .matrix-scroll {
+  @apply overflow-visible rounded-[10px];
+}
+}
+
+/* ==========================================================================
+   19. Utility kompatibilitas inline style
+   Class `.u-style-*` menjaga halaman yang masih memakai helper khusus. Untuk halaman baru, pakai class komponen atau utility Tailwind langsung. 
+   ========================================================================== */
+
+.u-style-001 {
+  @apply mt-3.5;
+}
+
+.u-style-002 {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.u-style-003 {
+  @apply bg-[color:var(--primary-dark)];
+}
+
+.u-style-004 {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.u-style-005 {
+  @apply bg-[color:var(--navy)];
+}
+
+.u-style-006 {
+  @apply bg-[color:var(--slate-light)];
+}
+
+.u-style-007 {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.u-style-008 {
+  @apply bg-[color:var(--warning)];
+}
+
+.u-style-009 {
+  @apply bg-[color:var(--danger)];
+}
+
+.u-style-010 {
+  @apply bg-[color:var(--danger-light)];
+}
+
+.u-style-011 {
+  @apply bg-[color:var(--light-gray)];
+}
+
+.u-style-012 {
+  @apply p-0 overflow-hidden;
+}
+
+.u-style-013 {
+  @apply mt-5;
+}
+
+.u-style-014 {
+  @apply grid gap-5 mt-5;
+}
+
+.u-style-015 {
+  @apply flex gap-3 items-center flex-wrap;
+}
+
+.u-style-016 {
+  @apply mt-7;
+}
+
+.u-style-017 {
+  @apply grid-cols-[150px_repeat(6,minmax(110px,1fr))] min-w-[860px];
+}
+
+.u-style-018 {
+  @apply mt-4;
+}
+
+.u-style-019 {
+  @apply mt-7;
+}
+
+.u-style-020 {
+  @apply bg-[color:var(--accent-teal)];
+}
+
+.u-style-021 {
+  @apply bg-[color:var(--indigo)];
+}
+
+.u-style-022 {
+  @apply bg-[color:var(--slate)];
+}
+
+.u-style-023 {
+  @apply bg-[color:var(--white)];
+}
+
+.u-style-024 {
+  @apply mb-5;
+}
+
+.u-style-025 {
+  @apply bg-[color:var(--primary-blue-tint-80)];
+}
+
+.u-style-026 {
+  @apply bg-[color:var(--primary-blue-tint-60)];
+}
+
+.u-style-027 {
+  @apply bg-[color:var(--primary-blue-tint-40)];
+}
+
+.u-style-028 {
+  @apply bg-[color:var(--primary-blue-shade-15)];
+}
+
+.u-style-029 {
+  @apply bg-[color:var(--primary-active)];
+}
+
+.u-style-030 {
+  @apply bg-[color:var(--primary-blue-shade-45)];
+}
+
+.u-style-031 {
+  @apply bg-[color:var(--primary-green-tint-80)];
+}
+
+.u-style-032 {
+  @apply bg-[color:var(--primary-green-tint-60)];
+}
+
+.u-style-033 {
+  @apply bg-[color:var(--primary-green-tint-40)];
+}
+
+.u-style-034 {
+  @apply bg-[color:var(--primary-green-shade-15)];
+}
+
+.u-style-035 {
+  @apply bg-[color:var(--success-dark)];
+}
+
+.u-style-036 {
+  @apply bg-[color:var(--primary-green-shade-45)];
+}
+
+.u-style-037 {
+  @apply bg-[color:var(--accent-teal-tint-80)];
+}
+
+.u-style-038 {
+  @apply bg-[color:var(--accent-teal-tint-60)];
+}
+
+.u-style-039 {
+  @apply bg-[color:var(--accent-teal-tint-40)];
+}
+
+.u-style-040 {
+  @apply bg-[color:var(--accent-teal-shade-15)];
+}
+
+.u-style-041 {
+  @apply bg-[color:var(--accent-teal-shade-30)];
+}
+
+.u-style-042 {
+  @apply bg-[color:var(--accent-teal-shade-45)];
+}
+
+.u-style-043 {
+  @apply bg-[color:var(--indigo-tint-80)];
+}
+
+.u-style-044 {
+  @apply bg-[color:var(--indigo-tint-60)];
+}
+
+.u-style-045 {
+  @apply bg-[color:var(--indigo-tint-40)];
+}
+
+.u-style-046 {
+  @apply bg-[color:var(--indigo-shade-15)];
+}
+
+.u-style-047 {
+  @apply bg-[color:var(--indigo-shade-30)];
+}
+
+.u-style-048 {
+  @apply bg-[color:var(--indigo-shade-45)];
+}
+
+.u-style-049 {
+  @apply bg-[color:var(--navy-tint-80)];
+}
+
+.u-style-050 {
+  @apply bg-[color:var(--navy-tint-60)];
+}
+
+.u-style-051 {
+  @apply bg-[color:var(--navy-tint-40)];
+}
+
+.u-style-052 {
+  @apply bg-[color:var(--navy-shade-15)];
+}
+
+.u-style-053 {
+  @apply bg-[color:var(--navy-shade-30)];
+}
+
+.u-style-054 {
+  @apply bg-[color:var(--navy-shade-45)];
+}
+
+.u-style-055 {
+  @apply bg-[color:var(--slate-tint-80)];
+}
+
+.u-style-056 {
+  @apply bg-[color:var(--slate-tint-60)];
+}
+
+.u-style-057 {
+  @apply bg-[color:var(--slate-tint-40)];
+}
+
+.u-style-058 {
+  @apply bg-[color:var(--slate-shade-15)];
+}
+
+.u-style-059 {
+  @apply bg-[color:var(--slate-shade-30)];
+}
+
+.u-style-060 {
+  @apply bg-[color:var(--slate-shade-45)];
+}
+
+.u-style-061 {
+  @apply bg-[color:var(--light-gray-tint-80)];
+}
+
+.u-style-062 {
+  @apply bg-[color:var(--light-gray-tint-60)];
+}
+
+.u-style-063 {
+  @apply bg-[color:var(--light-gray-tint-40)];
+}
+
+.u-style-064 {
+  @apply bg-[color:var(--light-gray-shade-15)];
+}
+
+.u-style-065 {
+  @apply bg-[color:var(--light-gray-shade-30)];
+}
+
+.u-style-066 {
+  @apply bg-[color:var(--light-gray-shade-45)];
+}
+
+.u-style-067 {
+  @apply bg-[color:var(--white-shade-15)];
+}
+
+.u-style-068 {
+  @apply bg-[color:var(--white-shade-30)];
+}
+
+.u-style-069 {
+  @apply bg-[color:var(--white-shade-45)];
+}
+
+.u-style-070 {
+  @apply bg-[color:var(--success-light)];
+}
+
+.u-style-071 {
+  @apply bg-[color:var(--teal-light)];
+}
+
+.u-style-072 {
+  @apply bg-[color:var(--indigo-light)];
+}
+
+.u-style-073 {
+  @apply bg-[color:var(--navy-light)];
+}
+
+.u-style-074 {
+  @apply bg-[color:var(--slate-dark)];
+}
+
+.u-style-075 {
+  @apply bg-[color:var(--warning-light)];
+}
+
+.u-style-076 {
+  @apply p-6;
+}
+
+.u-style-077 {
+  @apply w-[85%];
+}
+
+.u-style-078 {
+  @apply w-[65%];
+}
+
+.u-style-079 {
+  @apply w-[75%];
+}
+
+.u-style-080 {
+  @apply text-[color:var(--text-primary)];
+}
+
+.u-style-081 {
+  @apply mt-3;
+}
+
+.u-style-082 {
+  @apply border-[color:var(--primary-blue)] shadow-[var(--ring)];
+}
+
+.u-style-083 {
+  @apply border-[color:var(--ui-border-control-hover)];
+}
+
+.u-style-084 {
+  @apply bg-[color:var(--primary-tint)] border-[color:var(--ui-primary-border-soft)];
+}
+
+.u-style-085 {
+  @apply h-11 rounded-xl;
+  background: linear-gradient(90deg, var(--ui-surface-muted), var(--ui-border-subtle), var(--ui-surface-muted));
+}
+
+.u-style-086 {
+  @apply tracking-[0.4em] text-center;
+}
+
+.u-style-087 {
+  @apply mt-2.5;
+}
+
+.u-style-088 {
+  @apply min-h-auto h-auto p-2 flex gap-2 flex-wrap items-center;
+}
+
+.u-style-089 {
+  @apply min-h-[94px];
+}
+
+.u-style-090 {
+  @apply justify-between;
+}
+
+.u-style-091 {
+  @apply h-[160px] border-[1.5px] border-dashed border-[color:var(--ui-border-dashed)] rounded-[18px] mt-4 flex items-center justify-center bg-[color:var(--ui-surface-canvas)] text-[color:var(--ui-text-placeholder)] font-bold;
+}
+
+.u-style-092 {
+  @apply min-h-[80px];
+}
+
+.u-style-093 {
+  @apply justify-end;
+}
+
+.u-style-094 {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.u-style-095 {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.u-style-096 {
+  @apply bg-[color:var(--surface)];
+}
+
+.u-style-097 {
+  @apply bg-[color:var(--success-light)];
+}
+
+.u-style-098 {
+  @apply bg-[color:var(--light-gray)];
+}
+
+.u-style-099 {
+  @apply bg-[color:var(--danger-light)];
+}
+
+.u-style-100 {
+  @apply bg-[color:var(--border)];
+}
+
+.u-style-101 {
+  @apply bg-[color:var(--border-soft)];
+}
+
+.u-style-102 {
+  @apply bg-[color:rgba(30,79,215,0.16)];
+}
+
+.u-style-103 {
+  @apply overflow-auto;
+}
+
+.u-style-104 {
+  @apply text-display-2xl leading-none tracking-[-0.06em] font-bold mt-0 mb-6 mx-0;
+}
+
+.u-style-105 {
+  @apply text-body-xl leading-[1.55] tracking-[-0.02em] m-0 text-[color:var(--ui-text-heading)];
+}
+
+.u-style-106 {
+  @apply bg-[color:var(--danger-tint-80)] text-[color:var(--danger-shade-45)] min-w-8 justify-center;
+}
+
+.u-style-107 {
+  @apply m-0 text-body-xl leading-6.5 tracking-[-0.02em];
+}
+
+.u-style-108 {
+  @apply mt-2 mb-0 mx-0 text-body-md leading-5.5;
+}
+
+/* ==========================================================================
+   Utility guide chart
+   Dipakai untuk halaman panduan chart dan pola data visual aplikasi rumah sakit.
+   ========================================================================== */
+
+.chart-guide-grid {
+  @apply grid grid-cols-2 gap-5;
+}
+
+.chart-guide-grid.is-three {
+  @apply grid-cols-3;
+}
+
+.chart-guide-card {
+  @apply flex flex-col min-w-0 gap-4;
+}
+
+.chart-guide-card .card-header {
+  @apply items-start;
+}
+
+.chart-guide-figure {
+  @apply relative min-h-[260px] overflow-hidden rounded-[10px];
+  background: linear-gradient(180deg, var(--surface) 0%, var(--light-gray-tint-40) 100%);
+}
+
+.chart-guide-figure svg {
+  @apply block w-full h-auto;
+}
+
+.chart-guide-figure .chart-hit-area,
+.chart-guide-figure [data-guide-tooltip] {
+  @apply cursor-pointer;
+}
+
+.chart-guide-figure [data-guide-tooltip]:focus-visible {
+  @apply outline-none;
+}
+
+.chart-guide-kpi-row {
+  @apply grid grid-cols-4 gap-3;
+}
+
+.chart-guide-kpi {
+  @apply p-3 rounded-[10px] bg-[color:var(--primary-tint)];
+}
+
+.chart-guide-kpi span,
+.chart-guide-kpi strong,
+.chart-guide-kpi small {
+  @apply block;
+}
+
+.chart-guide-kpi strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.chart-guide-table {
+  @apply w-full border-collapse overflow-hidden rounded-[10px] bg-[color:var(--surface)] shadow-[var(--shadow-sm)];
+}
+
+.chart-guide-table th,
+.chart-guide-table td {
+  @apply py-3.5 px-4 border-b border-b-[color:var(--border-soft)] text-left align-top;
+}
+
+.chart-guide-table th {
+  @apply text-[color:var(--text-primary)] text-body-sm font-semibold;
+}
+
+.chart-guide-table td {
+  @apply text-[color:var(--text-primary)];
+}
+
+.chart-guide-table tr:last-child th,
+.chart-guide-table tr:last-child td {
+  @apply border-b-0;
+}
+
+.chart-sample-line-primary {
+  fill: none;
+  stroke: var(--primary-blue);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-sample-line-green {
+  fill: none;
+  stroke: var(--accent-teal);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-sample-line-indigo {
+  fill: none;
+  stroke: var(--indigo);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-sample-area {
+  fill: color-mix(in srgb, var(--primary-blue) 14%, transparent);
+}
+
+.chart-sample-grid {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.chart-sample-label {
+  @apply font-sans text-body-sm;
+
+  fill: var(--text-secondary);
+}
+
+.chart-sample-title {
+  @apply font-sans text-body-md font-bold;
+
+  fill: var(--text-primary);
+}
+
+.chart-sample-dot-primary,
+.chart-sample-dot-green,
+.chart-sample-dot-indigo,
+.chart-sample-dot-warning,
+.chart-sample-dot-danger,
+.chart-sample-dot-info {
+  stroke: var(--surface);
+  stroke-width: 3;
+}
+
+.chart-sample-dot-primary {
+  fill: var(--primary-blue);
+}
+
+.chart-sample-dot-green {
+  fill: var(--accent-teal);
+}
+
+.chart-sample-dot-indigo {
+  fill: var(--indigo);
+}
+
+.chart-sample-dot-warning {
+  fill: var(--warning);
+}
+
+.chart-sample-dot-danger {
+  fill: var(--danger);
+}
+
+.chart-sample-dot-info {
+  fill: var(--info);
+}
+
+.chart-sample-bar-primary {
+  fill: var(--primary-blue);
+}
+
+.chart-sample-bar-green {
+  fill: var(--accent-teal);
+}
+
+.chart-sample-bar-indigo {
+  fill: var(--indigo);
+}
+
+.chart-sample-bar-warning {
+  fill: var(--warning);
+}
+
+.chart-sample-bar-danger {
+  fill: var(--danger);
+}
+
+.chart-sample-bar-info {
+  fill: var(--info);
+}
+
+.chart-sample-bar-slate {
+  fill: var(--slate-tint-60);
+}
+
+.chart-sample-donut-bg {
+  fill: none;
+  stroke: var(--light-gray-shade-15);
+  stroke-width: 24;
+}
+
+.chart-sample-donut-primary,
+.chart-sample-donut-green,
+.chart-sample-donut-warning,
+.chart-sample-donut-danger {
+  fill: none;
+  stroke-width: 24;
+  stroke-linecap: round;
+}
+
+.chart-sample-donut-primary {
+  stroke: var(--primary-blue);
+}
+
+.chart-sample-donut-green {
+  stroke: var(--accent-teal);
+}
+
+.chart-sample-donut-warning {
+  stroke: var(--warning);
+}
+
+.chart-sample-donut-danger {
+  stroke: var(--danger);
+}
+
+.chart-sample-heat-cell {
+  rx: 8px;
+}
+
+.chart-sample-heat-low {
+  fill: var(--primary-blue-tint-80);
+}
+
+.chart-sample-heat-medium {
+  fill: var(--primary-blue-tint-60);
+}
+
+.chart-sample-heat-high {
+  fill: var(--primary-blue-tint-40);
+}
+
+.chart-sample-heat-critical {
+  fill: var(--primary-blue);
+}
+
+@media (max-width: 1024px) {
+  .chart-guide-grid,
+  .chart-guide-grid.is-three,
+  .chart-guide-kpi-row {
+  @apply grid-cols-1;
+}
+}
+
+/* ==========================================================================
+   14A. Layout dasar tipografi dan dokumentasi halaman guide
+   Bagian ini mengatur heading, hero, section head, tabel dokumentasi, dan helper visual khusus halaman guide agar tidak mempengaruhi halaman aplikasi.
+   ========================================================================== */
+
+.page {
+  @apply w-[min(1200px,calc(100%_-_48px))] my-0 mx-auto pt-7 pb-16 px-0;
+}
+
+.hero {
+  @apply border-0 rounded-[10px] pt-10 pb-9 px-10 shadow-[0_1px_0_rgba(15,31,61,0.02)] mb-11;
+  background: linear-gradient(180deg, var(--white) 0%, var(--ui-surface-canvas) 100%);
+}
+
+.eyebrow {
+  @apply mt-0 mb-2 mx-0 text-[color:var(--primary-blue)] text-h3 leading-none font-bold tracking-[0.16em];
+}
+
+h1 {
+  @apply m-0 text-[length:clamp(36px,5vw,60px)] leading-[1.05] tracking-[-0.045em] text-[color:var(--text-primary)] font-bold;
+}
+
+.hero-subtitle {
+  @apply max-w-[1060px] mt-5 mb-0 mx-0 text-[color:var(--text-secondary)] text-h3 leading-[1.55];
+}
+
+.divider {
+  @apply h-px w-full bg-[color:var(--border)] mt-9 mb-0 mx-0;
+}
+
+.toc {
+  @apply flex gap-2.5 flex-wrap mt-6;
+}
+
+.toc a {
+  @apply text-[color:var(--text-primary)] no-underline border border-[color:var(--border)] bg-[color:var(--white)] rounded-full py-2.5 px-3.5 text-body-md font-bold;
+}
+
+.toc a:hover {
+  @apply border-[color:var(--primary-blue)] text-[color:var(--primary-blue)];
+}
+
+.section-head {
+  @apply flex justify-between gap-6 mb-6;
+  align-items: end;
+}
+
+h2 {
+  @apply m-0 text-[length:clamp(24px,2.4vw,36px)] leading-[1.15] tracking-[-0.035em] text-[color:var(--text-primary)] font-bold;
+}
+
+.section-head p {
+  @apply mt-2 mb-0 mx-0 max-w-[890px] text-[color:var(--text-secondary)] text-body-lg;
+}
+
+h3 {
+  @apply m-0 text-h3 leading-[1.2] tracking-[-0.02em] font-bold text-[color:var(--text-primary)];
+}
+
+.muted {
+  @apply text-[color:var(--text-secondary)];
+}
+
+.mono {
+  @apply font-mono;
+}
+
+.dot {
+  @apply w-2 h-2 rounded-full bg-[color:var(--primary-blue)] inline-block;
+}
+
+.grid-2 {
+  @apply grid grid-cols-2 gap-7;
+}
+
+.grid-3 {
+  @apply grid grid-cols-3 gap-5;
+}
+
+.grid-4 {
+  @apply grid grid-cols-4 gap-4;
+}
+
+.card {
+  @apply border-0 rounded-[10px] p-6 shadow-[var(--shadow-sm)];
+}
+
+.card-soft {
+  background: linear-gradient(180deg, var(--white) 0%, var(--light-gray-tint-40) 100%);
+}
+
+.note {
+  @apply border border-[color:var(--ui-primary-border-muted)] rounded-[18px] py-5 px-5 bg-[color:var(--ui-surface-primary-soft)] text-[color:var(--text-primary)] text-body-md;
+}
+
+.note strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.token-row {
+  @apply flex items-center gap-3 py-3 px-0 border-b border-b-[color:var(--border-soft)];
+}
+
+.token-row:last-child {
+  @apply border-b-0;
+}
+
+.swatch {
+  @apply w-8.5 h-8.5 rounded-[10px] border border-[color:rgba(15,31,61,0.08)] flex-none;
+}
+
+.token-name {
+  @apply font-normal text-[color:var(--text-primary)];
+}
+
+.token-hex {
+  @apply font-mono text-[color:var(--slate)] text-body-sm;
+}
+
+.button-playground {
+  @apply border border-[color:var(--border)] rounded-3xl overflow-hidden bg-[color:var(--white)] shadow-[var(--shadow-sm)];
+}
+
+.playground-head {
+  @apply py-5 px-6 border-b border-b-[color:var(--border)] bg-[color:var(--light-gray-tint-40)] flex justify-between gap-4 items-center;
+}
+
+.playground-head p {
+  @apply mt-1 mb-0 mx-0 text-[color:var(--slate)] text-body-md;
+}
+
+.state-grid {
+  @apply grid grid-cols-[170px_repeat(4,minmax(128px,1fr))] min-w-[1080px] gap-[10px];
+}
+
+.matrix-scroll {
+  @apply overflow-x-auto;
+}
+
+.matrix-cell {
+  @apply min-h-[78px] flex items-center justify-center py-3 px-2.5 border-r border-r-[color:var(--border-soft)] border-b border-b-[color:var(--border-soft)] bg-[color:var(--white)];
+}
+
+.matrix-cell:last-child {
+  @apply border-r-0;
+}
+
+.matrix-head {
+  @apply min-h-[46px] bg-[color:var(--light-gray-tint-40)] text-[color:var(--slate)] text-body-sm font-bold uppercase tracking-[0.08em] justify-start pl-4;
+}
+
+.matrix-label {
+  @apply justify-start pl-5 text-[color:var(--text-primary)] font-bold bg-[color:var(--ui-surface-table-cell)];
+}
+
+.matrix-label span {
+  @apply block text-[color:var(--slate)] text-body-sm font-[650] mt-1;
+}
+
+/* Utility spacing mirip Tailwind khusus section guide. */
+
+.mt-\[50px\] {
+  @apply mt-12;
+}
+
+/* Helper guide struktur aplikasi */
+
+.breadcrumb-demo {
+  @apply flex items-center min-h-10.5 py-0 px-3.5 rounded-xl bg-[color:var(--surface-soft)] border border-[color:var(--border-soft)] text-[color:var(--text-primary)] font-sans text-body-md font-medium;
+}
+
+/* Style tambahan untuk struktur dan tabel di halaman guide. */
+
+@media (max-width: 760px) {
+  .index-grid {
+  @apply grid-cols-1;
+}
+
+  .index-hero h1 {
+  @apply text-h1;
+}
+}
+
+/* Tabel spesifikasi guide */
+
+.spec-table {
+  @apply w-full border-collapse overflow-hidden border border-[color:var(--border)] rounded-2xl block;
+}
+
+.spec-table thead,
+.spec-table tbody,
+.spec-table tr {
+  @apply table w-full;
+  table-layout: fixed;
+}
+
+.spec-table th,
+.spec-table td {
+  @apply py-3.5 px-4 text-left border-b border-b-[color:var(--border-soft)] align-top text-body-md;
+}
+
+.spec-table th {
+  @apply text-[color:var(--text-primary)] bg-[color:var(--light-gray-tint-40)] text-body-sm uppercase tracking-[0.06em];
+}
+
+.spec-table td {
+  @apply text-[color:var(--text-primary)];
+}
+
+.spec-table tr:last-child td {
+  @apply border-b-0;
+}
+
+/* Helper guide untuk contoh dropdown, tabel, dan form. */
+
+.dropdown-lab {
+  @apply grid grid-cols-2 gap-6;
+  align-items: start;
+}
+
+.dropdown-card {
+  @apply border-0 rounded-[10px] bg-[color:var(--white)] p-5 shadow-[var(--shadow-sm)];
+}
+
+.dropdown-demo {
+  @apply mt-3.5 relative;
+}
+
+.dropdown-panel.compact {
+  @apply max-w-[420px];
+}
+
+.dropdown-searchbar {
+  @apply p-3 border-b border-b-[color:var(--border-soft)] bg-[color:var(--ui-surface-canvas)];
+}
+
+.dropdown-group-label {
+  @apply pt-2.5 pb-1.5 px-4 text-body-sm font-normal tracking-[0.08em] uppercase text-[color:var(--ui-text-placeholder)];
+}
+
+.native-select-note {
+  @apply flex items-center gap-2 text-[color:var(--ui-text-muted-soft)] text-body-sm mt-2;
+}
+
+.state-label {
+  @apply pt-7 text-body-md font-bold text-[color:var(--primary-blue)];
+}
+
+.state-box {
+  @apply border-0 rounded-[10px] p-3.5 bg-[color:var(--white)] min-h-[108px];
+}
+
+.state-box .mini-title {
+  @apply mb-2 block;
+}
+
+.spec-table td:first-child {
+  @apply font-bold text-[color:var(--text-primary)] whitespace-nowrap;
+}
+
+.token {
+  @apply text-mono-sm border border-[color:var(--border-soft)] rounded-lg py-1 px-1.5 bg-[color:var(--light-gray-tint-40)] text-[color:var(--text-primary)] inline-block;
+}
+
+pre {
+  @apply m-0 bg-[color:var(--navy)] text-[color:var(--primary-light)] rounded-[18px] p-5 overflow-auto text-body-md leading-[1.7] border border-[color:var(--navy-light)];
+}
+
+code {
+  @apply font-mono;
+}
+
+code {
+  @apply overflow-auto rounded-[18px] bg-[color:var(--navy)] text-[color:var(--success-light)] text-body-sm leading-[1.7];
+}
+
+.code-grid {
+  @apply grid grid-cols-2 gap-5 items-start;
+}
+
+.code-grid > * {
+  @apply min-w-0;
+}
+
+.code-grid pre,
+.code-grid .code-block {
+  @apply w-full max-w-full overflow-x-auto;
+}
+
+.code-grid code {
+  @apply block min-w-max;
+}
+
+.example-phone {
+  @apply border border-[color:var(--border)] rounded-[26px] p-5 bg-[color:var(--white)] max-w-[390px] shadow-[var(--shadow-md)];
+}
+
+.phone-bar {
+  @apply w-[72px] h-1.5 bg-[color:var(--ui-border-subtle)] rounded-full mt-0 mb-4 mx-auto;
+}
+
+.modal-preview {
+  @apply border border-[color:var(--border)] rounded-[22px] p-5;
+  background: linear-gradient(180deg, var(--white) 0%, var(--light-gray-tint-40) 100%);
+}
+
+.sample-form {
+  @apply bg-[color:var(--light-gray-tint-40)] border border-[color:var(--border-soft)] rounded-[22px] p-6;
+}
+
+.form-toolbar {
+  @apply flex justify-between gap-3 items-center border-b border-b-[color:var(--border-soft)] pb-4 mb-5;
+}
+
+.vital-grid {
+  @apply grid grid-cols-6 gap-3;
+}
+
+.mini-card {
+  @apply border-0 rounded-[10px] p-3.5 bg-[color:var(--white)];
+}
+
+.lab-results-scroll.table-scroll {
+  @apply rounded-[var(--radius-card)] border border-[color:var(--border-soft)] bg-[color:var(--white)];
+}
+
+.lab-results-table.data-table {
+  @apply min-w-[560px];
+}
+
+.lab-results-table.data-table th,
+.lab-results-table.data-table td {
+  @apply p-[14px_16px];
+}
+
+.lab-results-table.data-table td:first-child {
+  @apply w-[34%];
+}
+
+.lab-results-table.data-table input.input {
+  @apply w-full min-w-[96px];
+}
+
+.lab-results-table.data-table .chip {
+  @apply whitespace-nowrap;
+}
+
+.upload {
+  @apply border-[1.5px] border-dashed border-[color:var(--ui-border-dashed)] rounded-[18px] bg-[color:var(--ui-surface-canvas)] p-6 text-center;
+}
+
+.upload-icon {
+  @apply w-11 h-11 rounded-[14px] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] flex items-center justify-center mt-0 mb-2.5 mx-auto font-bold;
+}
+
+.progress {
+  @apply h-2 rounded-full bg-[color:var(--ui-border-subtle)] overflow-hidden;
+}
+
+.progress span {
+  @apply block h-full w-[68%] bg-[color:var(--primary-blue)] rounded-full;
+}
+
+.do-dont {
+  @apply grid grid-cols-2 gap-5;
+}
+
+.do-dont .card {
+  @apply p-6 rounded-[10px];
+}
+
+.do-dont .ok {
+  @apply border-[color:var(--ui-success-border-soft)];
+  background: linear-gradient(180deg, var(--ui-success-gradient-start) 0%, var(--white) 100%);
+}
+
+.do-dont .no {
+  @apply border-[color:var(--danger-border-soft)];
+  background: linear-gradient(180deg, var(--ui-danger-gradient-start) 0%, var(--white) 100%);
+}
+
+.room-shell {
+  @apply border border-[color:var(--ui-border-blue-gray)] rounded-2xl bg-[color:var(--white)] overflow-hidden shadow-[0_12px_34px_rgba(15,31,61,0.07)];
+}
+
+.tabs-wrap {
+  @apply flex items-stretch border-b border-b-[color:var(--border)] bg-[color:var(--ui-surface-canvas)] overflow-x-auto;
+}
+
+.add-tab {
+  @apply min-w-[168px] text-[color:var(--primary-blue)] gap-2.5;
+}
+
+.room-content {
+  @apply pt-7 pb-7 px-8;
+}
+
+.color-warning-border-soft {
+  @apply bg-[color:var(--warning-tint-80)];
+}
+
+.color-danger-border-soft {
+  @apply bg-[color:var(--danger-tint-80)];
+}
+
+/* --------------------------------------------------------------------------
+   Contoh select guide
+   Semua contoh dropdown native di halaman guide memakai struktur visual yang
+   sama dengan select custom pada halaman aplikasi operasional.
+   -------------------------------------------------------------------------- */
+
+.guide-select {
+  @apply w-full min-w-0;
+}
+
+.guide-select .dropdown-trigger {
+  @apply bg-[color:var(--white)];
+}
+
+.guide-select .dropdown-panel {
+  @apply z-[70];
+}
+
+.guide-select .dropdown-option {
+  @apply justify-start;
+}
+
+/* Preview interaktif dropdown guide */
+
+.dropdown-demo > .dropdown-panel {
+  @apply hidden;
+}
+
+.dropdown-demo.is-open > .dropdown-panel {
+  @apply block;
+}
+
+.guide-combobox-demo {
+  @apply relative;
+}
+
+.guide-combobox-demo > .dropdown-panel {
+  @apply mt-2;
+}
+
+.dropdown-demo .input-wrap,
+.dropdown-demo .dropdown-option,
+.dropdown-demo .calendar-date,
+.dropdown-demo .time-option {
+  @apply cursor-pointer;
+}
+
+/* Contoh interaktif date/time picker guide */
+
+.guide-picker-card {
+  @apply overflow-visible rounded-[10px];
+}
+
+.guide-picker-card .field {
+  @apply gap-2;
+}
+
+.guide-picker-dropdown {
+  @apply w-full;
+}
+
+.guide-picker-dropdown .dropdown-panel {
+  @apply z-[90];
+}
+
+.guide-time-dropdown .dropdown-panel,
+.guide-time-panel {
+  @apply w-[260px] min-w-[260px] max-w-[260px];
+}
+
+.guide-datetime-panel {
+  @apply w-[304px] min-w-[304px] max-w-[304px];
+}
+
+.guide-picker-divider {
+  @apply h-px bg-[color:var(--border-soft)];
+}
+
+.guide-inline-timepicker {
+  @apply max-h-[none];
+}
+
+.guide-picker-card .time-option,
+.guide-picker-card .calendar-date {
+  @apply border-0 cursor-pointer;
+}
+
+.guide-picker-card .calendar-date.range:not(.selected) {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+}
+
+.guide-picker-card .dropdown-footer {
+  @apply flex justify-between gap-3 py-2.5 px-3 border-t border-t-[color:var(--border-soft)] text-[color:var(--text-muted)] text-body-sm;
+}
+
+/* Dropdown time picker guide: setiap option waktu memenuhi kolomnya */
+
+.guide-picker-card .timepicker,
+.guide-time-panel .timepicker {
+  @apply w-full grid-cols-2;
+}
+
+.guide-picker-card .time-col,
+.guide-time-panel .time-col {
+  @apply min-w-0;
+}
+
+.guide-picker-card .time-option {
+  @apply w-full min-w-0 p-0 appearance-none bg-transparent text-center;
+}
+
+.guide-time-panel .time-option {
+  @apply w-full min-w-0 p-0 border-0 appearance-none bg-transparent text-center;
+}
+
+.guide-picker-card .time-option:hover,
+.guide-time-panel .time-option:hover,
+.guide-picker-card .time-option.active,
+.guide-time-panel .time-option.active {
+  @apply bg-[color:var(--primary-light)];
+}
+
+.guide-picker-card .time-option.selected,
+.guide-time-panel .time-option.selected {
+  @apply bg-[color:var(--primary-blue)] text-[color:var(--white)];
+}
+
+/* --------------------------------------------------------------------------
+   Modal guide: kartu trigger, anatomy preview, dan matrix contoh.
+   Style dialog utama diambil dari design-system/modals.css.
+   -------------------------------------------------------------------------- */
+
+.modal-guide-page .modal-size-actions {
+  @apply flex items-center flex-wrap gap-2.5 mb-4;
+}
+
+.modal-guide-page .modal-example-trigger {
+  @apply appearance-none border-0 text-left cursor-pointer flex flex-col items-start gap-2 text-[color:var(--text-primary)];
+}
+
+.modal-guide-page .modal-example-trigger:hover {
+  @apply shadow-[var(--shadow-md)];
+
+  transform: translateY(-1px);
+}
+
+.modal-guide-page .modal-example-trigger span:last-child {
+  @apply text-[color:var(--text-secondary)] text-body-md;
+}
+
+.modal-guide-page .modal-example-icon {
+  @apply w-[38px] h-[38px] rounded-xl inline-flex items-center justify-center text-[color:var(--primary-blue)] bg-[color:var(--primary-light)];
+}
+
+.modal-guide-page .modal-anatomy-preview {
+  @apply justify-center;
+}
+
+.modal-guide-page .modal-mini-card {
+  @apply border-0 rounded-[10px] bg-[color:var(--surface)] shadow-[var(--shadow-sm)] overflow-hidden;
+}
+
+.modal-guide-page .modal-mini-head,
+.modal-guide-page .modal-mini-footer {
+  @apply flex items-start justify-between gap-4 p-4 border-b border-b-[color:var(--border-soft)];
+}
+
+.modal-guide-page .modal-mini-head h3 {
+  @apply mt-0 mb-1 mx-0 text-body-lg leading-[1.3];
+}
+
+.modal-guide-page .modal-mini-head p {
+  @apply m-0 text-[color:var(--text-secondary)] text-body-sm;
+}
+
+.modal-guide-page .modal-mini-body {
+  @apply grid gap-2.5 p-4;
+}
+
+.modal-guide-page .modal-mini-field {
+  @apply h-[38px] rounded-[var(--radius-input-md)] bg-[color:var(--light-gray-tint-40)] border border-[color:var(--border-soft)];
+}
+
+.modal-guide-page .modal-mini-field.wide {
+  @apply h-[74px];
+}
+
+.modal-guide-page .modal-mini-footer {
+  @apply items-center justify-end border-b-0 border-t border-t-[color:var(--border-soft)];
+  background: linear-gradient(180deg, var(--white), var(--light-gray-tint-40));
+}
+
+.modal-guide-page .modal-guide-matrix {
+  @apply grid grid-cols-[repeat(4,minmax(120px,1fr))] gap-3;
+}
+
+.modal-guide-page .modal-guide-matrix span {
+  @apply min-h-13 border border-[color:var(--border-soft)] rounded-[var(--radius-input-md)] inline-flex items-center justify-center text-[color:var(--text-primary)] bg-[color:var(--light-gray-tint-40)] font-bold text-body-md;
+}
+
+@media (max-width: 900px) {
+  .modal-guide-page .modal-guide-matrix {
+    @apply grid-cols-1;
+  }
+}
+
+
+.guide-note {
+  @apply mt-5 rounded-2xl border border-[color:var(--ui-primary-border-muted)] bg-[color:var(--ui-surface-primary-soft)] py-3.5 px-4 text-[color:var(--text-primary)] text-body-sm leading-[1.6];
+}
+
+
+.sidebar-showcase-nested {
+  @apply min-h-[560px] items-start overflow-auto;
+}
+
+.guide-nested-sidebar-preview {
+  @apply min-h-[520px] h-auto max-h-none;
+}

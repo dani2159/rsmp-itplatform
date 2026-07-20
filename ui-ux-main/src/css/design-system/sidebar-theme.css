@@ -1,0 +1,185 @@
+/* --------------------------------------------------------------------------
+   Adaptasi warna gradient sidebar
+   Sidebar memakai brand gradient biru-teal. Teks, icon, hover, active, search,
+   dan user card disesuaikan agar kontras tetap nyaman memakai token design system.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --sidebar-start: var(--ui-sidebar-primary-start);
+  --sidebar-mid: var(--ui-sidebar-primary-mid);
+  --sidebar-end: var(--ui-sidebar-teal-end);
+  --sidebar-text: var(--white);
+  --sidebar-text-muted: color-mix(in srgb, var(--white) 84%, transparent);
+  --sidebar-icon: var(--white);
+  --sidebar-icon-muted: color-mix(in srgb, var(--white) 86%, var(--primary-blue-tint-80));
+  --sidebar-divider: color-mix(in srgb, var(--white) 22%, transparent);
+  --sidebar-border: color-mix(in srgb, var(--white) 28%, transparent);
+  --sidebar-hover-bg: color-mix(in srgb, var(--white) 14%, transparent);
+  --sidebar-hover-border: color-mix(in srgb, var(--white) 18%, transparent);
+  --sidebar-active-bg: var(--white);
+  --sidebar-active-text: var(--primary-blue-shade-30);
+  --sidebar-active-icon: var(--primary-blue);
+  --sidebar-active-accent: var(--primary-green);
+}
+
+.app-sidebar {
+  @apply border-[color:var(--sidebar-border)] text-[color:var(--sidebar-text)] shadow-[0_22px_52px_rgba(15,31,61,0.16)];
+
+  background: linear-gradient(180deg, color-mix(in srgb, var(--navy) 12%, transparent) 0%, color-mix(in srgb, var(--navy) 20%, transparent) 53%, color-mix(in srgb, var(--navy) 38%, transparent) 100%),
+    linear-gradient(180deg, var(--sidebar-start) 0%, var(--sidebar-mid) 53%, var(--sidebar-end) 100%);
+}
+
+.app-sidebar .sidebar-head {
+  @apply pb-4.5;
+}
+
+.app-sidebar .brand-lockup {
+  filter: brightness(100);
+}
+
+.app-sidebar .brand-title,
+.app-sidebar .user-name {
+  @apply text-[color:var(--sidebar-text)];
+}
+
+.app-sidebar .brand-subtitle,
+.app-sidebar .user-email {
+  @apply text-[color:var(--sidebar-text-muted)];
+}
+
+.app-sidebar .sidebar-separator {
+  @apply bg-[color:var(--sidebar-divider)];
+}
+
+.app-sidebar .sidebar-search .input {
+  @apply border-[color:var(--sidebar-border)] bg-[color:color-mix(in_srgb,var(--white)_17%,transparent)] text-[color:var(--white)];
+  background: color-mix(in srgb, var(--white) 17%, transparent);
+  color: var(--white);
+}
+
+.app-sidebar .sidebar-search .input::placeholder {
+  @apply text-[color:var(--sidebar-text-muted)];
+}
+
+.app-sidebar .sidebar-search .input:hover {
+  @apply border-[color:color-mix(in_srgb,var(--white)_38%,transparent)] bg-[color:color-mix(in_srgb,var(--white)_21%,transparent)];
+
+  border-color: color-mix(in srgb, var(--white) 38%, transparent);
+  background: color-mix(in srgb, var(--white) 21%, transparent);
+}
+
+.app-sidebar .sidebar-search .input:focus,
+.app-sidebar .sidebar-search .input:focus-visible {
+  @apply border-[color:var(--primary-blue-tint-80)] bg-[color:var(--white)] text-[color:var(--text-primary)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--white)_28%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--white) 28%, transparent);
+}
+
+.app-sidebar .sidebar-search .field-icon,
+.app-sidebar .sidebar-search .field-icon i {
+  @apply text-[color:var(--sidebar-icon-muted)];
+}
+
+.app-sidebar .sidebar-search:focus-within .field-icon,
+.app-sidebar .sidebar-search:focus-within .field-icon i {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.app-sidebar .compact-search {
+  @apply bg-[color:color-mix(in_srgb,var(--white)_16%,transparent)] text-[color:var(--sidebar-icon)];
+
+  background: color-mix(in srgb, var(--white) 16%, transparent);
+  color: var(--sidebar-icon);
+}
+
+.app-sidebar .compact-search:hover {
+  @apply bg-[color:var(--sidebar-active-bg)] text-[color:var(--sidebar-active-icon)];
+}
+
+.app-sidebar .nav-item,
+.app-sidebar .nav-summary,
+.app-sidebar .nav-subitem {
+  @apply text-[color:var(--sidebar-text)];
+}
+
+.app-sidebar .nav-item .nav-icon,
+.app-sidebar .nav-summary .nav-icon,
+.app-sidebar .nav-subitem .nav-icon {
+  @apply text-[color:var(--sidebar-icon-muted)];
+}
+
+.app-sidebar .nav-summary .nav-chevron {
+  @apply text-[color:var(--sidebar-icon-muted)] opacity-100;
+}
+
+.app-sidebar .nav-item:hover,
+.app-sidebar .nav-summary:hover,
+.app-sidebar .nav-subitem:hover,
+.app-sidebar details.nav-group[open] > .nav-summary {
+  @apply bg-[color:var(--sidebar-hover-bg)] text-[color:var(--sidebar-text)] shadow-[inset_0_0_0_1px_var(--sidebar-hover-border)];
+}
+
+.app-sidebar .nav-item:hover .nav-icon,
+.app-sidebar .nav-summary:hover .nav-icon,
+.app-sidebar .nav-subitem:hover .nav-icon,
+.app-sidebar .nav-summary:hover .nav-chevron,
+.app-sidebar details.nav-group[open] > .nav-summary .nav-icon,
+.app-sidebar details.nav-group[open] > .nav-summary .nav-chevron {
+  @apply text-[color:var(--sidebar-icon)];
+}
+
+.app-sidebar .nav-item.active,
+.app-sidebar .nav-summary.active,
+.app-sidebar .nav-subitem.active {
+  @apply bg-[color:var(--sidebar-active-bg)] text-[color:var(--sidebar-active-text)] shadow-[0_12px_24px_rgba(8,17,34,0.14)];
+}
+
+.app-sidebar .nav-item.active .nav-icon,
+.app-sidebar .nav-summary.active .nav-icon,
+.app-sidebar .nav-subitem.active .nav-icon,
+.app-sidebar .nav-summary.active .nav-chevron {
+  @apply text-[color:var(--sidebar-active-icon)];
+}
+
+.app-sidebar .nav-item.active::before,
+.app-sidebar .nav-summary.active::before,
+.app-sidebar .nav-subitem.active::before {
+  @apply bg-[color:var(--sidebar-active-accent)];
+}
+
+.app-sidebar .subnav {
+  @apply border-l-[color:var(--sidebar-divider)];
+}
+
+.app-sidebar .nav-count {
+  @apply border border-[color:var(--sidebar-border)] bg-[color:color-mix(in_srgb,var(--white)_16%,transparent)] text-[color:var(--white)];
+  background: color-mix(in srgb, var(--white) 16%, transparent);
+  color: var(--white);
+}
+
+.app-sidebar .nav-item.active .nav-count,
+.app-sidebar .nav-summary.active .nav-count,
+.app-sidebar .nav-subitem.active .nav-count {
+  @apply border-[color:color-mix(in_srgb,var(--primary-blue)_18%,var(--surface))] bg-[color:var(--primary-light)] text-[color:var(--primary-blue)];
+
+  border-color: color-mix(in srgb, var(--primary-blue) 18%, var(--surface));
+  background: var(--primary-light);
+  color: var(--primary-blue);
+}
+
+
+.app-sidebar .avatar {
+  @apply border-[color:color-mix(in_srgb,var(--white)_70%,transparent)] bg-[color:var(--white)] text-[color:var(--primary-blue)];
+
+  border-color: color-mix(in srgb, var(--white) 70%, transparent);
+  background: var(--white);
+  color: var(--primary-blue);
+}
+
+.app-sidebar.compact .brand-lockup {
+  @apply w-10 h-10 rounded-xl p-0;
+}
+
+.app-sidebar.compact .sidebar-separator {
+  @apply bg-[color:var(--sidebar-divider)];
+}
+

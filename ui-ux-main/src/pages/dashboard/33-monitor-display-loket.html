@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monitor Display Loket · SIMRS ZAIDAN</title>
+  <link rel="stylesheet" href="../../css/monitor-display.css">
+</head>
+<body class="queue-tv-page">
+  <main class="queue-display-screen" aria-label="Monitor display antrean loket rumah sakit">
+    <header class="queue-display-header">
+      <section class="queue-display-brand" aria-label="Identitas rumah sakit">
+        <img class="queue-display-logo" src="../../assets/images/logo-simrs-icon.svg" alt="Logo RS Sehat Sentosa">
+        <div class="queue-display-brand-copy">
+          <strong>RS SEHAT SENTOSA</strong>
+          <span>Melayani dengan hati, untuk kesehatan Anda</span>
+        </div>
+      </section>
+
+      <section class="queue-display-title" aria-label="Judul layar antrean">
+        <h1>INFORMASI ANTREAN ONLINE</h1>
+        <p>Pendaftaran Online · Lebih Mudah, Lebih Nyaman</p>
+      </section>
+
+      <section class="queue-display-clock" aria-label="Waktu saat ini">
+        <div class="queue-display-time"><span class="queue-icon">◷</span><span id="queueDisplayTime">10:45:00</span></div>
+        <div class="queue-display-date" id="queueDisplayDate">Senin, 14 Juni 2026</div>
+      </section>
+    </header>
+
+    <section class="queue-display-main">
+      <aside class="queue-now-panel" aria-label="Antrean sedang dilayani">
+        <div class="queue-now-card">
+          <p class="queue-now-label">SEDANG DILAYANI</p>
+          <span class="queue-now-unit">POLI PENYAKIT DALAM</span>
+          <strong class="queue-now-number">A-023</strong>
+          <div class="queue-now-separator" aria-hidden="true"></div>
+          <div class="queue-now-patient">
+            <strong>Ahmad Fauzi</strong>
+            <span>RM. 00012345</span>
+          </div>
+          <div class="queue-now-room">
+            <span class="queue-now-sound">♪</span>
+            <span>Silakan menuju ke <strong>RUANG 2</strong></span>
+          </div>
+        </div>
+
+        <div class="queue-announcement-card">
+          <div class="queue-announcement-title"><span>▸</span><strong>PENGUMUMAN</strong></div>
+          <p>Mohon kepada pasien untuk datang 15 menit sebelum jadwal kontrol. Terima kasih.</p>
+        </div>
+      </aside>
+
+      <section class="queue-list-panel" aria-label="Daftar antrean per poli">
+        <div class="queue-list-head">
+          <h2>DAFTAR ANTREAN</h2>
+          <div class="queue-display-legend" aria-label="Keterangan status antrean">
+            <span><i class="queue-dot queue-dot-online" aria-hidden="true"></i>Pendaftaran Online</span>
+            <span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i>Pendaftaran Onsite</span>
+          </div>
+        </div>
+
+        <div class="queue-unit-grid">
+          <article class="queue-unit-card">
+            <header><span>POLI PENYAKIT DALAM</span></header>
+            <ol class="queue-number-list">
+              <li class="queue-featured"><strong>A-023</strong><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>A-024</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>A-025</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>A-026</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>A-027</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>A-028</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+            </ol>
+            <footer><span>Sisa Antrean</span><strong>12</strong></footer>
+          </article>
+
+          <article class="queue-unit-card">
+            <header><span>POLI ANAK</span></header>
+            <ol class="queue-number-list">
+              <li class="queue-featured"><strong>B-015</strong><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>B-016</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>B-017</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>B-018</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>B-019</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>B-020</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+            </ol>
+            <footer><span>Sisa Antrean</span><strong>8</strong></footer>
+          </article>
+
+          <article class="queue-unit-card">
+            <header><span>POLI GIGI</span></header>
+            <ol class="queue-number-list">
+              <li class="queue-featured"><strong>C-008</strong><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>C-009</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>C-010</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>C-011</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>C-012</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>C-013</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+            </ol>
+            <footer><span>Sisa Antrean</span><strong>7</strong></footer>
+          </article>
+
+          <article class="queue-unit-card">
+            <header><span>POLI KANDUNGAN</span></header>
+            <ol class="queue-number-list">
+              <li class="queue-featured"><strong>D-010</strong><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>D-011</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>D-012</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>D-013</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>D-014</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>D-015</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+            </ol>
+            <footer><span>Sisa Antrean</span><strong>9</strong></footer>
+          </article>
+
+          <article class="queue-unit-card">
+            <header><span>POLI MATA</span></header>
+            <ol class="queue-number-list">
+              <li class="queue-featured"><strong>E-006</strong><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>E-007</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>E-008</span><i class="queue-dot queue-dot-online" aria-hidden="true"></i></li>
+              <li><span>E-009</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>E-010</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+              <li><span>E-011</span><i class="queue-dot queue-dot-onsite" aria-hidden="true"></i></li>
+            </ol>
+            <footer><span>Sisa Antrean</span><strong>6</strong></footer>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <footer class="queue-display-footer" aria-label="Informasi tambahan rumah sakit">
+      <section class="queue-info-card queue-service-hours">
+        <div class="queue-info-title"><span>◷</span><strong>JAM LAYANAN</strong></div>
+        <div class="queue-hours-grid">
+          <p><span>Senin - Jumat</span><strong>08.00 - 16.00 WIB</strong></p>
+          <p><span>Sabtu</span><strong>08.00 - 12.00 WIB</strong></p>
+        </div>
+      </section>
+
+      <section class="queue-info-card queue-help-card">
+        <span class="queue-help-icon">☎</span>
+        <div>
+          <strong>Butuh bantuan?</strong>
+          <span>Silakan hubungi Customer Service</span>
+          <b>(021) 1234 5678</b>
+        </div>
+      </section>
+
+      <section class="queue-info-card queue-app-card">
+        <div class="queue-qr" aria-label="Kode QR aplikasi rumah sakit">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          <span>Unduh Aplikasi</span>
+          <strong>RS Sehat Sentosa</strong>
+          <p>Untuk kemudahan pendaftaran dan informasi kesehatan</p>
+        </div>
+      </section>
+
+      <section class="queue-info-card queue-priority-card">
+        <span class="queue-priority-icon">♡</span>
+        <strong>Kesehatan Anda</strong>
+        <span>Prioritas Kami</span>
+      </section>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const timeEl = document.getElementById('queueDisplayTime');
+      const dateEl = document.getElementById('queueDisplayDate');
+      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+      const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+      const padClock = (value) => String(value).padStart(2, '0');
+      const updateClock = () => {
+        const now = new Date();
+        if (timeEl) {
+          timeEl.textContent = `${padClock(now.getHours())}:${padClock(now.getMinutes())}:${padClock(now.getSeconds())}`;
+        }
+        if (dateEl) {
+          dateEl.textContent = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        }
+      };
+
+      updateClock();
+      window.setInterval(updateClock, 1000);
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) updateClock();
+      });
+    })();
+  </script>
+</body>
+</html>

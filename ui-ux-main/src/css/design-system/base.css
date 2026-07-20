@@ -1,0 +1,19 @@
+/* ==========================================================================
+   14. Reset global dan base style dokumen
+   Base style untuk halaman guide. Letakkan override spesifik halaman di file
+   halaman masing-masing, bukan di sini.
+   ========================================================================== */
+
+* {
+  @apply box-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply m-0 font-sans text-body-md leading-[var(--leading-body-md)] text-[color:var(--text-primary)] bg-[color:var(--page)];
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}

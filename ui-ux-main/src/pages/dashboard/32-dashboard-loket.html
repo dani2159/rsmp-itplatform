@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Loket · SIMRS ZAIDAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="dashboard-app loket-dashboard-page">
+  <div class="layout-preview dashboard-layout loket-dashboard-layout" id="dashboardLayout">
+    <aside class="app-sidebar" id="dashboardSidebar" aria-label="Sidebar dashboard SIMRS">
+      <div class="sidebar-head">
+        <a class="brand-lockup" href="30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img class="brand-logo-full" alt="SIMRS ZAIDAN" src="../../assets/images/logo-simrs.svg"/>
+          <img class="brand-logo-icon" alt="SIMRS ZAIDAN icon" src="../../assets/images/logo-simrs-icon.svg"/>
+        </a>
+      </div>
+
+      <div class="sidebar-user-info" data-tooltip="Petugas Loket · Pendaftaran Rawat Jalan" role="button" tabindex="0">
+        <span class="sidebar-user-avatar sidebar-user-image" aria-hidden="true"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/></span>
+        <span class="sidebar-user-meta">
+          <span class="sidebar-user-name">Petugas Loket</span>
+          <span class="sidebar-user-role">Pendaftaran</span>
+        </span>
+      </div>
+
+      <nav class="sidebar-section" aria-label="Menu utama SIMRS">
+        <a class="nav-item" data-tooltip="Dashboard" href="30-dashboard.html">
+          <span class="nav-icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Admin">
+            <span class="nav-icon"><i class="fa-solid fa-user-gear" aria-hidden="true"></i></span>
+            <span class="nav-label">Admin</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../admin/50-users.html" data-route="/admin/users">Daftar Pengguna</a>
+            <a class="nav-subitem" href="../admin/51-role-permission.html" data-route="/admin/roles">Peran &amp; Hak Akses</a>
+            <a class="nav-subitem" href="../master/40-unit.html" data-route="/admin/units">Unit / Poli</a>
+            <a class="nav-subitem" href="../master/41-karyawan.html" data-route="/admin/employees">Karyawan</a>
+            <a class="nav-subitem" href="../master/42-jadwal-dokter.html" data-route="/admin/doctor-schedules">Jadwal Dokter</a>
+            <a class="nav-subitem" href="../master/43-kamar.html" data-route="/admin/rooms">Kamar</a>
+            <a class="nav-subitem" href="../master/44-penjamin.html" data-route="/admin/insurance">Penjamin</a>
+            <a class="nav-subitem" href="../master/45-tarif.html" data-route="/admin/tariffs">Tarif</a>
+            <a class="nav-subitem" href="../admin/53-konfigurasi-sistem.html" data-route="/admin/hospital-config">Profil Rumah Sakit</a>
+            <a class="nav-subitem" href="../admin/52-printer.html" data-route="/admin/printer-config">Master Printer</a>
+          </div>
+        </details>
+
+        <details class="nav-group" open>
+          <summary class="nav-summary active" data-tooltip="Pendaftaran">
+            <span class="nav-icon"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></span>
+            <span class="nav-label">Pendaftaran</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem active" href="32-dashboard-loket.html" data-route="/registration">Dashboard Loket</a>
+            <a class="nav-subitem" href="../registration/60-pendaftaran-pasien-baru.html" data-route="/registration/patients/new">Pasien Baru</a>
+            <a class="nav-subitem" href="#" data-route="/registration/visits/new">Buat Kunjungan</a>
+            <a class="nav-subitem" href="#" data-route="/registration/queue">Monitor Antrean</a>
+            <a class="nav-subitem" href="33-monitor-display-loket.html" data-route="/registration/display">Display TV Antrean</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rekam Medis">
+            <span class="nav-icon"><i class="fa-solid fa-notes-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Rekam Medis</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="../emr/70-rekam-medis.html" data-route="/emr/search">Cari RM Pasien</a>
+            <a class="nav-subitem" href="../emr/70-rekam-medis.html" data-route="/emr/patients/:id">Profil RM Terpadu</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Rawat Jalan">
+            <span class="nav-icon"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i></span>
+            <span class="nav-label">Rawat Jalan</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/outpatient">Dashboard Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/queue">Antrean Poli</a>
+            <a class="nav-subitem" href="#" data-route="/outpatient/visits/:id">Pemeriksaan</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Farmasi">
+            <span class="nav-icon"><i class="fa-solid fa-prescription-bottle-medical" aria-hidden="true"></i></span>
+            <span class="nav-label">Farmasi</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/pharmacy">Antrian Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/prescriptions/:id">Validasi Resep</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/dispensing/:id">Penyerahan Obat</a>
+            <a class="nav-subitem" href="#" data-route="/pharmacy/labels/:id">Cetak Etiket</a>
+          </div>
+        </details>
+
+        <details class="nav-group">
+          <summary class="nav-summary" data-tooltip="Kasir">
+            <span class="nav-icon"><i class="fa-solid fa-cash-register" aria-hidden="true"></i></span>
+            <span class="nav-label">Kasir</span>
+            <i class="fa-solid fa-chevron-down nav-chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="subnav">
+            <a class="nav-subitem" href="#" data-route="/billing">Pasien Siap Bayar</a>
+            <a class="nav-subitem" href="#" data-route="/billing/:visitId/receipt">Kwitansi</a>
+            <a class="nav-subitem" href="#" data-route="/billing/void">Pembatalan Penagihan</a>
+            <a class="nav-subitem" href="#" data-route="/billing/report">Laporan Kasir</a>
+          </div>
+        </details>
+      </nav>
+
+      <div class="sidebar-spacer"></div>
+    </aside>
+
+    <div class="app-main">
+      <header class="app-header">
+        <button class="icon-btn header-menu-btn" id="dashboardSidebarButton" type="button" aria-label="Tutup sidebar" aria-expanded="true" aria-controls="dashboardSidebar">
+          <i class="fa-solid fa-bars topbar-line-icon" aria-hidden="true"></i>
+        </button>
+        <a class="mobile-header-brand" href="30-dashboard.html" aria-label="SIMRS ZAIDAN dashboard">
+          <img src="../../assets/images/logo-simrs.svg" alt="SIMRS ZAIDAN">
+        </a>
+
+        <div class="input-wrap header-search doctor-autocomplete" data-component="header-search-autocomplete">
+          <span class="field-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass topbar-line-icon" aria-hidden="true"></i></span>
+          <input class="input with-left with-right" id="globalSearchInput" type="search" placeholder="Cari pasien, nomor RM, NIK..." aria-label="Cari pasien, nomor RM, NIK" />
+          <span class="kbd-hint" aria-hidden="true">⌘ K</span>
+        </div>
+
+        <div class="topbar-spacer" aria-hidden="true"></div>
+
+        <div class="header-actions" aria-label="Aksi header">
+<button class="icon-btn topbar-icon" type="button" aria-label="Buka notifikasi"><i class="fa-regular fa-bell" aria-hidden="true"></i><span class="notification-dot">3</span></button>
+          <details class="ds-dropdown" data-component="topbar-dropdown">
+            <summary class="profile-menu" aria-label="Buka menu profil petugas loket">
+              <span aria-hidden="true" class="profile-avatar profile-avatar-image"><img alt="Logo Rumah Sakit" src="../../assets/images/data-rs/logo-rs.jpg"/><span class="profile-status"></span></span>
+              <span class="profile-copy"><span class="profile-name">Petugas Loket</span><span class="profile-role">Loket 1</span></span>
+              <i class="fa-solid fa-chevron-down topbar-line-icon" aria-hidden="true"></i>
+            </summary>
+            <div class="dropdown-panel compact" style="right:0; left:auto; width:240px;" role="menu" aria-label="Menu profil">
+              <div class="dropdown-group-label">Akun</div>
+              <button class="dropdown-option selected" type="button" role="menuitem"><span class="option-meta">Siti Nurhaliza<small>Petugas Loket 1</small></span></button>
+              <a class="dropdown-option" href="../auth/20-login.html" role="menuitem"><span class="option-meta">Keluar<small>Keluar dari SIMRS</small></span></a>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="dashboard-content loket-dashboard-content" aria-label="Dashboard Loket Pendaftaran">
+        <section class="loket-page-head" aria-label="Informasi halaman dashboard loket">
+          <div>
+            <h1 class="text-h2">Dashboard Loket</h1>
+            <p class="text-body-lg">Loket 1 · Pendaftaran Rawat Jalan. Pantau antrean aktif, cari data pasien, dan akses menu prioritas dari satu halaman kerja loket.</p>
+          </div>
+          <span class="badge badge-success badge-sm"><span class="badge-dot"></span>Loket Aktif</span>
+        </section>
+
+        <section class="card loket-action-bar" aria-label="Pencarian dan aksi pasien loket">
+          <div class="card-header loket-action-head">
+            <div>
+              <h2 class="card-title text-h4">Pendaftaran Pasien</h2>
+              <p class="card-subtitle">Cari pasien terdaftar atau buat data pasien baru dari loket aktif.</p>
+            </div>
+          </div>
+
+          <div class="field loket-patient-search-field">
+            <label for="loketPatientSearch">Cari Pasien Lama</label>
+            <div class="loket-patient-toolbar">
+              <div class="input-wrap search-field doctor-autocomplete loket-search-field" data-component="patient-search-autocomplete">
+                <span class="field-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input class="input is-lg with-left with-right" id="loketPatientSearch" type="search" placeholder="Cari nama, No. RM, atau NIK" aria-label="Cari pasien lama berdasarkan nama, nomor RM, atau NIK" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="loketPatientSuggestions" autocomplete="off" data-min-search="2" data-debounce="300" data-max-results="8">
+                <button class="field-action" type="button" aria-label="Bersihkan pencarian pasien" data-clear-patient-search hidden><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+                <div class="doctor-autocomplete-panel loket-patient-suggestions" id="loketPatientSuggestions" role="listbox" aria-label="Hasil pencarian pasien lama">
+                  <div data-patient-search-results></div>
+                  <div class="autocomplete-empty" data-patient-search-empty hidden>Ketik minimal 2 karakter untuk mencari pasien lama</div>
+                  <div class="dropdown-footer"><span>Menampilkan maksimal 8 hasil. Pilih pasien untuk membuka detail dan daftar kunjungan.</span></div>
+                </div>
+              </div>
+
+              <a class="btn btn-primary btn-xl loket-new-patient" href="../registration/60-pendaftaran-pasien-baru.html" aria-label="Daftarkan pasien baru">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                <strong>Pasien Baru</strong>
+              </a>
+            </div>
+            <span class="helper">Gunakan nama, No. RM, atau NIK. Pencarian berjalan otomatis setelah minimal 2 karakter.</span>
+          </div>
+        </section>
+
+        <section class="dashboard-shortcuts-section loket-quick-section" aria-label="Pilih menu aksi cepat loket">
+          <div class="dashboard-widget-head shortcut-head">
+            <div class="dashboard-title-stack">
+              <div class="dashboard-title-inline">
+                <h2 class="text-h4">Pilih Menu Aksi Cepat</h2>
+              </div>
+            </div>
+            <span class="badge badge-primary badge-sm"><span class="badge-dot"></span>4 Aksi Cepat</span>
+          </div>
+
+          <div class="shortcut-grid loket-shortcut-grid">
+            <a class="shortcut-card card is-warning" href="#">
+              <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-users"></i></span>
+              <span class="shortcut-copy"><strong class="text-body-md font-bold">Antrian Poli</strong></span>
+            </a>
+            <a class="shortcut-card card is-info" href="#">
+              <span class="shortcut-icon" aria-hidden="true"><i class="fa-regular fa-rectangle-list"></i></span>
+              <span class="shortcut-copy"><strong class="text-body-md font-bold">Riwayat Kunjungan</strong></span>
+            </a>
+            <a class="shortcut-card card is-blue" href="#">
+              <span class="shortcut-icon" aria-hidden="true"><i class="fa-solid fa-print"></i></span>
+              <span class="shortcut-copy"><strong class="text-body-md font-bold">Cetak Ulang Tiket</strong></span>
+            </a>
+            <a class="shortcut-card card is-indigo" href="#">
+              <span class="shortcut-icon" aria-hidden="true"><i class="fa-regular fa-chart-bar"></i></span>
+              <span class="shortcut-copy"><strong class="text-body-md font-bold">Laporan Harian</strong></span>
+            </a>
+          </div>
+        </section>
+
+        <section class="loket-queue-hero" aria-label="Informasi antrian hari ini">
+          <h1 class="loket-hero-title text-h4">Informasi Antrian Hari Ini - Loket 1 <span>(Pendaftaran Rawat Jalan)</span></h1>
+          <div class="loket-hero-grid">
+            <div class="loket-metric-grid" aria-label="Ringkasan antrean loket">
+              <article class="loket-kpi-card card is-blue">
+                <span class="loket-kpi-label text-body-md">Total Antrian</span>
+                <strong class="loket-kpi-value text-display-md">286</strong>
+                <span class="loket-kpi-unit text-body-md">Pasien</span>
+                <i class="fa-solid fa-users loket-kpi-icon" aria-hidden="true"></i>
+              </article>
+              <article class="loket-kpi-card card is-green">
+                <span class="loket-kpi-label text-body-md">Selesai Dilayani</span>
+                <strong class="loket-kpi-value text-display-md">142</strong>
+                <span class="loket-kpi-unit text-body-md">Pasien</span>
+                <i class="fa-regular fa-circle-check loket-kpi-icon" aria-hidden="true"></i>
+              </article>
+              <article class="loket-kpi-card card is-warning">
+                <span class="loket-kpi-label text-body-md">Masih Menunggu</span>
+                <strong class="loket-kpi-value text-display-md">144</strong>
+                <span class="loket-kpi-unit text-body-md">Pasien</span>
+                <i class="fa-regular fa-clock loket-kpi-icon" aria-hidden="true"></i>
+              </article>
+              <article class="loket-kpi-card card is-indigo">
+                <span class="loket-kpi-label text-body-md">Rata-rata Tunggu</span>
+                <strong class="loket-kpi-value text-display-md">36</strong>
+                <span class="loket-kpi-unit text-body-md">Menit</span>
+                <i class="fa-solid fa-stopwatch loket-kpi-icon" aria-hidden="true"></i>
+              </article>
+            </div>
+
+            <article class="loket-now-card" aria-label="Nomor antrean sedang dipanggil">
+              <p class="loket-now-title text-h4">Sedang Dipanggil - Loket 1</p>
+              <div class="loket-current-row">
+                <strong class="loket-current-number">A-012</strong>
+                <button class="loket-speaker-btn" type="button" aria-label="Panggil ulang nomor A-012"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></button>
+              </div>
+              <p class="loket-current-name text-h3">Ahmad Fauzan</p>
+              <div class="loket-next-row" aria-label="Nomor berikutnya">
+                <span class="text-body-md font-bold">Nomor Berikutnya</span>
+                <strong>A-013</strong>
+                <strong>A-014</strong>
+                <strong>A-015</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="loket-workspace" aria-label="Workspace loket aktif">
+          <article class="card admin-users-table-card loket-active-queue-card">
+            <div class="card-header loket-section-head">
+              <div class="card-title-row">
+                <h2 class="card-title text-h4">Antrian Aktif Loket 1</h2>
+                <span class="loket-live-label"><i class="fa-solid fa-wave-square" aria-hidden="true"></i>Real-time</span>
+              </div>
+            </div>
+            <div class="table-scroll admin-table-scroll loket-table-scroll">
+              <table class="data-table admin-users-table loket-data-table">
+                <thead>
+                  <tr>
+                    <th>No. Antrian</th>
+                    <th>Aksi</th>
+                    <th>Nama Pasien</th>
+                    <th>Poli / Unit</th>
+                    <th>Penjamin</th>
+                    <th>Jam Daftar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A001</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A001"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Budi Santoso</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli Umum</td>
+                    <td>BPJS Kesehatan</td>
+                    <td>08:00:12</td>
+                  </tr>
+                  <tr>
+                    <td>A002</td>
+                    <td><button class="btn btn-primary btn-sm loket-row-action" type="button" aria-label="Layani A002"><i class="fa-solid fa-user-check" aria-hidden="true"></i>Layani</button></td>
+                    <td><div class="loket-patient-cell"><strong>Siti Aisyah</strong><span class="badge badge-success badge-sm">Dipanggil</span></div></td>
+                    <td>Poli Gigi</td>
+                    <td>Umum</td>
+                    <td>08:05:33</td>
+                  </tr>
+                  <tr>
+                    <td>A003</td>
+                    <td><button class="btn btn-success btn-sm loket-row-action" type="button" aria-label="Selesaikan A003"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Selesaikan</button></td>
+                    <td><div class="loket-patient-cell"><strong>Andi Wijaya</strong><span class="badge badge-primary badge-sm">Dilayani</span></div></td>
+                    <td>Poli Anak</td>
+                    <td>BPJS Kesehatan</td>
+                    <td>08:07:21</td>
+                  </tr>
+                  <tr>
+                    <td>A004</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A004"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Dewi Lestari</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli Kandungan</td>
+                    <td>Asuransi</td>
+                    <td>08:10:05</td>
+                  </tr>
+                  <tr>
+                    <td>A005</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A005"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Rudi Hartono</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli Umum</td>
+                    <td>Umum</td>
+                    <td>08:12:44</td>
+                  </tr>
+                  <tr>
+                    <td>A006</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A006"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Nina Marlina</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli Mata</td>
+                    <td>BPJS Kesehatan</td>
+                    <td>08:14:10</td>
+                  </tr>
+                  <tr>
+                    <td>A007</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A007"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Joko Prasetyo</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli Saraf</td>
+                    <td>Asuransi</td>
+                    <td>08:16:27</td>
+                  </tr>
+                  <tr>
+                    <td>A008</td>
+                    <td><button class="btn btn-warning btn-sm loket-row-action" type="button" aria-label="Panggil A008"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>Panggil</button></td>
+                    <td><div class="loket-patient-cell"><strong>Yuniarti</strong><span class="badge badge-warning badge-sm">Menunggu</span></div></td>
+                    <td>Poli THT</td>
+                    <td>BPJS Kesehatan</td>
+                    <td>08:18:50</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="loket-table-footer">
+              <span><i class="fa-solid fa-circle" aria-hidden="true"></i>Update terakhir: 10:24:36</span>
+              <a class="btn btn-ghost" href="#">Lihat semua antrian <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <aside class="loket-side-stack" aria-label="Informasi tambahan loket">
+            <article class="card loket-info-card">
+              <div class="card-header">
+                <h2 class="card-title text-h4">Informasi Loket Aktif</h2>
+              </div>
+              <dl class="loket-info-list">
+                <div><dt>Loket</dt><dd><span class="badge badge-success badge-sm">Loket 1</span></dd></div>
+                <div><dt>Petugas</dt><dd>Siti Nurhaliza</dd></div>
+                <div><dt>Unit</dt><dd>Pendaftaran Rawat Jalan</dd></div>
+                <div><dt>Jam Operasional</dt><dd>07:00 - 17:00</dd></div>
+                <div><dt>Printer Default</dt><dd>Printer Kasir A (80mm) <i class="fa-solid fa-print" aria-hidden="true"></i></dd></div>
+              </dl>
+            </article>
+
+            <article class="card loket-chart-card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title text-h4">Grafik Antrian Hari Ini</h2>
+                  <p class="card-subtitle">Loket 1</p>
+                </div>
+              </div>
+              <div class="loket-chart-legend" aria-label="Legenda grafik">
+                <span><i class="is-blue" aria-hidden="true"></i>Menunggu</span>
+                <span><i class="is-green" aria-hidden="true"></i>Selesai</span>
+              </div>
+              <div class="loket-chart-wrap" aria-label="Grafik antrian menunggu dan selesai">
+                <svg class="loket-line-chart" viewBox="0 0 640 270" role="img" aria-label="Grafik antrian hari ini dari pukul 07:00 sampai 17:00">
+                  <g class="loket-chart-grid">
+                    <line x1="54" y1="42" x2="610" y2="42"></line><line x1="54" y1="88" x2="610" y2="88"></line><line x1="54" y1="134" x2="610" y2="134"></line><line x1="54" y1="180" x2="610" y2="180"></line><line x1="54" y1="226" x2="610" y2="226"></line>
+                  </g>
+                  <g class="loket-chart-axis text-mono-sm">
+                    <text x="20" y="47">100</text><text x="28" y="93">80</text><text x="28" y="139">60</text><text x="28" y="185">40</text><text x="28" y="231">0</text>
+                    <text x="68" y="256">07:00</text><text x="180" y="256">09:00</text><text x="292" y="256">11:00</text><text x="404" y="256">13:00</text><text x="516" y="256">15:00</text><text x="590" y="256">17:00</text>
+                  </g>
+                  <polyline class="loket-chart-line is-blue" points="70,212 120,185 170,156 220,130 270,96 320,90 370,90 420,70 470,60 520,60 570,52 610,28"></polyline>
+                  <polyline class="loket-chart-line is-green" points="70,222 120,210 170,208 220,206 270,160 320,156 370,156 420,128 470,126 520,130 570,104 610,82"></polyline>
+                  <g class="loket-chart-points is-blue"><circle cx="70" cy="212" r="5"/><circle cx="120" cy="185" r="5"/><circle cx="170" cy="156" r="5"/><circle cx="220" cy="130" r="5"/><circle cx="270" cy="96" r="5"/><circle cx="320" cy="90" r="5"/><circle cx="370" cy="90" r="5"/><circle cx="420" cy="70" r="5"/><circle cx="470" cy="60" r="5"/><circle cx="520" cy="60" r="5"/><circle cx="570" cy="52" r="5"/><circle cx="610" cy="28" r="5"/></g>
+                  <g class="loket-chart-points is-green"><circle cx="70" cy="222" r="5"/><circle cx="120" cy="210" r="5"/><circle cx="170" cy="208" r="5"/><circle cx="220" cy="206" r="5"/><circle cx="270" cy="160" r="5"/><circle cx="320" cy="156" r="5"/><circle cx="370" cy="156" r="5"/><circle cx="420" cy="128" r="5"/><circle cx="470" cy="126" r="5"/><circle cx="520" cy="130" r="5"/><circle cx="570" cy="104" r="5"/><circle cx="610" cy="82" r="5"/></g>
+                  <g class="loket-chart-hitpoints"><circle cx="70" cy="212" r="14" tabindex="0" data-chart-tooltip-title="07:00" data-chart-tooltip-lines="Menunggu: 8;Selesai: 2;Total: 10" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="120" cy="185" r="14" tabindex="0" data-chart-tooltip-title="08:00" data-chart-tooltip-lines="Menunggu: 20;Selesai: 8;Total: 28" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="170" cy="156" r="14" tabindex="0" data-chart-tooltip-title="09:00" data-chart-tooltip-lines="Menunggu: 36;Selesai: 10;Total: 46" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="220" cy="130" r="14" tabindex="0" data-chart-tooltip-title="10:00" data-chart-tooltip-lines="Menunggu: 50;Selesai: 12;Total: 62" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="270" cy="96" r="14" tabindex="0" data-chart-tooltip-title="11:00" data-chart-tooltip-lines="Menunggu: 68;Selesai: 36;Total: 104" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="320" cy="90" r="14" tabindex="0" data-chart-tooltip-title="12:00" data-chart-tooltip-lines="Menunggu: 72;Selesai: 38;Total: 110" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="370" cy="90" r="14" tabindex="0" data-chart-tooltip-title="13:00" data-chart-tooltip-lines="Menunggu: 72;Selesai: 38;Total: 110" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="420" cy="70" r="14" tabindex="0" data-chart-tooltip-title="14:00" data-chart-tooltip-lines="Menunggu: 84;Selesai: 52;Total: 136" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="470" cy="60" r="14" tabindex="0" data-chart-tooltip-title="15:00" data-chart-tooltip-lines="Menunggu: 90;Selesai: 54;Total: 144" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="520" cy="60" r="14" tabindex="0" data-chart-tooltip-title="16:00" data-chart-tooltip-lines="Menunggu: 90;Selesai: 50;Total: 140" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="570" cy="52" r="14" tabindex="0" data-chart-tooltip-title="16:30" data-chart-tooltip-lines="Menunggu: 94;Selesai: 64;Total: 158" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/><circle cx="610" cy="28" r="14" tabindex="0" data-chart-tooltip-title="17:00" data-chart-tooltip-lines="Menunggu: 100;Selesai: 76;Total: 176" data-chart-tooltip-colors="bar-blue;bar-green;bar-slate"/></g>
+                </svg>
+              </div>
+            </article>
+
+            <article class="card loket-summary-card">
+              <div class="card-header loket-summary-head">
+                <div>
+                  <h2 class="card-title text-h4">Ringkasan Loket Lain</h2>
+                  <p class="card-subtitle">Hari ini</p>
+                </div>
+                <a class="btn btn-outline btn-sm" href="#">Lihat Semua Loket</a>
+              </div>
+              <div class="loket-other-carousel" data-loket-carousel>
+                <div class="loket-other-viewport">
+                  <div class="loket-other-track" data-loket-track>
+                    <article class="loket-other-card"><strong><i class="fa-solid fa-user-nurse" aria-hidden="true"></i>Loket 2 · BPJS</strong><dl><div><dt>95</dt><dd>Total</dd></div><div><dt>26</dt><dd>Menunggu</dd></div><div><dt>58</dt><dd>Selesai</dd></div><div><dt>11</dt><dd>Baru</dd></div></dl></article>
+                    <article class="loket-other-card"><strong><i class="fa-solid fa-user" aria-hidden="true"></i>Loket 3 · Umum</strong><dl><div><dt>68</dt><dd>Total</dd></div><div><dt>18</dt><dd>Menunggu</dd></div><div><dt>42</dt><dd>Selesai</dd></div><div><dt>8</dt><dd>Baru</dd></div></dl></article>
+                    <article class="loket-other-card"><strong><i class="fa-solid fa-bed-pulse" aria-hidden="true"></i>Loket 4 · Penunjang</strong><dl><div><dt>23</dt><dd>Total</dd></div><div><dt>5</dt><dd>Menunggu</dd></div><div><dt>16</dt><dd>Selesai</dd></div><div><dt>2</dt><dd>Baru</dd></div></dl></article>
+                  </div>
+                </div>
+                <div class="loket-carousel-controls" aria-label="Navigasi ringkasan loket lain">
+                  <button class="btn btn-outline btn-icon btn-sm" type="button" data-loket-prev aria-label="Loket sebelumnya"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                  <div class="loket-carousel-dots" role="tablist" aria-label="Pilih ringkasan loket">
+                    <button class="is-active" type="button" data-loket-dot="0" aria-label="Tampilkan loket 2"></button>
+                    <button type="button" data-loket-dot="1" aria-label="Tampilkan loket 3"></button>
+                    <button type="button" data-loket-dot="2" aria-label="Tampilkan loket 4"></button>
+                  </div>
+                  <button class="btn btn-outline btn-icon btn-sm" type="button" data-loket-next aria-label="Loket berikutnya"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </div>
+
+
+  <div aria-hidden="true" class="modal-backdrop" data-loket-patient-backdrop hidden></div>
+  <section aria-labelledby="patientDetailTitle" aria-modal="true" class="modal" hidden id="patientDetailModal" role="dialog">
+    <div class="modal-card is-lg loket-patient-modal-card">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="patientDetailTitle">Detail Pasien</h2>
+        </div>
+        <button aria-label="Tutup detail pasien" class="btn btn-sm btn-ghost btn-icon" data-close-patient-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="loket-patient-summary-card">
+            <span class="loket-patient-avatar" aria-hidden="true" data-patient-initials>BS</span>
+            <div class="loket-patient-summary-copy">
+              <strong data-patient-name>Budi Santoso</strong>
+              <span data-patient-meta>RM-2025-000001 · NIK 3174011201890001</span>
+            </div>
+            <span class="badge badge-success badge-sm" data-patient-guarantor-badge>BPJS Kesehatan</span>
+          </div>
+          <div class="modal-section-head">
+            <span class="modal-section-icon" aria-hidden="true"><i class="fa-solid fa-id-card"></i></span>
+            <div>
+              <h3>Informasi Pasien Singkat</h3>
+              <p>Pastikan data utama pasien sudah sesuai sebelum membuat kunjungan baru.</p>
+            </div>
+          </div>
+          <div class="modal-detail-grid loket-patient-detail-grid">
+            <div class="modal-detail-item"><span>Nomor RM</span><strong data-patient-rm>RM-2025-000001</strong></div>
+            <div class="modal-detail-item"><span>NIK</span><strong data-patient-nik>3174011201890001</strong></div>
+            <div class="modal-detail-item"><span>Tanggal Lahir</span><strong data-patient-dob>12 Januari 1989</strong></div>
+            <div class="modal-detail-item"><span>Penjamin</span><strong data-patient-guarantor>BPJS Kesehatan</strong></div>
+          </div>
+        </section>
+
+        <section class="modal-section">
+          <div class="modal-section-head loket-visit-section-head">
+            <span class="modal-section-icon" aria-hidden="true"><i class="fa-regular fa-rectangle-list"></i></span>
+            <div>
+              <h3>Daftar Kunjungan Terakhir</h3>
+              <p>Riwayat kunjungan digunakan sebagai referensi saat pendaftaran ulang.</p>
+            </div>
+          </div>
+          <div class="table-scroll admin-table-scroll modal-table-scroll loket-visit-table-scroll">
+            <table class="data-table admin-users-table loket-visit-table">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>No. Registrasi</th>
+                  <th>Poli / Unit</th>
+                  <th>Dokter</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody data-patient-visits>
+                <tr><td>24 Jun 2025</td><td>REG-202506-0012</td><td>Poli Umum</td><td>dr. Ahmad Fauzi</td><td><span class="badge badge-success badge-sm">Selesai</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </div>
+      <div class="modal-actions">
+        <a class="btn btn-outline btn-lg" href="#"><i class="fa-regular fa-address-card" aria-hidden="true"></i>Lihat Detail Pasien</a>
+        <button class="btn btn-primary btn-lg" type="button" data-open-visit-from-patient><i class="fa-solid fa-plus" aria-hidden="true"></i>Buat Kunjungan Baru</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="visitModalTitle" aria-modal="true" class="modal" hidden id="visitModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitModalTitle">Buat Kunjungan</h2>
+          <p class="modal-subtitle">Lengkapi data kunjungan pasien sebelum verifikasi penjamin.</p>
+        </div>
+        <button aria-label="Tutup modal buat kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="layout-sidebar-grid">
+            <aside class="layout-stack is-md self-stretch pr-6 border-r border-r-[color:var(--border-soft)]">
+              <div class="layout-stack is-xs">
+                <h3 class="card-title">Informasi Pasien</h3>
+                <p class="modal-subtitle">Ringkasan data pasien untuk kunjungan.</p>
+              </div>
+              <div class="field-row">
+                <span class="avatar avatar-xl avatar-soft" data-gender-avatar aria-hidden="true"><i class="fa-solid fa-mars" data-gender-icon></i></span>
+                <div>
+                  <strong class="text-body-lg" data-summary="name">BUDI SANTOSO</strong>
+                  <p class="modal-subtitle" data-summary="rm">RM0012345</p>
+                  <p class="modal-subtitle"><span data-summary="gender">Laki-laki</span>, 34 Tahun</p>
+                  <p class="modal-subtitle" data-summary="birth">01-01-1990</p>
+                </div>
+              </div>
+              <div class="layout-stack is-lg">
+                <div class="layout-stack is-xs">
+                  <span class="text-body-md font-bold text-[color:var(--text-primary)]">Kontak</span>
+                  <span class="text-body-md font-semibold text-[color:var(--text-secondary)]" data-summary="phone">0812 3456 7890</span>
+                </div>
+                <div class="layout-stack is-xs">
+                  <span class="text-body-md font-bold text-[color:var(--text-primary)]">NIK</span>
+                  <span class="text-body-md font-semibold text-[color:var(--text-secondary)]" data-summary="nik">320101101010001</span>
+                </div>
+              </div>
+            </aside>
+            <div class="modal-form-grid">
+              <div class="field span-2">
+                <label for="visitDate">Tanggal Kunjungan <span class="required">*</span></label>
+                <details class="ds-dropdown ds-datepicker guide-picker-dropdown" data-component="guide-datepicker" data-date-min="2024-01-01" data-date-max="today+365d">
+                  <summary class="dropdown-trigger is-md" aria-label="Pilih tanggal kunjungan">
+                    <span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><i class="fa-regular fa-calendar" aria-hidden="true"></i></span><span class="mono" data-picker-text>20 Mei 2024</span></span>
+                  </summary>
+                  <div class="dropdown-panel compact datepicker-panel" role="dialog">
+                    <div class="calendar-widget"></div>
+                    <div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-datepicker-today>Hari ini</button><button class="btn btn-primary btn-sm" type="button" data-guide-close>Pilih Tanggal</button></div>
+                  </div>
+                  <input id="visitDate" type="hidden" data-picker-value value="2024-05-20" required>
+                </details>
+              </div>
+              <div class="field">
+                <label for="visitUnit">Unit / Poli <span class="required">*</span></label>
+                <input id="visitUnit" type="hidden" value="Poli Jantung" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitUnit">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>Poli Jantung</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Poli Jantung" type="button">Poli Jantung</button><button class="dropdown-option" data-select-value="Poli Umum" type="button">Poli Umum</button><button class="dropdown-option" data-select-value="Poli Penyakit Dalam" type="button">Poli Penyakit Dalam</button></div>
+                </details>
+              </div>
+              <div class="field">
+                <label for="visitDoctor">Dokter <span class="required">*</span></label>
+                <input id="visitDoctor" type="hidden" value="dr. Andi Pratama, Sp.JP" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitDoctor">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>dr. Andi Pratama, Sp.JP</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="dr. Andi Pratama, Sp.JP" type="button">dr. Andi Pratama, Sp.JP</button><button class="dropdown-option" data-select-value="dr. Ahmad Fauzi" type="button">dr. Ahmad Fauzi</button><button class="dropdown-option" data-select-value="dr. Rina Marlina" type="button">dr. Rina Marlina</button></div>
+                </details>
+                <small class="helper">Dokter ditampilkan sesuai jadwal aktif tanggal tersebut.</small>
+              </div>
+              <div class="field span-2">
+                <label>Jenis Kunjungan <span class="required">*</span></label>
+                <div class="control-row">
+                  <label class="radio"><input type="radio" name="visitTypeRadio" value="Kunjungan Baru" checked> Kunjungan Baru</label>
+                  <label class="radio"><input type="radio" name="visitTypeRadio" value="Kunjungan Lama"> Kunjungan Lama</label>
+                </div>
+                <input id="visitType" type="hidden" value="Kunjungan Baru" required>
+              </div>
+              <div class="field span-2">
+                <label for="visitGuarantor">Penjamin <span class="required">*</span></label>
+                <input id="visitGuarantor" type="hidden" value="BPJS Kesehatan" required>
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="visitGuarantor">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>BPJS Kesehatan</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="BPJS Kesehatan" type="button">BPJS Kesehatan</button><button class="dropdown-option" data-select-value="Umum" type="button">Umum</button><button class="dropdown-option" data-select-value="Asuransi Swasta" type="button">Asuransi Swasta</button></div>
+                </details>
+              </div>
+              <div class="field span-2">
+                <label for="bpjsCardNumber">No. Kartu BPJS <span class="required">*</span></label>
+                <div class="grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-start">
+                  <div>
+                    <div class="input-wrap"><input class="input mono with-right" id="bpjsCardNumber" inputmode="numeric" value="000123456789" placeholder="Masukkan nomor kartu BPJS" required><span class="field-icon right" aria-hidden="true"><i class="fa-regular fa-id-card"></i></span></div>
+                    <small class="helper">Pastikan nomor kartu sesuai data peserta.</small>
+                    <div class="mt-2" data-bpjs-verified-state hidden>
+                      <span class="badge badge-success badge-sm"><i class="fa-solid fa-check" aria-hidden="true"></i><span data-bpjs-status-text>BPJS Aktif</span></span>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary btn-lg" data-verify-bpjs type="button">Verifikasi BPJS <i class="fa-regular fa-id-card" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="field span-2">
+                <label for="visitComplaint">Keluhan Awal</label>
+                <textarea id="visitComplaint" maxlength="255" placeholder="Masukkan keluhan utama pasien">Sesak napas, nyeri dada sebelah kiri saat aktivitas.</textarea>
+              </div>
+              <div class="field span-2">
+                <label>Prioritas</label>
+                <div class="control-row">
+                  <label class="check"><input type="checkbox" checked> Lansia (&gt; 60 th)</label>
+                  <label class="check"><input type="checkbox"> Hamil</label>
+                  <label class="check"><input type="checkbox"> Disabilitas</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-close-modal type="button">Batal</button>
+        <button class="btn btn-primary btn-lg" data-save-visit type="button" disabled>Simpan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bpjsLoadingModalTitle" aria-modal="true" class="modal" hidden id="bpjsLoadingModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-body bpjs-loading-body">
+        <section class="modal-section bpjs-loading-state">
+          <div class="bpjs-loading-visual" aria-hidden="true">
+            <span class="bpjs-card-icon"><i class="fa-regular fa-id-card"></i></span>
+            <span class="bpjs-shield-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          </div>
+          <span class="bpjs-spinner" aria-hidden="true"></span>
+          <h3 class="modal-title" id="bpjsLoadingModalTitle">Verifikasi BPJS Sedang Berlangsung</h3>
+          <p class="modal-subtitle">Mohon tunggu, sistem sedang memeriksa data kepesertaan...</p>
+          <div class="bpjs-loading-bar" aria-hidden="true"><span></span></div>
+          <div class="bpjs-check-card">
+            <strong>Informasi yang sedang dicek:</strong>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Status kepesertaan</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Hak kelas perawatan</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Fasilitas Kesehatan Tingkat Pertama (FKTP)</span></li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Status rujukan (jika diperlukan)</span></li>
+            </ul>
+          </div>
+          <div class="alert alert-info alert-sm bpjs-process-alert">
+            <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <div class="alert-body"><p>Proses akan otomatis dilanjutkan...</p></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bpjsSuccessModalTitle" aria-modal="true" class="modal" hidden id="bpjsSuccessModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="bpjsSuccessModalTitle">Verifikasi BPJS Berhasil</h2>
+          <p class="modal-subtitle">Data peserta aktif dan kunjungan dapat disimpan.</p>
+        </div>
+        <button aria-label="Tutup hasil verifikasi BPJS" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success alert-sm">
+          <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-check"></i></span>
+          <div class="alert-body"><strong class="alert-title">Peserta Aktif</strong><p>Verifikasi berhasil. SEP akan dibuat otomatis saat kunjungan disimpan.</p></div>
+        </div>
+        <section class="modal-section">
+          <dl class="modal-info-list">
+            <div><dt>Nama Peserta</dt><dd data-summary="name">BUDI SANTOSO</dd></div>
+            <div><dt>No. Kartu</dt><dd>000123456789</dd></div>
+            <div><dt>Tanggal Lahir</dt><dd data-summary="birth">01-01-1990</dd></div>
+            <div><dt>Faskes Tingkat 1</dt><dd>Klinik Sehat Sentosa</dd></div>
+            <div><dt>Kelas Rawat</dt><dd>Kelas 1</dd></div>
+            <div><dt>Status Peserta</dt><dd>Aktif</dd></div>
+            <div><dt>Jenis Kepesertaan</dt><dd>PBI (APBN)</dd></div>
+            <div><dt>Masa Berlaku</dt><dd>01/05/2024 - 31/05/2024</dd></div>
+          </dl>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-form type="button">Kembali</button>
+        <button class="btn btn-primary btn-lg" data-continue-verified-visit type="button">Lanjutkan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="bpjsFallbackModalTitle" aria-modal="true" class="modal" hidden id="bpjsFallbackModal" role="dialog">
+    <div class="modal-card is-md">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="bpjsFallbackModalTitle">Verifikasi BPJS Gagal</h2>
+          <p class="modal-subtitle">Lengkapi data manual bila data BPJS tidak ditemukan atau koneksi bermasalah.</p>
+        </div>
+        <button aria-label="Tutup hasil verifikasi BPJS gagal" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger alert-sm">
+          <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+          <div class="alert-body"><strong class="alert-title">Verifikasi Gagal</strong><p>Data tidak ditemukan atau tidak valid. Periksa kembali nomor kartu atau input manual.</p></div>
+        </div>
+        <section class="modal-section">
+          <div class="modal-form-grid">
+            <div class="field span-2">
+              <label for="bpjsFallbackReason">Alasan</label>
+              <input id="bpjsFallbackReason" type="hidden" value="Peserta tidak ditemukan">
+              <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="bpjsFallbackReason">
+                <summary class="dropdown-trigger is-md"><span data-select-text>Peserta tidak ditemukan</span></summary>
+                <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Peserta tidak ditemukan" type="button">Peserta tidak ditemukan</button><button class="dropdown-option" data-select-value="Koneksi BPJS timeout" type="button">Koneksi BPJS timeout</button><button class="dropdown-option" data-select-value="Nomor kartu tidak valid" type="button">Nomor kartu tidak valid</button></div>
+              </details>
+            </div>
+            <div class="field span-2">
+              <label for="manualSepNumber">No. SEP (Input Manual)</label>
+              <input class="input" id="manualSepNumber" placeholder="Masukkan No. SEP bila ada">
+            </div>
+            <div class="field span-2">
+              <label for="manualBpjsNote">Catatan</label>
+              <textarea id="manualBpjsNote" placeholder="Tambahkan catatan opsional"></textarea>
+            </div>
+          </div>
+          <div class="alert alert-warning alert-sm">
+            <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <div class="alert-body"><strong class="alert-title">Mode Manual</strong><p>Data manual akan dicatat pada audit trail.</p></div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-form type="button">Kembali</button>
+        <button class="btn btn-primary btn-lg" data-continue-manual-visit type="button">Lanjutkan Buat Kunjungan</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="visitDetailModalTitle" aria-modal="true" class="modal" hidden id="visitDetailModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="visitDetailModalTitle">Kunjungan Berhasil Dibuat</h2>
+          <p class="modal-subtitle">Detail kunjungan, nomor antrean, dan preview tiket pasien.</p>
+        </div>
+        <button aria-label="Tutup detail kunjungan" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="grid grid-cols-[minmax(0,1fr)_minmax(260px,340px)] gap-6 items-start max-[900px]:grid-cols-1">
+            <div class="layout-stack is-md">
+              <div class="modal-section-head">
+                <span class="modal-section-icon bg-[color:var(--success-light)] text-[color:var(--success)]"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Data Kunjungan Tersimpan</h3>
+                  <p class="modal-subtitle">Pasien berhasil masuk ke antrean loket/poli.</p>
+                </div>
+              </div>
+              <dl class="modal-info-list">
+                <div><dt>No. Kunjungan</dt><dd>KJN24050000123</dd></div>
+                <div><dt>No. RM</dt><dd data-summary="rm">RM00012345</dd></div>
+                <div><dt>No. Antrean</dt><dd><span class="badge badge-primary">A-012</span></dd></div>
+                <div><dt>Tanggal Kunjungan</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                <div><dt>Status SEP</dt><dd data-visit-result="sepStatus">Otomatis (Berhasil)</dd></div>
+                <div><dt>No. SEP</dt><dd data-visit-result="sepNumber">1018R0120524020001</dd></div>
+              </dl>
+              <div class="alert alert-success alert-sm">
+                <span aria-hidden="true" class="alert-icon"><i class="fa-solid fa-circle-check"></i></span>
+                <div class="alert-body"><strong class="alert-title">Kunjungan Siap Dilayani</strong><p>Pasien sudah masuk antrean dengan nomor A-012. Tiket antrean dapat langsung dicetak atau diatur ulang melalui setup cetak.</p></div>
+              </div>
+            </div>
+            <div class="layout-stack is-sm">
+              <div class="modal-section-head">
+                <span class="modal-section-icon"><i class="fa-solid fa-ticket" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Preview Tiket Antrean</h3>
+                  <p class="modal-subtitle">Tampilan tiket yang akan diberikan ke pasien.</p>
+                </div>
+              </div>
+              <div class="card p-5 bg-white text-center border border-[color:var(--border)] shadow-none">
+                <div class="layout-stack is-xs items-center">
+                  <i class="fa-regular fa-hospital text-h2 text-[color:var(--primary-green)]" aria-hidden="true"></i>
+                  <strong class="text-body-sm text-[color:var(--text-primary)]">RUMAH SAKIT SEHAT SENTOSA</strong>
+                  <span class="text-body-xs text-[color:var(--text-secondary)]">Jl. Sehat No. 1, Jakarta</span>
+                </div>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-sm font-bold text-[color:var(--text-secondary)]">NO. ANTREAN</p>
+                <strong class="block text-[44px] leading-none font-bold text-[color:var(--text-primary)] tracking-[0.08em]">A-012</strong>
+                <i class="fa-solid fa-qrcode text-[58px] my-3 text-[color:var(--text-primary)]" aria-hidden="true"></i>
+                <dl class="modal-info-list text-left">
+                  <div><dt>Nama</dt><dd data-summary="name">BUDI SANTOSO</dd></div>
+                  <div><dt>No. RM</dt><dd data-summary="rm">RM00012345</dd></div>
+                  <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                  <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                  <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                  <div><dt>Tanggal / Jam</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                </dl>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-xs text-[color:var(--text-secondary)]">Terima kasih atas kepercayaan Anda<br>Semoga lekas sembuh</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions justify-between">
+        <div class="flex flex-wrap items-center gap-3">
+          <button class="btn btn-outline btn-lg" data-open-ticket-print type="button"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Setup Cetak Antrian</button>
+          <button class="btn btn-primary btn-lg" data-print-ticket-success type="button"><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Antrian</button>
+        </div>
+        <a class="btn btn-outline btn-lg" href="../dashboard/32-dashboard-loket.html">Lihat Antrean</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ticketPrintModalTitle" aria-modal="true" class="modal" hidden id="ticketPrintModal" role="dialog">
+    <div class="modal-card is-lg">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="ticketPrintModalTitle">Cetak Tiket Antrean</h2>
+          <p class="modal-subtitle">Preview tiket dan pengaturan cetak antrean pasien.</p>
+        </div>
+        <button aria-label="Tutup cetak tiket" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section">
+          <div class="grid grid-cols-[minmax(0,1fr)_minmax(260px,320px)] gap-6 items-start max-[900px]:grid-cols-1">
+            <div class="layout-stack is-sm">
+              <div class="modal-section-head">
+                <span class="modal-section-icon"><i class="fa-solid fa-ticket" aria-hidden="true"></i></span>
+                <div>
+                  <h3 class="modal-title">Preview Tiket (58mm)</h3>
+                  <p class="modal-subtitle">Tiket antrean yang akan diberikan ke pasien.</p>
+                </div>
+              </div>
+              <div class="card p-5 bg-white max-w-[360px] mx-auto text-center border border-[color:var(--border)] shadow-none">
+                <div class="layout-stack is-xs items-center">
+                  <i class="fa-regular fa-hospital text-h2 text-[color:var(--primary-green)]" aria-hidden="true"></i>
+                  <strong class="text-body-sm text-[color:var(--text-primary)]">RUMAH SAKIT SEHAT SENTOSA</strong>
+                  <span class="text-body-xs text-[color:var(--text-secondary)]">Jl. Sehat No. 1, Jakarta</span>
+                </div>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-sm font-bold text-[color:var(--text-secondary)]">NO. ANTREAN</p>
+                <strong class="block text-[44px] leading-none font-bold text-[color:var(--text-primary)] tracking-[0.08em]">A-012</strong>
+                <i class="fa-solid fa-qrcode text-[58px] my-3 text-[color:var(--text-primary)]" aria-hidden="true"></i>
+                <dl class="modal-info-list text-left">
+                  <div><dt>Nama</dt><dd data-summary="name">BUDI SANTOSO</dd></div>
+                  <div><dt>No. RM</dt><dd data-summary="rm">RM00012345</dd></div>
+                  <div><dt>Unit / Poli</dt><dd data-visit-result="unit">Poli Jantung</dd></div>
+                  <div><dt>Dokter</dt><dd data-visit-result="doctor">dr. Andi Pratama, Sp.JP</dd></div>
+                  <div><dt>Penjamin</dt><dd data-visit-result="guarantor">BPJS Kesehatan</dd></div>
+                  <div><dt>Tanggal / Jam</dt><dd data-visit-result="date">20/05/2024 09:15</dd></div>
+                </dl>
+                <div class="my-3 border-t border-dashed border-[color:var(--border-strong)]"></div>
+                <p class="m-0 text-body-xs text-[color:var(--text-secondary)]">Terima kasih atas kepercayaan Anda<br>Semoga lekas sembuh</p>
+              </div>
+            </div>
+            <div class="layout-stack is-lg">
+              <div class="field">
+                <label for="ticketPrinter">Printer</label>
+                <input id="ticketPrinter" type="hidden" value="Thermal 58mm - Front Desk">
+                <details class="ds-dropdown ds-select guide-select" data-component="guide-select" data-sync-control="ticketPrinter">
+                  <summary class="dropdown-trigger is-md"><span data-select-text>Thermal 58mm - Front Desk</span></summary>
+                  <div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Thermal 58mm - Front Desk" type="button">Thermal 58mm - Front Desk</button><button class="dropdown-option" data-select-value="Thermal 58mm - Loket 2" type="button">Thermal 58mm - Loket 2</button><button class="dropdown-option" data-select-value="Cetak PDF" type="button">Cetak PDF</button></div>
+                </details>
+              </div>
+              <div class="field">
+                <label>Jumlah Cetak</label>
+                <div class="segmented-control w-fit">
+                  <button class="segmented-item" type="button" aria-label="Kurangi jumlah cetak">−</button>
+                  <span class="segmented-item active min-w-12 justify-center">1</span>
+                  <button class="segmented-item" type="button" aria-label="Tambah jumlah cetak">+</button>
+                </div>
+              </div>
+              <div class="field">
+                <label>Auto Print (cetak otomatis)</label>
+                <label class="switch on" for="ticketAutoPrint">
+                  <input id="ticketAutoPrint" type="checkbox" checked>
+                  <span class="switch-track" aria-hidden="true"></span>
+                  <span data-switch-state data-on-text="Aktif" data-off-text="Nonaktif">Aktif</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-outline btn-lg" data-return-visit-detail type="button">Kembali</button>
+        <a class="btn btn-outline btn-lg" href="../dashboard/32-dashboard-loket.html">Lanjut Tanpa Cetak</a>
+        <button class="btn btn-primary btn-lg" data-print-ticket type="button"><i class="fa-solid fa-print" aria-hidden="true"></i> Cetak Antrian</button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section aria-labelledby="ticketPrintSuccessModalTitle" aria-modal="true" class="modal" hidden id="ticketPrintSuccessModal" role="dialog">
+    <div class="modal-card is-sm">
+      <div class="modal-head">
+        <div>
+          <h2 class="modal-title" id="ticketPrintSuccessModalTitle">Cetak Antrian Berhasil</h2>
+          <p class="modal-subtitle">Tiket antrean berhasil dikirim ke printer.</p>
+        </div>
+        <button aria-label="Tutup cetak berhasil" class="btn btn-sm btn-ghost btn-icon" data-close-modal type="button"><i aria-hidden="true" class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <section class="modal-section text-center items-center">
+          <span class="modal-section-icon mx-auto bg-[color:var(--success-light)] text-[color:var(--success)]"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
+          <div class="layout-stack is-xs items-center">
+            <h3 class="modal-title">Tiket Antrian Berhasil Dicetak</h3>
+            <p class="modal-subtitle">No. antrean <strong>A-012</strong> sudah tercetak dan dapat diberikan ke pasien.</p>
+          </div>
+        </section>
+      </div>
+      <div class="modal-actions justify-center">
+        <button class="btn btn-primary btn-lg" data-close-modal type="button">Selesai</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="../../js/responsive-navigation.js"></script>
+  <script src="../../js/date-picker-controls.js"></script>
+  <script src="../../js/guide-dropdowns.js"></script>
+  <script src="../../js/switch-controls.js"></script>
+  <script src="../../js/bottom-tabs.js"></script>
+  <script>
+    (() => {
+      const patientData = {
+        budi: {
+          name: 'Budi Santoso', rm: 'RM-2025-000001', nik: '3174011201890001', dob: '12 Januari 1989', guarantor: 'BPJS Kesehatan', phone: '0812-3456-7890', address: 'Jl. Melati No. 12, Jakarta',
+          visits: [
+            ['24 Jun 2025', 'REG-202506-0012', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai'],
+            ['18 Mei 2025', 'REG-202505-0148', 'Poli Penyakit Dalam', 'dr. Lestari Putri', 'Selesai'],
+            ['02 Apr 2025', 'REG-202504-0091', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai']
+          ]
+        },
+        siti: {
+          name: 'Siti Aisyah', rm: 'RM-2025-000024', nik: '3174024802930002', dob: '8 Februari 1993', guarantor: 'Umum', phone: '0813-2220-1100', address: 'Jl. Kenanga No. 8, Jakarta',
+          visits: [
+            ['25 Jun 2025', 'REG-202506-0035', 'Poli Gigi', 'drg. Maya Sari', 'Selesai'],
+            ['11 Mar 2025', 'REG-202503-0104', 'Poli Gigi', 'drg. Maya Sari', 'Selesai']
+          ]
+        },
+        andi: {
+          name: 'Andi Wijaya', rm: 'RM-2025-000108', nik: '3174030101880003', dob: '1 Januari 1988', guarantor: 'BPJS Kesehatan', phone: '0812-7788-9900', address: 'Jl. Anggrek Raya No. 22, Jakarta',
+          visits: [
+            ['20 Jun 2025', 'REG-202506-0009', 'Poli Anak', 'dr. Rina Maharani', 'Selesai'],
+            ['04 Jun 2025', 'REG-202506-0002', 'Poli Anak', 'dr. Rina Maharani', 'Selesai'],
+            ['21 Mei 2025', 'REG-202505-0056', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai']
+          ]
+        },
+        dewi: {
+          name: 'Dewi Lestari', rm: 'RM-2025-000212', nik: '3174045104920004', dob: '11 April 1992', guarantor: 'Asuransi', phone: '0815-5555-2211', address: 'Jl. Cempaka No. 17, Jakarta',
+          visits: [
+            ['22 Jun 2025', 'REG-202506-0024', 'Poli Kandungan', 'dr. Nanda Permata', 'Selesai'],
+            ['14 Mei 2025', 'REG-202505-0087', 'Poli Kandungan', 'dr. Nanda Permata', 'Selesai']
+          ]
+        },
+        rahmat: {
+          name: 'Rahmat Hidayat', rm: 'RM-2025-000315', nik: '3174051503750005', dob: '15 Maret 1975', guarantor: 'BPJS Kesehatan', phone: '0812-1111-3377', address: 'Jl. Flamboyan No. 3, Jakarta',
+          visits: [
+            ['23 Jun 2025', 'REG-202506-0028', 'Poli Penyakit Dalam', 'dr. Lestari Putri', 'Selesai'],
+            ['07 Mei 2025', 'REG-202505-0032', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai']
+          ]
+        },
+        maria: {
+          name: 'Maria Ulfa', rm: 'RM-2025-000409', nik: '3174066201870006', dob: '22 Januari 1987', guarantor: 'Umum', phone: '0817-9000-1200', address: 'Jl. Dahlia No. 14, Jakarta',
+          visits: [
+            ['19 Jun 2025', 'REG-202506-0019', 'Poli Mata', 'dr. Arya Pratama', 'Selesai'],
+            ['30 Apr 2025', 'REG-202504-0192', 'Poli Mata', 'dr. Arya Pratama', 'Selesai']
+          ]
+        },
+        rudi: {
+          name: 'Rudi Hartono', rm: 'RM-2025-000511', nik: '3174070909800007', dob: '9 September 1980', guarantor: 'Asuransi', phone: '0821-4400-9090', address: 'Jl. Mawar No. 21, Jakarta',
+          visits: [
+            ['18 Jun 2025', 'REG-202506-0014', 'Poli Saraf', 'dr. Reza Maulana', 'Selesai'],
+            ['12 Mei 2025', 'REG-202505-0065', 'Poli Saraf', 'dr. Reza Maulana', 'Selesai']
+          ]
+        },
+        nabila: {
+          name: 'Nabila Putri', rm: 'RM-2025-000612', nik: '3174085607980008', dob: '16 Juli 1998', guarantor: 'BPJS Kesehatan', phone: '0818-7070-3300', address: 'Jl. Teratai No. 5, Jakarta',
+          visits: [
+            ['17 Jun 2025', 'REG-202506-0011', 'Poli Kulit', 'dr. Citra Anjani', 'Selesai'],
+            ['09 Apr 2025', 'REG-202504-0044', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai']
+          ]
+        },
+        yusuf: {
+          name: 'Yusuf Maulana', rm: 'RM-2025-000703', nik: '3174092012910009', dob: '20 Desember 1991', guarantor: 'Umum', phone: '0822-5555-1919', address: 'Jl. Melur No. 9, Jakarta',
+          visits: [
+            ['15 Jun 2025', 'REG-202506-0008', 'Poli THT', 'dr. Bima Sakti', 'Selesai'],
+            ['26 Mei 2025', 'REG-202505-0090', 'Poli THT', 'dr. Bima Sakti', 'Selesai']
+          ]
+        },
+        ratna: {
+          name: 'Ratna Sari', rm: 'RM-2025-000804', nik: '3174104804820010', dob: '8 April 1982', guarantor: 'BPJS Kesehatan', phone: '0813-7777-8800', address: 'Jl. Kamboja No. 33, Jakarta',
+          visits: [
+            ['13 Jun 2025', 'REG-202506-0006', 'Poli Umum', 'dr. Ahmad Fauzi', 'Selesai'],
+            ['03 Mar 2025', 'REG-202503-0022', 'Poli Penyakit Dalam', 'dr. Lestari Putri', 'Selesai']
+          ]
+        }
+      };
+
+      let currentPatient = null;
+      let bpjsTimer = null;
+      let visitResultMode = 'verified';
+      let bpjsVerificationState = null;
+      const modalBackdrop = document.querySelector('[data-loket-patient-backdrop]');
+      const modals = Array.from(document.querySelectorAll('.modal'));
+      const genderByKey = {
+        budi: 'Laki-laki', siti: 'Perempuan', andi: 'Laki-laki', dewi: 'Perempuan', rahmat: 'Laki-laki', maria: 'Perempuan', rudi: 'Laki-laki', nabila: 'Perempuan', yusuf: 'Laki-laki', ratna: 'Perempuan'
+      };
+      const formatAgeText = (dob = '') => {
+        const yearMatch = String(dob).match(/(19|20)\d{2}/);
+        if (!yearMatch) return '- Tahun';
+        const age = Math.max(0, new Date().getFullYear() - Number(yearMatch[0]));
+        return `${age} Tahun`;
+      };
+      const setVisitType = (value) => {
+        const target = document.getElementById('visitType');
+        if (target) target.value = value;
+        document.querySelectorAll('input[name="visitTypeRadio"]').forEach((radio) => {
+          radio.checked = radio.value === value;
+        });
+      };
+      const setSelectValue = (id, value) => {
+        const target = document.getElementById(id);
+        if (target) target.value = value;
+        const dropdown = document.querySelector(`[data-sync-control="${id}"]`);
+        dropdown?.querySelectorAll('.dropdown-option').forEach((option) => {
+          const isSelected = (option.dataset.selectValue || option.textContent.trim()) === value;
+          option.classList.toggle('selected', isSelected);
+          option.setAttribute('aria-selected', String(isSelected));
+        });
+        const label = dropdown?.querySelector('[data-select-text]');
+        if (label) label.textContent = value;
+      };
+      const setBpjsVerificationState = (mode = null) => {
+        bpjsVerificationState = mode;
+        const isVerified = mode === 'verified';
+        const isManual = mode === 'manual';
+        document.querySelectorAll('[data-save-visit]').forEach((button) => {
+          button.disabled = !mode;
+          button.classList.toggle('is-disabled', !mode);
+        });
+        document.querySelectorAll('[data-bpjs-verified-state]').forEach((state) => {
+          state.hidden = !mode;
+          const badge = state.querySelector('.badge');
+          if (badge) {
+            badge.classList.toggle('badge-success', isVerified);
+            badge.classList.toggle('badge-warning', isManual);
+          }
+          const icon = state.querySelector('i');
+          if (icon) icon.className = `fa-solid ${isVerified ? 'fa-check' : 'fa-triangle-exclamation'}`;
+          const text = state.querySelector('[data-bpjs-status-text]');
+          if (text) text.textContent = isVerified ? 'BPJS Aktif' : 'Verifikasi gagal, data manual siap digunakan';
+        });
+      };
+      const resetVisitVerification = () => setBpjsVerificationState(null);
+      const openModal = (id) => {
+        const modal = document.getElementById(id);
+        if (!modal || !modalBackdrop) return;
+        modals.forEach((item) => { if (item !== modal) item.hidden = true; });
+        modalBackdrop.hidden = false;
+        modalBackdrop.setAttribute('aria-hidden', 'false');
+        modal.hidden = false;
+        document.body.classList.add('is-modal-open');
+      };
+      const closeAllModals = () => {
+        if (bpjsTimer) {
+          window.clearTimeout(bpjsTimer);
+          bpjsTimer = null;
+        }
+        modals.forEach((modal) => { modal.hidden = true; });
+        if (modalBackdrop) {
+          modalBackdrop.hidden = true;
+          modalBackdrop.setAttribute('aria-hidden', 'true');
+        }
+        document.body.classList.remove('is-modal-open');
+      };
+      const getActivePatient = () => {
+        const fallback = patientData.budi;
+        const patient = currentPatient || fallback;
+        return {
+          ...patient,
+          gender: patient.gender || genderByKey[patient.key] || 'Laki-laki',
+          birth: patient.birth || patient.dob || '-',
+          ageText: patient.ageText || formatAgeText(patient.dob)
+        };
+      };
+      const updateSummary = () => {
+        const patient = getActivePatient();
+        document.querySelectorAll('[data-summary="nik"]').forEach((item) => item.textContent = patient.nik || '-');
+        document.querySelectorAll('[data-summary="rm"]').forEach((item) => item.textContent = patient.rm || '-');
+        document.querySelectorAll('[data-summary="name"]').forEach((item) => item.textContent = patient.name || '-');
+        document.querySelectorAll('[data-summary="gender"]').forEach((item) => item.textContent = patient.gender || '-');
+        document.querySelectorAll('[data-summary="birth"]').forEach((item) => item.textContent = patient.birth || patient.dob || '-');
+        document.querySelectorAll('[data-summary="phone"]').forEach((item) => item.textContent = patient.phone || '-');
+        const isFemale = /perempuan/i.test(patient.gender || '');
+        document.querySelectorAll('[data-gender-avatar]').forEach((avatar) => {
+          avatar.className = `avatar avatar-xl ${isFemale ? 'avatar-danger' : 'avatar-soft'}`;
+        });
+        document.querySelectorAll('[data-gender-icon]').forEach((icon) => {
+          icon.className = `fa-solid ${isFemale ? 'fa-venus' : 'fa-mars'}`;
+        });
+        const ageCaption = document.querySelector('#visitModal [data-summary="gender"]')?.parentElement;
+        if (ageCaption) ageCaption.innerHTML = `<span data-summary="gender">${patient.gender || '-'}</span>, ${patient.ageText || '- Tahun'}`;
+      };
+      const getSelectedVisitDateLabel = () => {
+        const value = document.getElementById('visitDate')?.value || '';
+        if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+          const [year, month, day] = value.split('-');
+          return `${day}/${month}/${year} 09:15`;
+        }
+        const text = document.querySelector('#visitDate')?.closest('[data-component="guide-datepicker"]')?.querySelector('[data-picker-text]')?.textContent?.trim();
+        return text ? `${text} 09:15` : '20/05/2024 09:15';
+      };
+      const updateVisitResult = (mode = 'verified') => {
+        updateSummary();
+        const unit = document.getElementById('visitUnit')?.value || 'Poli Jantung';
+        const doctor = document.getElementById('visitDoctor')?.value || 'dr. Andi Pratama, Sp.JP';
+        const guarantor = document.getElementById('visitGuarantor')?.value || 'BPJS Kesehatan';
+        const sepNumber = mode === 'manual' ? (document.getElementById('manualSepNumber')?.value || '-') : '1018R0120524020001';
+        const sepStatus = mode === 'manual' ? 'Manual (Verifikasi Gagal)' : 'Otomatis (Berhasil)';
+        const values = { date: getSelectedVisitDateLabel(), unit, doctor, guarantor, sepStatus, sepNumber };
+        Object.entries(values).forEach(([key, value]) => {
+          document.querySelectorAll(`[data-visit-result="${key}"]`).forEach((item) => { item.textContent = value; });
+        });
+      };
+      const openVisitDetail = (mode = 'verified') => {
+        visitResultMode = mode;
+        updateVisitResult(mode);
+        openModal('visitDetailModal');
+      };
+      const startBpjsVerification = () => {
+        updateSummary();
+        setBpjsVerificationState(null);
+        openModal('bpjsLoadingModal');
+        if (bpjsTimer) window.clearTimeout(bpjsTimer);
+        bpjsTimer = window.setTimeout(() => {
+          bpjsTimer = null;
+          const patient = getActivePatient();
+          openModal(/bpjs/i.test(patient.guarantor || '') ? 'bpjsSuccessModal' : 'bpjsFallbackModal');
+        }, 1100);
+      };
+      const openVisitFromPatient = () => {
+        const patient = getActivePatient();
+        setVisitType('Kunjungan Lama');
+        setSelectValue('visitGuarantor', /bpjs/i.test(patient.guarantor || '') ? 'BPJS Kesehatan' : (patient.guarantor === 'Asuransi' ? 'Asuransi Swasta' : 'Umum'));
+        resetVisitVerification();
+        updateSummary();
+        openModal('visitModal');
+      };
+
+      const patientModal = document.getElementById('patientDetailModal');
+      const patientBackdrop = document.querySelector('[data-loket-patient-backdrop]');
+      const fillText = (selector, value) => {
+        patientModal?.querySelectorAll(selector).forEach((target) => {
+          target.textContent = value;
+        });
+      };
+      const openPatientModal = (patient, key = null) => {
+        if (!patientModal || !patientBackdrop || !patient) return;
+        currentPatient = { ...patient, key, gender: patient.gender || genderByKey[key] || 'Laki-laki', birth: patient.dob };
+        fillText('[data-patient-name]', patient.name);
+        fillText('[data-patient-meta]', `${patient.rm} · NIK ${patient.nik}`);
+        fillText('[data-patient-initials]', patient.name.split(' ').map((part) => part.charAt(0)).join('').slice(0, 2).toUpperCase());
+        fillText('[data-patient-guarantor-badge]', patient.guarantor);
+        fillText('[data-patient-rm]', patient.rm);
+        fillText('[data-patient-nik]', patient.nik);
+        fillText('[data-patient-dob]', patient.dob);
+        fillText('[data-patient-guarantor]', patient.guarantor);
+        fillText('[data-patient-phone]', patient.phone);
+        fillText('[data-patient-address]', patient.address);
+        const visitsBody = patientModal.querySelector('[data-patient-visits]');
+        if (visitsBody) {
+          visitsBody.innerHTML = patient.visits.map(([date, reg, unit, doctor, status]) => `
+            <tr>
+              <td>${date}</td>
+              <td>${reg}</td>
+              <td>${unit}</td>
+              <td>${doctor}</td>
+              <td><span class="badge badge-success badge-sm">${status}</span></td>
+            </tr>
+          `).join('');
+        }
+        patientBackdrop.hidden = false;
+        patientModal.hidden = false;
+        document.body.classList.add('is-modal-open');
+        patientModal.querySelector('[data-close-patient-modal]')?.focus();
+      };
+      const closePatientModal = () => {
+        if (!patientModal || !patientBackdrop) return;
+        patientModal.hidden = true;
+        patientBackdrop.hidden = true;
+        document.body.classList.remove('is-modal-open');
+      };
+      document.querySelectorAll('[data-close-patient-modal]').forEach((button) => button.addEventListener('click', closePatientModal));
+      document.querySelector('[data-open-visit-from-patient]')?.addEventListener('click', openVisitFromPatient);
+      document.querySelector('[data-verify-bpjs]')?.addEventListener('click', startBpjsVerification);
+      document.querySelectorAll('[data-return-visit-form]').forEach((button) => button.addEventListener('click', () => {
+        if (bpjsTimer) window.clearTimeout(bpjsTimer);
+        bpjsTimer = null;
+        openModal('visitModal');
+      }));
+      document.querySelector('[data-continue-verified-visit]')?.addEventListener('click', () => {
+        setBpjsVerificationState('verified');
+        openModal('visitModal');
+      });
+      document.querySelector('[data-continue-manual-visit]')?.addEventListener('click', () => {
+        setBpjsVerificationState('manual');
+        openModal('visitModal');
+      });
+      document.querySelector('[data-save-visit]')?.addEventListener('click', () => {
+        if (!bpjsVerificationState) return;
+        openVisitDetail(bpjsVerificationState === 'manual' ? 'manual' : 'verified');
+      });
+      document.querySelector('[data-open-ticket-print]')?.addEventListener('click', () => {
+        updateVisitResult(visitResultMode);
+        openModal('ticketPrintModal');
+      });
+      document.querySelector('[data-return-visit-detail]')?.addEventListener('click', () => openModal('visitDetailModal'));
+      document.querySelectorAll('[data-print-ticket], [data-print-ticket-success]').forEach((button) => {
+        button.addEventListener('click', () => openModal('ticketPrintSuccessModal'));
+      });
+      document.querySelectorAll('[data-close-modal]').forEach((button) => button.addEventListener('click', closeAllModals));
+      document.querySelectorAll('input[name="visitTypeRadio"]').forEach((radio) => {
+        radio.addEventListener('change', () => {
+          const target = document.getElementById('visitType');
+          if (target && radio.checked) target.value = radio.value;
+        });
+      });
+      patientBackdrop?.addEventListener('click', closeAllModals);
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeAllModals();
+      });
+
+      const chartTooltip = document.createElement('div');
+      chartTooltip.className = 'chart-tooltip text-body-sm';
+      chartTooltip.hidden = true;
+      document.body.appendChild(chartTooltip);
+
+      const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
+      const moveChartTooltip = (event) => {
+        if (chartTooltip.hidden) return;
+        const offset = 14;
+        const tooltipRect = chartTooltip.getBoundingClientRect();
+        const nextX = Math.min(event.clientX + offset, window.innerWidth - tooltipRect.width - offset);
+        const nextY = Math.max(offset, event.clientY - tooltipRect.height - offset);
+        chartTooltip.style.left = `${nextX}px`;
+        chartTooltip.style.top = `${nextY}px`;
+      };
+      const showChartTooltip = (event, title, lines) => {
+        chartTooltip.innerHTML = `<strong>${escapeHtml(title)}</strong>${lines.map((line) => {
+          const dotClass = line.colorClass ? ` ${escapeHtml(line.colorClass)}` : '';
+          return `<span class="chart-tooltip-row"><i class="chart-tooltip-dot${dotClass}" aria-hidden="true"></i><span class="chart-tooltip-label">${escapeHtml(line.label)}</span><span class="chart-tooltip-value">${escapeHtml(line.value)}</span></span>`;
+        }).join('')}`;
+        chartTooltip.hidden = false;
+        moveChartTooltip(event);
+      };
+      const hideChartTooltip = () => {
+        chartTooltip.hidden = true;
+      };
+
+      document.querySelectorAll('[data-chart-tooltip-title]').forEach((item) => {
+        const title = item.dataset.chartTooltipTitle || '';
+        const rawLines = (item.dataset.chartTooltipLines || '').split(';').filter(Boolean);
+        const colors = (item.dataset.chartTooltipColors || '').split(';').filter(Boolean);
+        const lines = rawLines.map((line, index) => {
+          const [label, ...valueParts] = line.split(':');
+          return {
+            label: (label || '').trim(),
+            value: valueParts.join(':').trim(),
+            colorClass: colors[index] || 'bar-blue'
+          };
+        });
+        item.addEventListener('mouseenter', (event) => showChartTooltip(event, title, lines));
+        item.addEventListener('mousemove', moveChartTooltip);
+        item.addEventListener('mouseleave', hideChartTooltip);
+        item.addEventListener('focus', (event) => showChartTooltip(event, title, lines));
+        item.addEventListener('blur', hideChartTooltip);
+      });
+
+      const patientSearch = document.querySelector('[data-component="patient-search-autocomplete"]');
+      if (patientSearch) {
+        const input = patientSearch.querySelector('input');
+        const clearButton = patientSearch.querySelector('[data-clear-patient-search]');
+        const resultsContainer = patientSearch.querySelector('[data-patient-search-results]');
+        const empty = patientSearch.querySelector('[data-patient-search-empty]');
+        const minSearchLength = Number(input?.dataset.minSearch || 2);
+        const debounceDelay = Number(input?.dataset.debounce || 300);
+        const maxResults = Number(input?.dataset.maxResults || 8);
+        const patientEntries = Object.entries(patientData);
+        let searchDebounce = 0;
+
+        const maskNik = (nik = '') => nik.replace(/^(\d{4})\d+(\d{4})$/, '$1••••••••$2');
+        const latestVisitDate = (patient) => patient?.visits?.[0]?.[0] || '-';
+        const patientHaystack = (patient) => `${patient.name} ${patient.rm} ${patient.nik} ${patient.guarantor}`.toLowerCase();
+
+        const updateClearState = () => {
+          if (!input || !clearButton) return;
+          clearButton.hidden = !input.value.trim();
+          patientSearch.classList.toggle('has-value', Boolean(input.value.trim()));
+        };
+
+        const setOpen = (isOpen) => {
+          patientSearch.classList.toggle('is-open', isOpen);
+          input?.setAttribute('aria-expanded', String(isOpen));
+        };
+
+        const renderEmpty = (message) => {
+          if (resultsContainer) resultsContainer.innerHTML = '';
+          if (empty) {
+            empty.textContent = message;
+            empty.hidden = false;
+          }
+        };
+
+        const renderResults = (matches) => {
+          if (!resultsContainer) return;
+          if (!matches.length) {
+            renderEmpty('Tidak ada pasien lama yang cocok');
+            return;
+          }
+          if (empty) empty.hidden = true;
+          resultsContainer.innerHTML = matches.map(([key, patient]) => `
+            <button class="dropdown-option" type="button" role="option" data-patient-key="${escapeHtml(key)}">
+              <span class="option-icon" aria-hidden="true"><i class="fa-solid fa-user"></i></span>
+              <span class="option-meta">
+                <strong>${escapeHtml(patient.name)}</strong>
+                <small>No. RM ${escapeHtml(patient.rm)} · NIK ${escapeHtml(maskNik(patient.nik))}</small>
+              </span>
+              <span class="option-right">Terakhir Berobat: ${escapeHtml(latestVisitDate(patient))}</span>
+            </button>
+          `).join('');
+        };
+
+        const filterOptions = () => {
+          const query = (input?.value || '').trim().toLowerCase();
+          updateClearState();
+          if (query.length < minSearchLength) {
+            renderEmpty('Ketik minimal 2 karakter untuk mencari pasien lama');
+            setOpen(Boolean(query));
+            return;
+          }
+          const matches = patientEntries
+            .filter(([, patient]) => patientHaystack(patient).includes(query))
+            .slice(0, maxResults);
+          renderResults(matches);
+          setOpen(true);
+        };
+
+        input?.addEventListener('focus', () => {
+          updateClearState();
+          const query = (input.value || '').trim();
+          if (query.length >= minSearchLength) filterOptions();
+        });
+        input?.addEventListener('input', () => {
+          updateClearState();
+          window.clearTimeout(searchDebounce);
+          searchDebounce = window.setTimeout(filterOptions, debounceDelay);
+        });
+        clearButton?.addEventListener('click', () => {
+          if (!input) return;
+          input.value = '';
+          updateClearState();
+          renderEmpty('Ketik minimal 2 karakter untuk mencari pasien lama');
+          setOpen(false);
+          input.focus();
+        });
+        resultsContainer?.addEventListener('click', (event) => {
+          const option = event.target.closest('[data-patient-key]');
+          if (!option) return;
+          const patient = patientData[option.dataset.patientKey || ''];
+          if (!patient) return;
+          if (input) input.value = `${patient.name} · ${patient.rm}`;
+          updateClearState();
+          setOpen(false);
+          openPatientModal(patient, option.dataset.patientKey || '');
+        });
+        renderEmpty('Ketik minimal 2 karakter untuk mencari pasien lama');
+        updateClearState();
+        document.addEventListener('click', (event) => {
+          if (!event.target.closest('[data-component="patient-search-autocomplete"]')) setOpen(false);
+        });
+      }
+
+      document.querySelectorAll('[data-loket-carousel]').forEach((carousel) => {
+        const track = carousel.querySelector('[data-loket-track]');
+        const slides = Array.from(carousel.querySelectorAll('.loket-other-card'));
+        const dots = Array.from(carousel.querySelectorAll('[data-loket-dot]'));
+        const prev = carousel.querySelector('[data-loket-prev]');
+        const next = carousel.querySelector('[data-loket-next]');
+        let index = 0;
+
+        const update = (nextIndex) => {
+          if (!slides.length || !track) return;
+          index = (nextIndex + slides.length) % slides.length;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          dots.forEach((dot, dotIndex) => dot.classList.toggle('is-active', dotIndex === index));
+        };
+
+        prev?.addEventListener('click', () => update(index - 1));
+        next?.addEventListener('click', () => update(index + 1));
+        dots.forEach((dot) => dot.addEventListener('click', () => update(Number(dot.dataset.loketDot || 0))));
+        update(0);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "simrs-latest-tailwind-v4-design-guides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"npm:watch-css\" \"npm:serve\"",
+    "watch-css": "concurrently \"npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/style.css --watch\" \"npx @tailwindcss/cli -i ./src/css/input-guide.css -o ./src/css/guide.css --watch\" \"npx @tailwindcss/cli -i ./src/css/input-monitor.css -o ./src/css/monitor-display.css --watch\"",
+    "build-css": "npx @tailwindcss/cli -i ./src/css/input.css -o ./src/css/style.css --minify && npx @tailwindcss/cli -i ./src/css/input-guide.css -o ./src/css/guide.css --minify && npx @tailwindcss/cli -i ./src/css/input-monitor.css -o ./src/css/monitor-display.css --minify",
+    "serve": "live-server ./src --open=pages/index.html --port=5500"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "concurrently": "^9.0.0",
+    "live-server": "^1.2.2",
+    "tailwindcss": "^4.0.0"
+  }
+}

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>10 Charts · Guide Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link active" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+  <header class="hero">
+    <p class="eyebrow">10</p>
+    <h1>Charts</h1>
+    <p class="hero-subtitle">Aturan chart untuk tren kunjungan, antrian, okupansi bed, pendapatan, farmasi, IGD, lab, radiologi, dan KPI operasional.</p>
+    <div class="divider"></div>
+    <nav aria-label="Daftar isi chart guide" class="toc">
+      <a href="#overview">Ringkasan</a>
+      <a href="#line-area">Line & Area</a>
+      <a href="#bar">Bar</a>
+      <a href="#donut">Donut</a>
+      <a href="#heatmap">Heatmap</a>
+      <a href="#usage">Panduan Pakai</a>
+    <a href="#implementation">Implementasi</a>
+</nav>
+  </header>
+
+  <section class="mt-12" id="overview">
+    <div class="section-head">
+      <div>
+        <h2>Ringkasan Chart Rumah Sakit</h2>
+        <p>Gunakan chart hanya untuk membandingkan pola, tren, komposisi, dan beban kerja. Untuk data operasional detail tetap gunakan tabel.</p>
+      </div>
+      <span class="badge badge-primary badge-md">Tooltip wajib ada legend warna</span>
+    </div>
+    <div class="chart-guide-kpi-row">
+      <div class="chart-guide-kpi" data-guide-tooltip data-tooltip-title="Kunjungan Hari Ini" data-tooltip-lines="Rawat Jalan: 735;Rawat Inap: 168;IGD: 94" data-tooltip-colors="bar-blue;bar-green;bar-danger" tabindex="0">
+        <span class="text-body-sm text-secondary">Kunjungan</span>
+        <strong class="text-h3">997</strong>
+        <small class="text-body-xs text-success">+8,4% dari kemarin</small>
+      </div>
+      <div class="chart-guide-kpi" data-guide-tooltip data-tooltip-title="BOR Hari Ini" data-tooltip-lines="Terisi: 328;Kosong: 72;Maintenance: 10" data-tooltip-colors="bar-blue;bar-green;bar-warning" tabindex="0">
+        <span class="text-body-sm text-secondary">BOR</span>
+        <strong class="text-h3">82%</strong>
+        <small class="text-body-xs text-secondary">410 total bed</small>
+      </div>
+      <div class="chart-guide-kpi" data-guide-tooltip data-tooltip-title="Pendapatan" data-tooltip-lines="BPJS: Rp 1,8 M;Tunai: Rp 420 jt;Asuransi: Rp 610 jt;Perusahaan: Rp 260 jt" data-tooltip-colors="bar-blue;bar-green;bar-indigo;bar-warning" tabindex="0">
+        <span class="text-body-sm text-secondary">Revenue</span>
+        <strong class="text-h3">Rp 3,09 M</strong>
+        <small class="text-body-xs text-success">collection 91%</small>
+      </div>
+      <div class="chart-guide-kpi" data-guide-tooltip data-tooltip-title="Antrian Aktif" data-tooltip-lines="Poli Umum: 48;Poli Anak: 36;Poli Dalam: 42;IGD Triage: 12" data-tooltip-colors="bar-blue;bar-green;bar-indigo;bar-danger" tabindex="0">
+        <span class="text-body-sm text-secondary">Antrian</span>
+        <strong class="text-h3">138</strong>
+        <small class="text-body-xs text-warning">peak 10:00–12:00</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-12" id="line-area">
+    <div class="section-head">
+      <div>
+        <h2>Line & Area Chart</h2>
+        <p>Dipakai untuk melihat tren kunjungan, antrian, waktu tunggu, atau SLA layanan antar waktu.</p>
+      </div>
+    </div>
+    <div class="chart-guide-grid">
+      <article class="card chart-guide-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Trend Kunjungan Pasien</h3>
+            <p class="card-subtitle">Dashboard, Rawat Jalan, Rawat Inap, IGD</p>
+          </div>
+          <span class="badge badge-primary badge-sm">Line</span>
+        </div>
+        <div class="chart-legend-row">
+          <span class="text-body-sm"><i class="legend-dot is-blue"></i>Rawat Jalan</span>
+          <span class="text-body-sm"><i class="legend-dot is-green"></i>Rawat Inap</span>
+          <span class="text-body-sm"><i class="legend-dot is-danger"></i>IGD</span>
+        </div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 280" role="img" aria-label="Contoh line chart kunjungan pasien">
+            <line class="chart-sample-grid" x1="54" y1="54" x2="600" y2="54"></line>
+            <line class="chart-sample-grid" x1="54" y1="112" x2="600" y2="112"></line>
+            <line class="chart-sample-grid" x1="54" y1="170" x2="600" y2="170"></line>
+            <line class="chart-sample-grid" x1="54" y1="228" x2="600" y2="228"></line>
+            <text class="chart-sample-label" x="54" y="254">Sen</text><text class="chart-sample-label" x="145" y="254">Sel</text><text class="chart-sample-label" x="236" y="254">Rab</text><text class="chart-sample-label" x="327" y="254">Kam</text><text class="chart-sample-label" x="418" y="254">Jum</text><text class="chart-sample-label" x="509" y="254">Sab</text><text class="chart-sample-label" x="590" y="254">Min</text>
+            <polyline class="chart-sample-line-primary" points="54,176 145,148 236,162 327,118 418,92 509,124 600,86"></polyline>
+            <polyline class="chart-sample-line-green" points="54,210 145,196 236,202 327,184 418,170 509,178 600,166"></polyline>
+            <polyline class="chart-sample-line-indigo" style="stroke: var(--danger);" points="54,228 145,216 236,218 327,204 418,190 509,200 600,188"></polyline>
+            <circle class="chart-sample-dot-primary" cx="600" cy="86" r="6" data-guide-tooltip data-tooltip-title="Minggu" data-tooltip-lines="Rawat Jalan: 820;Rawat Inap: 312;IGD: 156" data-tooltip-colors="bar-blue;bar-green;bar-danger" tabindex="0"></circle>
+            <circle class="chart-sample-dot-green" cx="600" cy="166" r="6" data-guide-tooltip data-tooltip-title="Minggu" data-tooltip-lines="Rawat Jalan: 820;Rawat Inap: 312;IGD: 156" data-tooltip-colors="bar-blue;bar-green;bar-danger" tabindex="0"></circle>
+            <circle class="chart-sample-dot-danger" cx="600" cy="188" r="6" data-guide-tooltip data-tooltip-title="Minggu" data-tooltip-lines="Rawat Jalan: 820;Rawat Inap: 312;IGD: 156" data-tooltip-colors="bar-blue;bar-green;bar-danger" tabindex="0"></circle>
+          </svg>
+        </div>
+        <p class="card-text">Cocok untuk membandingkan lebih dari satu layanan. Maksimal 3–4 seri agar tidak ramai.</p>
+      </article>
+
+      <article class="card chart-guide-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Waktu Tunggu Antrian</h3>
+            <p class="card-subtitle">Pendaftaran, Poli, Farmasi, Kasir</p>
+          </div>
+          <span class="badge badge-info badge-sm">Area</span>
+        </div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 280" role="img" aria-label="Contoh area chart waktu tunggu">
+            <line class="chart-sample-grid" x1="54" y1="56" x2="600" y2="56"></line><line class="chart-sample-grid" x1="54" y1="112" x2="600" y2="112"></line><line class="chart-sample-grid" x1="54" y1="168" x2="600" y2="168"></line><line class="chart-sample-grid" x1="54" y1="224" x2="600" y2="224"></line>
+            <path class="chart-sample-area" d="M54 210 L132 190 L210 174 L288 116 L366 88 L444 128 L522 162 L600 148 L600 224 L54 224 Z"></path>
+            <polyline class="chart-sample-line-primary" points="54,210 132,190 210,174 288,116 366,88 444,128 522,162 600,148"></polyline>
+            <text class="chart-sample-label" x="54" y="252">08:00</text><text class="chart-sample-label" x="210" y="252">10:00</text><text class="chart-sample-label" x="366" y="252">12:00</text><text class="chart-sample-label" x="522" y="252">14:00</text>
+            <circle class="chart-sample-dot-primary" cx="366" cy="88" r="6" data-guide-tooltip data-tooltip-title="12:00" data-tooltip-lines="Farmasi: 42 menit;Pendaftaran: 18 menit;Kasir: 12 menit" data-tooltip-colors="bar-blue;bar-green;bar-warning" tabindex="0"></circle>
+          </svg>
+        </div>
+        <p class="card-text">Area chart tepat untuk satu metrik utama yang naik turun sepanjang hari, misalnya waktu tunggu atau jumlah antrian aktif.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-12" id="bar">
+    <div class="section-head">
+      <div>
+        <h2>Bar Chart</h2>
+        <p>Gunakan untuk ranking, perbandingan kategori, komposisi pendapatan, stok farmasi, atau utilisasi layanan.</p>
+      </div>
+    </div>
+    <div class="chart-guide-grid">
+      <article class="card chart-guide-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Pendapatan per Metode Bayar</h3>
+            <p class="card-subtitle">Kasir, Billing, Dashboard Keuangan</p>
+          </div>
+          <span class="badge badge-primary badge-sm">Stacked Bar</span>
+        </div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 300" role="img" aria-label="Contoh stacked bar pendapatan">
+            <line class="chart-sample-grid" x1="54" y1="58" x2="600" y2="58"></line><line class="chart-sample-grid" x1="54" y1="122" x2="600" y2="122"></line><line class="chart-sample-grid" x1="54" y1="186" x2="600" y2="186"></line><line class="chart-sample-grid" x1="54" y1="250" x2="600" y2="250"></line>
+            <g data-guide-tooltip data-tooltip-title="Rabu" data-tooltip-lines="BPJS: Rp 1,4 M;Tunai: Rp 360 jt;Asuransi: Rp 520 jt;Perusahaan: Rp 210 jt;Total: Rp 2,49 M" data-tooltip-colors="bar-blue;bar-green;bar-indigo;bar-warning;bar-slate" tabindex="0">
+              <rect class="chart-sample-bar-primary" x="268" y="116" width="42" height="134" rx="4"></rect>
+              <rect class="chart-sample-bar-green" x="268" y="80" width="42" height="36" rx="4"></rect>
+              <rect class="chart-sample-bar-indigo" x="268" y="38" width="42" height="42" rx="4"></rect>
+              <rect class="chart-sample-bar-warning" x="268" y="20" width="42" height="18" rx="4"></rect>
+              <rect class="chart-hit-area" x="238" y="16" width="102" height="240"></rect>
+            </g>
+            <rect class="chart-sample-bar-primary" x="88" y="140" width="42" height="110" rx="4"></rect><rect class="chart-sample-bar-green" x="88" y="106" width="42" height="34" rx="4"></rect><rect class="chart-sample-bar-indigo" x="88" y="70" width="42" height="36" rx="4"></rect><rect class="chart-sample-bar-warning" x="88" y="52" width="42" height="18" rx="4"></rect>
+            <rect class="chart-sample-bar-primary" x="448" y="104" width="42" height="146" rx="4"></rect><rect class="chart-sample-bar-green" x="448" y="70" width="42" height="34" rx="4"></rect><rect class="chart-sample-bar-indigo" x="448" y="30" width="42" height="40" rx="4"></rect><rect class="chart-sample-bar-warning" x="448" y="14" width="42" height="16" rx="4"></rect>
+            <text class="chart-sample-label" x="88" y="278">Selasa</text><text class="chart-sample-label" x="268" y="278">Rabu</text><text class="chart-sample-label" x="448" y="278">Kamis</text>
+          </svg>
+        </div>
+        <p class="card-text">Untuk stacked bar, tooltip harus menampilkan semua seri dan total.</p>
+      </article>
+
+      <article class="card chart-guide-card">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">Stok Obat Risiko Habis</h3>
+            <p class="card-subtitle">Farmasi, Gudang, Pengadaan</p>
+          </div>
+          <span class="badge badge-warning badge-sm">Horizontal Bar</span>
+        </div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 300" role="img" aria-label="Contoh horizontal bar stok obat">
+            <text class="chart-sample-label" x="34" y="66">Paracetamol</text><text class="chart-sample-label" x="34" y="126">Cefixime</text><text class="chart-sample-label" x="34" y="186">Insulin</text><text class="chart-sample-label" x="34" y="246">Omeprazole</text>
+            <rect class="chart-sample-bar-green" x="160" y="42" width="360" height="28" rx="8" data-guide-tooltip data-tooltip-title="Paracetamol" data-tooltip-lines="Stok: 3.200 tablet;Minimum: 1.000;Status: Aman" data-tooltip-colors="bar-green;bar-slate;bar-green" tabindex="0"></rect>
+            <rect class="chart-sample-bar-warning" x="160" y="102" width="230" height="28" rx="8" data-guide-tooltip data-tooltip-title="Cefixime" data-tooltip-lines="Stok: 980 kapsul;Minimum: 800;Status: Perlu monitor" data-tooltip-colors="bar-warning;bar-slate;bar-warning" tabindex="0"></rect>
+            <rect class="chart-sample-bar-danger" x="160" y="162" width="120" height="28" rx="8" data-guide-tooltip data-tooltip-title="Insulin" data-tooltip-lines="Stok: 42 vial;Minimum: 120;Status: Kritis" data-tooltip-colors="bar-danger;bar-slate;bar-danger" tabindex="0"></rect>
+            <rect class="chart-sample-bar-primary" x="160" y="222" width="280" height="28" rx="8" data-guide-tooltip data-tooltip-title="Omeprazole" data-tooltip-lines="Stok: 1.540 kapsul;Minimum: 900;Status: Cukup" data-tooltip-colors="bar-blue;bar-slate;bar-blue" tabindex="0"></rect>
+          </svg>
+        </div>
+        <p class="card-text">Horizontal bar cocok untuk nama kategori panjang seperti nama obat, dokter, poli, dan ruangan.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-12" id="donut">
+    <div class="section-head">
+      <div>
+        <h2>Donut, Gauge, dan Komposisi</h2>
+        <p>Dipakai untuk proporsi status: bed terisi, status klaim, status pembayaran, distribusi pasien, dan SLA.</p>
+      </div>
+    </div>
+    <div class="chart-guide-grid is-three">
+      <article class="card chart-guide-card">
+        <div class="card-header"><div><h3 class="card-title">BOR Bed</h3><p class="card-subtitle">Rawat Inap</p></div><span class="badge badge-success badge-sm">Donut</span></div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 320 260" role="img" aria-label="Contoh donut BOR">
+            <circle class="chart-sample-donut-bg" cx="160" cy="124" r="72"></circle>
+            <circle class="chart-sample-donut-primary" cx="160" cy="124" r="72" stroke-dasharray="360 452" transform="rotate(-90 160 124)" data-guide-tooltip data-tooltip-title="BOR" data-tooltip-lines="Terisi: 328 bed;Kosong: 72 bed;Maintenance: 10 bed;BOR: 82%" data-tooltip-colors="bar-blue;bar-green;bar-warning;bar-blue" tabindex="0"></circle>
+            <text class="chart-sample-title" x="160" y="120" text-anchor="middle">82%</text><text class="chart-sample-label" x="160" y="144" text-anchor="middle">BOR</text>
+          </svg>
+        </div>
+      </article>
+      <article class="card chart-guide-card">
+        <div class="card-header"><div><h3 class="card-title">Status Klaim BPJS</h3><p class="card-subtitle">Casemix</p></div><span class="badge badge-primary badge-sm">Donut</span></div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 320 260" role="img" aria-label="Contoh donut klaim BPJS">
+            <circle class="chart-sample-donut-bg" cx="160" cy="124" r="72"></circle>
+            <circle class="chart-sample-donut-green" cx="160" cy="124" r="72" stroke-dasharray="230 452" transform="rotate(-90 160 124)"></circle>
+            <circle class="chart-sample-donut-warning" cx="160" cy="124" r="72" stroke-dasharray="90 452" stroke-dashoffset="-238" transform="rotate(-90 160 124)"></circle>
+            <circle class="chart-sample-donut-danger" cx="160" cy="124" r="72" stroke-dasharray="52 452" stroke-dashoffset="-334" transform="rotate(-90 160 124)" data-guide-tooltip data-tooltip-title="Klaim BPJS" data-tooltip-lines="Layak: 510;Pending: 204;Ditolak: 46" data-tooltip-colors="bar-green;bar-warning;bar-danger" tabindex="0"></circle>
+            <text class="chart-sample-title" x="160" y="120" text-anchor="middle">760</text><text class="chart-sample-label" x="160" y="144" text-anchor="middle">klaim</text>
+          </svg>
+        </div>
+      </article>
+      <article class="card chart-guide-card">
+        <div class="card-header"><div><h3 class="card-title">SLA Lab</h3><p class="card-subtitle">Laboratorium</p></div><span class="badge badge-info badge-sm">Gauge</span></div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 320 260" role="img" aria-label="Contoh gauge SLA lab">
+            <path d="M70 164 A90 90 0 0 1 250 164" fill="none" stroke="var(--light-gray-shade-15)" stroke-width="24" stroke-linecap="round"></path>
+            <path d="M70 164 A90 90 0 0 1 218 96" fill="none" stroke="var(--accent-teal)" stroke-width="24" stroke-linecap="round" data-guide-tooltip data-tooltip-title="SLA Pemeriksaan Lab" data-tooltip-lines="Sesuai SLA: 91%;Terlambat: 9%;Rata-rata TAT: 37 menit" data-tooltip-colors="bar-green;bar-danger;bar-blue" tabindex="0"></path>
+            <text class="chart-sample-title" x="160" y="146" text-anchor="middle">91%</text><text class="chart-sample-label" x="160" y="170" text-anchor="middle">on-time</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-12" id="heatmap">
+    <div class="section-head">
+      <div>
+        <h2>Heatmap dan Utilisasi</h2>
+        <p>Heatmap cocok untuk melihat jam sibuk IGD, okupansi ruangan per shift, atau utilisasi alat radiologi.</p>
+      </div>
+    </div>
+    <div class="chart-guide-grid">
+      <article class="card chart-guide-card">
+        <div class="card-header"><div><h3 class="card-title">Jam Sibuk IGD</h3><p class="card-subtitle">IGD, Dashboard Operasional</p></div><span class="badge badge-danger badge-sm">Heatmap</span></div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 300" role="img" aria-label="Contoh heatmap jam sibuk IGD">
+            <text class="chart-sample-label" x="52" y="58">Sen</text><text class="chart-sample-label" x="52" y="104">Sel</text><text class="chart-sample-label" x="52" y="150">Rab</text><text class="chart-sample-label" x="52" y="196">Kam</text><text class="chart-sample-label" x="52" y="242">Jum</text>
+            <text class="chart-sample-label" x="115" y="274">08</text><text class="chart-sample-label" x="190" y="274">10</text><text class="chart-sample-label" x="265" y="274">12</text><text class="chart-sample-label" x="340" y="274">14</text><text class="chart-sample-label" x="415" y="274">16</text><text class="chart-sample-label" x="490" y="274">18</text>
+            <g>
+              <rect class="chart-sample-heat-cell chart-sample-heat-low" x="100" y="36" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="175" y="36" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="250" y="36" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="325" y="36" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-low" x="400" y="36" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="475" y="36" width="50" height="32"></rect>
+              <rect class="chart-sample-heat-cell chart-sample-heat-medium" x="100" y="82" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="175" y="82" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-critical" x="250" y="82" width="50" height="32" data-guide-tooltip data-tooltip-title="Selasa 12:00" data-tooltip-lines="Pasien IGD: 56;Triage merah: 4;Triage kuning: 18;Dokter jaga: 6" data-tooltip-colors="bar-blue;bar-danger;bar-warning;bar-green" tabindex="0"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="325" y="82" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="400" y="82" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="475" y="82" width="50" height="32"></rect>
+              <rect class="chart-sample-heat-cell chart-sample-heat-low" x="100" y="128" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="175" y="128" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="250" y="128" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="325" y="128" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-critical" x="400" y="128" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="475" y="128" width="50" height="32"></rect>
+              <rect class="chart-sample-heat-cell chart-sample-heat-low" x="100" y="174" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="175" y="174" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="250" y="174" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="325" y="174" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="400" y="174" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-critical" x="475" y="174" width="50" height="32"></rect>
+              <rect class="chart-sample-heat-cell chart-sample-heat-medium" x="100" y="220" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="175" y="220" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-critical" x="250" y="220" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-critical" x="325" y="220" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-high" x="400" y="220" width="50" height="32"></rect><rect class="chart-sample-heat-cell chart-sample-heat-medium" x="475" y="220" width="50" height="32"></rect>
+            </g>
+          </svg>
+        </div>
+      </article>
+
+      <article class="card chart-guide-card">
+        <div class="card-header"><div><h3 class="card-title">Utilisasi Radiologi</h3><p class="card-subtitle">Radiologi, Penjadwalan Alat</p></div><span class="badge badge-info badge-sm">Grouped Bar</span></div>
+        <div class="chart-guide-figure">
+          <svg viewBox="0 0 640 300" role="img" aria-label="Contoh grouped bar utilisasi radiologi">
+            <line class="chart-sample-grid" x1="54" y1="58" x2="600" y2="58"></line><line class="chart-sample-grid" x1="54" y1="122" x2="600" y2="122"></line><line class="chart-sample-grid" x1="54" y1="186" x2="600" y2="186"></line><line class="chart-sample-grid" x1="54" y1="250" x2="600" y2="250"></line>
+            <g data-guide-tooltip data-tooltip-title="CT Scan" data-tooltip-lines="Terpakai: 74%;Idle: 18%;Maintenance: 8%" data-tooltip-colors="bar-blue;bar-green;bar-warning" tabindex="0">
+              <rect class="chart-sample-bar-primary" x="254" y="72" width="28" height="178" rx="6"></rect><rect class="chart-sample-bar-green" x="288" y="206" width="28" height="44" rx="6"></rect><rect class="chart-sample-bar-warning" x="322" y="230" width="28" height="20" rx="6"></rect><rect class="chart-hit-area" x="240" y="64" width="124" height="198"></rect>
+            </g>
+            <rect class="chart-sample-bar-primary" x="92" y="104" width="28" height="146" rx="6"></rect><rect class="chart-sample-bar-green" x="126" y="192" width="28" height="58" rx="6"></rect><rect class="chart-sample-bar-warning" x="160" y="232" width="28" height="18" rx="6"></rect>
+            <rect class="chart-sample-bar-primary" x="424" y="132" width="28" height="118" rx="6"></rect><rect class="chart-sample-bar-green" x="458" y="176" width="28" height="74" rx="6"></rect><rect class="chart-sample-bar-warning" x="492" y="236" width="28" height="14" rx="6"></rect>
+            <text class="chart-sample-label" x="110" y="278">X-Ray</text><text class="chart-sample-label" x="270" y="278">CT Scan</text><text class="chart-sample-label" x="432" y="278">MRI</text>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="mt-12" id="usage">
+    <div class="section-head">
+      <div>
+        <h2>Panduan Pemilihan Chart</h2>
+        <p>Pilih chart berdasarkan pertanyaan user, bukan berdasarkan tampilan yang paling ramai.</p>
+      </div>
+    </div>
+    <table class="chart-guide-table">
+      <thead>
+        <tr><th>Menu / Modul</th><th>Chart yang Direkomendasikan</th><th>Data yang Ditampilkan</th><th>Catatan UX</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dashboard Direktur</td><td>Line, stacked bar, donut KPI</td><td>Kunjungan, BOR, revenue, klaim, SLA</td><td>Prioritaskan 4–6 KPI utama, detail masuk ke drilldown.</td></tr>
+        <tr><td>Pendaftaran & Antrian</td><td>Area, line, heatmap</td><td>Jumlah antrian, waktu tunggu, jam sibuk</td><td>Tooltip tampilkan poli dan estimasi waktu tunggu.</td></tr>
+        <tr><td>Rawat Inap</td><td>Donut, horizontal bar, stacked bar</td><td>BOR, bed tersedia, okupansi per kelas/ruangan</td><td>Gunakan warna status: tersedia, terisi, maintenance, cleaning.</td></tr>
+        <tr><td>Farmasi</td><td>Horizontal bar, stacked bar</td><td>Stok kritis, expired, pemakaian obat</td><td>Nama obat panjang lebih aman pakai horizontal bar.</td></tr>
+        <tr><td>Kasir / Billing</td><td>Stacked bar, line</td><td>Pendapatan, metode bayar, piutang</td><td>Tooltip wajib menampilkan total dan breakdown metode bayar.</td></tr>
+        <tr><td>IGD</td><td>Heatmap, line, donut</td><td>Triage, jam sibuk, waktu respon</td><td>Gunakan danger untuk triage merah atau overload.</td></tr>
+        <tr><td>Lab & Radiologi</td><td>Gauge, grouped bar, line</td><td>SLA, turnaround time, utilisasi alat</td><td>Batasi warna agar mudah dibaca operator shift.</td></tr>
+      </tbody>
+    </table>
+  </section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Contoh chart di guide memakai HTML/SVG dengan class dari guide-pages.css. Jika dibuat dinamis di React, data cukup dirender ke struktur SVG yang sama.</p>
+</div>
+<span class="badge badge-sm">guide-pages.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/pages/guide-pages.css */
+.chart-guide-card { @apply flex flex-col min-w-0 gap-4; }
+.chart-guide-figure { @apply relative min-h-[260px] overflow-hidden rounded-[var(--radius-card)]; background: linear-gradient(180deg, var(--surface) 0%, var(--light-gray-tint-40) 100%); }
+.chart-sample-bar-primary { fill: var(--primary-blue); }
+.chart-sample-bar-green { fill: var(--primary-green); }
+.chart-sample-bar-warning { fill: var(--warning); }
+.chart-sample-bar-danger { fill: var(--danger); }
+.chart-sample-dot-primary { fill: var(--primary-blue); }
+.chart-sample-dot-green { fill: var(--primary-green); }
+.chart-sample-dot-danger { fill: var(--danger); }
+.chart-sample-heat-low { fill: var(--primary-blue-tint-80); }
+.chart-sample-heat-critical { fill: var(--primary-blue); }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;article class=&quot;card chart-guide-card&quot;&gt;
+  &lt;div class=&quot;card-header&quot;&gt;
+    &lt;div&gt;&lt;h3 class=&quot;card-title&quot;&gt;Trend Kunjungan Pasien&lt;/h3&gt;&lt;/div&gt;
+    &lt;span class=&quot;badge badge-primary badge-sm&quot;&gt;7 Hari&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;chart-guide-figure&quot;&gt;
+    &lt;svg viewBox=&quot;0 0 640 260&quot; role=&quot;img&quot; aria-label=&quot;Trend kunjungan pasien&quot;&gt;
+      &lt;rect class=&quot;chart-sample-bar-primary&quot; x=&quot;80&quot; y=&quot;80&quot; width=&quot;48&quot; height=&quot;120&quot; rx=&quot;8&quot; /&gt;
+    &lt;/svg&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+function BarChartCard({ title, data }) {
+  return (
+    &lt;article className=&quot;card chart-guide-card&quot;&gt;
+      &lt;div className=&quot;chart-guide-figure&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 640 260&quot;&gt;{data.map(renderBar)}&lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  )
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Jika memakai library chart, warna seri tetap diambil dari token CSS variable.</div>
+</section>
+</main>
+</div>
+
+<script>
+  const chartTooltip = document.createElement('div');
+  chartTooltip.className = 'chart-tooltip text-body-sm';
+  chartTooltip.hidden = true;
+  document.body.appendChild(chartTooltip);
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function moveChartTooltip(event) {
+    const offset = 14;
+    const tooltipRect = chartTooltip.getBoundingClientRect();
+    const clientX = event.clientX || (event.touches && event.touches[0] && event.touches[0].clientX) || window.innerWidth / 2;
+    const clientY = event.clientY || (event.touches && event.touches[0] && event.touches[0].clientY) || window.innerHeight / 2;
+    const nextX = Math.min(clientX + offset, window.innerWidth - tooltipRect.width - offset);
+    const nextY = Math.max(offset, clientY - tooltipRect.height - offset);
+    chartTooltip.style.left = `${nextX}px`;
+    chartTooltip.style.top = `${nextY}px`;
+  }
+
+  function renderTooltipLine(line) {
+    const colorClass = line.colorClass ? ` ${escapeHtml(line.colorClass)}` : '';
+    return `<span class="chart-tooltip-row"><i class="chart-tooltip-dot${colorClass}" aria-hidden="true"></i><span class="chart-tooltip-label">${escapeHtml(line.label || '')}</span><span class="chart-tooltip-value">${escapeHtml(line.value || '')}</span></span>`;
+  }
+
+  function showChartTooltip(event, title, lines) {
+    chartTooltip.innerHTML = `<strong>${escapeHtml(title)}</strong>${lines.map(renderTooltipLine).join('')}`;
+    chartTooltip.hidden = false;
+    moveChartTooltip(event);
+  }
+
+  function hideChartTooltip() {
+    chartTooltip.hidden = true;
+  }
+
+  document.querySelectorAll('[data-guide-tooltip]').forEach((item) => {
+    const title = item.dataset.tooltipTitle || '';
+    const rawLines = (item.dataset.tooltipLines || '').split(';').filter(Boolean);
+    const colors = (item.dataset.tooltipColors || '').split(';').filter(Boolean);
+    const lines = rawLines.map((line, index) => {
+      const separatorIndex = line.indexOf(':');
+      return {
+        label: separatorIndex > -1 ? line.slice(0, separatorIndex).trim() : line,
+        value: separatorIndex > -1 ? line.slice(separatorIndex + 1).trim() : '',
+        colorClass: colors[index] || 'bar-blue',
+      };
+    });
+
+    item.addEventListener('mouseenter', (event) => showChartTooltip(event, title, lines));
+    item.addEventListener('mousemove', moveChartTooltip);
+    item.addEventListener('mouseleave', hideChartTooltip);
+    item.addEventListener('focus', (event) => showChartTooltip(event, title, lines));
+    item.addEventListener('blur', hideChartTooltip);
+  });
+</script>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

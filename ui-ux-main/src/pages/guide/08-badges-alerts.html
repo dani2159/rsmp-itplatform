@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>08 Badges &amp; Alerts · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link active" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">08</p>
+<h1>Badges &amp; Alerts</h1>
+<p class="hero-subtitle">Aturan badge dan alert untuk status singkat, pesan sistem, validasi, dan notifikasi operasional.</p>
+<div class="divider"></div>
+<nav aria-label="Daftar isi badge dan alert guide" class="toc">
+<a href="#badge-overview">Badge</a>
+<a href="#badge-sizes">Ukuran Badge</a>
+<a href="#badge-variants">Variasi Badge</a>
+<a href="#alert-overview">Alert</a>
+<a href="#alert-sizes">Ukuran Alert</a>
+<a href="#alert-variants">Variasi Alert</a>
+<a href="#usage">Panduan Pakai</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="badge-overview">
+<div class="section-head">
+<div>
+<h2>Badge</h2>
+<p>Badge dipakai untuk status singkat seperti aktif, pending, kritis, tersedia, penuh, prioritas, atau jumlah item. Badge tidak dipakai untuk pesan panjang.</p>
+</div>
+<span class="badge badge-primary badge-md"><span class="badge-dot"></span>Token based</span>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<h3>Status Pasien</h3>
+<div class="component-row">
+<span class="badge badge-success badge-md"><span class="badge-dot"></span>Aktif</span>
+<span class="badge badge-warning badge-md"><span class="badge-dot"></span>Menunggu</span>
+<span class="badge badge-danger badge-md"><span class="badge-dot"></span>Kritis</span>
+</div>
+<p class="component-note">Gunakan untuk status yang harus cepat terbaca di tabel, card, atau ringkasan pasien.</p>
+</div>
+<div class="card component-stack">
+<h3>Status Layanan</h3>
+<div class="component-row">
+<span class="badge badge-primary badge-md">Rawat Inap</span>
+<span class="badge badge-info badge-md">Radiologi</span>
+<span class="badge badge-teal badge-md">Laboratorium</span>
+</div>
+<p class="component-note">Gunakan warna berbeda untuk kategori layanan, bukan untuk dekorasi.</p>
+</div>
+<div class="card component-stack">
+<h3>Status Sistem</h3>
+<div class="component-row">
+<span class="badge badge-indigo badge-md">Sync</span>
+<span class="badge badge-navy badge-md">Internal</span>
+<span class="badge badge-slate badge-md">Nonaktif</span>
+</div>
+<p class="component-note">Badge netral memakai keluarga slate/navy, bukan border abu generic.</p>
+</div>
+</div>
+</section>
+<section class="mt-12" id="badge-sizes">
+<div class="section-head">
+<div>
+<h2>Ukuran Badge</h2>
+<p>Gunakan ukuran sesuai kepadatan UI. Default aplikasi adalah <span class="mono">badge-md</span>.</p>
+</div>
+</div>
+<div class="card component-stack">
+<div class="component-row">
+<span class="code-chip">badge-xs</span>
+<span class="badge badge-xs badge-primary">XS</span>
+<span class="badge badge-xs badge-success"><span class="badge-dot"></span>Tersedia</span>
+<span class="badge badge-xs badge-danger">Kritis</span>
+</div>
+<div class="component-row">
+<span class="code-chip">badge-sm</span>
+<span class="badge badge-sm badge-primary">SM</span>
+<span class="badge badge-sm badge-success"><span class="badge-dot"></span>Tersedia</span>
+<span class="badge badge-sm badge-warning">Pending</span>
+</div>
+<div class="component-row">
+<span class="code-chip">badge-md</span>
+<span class="badge badge-md badge-primary">MD</span>
+<span class="badge badge-md badge-info"><span class="badge-dot"></span>Observasi</span>
+<span class="badge badge-md badge-danger">JKN Tidak Aktif</span>
+</div>
+<div class="component-row">
+<span class="code-chip">badge-lg</span>
+<span class="badge badge-lg badge-primary">LG</span>
+<span class="badge badge-lg badge-teal"><span class="badge-dot"></span>Laboratorium</span>
+<span class="badge badge-lg badge-indigo">Prioritas Tinggi</span>
+</div>
+</div>
+</section>
+<section class="mt-12" id="badge-variants">
+<div class="section-head">
+<div>
+<h2>Variasi Badge</h2>
+<p>Setiap warna punya tiga style: soft, outline, dan solid. Border selalu mengikuti keluarga warna badge.</p>
+</div>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<h3>Soft / Default</h3>
+<div class="component-row">
+<span class="badge badge-primary badge-sm">Primary</span>
+<span class="badge badge-success badge-sm">Success</span>
+<span class="badge badge-warning badge-sm">Warning</span>
+<span class="badge badge-danger badge-sm">Danger</span>
+<span class="badge badge-info badge-sm">Info</span>
+<span class="badge badge-teal badge-sm">Teal</span>
+<span class="badge badge-indigo badge-sm">Indigo</span>
+<span class="badge badge-navy badge-sm">Navy</span>
+<span class="badge badge-slate badge-sm">Slate</span>
+</div>
+</div>
+<div class="card component-stack">
+<h3>Outline</h3>
+<div class="component-row">
+<span class="badge badge-outline badge-primary badge-sm">Primary</span>
+<span class="badge badge-outline badge-success badge-sm">Success</span>
+<span class="badge badge-outline badge-warning badge-sm">Warning</span>
+<span class="badge badge-outline badge-danger badge-sm">Danger</span>
+<span class="badge badge-outline badge-info badge-sm">Info</span>
+<span class="badge badge-outline badge-teal badge-sm">Teal</span>
+<span class="badge badge-outline badge-indigo badge-sm">Indigo</span>
+<span class="badge badge-outline badge-navy badge-sm">Navy</span>
+<span class="badge badge-outline badge-slate badge-sm">Slate</span>
+</div>
+</div>
+<div class="card component-stack">
+<h3>Solid</h3>
+<div class="component-row">
+<span class="badge badge-solid badge-primary badge-sm">Primary</span>
+<span class="badge badge-solid badge-success badge-sm">Success</span>
+<span class="badge badge-solid badge-warning badge-sm">Warning</span>
+<span class="badge badge-solid badge-danger badge-sm">Danger</span>
+<span class="badge badge-solid badge-info badge-sm">Info</span>
+<span class="badge badge-solid badge-teal badge-sm">Teal</span>
+<span class="badge badge-solid badge-indigo badge-sm">Indigo</span>
+<span class="badge badge-solid badge-navy badge-sm">Navy</span>
+<span class="badge badge-solid badge-slate badge-sm">Slate</span>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="alert-overview">
+<div class="section-head">
+<div>
+<h2>Alert</h2>
+<p>Alert dipakai untuk pesan yang membutuhkan perhatian pengguna: validasi, status BPJS/JKN, info sistem, sukses simpan, atau peringatan klinis.</p>
+</div>
+<span class="badge badge-danger badge-md">Border soft sesuai varian</span>
+</div>
+<div class="grid-2">
+<div class="alert alert-primary alert-md" role="status">
+<span aria-hidden="true" class="alert-icon">i</span>
+<div class="alert-body">
+<strong class="alert-title">Informasi admisi tersedia</strong>
+<p>Data pasien berhasil ditemukan. Lanjutkan pengisian rencana rawat inap.</p>
+</div>
+</div>
+<div class="alert alert-danger alert-md" role="alert">
+<span aria-hidden="true" class="alert-icon">!</span>
+<div class="alert-body">
+<strong class="alert-title">Status JKN: Tidak aktif</strong>
+<p>Peserta memiliki tunggakan iuran BPJS. Periksa detail kepesertaan sebelum konfirmasi.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="alert-sizes">
+<div class="section-head">
+<div>
+<h2>Ukuran Alert</h2>
+<p>Gunakan <span class="mono">alert-md</span> sebagai default. Gunakan <span class="mono">alert-sm</span> untuk panel kecil dan <span class="mono">alert-lg</span> untuk pesan penting di halaman utama.</p>
+</div>
+</div>
+<div class="component-stack">
+<div class="alert alert-sm alert-success" role="status">
+<span aria-hidden="true" class="alert-icon">✓</span>
+<div class="alert-body">
+<strong class="alert-title">Alert SM</strong>
+<p>Data berhasil tersimpan otomatis.</p>
+</div>
+</div>
+<div class="alert alert-md alert-warning" role="alert">
+<span aria-hidden="true" class="alert-icon">!</span>
+<div class="alert-body">
+<strong class="alert-title">Alert MD</strong>
+<p>Perkiraan biaya dapat berubah sesuai tindakan dan lama perawatan.</p>
+</div>
+</div>
+<div class="alert alert-lg alert-info" role="status">
+<span aria-hidden="true" class="alert-icon">i</span>
+<div class="alert-body">
+<strong class="alert-title">Alert LG</strong>
+<p>Jadwal dokter sudah diperbarui untuk hari ini. Pastikan petugas poli melihat perubahan terbaru sebelum melakukan konfirmasi pasien.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="alert-variants">
+<div class="section-head">
+<div>
+<h2>Variasi Alert</h2>
+<p>Alert tersedia dalam style soft, outline, dan solid. Untuk aplikasi operasional, gunakan soft sebagai default karena paling nyaman dibaca.</p>
+</div>
+</div>
+<div class="grid-3">
+<div class="card component-stack">
+<h3>Soft</h3>
+<div class="alert alert-success alert-sm"><span class="alert-icon">✓</span><div class="alert-body"><strong>Pasien berhasil didaftarkan</strong><p>Nomor admisi sudah dibuat.</p></div></div>
+<div class="alert alert-warning alert-sm"><span class="alert-icon">!</span><div class="alert-body"><strong>Menunggu verifikasi</strong><p>Petugas perlu mengecek dokumen.</p></div></div>
+<div class="alert alert-danger alert-sm"><span class="alert-icon">!</span><div class="alert-body"><strong>Data tidak valid</strong><p>Nomor JKN tidak cocok.</p></div></div>
+</div>
+<div class="card component-stack">
+<h3>Outline</h3>
+<div class="alert alert-outline alert-primary alert-sm"><span class="alert-icon">i</span><div class="alert-body"><strong>Update sistem</strong><p>Sinkronisasi berjalan.</p></div></div>
+<div class="alert alert-outline alert-teal alert-sm"><span class="alert-icon">i</span><div class="alert-body"><strong>Lab tersedia</strong><p>Hasil dapat diproses.</p></div></div>
+<div class="alert alert-outline alert-indigo alert-sm"><span class="alert-icon">i</span><div class="alert-body"><strong>Antrian prioritas</strong><p>Pasien perlu diarahkan.</p></div></div>
+</div>
+<div class="card component-stack">
+<h3>Solid</h3>
+<div class="alert alert-solid alert-primary alert-sm"><span class="alert-icon">i</span><div class="alert-body"><strong>Primary</strong><p>Untuk highlight penting.</p></div></div>
+<div class="alert alert-solid alert-warning alert-sm"><span class="alert-icon">!</span><div class="alert-body"><strong>Warning</strong><p>Butuh perhatian segera.</p></div></div>
+<div class="alert alert-solid alert-navy alert-sm"><span class="alert-icon">i</span><div class="alert-body"><strong>Navy</strong><p>Informasi internal.</p></div></div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="usage">
+<div class="section-head">
+<div>
+<h2>Panduan Pakai</h2>
+<p>Gunakan badge untuk label/status singkat dan alert untuk pesan yang perlu dibaca. Hindari membuat warna manual di luar token.</p>
+</div>
+</div>
+<div class="grid-2">
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Pakai badge untuk status singkat.</strong><p>Contoh: <span class="code-chip">badge badge-md badge-success</span> untuk status aktif.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Pakai alert untuk pesan yang perlu dibaca.</strong><p>Contoh: <span class="code-chip">alert alert-md alert-warning</span> untuk data yang belum lengkap.</p></div></div>
+<div class="usage-item"><div class="usage-icon do" aria-hidden="true"></div><div><strong>Gunakan tone semantic sesuai konteks.</strong><p>Success untuk berhasil, warning untuk perhatian, danger untuk error atau risiko.</p></div></div>
+</div>
+<div class="usage-list">
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan membuat warna manual per badge.</strong><p>Semua tone badge dan alert harus mengikuti token semantic.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan memakai alert untuk dekorasi.</strong><p>Alert hanya untuk informasi yang memang perlu terlihat oleh user.</p></div></div>
+<div class="usage-item"><div class="usage-icon dont" aria-hidden="true"></div><div><strong>Jangan menumpuk terlalu banyak badge dalam satu baris.</strong><p>Pilih status utama, sisanya letakkan di detail atau tooltip.</p></div></div>
+</div>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Badge dan alert memakai CSS variable per komponen. Varian diatur lewat class seperti .badge-success atau .alert-danger.</p>
+</div>
+<span class="badge badge-sm">badges.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/badges.css */
+.badge {
+  @apply inline-flex items-center justify-center gap-2 w-fit max-w-full whitespace-nowrap border border-[color:var(--badge-border)] rounded-full bg-[color:var(--badge-bg)] text-[color:var(--badge-color)] text-body-sm leading-none font-semibold py-2 px-3;
+  --badge-bg: var(--surface);
+  --badge-color: var(--slate-dark);
+  --badge-border: var(--slate-tint-60);
+  --badge-dot: var(--slate);
+}
+.badge-success { --badge-bg: var(--success-light); --badge-color: var(--success-dark); --badge-border: var(--primary-green-tint-80); --badge-dot: var(--primary-green); }
+.badge-danger { --badge-bg: var(--danger-light); --badge-color: var(--danger-dark); --badge-border: var(--danger-border-soft); --badge-dot: var(--danger); }
+.badge-outline { @apply bg-[color:var(--surface)] border-[color:var(--badge-dot)] text-[color:var(--badge-color)]; }
+.badge-solid { @apply bg-[color:var(--badge-dot)] border-[color:var(--badge-dot)] text-[color:var(--white)]; }
+
+.alert { @apply flex items-start gap-3 border border-[color:var(--alert-border)] rounded-[var(--radius-input-md)] bg-[color:var(--alert-bg)] text-[color:var(--alert-color)] p-4; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;span class=&quot;badge badge-success badge-sm&quot;&gt;&lt;span class=&quot;badge-dot&quot;&gt;&lt;/span&gt;Aktif&lt;/span&gt;
+&lt;span class=&quot;badge badge-danger badge-outline&quot;&gt;Tidak Aktif&lt;/span&gt;
+
+&lt;div class=&quot;alert alert-warning alert-sm&quot; role=&quot;alert&quot;&gt;
+  &lt;span class=&quot;alert-icon&quot;&gt;...&lt;/span&gt;
+  &lt;div class=&quot;alert-body&quot;&gt;
+    &lt;strong class=&quot;alert-title&quot;&gt;Data belum lengkap&lt;/strong&gt;
+    &lt;p&gt;Lengkapi NIK dan penjamin sebelum simpan.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+function Badge({ tone = &#x27;primary&#x27;, solid, children }) {
+  return &lt;span className={`badge badge-${tone} ${solid ? &#x27;badge-solid&#x27; : &#x27;&#x27;}`}&gt;{children}&lt;/span&gt;
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Tone badge/alert mengikuti token semantic di tokens.css. Jangan buat warna manual per badge.</div>
+</section>
+</main>
+</div>
+<script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>

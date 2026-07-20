@@ -1,0 +1,246 @@
+/* ==========================================================================
+   08. Data table playground and room tabs
+   Komponen table demo, toolbar, pagination, dan tab ruang.
+   ========================================================================== */
+
+.tab {
+  @apply min-w-[210px] min-h-16 flex items-center justify-center gap-[15px] py-0 px-4.5 border-0 border-r border-r-[color:var(--border)] bg-[color:var(--white)] text-[color:var(--ui-table-primary-text)] font-sans text-body-md font-bold relative whitespace-nowrap cursor-pointer;
+}
+
+.tab:hover {
+  @apply text-[color:var(--primary-blue)] bg-[color:var(--ui-surface-table-cell)];
+}
+
+.tab.active {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.tab.active::after {
+  @apply absolute left-0 right-0 bottom-0 h-[3px] bg-[color:var(--primary-blue)];
+
+  content: "";
+}
+
+.tab .tab-actions {
+  @apply inline-flex items-center gap-[13px] text-[color:var(--ui-table-primary-icon)];
+}
+
+.tab .tab-actions .lucide {
+  @apply w-4 h-4;
+}
+
+.toolbar {
+  @apply flex items-center justify-between gap-4.5 mb-[26px];
+}
+
+.toolbar-left {
+  @apply flex items-center justify-center gap-3 w-full min-w-0;
+}
+
+.search-field {
+  @apply w-[min(320px,38vw)];
+}
+
+.toolbar-right {
+  @apply flex items-center gap-3.5;
+}
+
+.status-select {
+  @apply w-[172px];
+}
+
+.table-scroll {
+  @apply overflow-auto rounded-none;
+}
+
+table.data-table {
+  @apply w-full min-w-[980px] border-collapse;
+}
+
+.data-table th,
+.data-table td {
+  @apply p-[20px_16px] border-b border-b-[color:var(--border-soft)] text-left align-middle;
+}
+
+.data-table th {
+  @apply h-[54px] bg-[color:var(--ui-surface-table-cell)] text-[color:var(--text-primary)] text-body-sm font-bold whitespace-nowrap;
+}
+
+.data-table td {
+  @apply text-[color:var(--text-primary)] text-body-md font-medium;
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  @apply pl-4;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+  @apply pr-4 text-left;
+}
+
+/* Pastikan kolom terakhir table data selalu rata kiri di semua halaman.
+   Beberapa halaman memakai utility text-center/text-right atau action group sendiri,
+   jadi gunakan override source-level agar hasil compile tetap konsisten. */
+.data-table td:last-child {
+  text-align: left !important;
+}
+
+.data-table td:last-child :is(.action-group, .admin-action-group, .row-inline-actions) {
+  justify-content: flex-start !important;
+}
+
+.sort {
+  @apply inline-flex items-center gap-2;
+}
+
+.sort .lucide {
+  @apply w-3.5 h-3.5 text-[color:var(--ui-table-primary-icon-hover)];
+}
+
+.action-group {
+  @apply flex items-center justify-center gap-3.5;
+}
+
+.icon-btn .lucide,
+.icon-btn i {
+  @apply w-4.5 h-4.5 inline-flex items-center justify-center text-h3;
+}
+
+.icon-btn.danger {
+  @apply text-[color:var(--danger)];
+}
+
+.icon-btn.danger:hover {
+  @apply border-[color:var(--danger-border-soft)] bg-[color:var(--danger-light)] shadow-[var(--danger-ring)];
+}
+
+.table-footer {
+  @apply flex flex-wrap items-center justify-between gap-4 pt-6 text-[color:var(--text-primary)] text-body-md font-bold;
+}
+
+.table-footer > :first-child {
+  @apply min-w-0;
+}
+
+.pagination {
+  @apply flex flex-wrap items-center justify-end gap-2.5;
+}
+
+.pagination-pages {
+  @apply flex flex-wrap items-center justify-end gap-2.5;
+}
+
+.per-page {
+  @apply w-[174px] max-w-full;
+}
+
+
+@media (max-width: 640px) {
+  .table-footer {
+    @apply grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3;
+  }
+
+  .table-footer > :first-child {
+    @apply col-start-1 row-start-1 min-w-0;
+  }
+
+  .table-footer .pagination {
+    display: contents;
+  }
+
+  .table-footer .per-page {
+    @apply col-start-2 row-start-1 justify-self-end w-40 max-w-full;
+  }
+
+  .table-footer .pagination-pages {
+    @apply col-span-2 row-start-2 w-full justify-center pt-1;
+  }
+}
+
+/* Sorting tabel.
+   Header yang bisa diurutkan dibuat klik-able tanpa mengubah markup tabel lama. */
+table th.is-sortable {
+  @apply cursor-pointer select-none;
+}
+
+table th.is-sortable .sort {
+  @apply inline-flex items-center gap-2;
+}
+
+table th.is-sortable .table-sort-indicator {
+  @apply shrink-0 text-body-sm text-[color:var(--text-muted)];
+}
+
+table th.is-sortable:hover,
+table th.is-sortable:focus-visible,
+table th.is-sortable[aria-sort="ascending"],
+table th.is-sortable[aria-sort="descending"] {
+  @apply text-[color:var(--primary-blue)];
+}
+
+table th.is-sortable:hover .table-sort-indicator,
+table th.is-sortable:focus-visible .table-sort-indicator,
+table th.is-sortable[aria-sort="ascending"] .table-sort-indicator,
+table th.is-sortable[aria-sort="descending"] .table-sort-indicator {
+  @apply text-[color:var(--primary-blue)];
+}
+
+table th.is-sortable:focus-visible {
+  @apply outline outline-2 outline-offset-[-2px] outline-[color:var(--primary-blue)];
+}
+
+
+/* Empty state untuk tabel yang terkena search/filter. */
+.table-empty-state-row[hidden] {
+  display: none !important;
+}
+
+.data-table .table-empty-state-cell {
+  @apply p-0 text-center;
+}
+
+.table-empty-state {
+  @apply border-b border-b-[color:var(--border-soft)] bg-[color:var(--white)] px-4 py-8 text-center;
+}
+
+.table-empty-state[hidden] {
+  display: none !important;
+}
+
+.table-empty-state-content {
+  @apply mx-auto flex max-w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-[color:var(--border-soft)] bg-[color:var(--ui-surface-table-cell)] px-5 py-6 text-[color:var(--text-secondary)];
+}
+
+.table-empty-state-line {
+  @apply flex flex-wrap items-center justify-center gap-2 text-body-md font-bold text-[color:var(--text-primary)];
+}
+
+.table-empty-state-dot {
+  @apply text-h3 leading-none text-[color:var(--primary-blue)];
+}
+
+.table-empty-state-separator {
+  @apply text-[color:var(--text-muted)];
+}
+
+.table-empty-state-action {
+  @apply inline-flex items-center gap-2;
+}
+
+.table-empty-state-action.btn-primary {
+  color: var(--white) !important;
+}
+
+.table-empty-state-action.btn-primary i {
+  color: inherit !important;
+}
+
+.table-empty-state-content p {
+  @apply max-w-[560px] text-body-sm font-medium text-[color:var(--text-secondary)];
+}
+
+.has-table-empty-state tbody tr[hidden] {
+  display: none !important;
+}

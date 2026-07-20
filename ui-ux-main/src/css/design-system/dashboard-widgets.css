@@ -1,0 +1,1412 @@
+/* ==========================================================================
+   16. Komponen operasional dashboard
+   --------------------------------------------------------------------------
+   Komponen ringkasan operasional untuk halaman dashboard. Warna memakai token
+   dari token design system; gunakan bersama `.card`, `.btn`,
+   `.input`, dan utility typography yang sudah tersedia.
+   ========================================================================== */
+
+.dashboard-hero-head {
+  @apply flex items-start justify-between gap-4.5 mb-[22px];
+}
+
+.dashboard-hero-head h1,
+.dashboard-hero-head p {
+  @apply m-0;
+}
+
+.dashboard-hero-head p {
+  @apply mt-2 text-[color:var(--text-secondary)];
+}
+
+.dashboard-greeting-icon {
+  @apply inline-flex items-center;
+  transform: translateY(2px);
+}
+
+.dashboard-greeting-icon i {
+  @apply text-[color:var(--warning)] text-body-md;
+}
+
+.metric-grid {
+  @apply grid grid-cols-5 gap-3;
+}
+
+.metric-card {
+  @apply min-h-[170px] p-4.5 flex flex-col items-start gap-2 border-[color:var(--border-soft)] shadow-[var(--shadow-sm)];
+}
+
+.metric-icon,
+.notification-icon {
+  @apply w-12 h-12 inline-grid place-items-center rounded-[14px] text-[color:var(--surface)] shadow-[var(--shadow-md)];
+}
+
+.metric-icon .lucide,
+.metric-icon i,
+.notification-icon .lucide,
+.notification-icon i {
+  @apply w-[26px] h-[26px] inline-flex items-center justify-center text-h2 leading-none;
+  stroke-width: 2.35;
+}
+
+.metric-icon.is-blue,
+.notification-icon.is-blue {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.metric-icon.is-green {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.metric-icon.is-indigo,
+.notification-icon.is-indigo {
+  @apply bg-[color:var(--indigo)];
+}
+
+.metric-icon.is-warning,
+.notification-icon.is-warning {
+  @apply bg-[color:var(--warning)];
+}
+
+.metric-icon.is-danger,
+.notification-icon.is-danger {
+  @apply bg-[color:var(--danger)];
+}
+
+.notification-icon.is-warning-soft {
+  @apply text-[color:var(--warning-dark)] bg-[color:var(--warning-light)] shadow-none;
+}
+
+.metric-value {
+  @apply block text-[color:var(--text-primary)] mt-0.5;
+}
+
+.metric-label {
+  @apply block;
+}
+
+.metric-label strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.metric-trend {
+  @apply inline-flex items-center gap-1 mt-auto;
+}
+
+.metric-trend .lucide,
+.metric-trend i {
+  @apply w-4 h-4 inline-flex items-center justify-center text-body-md leading-none;
+}
+
+.metric-trend.is-positive {
+  @apply text-[color:var(--primary-green-shade-15)];
+}
+
+.metric-link {
+  @apply mt-auto pl-0 pr-0;
+}
+
+/* Overlay sparkline card metrik
+   Grafik kecil dekoratif KPI dashboard di sudut kanan atas.
+   Ukuran dibuat compact dan aspect ratio dijaga supaya tidak stretch/petot. */
+
+.metric-card {
+  @apply relative overflow-hidden;
+  isolation: isolate;
+}
+
+.metric-card > :not(.metric-sparkline) {
+  @apply relative z-[1];
+}
+
+.metric-sparkline {
+  @apply absolute top-4 right-4 w-[82px] h-8.5 pointer-events-none z-[0] opacity-[0.72];
+}
+
+.metric-sparkline svg {
+  @apply w-full h-full block overflow-visible;
+}
+
+.metric-sparkline .spark-grid {
+  stroke: color-mix(in srgb, var(--border) 72%, transparent);
+  stroke-width: 1;
+}
+
+.metric-sparkline .spark-area {
+  fill: color-mix(in srgb, var(--metric-accent, var(--primary-blue)) 12%, transparent);
+}
+
+.metric-sparkline .spark-line {
+  fill: none;
+  stroke: var(--metric-accent, var(--primary-blue));
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.metric-sparkline .spark-dot {
+  fill: var(--surface);
+  stroke: var(--metric-accent, var(--primary-blue));
+  stroke-width: 1.75;
+}
+
+.metric-card.is-blue {
+  --metric-accent: var(--primary-blue);
+}
+
+.metric-card.is-green {
+  --metric-accent: var(--primary-green);
+}
+
+.metric-card.is-indigo {
+  --metric-accent: var(--indigo);
+}
+
+.metric-card.is-warning {
+  --metric-accent: var(--warning);
+}
+
+.metric-card.is-danger {
+  --metric-accent: var(--danger);
+}
+
+@media (max-width: 1280px) {
+  .metric-sparkline {
+  @apply w-[72px] h-[30px] opacity-[0.64];
+}
+}
+
+@media (max-width: 767px) {
+  .metric-sparkline {
+  @apply top-3.5 right-3.5 w-[68px] h-7 opacity-[0.48];
+}
+}
+
+/* Menu shortcut dashboard
+   Shortcut prioritas untuk modul yang paling sering dan krusial digunakan. */
+
+.dashboard-shortcuts-section {
+  @apply mt-4;
+}
+
+.shortcut-head.dashboard-widget-head {
+  @apply items-end mb-3;
+}
+
+.dashboard-title-stack {
+  @apply min-w-0 grid gap-1;
+}
+
+.dashboard-title-stack p {
+  @apply m-0;
+}
+
+.shortcut-grid {
+  @apply grid gap-3 overflow-x-visible;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.shortcut-card {
+  @apply min-w-0 min-h-[76px] flex flex-col items-center justify-start gap-3 p-3.5 text-left no-underline text-[color:var(--text-primary)];
+
+  --shortcut-accent: var(--primary-blue);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+.shortcut-card:hover,
+.shortcut-card:focus-visible {
+  @apply shadow-[var(--shadow-md)] text-[color:var(--text-primary)];
+
+  transform: translateY(-2px);
+}
+
+.shortcut-card:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--shortcut-accent) 28%, transparent);
+  outline-offset: 3px;
+}
+
+.shortcut-icon {
+  @apply w-[42px] h-[42px] flex-none inline-grid place-items-center rounded-xl text-[color:var(--shortcut-accent)] bg-[color:color-mix(in_srgb,var(--shortcut-accent)_12%,var(--surface))];
+  color: var(--shortcut-accent);
+  background: color-mix(in srgb, var(--shortcut-accent) 12%, var(--surface));
+}
+
+.shortcut-icon i {
+  @apply text-h3 leading-none;
+}
+
+.shortcut-copy {
+  @apply min-w-0 flex flex-1 flex-col items-start gap-0.5 text-left;
+}
+
+.shortcut-copy strong,
+.shortcut-copy small {
+  @apply min-w-0 block overflow-visible whitespace-normal;
+  text-overflow: initial;
+}
+
+.shortcut-copy strong {
+  @apply leading-[1.25];
+}
+
+
+.shortcut-card.is-blue {
+  --shortcut-accent: var(--primary-blue);
+}
+
+.shortcut-card.is-green {
+  --shortcut-accent: var(--primary-green);
+}
+
+.shortcut-card.is-teal {
+  --shortcut-accent: var(--accent-teal);
+}
+
+.shortcut-card.is-indigo {
+  --shortcut-accent: var(--indigo);
+}
+
+.shortcut-card.is-info {
+  --shortcut-accent: var(--info);
+}
+
+.shortcut-card.is-warning {
+  --shortcut-accent: var(--warning);
+}
+
+.shortcut-card.is-danger {
+  --shortcut-accent: var(--danger);
+}
+
+@media (max-width: 1180px) {
+  .shortcut-grid {
+    grid-template-columns: repeat(7, minmax(128px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 720px) {
+  .shortcut-head.dashboard-widget-head {
+  @apply items-start;
+}
+}
+
+/* Panel status integrasi
+   Ringkasan koneksi eksternal SIMRS seperti SatuSehat dan BPJS VClaim. */
+
+.integration-status-section {
+  @apply mt-4;
+}
+
+.integration-panel {
+  @apply p-4;
+}
+
+.integration-head.dashboard-widget-head {
+  @apply mb-3.5;
+}
+
+.integration-status-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.integration-card {
+  @apply min-w-0 grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3.5 min-h-[86px] p-3.5 rounded-[var(--radius-card)] bg-[color:var(--page)] shadow-none;
+}
+
+.integration-mark {
+  @apply w-[52px] h-[52px] inline-grid place-items-center rounded-[14px] text-[color:var(--surface)] shadow-[var(--shadow-sm)];
+}
+
+.integration-mark i {
+  @apply text-h2 leading-none;
+}
+
+.integration-mark.is-satusehat {
+  background: linear-gradient(135deg, var(--accent-teal) 0%, var(--primary-green) 100%);
+}
+
+.integration-mark.is-vclaim {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 100%);
+}
+
+.integration-copy {
+  @apply min-w-0 grid gap-2;
+}
+
+.integration-title-row {
+  @apply min-w-0 flex items-center flex-wrap gap-2.5;
+}
+
+.integration-title-row h3 {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.integration-status {
+  @apply inline-flex items-center gap-[7px] text-[color:var(--success-dark)] text-body-sm leading-[var(--leading-body-sm)] font-medium;
+}
+
+.integration-sync {
+  @apply min-w-0 grid grid-cols-[minmax(130px,0.65fr)_minmax(0,1fr)] gap-2.5 items-center;
+}
+
+.integration-sync strong {
+  @apply min-w-0 text-[color:var(--text-primary)] font-medium whitespace-nowrap overflow-hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 1120px) {
+  .integration-status-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+}
+
+@media (max-width: 640px) {
+  .integration-card {
+  @apply grid-cols-[auto_minmax(0,1fr)] items-start;
+}
+
+  .integration-card > .badge {
+  @apply col-[2];
+    justify-self: start;
+  }
+
+  .integration-sync {
+  @apply grid-cols-1 gap-0.5;
+}
+}
+
+.dashboard-workspace {
+  @apply grid grid-cols-[minmax(420px,1.3fr)_minmax(320px,0.9fr)_minmax(360px,1fr)] gap-4 mt-4.5 items-stretch;
+}
+
+.dashboard-widget {
+  @apply min-w-0 flex flex-col border-[color:var(--border-soft)] shadow-[var(--shadow-sm)];
+}
+
+.dashboard-widget-head {
+  @apply flex items-center justify-between gap-3.5 mb-4;
+}
+
+.dashboard-title-inline {
+  @apply inline-flex items-center gap-2 min-w-0;
+}
+
+.dashboard-title-inline h2 {
+  @apply m-0 text-[color:var(--text-primary)];
+}
+
+.info-dot {
+  @apply w-4.5 h-4.5 inline-flex items-center justify-center rounded-full bg-[color:var(--navy-tint-60)] text-[color:var(--surface)] text-body-xs leading-none font-bold;
+}
+
+.info-dot {
+  @apply relative flex-none outline-none;
+  cursor: help;
+}
+
+.info-dot[data-tooltip]::before,
+.info-dot[data-tooltip]::after {
+  @apply absolute left-1/2 opacity-0 invisible pointer-events-none z-[80];
+  transform: translate(-50%, 8px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.info-dot[data-tooltip]::before {
+  @apply top-[calc(100%_+_10px)] w-max max-w-[min(280px,calc(100vw_-_48px))] py-2.5 px-3 rounded-xl bg-[color:var(--text-primary)] text-[color:var(--surface)] shadow-[var(--shadow-md)] text-body-sm leading-[1.45] font-medium text-left whitespace-normal;
+
+  content: attr(data-tooltip);
+}
+
+.info-dot[data-tooltip]::after {
+  @apply top-[calc(100%_+_4px)] w-2.5 h-2.5 bg-[color:var(--text-primary)];
+
+  content: "";
+  transform: translate(-50%, 8px) rotate(45deg);
+}
+
+.info-dot[data-tooltip]:hover::before,
+.info-dot[data-tooltip]:hover::after,
+.info-dot[data-tooltip]:focus-visible::before,
+.info-dot[data-tooltip]:focus-visible::after {
+  @apply opacity-100 visible;
+  transform: translate(-50%, 0);
+}
+
+.info-dot[data-tooltip]:hover::after,
+.info-dot[data-tooltip]:focus-visible::after {
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.info-dot:focus-visible {
+  @apply shadow-[0_0_0_3px_rgba(107,175,141,0.22)];
+}
+
+@media (max-width: 768px) {
+  .info-dot[data-tooltip]::before {
+  @apply max-w-[min(240px,calc(100vw_-_32px))];
+}
+}
+
+.filter-grid {
+  @apply grid grid-cols-3 gap-2.5 mb-3;
+}
+
+.dashboard-filter {
+  @apply min-h-[58px] flex items-center justify-between text-left cursor-pointer;
+}
+
+.dashboard-filter span,
+.dashboard-filter strong,
+.dashboard-filter small {
+  @apply block;
+}
+
+.dashboard-filter .lucide,
+.dashboard-filter i {
+  @apply w-[22px] h-[22px] inline-flex items-center justify-center text-h3 leading-none text-[color:var(--text-primary)];
+}
+
+.queue-status-grid {
+  @apply grid grid-cols-5 gap-2.5;
+}
+
+.queue-stat,
+.mini-stat {
+  @apply relative min-w-0 p-3 border border-[color:var(--border)] rounded-[10px] bg-[color:var(--surface)] overflow-hidden;
+}
+
+.queue-stat span,
+.queue-stat strong,
+.queue-stat small,
+.mini-stat span,
+.mini-stat strong,
+.mini-stat small {
+  @apply block;
+}
+
+.queue-stat strong,
+.mini-stat strong {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.queue-stat .lucide,
+.queue-stat > i {
+  @apply absolute right-2.5 bottom-2.5 w-6 h-6 inline-flex items-center justify-center text-h2 leading-none opacity-[0.28];
+}
+
+.queue-stat.is-blue {
+  @apply text-[color:var(--primary-blue)] border-[color:var(--primary-blue-tint-80)];
+}
+
+.queue-stat.is-green {
+  @apply text-[color:var(--primary-green)] border-[color:var(--primary-green-tint-80)];
+}
+
+.queue-stat.is-indigo {
+  @apply text-[color:var(--indigo)] border-[color:var(--indigo-tint-80)];
+}
+
+.queue-stat.is-teal {
+  @apply text-[color:var(--accent-teal-shade-15)] border-[color:var(--accent-teal-tint-80)];
+}
+
+.queue-stat.is-danger {
+  @apply text-[color:var(--danger)] border-[color:var(--danger-border-soft)];
+}
+
+.chart-card {
+  @apply mt-[22px] overflow-x-auto;
+}
+
+.line-chart {
+  @apply w-full min-w-[560px] h-auto block;
+}
+
+.chart-grid line {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.chart-y-labels text,
+.chart-x-labels text {
+  @apply font-sans;
+
+  fill: var(--navy-tint-40);
+}
+
+.chart-line {
+  fill: none;
+  stroke: var(--primary-blue);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-points circle {
+  fill: var(--surface);
+  stroke: var(--primary-blue);
+  stroke-width: 4;
+}
+
+/* State chart interaktif */
+
+.js-line-chart,
+.js-bar-chart,
+.donut-chart {
+  touch-action: manipulation;
+}
+
+.chart-hit-area {
+  @apply cursor-pointer;
+
+  fill: transparent;
+}
+
+.chart-crosshair {
+  @apply opacity-0;
+
+  stroke: var(--primary-blue-tint-60);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+  transition: opacity 160ms ease;
+}
+
+.chart-crosshair.is-active {
+  @apply opacity-100;
+}
+
+.chart-point {
+  @apply outline-none;
+
+  transition: transform 160ms ease, stroke-width 160ms ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.chart-point.is-active {
+  transform: scale(1.35);
+  stroke-width: 5;
+}
+
+.stacked-bars rect {
+  transition: opacity 160ms ease, transform 160ms ease;
+  transform-box: fill-box;
+  transform-origin: bottom center;
+}
+
+.stacked-bars rect.is-muted {
+  @apply opacity-[0.36];
+}
+
+.stacked-bars rect.is-active {
+  @apply opacity-100;
+  transform: scaleY(1.035);
+}
+
+.chart-tooltip {
+  @apply fixed z-[1400] min-w-[196px] max-w-[310px] p-3 border border-[color:var(--border-soft)] rounded-xl bg-[color:var(--surface)] shadow-[var(--shadow-md)] text-[color:var(--text-primary)] pointer-events-none;
+}
+
+.chart-tooltip strong {
+  @apply block mb-2 text-[color:var(--text-primary)] font-bold;
+}
+
+.chart-tooltip-line,
+.chart-tooltip-row {
+  @apply grid items-center min-h-[22px] text-[color:var(--text-secondary)];
+}
+
+.chart-tooltip-line {
+  @apply grid-cols-1;
+}
+
+.chart-tooltip-row {
+  @apply grid-cols-[10px_minmax(0,1fr)_auto] gap-2;
+}
+
+.chart-tooltip-row + .chart-tooltip-row,
+.chart-tooltip-line + .chart-tooltip-line {
+  @apply mt-1;
+}
+
+.chart-tooltip-dot {
+  @apply w-2 h-2 rounded-full bg-[color:var(--primary-blue)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--primary-blue)_14%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-blue) 14%, transparent);
+}
+
+.chart-tooltip-dot.is-green,
+.chart-tooltip-dot.bar-green {
+  @apply bg-[color:var(--accent-teal)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent-teal)_16%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-teal) 16%, transparent);
+}
+
+.chart-tooltip-dot.is-indigo,
+.chart-tooltip-dot.bar-indigo {
+  @apply bg-[color:var(--indigo)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--indigo)_16%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--indigo) 16%, transparent);
+}
+
+.chart-tooltip-dot.is-warning,
+.chart-tooltip-dot.bar-warning {
+  @apply bg-[color:var(--warning)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--warning)_18%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--warning) 18%, transparent);
+}
+
+.chart-tooltip-dot.is-danger,
+.chart-tooltip-dot.bar-danger {
+  @apply bg-[color:var(--danger)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--danger)_14%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 14%, transparent);
+}
+
+.chart-tooltip-dot.is-info,
+.chart-tooltip-dot.bar-info {
+  @apply bg-[color:var(--info)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--info)_16%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--info) 16%, transparent);
+}
+
+.chart-tooltip-dot.is-slate,
+.chart-tooltip-dot.bar-slate {
+  @apply bg-[color:var(--slate)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--slate)_14%,transparent)];
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--slate) 14%, transparent);
+}
+
+.chart-tooltip-dot.is-empty {
+  @apply bg-transparent shadow-none;
+}
+
+.chart-tooltip-label {
+  @apply min-w-0 overflow-hidden text-[color:var(--text-secondary)] whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.chart-tooltip-value {
+  @apply text-[color:var(--text-primary)] font-semibold whitespace-nowrap;
+}
+
+.chart-tooltip-row.is-total {
+  @apply mt-1.5 pt-[6px] border-t border-t-[color:var(--border-soft)];
+}
+
+.chart-tooltip-row.is-total .chart-tooltip-label,
+.chart-tooltip-row.is-total .chart-tooltip-value {
+  @apply text-[color:var(--text-primary)] font-bold;
+}
+
+.donut-chart {
+  @apply cursor-pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.donut-chart:hover,
+.donut-chart:focus-visible {
+  @apply shadow-[var(--shadow-sm)] outline-none;
+
+  transform: translateY(-2px);
+}
+
+.dashboard-footer-link {
+  @apply justify-between w-full mt-auto pl-0 pr-0;
+}
+
+.dashboard-card-actions {
+  @apply mt-auto pt-3 border-t border-t-[color:var(--border-soft)] justify-end;
+}
+
+.dashboard-card-actions + .dashboard-footer-link {
+  @apply mt-2 pt-0;
+}
+
+.dashboard-card-filter {
+  @apply max-w-[260px] mb-3.5;
+}
+
+.dashboard-footer-link.is-centered {
+  @apply justify-center;
+}
+
+.dashboard-footer-link .lucide,
+.dashboard-footer-link i {
+  @apply w-4.5 h-4.5 inline-flex items-center justify-center text-body-lg leading-none;
+}
+
+.bed-summary {
+  @apply grid grid-cols-[160px_minmax(0,1fr)] gap-4.5 items-center mb-4.5;
+}
+
+.donut-chart {
+  @apply w-[142px] h-[142px] rounded-full grid place-items-center text-[color:var(--text-primary)];
+  align-content: center;
+  justify-self: center;
+  background: radial-gradient(circle, var(--surface) 0 51%, transparent 52%),
+    conic-gradient(var(--primary-blue) 0 82%, var(--primary-green) 82% 94%, var(--warning) 94% 97%, var(--slate-light) 97% 100%);
+}
+
+.donut-chart span,
+.donut-chart small {
+  @apply block text-center;
+}
+
+.bed-legend {
+  @apply grid gap-3;
+}
+
+.bed-legend > div {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5;
+}
+
+.bed-legend strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.legend-dot,
+.notification-status-dot {
+  @apply w-2.5 h-2.5 rounded-full inline-block;
+}
+
+.legend-dot.is-muted {
+  @apply bg-[color:var(--navy-tint-80)];
+}
+
+.legend-dot.is-blue,
+.notification-status-dot.is-blue {
+  @apply bg-[color:var(--primary-blue)];
+}
+
+.legend-dot.is-green {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.legend-dot.is-warning,
+.notification-status-dot.is-warning {
+  @apply bg-[color:var(--warning)];
+}
+
+.legend-dot.is-danger,
+.notification-status-dot.is-danger {
+  @apply bg-[color:var(--danger)];
+}
+
+.legend-dot.is-info {
+  @apply bg-[color:var(--info)];
+}
+
+.notification-status-dot.is-indigo {
+  @apply bg-[color:var(--indigo)];
+}
+
+.status-callout {
+  @apply border border-[color:var(--border)] rounded-2xl p-3.5 bg-[color:var(--surface)] mb-3;
+}
+
+.status-callout.is-warning {
+  @apply border-[color:var(--warning-border-soft)];
+  background: linear-gradient(135deg, var(--surface) 0%, var(--warning-light) 180%);
+}
+
+.status-callout span,
+.status-callout strong,
+.status-callout p {
+  @apply block m-0;
+}
+
+.status-callout span {
+  @apply text-[color:var(--text-primary)] mb-1;
+}
+
+.status-callout strong {
+  @apply text-[color:var(--text-primary)];
+}
+
+.bed-mini-grid {
+  @apply grid grid-cols-3 gap-2;
+}
+
+.widget-meta-row {
+  @apply flex items-center justify-between gap-3 mt-3;
+}
+
+.notification-list {
+  @apply grid gap-2;
+}
+
+.notification-item {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-3 p-3 border border-[color:var(--border)] rounded-xl bg-[color:var(--surface)];
+}
+
+.notification-copy {
+  @apply min-w-0;
+}
+
+.notification-copy strong,
+.notification-copy small {
+  @apply block;
+}
+
+.notification-time {
+  @apply whitespace-nowrap;
+}
+
+@media (max-width: 1380px) {
+  .metric-grid {
+  @apply grid-cols-3;
+}
+
+  .dashboard-workspace {
+  @apply grid-cols-[1fr_1fr];
+}
+
+  .notification-widget {
+  @apply col-span-full;
+}
+}
+
+@media (max-width: 1024px) {
+  .metric-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+  .dashboard-workspace {
+  @apply grid-cols-1;
+}
+
+  .queue-status-grid {
+  @apply grid-cols-2;
+}
+}
+
+@media (max-width: 720px) {
+  .dashboard-widget {
+  @apply p-4.5;
+}
+
+  .metric-grid {
+  grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+}
+
+  .filter-grid {
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+}
+
+  .queue-status-grid,
+  .bed-mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+}
+
+  .bed-summary {
+  grid-template-columns: minmax(120px, 0.65fr) minmax(0, 1fr);
+}
+
+  .donut-chart {
+    justify-self: start;
+  }
+
+  .dashboard-widget-head {
+  @apply items-start flex-col;
+}
+
+  .notification-item {
+  @apply grid-cols-[auto_minmax(0,1fr)_auto];
+}
+
+  .notification-status-dot {
+  @apply hidden;
+}
+}
+
+
+@media (max-width: 420px) {
+  .bed-summary {
+  @apply grid-cols-1;
+}
+}
+
+/* --------------------------------------------------------------------------
+   16A. Widget aktivitas, kunjungan, grafik, dan revenue dashboard
+   Komponen tambahan dashboard operasional. Tetap memakai token warna, card,
+   button, typography, dan icon system yang sudah tersedia.
+   -------------------------------------------------------------------------- */
+
+.dashboard-secondary-grid {
+  @apply grid grid-cols-[minmax(320px,0.9fr)_minmax(340px,1fr)_minmax(420px,1.2fr)] gap-4 mt-4.5 items-stretch;
+}
+
+.dashboard-revenue-row {
+  @apply mt-4.5;
+}
+
+.activity-list {
+  @apply grid gap-2;
+}
+
+.activity-item {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-3 p-3 border border-[color:var(--border)] rounded-xl bg-[color:var(--surface)];
+}
+
+.activity-copy {
+  @apply min-w-0;
+}
+
+.activity-copy strong,
+.activity-copy small {
+  @apply block overflow-hidden whitespace-nowrap;
+  text-overflow: ellipsis;
+}
+
+.activity-time {
+  @apply whitespace-nowrap;
+}
+
+.notification-icon.is-teal {
+  @apply bg-[color:var(--accent-teal)];
+}
+
+.notification-icon.is-danger-soft {
+  @apply text-[color:var(--danger-dark)] bg-[color:var(--danger-light)] shadow-none;
+}
+
+.notification-status-dot.is-green {
+  @apply bg-[color:var(--primary-green)];
+}
+
+.activity-widget,
+.visit-widget,
+.graph-widget,
+.revenue-widget {
+  @apply h-full flex flex-col;
+}
+
+.notification-widget {
+  @apply h-full flex flex-col;
+}
+
+.notification-widget .notification-list,
+.activity-widget .activity-list {
+  @apply flex-1 grid gap-0;
+  grid-auto-rows: minmax(0, 1fr);
+  align-content: stretch;
+}
+
+.notification-widget .notification-item,
+.activity-widget .activity-item {
+  @apply p-[10px_0] border-0 rounded-none bg-transparent;
+}
+
+.notification-widget .notification-item + .notification-item,
+.activity-widget .activity-item + .activity-item {
+  @apply border-t border-t-[color:var(--border-soft)];
+}
+
+.visit-widget {
+  @apply self-stretch;
+}
+
+.visit-stat-grid {
+  @apply flex-1 min-h-0 grid grid-cols-2 grid-rows-[repeat(3,minmax(84px,1fr))] gap-2;
+}
+
+.visit-stat-card {
+  @apply relative min-h-[84px] h-full grid grid-cols-[38px_minmax(0,1fr)_28px] items-center gap-3 p-[12px_12px_12px_14px] border-0 rounded-[var(--radius-card)] bg-[color:color-mix(in_srgb,var(--visit-accent)_6%,var(--surface))] shadow-none overflow-hidden;
+
+  --visit-accent: var(--primary-blue);
+  padding: 12px 12px 12px 14px;
+  background: color-mix(in srgb, var(--visit-accent) 6%, var(--surface));
+  box-shadow: none;
+}
+
+.visit-stat-card .nav-icon {
+  @apply w-[38px] h-[38px] inline-flex items-center justify-center rounded-[var(--radius-input-lg)] text-[color:var(--visit-accent)] bg-[color:color-mix(in_srgb,var(--visit-accent)_12%,var(--surface))];
+  color: var(--visit-accent);
+  background: color-mix(in srgb, var(--visit-accent) 12%, var(--surface));
+}
+
+.visit-stat-card .nav-icon i {
+  @apply text-body-xl leading-none;
+}
+
+.visit-card-copy,
+.visit-stat-card strong,
+.visit-stat-card small {
+  @apply block min-w-0;
+}
+
+.visit-stat-card strong {
+  @apply text-[color:var(--text-primary)] text-h3 leading-[var(--leading-h3)] tracking-[var(--tracking-h3)];
+}
+
+.visit-stat-card small {
+  @apply leading-[var(--leading-body-md)];
+}
+
+.visit-arrow {
+  @apply w-7 h-7 inline-flex items-center justify-center rounded-[var(--radius-input-lg)] text-[color:var(--visit-accent)] bg-[color:color-mix(in_srgb,var(--visit-accent)_10%,transparent)] text-body-sm leading-none;
+  justify-self: end;
+  color: var(--visit-accent);
+  background: color-mix(in srgb, var(--visit-accent) 10%, transparent);
+  font-size: 13px;
+  line-height: 1;
+  stroke-width: 2.6;
+}
+
+.visit-widget .dashboard-footer-link {
+  @apply mt-auto pt-3 border-t border-t-[color:var(--border-soft)];
+}
+
+.visit-stat-card.is-blue,
+.visit-stat-card.is-teal,
+.visit-stat-card.is-indigo,
+.visit-stat-card.is-danger,
+.visit-stat-card.is-green,
+.visit-stat-card.is-slate {
+  --visit-accent: var(--primary-blue);
+}
+
+.dashboard-action-row {
+  @apply inline-flex items-center gap-2 flex-wrap justify-end;
+}
+
+.tab-pills {
+  @apply w-max max-w-full inline-flex items-center gap-1 p-1 border border-[color:var(--border)] rounded-[10px] bg-[color:var(--surface)] mb-4.5 overflow-x-auto;
+}
+
+.tab-pills .btn {
+  @apply border-transparent;
+}
+
+.chart-legend-row {
+  @apply flex items-center gap-7 mb-2;
+}
+
+.chart-legend-row span {
+  @apply inline-flex items-center gap-2;
+}
+
+.chart-card.is-compact {
+  @apply mt-0;
+}
+
+.chart-line.is-green {
+  stroke: var(--accent-teal);
+}
+
+.chart-points.is-green circle {
+  stroke: var(--accent-teal);
+}
+
+.revenue-widget {
+  @apply pb-3;
+}
+
+.revenue-layout {
+  @apply grid grid-cols-[minmax(260px,0.56fr)_minmax(0,1.44fr)] gap-6 items-stretch;
+}
+
+.revenue-summary {
+  @apply flex flex-col min-w-0;
+}
+
+.revenue-summary > span,
+.revenue-summary > strong {
+  @apply block;
+}
+
+.revenue-summary > strong {
+  @apply text-[color:var(--text-primary)] mt-1;
+}
+
+.revenue-legend {
+  @apply grid gap-2.5 mt-[26px];
+}
+
+.revenue-legend > div {
+  @apply grid grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-2.5;
+}
+
+.revenue-legend strong {
+  @apply text-[color:var(--text-primary)] whitespace-nowrap;
+}
+
+.revenue-legend em {
+  @apply text-right whitespace-nowrap;
+
+  font-style: normal;
+}
+
+.legend-dot.is-indigo {
+  @apply bg-[color:var(--indigo)];
+}
+
+.revenue-chart-wrap {
+  @apply min-w-0 overflow-x-auto;
+}
+
+.bar-chart {
+  @apply w-full min-w-[720px] h-auto block;
+}
+
+.stacked-bars rect {
+  rx: 2px;
+}
+
+.bar-blue {
+  fill: var(--primary-blue);
+}
+
+.bar-green {
+  fill: var(--accent-teal);
+}
+
+.bar-indigo {
+  fill: var(--indigo);
+}
+
+.bar-warning {
+  fill: var(--warning);
+}
+
+@media (max-width: 1380px) {
+  .dashboard-secondary-grid {
+  @apply grid-cols-[1fr_1fr];
+}
+
+  .graph-widget,
+  .revenue-widget {
+  @apply col-span-full;
+}
+}
+
+@media (max-width: 1024px) {
+  .dashboard-secondary-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+  .revenue-layout {
+  @apply grid-cols-1;
+}
+}
+
+@media (max-width: 720px) {
+  .activity-item {
+  @apply grid-cols-[auto_minmax(0,1fr)_auto];
+}
+
+  .activity-item .notification-status-dot {
+  @apply hidden;
+}
+
+  .visit-stat-grid {
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-auto-rows: minmax(84px, auto);
+}
+
+  .revenue-legend > div {
+  @apply grid-cols-1;
+}
+
+  .visit-stat-card {
+  @apply min-h-[76px] grid-cols-[auto_minmax(0,1fr)];
+}
+
+  .visit-arrow {
+  @apply inline-flex;
+}
+
+  .dashboard-action-row,
+  .chart-legend-row {
+  @apply justify-start;
+}
+}
+
+/* --------------------------------------------------------------------------
+   Normalisasi dropdown native select
+   Menjaga semua select dashboard dan rawat inap tetap seperti dropdown native,
+   dengan option yang konsisten memakai token tipografi design system.
+   -------------------------------------------------------------------------- */
+
+select {
+  @apply bg-[color:var(--field)] cursor-pointer;
+}
+
+select.input {
+  @apply appearance-none w-full min-h-11 border border-[color:var(--slate-light)] rounded-[var(--radius-input-md)] bg-[color:var(--field)] text-[color:var(--text-primary)] cursor-pointer font-sans text-body-md font-normal pr-[42px];
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position: calc(100% - 14px) 50%;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+}
+
+select.input.is-sm,
+select.is-sm {
+  @apply min-h-9 rounded-[var(--radius-input-sm)] text-body-sm pr-[38px];
+  background-position: calc(100% - 12px) 50%;
+  background-size: 16px 16px;
+}
+
+select option {
+  @apply bg-[color:var(--surface)] text-[color:var(--text-primary)] font-sans text-body-md font-normal leading-5.5;
+}
+
+select option:checked {
+  @apply bg-[color:var(--primary-light)] text-[color:var(--primary-blue)] font-normal;
+}
+
+select option:disabled {
+  @apply text-[color:var(--ui-widget-text-muted)];
+}
+
+/* Warna state icon navigasi: inactive memakai tint, active/hover memakai primary blue. */
+
+.app-sidebar .nav-item .nav-icon,
+.app-sidebar .nav-summary .nav-icon,
+.app-sidebar .nav-subitem .nav-icon {
+  @apply text-[color:var(--primary-blue-tint-40)] opacity-100;
+}
+
+.app-sidebar .nav-summary .nav-chevron {
+  @apply text-[color:var(--primary-blue-tint-40)];
+}
+
+.app-sidebar .nav-summary:hover .nav-chevron,
+.app-sidebar .nav-summary.active .nav-chevron,
+details.nav-group[open] > .nav-summary .nav-chevron {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.topnav-link i,
+.topnav-menu-row i:first-child,
+.topnav-menu-list a i:first-child,
+.topnav-submenu-panel a i:first-child {
+  @apply text-[color:var(--primary-blue-tint-40)];
+}
+
+.topnav-menu-row:hover i:first-child,
+.topnav-submenu:hover > .topnav-menu-row i:first-child,
+.topnav-submenu-panel a:hover i:first-child,
+.topnav-menu-list a:hover i:first-child {
+  @apply text-[color:var(--primary-blue)];
+}
+
+.topnav-menu-row i:last-child,
+.topnav-submenu-panel a i:last-child {
+  @apply text-[color:var(--primary-blue-tint-40)];
+}
+
+.topnav-menu-row:hover i:last-child,
+.topnav-submenu:hover > .topnav-menu-row i:last-child,
+.topnav-submenu-panel a:hover i:last-child {
+  @apply text-[color:var(--primary-blue)];
+}
+
+/* Tipografi datepicker memakai family sans yang sama seperti value input. */
+
+.ds-datepicker,
+.ds-datepicker .dropdown-trigger,
+.ds-datepicker [data-datepicker-text],
+.ds-datepicker .datepicker-trigger-content,
+.ds-datepicker .calendar-widget,
+.ds-datepicker .calendar-title,
+.ds-datepicker .calendar-day,
+.ds-datepicker .calendar-date,
+.ds-datepicker .calendar-actions,
+.calendar-widget,
+.calendar-title,
+.calendar-day,
+.calendar-date {
+  @apply font-sans;
+}
+
+/* --------------------------------------------------------------------------
+   Normalisasi tipografi value form
+   Semua value input, select, datepicker, dan dropdown option memakai normal.
+   -------------------------------------------------------------------------- */
+
+input,
+select,
+textarea,
+.dropdown-trigger,
+.dropdown-trigger > span,
+.dropdown-trigger [data-select-text],
+.dropdown-trigger [data-datepicker-text],
+.ds-select .dropdown-trigger,
+.ds-datepicker .dropdown-trigger,
+.calendar-date,
+.calendar-date.selected,
+.time-option,
+.time-option.selected,
+.dropdown-option,
+.ds-select .dropdown-option,
+.ds-select .dropdown-option.selected,
+.doctor-autocomplete-panel .dropdown-option,
+.dropdown-group-label,
+.doctor-autocomplete-panel .dropdown-group-label,
+.option-meta strong,
+.option-right,
+select option,
+select option:checked {
+  @apply font-normal;
+}
+
+/* --------------------------------------------------------------------------
+   Normalisasi surface card
+   Card dashboard memakai base yang sama: tanpa border, radius 12px, padding 16px, dan shadow-sm.
+   Gunakan :where agar specificity rendah dan halaman tetap mudah override bila perlu.
+   -------------------------------------------------------------------------- */
+
+:where( .card, .content-card, .topnav-hero-card, .topnav-stat-grid article, .metric-card, .chart-card ) {
+  @apply border-0 rounded-[var(--radius-card)] p-4 shadow-[var(--shadow-sm)];
+}
+
+/* Normalisasi tipografi navigasi */
+
+.app-sidebar .nav-item,
+.app-sidebar .nav-summary,
+.app-sidebar .nav-subitem,
+.app-sidebar .nav-item.active,
+.app-sidebar .nav-summary.active,
+.app-sidebar .nav-subitem.active,
+.app-sidebar .user-name,
+.app-sidebar .nav-count {
+  @apply font-semibold;
+}
+
+.topnav-link.active {
+  @apply font-semibold;
+}
+
+.topnav-dropdown-panel a,
+.topnav-dropdown-panel button,
+.topnav-profile .profile-name,
+.topnav-profile .profile-role,
+.profile-menu .profile-name,
+.profile-menu .profile-role {
+  @apply font-semibold;
+}
+
+/* Icon utility top bar: menu, pencarian, notifikasi, dan chevron profil memakai slate. */
+
+.header-menu-btn,
+.header-menu-btn:hover,
+.header-search .field-icon,
+.header-actions .topbar-icon,
+.header-actions .topbar-icon:hover,
+.profile-menu .topbar-line-icon,
+.topnav-utilitybar .header-actions .topbar-icon,
+.topnav-utilitybar .header-actions .topbar-icon:hover {
+  @apply text-[color:var(--slate)];
+}
+
+.header-menu-btn i,
+.header-menu-btn:hover i,
+.header-search .field-icon i,
+.header-actions .topbar-icon i,
+.header-actions .topbar-icon:hover i {
+  @apply text-[color:var(--slate)];
+}
+
+.profile-menu .topbar-line-icon:hover,
+.topnav-utilitybar .header-actions .topbar-icon i,
+.topnav-utilitybar .header-actions .topbar-icon:hover i {
+  @apply text-[color:var(--slate)];
+}

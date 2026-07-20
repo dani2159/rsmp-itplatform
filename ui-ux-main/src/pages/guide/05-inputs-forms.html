@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>05 Inputs &amp; Forms · Guide Design System</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/guide.css">
+</head>
+<body class="guide-page">
+<div class="guide-layout">
+<aside class="guide-side-menu" aria-label="Menu guide design system">
+  <div class="guide-side-menu-card">
+    <p class="guide-side-menu-kicker">Design System</p>
+    <strong class="guide-side-menu-title">SIMRS Guide</strong>
+    <nav class="guide-side-menu-list">
+      <a class="guide-side-menu-link" href="00-overview.html"><span>00</span>Overview</a>
+      <a class="guide-side-menu-link" href="01-app-structure.html"><span>01</span>App Structure</a>
+      <a class="guide-side-menu-link" href="02-color-brand.html"><span>02</span>Warna &amp; Brand</a>
+      <a class="guide-side-menu-link" href="03-typography.html"><span>03</span>Tipografi</a>
+      <a class="guide-side-menu-link" href="04-buttons.html"><span>04</span>Buttons</a>
+      <a class="guide-side-menu-link active" href="05-inputs-forms.html"><span>05</span>Inputs &amp; Forms</a>
+      <a class="guide-side-menu-link" href="06-cards.html"><span>06</span>Cards</a>
+      <a class="guide-side-menu-link" href="07-tables.html"><span>07</span>Tables</a>
+      <a class="guide-side-menu-link" href="08-badges-alerts.html"><span>08</span>Badges &amp; Alerts</a>
+      <a class="guide-side-menu-link" href="09-modals.html"><span>09</span>Modals</a>
+      <a class="guide-side-menu-link" href="10-charts.html"><span>10</span>Charts</a>
+      <a class="guide-side-menu-link" href="11-header-sidebar.html"><span>11</span>Header &amp; Sidebar</a>
+      <a class="guide-side-menu-link" href="12-tabs.html"><span>12</span>Tabs</a>
+      <a class="guide-side-menu-link" href="13-wizard.html"><span>13</span>Wizard</a>
+      <a class="guide-side-menu-link" href="14-grid-spacing-elevation.html"><span>14</span>Grid, Spacing &amp; Elevation</a>
+      <a class="guide-side-menu-link" href="15-avatars.html"><span>15</span>Avatars</a>
+    </nav>
+  </div>
+</aside>
+<main class="page">
+<header class="hero">
+<p class="eyebrow">05</p>
+<h1>Inputs &amp; Forms</h1>
+<p class="hero-subtitle">Aturan input untuk data pasien, pendaftaran, klinis, farmasi, lab, radiologi, kasir, BPJS, dan modul operasional.</p>
+<div class="divider"></div>
+<nav aria-label="Table of contents" class="toc">
+<a href="#principles">Prinsip</a>
+<a href="#tokens">Token</a>
+<a href="#anatomy">Anatomi</a>
+<a href="#sizes">Ukuran</a>
+<a href="#states">State</a>
+<a href="#types">Jenis Input</a>
+<a href="#dropdown-preview">Dropdown UI</a>
+<a href="#medical">Pattern Medis</a>
+<a href="#validation">Validasi</a>
+<a href="#layout">Layout Form</a>
+<a href="#accessibility">Aksesibilitas</a>
+<a href="#implementation">Implementasi</a>
+</nav>
+</header>
+<section class="mt-12" id="principles">
+<div class="section-head">
+<div>
+<h2>Prinsip Form SIMRS</h2>
+<p>Form di sistem informasi rumah sakit harus mendukung workflow nyata petugas, bukan sekadar mengikuti struktur database. Semua field wajib punya tujuan klinis/operasional yang jelas.</p>
+</div>
+<span class="badge badge-primary badge-sm"><span class="dot"></span>Pengalaman Form Tanpa Hambatan</span>
+</div>
+<div class="grid-4">
+<article class="card blue">
+<span class="mini-title">01 · Efisien</span>
+<h3>Data penting terlihat dulu</h3>
+<p>Prioritaskan NIK, No. RM, nama pasien, penjamin, dokter, tanggal layanan, diagnosis, dan status kunjungan.</p>
+</article>
+<article class="card green">
+<span class="mini-title">02 · Aman</span>
+<h3>Validasi sebelum simpan</h3>
+<p>Gunakan validasi realtime untuk format, tapi jangan menghambat input cepat kecuali risiko tinggi.</p>
+</article>
+<article class="card amber">
+<span class="mini-title">03 · Jelas</span>
+<h3>Label bukan placeholder</h3>
+<p>Label selalu tampil. Placeholder hanya contoh format, bukan pengganti instruksi.</p>
+</article>
+<article class="card red">
+<span class="mini-title">04 · Traceable</span>
+<h3>Field penting siap audit</h3>
+<p>Perubahan data medis, obat, billing, dan klaim perlu tercatat dengan pengguna, waktu, dan alasan perubahan.</p>
+</article>
+</div>
+</section>
+<section class="mt-12" id="tokens">
+<div class="section-head">
+<div>
+<h2>Token Visual Input</h2>
+<p>Gunakan token ini untuk seluruh input, select, textarea, search, uploader, picker, dan choice control.</p>
+</div>
+</div>
+<table class="spec-table">
+<thead><tr><th>Token</th><th>Nilai</th><th>Penggunaan</th><th>Catatan</th></tr></thead>
+<tbody>
+<tr><td>Background field</td><td><span class="token">#FFFFFF / #FFF</span></td><td>Input aktif/default</td><td>Gunakan <span class="mono">var(--white)</span> untuk card/modal/input background.</td></tr>
+<tr><td>Section halaman/form</td><td><span class="token">#F3F6FA</span></td><td>Background halaman, grup form, zebra</td><td>Hindari terlalu banyak card bertingkat.</td></tr>
+<tr><td>Border default</td><td><span class="token">#D1D5DB</span></td><td>Garis input normal</td><td>Cukup kontras tapi tidak terlalu dominan.</td></tr>
+<tr><td>Teks utama</td><td><span class="token">#0F1F3D</span></td><td>Nilai input dan label penting</td><td>Navy untuk keterbacaan tinggi.</td></tr>
+<tr><td>Teks sekunder</td><td><span class="token">#6B7280</span></td><td>Helper text, placeholder, dan metadata</td><td>Jangan untuk value penting.</td></tr>
+<tr><td>Focus ring</td><td><span class="token">#1E4FD7 + 16%</span></td><td>Focus keyboard dan field aktif</td><td>Outline wajib terlihat.</td></tr>
+<tr><td>Error</td><td><span class="token">#EF4444</span></td><td>Field error dan pesan validasi</td><td>Wajib disertai teks, bukan warna saja.</td></tr>
+<tr><td>Warning</td><td><span class="token">#F59E0B</span></td><td>Perlu perhatian tapi masih boleh lanjut</td><td>Contoh: stok hampir habis, STR mendekati expired.</td></tr>
+<tr><td>Success</td><td><span class="token">#00B894</span></td><td>Valid, terverifikasi, dan data ditemukan</td><td>Gunakan hemat agar tidak ramai.</td></tr>
+</tbody>
+</table>
+</section>
+<section class="mt-12" id="anatomy">
+<div class="section-head">
+<div>
+<h2>Anatomi Input</h2>
+<p>Struktur standar semua field: label, indikator opsional/wajib, control, helper/error text, dan meta action jika diperlukan.</p>
+</div>
+</div>
+<div class="grid-2">
+<article class="card soft">
+<div class="card-head">
+<div>
+<span class="mini-title">Anatomi default</span>
+<h3>Input teks dengan label lengkap</h3>
+</div>
+<span class="badge badge-primary badge-sm">Direkomendasikan</span>
+</div>
+<div class="form-grid">
+<div class="field">
+<div class="label-line"><label for="patient-name">Nama Pasien <span class="required">*</span></label><span class="optional">Wajib</span></div>
+<input class="input" id="patient-name" value="Siti Aminah"/>
+<span class="helper">Gunakan nama sesuai identitas resmi.</span>
+</div>
+<div class="field state-success">
+<div class="label-line"><label for="nik-demo">NIK <span class="required">*</span></label><span class="optional">16 digit</span></div>
+<input class="input mono" id="nik-demo" value="3273124508900001"/>
+<span class="helper success">Format valid dan belum duplikat.</span>
+</div>
+<div class="field state-error">
+<div class="label-line"><label for="phone-demo">Nomor HP</label><span class="optional">Opsional</span></div>
+<input class="input mono" id="phone-demo" value="0812-ABC"/>
+<span class="helper error">Nomor HP hanya boleh berisi angka.</span>
+</div>
+<div class="field state-warning">
+<div class="label-line"><label for="sep-demo">No. SEP BPJS</label><span class="optional">Cek otomatis</span></div>
+<input class="input mono" id="sep-demo" value="0301R0010626V000001"/>
+<span class="helper warning">SEP ditemukan, tetapi masa berlaku perlu dicek ulang.</span>
+</div>
+</div>
+</article>
+<article class="card soft">
+<div class="card-head">
+<div>
+<span class="mini-title">Struktur field</span>
+<h3>Rule penempatan informasi</h3>
+</div>
+</div>
+<table class="spec-table">
+<tbody>
+<tr><td>Label</td><td>Selalu tampil di atas field. Gunakan 14px, font weight 500, dan kalimat pendek: Nama Pasien, No. RM, Tanggal Lahir.</td></tr>
+<tr><td>Wajib</td><td>Gunakan tanda <span class="required">*</span> untuk data wajib. Jangan menandai semua field sebagai wajib.</td></tr>
+<tr><td>Placeholder</td><td>Berisi contoh format: 3273xxxxxxxxxxxx, HH:mm, 0301R0010626V000001.</td></tr>
+<tr><td>Helper</td><td>Berisi batasan, contoh, atau akibat input. Muncul sebelum error.</td></tr>
+<tr><td>Error</td><td>Spesifik dan dapat diperbaiki. Hindari “Data tidak valid” tanpa penjelasan.</td></tr>
+<tr><td>Aksi meta</td><td>Taruh aksi kecil di kanan label: Cek BPJS, Scan Barcode, Generate No. RM.</td></tr>
+</tbody>
+</table>
+</article>
+</div>
+</section>
+<section class="mt-12" id="sizes">
+<div class="section-head">
+<div>
+<h2>Ukuran Input</h2>
+<p>Default aplikasi web medis menggunakan MD/Normal 44px. Gunakan LG untuk kiosk/touchscreen, dan SM/XS hanya untuk tabel padat atau filter compact.</p>
+</div>
+</div>
+<div class="grid-5">
+<article class="card"><span class="mini-title">XS · 32px</span><div class="field u-style-081"><label>Label printer</label><input class="input is-xs mono" value="RM-240001"/></div><p>Untuk thermal label, table inline ubah, metadata kecil.</p></article>
+<article class="card"><span class="mini-title">SM · 36px</span><div class="field u-style-081"><label>Filter tabel</label><input class="input is-sm" value="Rawat Jalan"/></div><p>Untuk toolbar tabel, search compact, filter cepat.</p></article>
+<article class="card blue"><span class="mini-title">MD · 44px</span><div class="field u-style-081"><label>Form default</label><input class="input is-md" value="Nama pasien"/></div><p>Ukuran utama untuk desktop SIMRS.</p></article>
+<article class="card"><span class="mini-title">LG · 52px</span><div class="field u-style-081"><label>Kiosk / tablet</label><input class="input is-lg" value="Nomor antrean"/></div><p>Untuk touchscreen, kiosk, tablet pendaftaran.</p></article>
+<article class="card"><span class="mini-title">XL · 60px</span><div class="field u-style-081"><label>Input utama kiosk</label><input class="input is-xl mono" value="3273124508900001"/></div><p>Untuk input tunggal besar seperti NIK di kiosk.</p></article>
+</div>
+<div class="card u-style-013">
+<table class="spec-table">
+<thead><tr><th>Ukuran</th><th>Tinggi</th><th>Teks</th><th>Radius</th><th>Use case SIMRS</th></tr></thead>
+<tbody>
+<tr><td>XS</td><td>32px</td><td>12px</td><td>4px</td><td>Label printer, barcode, dan ubah tabel inline.</td></tr>
+<tr><td>SM</td><td>36px</td><td>13px</td><td>6px</td><td>Filter tabel, toolbar, dan search cepat.</td></tr>
+<tr><td>MD</td><td>44px</td><td>14px</td><td>7px</td><td>Default semua form desktop.</td></tr>
+<tr><td>LG</td><td>52px</td><td>15px</td><td>8px</td><td>Tablet, modal besar, dan petugas dengan touch workflow.</td></tr>
+<tr><td>XL</td><td>60px</td><td>16px</td><td>10px</td><td>Kiosk mandiri, display input antrean, dan form publik.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mt-12" id="states">
+<div class="section-head">
+<div>
+<h2>Matriks State</h2>
+<p>Setiap input perlu state yang konsisten agar bisa dipakai ulang di Figma dan React.</p>
+</div>
+</div>
+<div class="state-grid">
+<div class="state-label">State dasar</div>
+<div class="state-box"><span class="mini-title">Default</span><input class="input" placeholder="Masukkan nama pasien"/></div>
+<div class="state-box"><span class="mini-title">Terisi</span><input class="input" value="Siti Aminah"/></div>
+<div class="state-box"><span class="mini-title">Focus</span><input class="input u-style-082" value="3273124508900001"/></div>
+<div class="state-box"><span class="mini-title">Hover</span><input class="input u-style-083" value="Rawat Jalan"/></div>
+<div class="state-label">State feedback</div>
+<div class="state-box state-success"><span class="mini-title">Success</span><input class="input" value="BPJS aktif"/><span class="helper success">Data terverifikasi.</span></div>
+<div class="state-box state-warning"><span class="mini-title">Warning</span><input class="input" value="Stok 7"/><span class="helper warning">Stok mendekati minimum.</span></div>
+<div class="state-box state-error"><span class="mini-title">Error</span><input class="input" value="3201"/><span class="helper error">NIK harus 16 digit.</span></div>
+<div class="state-box"><span class="mini-title">Info</span><input class="input u-style-084" value="Otomatis dihitung"/><span class="helper">Umur dihitung dari tanggal lahir.</span></div>
+<div class="state-label">State sistem</div>
+<div class="state-box"><span class="mini-title">Nonaktif</span><input class="input" disabled="" value="Tidak dapat diubah"/></div>
+<div class="state-box readonly"><span class="mini-title">Readonly</span><input class="input" readonly="" value="RM-240001"/></div>
+<div class="state-box"><span class="mini-title">Loading</span><input class="input with-right" value="Mencari pasien..."/><span class="suffix">⟳</span></div>
+<div class="state-box"><span class="mini-title">Skeleton</span><div class="u-style-085"></div></div>
+</div>
+</section>
+<section class="mt-12" id="types">
+<div class="section-head">
+<div>
+<h2>Jenis Input Umum</h2>
+<p>Semua tipe input yang akan sering dipakai di modul pendaftaran, rawat jalan, rawat inap, farmasi, lab, kasir, manajemen pengguna, dan integrasi BPJS.</p>
+</div>
+</div>
+<div class="grid-3">
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">01</span><h3>Teks, Email, Telepon</h3></div><span class="badge badge-sm">Dasar</span></div>
+<div class="field"><label>Nama Lengkap <span class="required">*</span></label><input class="input" placeholder="Contoh: Siti Aminah"/></div><br/>
+<div class="field"><label>Email</label><input class="input" placeholder="nama@email.com" type="email"/></div><br/>
+<div class="field"><label>Nomor HP</label><div class="input-wrap"><span class="prefix">+62</span><input class="input with-left mono" value="81234567890"/></div></div>
+<p>Gunakan phone mask Indonesia, simpan dalam format normalisasi.</p>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">02</span><h3>Number, Decimal, Unit</h3></div><span class="badge badge-sm">Numerik</span></div>
+<div class="field"><label>Berat Badan</label><div class="field-row"><input class="input mono" value="62.5"/><span class="unit-pill">kg</span></div></div><br/>
+<div class="field"><label>Suhu</label><div class="field-row"><input class="input mono warning" value="38.2"/><span class="unit-pill">°C</span></div><span class="helper warning">Di atas batas normal.</span></div><br/>
+<div class="field"><label>Diskon</label><div class="input-wrap"><input class="input mono with-right" value="10"/><span class="suffix">%</span></div></div>
+<p>Input numerik medis harus mendukung desimal, unit, range normal, dan flag abnormal.</p>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">03</span><h3>Mata Uang &amp; Billing</h3></div><span class="badge badge-sm">Keuangan</span></div>
+<div class="field"><label>Tarif Tindakan</label><div class="input-wrap"><span class="prefix">Rp</span><input class="input with-left mono" value="350.000"/></div></div><br/>
+<div class="field"><label>Nominal Klaim</label><div class="input-wrap"><span class="prefix">Rp</span><input class="input with-left mono" value="1.250.000"/></div></div><br/>
+<div class="field"><label>Deposit Pasien</label><div class="input-wrap"><span class="prefix">Rp</span><input class="input with-left mono" value="0"/></div></div>
+<p>Gunakan pemisah ribuan saat mengetik, tetapi kirim value numeric murni ke API.</p>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">04</span><h3>Password &amp; PIN</h3></div><span class="badge badge-danger badge-sm">Aman</span></div>
+<div class="field"><label>Password</label><div class="input-wrap"><input class="input with-right" type="password" value="password"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg></span></div><span class="helper">Minimal 8 karakter, kombinasi huruf dan angka.</span></div><br/>
+<div class="field"><label>PIN Approval Farmasi</label><input class="input mono" type="password" value="123456"/></div><br/>
+<div class="field"><label>OTP Verifikasi</label><input class="input mono is-lg u-style-086" value="4 8 2 1 0 7"/></div>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">05</span><h3>Cari &amp; Lookup</h3></div><span class="badge badge-primary badge-sm">Debounce</span></div>
+<div class="field"><label>Cari Pasien</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left" value="Siti Aminah / 3273"/></div><span class="helper success">3 pasien ditemukan.</span></div><br/>
+<div class="field"><label>Lookup ICD-10</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left mono" value="J18.9 Pneumonia"/></div></div><br/>
+<div class="field"><label>Cari Obat</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left" value="Amoxicillin"/></div></div>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">06</span><h3>Select &amp; Dropdown</h3></div><span class="badge badge-sm">Lucide Chevron</span></div>
+<div class="field"><label>Penjamin <span class="required">*</span></label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">BPJS Kesehatan</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="BPJS Kesehatan" type="button">BPJS Kesehatan</button><button class="dropdown-option" data-select-value="Umum" type="button">Umum</button><button class="dropdown-option" data-select-value="Asuransi" type="button">Asuransi</button></div></details><span class="native-select-note"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg> Custom select memakai .ds-dropdown .ds-select seperti halaman aplikasi.</span></div><br/>
+<div class="field"><label>Poliklinik</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Poli Penyakit Dalam</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Poli Penyakit Dalam" type="button">Poli Penyakit Dalam</button><button class="dropdown-option" data-select-value="Poli Anak" type="button">Poli Anak</button><button class="dropdown-option" data-select-value="Poli Bedah" type="button">Poli Bedah</button></div></details></div>
+<div class="dropdown-panel compact u-style-087">
+<div class="dropdown-option selected"><span class="option-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.68-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span><span class="option-meta">BPJS Kesehatan<small>Penjamin utama pasien</small></span><span class="option-right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span></div>
+<div class="dropdown-option"><span class="option-icon green"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg></span><span class="option-meta">Umum<small>Pembayaran mandiri</small></span></div>
+<div class="dropdown-option"><span class="option-icon indigo"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><rect height="20" rx="2" ry="2" width="16" x="4" y="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg></span><span class="option-meta">Asuransi / Perusahaan<small>Butuh nomor polis atau surat jaminan</small></span></div>
+</div>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">07</span><h3>Combobox &amp; Autocomplete</h3></div><span class="badge badge-primary badge-sm">Searchable</span></div>
+<div class="dropdown-demo guide-combobox-demo">
+<div class="field"><label>Dokter DPJP</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left with-right" value="ahmad"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div></div>
+<div class="dropdown-panel compact u-style-087">
+<div class="dropdown-searchbar"><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input is-sm with-left" value="ahmad"/></div></div>
+<div class="dropdown-option active"><span class="option-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg></span><span class="option-meta">dr. Ahmad Pratama, Sp.PD<small>Poli Penyakit Dalam · tersedia 08:00–12:00</small></span></div>
+<div class="dropdown-option"><span class="option-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg></span><span class="option-meta">dr. Ahmad Fauzi, Sp.A<small>Poli Anak · jadwal Jumat</small></span></div>
+</div>
+</div>
+<div class="chip-row u-style-081"><span class="chip gray">Keyboard ↑↓</span><span class="chip gray">Enter untuk pilih</span><span class="chip gray">Esc untuk tutup</span></div>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">08</span><h3>Multi Select &amp; Tag</h3></div><span class="badge badge-indigo badge-sm">Multiple</span></div>
+<div class="field"><label>Alergi</label><div class="input u-style-088"><span class="chip red">Penicillin ×</span><span class="chip red">Seafood ×</span><span class="helper">Tambah alergi...</span></div></div><br/>
+<div class="field"><label>Diagnosis Sekunder</label><div class="input u-style-088"><span class="chip">E11.9 ×</span><span class="chip">I10 ×</span><span class="helper">Cari ICD...</span></div></div>
+<p>Gunakan chip untuk item terpilih, tampilkan maksimum item terlihat sebelum collapse.</p>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">09</span><h3>Textarea &amp; Catatan Klinis</h3></div><span class="badge badge-sm">Teks panjang</span></div>
+<div class="field"><label>Keluhan Utama</label><textarea placeholder="Masukkan keluhan pasien...">Demam sejak 3 hari, batuk berdahak, nafsu makan menurun.</textarea></div><br/>
+<div class="field"><label>Catatan CPPT / SOAP</label><textarea class="mono-field u-style-089">S: Demam 3 hari\nO: T 38.2, RR 22\nA: Observasi ISPA\nP: Pemeriksaan lab</textarea></div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="dropdown-preview">
+<div class="section-head">
+<div>
+<h2>Dropdown UI</h2>
+<p>Dropdown ditampilkan dalam state normal tertutup dan panel akan buka/tutup saat trigger diklik, sama seperti perilaku di halaman aplikasi.</p>
+</div>
+<span class="badge badge-primary badge-sm">Lucide Icons</span>
+</div>
+<div class="dropdown-lab">
+<article class="dropdown-card">
+<div class="card-head"><div><span class="mini-title">Opsi Dropdown</span><h3>Penjamin / pilihan pendek</h3></div><span class="badge badge-sm">Select</span></div>
+<div class="dropdown-demo">
+<div class="field"><label>Penjamin</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.68-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span><input class="input with-left with-right" value="BPJS Kesehatan"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div></div>
+<div class="dropdown-panel">
+<div class="dropdown-group-label">Pilih penjamin</div>
+<div class="dropdown-option selected"><span class="option-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.68-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span><span class="option-meta">BPJS Kesehatan<small>Butuh nomor kartu, SEP, dan rujukan</small></span><span class="option-right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg></span></div>
+<div class="dropdown-option"><span class="option-icon green"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"></path><circle cx="12" cy="7" r="4"></circle></svg></span><span class="option-meta">Umum<small>Pembayaran pribadi / tunai</small></span></div>
+<div class="dropdown-option"><span class="option-icon indigo"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><rect height="20" rx="2" ry="2" width="16" x="4" y="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg></span><span class="option-meta">Asuransi / Perusahaan<small>Validasi penjamin sebelum registrasi</small></span></div>
+<div class="dropdown-footer"><span><span class="kbd">↑</span> <span class="kbd">↓</span> navigasi</span><span><span class="kbd">Enter</span> pilih</span></div>
+</div>
+</div>
+</article>
+<article class="dropdown-card">
+<div class="card-head"><div><span class="mini-title">Dropdown Autocomplete</span><h3>ICD-10 / dokter / obat</h3></div><span class="badge badge-primary badge-sm">Searchable</span></div>
+<div class="dropdown-demo">
+<div class="field"><label>Diagnosis ICD-10</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left with-right mono" value="J18"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div><span class="helper">Min. 2 karakter, debounce 300ms.</span></div>
+<div class="dropdown-panel">
+<div class="dropdown-searchbar"><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input is-sm with-left mono" value="J18"/></div></div>
+<div class="dropdown-group-label">Hasil teratas</div>
+<div class="dropdown-option active"><span class="option-icon indigo"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg></span><span class="option-meta"><span class="mono">J18.9</span> · Pneumonia, unspecified<small>ICD-10 · sering dipakai poli penyakit dalam</small></span><span class="option-right">Enter</span></div>
+<div class="dropdown-option"><span class="option-icon indigo"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg></span><span class="option-meta"><span class="mono">J18.0</span> · Bronchopneumonia<small>ICD-10</small></span></div>
+<div class="dropdown-option"><span class="option-icon indigo"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M11 2v2"></path><path d="M5 2v2"></path><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path><path d="M8 15a6 6 0 0 0 12 0v-3"></path><circle cx="20" cy="10" r="2"></circle></svg></span><span class="option-meta"><span class="mono">J18.1</span> · Lobar pneumonia<small>ICD-10</small></span></div>
+<div class="dropdown-footer"><span>3 dari 24 hasil</span><span><span class="kbd">Esc</span> tutup</span></div>
+</div>
+</div>
+</article>
+<article class="dropdown-card">
+<div class="card-head"><div><span class="mini-title">Dropdown Kalender</span><h3>Tanggal lahir / jadwal kontrol</h3></div><span class="badge badge-sm">CalendarDays</span></div>
+<div class="dropdown-demo">
+<div class="field"><label>Tanggal Kontrol</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg></span><input class="input with-left with-right mono" value="15 Juni 2026"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div></div>
+<div class="dropdown-panel compact">
+<div class="calendar-widget">
+<div class="calendar-head"><button aria-label="Bulan sebelumnya" class="icon-btn">‹</button><div class="calendar-title">Juni 2026</div><button aria-label="Bulan berikutnya" class="icon-btn">›</button></div>
+<div class="calendar-grid">
+<div class="calendar-day">Sen</div><div class="calendar-day">Sel</div><div class="calendar-day">Rab</div><div class="calendar-day">Kam</div><div class="calendar-day">Jum</div><div class="calendar-day">Sab</div><div class="calendar-day">Min</div>
+<div class="calendar-date muted-date">25</div><div class="calendar-date muted-date">26</div><div class="calendar-date muted-date">27</div><div class="calendar-date muted-date">28</div><div class="calendar-date muted-date">29</div><div class="calendar-date muted-date">30</div><div class="calendar-date">1</div>
+<div class="calendar-date">2</div><div class="calendar-date">3</div><div class="calendar-date">4</div><div class="calendar-date">5</div><div class="calendar-date">6</div><div class="calendar-date">7</div><div class="calendar-date">8</div>
+<div class="calendar-date">9</div><div class="calendar-date">10</div><div class="calendar-date range">11</div><div class="calendar-date range">12</div><div class="calendar-date range">13</div><div class="calendar-date">14</div><div class="calendar-date selected">15</div>
+<div class="calendar-date">16</div><div class="calendar-date">17</div><div class="calendar-date">18</div><div class="calendar-date">19</div><div class="calendar-date">20</div><div class="calendar-date">21</div><div class="calendar-date">22</div>
+<div class="calendar-date">23</div><div class="calendar-date">24</div><div class="calendar-date">25</div><div class="calendar-date">26</div><div class="calendar-date">27</div><div class="calendar-date">28</div><div class="calendar-date">29</div>
+</div>
+<div class="calendar-actions"><button class="btn btn-ghost">Hari ini</button><button class="btn">Pilih Tanggal</button></div>
+</div>
+</div>
+</div>
+</article>
+<article class="dropdown-card">
+<div class="card-head"><div><span class="mini-title">Dropdown Timepicker</span><h3>Jam praktik / tindakan</h3></div><span class="badge badge-sm">Clock</span></div>
+<div class="dropdown-demo">
+<div class="field"><label>Jam Praktik</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span><input class="input with-left with-right mono" value="08:30"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div></div>
+<div class="dropdown-panel compact">
+<div class="timepicker">
+<div class="time-col"><div class="time-col-title">Jam</div><div class="time-option">07</div><div class="time-option selected">08</div><div class="time-option">09</div><div class="time-option">10</div><div class="time-option">11</div><div class="time-option">12</div></div>
+<div class="time-col"><div class="time-col-title">Menit</div><div class="time-option">00</div><div class="time-option">15</div><div class="time-option selected">30</div><div class="time-option">45</div><div class="time-option">50</div><div class="time-option">55</div></div>
+</div>
+<div class="dropdown-footer"><span>Format 24 jam</span><span><span class="kbd">Enter</span> pilih</span></div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="date-time">
+<div class="section-head">
+<div>
+<h2>Tanggal, Jam, dan Rentang Tanggal</h2>
+<p>Input waktu dipakai untuk tanggal lahir, jadwal dokter, antrean, rawat inap, tindakan, order lab/radiologi, cut-off farmasi, dan laporan.</p>
+</div>
+</div>
+<div class="grid-4">
+<article class="card guide-picker-card">
+<span class="mini-title">Datepicker</span>
+<div class="field u-style-081">
+<label>Tanggal Lahir</label>
+<details class="ds-dropdown ds-datepicker guide-picker-dropdown" data-component="guide-datepicker" data-date-min="1900-01-01" data-date-max="today">
+<summary class="dropdown-trigger is-md" aria-label="Pilih tanggal lahir">
+<span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><svg aria-hidden="true" class="lucide" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path></svg></span><span class="mono" data-picker-text>15 Agustus 1990</span></span>
+</summary>
+<div class="dropdown-panel compact datepicker-panel" role="dialog">
+<div class="calendar-widget">
+<div class="calendar-head"><strong class="calendar-title">Agustus 1990</strong><div class="calendar-nav"><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan sebelumnya">‹</button><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan berikutnya">›</button></div></div>
+<div class="calendar-grid"><div class="calendar-day">Min</div><div class="calendar-day">Sen</div><div class="calendar-day">Sel</div><div class="calendar-day">Rab</div><div class="calendar-day">Kam</div><div class="calendar-day">Jum</div><div class="calendar-day">Sab</div>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="1990-07-29" data-label="29 Juli 1990" data-order="726677">29</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="1990-07-30" data-label="30 Juli 1990" data-order="726678">30</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="1990-07-31" data-label="31 Juli 1990" data-order="726679">31</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-01" data-label="1 Agustus 1990" data-order="726680">1</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-02" data-label="2 Agustus 1990" data-order="726681">2</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-03" data-label="3 Agustus 1990" data-order="726682">3</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-04" data-label="4 Agustus 1990" data-order="726683">4</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-05" data-label="5 Agustus 1990" data-order="726684">5</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-06" data-label="6 Agustus 1990" data-order="726685">6</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-07" data-label="7 Agustus 1990" data-order="726686">7</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-08" data-label="8 Agustus 1990" data-order="726687">8</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-09" data-label="9 Agustus 1990" data-order="726688">9</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-10" data-label="10 Agustus 1990" data-order="726689">10</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-11" data-label="11 Agustus 1990" data-order="726690">11</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-12" data-label="12 Agustus 1990" data-order="726691">12</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-13" data-label="13 Agustus 1990" data-order="726692">13</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-14" data-label="14 Agustus 1990" data-order="726693">14</button>
+<button class="calendar-date selected" type="button" data-guide-date data-value="1990-08-15" data-label="15 Agustus 1990" data-order="726694">15</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-16" data-label="16 Agustus 1990" data-order="726695">16</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-17" data-label="17 Agustus 1990" data-order="726696">17</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-18" data-label="18 Agustus 1990" data-order="726697">18</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-19" data-label="19 Agustus 1990" data-order="726698">19</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-20" data-label="20 Agustus 1990" data-order="726699">20</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-21" data-label="21 Agustus 1990" data-order="726700">21</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-22" data-label="22 Agustus 1990" data-order="726701">22</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-23" data-label="23 Agustus 1990" data-order="726702">23</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-24" data-label="24 Agustus 1990" data-order="726703">24</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-25" data-label="25 Agustus 1990" data-order="726704">25</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-26" data-label="26 Agustus 1990" data-order="726705">26</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-27" data-label="27 Agustus 1990" data-order="726706">27</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-28" data-label="28 Agustus 1990" data-order="726707">28</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-29" data-label="29 Agustus 1990" data-order="726708">29</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-30" data-label="30 Agustus 1990" data-order="726709">30</button>
+<button class="calendar-date" type="button" data-guide-date data-value="1990-08-31" data-label="31 Agustus 1990" data-order="726710">31</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="1990-09-01" data-label="1 September 1990" data-order="726711">1</button></div>
+<div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-guide-date-clear>Reset</button><button class="btn btn-sm" type="button" data-guide-close>Pilih Tanggal</button></div>
+</div>
+</div>
+<input type="hidden" value="1990-08-15" data-picker-value />
+</details>
+<span class="helper">Umur otomatis: 35 tahun.</span>
+</div>
+</article>
+<article class="card guide-picker-card">
+<span class="mini-title">Timepicker</span>
+<div class="field u-style-081">
+<label>Jam Praktik</label>
+<details class="ds-dropdown guide-time-dropdown guide-picker-dropdown" data-component="guide-timepicker">
+<summary class="dropdown-trigger is-md" aria-label="Pilih jam praktik">
+<span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><svg aria-hidden="true" class="lucide" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span><span class="mono" data-picker-text>08:30</span></span>
+</summary>
+<div class="dropdown-panel compact guide-time-panel" role="dialog">
+<div class="timepicker" data-timepicker-grid>
+<div class="time-col"><div class="time-col-title">Jam</div><button class="time-option" type="button" data-time-part="hour">07</button><button class="time-option selected" type="button" data-time-part="hour">08</button><button class="time-option" type="button" data-time-part="hour">09</button><button class="time-option" type="button" data-time-part="hour">10</button><button class="time-option" type="button" data-time-part="hour">11</button><button class="time-option" type="button" data-time-part="hour">12</button></div>
+<div class="time-col"><div class="time-col-title">Menit</div><button class="time-option" type="button" data-time-part="minute">00</button><button class="time-option" type="button" data-time-part="minute">15</button><button class="time-option selected" type="button" data-time-part="minute">30</button><button class="time-option" type="button" data-time-part="minute">45</button><button class="time-option" type="button" data-time-part="minute">50</button><button class="time-option" type="button" data-time-part="minute">55</button></div>
+</div>
+<div class="dropdown-footer"><span>Format 24 jam</span><span>Klik jam dan menit</span></div>
+</div>
+<input type="hidden" value="08:30" data-picker-value />
+</details>
+</div>
+</article>
+<article class="card guide-picker-card">
+<span class="mini-title">Date &amp; Time Picker</span>
+<div class="field u-style-081">
+<label>Waktu Order</label>
+<details class="ds-dropdown ds-datepicker guide-picker-dropdown" data-component="guide-datetimepicker" data-date-min="today" data-date-max="today+30d">
+<summary class="dropdown-trigger is-md" aria-label="Pilih tanggal dan jam order">
+<span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><svg aria-hidden="true" class="lucide" viewBox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path></svg></span><span class="mono" data-picker-text>15 Juni 2026 · 08:30</span></span>
+</summary>
+<div class="dropdown-panel compact datepicker-panel guide-datetime-panel" role="dialog">
+<div class="calendar-widget">
+<div class="calendar-head"><strong class="calendar-title">Juni 2026</strong><div class="calendar-nav"><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan sebelumnya">‹</button><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan berikutnya">›</button></div></div>
+<div class="calendar-grid"><div class="calendar-day">Min</div><div class="calendar-day">Sen</div><div class="calendar-day">Sel</div><div class="calendar-day">Rab</div><div class="calendar-day">Kam</div><div class="calendar-day">Jum</div><div class="calendar-day">Sab</div>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-05-31" data-label="31 Mei 2026" data-order="739767">31</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-01" data-label="1 Juni 2026" data-order="739768">1</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-02" data-label="2 Juni 2026" data-order="739769">2</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-03" data-label="3 Juni 2026" data-order="739770">3</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-04" data-label="4 Juni 2026" data-order="739771">4</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-05" data-label="5 Juni 2026" data-order="739772">5</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-06" data-label="6 Juni 2026" data-order="739773">6</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-07" data-label="7 Juni 2026" data-order="739774">7</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-08" data-label="8 Juni 2026" data-order="739775">8</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-09" data-label="9 Juni 2026" data-order="739776">9</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-10" data-label="10 Juni 2026" data-order="739777">10</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-11" data-label="11 Juni 2026" data-order="739778">11</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-12" data-label="12 Juni 2026" data-order="739779">12</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-13" data-label="13 Juni 2026" data-order="739780">13</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-14" data-label="14 Juni 2026" data-order="739781">14</button>
+<button class="calendar-date selected" type="button" data-guide-date data-value="2026-06-15" data-label="15 Juni 2026" data-order="739782">15</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-16" data-label="16 Juni 2026" data-order="739783">16</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-17" data-label="17 Juni 2026" data-order="739784">17</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-18" data-label="18 Juni 2026" data-order="739785">18</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-19" data-label="19 Juni 2026" data-order="739786">19</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-20" data-label="20 Juni 2026" data-order="739787">20</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-21" data-label="21 Juni 2026" data-order="739788">21</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-22" data-label="22 Juni 2026" data-order="739789">22</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-23" data-label="23 Juni 2026" data-order="739790">23</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-24" data-label="24 Juni 2026" data-order="739791">24</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-25" data-label="25 Juni 2026" data-order="739792">25</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-26" data-label="26 Juni 2026" data-order="739793">26</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-27" data-label="27 Juni 2026" data-order="739794">27</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-28" data-label="28 Juni 2026" data-order="739795">28</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-29" data-label="29 Juni 2026" data-order="739796">29</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-30" data-label="30 Juni 2026" data-order="739797">30</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-01" data-label="1 Juli 2026" data-order="739798">1</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-02" data-label="2 Juli 2026" data-order="739799">2</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-03" data-label="3 Juli 2026" data-order="739800">3</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-04" data-label="4 Juli 2026" data-order="739801">4</button></div>
+</div>
+<div class="guide-picker-divider"></div>
+<div class="timepicker guide-inline-timepicker" data-timepicker-grid>
+<div class="time-col"><div class="time-col-title">Jam</div><button class="time-option" type="button" data-time-part="hour">07</button><button class="time-option selected" type="button" data-time-part="hour">08</button><button class="time-option" type="button" data-time-part="hour">09</button><button class="time-option" type="button" data-time-part="hour">10</button></div>
+<div class="time-col"><div class="time-col-title">Menit</div><button class="time-option" type="button" data-time-part="minute">00</button><button class="time-option" type="button" data-time-part="minute">15</button><button class="time-option selected" type="button" data-time-part="minute">30</button><button class="time-option" type="button" data-time-part="minute">45</button></div>
+</div>
+<div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-guide-close>Batal</button><button class="btn btn-sm" type="button" data-guide-close>Terapkan</button></div>
+</div>
+<input type="hidden" value="2026-06-15T08:30" data-picker-value />
+</details>
+</div>
+</article>
+<article class="card guide-picker-card">
+<span class="mini-title">Date Range Picker</span>
+<div class="field u-style-081">
+<label>Rentang Laporan</label>
+<details class="ds-dropdown ds-datepicker guide-picker-dropdown" data-component="guide-daterange" data-date-min="today-365d" data-date-max="today">
+<summary class="dropdown-trigger is-md" aria-label="Pilih rentang tanggal">
+<span class="datepicker-trigger-content"><span class="datepicker-trigger-icon"><svg aria-hidden="true" class="lucide" viewBox="0 0 24 24"><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M8 2v4"></path><path d="M16 2v4"></path><path d="M3 10h18"></path></svg></span><span class="mono" data-picker-text>1 Juni 2026 – 15 Juni 2026</span></span>
+</summary>
+<div class="dropdown-panel compact datepicker-panel" role="dialog">
+<div class="calendar-widget">
+<div class="calendar-head"><strong class="calendar-title">Juni 2026</strong><div class="calendar-nav"><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan sebelumnya">‹</button><button class="icon-btn icon-btn-sm" type="button" aria-label="Bulan berikutnya">›</button></div></div>
+<div class="calendar-grid"><div class="calendar-day">Min</div><div class="calendar-day">Sen</div><div class="calendar-day">Sel</div><div class="calendar-day">Rab</div><div class="calendar-day">Kam</div><div class="calendar-day">Jum</div><div class="calendar-day">Sab</div>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-05-31" data-label="31 Mei 2026" data-order="739767">31</button>
+<button class="calendar-date selected" type="button" data-guide-date data-value="2026-06-01" data-label="1 Juni 2026" data-order="739768">1</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-02" data-label="2 Juni 2026" data-order="739769">2</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-03" data-label="3 Juni 2026" data-order="739770">3</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-04" data-label="4 Juni 2026" data-order="739771">4</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-05" data-label="5 Juni 2026" data-order="739772">5</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-06" data-label="6 Juni 2026" data-order="739773">6</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-07" data-label="7 Juni 2026" data-order="739774">7</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-08" data-label="8 Juni 2026" data-order="739775">8</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-09" data-label="9 Juni 2026" data-order="739776">9</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-10" data-label="10 Juni 2026" data-order="739777">10</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-11" data-label="11 Juni 2026" data-order="739778">11</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-12" data-label="12 Juni 2026" data-order="739779">12</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-13" data-label="13 Juni 2026" data-order="739780">13</button>
+<button class="calendar-date range" type="button" data-guide-date data-value="2026-06-14" data-label="14 Juni 2026" data-order="739781">14</button>
+<button class="calendar-date selected" type="button" data-guide-date data-value="2026-06-15" data-label="15 Juni 2026" data-order="739782">15</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-16" data-label="16 Juni 2026" data-order="739783">16</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-17" data-label="17 Juni 2026" data-order="739784">17</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-18" data-label="18 Juni 2026" data-order="739785">18</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-19" data-label="19 Juni 2026" data-order="739786">19</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-20" data-label="20 Juni 2026" data-order="739787">20</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-21" data-label="21 Juni 2026" data-order="739788">21</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-22" data-label="22 Juni 2026" data-order="739789">22</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-23" data-label="23 Juni 2026" data-order="739790">23</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-24" data-label="24 Juni 2026" data-order="739791">24</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-25" data-label="25 Juni 2026" data-order="739792">25</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-26" data-label="26 Juni 2026" data-order="739793">26</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-27" data-label="27 Juni 2026" data-order="739794">27</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-28" data-label="28 Juni 2026" data-order="739795">28</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-29" data-label="29 Juni 2026" data-order="739796">29</button>
+<button class="calendar-date" type="button" data-guide-date data-value="2026-06-30" data-label="30 Juni 2026" data-order="739797">30</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-01" data-label="1 Juli 2026" data-order="739798">1</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-02" data-label="2 Juli 2026" data-order="739799">2</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-03" data-label="3 Juli 2026" data-order="739800">3</button>
+<button class="calendar-date muted-date" type="button" data-guide-date data-value="2026-07-04" data-label="4 Juli 2026" data-order="739801">4</button></div>
+<div class="calendar-actions"><button class="btn btn-ghost btn-sm" type="button" data-guide-range-reset>Reset</button><button class="btn btn-sm" type="button" data-guide-close>Pilih Rentang</button></div>
+</div>
+</div>
+<input type="hidden" value="2026-06-01|2026-06-15" data-picker-value />
+</details>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="choice-controls">
+<div class="section-head">
+<div>
+<h2>Choice Control</h2>
+<p>Gunakan checkbox, radio, switch, dan segmented control sesuai jenis keputusan pengguna.</p>
+</div>
+</div>
+<div class="grid-4">
+<article class="card"><span class="mini-title">Checkbox</span><h3>Pilihan ganda</h3><div class="control-row u-style-018"><label class="check"><input checked="" type="checkbox"/> Diabetes</label><label class="check"><input type="checkbox"/> Hipertensi</label><label class="check"><input type="checkbox"/> Asma</label></div><p>Untuk pilihan lebih dari satu.</p></article>
+<article class="card"><span class="mini-title">Radio</span><h3>Pilihan tunggal</h3><div class="control-row u-style-018"><label class="radio"><input checked="" name="gender" type="radio"/> Laki-laki</label><label class="radio"><input name="gender" type="radio"/> Perempuan</label></div><p>Untuk satu pilihan mutlak.</p></article>
+<article class="card"><span class="mini-title">Switch</span><h3>Pengaturan boolean</h3><div class="control-row u-style-018"><label class="switch on" for="guideSwitchActive"><input checked id="guideSwitchActive" name="guideSwitchActive" type="checkbox"/><span class="switch-track"></span><span data-switch-state data-on-text="Aktif" data-off-text="Nonaktif">Aktif</span></label><label class="switch" for="guideSwitchInactive"><input id="guideSwitchInactive" name="guideSwitchInactive" type="checkbox"/><span class="switch-track"></span><span data-switch-state data-on-text="Aktif" data-off-text="Nonaktif">Nonaktif</span></label></div><p>Untuk pengaturan on/off. Checkbox native disembunyikan, state diatur oleh komponen switch.</p></article>
+<article class="card"><span class="mini-title">Segmented</span><h3>Status cepat</h3><div class="segmented u-style-018"><span>Umum</span><span class="active">BPJS</span><span>Asuransi</span></div><p>Untuk opsi pendek 2–4 item.</p></article>
+</div>
+</section>
+<section class="mt-12" id="medical">
+<div class="section-head">
+<div>
+<h2>Pattern Input Medis</h2>
+<p>Pattern khusus SIMRS perlu dibuat sebagai komponen/template tersendiri agar konsisten di semua modul.</p>
+</div>
+</div>
+<div class="card sample-form">
+<div class="form-toolbar">
+<div>
+<span class="mini-title">Contoh form pendaftaran</span>
+<h3>Identitas Pasien &amp; Penjamin</h3>
+</div>
+<div class="info-row"><button class="btn btn-secondary">Scan KTP</button><button class="btn">Cek BPJS</button></div>
+</div>
+<div class="form-grid four">
+<div class="field"><label>No. RM</label><div class="input-wrap"><input class="input mono with-right" readonly="" value="RM-240001"/><span class="suffix">Otomatis</span></div></div>
+<div class="field state-success"><label>NIK <span class="required">*</span></label><input class="input mono" value="3273124508900001"/><span class="helper success">Cocok dengan Dukcapil.</span></div>
+<div class="field"><label>No. BPJS</label><input class="input mono" value="0001234567890"/></div>
+<div class="field"><label>No. SEP</label><input class="input mono" value="0301R0010626V000001"/></div>
+<div class="field"><label>Nama Pasien <span class="required">*</span></label><input class="input" value="Siti Aminah"/></div>
+<div class="field"><label>Tanggal Lahir</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect height="18" rx="2" width="18" x="3" y="4"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg></span><input class="input mono with-left" type="date" value="1990-08-15"/></div></div>
+<div class="field"><label>Jenis Kelamin</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Perempuan</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Perempuan" type="button">Perempuan</button><button class="dropdown-option" data-select-value="Laki-laki" type="button">Laki-laki</button></div></details></div>
+<div class="field"><label>Status Kawin</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Menikah</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Menikah" type="button">Menikah</button><button class="dropdown-option" data-select-value="Belum Menikah" type="button">Belum Menikah</button></div></details></div>
+<div class="field"><label>Penjamin</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">BPJS Kesehatan</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="BPJS Kesehatan" type="button">BPJS Kesehatan</button><button class="dropdown-option" data-select-value="Umum" type="button">Umum</button><button class="dropdown-option" data-select-value="Asuransi" type="button">Asuransi</button></div></details></div>
+<div class="field"><label>Kelas Hak</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Kelas II</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Kelas II" type="button">Kelas II</button><button class="dropdown-option" data-select-value="Kelas I" type="button">Kelas I</button><button class="dropdown-option" data-select-value="Kelas III" type="button">Kelas III</button></div></details></div>
+<div class="field"><label>Poliklinik Tujuan</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Poli Penyakit Dalam</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Poli Penyakit Dalam" type="button">Poli Penyakit Dalam</button><button class="dropdown-option" data-select-value="IGD" type="button">IGD</button><button class="dropdown-option" data-select-value="Poli Anak" type="button">Poli Anak</button></div></details></div>
+<div class="field"><label>Dokter</label><div class="input-wrap"><input class="input with-right" value="dr. Ahmad Sp.PD"/><span class="field-icon right"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></span></div></div>
+</div>
+</div>
+<div class="grid-2 u-style-013">
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">Vital signs</span><h3>Input Tanda Vital</h3></div><span class="badge badge-primary badge-sm">Clinical</span></div>
+<div class="vital-grid">
+<div class="field"><label>TD</label><input class="input mono" value="120/80"/><span class="helper">mmHg</span></div>
+<div class="field"><label>Nadi</label><input class="input mono" value="88"/><span class="helper">x/menit</span></div>
+<div class="field state-warning"><label>Suhu</label><input class="input mono" value="38.2"/><span class="helper warning">°C</span></div>
+<div class="field"><label>RR</label><input class="input mono" value="22"/><span class="helper">x/menit</span></div>
+<div class="field"><label>SpO₂</label><input class="input mono" value="97"/><span class="helper">%</span></div>
+<div class="field"><label>GCS</label><input class="input mono" value="E4V5M6"/><span class="helper">score</span></div>
+</div>
+<ul class="guideline-list">
+<li>Simpan unit di metadata, jangan digabung sebagai string value.</li>
+<li>Flag warning/error otomatis berdasarkan rentang normal per umur jika tersedia.</li>
+<li>Gunakan monospace untuk angka klinis agar mudah dibandingkan.</li>
+</ul>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">Lab results</span><h3>Input Hasil Lab</h3></div><span class="badge badge-danger badge-sm">Critical aware</span></div>
+<div class="table-scroll lab-results-scroll">
+<table class="data-table lab-results-table" aria-label="Tabel input hasil laboratorium">
+<thead><tr><th>Parameter</th><th>Hasil</th><th>Unit</th><th>Flag</th></tr></thead>
+<tbody>
+<tr><td><strong>Hemoglobin</strong></td><td><input class="input is-sm mono" value="13.2" aria-label="Hasil Hemoglobin"/></td><td>g/dL</td><td><span class="chip green">Normal</span></td></tr>
+<tr><td><strong>Leukosit</strong></td><td><input class="input is-sm mono warning" value="14.8" aria-label="Hasil Leukosit"/></td><td>10³/µL</td><td><span class="chip">Tinggi</span></td></tr>
+<tr><td><strong>Kalium</strong></td><td><input class="input is-sm mono error" value="2.1" aria-label="Hasil Kalium"/></td><td>mEq/L</td><td><span class="chip red">Critical</span></td></tr>
+</tbody>
+</table>
+</div>
+<ul class="guideline-list">
+<li>Nilai kritis wajib memunculkan alert dan audit acknowledgement.</li>
+<li>Rentang normal harus ikut umur/jenis kelamin jika rule tersedia.</li>
+</ul>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">Medication</span><h3>Input Resep &amp; Farmasi</h3></div><span class="badge badge-success badge-sm">Safety</span></div>
+<div class="form-grid">
+<div class="field"><label>Nama Obat</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left" value="Amoxicillin 500mg"/></div></div>
+<div class="field"><label>Jumlah</label><input class="input mono" value="10"/></div>
+<div class="field"><label>Dosis</label><input class="input" value="3 x 1 tablet"/></div>
+<div class="field"><label>Rute</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Oral</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Oral" type="button">Oral</button><button class="dropdown-option" data-select-value="IV" type="button">IV</button><button class="dropdown-option" data-select-value="IM" type="button">IM</button></div></details></div>
+<div class="field"><label>Aturan Pakai</label><input class="input" value="Sesudah makan"/></div>
+<div class="field state-warning"><label>Stok</label><input class="input mono" readonly="" value="7"/><span class="helper warning">Mendekati minimum.</span></div>
+</div>
+</article>
+<article class="card soft">
+<div class="card-head"><div><span class="mini-title">Diagnosis</span><h3>ICD-10, ICD-9-CM, Casemix</h3></div><span class="badge badge-indigo badge-sm">Coding</span></div>
+<div class="field"><label>Diagnosis Primer</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left mono" value="J18.9 · Pneumonia, unspecified"/></div></div><br/>
+<div class="field"><label>Tindakan ICD-9-CM</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left mono" value="89.00 · Consultation"/></div></div><br/>
+<div class="field readonly"><label>Kode INA-CBG</label><input class="input mono" readonly="" value="J-4-13-I"/><span class="helper">Readonly dari hasil grouping.</span></div>
+</article>
+</div>
+<div class="grid-3 u-style-013">
+<article class="card"><span class="mini-title">Alamat Bertingkat</span><h3>Province → City → District</h3><div class="form-grid u-style-018"><div class="field"><label>Provinsi</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Jawa Barat</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Jawa Barat" type="button">Jawa Barat</button></div></details></div><div class="field"><label>Kota/Kabupaten</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Bandung</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Bandung" type="button">Bandung</button></div></details></div><div class="field"><label>Kecamatan</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Coblong</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Coblong" type="button">Coblong</button></div></details></div><div class="field"><label>Kelurahan</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Dago</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Dago" type="button">Dago</button></div></details></div></div></article>
+<article class="card"><span class="mini-title">Bed Management</span><h3>Ruang, Kamar, Bed</h3><div class="form-grid u-style-018"><div class="field"><label>Kelas</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Kelas II</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Kelas II" type="button">Kelas II</button></div></details></div><div class="field"><label>Ruang</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">Melati</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Melati" type="button">Melati</button></div></details></div><div class="field"><label>Kamar</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">201</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="201" type="button">201</button></div></details></div><div class="field"><label>Bed</label><details class="ds-dropdown ds-select guide-select" data-component="guide-select"><summary class="dropdown-trigger"><span data-select-text="">201-A</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="201-A" type="button">201-A</button></div></details></div></div></article>
+<article class="card"><span class="mini-title">Triage IGD</span><h3>Input Prioritas</h3><div class="control-row u-style-018"><label class="radio"><input name="triage" type="radio"/> P1</label><label class="radio"><input checked="" name="triage" type="radio"/> P2</label><label class="radio"><input name="triage" type="radio"/> P3</label><label class="radio"><input name="triage" type="radio"/> P4</label><label class="radio"><input name="triage" type="radio"/> P5</label></div><p>Gunakan warna triase hanya sebagai pendukung, label P1–P5 tetap wajib.</p></article>
+</div>
+</section>
+<section class="mt-12" id="upload-signature">
+<div class="section-head">
+<div>
+<h2>File, Scanner, Signature</h2>
+<p>Untuk dokumen rujukan, hasil lab eksternal, radiologi, informed consent, KTP, BPJS, surat kontrol, dan lampiran klaim.</p>
+</div>
+</div>
+<div class="grid-3">
+<article class="card soft">
+<span class="mini-title">Upload</span><h3>Drag &amp; Drop File</h3>
+<div class="upload u-style-018"><div class="upload-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><path d="M12 3v12"></path><path d="m17 8-5-5-5 5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg></div><strong>Upload dokumen pasien</strong><p>PDF, JPG, PNG maksimal 10MB.</p><button class="btn btn-secondary">Pilih File</button></div>
+</article>
+<article class="card soft">
+<span class="mini-title">Progress</span><h3>Status Upload</h3>
+<div class="mini-card u-style-018"><div class="info-row u-style-090"><strong>hasil-lab.pdf</strong><span class="helper">68%</span></div><div class="progress u-style-081"><span></span></div><p>Validasi tipe file sebelum upload ke server.</p></div>
+</article>
+<article class="card soft">
+<span class="mini-title">Signature</span><h3>Tanda Tangan Digital</h3>
+<div class="u-style-091">Area tanda tangan pasien / keluarga</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="validation">
+<div class="section-head">
+<div>
+<h2>Validasi &amp; Pesan Error</h2>
+<p>Validasi harus membantu pengguna memperbaiki data. Jangan membuat form terasa seperti menolak pekerjaan pengguna.</p>
+</div>
+</div>
+<div class="grid-2">
+<article class="card red">
+<div class="card-head"><div><span class="mini-title">Penulisan error</span><h3>Pesan error harus spesifik</h3></div></div>
+<table class="spec-table">
+<thead><tr><th>Field</th><th>Bad</th><th>Good</th></tr></thead>
+<tbody>
+<tr><td>NIK</td><td>Data tidak valid</td><td>NIK harus 16 digit angka.</td></tr>
+<tr><td>No. SEP</td><td>Gagal</td><td>SEP tidak ditemukan di sistem BPJS. Cek nomor atau buat SEP baru.</td></tr>
+<tr><td>Tanggal lahir</td><td>Salah</td><td>Tanggal lahir tidak boleh lebih besar dari hari ini.</td></tr>
+<tr><td>Stok obat</td><td>Error</td><td>Jumlah resep melebihi stok tersedia: 7 tablet.</td></tr>
+</tbody>
+</table>
+</article>
+<article class="card green">
+<div class="card-head"><div><span class="mini-title">Validation timing</span><h3>Kapan validasi muncul</h3></div></div>
+<ul class="guideline-list">
+<li><strong>Saat input:</strong> format sederhana seperti NIK 16 digit, angka saja, email, dan nomor HP.</li>
+<li><strong>On blur:</strong> data yang perlu request API seperti duplicate NIK, cek BPJS, cek stok.</li>
+<li><strong>On submit:</strong> validasi lintas-field seperti tanggal masuk ≤ tanggal keluar.</li>
+<li><strong>Blocking:</strong> hanya untuk risiko klinis, billing, klaim, atau data wajib.</li>
+</ul>
+</article>
+</div>
+<div class="card u-style-013">
+<table class="spec-table">
+<thead><tr><th>Field klinis/operasional</th><th>Format / Rule</th><th>Feedback</th><th>Blocking?</th></tr></thead>
+<tbody>
+<tr><td>NIK</td><td>16 digit angka</td><td>Error jika kurang/lebih digit</td><td>Ya untuk pasien baru</td></tr>
+<tr><td>No. RM</td><td>Otomatis, unik</td><td>Readonly + badge Otomatis</td><td>Ya</td></tr>
+<tr><td>No. BPJS</td><td>13 digit / sesuai integrasi</td><td>Sukses jika aktif, warning jika perlu verifikasi</td><td>Tergantung penjamin</td></tr>
+<tr><td>No. SEP</td><td>Format dari BPJS</td><td>Warning jika kedaluwarsa/tidak sinkron</td><td>Ya untuk klaim BPJS</td></tr>
+<tr><td>Obat</td><td>Harus dari master obat</td><td>Warning stok rendah, error stok habis</td><td>Ya jika stok tidak cukup</td></tr>
+<tr><td>Nilai Lab Kritis</td><td>Rentang per parameter</td><td>Alert kritis + konfirmasi</td><td>Ya untuk acknowledgement</td></tr>
+<tr><td>Tanggal Keluar</td><td>≥ tanggal masuk</td><td>Error jika sebelum tanggal masuk</td><td>Ya</td></tr>
+<tr><td>Nominal Billing</td><td>Numerik, tidak negatif</td><td>Error jika minus / kosong saat wajib</td><td>Ya</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="mt-12" id="layout">
+<div class="section-head">
+<div>
+<h2>Layout Form</h2>
+<p>Layout form harus responsif, cepat dibaca, dan cocok untuk desktop rumah sakit ≥1366px, tablet ≥768px, serta mobile read-only pimpinan.</p>
+</div>
+</div>
+<div class="grid-3">
+<article class="card blue">
+<span class="mini-title">Form utama desktop</span><h3>2–4 kolom</h3>
+<p>Gunakan 4 kolom untuk field pendek seperti NIK, BPJS, tanggal, penjamin. Gunakan 2 kolom untuk field sedang seperti nama, alamat, dokter.</p>
+</article>
+<article class="card green">
+<span class="mini-title">Form klinis</span><h3>Kelompokkan berdasarkan workflow</h3>
+<p>Kelompokkan: Identitas → Tanda vital → Anamnesis → Diagnosis → Order → Rencana.</p>
+</article>
+<article class="card amber">
+<span class="mini-title">Mobile / tablet</span><h3>1 kolom</h3>
+<p>Untuk tablet/kiosk gunakan field lebih besar, stepper, dan tombol jelas. Jangan padatkan form seperti desktop.</p>
+</article>
+</div>
+<div class="grid-2 u-style-013">
+<article class="card soft">
+<span class="mini-title">Pattern filter inline</span><h3>Filter Tabel Data</h3>
+<div class="form-grid three u-style-018">
+<div class="field"><label>Cari</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input is-sm with-left" value="Siti"/></div></div>
+<div class="field"><label>Poli</label><details class="ds-dropdown ds-select guide-select is-sm" data-component="guide-select"><summary class="dropdown-trigger is-sm"><span data-select-text="">Semua Poli</span></summary><div class="dropdown-panel"><button class="dropdown-option selected" data-select-value="Semua Poli" type="button">Semua Poli</button></div></details></div>
+<div class="field"><label>Tanggal</label><input class="input is-sm mono" type="date" value="2026-06-15"/></div>
+</div>
+<p>Gunakan SM untuk filter tabel agar toolbar tidak terlalu tinggi.</p>
+</article>
+<article class="card soft">
+<span class="mini-title">Pattern modal</span><h3>Form Aksi Cepat</h3>
+<div class="modal-preview u-style-018">
+<div class="form-toolbar"><strong>Tambah Alergi</strong><button class="btn btn-ghost">×</button></div>
+<div class="field"><label>Alergi</label><div class="input-wrap"><span class="field-icon"><svg aria-hidden="true" class="lucide" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input class="input with-left" value="Penicillin"/></div></div><br/>
+<div class="field"><label>Reaksi</label><textarea class="u-style-092">Ruam dan sesak.</textarea></div><br/>
+<div class="info-row u-style-093"><button class="btn btn-secondary">Batal</button><button class="btn">Simpan</button></div>
+</div>
+</article>
+</div>
+</section>
+<section class="mt-12" id="accessibility">
+<div class="section-head">
+<div>
+<h2>Aksesibilitas &amp; Keyboard</h2>
+<p>Semua input harus bisa dipakai dengan keyboard, screen reader, dan tetap jelas tanpa mengandalkan warna saja.</p>
+</div>
+</div>
+<div class="do-dont">
+<article class="card ok">
+<span class="mini-title">Yang disarankan</span>
+<h3 class="usage-title is-do">Gunakan pattern ini</h3>
+<ul class="guideline-list">
+<li>Label selalu terhubung ke input melalui <span class="token">for</span> dan <span class="token">id</span>.</li>
+<li>Gunakan <span class="token">aria-describedby</span> untuk helper/error text.</li>
+<li>Indikator focus jelas minimal 2px + offset.</li>
+<li>Aksi icon-only wajib punya <span class="token">aria-label</span>.</li>
+<li>Teks error harus menjelaskan cara memperbaiki input.</li>
+</ul>
+</article>
+<article class="card no">
+<span class="mini-title">Yang dihindari</span>
+<h3 class="usage-title is-dont">Hindari pattern ini</h3>
+<ul class="guideline-list">
+<li>Placeholder sebagai satu-satunya label.</li>
+<li>Membedakan status hanya dengan warna merah/kuning/hijau tanpa teks.</li>
+<li>Nonaktif untuk field yang perlu bisa dicopy; gunakan readonly.</li>
+<li>Dropdown panjang tanpa search untuk dokter, ICD, obat, atau pasien.</li>
+<li>Validasi API setiap ketikan tanpa debounce.</li>
+</ul>
+</article>
+</div>
+</section>
+<section class="mt-12" id="implementation">
+<div class="section-head">
+<div>
+<h2>Implementasi CSS, Tailwind, dan React</h2>
+<p>Input memakai struktur .field, .label-line, .input, .input-wrap, .with-left, .with-right, dan .helper. Dropdown memakai .ds-dropdown.</p>
+</div>
+<span class="badge badge-sm">forms.css + dropdowns.css</span>
+</div>
+<div class="code-grid">
+<article>
+<p class="code-title">CSS / Tailwind v4 source</p>
+<pre><code>/* src/css/design-system/forms.css */
+.field { @apply flex flex-col gap-2 min-w-0; }
+.label-line { @apply flex items-center justify-between gap-3; }
+
+.input,
+select,
+textarea {
+  @apply w-full border border-[color:var(--border)] bg-[color:var(--field)] text-[color:var(--text-primary)] font-sans rounded-[var(--radius-input-md)] py-0 px-3.5 min-h-11 text-body-md font-normal outline-none shadow-[0_1px_0_rgba(15,31,61,0.02)];
+}
+
+.input.is-xs { @apply min-h-8 rounded-[var(--radius-input-xs)] py-0 px-2.5 text-body-sm; }
+.input.is-lg { @apply min-h-13 rounded-[var(--radius-input-lg)] py-0 px-4 text-body-lg; }
+.with-left { @apply pl-10; }
+.with-right { @apply pr-11; }
+.helper.error { @apply text-[color:var(--danger-dark)]; }</code></pre>
+</article>
+<article>
+<p class="code-title">HTML / React mapping</p>
+<pre><code>&lt;div class=&quot;field&quot;&gt;
+  &lt;div class=&quot;label-line&quot;&gt;
+    &lt;label for=&quot;nik&quot;&gt;NIK &lt;span class=&quot;required&quot;&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;span class=&quot;optional&quot;&gt;16 digit&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;input-wrap&quot;&gt;
+    &lt;span class=&quot;field-icon&quot;&gt;...&lt;/span&gt;
+    &lt;input id=&quot;nik&quot; class=&quot;input is-md with-left mono&quot; placeholder=&quot;3273xxxxxxxxxxxx&quot; /&gt;
+  &lt;/div&gt;
+  &lt;span class=&quot;helper&quot;&gt;Masukkan NIK sesuai KTP.&lt;/span&gt;
+&lt;/div&gt;
+
+function TextField({ id, label, required, leftIcon, error, className = &#x27;&#x27;, ...props }) {
+  return (
+    &lt;div className=&quot;field&quot;&gt;
+      &lt;div className=&quot;label-line&quot;&gt;
+        &lt;label htmlFor={id}&gt;{label}{required &amp;&amp; &lt;span className=&quot;required&quot;&gt;*&lt;/span&gt;}&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;div className=&quot;input-wrap&quot;&gt;
+        {leftIcon &amp;&amp; &lt;span className=&quot;field-icon&quot;&gt;{leftIcon}&lt;/span&gt;}
+        &lt;input id={id} className={`input is-md ${leftIcon ? &#x27;with-left&#x27; : &#x27;&#x27;} ${className}`} {...props} /&gt;
+      &lt;/div&gt;
+      {error &amp;&amp; &lt;span className=&quot;helper error&quot;&gt;{error}&lt;/span&gt;}
+    &lt;/div&gt;
+  )
+}</code></pre>
+</article>
+</div>
+<div class="note u-style-019"><strong>Catatan:</strong> Jangan membuat ulang input dengan utility inline di HTML. Pertahankan selector komponen supaya style konsisten di semua halaman.</div>
+</section>
+<footer class="footer">
+<div><strong>SIMRS ZAIDAN · Panduan Input &amp; Form</strong><br/>Gunakan sebagai acuan component properties Figma, class Tailwind, dan API komponen React.</div>
+</footer>
+</main>
+</div>
+<script id="guideSelectScript">
+(function () {
+  function closeGuideSelects(except) {
+    document.querySelectorAll('details[data-component="guide-select"][open]').forEach(function (dropdown) {
+      if (dropdown !== except) dropdown.removeAttribute('open');
+    });
+  }
+
+  document.querySelectorAll('details[data-component="guide-select"]').forEach(function (dropdown) {
+    var triggerText = dropdown.querySelector('[data-select-text]');
+    dropdown.addEventListener('toggle', function () {
+      if (dropdown.open) closeGuideSelects(dropdown);
+    });
+    dropdown.querySelectorAll('.dropdown-option').forEach(function (option) {
+      option.addEventListener('click', function () {
+        if (option.disabled) return;
+        dropdown.querySelectorAll('.dropdown-option').forEach(function (item) {
+          item.classList.remove('selected');
+        });
+        option.classList.add('selected');
+        if (triggerText) triggerText.textContent = option.textContent.trim();
+        dropdown.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('details[data-component="guide-select"]')) closeGuideSelects();
+  });
+
+  function closeDropdownPreviews(except) {
+    document.querySelectorAll('.dropdown-demo.is-open').forEach(function (demo) {
+      if (demo !== except) {
+        demo.classList.remove('is-open');
+        var trigger = demo.querySelector('.input-wrap');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.querySelectorAll('.dropdown-demo').forEach(function (demo) {
+    var trigger = demo.querySelector('.input-wrap');
+    if (!trigger) return;
+    trigger.setAttribute('role', 'button');
+    trigger.setAttribute('tabindex', '0');
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    function toggleDemo() {
+      var willOpen = !demo.classList.contains('is-open');
+      closeDropdownPreviews(demo);
+      demo.classList.toggle('is-open', willOpen);
+      trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    }
+
+    trigger.addEventListener('click', function (event) {
+      event.stopPropagation();
+      toggleDemo();
+    });
+
+    trigger.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleDemo();
+      }
+      if (event.key === 'Escape') {
+        demo.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    demo.querySelectorAll('.dropdown-option, .calendar-date, .time-option').forEach(function (item) {
+      item.addEventListener('click', function (event) {
+        event.stopPropagation();
+      });
+    });
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.dropdown-demo')) closeDropdownPreviews();
+  });
+
+})();
+</script><script src="../../js/guide-dropdowns.js"></script>
+<script src="../../js/date-picker-controls.js"></script>
+<script src="../../js/switch-controls.js"></script>
+<script src="../../js/table-sorting.js"></script>
+<script src="../../js/responsive-navigation.js"></script>
+</body>
+</html>
