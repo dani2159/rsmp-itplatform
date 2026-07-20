@@ -4,9 +4,10 @@
 #  Install: powershell -File rs-agent.ps1 -Install
 # ============================================================
 param(
-    [string]$ServerUrl  = "http://192.168.1.10:8081",
-    [string]$ClientId   = "",
-    [string]$AgentToken = "",
+    [string]$ServerUrl    = "http://192.168.1.10:8081",
+    [string]$ClientId     = "",
+    [string]$AgentToken   = "",
+    [string]$VncPassword  = "",
     [switch]$Install,
     [switch]$Uninstall
 )
@@ -213,7 +214,18 @@ function Get-LocalIP {
         $withGw = Get-NetIPConfiguration | Where-Object {
             $_.IPv4DefaultGateway -and $_.NetAdapter.Status -eq 'Up'
         } | Select-Object -First 1
-        if ($withGw) { return $withGw.IPv4Address.IPAddress }
+        # $withGw.IPv4Address bisa lebih dari satu (adapter dgn beberapa IP,
+        # umum di mesin ber-VPN) -- buang dulu APIPA (169.254.x, invalid,
+        # muncul kalau DHCP gagal di salah satu binding) & loopback, baru
+        # ambil satu. Tanpa filter+-First1 ini, .IPAddress balikin ARRAY
+        # utuh dan itu bikin query SQL ke server rusak (tiap elemen array
+        # jadi 'a','b','c' terpisah pas di-insert).
+        if ($withGw) {
+            $picked = $withGw.IPv4Address |
+                Where-Object { $_.IPAddress -notmatch '^(127\.|169\.254\.)' } |
+                Select-Object -First 1
+            if ($picked) { return $picked.IPAddress }
+        }
 
         (Get-NetIPAddress -AddressFamily IPv4 |
          Where-Object { $_.IPAddress -notmatch '^127\.' -and $_.PrefixOrigin -ne 'WellKnown' } |
@@ -273,6 +285,8 @@ function Register-Client {
             os           = Get-OSInfo
             agentVersion = $AgentVersion
             osType       = "windows"
+            vnc_password = $script:VncPassword
+            vnc_port     = 5901
         } | ConvertTo-Json -Compress
 
         $resp = Invoke-RestMethod -Uri "$($script:ServerUrl)/api/agent/register" `
@@ -281,7 +295,7 @@ function Register-Client {
 
         if ($resp.clientId) {
             $script:ClientId = $resp.clientId
-            "RS_SERVER=$($script:ServerUrl)`nRS_CLIENT_ID=$($resp.clientId)`nRS_AGENT_TOKEN=$($script:AgentToken)" |
+            "RS_SERVER=$($script:ServerUrl)`nRS_CLIENT_ID=$($resp.clientId)`nRS_AGENT_TOKEN=$($script:AgentToken)`nRS_VNC_PASSWORD=$($script:VncPassword)" |
                 Out-File -FilePath $ConfigFile -Encoding UTF8
             Write-Log "Terdaftar! Client ID: $($resp.clientId)"
         }
@@ -461,8 +475,8 @@ function Install-AgentService {
 
 function Install-VNCServer {
     # Pasang TightVNC (service, port 5901, share console desktop) -- remote via
-    # VNC seperti Linux. Password default sama dgn global platform (auto-fill web).
-    $VncPass = "Rsmps@2025"
+    # VNC seperti Linux. Password ikut setting platform (Settings > Password VNC Default).
+    $VncPass = $script:VncPassword
     $tvnc = "C:\Program Files\TightVNC\tvnserver.exe"
     if (-not (Test-Path $tvnc)) {
         Write-Log "Download & install TightVNC (silent)..."
@@ -525,16 +539,26 @@ New-Item -ItemType Directory -Force -Path $AgentDir | Out-Null
 # Load config
 if (Test-Path $ConfigFile) {
     Get-Content $ConfigFile | ForEach-Object {
-        if ($_ -match '^RS_CLIENT_ID=(.+)')    { $script:ClientId   = $Matches[1].Trim() }
-        if ($_ -match '^RS_SERVER=(.+)')       { $script:ServerUrl  = $Matches[1].Trim() }
-        if ($_ -match '^RS_AGENT_TOKEN=(.+)')  { $script:AgentToken = $Matches[1].Trim() }
+        if ($_ -match '^RS_CLIENT_ID=(.+)')      { $script:ClientId     = $Matches[1].Trim() }
+        if ($_ -match '^RS_SERVER=(.+)')         { $script:ServerUrl    = $Matches[1].Trim() }
+        if ($_ -match '^RS_AGENT_TOKEN=(.+)')    { $script:AgentToken   = $Matches[1].Trim() }
+        if ($_ -match '^RS_VNC_PASSWORD=(.+)')   { $script:VncPassword  = $Matches[1].Trim() }
     }
 }
-if ($ClientId)   { $script:ClientId   = $ClientId }
-if ($ServerUrl)  { $script:ServerUrl  = $ServerUrl }
-if ($AgentToken) { $script:AgentToken = $AgentToken }
+if ($ClientId)     { $script:ClientId    = $ClientId }
+if ($ServerUrl)    { $script:ServerUrl   = $ServerUrl }
+if ($AgentToken)   { $script:AgentToken  = $AgentToken }
+if ($VncPassword)  { $script:VncPassword = $VncPassword }
+# Belum pernah di-set (install pertama tanpa -VncPassword) -- default sama dgn Linux.
+if (-not $script:VncPassword) { $script:VncPassword = "Rsmp@2026" }
 
-if ($Install)   { Install-AgentService; Install-VNCServer; exit }
+if ($Install) {
+    # Simpan sekarang -- service/scheduled task jalan tanpa -VncPassword arg,
+    # jadi run berikutnya baca balik dari config file ini, bukan dari param.
+    "RS_SERVER=$($script:ServerUrl)`nRS_AGENT_TOKEN=$($script:AgentToken)`nRS_VNC_PASSWORD=$($script:VncPassword)" |
+        Out-File -FilePath $ConfigFile -Encoding UTF8
+    Install-AgentService; Install-VNCServer; exit
+}
 if ($Uninstall) { Uninstall-AgentService; exit }
 
 # ── Agent Loop ──────────────────────────────────────────────

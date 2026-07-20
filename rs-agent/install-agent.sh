@@ -38,7 +38,7 @@ RSADMIN_PASS="${RSADMIN_PASS:-$(openssl rand -base64 12 | tr -dc 'A-Za-z0-9' | h
 # Password VNC default sama untuk semua instalasi awal, dikirim ke server
 # saat register biar web bisa auto-fill. Bisa diganti per-client nanti.
 # Catatan: VNC classic auth (DES) cuma pakai 8 char pertama.
-VNC_PASS="${VNC_PASS:-Rsmps@2025}"
+VNC_PASS="${VNC_PASS:-Rsmp@2026}"
 
 echo "================================================================"
 echo "  RSMP-IT Agent Installer v5.0 — $(date)"

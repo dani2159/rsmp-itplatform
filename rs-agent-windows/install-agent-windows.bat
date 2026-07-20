@@ -36,6 +36,9 @@ if "%AGENT_TOKEN%"=="" (
     pause
 )
 
+:: VNC password (skip prompt kalau sudah di-set via env var RS_VNC_PASSWORD)
+if not "%RS_VNC_PASSWORD%"=="" set VNC_PASSWORD=%RS_VNC_PASSWORD%
+if "%VNC_PASSWORD%"=="" set VNC_PASSWORD=Rsmp@2026
 echo.
 echo  Server: %SERVER_URL%
 echo.
@@ -61,7 +64,7 @@ if errorlevel 1 (
 
 :: Install agent as service
 echo  [4/6] Install sebagai Windows Service...
-powershell -ExecutionPolicy Bypass -File "C:\RS-Agent\rs-agent.ps1" -ServerUrl "%SERVER_URL%" -AgentToken "%AGENT_TOKEN%" -Install
+powershell -ExecutionPolicy Bypass -File "C:\RS-Agent\rs-agent.ps1" -ServerUrl "%SERVER_URL%" -AgentToken "%AGENT_TOKEN%" -VncPassword "%VNC_PASSWORD%" -Install
 
 :: Allow ping (ICMP Echo) -- remote akses pakai RustDesk, RDP TIDAK diaktifkan
 echo  [5/6] Izinkan ping (ICMP) di firewall...
