@@ -42,24 +42,27 @@ export default function Dashboard() {
   const [rdStatus, setRdStatus] = useState(null)
   const [history, setHistory] = useState([])
   const [uptimeSummary, setUptimeSummary] = useState(null)
+  const [alerts,  setAlerts]  = useState([])
   const [loading, setLoading] = useState(true)
   const [loadError, setLoadError] = useState(false)
   const navigate = useNavigate()
 
   const load = async () => {
     try {
-      const [s, c, t, rd, u] = await Promise.all([
+      const [s, c, t, rd, u, al] = await Promise.all([
         api.get('/clients/stats'),
         api.get('/clients'),
         api.get('/tickets/stats/summary'),
         api.get('/rustdesk/status').catch(() => ({ data: null })),
         api.get('/clients/uptime-summary?range=7d').catch(() => ({ data: null })),
+        api.get('/system/alerts').catch(() => ({ data: [] })),
       ])
       setStats(s.data)
       setClients(c.data.slice(0, 15))
       setTickets(t.data)
       setRdStatus(rd.data)
       setUptimeSummary(u.data)
+      setAlerts(al.data)
       setHistory(prev => [...prev.slice(-19), {
         time: new Date().toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' }),
         online: s.data.online,
@@ -145,6 +148,34 @@ export default function Dashboard() {
 
         {/* Right column */}
         <div className="space-y-3">
+          {/* Alert terakhir */}
+          <div className="dashboard-widget card p-4">
+            <div className="dashboard-widget-head">
+              <h2 className="text-h4">Alert Terakhir</h2>
+            </div>
+            {alerts.length === 0 ? (
+              <div className="text-xs" style={{ color: 'var(--text-muted)' }}>Belum ada alert</div>
+            ) : (
+              <div className="space-y-1.5 max-h-48 overflow-y-auto">
+                {alerts.slice(0, 10).map(a => (
+                  <div key={a.id}
+                    onClick={() => a.client_id && navigate(`/clients/${a.client_id}`)}
+                    className={clsx('flex items-start justify-between gap-2 text-[11px] py-0.5', a.client_id && 'cursor-pointer')}>
+                    <span style={{ color:
+                      a.type === 'offline' ? 'var(--danger)' :
+                      a.type === 'online'  ? 'var(--success)' :
+                      a.type.endsWith('-ok') ? 'var(--success)' : 'var(--warn)' }}>
+                      {a.message}
+                    </span>
+                    <span className="font-mono flex-shrink-0" style={{ color: 'var(--text-muted)' }}>
+                      {new Date(a.created_at).toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' })}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Tickets */}
           <div className="dashboard-widget card p-4">
             <div className="dashboard-widget-head">

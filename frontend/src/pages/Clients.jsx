@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { Plus, Search, RefreshCw, Download, Upload, Terminal, Monitor, Rocket } from 'lucide-react'
+import { Plus, Search, RefreshCw, Download, Upload, Terminal, Monitor, Rocket, Power } from 'lucide-react'
 import api from '../services/api'
 import toast from 'react-hot-toast'
 import clsx from 'clsx'
@@ -83,6 +83,13 @@ export default function Clients() {
   const toggleSel = id => setSelected(prev=>{ const n=new Set(prev); n.has(id)?n.delete(id):n.add(id); return n })
   const selectAll = () => setSelected(new Set(clients.map(c=>c.id)))
   const clearSel  = () => setSelected(new Set())
+
+  const wake = async (id, name) => {
+    try {
+      const r = await api.post(`/clients/${id}/wake`)
+      toast.success(`Magic packet dikirim ke ${name} (${r.data.mac})`)
+    } catch(e) { toast.error(e.response?.data?.error || 'Gagal kirim Wake-on-LAN') }
+  }
 
   const del = async (id, name) => {
     if (!confirm(`Hapus ${name}?`)) return
@@ -209,6 +216,9 @@ export default function Clients() {
                       </>}
                       {c.os_type==='windows'&&
                         <button onClick={()=>navigate(`/remote/${c.id}`)} className="btn btn-ghost btn-sm btn-icon" title="Remote"><Monitor size={13}/></button>
+                      }
+                      {canOperate && c.status!=='online' &&
+                        <button onClick={()=>wake(c.id,c.name)} className="btn btn-ghost btn-sm btn-icon" title="Wake-on-LAN (nyalakan PC)"><Power size={13}/></button>
                       }
                       {canOperate && <button onClick={()=>del(c.id,c.name)} className="btn btn-danger btn-sm btn-icon" title="Hapus">✕</button>}
                     </div>

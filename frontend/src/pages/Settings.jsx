@@ -55,10 +55,19 @@ export default function Settings() {
         rs_name: config.rs_name,
         server_ip: config.server_ip,
         vnc_password: config.vnc_password,
+        telegram_bot_token: config.telegram_bot_token,
+        telegram_chat_id: config.telegram_chat_id,
       })
       toast.success('Pengaturan disimpan')
     } catch(e) { toast.error('Gagal menyimpan') }
     setSaving(false)
+  }
+
+  const testTelegram = async () => {
+    try {
+      await api.post('/system/alerts/test')
+      toast.success('Pesan test terkirim — cek Telegram')
+    } catch(e) { toast.error(e.response?.data?.error || 'Gagal kirim test') }
   }
 
   const addUser = async (e) => {
@@ -118,6 +127,33 @@ export default function Settings() {
               <button onClick={saveConfig} disabled={saving} className="btn btn-primary btn-sm">
                 {saving ? <><RefreshCw size={12} className="animate-spin"/>Menyimpan...</> : <><Save size={12}/>Simpan</>}
               </button>
+            </div>
+          </div>
+
+          {/* Notifikasi Telegram */}
+          <div className="card">
+            <div className="card-header"><span className="text-sm font-medium" style={{ color:'var(--text)' }}>Notifikasi Telegram</span></div>
+            <div className="card-body space-y-3">
+              <p className="text-[10px]" style={{ color:'var(--text-muted)' }}>
+                Alert otomatis (client offline/online, disk &ge;90%, CPU &ge;95% berkepanjangan) dikirim ke grup/chat Telegram.
+                Buat bot via @BotFather, masukkan bot ke grup IT, lalu isi token &amp; chat ID di sini.
+              </p>
+              <div><Label>Bot Token</Label>
+                <input className="input font-mono" value={config.telegram_bot_token||''}
+                  onChange={e=>setConfig(c=>({...c,telegram_bot_token:e.target.value}))}
+                  placeholder="123456789:AAF..."/>
+              </div>
+              <div><Label>Chat ID</Label>
+                <input className="input font-mono" value={config.telegram_chat_id||''}
+                  onChange={e=>setConfig(c=>({...c,telegram_chat_id:e.target.value}))}
+                  placeholder="-1001234567890 (grup) atau chat ID pribadi"/>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={saveConfig} disabled={saving} className="btn btn-primary btn-sm">
+                  <Save size={12}/>Simpan
+                </button>
+                <button onClick={testTelegram} className="btn btn-ghost btn-sm">Kirim Test</button>
+              </div>
             </div>
           </div>
 

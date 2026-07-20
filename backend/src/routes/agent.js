@@ -2,6 +2,7 @@
 const router = require('express').Router()
 const { query } = require('../config/db')
 const { recordStatusChange } = require('../services/statusHistory')
+const notifier = require('../services/notifier')
 const path = require('path')
 const fs   = require('fs')
 
@@ -17,7 +18,11 @@ function requireAgentToken(req, res, next) {
 router.post('/register', requireAgentToken, async (req, res) => {
   try {
     const { hostname, ip, os, agentVersion, osType, vnc_password, vnc_port } = req.body
-    if (!ip) return res.status(400).json({ error: 'ip wajib' })
+    // ip harus string tunggal -- agent yg lapor array (mesin ber-VPN, adapter
+    // dgn >1 IPv4) bisa kirim ["a","b","c"]; kalau lolos ke query, mysql2
+    // expand array jadi 'a','b','c' dan bikin SQL syntax error + bocorin
+    // pesan error mentah ke client.
+    if (!ip || typeof ip !== 'string') return res.status(400).json({ error: 'ip wajib berupa string' })
     const vport = vnc_port || 5901
 
     const existing = await query('SELECT id FROM clients WHERE ip_address=?', [ip])
@@ -81,12 +86,16 @@ router.post('/heartbeat', requireAgentToken, async (req, res) => {
     // Client sudah dihapus (uninstall/unregister) tapi proses agent masih jalan.
     // Jangan error / resurrect — suruh agent berhenti. Agent lama abaikan perintah
     // ini (heartbeat tetap 200, tidak memicu re-register), agent baru self-stop.
-    const stillExists = await query('SELECT id FROM clients WHERE id=?', [clientId])
+    const stillExists = await query('SELECT id, name FROM clients WHERE id=?', [clientId])
     if (!stillExists.rows.length) {
       return res.json({ ok: true, command: 'stop-agent' })
     }
 
     await recordStatusChange(clientId, 'online')
+
+    // MAC dari networkInfo agent -- dipakai fitur Wake-on-LAN.
+    let mac = null
+    if (networkInfo) { try { mac = JSON.parse(networkInfo).mac || null } catch {} }
 
     const updateFields = [
       cpu, ram, disk, uptime, packagesPending,
@@ -95,7 +104,7 @@ router.post('/heartbeat', requireAgentToken, async (req, res) => {
       runningApps || null, networkInfo || null, loggedUsers || null,
       ramDetail || null, diskDetail || null, cpuTemp || null,
       topProcesses || null, servicesStatus || null, installedApps || null,
-      clientId
+      mac, clientId
     ]
 
     await query(
@@ -107,14 +116,20 @@ router.post('/heartbeat', requireAgentToken, async (req, res) => {
         load_avg=?, boot_time=?,
         running_apps=?, network_info=?, logged_users=?,
         ram_detail=?, disk_detail=?, cpu_temp=?,
-        top_processes=?, services_status=?, installed_apps=?
+        top_processes=?, services_status=?, installed_apps=?,
+        mac_address=COALESCE(?, mac_address)
        WHERE id=?`,
       updateFields
     )
 
+    notifier.checkMetrics({
+      id: clientId, name: stillExists.rows[0].name || hostname || `#${clientId}`,
+      cpu, disk,
+    }).catch(() => {})
+
     // Self-heal: kalau agent lapor IP baru (DHCP renew, salah adapter kepilih
     // pas register pertama, dll), update tanpa perlu re-register manual.
-    if (ip) {
+    if (ip && typeof ip === 'string') {
       await query('UPDATE clients SET ip_address=? WHERE id=? AND ip_address != ?', [ip, clientId, ip])
         .catch(() => {}) // ip_address UNIQUE -- abaikan kalau IP itu udah dipakai client lain
     }

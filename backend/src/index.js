@@ -43,6 +43,7 @@ const { handleTerminalWS, handleAgentWS } = require('./services/terminal');
 const { requireAuth } = require('./middleware/auth');
 const scheduler       = require('./services/scheduler');
 const offlineSweep    = require('./services/offlineSweep');
+const notifier        = require('./services/notifier');
 
 const app    = express();
 const server = http.createServer(app);
@@ -103,6 +104,7 @@ server.listen(PORT, () => {
   console.log(`RS-IT Backend running on port ${PORT}`);
   scheduler.init();
   offlineSweep.init();
+  notifier.init().catch(e => console.error('[Notifier] init:', e.message));
 });
 
 process.on('SIGTERM', () => {

@@ -87,4 +87,13 @@ CREATE TABLE IF NOT EXISTS client_status_history (
   FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
   INDEX idx_client_time (client_id, changed_at));
 
+CREATE TABLE IF NOT EXISTS alerts (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT NULL,
+  type VARCHAR(30) NOT NULL,
+  message VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (client_id) REFERENCES clients(id) ON DELETE CASCADE,
+  INDEX idx_created (created_at));
+
 INSERT IGNORE INTO update_config (schedule_time) VALUES ('02:00');

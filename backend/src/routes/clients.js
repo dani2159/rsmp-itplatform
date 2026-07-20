@@ -202,6 +202,41 @@ router.post('/:id/ping', async (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
+// POST /api/clients/:id/wake — Wake-on-LAN (magic packet)
+router.post('/:id/wake', requireOperator, async (req, res) => {
+  try {
+    const r = await query('SELECT ip_address, mac_address, network_info, name FROM clients WHERE id=?', [req.params.id]);
+    if (!r.rows.length) return res.status(404).json({ error: 'Client tidak ditemukan' });
+    const c = r.rows[0];
+
+    let mac = c.mac_address;
+    if (!mac && c.network_info) { try { mac = JSON.parse(c.network_info).mac } catch {} }
+    if (!mac) return res.status(400).json({ error: 'MAC address belum diketahui (tunggu agent lapor / isi manual di Edit Client)' });
+
+    const clean = String(mac).replace(/[^0-9a-fA-F]/g, '');
+    if (clean.length !== 12) return res.status(400).json({ error: `MAC tidak valid: ${mac}` });
+
+    const macBuf = Buffer.from(clean, 'hex');
+    const packet = Buffer.concat([Buffer.alloc(6, 0xff), ...Array(16).fill(macBuf)]);
+    // ponytail: broadcast dihitung asumsi subnet /24 dari IP client -- cukup
+    // untuk LAN RS; hitung dari netmask asli kalau nanti ada subnet lain.
+    const bcast = c.ip_address.split('.').slice(0, 3).join('.') + '.255';
+
+    const dgram = require('dgram');
+    const sock = dgram.createSocket('udp4');
+    sock.bind(() => {
+      sock.setBroadcast(true);
+      // Kirim ke broadcast + unicast IP terakhir (jaga-jaga ARP masih cached).
+      sock.send(packet, 9, bcast, () => {
+        sock.send(packet, 9, c.ip_address, () => sock.close());
+      });
+    });
+    sock.on('error', () => { try { sock.close() } catch {} });
+
+    res.json({ ok: true, name: c.name, mac, broadcast: bcast });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 // POST /api/clients/ping-all
 router.post('/ping-all', async (req, res) => {
   try {

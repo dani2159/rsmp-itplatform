@@ -47,6 +47,27 @@ router.get('/agent-token', (req, res) => {
   res.json({ token: process.env.AGENT_TOKEN || '' });
 });
 
+// GET /api/system/alerts — riwayat alert buat panel dashboard
+router.get('/alerts', async (req, res) => {
+  try {
+    const r = await query(`
+      SELECT a.id, a.client_id, a.type, a.message, a.created_at, c.name AS client_name
+      FROM alerts a LEFT JOIN clients c ON a.client_id=c.id
+      ORDER BY a.created_at DESC LIMIT 30`);
+    res.json(r.rows);
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
+// POST /api/system/alerts/test — cek konfigurasi bot Telegram
+router.post('/alerts/test', requireAdmin, async (req, res) => {
+  try {
+    const notifier = require('../services/notifier');
+    const sent = await notifier.sendTelegram('✅ Test notifikasi RSMP-IT Platform berhasil');
+    if (!sent) return res.status(400).json({ error: 'Bot token / chat ID belum diisi di Settings' });
+    res.json({ ok: true });
+  } catch (e) { res.status(500).json({ error: e.message }); }
+});
+
 module.exports = router;
 
 // ── routes/logs.js ─────────────────────────────────
